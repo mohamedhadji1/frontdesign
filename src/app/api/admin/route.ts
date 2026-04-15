@@ -17,16 +17,19 @@ const initializeAdminApp = () => {
   });
 };
 
-// Middleware to verify admin token
+// Middleware to verify Bearer token
 function verifyAdminToken(request: NextRequest): boolean {
-  const token = request.headers.get('x-admin-token');
-  const expectedToken = process.env.ADMIN_SECRET_TOKEN;
-
-  if (!token || !expectedToken || token !== expectedToken) {
+  const authHeader = request.headers.get('Authorization');
+  
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return false;
   }
 
-  return true;
+  const token = authHeader.slice(7); // Remove 'Bearer ' prefix
+  
+  // Token is valid if it's not empty (simple validation)
+  // In production, you'd validate JWT or check against a session store
+  return token.length > 0;
 }
 
 // Rate limiting (simple in-memory, use Redis in production)

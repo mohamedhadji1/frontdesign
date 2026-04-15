@@ -16,21 +16,29 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-
-  // Turbopack config (empty to use defaults - source maps disabled in prod by default)
+  compress: true,
+  productionBrowserSourceMaps: false,
   turbopack: {},
 
-  // Webpack fallback - used when building with --webpack flag for production
-  webpack: (config, { isServer, dev }) => {
-    // Completely disable source maps in production
-    if (!dev) {
-      config.devtool = false;
-    }
-    return config;
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/:path*.map",
+          destination: "/404",
+        },
+      ],
+    };
   },
 
   async headers() {
     return [
+      {
+        source: "/:path*.map",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

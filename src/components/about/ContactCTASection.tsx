@@ -47,9 +47,9 @@ export function ContactCTASection() {
       
       {/* Dark overlay just in case image is too bright */}
       <div className="absolute inset-0" />
-
+        <div className="mb-[30px] bg-[#0a0a0a00]">
       <SectionDivider title="CONTACT" className="bg-transparent mb-12 relative z-20" />
-
+        </div>
       <div className="container mx-auto px-6 lg:px-12 max-w-[1200px] relative z-20 text-center">
         
         <motion.h2 

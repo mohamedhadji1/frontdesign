@@ -1,8 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function AdminSecretUrl() {
+  // AUTH STATE
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState("");
+
+  // EVENTS STATE
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,6 +25,59 @@ export default function AdminSecretUrl() {
   const [newsLoading, setNewsLoading] = useState(false);
   const [newsMessage, setNewsMessage] = useState("");
 
+  // Check if user is logged in on mount
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("admin_auth");
+    if (storedAuth) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    setLoginError("");
+
+    try {
+      const response = await fetch("/api/admin-auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action: "login", email, password }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Login failed");
+      }
+
+      // Store auth token in localStorage
+      localStorage.setItem("admin_auth", result.token);
+      setIsLoggedIn(true);
+      setEmail("");
+      setPassword("");
+      setLoginError("");
+    } catch (error) {
+      setLoginError(error instanceof Error ? error.message : "Login failed");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin_auth");
+    setIsLoggedIn(false);
+    setTitle("");
+    setDate("");
+    setNewsTitle("");
+    setNewsDate("");
+    setNewsExcerpt("");
+    setNewsImageFile(null);
+    setNewsLink("#");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !date) return;
@@ -25,9 +86,9 @@ export default function AdminSecretUrl() {
     setMessage("");
 
     try {
-      const adminToken = prompt("Enter admin token:");
-      if (!adminToken) {
-        setMessage("Admin token required");
+      const authToken = localStorage.getItem("admin_auth");
+      if (!authToken) {
+        setMessage("You are not logged in");
         setLoading(false);
         return;
       }
@@ -36,7 +97,7 @@ export default function AdminSecretUrl() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": adminToken,
+          "Authorization": `Bearer ${authToken}`,
         },
         body: JSON.stringify({
           action: "addEvent",
@@ -72,9 +133,9 @@ export default function AdminSecretUrl() {
     setNewsMessage("");
 
     try {
-      const adminToken = prompt("Enter admin token:");
-      if (!adminToken) {
-        setNewsMessage("Admin token required");
+      const authToken = localStorage.getItem("admin_auth");
+      if (!authToken) {
+        setNewsMessage("You are not logged in");
         setNewsLoading(false);
         return;
       }
@@ -111,7 +172,7 @@ export default function AdminSecretUrl() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": adminToken,
+          "Authorization": `Bearer ${authToken}`,
         },
         body: JSON.stringify({
           action: "addNews",
@@ -136,6 +197,7 @@ export default function AdminSecretUrl() {
       setNewsDate("");
       setNewsExcerpt("");
       setNewsImageFile(null);
+      setNewsLink("#");
     } catch (error) {
       console.error(error);
       setNewsMessage("Error posting news: " + (error instanceof Error ? error.message : "Unknown error"));
@@ -144,8 +206,79 @@ export default function AdminSecretUrl() {
     }
   };
 
+  // LOGIN PAGE
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen py-20 flex justify-center items-center px-6">
+        <div className="w-full max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
+          <h1 className="text-3xl font-bold mb-8 text-white tracking-wider text-center">
+            ADMIN <span className="text-red-600">LOGIN</span>
+          </h1>
+
+          {loginError && (
+            <div className="p-4 rounded mb-6 text-sm bg-red-600/20 text-red-500">
+              {loginError}
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="flex flex-col gap-5">
+            <div>
+              <label className="block text-gray-400 text-sm mb-2" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="admin@example.com"
+                className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-400 text-sm mb-2" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors"
+            >
+              {loginLoading ? "Logging in..." : "Login"}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // ADMIN DASHBOARD
   return (
     <div className="min-h-screen py-20 flex flex-col lg:flex-row justify-center items-start px-6 gap-10">
+      {/* LOGOUT BUTTON */}
+      <div className="fixed top-6 right-6">
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors"
+        >
+          Logout
+        </button>
+      </div>
+
+      {/* EVENTS FORM */}
       <div className="w-full lg:w-1/2 max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
         <h1 className="text-2xl font-bold mb-6 text-white tracking-wider">
           EVENTS <span className="text-red-600">ADMIN</span>
@@ -159,7 +292,9 @@ export default function AdminSecretUrl() {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="title">Event Title</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="title">
+              Event Title
+            </label>
             <input
               id="title"
               type="text"
@@ -172,7 +307,9 @@ export default function AdminSecretUrl() {
           </div>
 
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="date">Event Date & Time</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="date">
+              Event Date & Time
+            </label>
             <input
               id="date"
               type="datetime-local"
@@ -193,9 +330,9 @@ export default function AdminSecretUrl() {
         </form>
       </div>
 
-      {/* NEWS ADMIN FORM */}
+      {/* NEWS FORM */}
       <div className="w-full lg:w-1/2 max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
-        <h1 className="text-2xl font-bold mb-6 text-white tracking-wider">      
+        <h1 className="text-2xl font-bold mb-6 text-white tracking-wider">
           NEWS <span className="text-red-600">ADMIN</span>
         </h1>
 
@@ -207,7 +344,9 @@ export default function AdminSecretUrl() {
 
         <form onSubmit={handleNewsSubmit} className="flex flex-col gap-5">
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsTitle">News Title</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsTitle">
+              News Title
+            </label>
             <input
               id="newsTitle"
               type="text"
@@ -220,7 +359,9 @@ export default function AdminSecretUrl() {
           </div>
 
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsExcerpt">Excerpt / Short Description</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsExcerpt">
+              Excerpt / Short Description
+            </label>
             <textarea
               id="newsExcerpt"
               value={newsExcerpt}
@@ -233,7 +374,9 @@ export default function AdminSecretUrl() {
           </div>
 
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsDate">News Date</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsDate">
+              News Date
+            </label>
             <input
               id="newsDate"
               type="date"
@@ -243,9 +386,11 @@ export default function AdminSecretUrl() {
               required
             />
           </div>
-          
+
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsImage">Image Upload</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsImage">
+              Image Upload
+            </label>
             <input
               id="newsImage"
               type="file"
@@ -261,7 +406,9 @@ export default function AdminSecretUrl() {
           </div>
 
           <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsLink">Article Link</label>
+            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsLink">
+              Article Link
+            </label>
             <input
               id="newsLink"
               type="text"
@@ -282,7 +429,6 @@ export default function AdminSecretUrl() {
           </button>
         </form>
       </div>
-
     </div>
   );
 }

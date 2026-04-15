@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "../ui/Container";
 import styles from "./ApproachSection.module.css";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 type BranchClass =
   | "branchFarLeft"
@@ -64,7 +65,9 @@ const approachItems = [
 
 export function ApproachSection() {
   return (
+    
     <section className={styles.section}>
+      
       <Container>
         <h2 className={styles.eyebrow}>KEYSTONE&apos;S APPROACH</h2>
 

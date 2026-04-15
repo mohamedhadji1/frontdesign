@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Middleware placeholder - route protection handled by API endpoint
-  return NextResponse.next();
+if (request.nextUrl.pathname.endsWith(".map")) {
+    return new NextResponse(null, { status: 404 });
+  }
+    return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin-secret-url/:path*'],
+  matcher: ['/admin-secret-url/:path*', '/:path*.map'],
 };

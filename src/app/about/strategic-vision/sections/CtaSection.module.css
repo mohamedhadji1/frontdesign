@@ -3,6 +3,7 @@
   overflow: hidden;
   background: var(--surface-light);
   padding: clamp(48px, 8vw, 72px) 0;
+  height: 70%
 }
 
 .grid {

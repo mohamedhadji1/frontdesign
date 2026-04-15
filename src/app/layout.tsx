@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-/*import { DisableDevTools } from "@/components/DisableDevTools";*/
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
