@@ -1,11 +1,43 @@
 import type { NextConfig } from "next";
 
+const csp = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
+  "style-src 'self' 'unsafe-inline' https:",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data: https:",
+  "connect-src 'self' https:",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+
+  // Turbopack config (empty to use defaults - source maps disabled in prod by default)
+  turbopack: {},
+
+  // Webpack fallback - used when building with --webpack flag for production
+  webpack: (config, { isServer, dev }) => {
+    // Completely disable source maps in production
+    if (!dev) {
+      config.devtool = false;
+    }
+    return config;
+  },
+
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value: csp,
+          },
           {
             key: "X-DNS-Prefetch-Control",
             value: "on",
@@ -16,7 +48,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "X-Frame-Options",
-            value: "SAMEORIGIN",
+            value: "DENY",
           },
           {
             key: "X-Content-Type-Options",
@@ -24,7 +56,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "Permissions-Policy",

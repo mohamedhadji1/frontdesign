@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 
 export default function AdminSecretUrl() {
   const [title, setTitle] = useState("");
@@ -27,11 +25,31 @@ export default function AdminSecretUrl() {
     setMessage("");
 
     try {
-      await addDoc(collection(db, "events"), {
-        title,
-        date,
-        createdAt: new Date().toISOString(),
+      const adminToken = prompt("Enter admin token:");
+      if (!adminToken) {
+        setMessage("Admin token required");
+        setLoading(false);
+        return;
+      }
+
+      const response = await fetch("/api/admin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": adminToken,
+        },
+        body: JSON.stringify({
+          action: "addEvent",
+          data: { title, date },
+        }),
       });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to post event");
+      }
+
       setMessage("Event successfully posted!");
       setTitle("");
       setDate("");
@@ -54,6 +72,13 @@ export default function AdminSecretUrl() {
     setNewsMessage("");
 
     try {
+      const adminToken = prompt("Enter admin token:");
+      if (!adminToken) {
+        setNewsMessage("Admin token required");
+        setNewsLoading(false);
+        return;
+      }
+
       let imageDownloadUrl = "";
 
       // 1. Upload image to Cloudinary
@@ -81,22 +106,36 @@ export default function AdminSecretUrl() {
 
       imageDownloadUrl = uploadData.secure_url;
 
-      // 2. Save document to Firestore
-      await addDoc(collection(db, "news"), {
-        title: newsTitle,
-        date: newsDate,
-        image: imageDownloadUrl,
-        excerpt: newsExcerpt,
-        link: newsLink,
-        createdAt: new Date().toISOString(),
+      // 2. Save document via secure API
+      const response = await fetch("/api/admin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-token": adminToken,
+        },
+        body: JSON.stringify({
+          action: "addNews",
+          data: {
+            title: newsTitle,
+            date: newsDate,
+            image: imageDownloadUrl,
+            excerpt: newsExcerpt,
+            link: newsLink,
+          },
+        }),
       });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to post news");
+      }
 
       setNewsMessage("News successfully posted with Cloudinary image!");
       setNewsTitle("");
       setNewsDate("");
       setNewsExcerpt("");
       setNewsImageFile(null);
-      // reset file input visually if needed
     } catch (error) {
       console.error(error);
       setNewsMessage("Error posting news: " + (error instanceof Error ? error.message : "Unknown error"));
