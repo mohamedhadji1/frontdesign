@@ -9,6 +9,7 @@ import { SectorsDropdown } from "./SectorsDropdown";
 import { CareersDropdown } from "./CareersDropdown";
 import { MobileMenu } from "./MobileMenu";
 import { usePathname } from "next/navigation";
+import { AboutDropdown } from "./AboutDropdown";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -49,8 +50,21 @@ export function Navbar() {
 
         {/* Center: Navigation Links */}
         <div className="hidden lg:flex space-x-8 items-center h-full">
-          <NavItem label="About" href="/about" />
-          
+
+          <div 
+            className="h-full flex items-center relative"
+            onMouseEnter={() => setActiveDropdown("About")}
+            onMouseLeave={() => setActiveDropdown(null)}
+          >
+            <NavItem 
+              label="About" 
+              href="/about" 
+              hasDropdown 
+              isActive={activeDropdown === "About"}
+            />
+            {activeDropdown === "About" && <AboutDropdown />}
+          </div>
+
           <div 
             className="h-full flex items-center"
             onMouseEnter={() => setActiveDropdown("Services")}

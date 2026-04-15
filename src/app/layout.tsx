@@ -22,6 +22,11 @@ const gotham = localFont({
       weight: "700",
       style: "normal",
     },
+    {
+      path: "./fonts/GothamBlack.ttf",
+      weight: "900",
+      style: "normal",
+    },
   ],
   variable: "--font-gotham",
   display: "swap",
@@ -46,8 +51,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${gotham.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-neutral-900 text-white font-sans">
+      <body className="min-h-full flex flex-col bg-neutral-900 text-white font-sans" suppressHydrationWarning>
         <Navbar />
         <main className="grow">{children}</main>
         <Footer />

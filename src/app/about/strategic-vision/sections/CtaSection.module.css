@@ -1,0 +1,54 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-light);
+  padding: clamp(48px, 8vw, 72px) 0;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+}
+
+.copy {
+  max-width: 760px;
+}
+
+.title {
+  margin: 0 0 14px;
+  color: var(--text-primary);
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.8;
+  max-width: 60ch;
+}
+
+.action {
+  justify-self: end;
+}
+
+.mesh {
+  right: -160px;
+  bottom: -240px;
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action {
+    justify-self: start;
+  }
+}

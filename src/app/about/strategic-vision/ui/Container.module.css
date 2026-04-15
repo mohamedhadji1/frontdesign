@@ -1,0 +1,17 @@
+.container {
+  width: min(calc(100% - 32px), var(--container-width));
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(calc(100% - 48px), var(--container-width));
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: min(calc(100% - 72px), var(--container-width));
+  }
+}

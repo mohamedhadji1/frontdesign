@@ -1,10 +1,16 @@
-export function SectionDivider({ title, className = "bg-white" }: { title: string, className?: string }) {
+export function SectionDivider({
+  title,
+}: {
+  title: string;
+  className?: string;
+}) {
   return (
-    <div className={`w-full flex flex-col items-center justify-center z-20 relative ${className}`}>
-      <div className="w-[2px] h-8 bg-red-600 mb-2"></div>
-      <h5 className="text-red-600 uppercase tracking-[0.2em] text-xs font-bold whitespace-nowrap">
+    <div className={`flex w-full flex-col items-center justify-center`}>
+      <div className="mb-3 h-10 w-px bg-gradient-to-b from-transparent via-red-500 to-transparent" />
+      <h5 className="text-[11px] font-semibold uppercase tracking-[0.35em] text-red-600">
         {title}
       </h5>
+      <div className="mt-3 h-px w-16 bg-red-200" />
     </div>
   );
 }

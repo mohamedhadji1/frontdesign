@@ -167,19 +167,19 @@ export function HeroSection() {
           transition={{ delay: 1, duration: 1 }}
           className="w-full lg:w-1/3 max-w-sm mt-12 lg:mt-0 lg:ml-auto"
         >
-          <div className="bg-white p-6 rounded-lg shadow-xl">
+          <div className="bg-black/30 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-gray-900 uppercase tracking-wider">Events</h2>
-              <span className="text-xs bg-red-50 text-red-600 font-bold px-2 py-1 rounded">Coming Soon</span>
+              <h2 className="text-xl font-bold text-white uppercase tracking-wider">Events</h2>
+              <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Coming Soon</span>
             </div>
 
             {events.length > 0 ? (
               <div className="flex flex-col gap-6">
                 {events.map((event, idx) => (
-                  <div key={event.id} className={`border-b border-gray-100 pb-6 last:border-0 last:pb-0 ${idx > 0 ? "hidden sm:block" : ""}`}>
-                    <h3 className="text-gray-900 font-bold text-lg leading-snug">{event.title}</h3>
-                    <p className="flex items-center gap-1.5 text-gray-500 text-sm mt-2 font-medium">
-                      <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div key={event.id} className={`border-b border-white/10 pb-6 last:border-0 last:pb-0 ${idx > 0 ? "hidden sm:block" : ""}`}>
+                    <h3 className="text-white font-bold text-lg leading-snug">{event.title}</h3>
+                    <p className="flex items-center gap-1.5 text-gray-300 text-sm mt-2 font-medium">
+                      <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                       </svg>
                       {new Date(event.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
@@ -188,31 +188,31 @@ export function HeroSection() {
                     {idx === 0 && timeRemaining && !timeRemaining.started && (
                       <div className="mt-5">
                         <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-3">Starts In</p>
-                        <div className="flex bg-gray-50 rounded-lg p-3 justify-between items-center text-center shadow-inner border border-gray-100">
+                        <div className="flex bg-black/40 rounded-lg p-3 justify-between items-center text-center border border-white/10 shadow-inner">
                           <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-gray-900 font-bold font-mono">{timeRemaining.d}</span>
-                            <span className="text-[9px] text-gray-500 font-bold uppercase mt-0.5">Days</span>
+                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.d}</span>
+                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Days</span>
                           </div>
-                          <span className="text-gray-300 font-bold">:</span>
+                          <span className="text-gray-500 font-bold">:</span>
                           <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-gray-900 font-bold font-mono">{timeRemaining.h}</span>
-                            <span className="text-[9px] text-gray-500 font-bold uppercase mt-0.5">Hrs</span>
+                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.h}</span>
+                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Hrs</span>
                           </div>
-                          <span className="text-gray-300 font-bold">:</span>
+                          <span className="text-gray-500 font-bold">:</span>
                           <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-gray-900 font-bold font-mono">{timeRemaining.m}</span>
-                            <span className="text-[9px] text-gray-500 font-bold uppercase mt-0.5">Min</span>
+                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.m}</span>
+                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Min</span>
                           </div>
-                          <span className="text-gray-300 font-bold">:</span>
+                          <span className="text-gray-500 font-bold">:</span>
                           <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-red-600 font-bold font-mono">{timeRemaining.s}</span>
-                            <span className="text-[9px] text-gray-500 font-bold uppercase mt-0.5">Sec</span>
+                            <span className="text-xl text-red-400 font-bold font-mono">{timeRemaining.s}</span>
+                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Sec</span>
                           </div>
                         </div>
                       </div>
                     )}
                     {idx === 0 && timeRemaining?.started && (
-                      <div className="mt-4 inline-block bg-red-50 border border-red-100 text-red-600 px-4 py-1.5 rounded-md text-xs font-bold animate-pulse">
+                      <div className="mt-4 inline-block bg-red-500/20 border border-red-500/30 text-red-200 px-4 py-1.5 rounded-md text-xs font-bold animate-pulse">
                         Event is live
                       </div>
                     )}
@@ -227,8 +227,8 @@ export function HeroSection() {
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <p className="text-gray-600 text-center font-medium">No upcoming events.</p>
-                <p className="text-gray-400 text-xs text-center mt-1">Check back later for updates</p>
+                <p className="text-gray-300 text-center font-medium">No upcoming events.</p>
+                <p className="text-gray-500 text-xs text-center mt-1">Check back later for updates</p>
               </div>
             )}
           </div>

@@ -96,13 +96,32 @@ export function ServicesSection() {
       {/* Interactive Interactive Hub Layout (Desktop) */}
       <div className="hidden lg:flex relative max-w-[1152px] mx-auto h-[600px] items-center text-gray-900 z-20 overflow-visible mt-10">
         
-        {/* Background Concentric Dotted Circles for the Center Hub */}
-        <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
-          <div className="w-[120px] h-[120px] border-2 border-gray-400 border-dotted rounded-full absolute opacity-100" />
-          <div className="w-[180px] h-[180px] border-2 border-gray-400 border-dotted rounded-full absolute opacity-80" />
-          <div className="w-[280px] h-[280px] border-2 border-gray-300 border-dotted rounded-full absolute opacity-100 transition-transform duration-700 hover:rotate-45" />
-          <div className="w-[400px] h-[400px] border-2 border-gray-300 border-dotted rounded-full absolute opacity-80" />
-          <div className="w-[550px] h-[550px] border-2 border-gray-300 border-dotted rounded-full absolute opacity-60 transition-transform duration-[2000ms] hover:-rotate-12" />
+        {/* Background Concentric Dotted Hexagons for the Center Hub */}
+        <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center justify-center">
+          {/* Hexagon 1: 120px */}
+          <svg width="120" height="120" viewBox="0 0 120 120" className="absolute opacity-30 pointer-events-none">
+            <polygon points="60,0 111.96,30 111.96,90 60,120 8.04,90 8.04,30" fill="none" stroke="#9ca3af" strokeWidth="2" strokeDasharray="4 4" />
+          </svg>
+
+          {/* Hexagon 2: 180px */}
+          <svg width="180" height="180" viewBox="0 0 180 180" className="absolute opacity-20 pointer-events-none">
+            <polygon points="90,0 167.94,45 167.94,135 90,180 12.06,135 12.06,45" fill="none" stroke="#9ca3af" strokeWidth="2" strokeDasharray="4 4" />
+          </svg>
+
+          {/* Hexagon 3: 280px */}
+          <svg width="280" height="280" viewBox="0 0 280 280" className="absolute opacity-20 transition-transform duration-700 hover:rotate-45 cursor-pointer">
+            <polygon points="140,0 261.24,70 261.24,210 140,280 18.76,210 18.76,70" fill="none" stroke="#d1d5db" strokeWidth="2" strokeDasharray="6 6" />
+          </svg>
+
+          {/* Hexagon 4: 400px */}
+          <svg width="400" height="400" viewBox="0 0 400 400" className="absolute opacity-10 pointer-events-none">
+            <polygon points="200,0 373.2,100 373.2,300 200,400 26.8,300 26.8,100" fill="none" stroke="#d1d5db" strokeWidth="2" strokeDasharray="6 6" />
+          </svg>
+
+          {/* Hexagon 5: 550px */}
+          <svg width="550" height="550" viewBox="0 0 550 550" className="absolute opacity-10 transition-transform duration-[2000ms] hover:-rotate-12 cursor-pointer">
+            <polygon points="275,0 513.15,137.5 513.15,412.5 275,550 36.85,412.5 36.85,137.5" fill="none" stroke="#d1d5db" strokeWidth="2" strokeDasharray="8 8" />
+          </svg>
         </div>
 
         {/* Dynamic Curved SVG Lines connecting the Left Column to Center Hub */}
@@ -165,14 +184,16 @@ export function ServicesSection() {
 
         {/* Center Hub Graphic */}
         <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
-          <div className="bg-white w-[88px] h-[88px] rounded-full shadow-lg flex items-center justify-center relative over border border-gray-100">
+          <div className="bg-white w-[100px] h-[100px] shadow-lg flex items-center justify-center relative over border-gray-100" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
             
-            {/* Geometric Globe Wireframe Icon */}
-            <svg viewBox="0 0 24 24" className="w-[50px] h-[50px] text-red-600 z-10" fill="none" stroke="currentColor" strokeWidth="1.2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              <path d="M2 12h20" />
-            </svg>
+            {/* Site Icon */}
+            <Image 
+              src="/logos/site icon.png" 
+              alt="Keystone Icon" 
+              width={50} 
+              height={50} 
+              className="z-10 object-contain drop-shadow-sm" 
+            />
           </div>
         </div>
 

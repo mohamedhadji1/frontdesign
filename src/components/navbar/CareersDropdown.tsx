@@ -44,13 +44,13 @@ export function CareersDropdown() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 max-w-5xl">
+        <div className="grid grid-cols-3 gap-8 w-full">
           {careersDetails.map((group, index) => (
-            <div key={index} className="grid grid-cols-12 gap-4 items-start">
-              <h3 className="col-span-4 text-base font-normal text-gray-800">
+            <div key={index} className="flex flex-col items-start">
+              <h3 className="text-base font-semibold text-gray-900 mb-4 leading-tight">
                 {group.category}
               </h3>
-              <ul className="col-span-8 flex flex-col space-y-2">
+              <ul className="flex flex-col space-y-2">
                 {group.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="text-gray-500 font-light hover:text-red-600 transition-colors flex items-center text-sm cursor-pointer">
                     <span className="mr-2 text-gray-300">•</span>

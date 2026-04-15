@@ -39,7 +39,7 @@ export function MapSection() {
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
 
   return (
-    <section className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900 border-t border-zinc-100 overflow-hidden">
+    <section className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-0 flex flex-col items-center relative z-30">
           <p className="text-zinc-500 max-w-2xl mx-auto mb-6 font-medium text-sm md:text-base">

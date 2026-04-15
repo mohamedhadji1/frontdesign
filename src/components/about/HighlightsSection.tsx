@@ -12,7 +12,7 @@ export function HighlightsSection() {
       {/* Divider exactly matching previous red top-aligns */}
       <SectionDivider title="OUR VALUES" className="bg-transparent mb-16 relative z-20" />
 
-      <div className="container mx-auto px-6 lg:px-12 max-w-7xl pb-16 lg:pb-24">
+      <div className="container mx-auto px-6 lg:px-12 max-w-7xl pb-16 lg:pb-24 mt-5">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
           {/* Left Column */}
