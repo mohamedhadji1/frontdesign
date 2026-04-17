@@ -12,11 +12,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-3 flex flex-col items-start pr-4">
-            <Link href="/" className="mb-6 block relative w-48 h-12">
+            <Link href="/" className="mb-6 block relative w-70 h-30">
               <Image 
-                src="/logos/logo.png" 
+                src="/logos/KEYSTONE footer.png" 
                 alt="Keystone Logo"
                 fill
+                unoptimized
                 className="object-contain object-left"
               />
             </Link>
@@ -117,9 +118,10 @@ export function Footer() {
           <div className="flex-shrink-0 flex items-center justify-center md:justify-start">
             <Image 
               src="/logos/site icon.png" 
-              alt="Keystone Logo"
               width={100}
               height={100}
+              alt="footer icon"
+              unoptimized
               className="object-contain"
             />
           </div>

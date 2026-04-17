@@ -60,8 +60,9 @@ export function WhoWeAreSection() {
           
           {/* Left Column - Content */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
@@ -96,9 +97,10 @@ export function WhoWeAreSection() {
 
           {/* Right Column - Stats / Features */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             className="w-full lg:w-1/2 flex flex-col items-center lg:items-start lg:justify-center gap-10 lg:gap-12 lg:pl-10 mt-8 lg:mt-0 text-center lg:text-left"
           >
             {/* Stat 1 */}
@@ -240,9 +242,11 @@ export function WhoWeAreSection() {
             className="container mx-auto px-6 lg:px-12 py-16 lg:py-24 max-w-6xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
           >
             {/* Left Image Area */}
-            <div className="w-full lg:w-1/2 relative h-[350px] sm:h-[450px] rounded-xl overflow-hidden shadow-2xl shadow-gray-200">
-              <div 
+            <div className="w-full lg:w-1/2 relative h-[350px] sm:h-[450px] rounded-xl overflow-hidden shadow-2xl shadow-gray-200 group">
+              <motion.div 
                 className="absolute inset-0 bg-cover bg-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 style={{ backgroundImage: "url('/images/team.jpg')" }} 
               />
             </div>
@@ -256,14 +260,30 @@ export function WhoWeAreSection() {
                 Our team of cybersecurity specialists embodies excellence, holding an impressive array of international certifications and extensive expertise in various fields of information security. Each member brings specialized skills and extensive experience, allowing us to offer tailored solutions, adapted to the specific challenges of our clients.
               </p>
               
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-4">
+              <motion.ul 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+                  hidden: { opacity: 0 }
+                }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-4"
+              >
                 {[
                   "Developed Expertise",
                   "Versatility and Impartiality",
                   "International Certifications",
                   "Objectivity and Commitment to Quality"
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-4">
+                  <motion.li 
+                    key={idx} 
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                    }}
+                    className="flex items-center gap-4"
+                  >
                     <span className="flex-shrink-0 w-9 h-9 rounded-full bg-[#fce8e8] flex items-center justify-center text-red-500">
                       <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -272,9 +292,9 @@ export function WhoWeAreSection() {
                     <span className="text-[#0a102f] text-[15px] font-medium">
                       {item}
                     </span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </div>
           </motion.div>
         )}

@@ -18,6 +18,7 @@ export function CallToActionSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight"
           >
             Need Immediate Security Assistance?
@@ -27,7 +28,7 @@ export function CallToActionSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             className="text-base md:text-lg text-gray-400 font-medium max-w-2xl"
           >
             Our security experts are available 24/7 to help protect your organization.
@@ -38,7 +39,7 @@ export function CallToActionSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
         >
           <Link
             href="/contact"

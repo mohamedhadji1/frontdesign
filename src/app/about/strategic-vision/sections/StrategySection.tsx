@@ -27,7 +27,7 @@ export function StrategySection() {
           <div className={styles.visual}>
             <div className={styles.frame}>
               <Image
-                src="/images/strategy-hero.png"
+                src="/background/Rectangle 59.png"
                 alt="Cybersecurity interface over a laptop"
                 fill
                 priority

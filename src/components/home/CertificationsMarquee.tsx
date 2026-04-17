@@ -6,7 +6,13 @@ export function CertificationsMarquee() {
   const images = Array(10).fill("/public/certif/27001.png"); 
 
   return (
-    <section className="w-full bg-white py-10 overflow-hidden border-b border-gray-100 flex items-center">
+    <motion.section 
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="w-full bg-white py-10 overflow-hidden border-b border-gray-100 flex items-center"
+    >
       {/* 
         This motion div moves precisely from 0 to -50% to cycle half the duplicated array constantly,
         creating an infinite scroll illusion.
@@ -34,6 +40,6 @@ export function CertificationsMarquee() {
           </div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 }

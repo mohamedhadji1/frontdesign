@@ -46,7 +46,7 @@ export function ContactCTASection() {
         >
           <Link
             href="/contact"
-            className="shrink-0 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-full transition-all flex items-center gap-2 group text-sm md:text-base border border-red-500"
+            className="shrink-0 bg-red-600 hover:bg-red-700 !text-white font-medium py-3 px-8 rounded-full transition-all flex items-center gap-2 group text-sm md:text-base border border-red-500"
           >
             Contact Us Today
             <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold ml-1 flex items-center">

@@ -112,17 +112,43 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         <div key={idx}>
                           <h4 className="text-red-500 text-sm font-semibold mb-3 tracking-wide">{group.category}</h4>
                           <ul className="flex flex-col space-y-3">
-                            {group.items.map((item, itemIdx) => (
-                              <li key={itemIdx}>
-                                <Link
-                                  href={`#${item.replace(/[\s(),&]+/g, "-").toLowerCase()}`}
-                                  className="text-white/60 hover:text-white text-sm transition-colors block"
-                                  onClick={onClose}
-                                >
-                                  {item}
-                                </Link>
-                              </li>
-                            ))}
+                            {group.items.map((item: any, itemIdx: number) => {
+                              const itemName = typeof item === 'string' ? item : item.name;
+                              
+                              // Change hash links to valid routing links for Services components
+                              const href = section.name === "Services"
+                                ? `/services/${itemName.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`
+                                : `#${itemName.replace(/[\s(),&]+/g, "-").toLowerCase()}`;
+                                
+                              return (
+                                <div key={itemIdx}>
+                                  <li>
+                                    <Link
+                                      href={href}
+                                      className="text-white/60 hover:text-white text-sm transition-colors block"
+                                      onClick={onClose}
+                                    >
+                                      {itemName}
+                                    </Link>
+                                  </li>
+                                  {item.subItems && (
+                                    <ul className="pl-4 mt-2 flex flex-col space-y-2 border-l border-white/10">
+                                      {item.subItems.map((sub: string, subIdx: number) => (
+                                        <li key={subIdx}>
+                                          <Link
+                                            href={`/services/${sub.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`}
+                                            className="text-white/50 hover:text-white text-xs transition-colors block"
+                                            onClick={onClose}
+                                          >
+                                            {sub}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              )
+                            })}
                           </ul>
                         </div>
                       ))}

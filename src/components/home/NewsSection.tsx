@@ -107,6 +107,7 @@ export function NewsSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-4xl sm:text-[2.75rem] leading-[1.1] font-medium text-gray-900 mb-6"
           >
             News from Keystone
@@ -114,7 +115,7 @@ export function NewsSection() {
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
             className="text-gray-800 text-lg leading-relaxed font-normal max-w-2xl"
           >

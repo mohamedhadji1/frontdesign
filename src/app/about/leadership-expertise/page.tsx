@@ -3,9 +3,9 @@ import { HeroSection } from "./components/HeroSection";
 import { AdvancedExpertiseSection } from "./components/AdvancedExpertiseSection";
 import { VersatilityAndImpartialitySection } from "./components/VersatilityAndImpartialitySection";
 import { OurLeaderSection } from "./components/OurLeaderSection";
-import { ContactCTASection } from "@/components/about/ContactCTASection";
-import { HighlightsSection } from "@/components/about/HighlightsSection";
 import { MapSection } from "@/components/home/MapSection";
+import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HighlightsSection } from "../strategic-vision/sections/HighlightsSection";
 
 export const metadata: Metadata = {
   title: "Our Leadership & Expertise | Keystone",
@@ -35,7 +35,6 @@ export default function LeadershipExpertisePage() {
 
       <OurLeaderSection />
       <ContactCTASection />
-      <HighlightsSection />
       <MapSection />
     </div>
   );

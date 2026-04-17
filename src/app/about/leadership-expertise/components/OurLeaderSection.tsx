@@ -22,16 +22,12 @@ export function OurLeaderSection() {
           {/* Info Details */}
           <div className="w-full lg:flex-1 flex flex-col justify-center text-white mt-4">
             <h3 className="text-3xl lg:text-[32px] font-bold mb-3 tracking-wide">
-              Abdulkrim (Samir) BATATA
             </h3>
             <p className="text-gray-300 text-lg mb-10 tracking-wide font-light">
-              Fondateur & Directeur Général de KEYSTONE Group Algérie
+              Fondateur & Directeur Général de KEYSTONE Group Tunisie
             </p>
             
             <p className="text-gray-300 leading-[1.9] mb-14 text-[15px] lg:text-base font-light">
-              Abdulkrim (Samir) BATATA is the Founder and CEO of KEYSTONE Group Algeria,
-              leading the company's mission to strengthen cybersecurity, compliance, and digital
-              resilience for organizations in Algeria and the MENA region.
             </p>
             
             <div className="flex flex-col gap-6">
@@ -43,7 +39,7 @@ export function OurLeaderSection() {
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                   </svg>
                 </div>
-                <span className="text-gray-300 font-light tracking-wide text-[15px]">info@keystonegroup.dz</span>
+                <span className="text-gray-300 font-light tracking-wide text-[15px]"></span>
               </div>
               
               {/* LinkedIn Contact */}
@@ -51,7 +47,7 @@ export function OurLeaderSection() {
                 <div className="w-12 h-12 rounded-full bg-[#3D0A0A] flex items-center justify-center text-[#FF1111] font-bold text-lg">
                   in
                 </div>
-                <span className="text-gray-300 font-light tracking-wide text-[15px]">Abdulkrim (Samir) BATATA</span>
+                <span className="text-gray-300 font-light tracking-wide text-[15px]"></span>
               </div>
             </div>
           </div>

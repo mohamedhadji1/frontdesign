@@ -18,6 +18,7 @@ export function Logo({ isLight = false }: LogoProps) {
           src="/logos/logo.png" 
           alt="Keystone Logo"
           fill
+          unoptimized
           className="object-contain object-left"
           priority
         />

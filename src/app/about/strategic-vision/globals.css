@@ -55,6 +55,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+nav{
+  color: #fff !important;
+  --text-primary: #fff !important;
+}
 
 main {
   overflow: hidden;

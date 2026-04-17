@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full h-full">
       <HeroSection />
-      <SectionDivider title="KEYSTONE SERVICES" />
+      <SectionDivider title="KEYSTONE SERVICES" className="bg-white pb-0"/>
       <ServicesSection />
       <ServicesCTASection />
-      <SectionDivider title="WHO WE ARE" />
+      <SectionDivider title="WHO WE ARE" className="bg-white pb-0"/>
       <WhoWeAreSection />
       <CallToActionSection />
       <NewsSection />

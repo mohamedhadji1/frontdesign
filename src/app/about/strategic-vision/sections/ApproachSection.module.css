@@ -95,7 +95,7 @@
   object-fit: contain;
   pointer-events: none;
   z-index: 1;
-  width: 100%;
+  width: 100px !important;
   max-width: none;
 }
 
@@ -160,10 +160,10 @@
 .nodeIcon {
   position: relative;
   z-index: 2;
-  width: auto;
-  height: auto;
-  max-width: 54%;
-  max-height: 54%;
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   transform: translateY(-5px);
 }
 

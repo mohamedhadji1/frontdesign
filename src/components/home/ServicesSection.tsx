@@ -94,24 +94,30 @@ export function ServicesSection() {
       </div>
 
       {/* Interactive Interactive Hub Layout (Desktop) */}
-      <div className="hidden lg:flex relative max-w-[1152px] mx-auto h-[600px] items-center text-gray-900 z-20 overflow-visible mt-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="hidden lg:flex relative max-w-[1152px] mx-auto h-[600px] items-center text-gray-900 z-20 overflow-visible mt-10"
+      >
         
         {/* Background Concentric Dotted Hexagons for the Center Hub */}
         <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center justify-center">
           {/* Hexagon 1: 120px */}
-          <svg width="120" height="120" viewBox="0 0 120 120" className="absolute opacity-30 pointer-events-none">
+          <motion.svg animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} width="120" height="120" viewBox="0 0 120 120" className="absolute opacity-30 pointer-events-none">
             <polygon points="60,0 111.96,30 111.96,90 60,120 8.04,90 8.04,30" fill="none" stroke="#9ca3af" strokeWidth="2" strokeDasharray="4 4" />
-          </svg>
+          </motion.svg>
 
           {/* Hexagon 2: 180px */}
-          <svg width="180" height="180" viewBox="0 0 180 180" className="absolute opacity-20 pointer-events-none">
+          <motion.svg animate={{ rotate: -360 }} transition={{ duration: 55, repeat: Infinity, ease: "linear" }} width="180" height="180" viewBox="0 0 180 180" className="absolute opacity-20 pointer-events-none">
             <polygon points="90,0 167.94,45 167.94,135 90,180 12.06,135 12.06,45" fill="none" stroke="#9ca3af" strokeWidth="2" strokeDasharray="4 4" />
-          </svg>
+          </motion.svg>
 
           {/* Hexagon 3: 280px */}
-          <svg width="280" height="280" viewBox="0 0 280 280" className="absolute opacity-20 transition-transform duration-700 hover:rotate-45 cursor-pointer">
+          <motion.svg animate={{ rotate: 360 }} transition={{ duration: 90, repeat: Infinity, ease: "linear" }} width="280" height="280" viewBox="0 0 280 280" className="absolute opacity-20 cursor-pointer hover:stroke-red-400">
             <polygon points="140,0 261.24,70 261.24,210 140,280 18.76,210 18.76,70" fill="none" stroke="#d1d5db" strokeWidth="2" strokeDasharray="6 6" />
-          </svg>
+          </motion.svg>
 
           {/* Hexagon 4: 400px */}
           <svg width="400" height="400" viewBox="0 0 400 400" className="absolute opacity-10 pointer-events-none">
@@ -188,10 +194,10 @@ export function ServicesSection() {
             
             {/* Site Icon */}
             <Image 
-              src="/logos/site icon.png" 
+              src="/logos/dark-logo-small.svg" 
               alt="Keystone Icon" 
-              width={50} 
-              height={50} 
+              width={100} 
+              height={100} 
               className="z-10 object-contain drop-shadow-sm" 
             />
           </div>
@@ -217,7 +223,7 @@ export function ServicesSection() {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
+      </motion.div>
 
       {/* Mobile Layout Fallback (Normal Stack Grid) */}
       <div className="container mx-auto px-6 lg:px-12 relative z-20 lg:hidden font-sans">
@@ -225,10 +231,11 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
+              whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)" }}
               className="bg-white rounded-xl p-8 shadow-xl border border-gray-100 relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-red-600" />

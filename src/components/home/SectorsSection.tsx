@@ -85,6 +85,13 @@ export function SectorsSection() {
 
         <motion.div 
           layout
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            visible: { opacity: 1, transition: { staggerChildren: 0.15, duration: 1, ease: "easeOut" } },
+            hidden: { opacity: 0 }
+          }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[120px] gap-4 grid-flow-dense"
         >
           {sectors.map((sector, index) => {
@@ -94,9 +101,12 @@ export function SectorsSection() {
             return (
               <motion.div
                 layout
+                variants={{
+                  hidden: { opacity: 0, y: 15 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                }}
                 key={index}
                 onClick={() => setActiveIndex(isActive ? -1 : index)}
-                initial={{ borderRadius: "0.75rem" }}
                 className={`relative overflow-hidden cursor-pointer flex flex-col border transition-all duration-300 rounded-[1rem] group ${
                   isActive 
                     ? "col-span-1 md:col-span-2 md:row-span-2 bg-red-600 border-red-600 shadow-xl" 

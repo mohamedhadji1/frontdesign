@@ -40,7 +40,13 @@ export function MapSection() {
 
   return (
     <section className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
-      <div className="max-w-7xl mx-auto relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="max-w-7xl mx-auto relative z-10"
+      >
         <div className="text-center mb-0 flex flex-col items-center relative z-30">
           <p className="text-zinc-500 max-w-2xl mx-auto mb-6 font-medium text-sm md:text-base">
             Discover our global presence, from active regional offices to worldwide client success stories.
@@ -191,7 +197,7 @@ export function MapSection() {
 
           <Tooltip id="map-tooltip" style={{ backgroundColor: "#18181b", color: "#fff", borderRadius: "8px", fontWeight: "500", fontSize: "12px", zIndex: 100 }} />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

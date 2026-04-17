@@ -1,7 +1,9 @@
+import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ApproachSection } from "./sections/ApproachSection";
-import { CtaSection } from "./sections/CtaSection";
-import { HighlightsSection } from "./sections/HighlightsSection";
+import { HeroSection } from "./sections/HeroSection";
 import { StrategySection } from "./sections/StrategySection";
+import { HighlightsSection } from "@/components/about/HighlightsSection";
+import { MapSection } from "@/components/home/MapSection";
 
     export const metadata = {
     title: "OUR STRATEGY | Keystone",
@@ -12,9 +14,12 @@ export default function Page() {
   return (
     
     <main>
+      <HeroSection />
       <StrategySection />
       <ApproachSection />
-      <CtaSection />
+      <ContactCTASection />
+      <HighlightsSection />
+      <MapSection />
     </main>
   );
 }

@@ -52,6 +52,9 @@ export default function RootLayout({
       className={`${gotham.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="min-h-full flex flex-col bg-neutral-900 text-white font-sans" suppressHydrationWarning>
         <Navbar />
         <main className="grow">{children}</main>
