@@ -194,10 +194,10 @@ export function ServicesSection() {
             
             {/* Site Icon */}
             <Image 
-              src="/logos/dark-logo-small.svg" 
+              src="/logos/site icon black.png" 
               alt="Keystone Icon" 
-              width={100} 
-              height={100} 
+              width={50} 
+              height={50} 
               className="z-10 object-contain drop-shadow-sm" 
             />
           </div>

@@ -1,110 +1,146 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Search, PenTool, Zap, Shuffle, UploadCloud, FileText } from "lucide-react";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { TerminalIcon as Terminal } from "@/components/animate-ui/icons/terminal";
+import { SearchIcon as Search } from "@/components/animate-ui/icons/search";
+import { SettingsIcon as PenTool } from "@/components/animate-ui/icons/settings";
+import { ActivityIcon as Zap } from "@/components/animate-ui/icons/activity";
+import { CircuitBoardIcon as Shuffle } from "@/components/animate-ui/icons/circuit-board";
+import { WifiIcon as UploadCloud } from "@/components/animate-ui/icons/wifi";
+import { BinaryIcon as FileText } from "@/components/animate-ui/icons/binary";
+import { MouseEvent } from "react";
 
 export function MethodologySection() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { damping: 30, stiffness: 200, mass: 1 });
+  const smoothY = useSpring(mouseY, { damping: 30, stiffness: 200, mass: 1 });
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   const steps = [
     {
-      num: "01",
-      title: "Reconnaissance & OSINT",
+      id: "recon",
+      name: "Reconnaissance & OSINT",
       desc: "Gathering deep intelligence on employees, infrastructure, and leaked credentials to map your attack surface without touching your systems.",
-      icon: <Search className="w-6 h-6 text-red-600" />
+      icon: <Search className="w-5 h-5" animateOnHover={true} />
     },
     {
-      num: "02",
-      title: "Weaponization",
-      desc: "Crafting bespoke malware, tailored phishing lures, and physical bypass tools specifically designed to evade your unique defenses.",
-      icon: <PenTool className="w-6 h-6 text-red-600" />
+      id: "weaponize",
+      name: "Weaponization",
+      desc: "Crafting bespoke malware, tailored phishing lures, and physical bypass tools specifically designed to evade your defenses.",
+      icon: <PenTool className="w-5 h-5" animateOnHover={true} />
     },
     {
-      num: "03",
-      title: "Initial Compromise",
+      id: "breach",
+      name: "Initial Compromise",
       desc: "Executing the attack vector—breaching your perimeter through software exploits, physical tailgating, or deceptive social engineering.",
-      icon: <Zap className="w-6 h-6 text-red-600" />
+      icon: <Zap className="w-5 h-5" animateOnHover={true} />
     },
     {
-      num: "04",
-      title: "Lateral Movement & Esc",
+      id: "lateral",
+      name: "Lateral Movement",
       desc: "Quietly moving through the internal network, bypassing EDR/MDR solutions, and escalating privileges to gain domain dominance.",
-      icon: <Shuffle className="w-6 h-6 text-red-600" />
+      icon: <Shuffle className="w-5 h-5" animateOnHover={true} />
     },
     {
-      num: "05",
-      title: "Actions on Objectives",
+      id: "objective",
+      name: "Actions on Objectives",
       desc: "Simulating catastrophic impact: extracting dummy sensitive data, demonstrating ransomware capability, or accessing critical controls.",
-      icon: <UploadCloud className="w-6 h-6 text-red-600" />
+      icon: <UploadCloud className="w-5 h-5" animateOnHover={true} />
     },
     {
-      num: "06",
-      title: "Strategic Reporting",
+      id: "report",
+      name: "Strategic Reporting",
       desc: "Delivering a comprehensive debrief mapping the exact attack paths, evidence of compromise, and actionable remediation steps.",
-      icon: <FileText className="w-6 h-6 text-red-600" />
+      icon: <FileText className="w-5 h-5" animateOnHover={true} />
     }
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-[#FAF9F6] border-y border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <span className="w-8 h-px bg-red-600"></span>
-            <span className="text-red-500 font-semibold uppercase tracking-wider text-sm">Our Approach</span>
-            <span className="w-8 h-px bg-red-600"></span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6"
-          >
-            The Red Team Methodology
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600"
-          >
-            We follow a rigorous, military-grade framework to ensure our simulations mirror the exact tactics, techniques, and procedures (TTPs) of elite threat actors.
-          </motion.p>
+    <section 
+      onMouseMove={handleMouseMove}
+      className="py-24 md:py-32 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden group"
+    >
+      {/* Interactive Spotlight */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(220,38,38,0.1), transparent 80%)`
+        }}
+      />
+
+      {/* Heavy mesh background */}
+      <div className="absolute inset-0 bg-[#0a0a0a] z-0" />
+      <div 
+        className="absolute inset-0 opacity-[0.15] z-0 pointer-events-none mix-blend-screen"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.08),transparent_50%)] pointer-events-none z-0" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
+        
+        <div className="text-center mb-20 md:mb-32">
+          <h2 className="text-red-500 font-medium text-xs tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
+            <span className="w-4 h-px bg-red-500/50"></span>
+            SYS.EXEC(KILL_CHAIN)
+            <span className="w-4 h-px bg-red-500/50"></span>
+          </h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight uppercase">
+            Execution <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-900">Protocol</span>
+          </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+        {/* Step-by-step layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
           {steps.map((step, idx) => (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              key={step.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 transition-all relative overflow-hidden group"
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="relative group bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 p-8 flex flex-col h-full hover:border-red-900/80 transition-colors"
             >
-              {/* Background Number */}
-              <div className="absolute -top-4 -right-2 text-8xl font-black text-gray-50/80 group-hover:text-red-50/50 transition-colors pointer-events-none select-none z-0">
-                {step.num}
-              </div>
-              
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-100 transition-colors">
+              {/* Corner brackets */}
+              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+
+              <div className="mb-6 flex items-center justify-between">
+                <div className="text-red-500">
                   {step.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm">
-                  {step.desc}
-                </p>
+                <div className="font-medium text-zinc-600 text-xs">
+                  {`PHASE.0${idx + 1}`}
+                </div>
+              </div>
+
+              <h4 className="text-xl font-bold text-zinc-100 mb-4 uppercase tracking-wide">
+                {step.name}
+              </h4>
+              
+              <p className="text-zinc-500 text-sm leading-relaxed flex-grow">
+                {step.desc}
+              </p>
+
+              <div className="mt-8 border-t border-zinc-800/50 pt-4 flex items-center gap-2 group-hover:text-red-600 transition-colors">
+                <Terminal className="w-3 h-3 text-red-700 group-hover:text-red-600 transition-colors" animateOnHover={true} />
+                <span className="font-medium text-[10px] uppercase text-zinc-600 tracking-wider">
+                  {`> run_module_${step.id}()`}
+                </span>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

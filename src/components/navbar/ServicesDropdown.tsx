@@ -188,7 +188,7 @@ export function ServicesDropdown() {
                             {item.subItems.map((subItem, subIdx) => (
                               <li key={subIdx}>
                                 <Link 
-                                  href={`/services/${subItem.replace(/\s+/g, '-').toLowerCase()}`}
+                                  href={`/services/${item.name.replace(/\s+/g, '-').toLowerCase()}/${subItem.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`}
                                   className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
                                 >
                                   <span className="mr-2 text-gray-300">•</span>

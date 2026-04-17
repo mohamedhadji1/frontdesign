@@ -1,9 +1,10 @@
-import { ContactCTASection } from "@/components/home/ContactCTASection";
-import { SectionDivider } from "@/components/ui/SectionDivider";
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroSection } from "./sections/HeroSection";
+import { WhatIsRedTeamSection } from "./sections/WhatIsRedTeamSection";
 import { OfferingsSection } from "./sections/OfferingsSection";
 import { MethodologySection } from "./sections/MethodologySection";
 import { TestingBenefitsSection } from "./sections/TestingBenefitsSection";
+import { RedTeamCTASection } from "./sections/RedTeamCTASection";
 
 export const metadata = {
   title: "Red Team & Offensive Security | Keystone",
@@ -14,17 +15,16 @@ export default function RedTeamPage() {
   return (
     <main className="min-h-screen bg-black">
       <HeroSection />
-      <div className="bg-white">
-        <SectionDivider title="OFFERINGS" />
-        <OfferingsSection />
-        <SectionDivider title="METHODOLOGY" />
-        <MethodologySection />
-      </div>
-      <div className="bg-white">
-        <SectionDivider title="BENEFITS" />
-      </div>
+      <CyberSectionDivider />
+      <WhatIsRedTeamSection />
+      <CyberSectionDivider />
+      <OfferingsSection />
+      <CyberSectionDivider />
+      <MethodologySection />
+      <CyberSectionDivider />
       <TestingBenefitsSection />
-      <ContactCTASection />
+      <CyberSectionDivider />
+      <RedTeamCTASection />
     </main>
   );
 }

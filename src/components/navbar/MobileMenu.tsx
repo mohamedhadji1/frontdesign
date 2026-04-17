@@ -136,7 +136,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                       {item.subItems.map((sub: string, subIdx: number) => (
                                         <li key={subIdx}>
                                           <Link
-                                            href={`/services/${sub.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`}
+                                            href={`/services/${itemName.replace(/[\\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}#${sub.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`}
                                             className="text-white/50 hover:text-white text-xs transition-colors block"
                                             onClick={onClose}
                                           >
