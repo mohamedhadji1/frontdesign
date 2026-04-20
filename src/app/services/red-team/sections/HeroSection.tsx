@@ -7,16 +7,19 @@ import { ServicesDropdown } from "@/components/navbar/ServicesDropdown"; // To f
 export function HeroSection() {
   return (
     <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black text-white">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80"
-          alt="Red Team Assessment Cover"
-          className="absolute inset-0 w-full h-full object-cover opacity-60 object-center mix-blend-luminosity"
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 bg-black">
+        <video
+          src="/vids/cover red team.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
         {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-[#0a1128]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-[#0a1128]/10" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">

@@ -39,7 +39,7 @@ export function MapSection() {
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
 
   return (
-    <section className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
+    <section id="map-section" className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

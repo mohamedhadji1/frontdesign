@@ -113,12 +113,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                           <h4 className="text-red-500 text-sm font-semibold mb-3 tracking-wide">{group.category}</h4>
                           <ul className="flex flex-col space-y-3">
                             {group.items.map((item: any, itemIdx: number) => {
-                              const itemName = typeof item === 'string' ? item : item.name;
+                              const itemName = typeof item === 'string' ? item : (item.name || item.label);
                               
                               // Change hash links to valid routing links for Services components
-                              const href = section.name === "Services"
+                              const href = item.href || (section.name === "Services"
                                 ? `/services/${itemName.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`
-                                : `#${itemName.replace(/[\s(),&]+/g, "-").toLowerCase()}`;
+                                : `#${itemName.replace(/[\s(),&]+/g, "-").toLowerCase()}`);
                                 
                               return (
                                 <div key={itemIdx}>
@@ -133,17 +133,23 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                   </li>
                                   {item.subItems && (
                                     <ul className="pl-4 mt-2 flex flex-col space-y-2 border-l border-white/10">
-                                      {item.subItems.map((sub: string, subIdx: number) => (
+                                      {item.subItems.map((sub: any, subIdx: number) => {
+                                        const subName = typeof sub === 'object' ? sub.name : sub;
+                                        const subHref = typeof sub === 'object' && sub.slug 
+                                          ? `/${sub.slug}` 
+                                          : `/services/${itemName.replace(/[\\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}#${subName.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
+                                          
+                                        return (
                                         <li key={subIdx}>
                                           <Link
-                                            href={`/services/${itemName.replace(/[\\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}#${sub.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`}
+                                            href={subHref}
                                             className="text-white/50 hover:text-white text-xs transition-colors block"
                                             onClick={onClose}
                                           >
-                                            {sub}
+                                            {subName}
                                           </Link>
                                         </li>
-                                      ))}
+                                      )})}
                                     </ul>
                                   )}
                                 </div>
@@ -181,3 +187,4 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     </>
   );
 }
+

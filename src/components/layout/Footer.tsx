@@ -94,20 +94,8 @@ export function Footer() {
           <div className="lg:col-span-2 lg:pl-0">
             <h3 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">TALK TO US</h3>
             <div className="space-y-4 flex flex-col text-sm text-zinc-300">
-              <a href="tel:+213023804757" className="hover:text-white transition-colors">
-                +213 (0) 23 80 47 57
-              </a>
               <a href="mailto:info@keystonegroup.dz" className="hover:text-white transition-colors">
                 info@keystonegroup.dz
-              </a>
-            </div>
-
-            {/* Emergency Box */}
-            <div className="mt-8 border border-red-900 bg-[#150404] rounded-md p-4">
-              <p className="text-red-500 text-xs font-semibold uppercase mb-1">24/7 Emergency</p>
-              <p className="text-zinc-400 text-xs mb-3">Security Incident Hotline</p>
-              <a href="tel:+213023804757" className="text-white font-bold block text-sm hover:text-red-400 max-w-fit">
-                +213 (0) 23 80 47 57
               </a>
             </div>
           </div>

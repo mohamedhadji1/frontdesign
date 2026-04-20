@@ -19,10 +19,10 @@ export default function Home() {
       <ServicesCTASection />
       <SectionDivider title="WHO WE ARE" className="bg-white pb-0"/>
       <WhoWeAreSection />
-      <CallToActionSection />
-      <NewsSection />
       <SectionDivider title="SECTORS OF ACTIVITY" className="bg-white pb-0" />
       <SectorsSection />
+      <CallToActionSection />
+      <NewsSection />
       <SectionDivider title="TRUSTED BY" className="bg-black pb-0" />
       <TrustedBySection />
       <SectionDivider title="GLOBAL PRESENCE" className="bg-[#ffffff] pb-0" />

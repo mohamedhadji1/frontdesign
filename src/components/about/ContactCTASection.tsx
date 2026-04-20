@@ -1,93 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-
-const contactFeatures = [
-  {
-    icon: (
-      <Image src="/icons/communicate.png" alt="Contact Us" width={56} height={56} className="object-contain" />
-    ),
-    title: "Contact Us",
-  },
-  {
-    icon: (
-      <Image src="/icons/working.png" alt="Work for us" width={56} height={56} className="object-contain" />
-    ),
-    title: "Work for us",
-  },
-  {
-    icon: (
-      <Image src="/icons/handshake.png" alt="Partner with us" width={56} height={56} className="object-contain" />
-    ),
-    title: "Partner with us",
-  },
-  {
-    icon: (
-      <Image src="/icons/microphone.png" alt="Media enquiries" width={56} height={56} className="object-contain" />
-    ),
-    title: "Media enquiries",
-  }
-];
+import Link from "next/link";
 
 export function ContactCTASection() {
   return (
-    <section className="relative w-full pt-0 pb-16 bg-[#0a1224] text-white overflow-hidden">
-      {/* Background Graphic Overlay */}
-      <div 
-        className="absolute inset-0 w-full h-full opacity-10"
-        style={{
-          backgroundImage: "url('/background/bg2.jpg')", 
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          mixBlendMode: "luminosity"
-        }}
-      />
-      
-      {/* Dark overlay just in case image is too bright */}
-      <div className="absolute inset-0" />
-        <div className="mb-[30px] bg-[#0a0a0a00]">
-      <SectionDivider title="CONTACT" className="bg-transparent mb-12 relative z-20" />
-        </div>
-      <div className="container mx-auto px-6 lg:px-12 max-w-[1200px] relative z-20 text-center">
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-semibold mb-3 text-white"
-        >
-          Get in touch with us
-        </motion.h2>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-base md:text-lg text-[#8d9ab3] font-medium"
-        >
-          We&apos;d be happy to answer any questions you have
-        </motion.p>
+    <section 
+      className="relative py-24 md:py-32 overflow-hidden bg-[#ffffff]"
+      style={{
+        backgroundImage: "url('/background/bg7.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Light overlay to ensure the background looks consistent with the map section while keeping the image visible */}
+      <div className="absolute inset-0 bg-[#ffffff]/40 z-0"></div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-6 text-center pt-12 pb-4">
-          {contactFeatures.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + (index * 0.1) }}
-              className="flex flex-col items-center justify-center group cursor-pointer"
-            >
-              <div className="mb-6 transform transition-transform duration-300 group-hover:-translate-y-2">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold tracking-wide text-white">{feature.title}</h3>
-            </motion.div>
-          ))}
+      <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+        <div className="flex flex-col text-center md:text-left">
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl font-bold text-zinc-900 mb-3 tracking-tight uppercase"
+          >
+            READY TO SECURE YOUR FUTURE?
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-base text-zinc-600 font-medium max-w-2xl leading-relaxed"
+          >
+            Reach out to our experts and discover how Keystone can accelerate your digital transformation with uncompromising cybersecurity.
+          </motion.p>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <Link
+            href="/contact"
+            className="shrink-0 bg-red-600 hover:bg-red-700 !text-white font-medium py-3 px-8 rounded-full transition-all flex items-center gap-2 group text-sm md:text-base border border-red-500"
+          >
+            Contact Us Today
+            <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold ml-1 flex items-center">
+              <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

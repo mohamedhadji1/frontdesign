@@ -64,25 +64,21 @@ export function MethodologySection() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="py-24 md:py-32 bg-zinc-950 relative border-t border-zinc-900 overflow-hidden group"
+      className="py-24 md:py-32 bg-white relative border-t border-zinc-200 overflow-hidden group"
     >
       {/* Interactive Spotlight */}
       <motion.div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
         style={{
-          background: useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(220,38,38,0.1), transparent 80%)`
+          background: useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(220,38,38,0.05), transparent 80%)`
         }}
       />
 
-      {/* Heavy mesh background */}
-      <div className="absolute inset-0 bg-[#0a0a0a] z-0" />
-      <div 
-        className="absolute inset-0 opacity-[0.15] z-0 pointer-events-none mix-blend-screen"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.08),transparent_50%)] pointer-events-none z-0" />
+      {/* Grid background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.05),transparent_50%)] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
         
@@ -92,8 +88,8 @@ export function MethodologySection() {
             SYS.EXEC(KILL_CHAIN)
             <span className="w-4 h-px bg-red-500/50"></span>
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight uppercase">
-            Execution <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-900">Protocol</span>
+          <h3 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight uppercase">
+            Execution <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Protocol</span>
           </h3>
         </div>
 
@@ -106,7 +102,7 @@ export function MethodologySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative group bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 p-8 flex flex-col h-full hover:border-red-900/80 transition-colors"
+              className="relative group bg-white/60 backdrop-blur-sm border border-zinc-200 p-8 flex flex-col h-full hover:border-red-500/30 transition-colors shadow-sm hover:shadow-md"
             >
               {/* Corner brackets */}
               <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
@@ -118,22 +114,22 @@ export function MethodologySection() {
                 <div className="text-red-500">
                   {step.icon}
                 </div>
-                <div className="font-medium text-zinc-600 text-xs">
+                <div className="font-medium text-zinc-500 text-xs">
                   {`PHASE.0${idx + 1}`}
                 </div>
               </div>
 
-              <h4 className="text-xl font-bold text-zinc-100 mb-4 uppercase tracking-wide">
+              <h4 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-wide">
                 {step.name}
               </h4>
               
-              <p className="text-zinc-500 text-sm leading-relaxed flex-grow">
+              <p className="text-zinc-600 text-sm leading-relaxed flex-grow">
                 {step.desc}
               </p>
 
-              <div className="mt-8 border-t border-zinc-800/50 pt-4 flex items-center gap-2 group-hover:text-red-600 transition-colors">
-                <Terminal className="w-3 h-3 text-red-700 group-hover:text-red-600 transition-colors" animateOnHover={true} />
-                <span className="font-medium text-[10px] uppercase text-zinc-600 tracking-wider">
+              <div className="mt-8 border-t border-zinc-200 pt-4 flex items-center gap-2 group-hover:text-red-600 transition-colors">
+                <Terminal className="w-3 h-3 text-red-600 group-hover:text-red-500 transition-colors" animateOnHover={true} />
+                <span className="font-medium text-[10px] uppercase text-zinc-500 tracking-wider">
                   {`> run_module_${step.id}()`}
                 </span>
               </div>

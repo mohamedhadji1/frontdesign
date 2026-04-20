@@ -43,7 +43,7 @@ const services = [
     ),
   },
   {
-    title: "Strategic Advice",
+    title: "Strategic Advisors",
     description: "Our expertise in strategic consulting goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +195,7 @@ export function ServicesSection() {
             {/* Site Icon */}
             <Image 
               src="/logos/site icon black.png" 
-              alt="Keystone Icon" 
+              alt="Keystone Icon black" 
               width={50} 
               height={50} 
               className="z-10 object-contain drop-shadow-sm" 

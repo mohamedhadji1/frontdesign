@@ -62,15 +62,15 @@ export function TestingBenefitsSection() {
 
   return (
     <section 
-      className="relative w-full py-24 md:py-40 px-6 md:px-12 bg-zinc-950 overflow-hidden text-zinc-300 border-t border-zinc-900 group"
+      className="relative w-full py-24 md:py-40 px-6 md:px-12 bg-white overflow-hidden text-zinc-600 border-t border-zinc-200 group"
       onMouseMove={handleMouseMove}
     >
       {/* Heavy mesh base background */}
-      <div className="absolute inset-0 bg-[#0a0a0a] z-0" />
+      <div className="absolute inset-0 bg-white z-0" />
       
       {/* Base faint mesh */}
       <div 
-        className="absolute inset-0 opacity-[0.05] z-0 pointer-events-none mix-blend-screen"
+        className="absolute inset-0 opacity-[0.02] z-0 pointer-events-none mix-blend-multiply"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
         }}
@@ -78,7 +78,7 @@ export function TestingBenefitsSection() {
 
       {/* Interactive Highlight Mesh that follows the cursor */}
       <motion.div 
-        className="absolute inset-0 opacity-[0.4] z-0 pointer-events-none mix-blend-screen"
+        className="absolute inset-0 opacity-[0.1] z-0 pointer-events-none mix-blend-multiply"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
           WebkitMaskImage: useMotionTemplate`radial-gradient(500px circle at ${smoothX}px ${smoothY}px, black, transparent 80%)`,
@@ -126,7 +126,7 @@ export function TestingBenefitsSection() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-950/30 border border-red-900/50 text-red-500 text-xs font-medium uppercase tracking-widest rounded mb-6 shadow-[0_0_15px_rgba(220,38,38,0.1)]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 text-red-600 text-xs font-medium uppercase tracking-widest rounded mb-6 shadow-sm">
               <Target className="w-4 h-4" animateOnHover={true} />
               Strategic Advantage
             </div>
@@ -137,7 +137,7 @@ export function TestingBenefitsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white uppercase"
+            className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-zinc-900 uppercase"
           >
             Think Like an Attacker.<br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Act First.</span>
@@ -154,20 +154,20 @@ export function TestingBenefitsSection() {
               >
                 <button
                   onClick={() => setActiveIdx(idx)}
-                  className={`w-full text-left p-5 rounded-lg border transition-all duration-300 flex items-start gap-4 ${
+                  className={`group w-full text-left p-5 rounded-lg border transition-all duration-300 flex items-start gap-4 ${
                     activeIdx === idx 
-                      ? "bg-zinc-900/80 border-red-900/50 shadow-[0_0_20px_rgba(220,38,38,0.05)]" 
-                      : "bg-transparent border-transparent hover:bg-zinc-900/30 hover:border-zinc-800"
+                      ? "bg-white border-zinc-200 shadow-md ring-1 ring-red-500/10" 
+                      : "bg-transparent border-transparent hover:bg-zinc-50 hover:border-zinc-200 hover:shadow-sm"
                   }`}
                 >
-                  <div className={`mt-0.5 p-2 rounded-md transition-colors ${
-                    activeIdx === idx ? "bg-red-500/10 text-red-500" : "bg-zinc-900 text-zinc-500"
+                  <div className={`mt-0.5 p-2 rounded-md transition-colors shrink-0 ${
+                    activeIdx === idx ? "bg-red-50 text-red-600" : "bg-zinc-100 text-zinc-400 group-hover:text-red-500 group-hover:bg-red-50/50"
                   }`}>
                     {item.icon}
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className={`text-lg font-bold mb-1 transition-colors ${
-                      activeIdx === idx ? "text-white" : "text-zinc-400"
+                      activeIdx === idx ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-800"
                     }`}>
                       {item.title}
                     </h4>
@@ -178,30 +178,25 @@ export function TestingBenefitsSection() {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="text-zinc-400 text-sm leading-relaxed"
+                          className="text-zinc-600 text-sm leading-relaxed"
                         >
                           {item.desc}
                         </motion.p>
                       )}
                     </AnimatePresence>
                   </div>
+                  <div className={`mt-1 shrink-0 transition-all duration-300 ${
+                    activeIdx === idx 
+                      ? "text-red-600 opacity-100 translate-x-1" 
+                      : "text-zinc-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-red-400"
+                  }`}>
+                    <ArrowRight className="w-5 h-5" />
+                  </div>
                 </button>
               </motion.div>
             ))}
           </div>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="mt-8 px-8 py-4 bg-red-600/10 border border-red-600 text-red-500 font-medium tracking-wider uppercase text-sm rounded hover:bg-red-600 hover:text-white hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all inline-flex items-center gap-3"
-          >
-            Advance to Audit Phase
-            <ArrowRight className="w-4 h-4" animateOnHover={true} />
-          </motion.button>
         </motion.div>
 
         {/* Right Column / Interactive Display */}

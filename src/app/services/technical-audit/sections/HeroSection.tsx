@@ -30,13 +30,13 @@ export function HeroSection() {
         >
           <div className="flex items-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm md:text-base uppercase">
             <span className="w-8 h-0.5 bg-red-500"></span>
-            Comprehensive Analysis
+            Specialized Scrutiny
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
             Technical Audit
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 font-light mb-10 leading-relaxed">
-            Ensure the structural integrity of your IT environment. We deeply analyze your network architecture, cloud setups, and critical infrastructure for misconfigurations and hidden vulnerabilities.
+            Ensure the structural integrity of your specialized IT environments. We deeply analyze your Cloud systems, Core Banking, Critical Infrastructure, and Industrial Networks to uncover hidden vulnerabilities and align with industry baselines.
           </p>
 
           <div className="flex flex-wrap gap-6 items-center">

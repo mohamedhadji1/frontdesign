@@ -118,6 +118,9 @@ export function WhoWeAreSection() {
               <div>
                 <h3 className="text-2xl font-normal text-gray-900 mb-2">Projects in +24 Countries</h3>
                 <p className="text-gray-500 font-medium leading-relaxed">168 companies in 24 countries use our services.</p>
+                <a href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
+                  See Our Global Impact
+                </a>
               </div>
             </div>
 

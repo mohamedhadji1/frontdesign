@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Logo } from "./Logo";
 import { NavItem } from "./NavItem";
 import { ActionButton } from "./ActionButton";
@@ -17,6 +17,18 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const forceDarkNavbar = pathname === "/contact";
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (dropdown: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveDropdown(dropdown);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,9 +64,9 @@ export function Navbar() {
         <div className="hidden lg:flex space-x-8 items-center h-full">
 
           <div 
-            className="h-full flex items-center relative"
-            onMouseEnter={() => setActiveDropdown("About")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            className="h-full flex items-center relative py-6"
+            onMouseEnter={() => handleMouseEnter("About")}
+            onMouseLeave={handleMouseLeave}
           >
             <NavItem 
               label="About" 
@@ -66,9 +78,9 @@ export function Navbar() {
           </div>
 
           <div 
-            className="h-full flex items-center"
-            onMouseEnter={() => setActiveDropdown("Services")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            className="h-full flex items-center py-6"
+            onMouseEnter={() => handleMouseEnter("Services")}
+            onMouseLeave={handleMouseLeave}
           >
             <NavItem 
               label="Services" 
@@ -80,9 +92,9 @@ export function Navbar() {
           </div>
 
           <div 
-            className="h-full flex items-center"
-            onMouseEnter={() => setActiveDropdown("Sectors")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            className="h-full flex items-center py-6"
+            onMouseEnter={() => handleMouseEnter("Sectors")}
+            onMouseLeave={handleMouseLeave}
           >
             <NavItem 
               label="Sectors" 
@@ -94,9 +106,9 @@ export function Navbar() {
           </div>
 
           <div 
-            className="h-full flex items-center"
-            onMouseEnter={() => setActiveDropdown("Careers")}
-            onMouseLeave={() => setActiveDropdown(null)}
+            className="h-full flex items-center py-6"
+            onMouseEnter={() => handleMouseEnter("Careers")}
+            onMouseLeave={handleMouseLeave}
           >
             <NavItem 
               label="Careers" 

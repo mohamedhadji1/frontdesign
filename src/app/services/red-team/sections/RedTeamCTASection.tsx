@@ -20,7 +20,7 @@ export function RedTeamCTASection() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-24 md:py-32 overflow-hidden border-t border-red-900/30 bg-cover bg-center group" 
+      className="relative py-16 md:py-20 overflow-hidden border-t border-red-900/30 bg-cover bg-center group bg-black" 
       style={{ backgroundImage: 'url("/background/vector/circuit-glow.svg")' }}
     >
       {/* Interactive Spotlight */}
@@ -52,7 +52,7 @@ export function RedTeamCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight uppercase"
+            className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight uppercase"
           >
             Don't Wait For A <span className="text-red-500">Real Breach</span>
           </motion.h2>
@@ -80,7 +80,7 @@ export function RedTeamCTASection() {
           
           <Link
             href="/contact"
-            className="relative flex items-center gap-3 bg-zinc-950 hover:bg-red-950/80 text-white font-medium uppercase tracking-wider py-4 px-8 rounded-full border border-red-900/50 hover:border-red-500 transition-all duration-300"
+            className="relative flex items-center gap-3 bg-zinc-950 hover:bg-red-950/80 text-white font-medium uppercase tracking-wider py-4 px-8 rounded-full border border-red-900/50 hover:border-red-500 transition-all duration-300 shadow-sm"
           >
             <span>Request Assessment</span>
             <span className="group-hover:translate-x-1 transition-transform duration-300">

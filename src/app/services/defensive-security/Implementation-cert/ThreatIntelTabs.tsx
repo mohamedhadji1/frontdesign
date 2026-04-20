@@ -1,0 +1,132 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, TrendingUp, Database, FileText, ShieldCheck } from "lucide-react";
+
+export function ThreatIntelTabs() {
+  const [activeTab, setActiveTab] = useState("monitoring");
+
+  const tabs = [
+    {
+      id: "monitoring",
+      title: "Threat Monitoring",
+      description: "Keystone constantly monitors emerging threats, collecting information from multiple sources to identify new attacks, malware, and tactics used by cybercriminals.",
+      icon: <Search className="w-8 h-8" />
+    },
+    {
+      id: "trend",
+      title: "Trend Analysis",
+      description: "In-depth trend analysis helps understand the evolution of attacks, attacker motivations, and techniques used. This helps predict future threats and take preventive measures.",
+      icon: <TrendingUp className="w-8 h-8" />
+    },
+    {
+      id: "data",
+      title: "Data Collection",
+      description: "Keystone collects and analyzes a variety of data, including indicators of compromise (IOCs), threat actor information, vulnerabilities, incident reports, etc., for a comprehensive risk assessment.",
+      icon: <Database className="w-8 h-8" />
+    },
+    {
+      id: "reporting",
+      title: "Reporting & Information Sharing",
+      description: "Threat information is used to develop effective security strategies, including creating detection rules, updating security policies, and training teams on the latest threats.",
+      icon: <FileText className="w-8 h-8" />
+    },
+    {
+      id: "security",
+      title: "Application in Security Strategies",
+      description: "After each incident, we conduct in-depth analyses to identify gaps and continuously improve cyber crisis management protocols.",
+      icon: <ShieldCheck className="w-8 h-8" />
+    }
+  ];
+
+  const activeContent = tabs.find(t => t.id === activeTab);
+
+  return (
+    <div className="flex flex-col lg:flex-row min-h-[440px] w-full bg-white rounded-3xl shadow-2xl border border-zinc-100 overflow-hidden ring-1 ring-zinc-900/5">
+      <div className="lg:w-2/5 bg-zinc-50/80 border-r border-zinc-100 p-6 flex flex-col gap-3 relative overflow-hidden backdrop-blur-sm">
+        <h3 className="text-xs font-black text-red-600 tracking-widest uppercase mb-4 px-2 opacity-80">Methodology</h3>
+        
+        {/* Subtle background glow */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-red-400/10 rounded-full blur-3xl pointer-events-none" />
+        
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative flex items-center justify-between px-6 py-4 rounded-2xl text-left transition-colors duration-300 ${
+                isActive 
+                  ? "text-red-900" 
+                  : "text-zinc-600 hover:text-red-600 hover:bg-white/50"
+              }`}
+            >
+              {isActive && (
+                <motion.div
+                  layoutId="activeThreatIntelTab"
+                  className="absolute inset-0 bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.06)] border border-red-100/50"
+                  transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+                />
+              )}
+              
+              {/* Blue indicator line */}
+              {isActive && (
+                <motion.div 
+                  layoutId="activeThreatLine"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-red-600 rounded-r-full"
+                  transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+                />
+              )}
+              
+              <span className="relative z-10 font-bold text-[15px] tracking-tight">{tab.title}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="lg:w-3/5 p-10 lg:p-16 flex flex-col justify-center bg-white relative">
+        <AnimatePresence mode="wait">
+          {activeContent && (
+            <motion.div 
+              key={activeContent.id} 
+              initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+              transition={{ duration: 0.4 }}
+              className="max-w-2xl relative z-10"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-50 to-red-100 text-red-600 flex items-center justify-center mb-6 shadow-sm border border-red-200/50 transform-gpu hover:scale-105 transition-transform duration-500">
+                {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
+                  className: "w-7 h-7",
+                })}
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 mb-6 tracking-tight leading-tight">{activeContent.title}</h2>
+              <p className="text-xl text-zinc-600 leading-relaxed font-light">
+                {activeContent.description}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        {/* Large faint icon in background */}
+        <AnimatePresence mode="wait">
+          {activeContent && (
+            <motion.div
+              key={`bg-${activeContent.id}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.04, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.1 }}
+              transition={{ duration: 0.8 }}
+              className="absolute right-0 bottom-0 pointer-events-none -mb-4 -mr-4 text-red-900"
+            >
+              {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
+                className: "w-56 h-56",
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
