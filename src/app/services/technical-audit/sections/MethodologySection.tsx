@@ -44,7 +44,7 @@ export function MethodologySection() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-black text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
+    <section className="py-10 md:py-10 bg-black text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
       <motion.div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
         style={{
@@ -58,9 +58,11 @@ export function MethodologySection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-20 text-center max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
-            <span className="w-8 h-0.5 bg-red-500"></span>
-            Our Approach
-            <span className="w-8 h-0.5 bg-red-500"></span>
+            <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-red-600/30"></span>
+              OUR APPROACH
+              <span className="w-8 h-px bg-red-600/30"></span>
+            </h2>          
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Audit Methodology</h2>
           <p className="text-gray-400 text-lg leading-relaxed">

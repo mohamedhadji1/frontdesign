@@ -1,8 +1,12 @@
-import React from "react";
+
+"use client";
 import Link from "next/link";
-import { ContactCTASection } from "@/components/about/ContactCTASection";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { ShieldAlert, Activity, Search, Terminal, Siren, Globe, Eye, AlertCircle, MailWarning } from "lucide-react";
+import { motion } from "framer-motion";
+import { DEFCTASection } from "./DEFCTASection";
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+
 
 const steps = [
   {
@@ -43,14 +47,12 @@ const steps = [
   }
 ];
 
-export const metadata = {
-  title: "SOC Management | Keystone",
-  description: "Comprehensive 24/7 monitoring, vulnerability scanning, incident management, threat intelligence, and anti-phishing solutions to protect your organization.",
-};
-
 export default function Page() {
+  
   return (
+    
     <main className="flex min-h-screen flex-col bg-white">
+      <CyberSectionDivider theme="blue"/>
       <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         
@@ -58,10 +60,17 @@ export default function Page() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             
             <div className="lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 mb-6">
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                <span className="text-sm font-medium tracking-wide uppercase">Defensive Security</span>
+              <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+              <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+                <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">SOC Management</span>
               </div>
+            </motion.div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 SOC <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">Management</span>
@@ -96,23 +105,74 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-24 bg-zinc-50">
+      <section className="py-10 bg-zinc-50">
+            <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-blue-600/30"></span>
+              Defensive Security
+              <span className="w-8 h-px bg-blue-600/30"></span>
+            </h2>
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-16 text-center mx-auto"> {/* Added text-center and mx-auto */}
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-4">
               Our Defensive Approach
             </h2>
-            <div className="h-1.5 w-20 bg-blue-600 rounded-full mb-6" />
             <p className="text-zinc-600 text-lg">
               A rigorous methodology to bolster your resilience against cyber threats with cutting-edge telemetry, detection, and intelligence capabilities.
             </p>
           </div>
-          <InteractiveProcessSection steps={steps} />
+          <InteractiveProcessSection steps={steps} theme="blue" />
         </div>
       </section>
 
-      <ContactCTASection />
-      
+      <CyberSectionDivider className="mx-auto width-[0%]" theme="blue"/>
+      <section className="py-10 bg-zinc-50">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+            <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-blue-600/30"></span>
+              Defensive Security
+              <span className="w-8 h-px bg-blue-600/30"></span>
+            </h2>
+            <div className="max-w-3xl mb-16 text-center mx-auto"> {/* Added text-center and mx-auto */}
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-4">
+              Why Choose us ?
+            </h2>
+            <p className="text-zinc-600 text-lg">
+                Discover the core reasons why our clients trust us with their cybersecurity needs. We combine technology, expertise, and a proactive approach to protect your organization against evolving threats.
+            </p>
+          </div>
+    </div>
+
+    {/* Section: Key Benefits */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+      <div className="text-center">
+        <div className="text-4xl text-blue-600 mb-4">
+          <ShieldAlert />
+        </div>
+        <h3 className="font-semibold text-xl text-zinc-800 mb-2">Proactive Threat Detection</h3>
+        <p className="text-zinc-600">With continuous monitoring, we identify threats in real-time, ensuring that potential risks are mitigated before they escalate.</p>
+      </div>
+      <div className="text-center">
+        <div className="text-4xl text-blue-600 mb-4">
+          <Terminal />
+        </div>
+        <h3 className="font-semibold text-xl text-zinc-800 mb-2">Automated Vulnerability Scanning</h3>
+        <p className="text-zinc-600">We perform regular, automated scans across your infrastructure to identify vulnerabilities and patch them quickly, minimizing the attack surface.</p>
+      </div>
+      <div className="text-center">
+        <div className="text-4xl text-blue-600 mb-4">
+          <Globe />
+        </div>
+        <h3 className="font-semibold text-xl text-zinc-800 mb-2">Global Threat Intelligence</h3>
+        <p className="text-zinc-600">Our approach is informed by the latest global threat intelligence, ensuring that your defenses are always up to date against the most recent attack tactics and techniques.</p>
+      </div>
+    </div>  
+  </div>
+  <div className="mx-auto width-[0%]">
+    <CyberSectionDivider className="mx-auto width-[0%]" theme="blue"/>
+  </div>
+    <DEFCTASection />
+  </section>
     </main>
   );
 }

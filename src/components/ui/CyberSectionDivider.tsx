@@ -1,18 +1,42 @@
-export function CyberSectionDivider() {
-  return (
-    <div className="relative w-full h-px border-t border-zinc-900/50 bg-black flex items-center justify-center -my-px z-20">
-      {/* Glow highlight */}
-      <div className="absolute w-32 md:w-64 h-px bg-gradient-to-r from-transparent via-red-600/50 to-transparent" />
-      
-      {/* Decorative center element */}
-      <div className="absolute flex items-center justify-center p-1 bg-black rounded-sm border border-zinc-800">
-        <div className="w-1.5 h-1.5 bg-red-600/80 rounded-full animate-pulse" />
-      </div>
+type CyberSectionDividerProps = {
+  className?: string;
+  theme?: "red" | "blue";
+};
 
-      {/* Decorative side brackets */}
-      <div className="absolute w-12 md:w-24 h-px flex justify-between items-center bg-transparent">
-        <div className="w-px h-2 bg-red-900/50" />
-        <div className="w-px h-2 bg-red-900/50" />
+export function CyberSectionDivider({
+  className,
+  theme = "red",
+}: CyberSectionDividerProps) {
+  const styles = {
+    red: {
+      glow: "via-red-600/50",
+      dot: "bg-red-600/80",
+      brackets: "bg-red-900/50",
+    },
+    blue: {
+      glow: "via-blue-600/50",
+      dot: "bg-blue-600/80",
+      brackets: "bg-blue-900/50",
+    },
+  };
+
+  const current = styles[theme];
+
+  return (
+    <div className="mx-auto w-full">
+      <div
+        className={`relative z-20 -my-px flex w-full items-center justify-center ${className ?? ""}`}
+      >
+        <div
+          className={`absolute h-px w-32 bg-gradient-to-r from-transparent ${current.glow} to-transparent md:w-64`}
+        />
+        <div className="absolute flex items-center justify-center rounded-sm border border-zinc-800 bg-black p-1">
+          <div className={`h-1.5 w-1.5 rounded-full animate-pulse ${current.dot}`} />
+        </div>
+        <div className="absolute flex h-px w-12 items-center justify-between bg-transparent md:w-24">
+          <div className={`h-2 w-px ${current.brackets}`} />
+          <div className={`h-2 w-px ${current.brackets}`} />
+        </div>
       </div>
     </div>
   );

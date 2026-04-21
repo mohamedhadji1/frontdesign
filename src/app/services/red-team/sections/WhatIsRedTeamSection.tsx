@@ -83,16 +83,12 @@ export function WhatIsRedTeamSection() {
         
         {/* Top Intro */}
         <div className="max-w-4xl mb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="inline-flex items-center gap-3 px-3 py-1.5 border border-red-500/20 bg-red-50/50 backdrop-blur-md text-red-600 font-medium text-xs uppercase tracking-widest mb-6 group"
-          >
-            <Crosshair className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-500" />
-            Adversary Simulation
-          </motion.div>
-          
+<h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+                  <span className="w-8 h-px bg-red-600/30"></span>
+                  Infrastructure Assessment
+                  <span className="w-8 h-px bg-red-600/30"></span>
+                </h2> 
+                
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

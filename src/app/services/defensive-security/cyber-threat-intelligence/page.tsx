@@ -1,8 +1,12 @@
+"use client";
+
+import { AnimatedBreadcrumb } from "@/components/ui/AnimatedBreadcrumb";
 import React from "react";
 import Link from "next/link";
-import { ContactCTASection } from "@/components/about/ContactCTASection";
+import { DEFCTASection } from "../soc-management/DEFCTASection";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { ShieldAlert, Activity, Search, Terminal, Siren, Globe, Eye } from "lucide-react";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -25,11 +29,6 @@ const steps = [
   }
 ];
 
-export const metadata = {
-  title: "Cyber Threat Intelligence | Keystone",
-  description: "Empower your security posture with actionable intelligence. We monitor the dark web, malicious infrastructure, and geopolitical trends to anticipate attacks tailored to your industry.",
-};
-
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -40,10 +39,17 @@ export default function Page() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             
             <div className="lg:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 mb-6">
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                <span className="text-sm font-medium tracking-wide uppercase">Defensive Security</span>
+              <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
+            >
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+              <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+                <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Cyber Threat Intelligence</span>
               </div>
+            </motion.div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Cyber <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">Threat Intelligence</span>
@@ -80,7 +86,7 @@ export default function Page() {
 
       <section className="py-24 bg-zinc-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-16 mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-4">
               Our Defensive Approach
             </h2>
@@ -93,7 +99,7 @@ export default function Page() {
         </div>
       </section>
 
-      <ContactCTASection />
+      <DEFCTASection />
       
     </main>
   );

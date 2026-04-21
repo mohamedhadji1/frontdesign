@@ -21,8 +21,13 @@ export default function TechnicalAuditPage() {
       <MethodologySection />
       <CyberSectionDivider />
       <BenefitsSection />
+     <div className="w-[0%] mx-auto">
+        <CyberSectionDivider />
+      </div>
       <CrossSellingSection />
-      <CyberSectionDivider />
+      <div className="w-[0%] mx-auto">
+        <CyberSectionDivider />
+      </div>
       <ContactCTASection />
     </main>
   );

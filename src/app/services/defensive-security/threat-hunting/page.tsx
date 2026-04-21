@@ -1,12 +1,14 @@
 
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { ContactCTASection } from "@/components/about/ContactCTASection";
+import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { Target, Scan, ShieldAlert, Crosshair, Network, Activity, Search, Users } from "lucide-react";
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import { DEFCTASection } from "../soc-management/DEFCTASection";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -17,31 +19,31 @@ export default function Page() {
       id: "behavioral-analysis",
       title: "Advanced Behavioral Analysis",
       description: "We identify unusual or suspicious activities by monitoring the behavior of users, processes, and systems to detect potential threat patterns.",
-      icon: Activity,
+      icon: <Activity />,
     },
     {
       id: "specialized-tools",
       title: "Use of Specialized Tools",
       description: "Our team deploys sophisticated intrusion detection and log analysis tools to dig deep into anomalies and search for indicators of compromise (IoCs).",
-      icon: Search,
+      icon: <Search />,
     },
     {
       id: "threat-intelligence",
       title: "Threat Intelligence",
       description: "By leveraging Threat Intelligence feeds, we stay up-to-date on the latest tactics, techniques, and procedures (TTPs) of attackers.",
-      icon: Network,
+      icon: <Network />,
     },
     {
       id: "proactive-hunting",
       title: "Proactive Threat Hunting",
       description: "Rather than waiting for security alerts, our team actively hunts for threats within the IT environment.",
-      icon: Target,
+      icon: <Target />,
     },
     {
       id: "collaboration",
       title: "Collaboration & Information Sharing",
       description: "We work closely with internal security teams to share information about emerging threats.",
-      icon: Users,
+      icon: <Users />,
     },
   ];
 
@@ -52,21 +54,23 @@ export default function Page() {
 
       <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[#09090b]">
-           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         </div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
-              >
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                <span className="text-sm font-semibold tracking-wide uppercase">Defensive Security</span>
-              </motion.div>
+            <div className="lg:w-1/2 text-center lg:text-center flex flex-col items-center">
+                            <motion.div 
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5 }}
+                              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
+                            >
+                              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                              <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+                                <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50">/</span><Link href="/services/defensive-security" className="hover:text-red-400 transition-colors">Defensive Security</Link><span className="text-red-500/50">/</span><span className="text-red-400">Threat Hunting</span>
+                              </div>
+                            </motion.div>
               
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
@@ -81,7 +85,7 @@ export default function Page() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-zinc-400 mb-8 leading-relaxed max-w-xl font-light"
+                className="text-lg md:text-xl text-zinc-400 mb-8 leading-relaxed max-w-xl font-light mx-auto"
               >
                 Our cybersecurity experts proactively hunt for hidden threats in our clients' networks before they can cause harm to the environment.
               </motion.p>
@@ -90,9 +94,9 @@ export default function Page() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex gap-4"
+                className="flex gap-4 justify-center"
               >
-                <button className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold transition-all duration-300 shadow-[0_0_20px_-5px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_-5px_rgba(37,99,235,0.7)] flex items-center gap-2">
+                <button className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold transition-all duration-300 shadow-[0_0_20px_-5px_rgba(220,38,38,0.5)] hover:shadow-[0_0_25px_-5px_rgba(220,38,38,0.7)] flex items-center gap-2">
                   Explore Services
                 </button>
               </motion.div>
@@ -119,134 +123,14 @@ export default function Page() {
         </div>
       </section>
 
-            <section className="py-24 bg-zinc-50 flex-grow relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(220,38,38,0.05),transparent_50%)] pointer-events-none" />
-        
-        <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="mb-16 flex flex-col items-center text-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-red-600 mb-6 shadow-sm"
-            >
-              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase">Tactical Playbook</span>
-            </motion.div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-6 uppercase">
-              Our Methodology
-            </h2>
-            <p className="text-zinc-600 text-lg max-w-2xl font-medium">
-              Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {/* Interactive Tabs */}
-            <div className="lg:col-span-5 flex flex-col gap-3 relative">
-              <div className="absolute left-6 top-8 bottom-8 w-px bg-zinc-200 hidden lg:block" />
-              {features.map((feature, index) => {
-                const isActive = activeTab === index;
-                const Icon = feature.icon;
-
-                return (
-                  <button
-                    key={feature.id}
-                    onClick={() => setActiveTab(index)}
-                    className={`group relative flex items-center gap-5 p-4 rounded-xl text-left transition-all duration-300 ${
-                      isActive 
-                        ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-red-200 ring-1 ring-red-500/10" 
-                        : "bg-transparent hover:bg-white/60 border border-transparent hover:border-zinc-200"
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.div 
-                        layoutId="activeTabIndicator"
-                        className="absolute left-0 w-1 h-full bg-red-600 rounded-l-xl"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                    
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
-                      isActive 
-                        ? "bg-red-600 text-white shadow-red-600/20" 
-                        : "bg-white border border-zinc-200 text-zinc-500 group-hover:text-red-500 group-hover:border-red-200"
-                    }`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    
-                    <div>
-                      <h3 className={`font-bold text-sm md:text-base tracking-wide uppercase transition-colors duration-300 ${
-                        isActive ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-700"
-                      }`}>
-                        {feature.title}
-                      </h3>
-                      {isActive && (
-                         <motion.p 
-                           initial={{ opacity: 0, height: 0 }}
-                           animate={{ opacity: 1, height: 'auto' }}
-                           className="text-xs text-red-600 mt-1 font-mono font-medium"
-                         >
-                           PHASE 0{index + 1} // ACTIVE
-                         </motion.p>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Display Panel */}
-            <div className="lg:col-span-7 h-full min-h-[450px]">
-              <div className="relative h-full rounded-3xl bg-white border border-zinc-200/80 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 blur-[100px] rounded-full pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-50 blur-[100px] rounded-full pointer-events-none" />
-                
-                <div className="p-8 lg:p-12 relative z-10 h-full flex flex-col justify-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                    >
-                      <div className="flex items-center justify-between mb-10">
-                        <div className="w-16 h-16 bg-red-50 border border-red-100 rounded-2xl flex items-center justify-center shadow-sm">
-                          {(() => {
-                            const Icon = features[activeTab].icon;
-                            return <Icon className="w-8 h-8 text-red-600" />;
-                          })()}
-                        </div>
-                        <div className="text-8xl font-black text-zinc-100 select-none">
-                          0{activeTab + 1}
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-3xl lg:text-4xl font-black text-zinc-900 mb-6 uppercase tracking-tight">
-                        {features[activeTab].title}
-                      </h3>
-                      
-                      <div className="w-12 h-1 bg-red-600 mb-8 rounded-full" />
-                      
-                      <p className="text-lg text-zinc-600 leading-relaxed">
-                        {features[activeTab].description}
-                      </p>
-                      
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      <ContactCTASection />
+            <InteractiveProcessSection 
+        title="Our Methodology" 
+        description="Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats." 
+        steps={features} 
+        theme="red" 
+      />
+      <CyberSectionDivider theme="blue" />
+      <DEFCTASection />
     </main>
   );
 }

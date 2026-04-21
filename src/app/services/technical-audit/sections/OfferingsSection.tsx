@@ -43,7 +43,7 @@ const offerings = [
 
 export function OfferingsSection() {
   return (
-    <section className="py-24 md:py-32 bg-zinc-50 border-y border-zinc-200 relative overflow-hidden">
+    <section className="py-10 md:py-10 bg-zinc-50 border-y border-zinc-200 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-200/50 via-zinc-50 to-zinc-50 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">

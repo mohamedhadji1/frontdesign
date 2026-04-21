@@ -46,7 +46,7 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "SOC Management",
-        slug: "defensive-security/doc-management",
+        slug: "defensive-security/soc-management",
       },
       {
         name: "Incident Response & Forensics",

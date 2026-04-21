@@ -1,5 +1,6 @@
 "use client";
 
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { motion } from "framer-motion";
 import { Link } from "lucide-react";
 
@@ -23,11 +24,20 @@ export function CrossSellingSection() {
   ];
 
   return (
-    <section className="py-24 bg-zinc-50 border-t border-zinc-200">
+    <section className="py-10 bg-zinc-50 border-t border-zinc-200">
+      
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
+                <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+                  <span className="w-8 h-px bg-red-600/30"></span>
+                  Infrastructure Assessment
+                  <span className="w-8 h-px bg-red-600/30"></span>
+                </h2>            
+            </div>
+        
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
-            Go <span className="text-red-600">Beyond</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-zinc-900">
+            Go Beyond
           </h2>
           <p className="text-zinc-600">
             Combine your Technical Audit with our specialized offensive security and assessment services for a 360-degree view of your organization's resilience.

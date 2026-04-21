@@ -29,10 +29,17 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <div className="flex items-center gap-4 mb-6 text-red-500 font-bold tracking-wider text-sm md:text-base uppercase">
-            <span className="w-8 h-0.5 bg-red-500"></span>
-            Offensive Security
-          </div>
+                    <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
+            <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+              <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 shrink-0">/</span><span className="text-red-400">Red Team</span>
+            </div>
+          </motion.div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
             Red Team Operations
           </h1>
