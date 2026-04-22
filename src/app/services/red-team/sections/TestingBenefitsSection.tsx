@@ -126,10 +126,7 @@ export function TestingBenefitsSection() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 text-red-600 text-xs font-medium uppercase tracking-widest rounded mb-6 shadow-sm">
-              <Target className="w-4 h-4" animateOnHover={true} />
-              Strategic Advantage
-            </div>
+            
           </motion.div>
 
           <motion.h2 

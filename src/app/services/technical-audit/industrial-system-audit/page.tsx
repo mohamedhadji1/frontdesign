@@ -10,6 +10,7 @@ import { ContactCTASection } from "@/components/about/ContactCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { motion } from "framer-motion";
 import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
+import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
 
 const industrialSteps = [
   {
@@ -33,7 +34,7 @@ const industrialSteps = [
   {
     id: "plc",
     title: "PLC & Firmware Vulnerability Assessment",
-    description: "Safe-mode checks against programmable logic controllers and HMIs to identify out-of-date firmware, default cblueentials, and embedded backdoors.",
+    description: "Safe-mode checks against programmable logic controllers and HMIs to identify out-of-date firmware, default credentials, and embedded backdoors.",
     icon: <Cpu className="w-8 h-8 text-white" />
   },
   {
@@ -45,7 +46,7 @@ const industrialSteps = [
   {
     id: "report",
     title: "OT-Specific Remediation Roadmap",
-    description: "Actionable roadmap tailoblue for industrial environments where patching isn't always viable, emphasizing compensating controls and network segregation.",
+    description: "Actionable roadmap tailored for industrial environments where patching isn't always viable, emphasizing compensating controls and network segregation.",
     icon: <FileText className="w-8 h-8 text-white" />
   }
 ];
@@ -63,16 +64,16 @@ export default function IndustrialSystemAuditPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
+              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
               <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-blue-400 transition-colors break-keep">Technical Audit</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Industrial System Audit</span>
+                <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-red-400 transition-colors break-keep">Technical Audit</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Industrial System Audit</span>
               </div>
             </motion.div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Safeguarding Critical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">ICS & SCADA</span> Infrastructure
+                Safeguarding Critical <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">ICS & SCADA</span> Infrastructure
               </h1>
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
@@ -80,7 +81,7 @@ export default function IndustrialSystemAuditPage() {
               </p>
               
               <div className="flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="px-8 py-3.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/25">
+                <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
                   Request an OT Audit
                 </Link>
                 <Link href="/services/technical-audit" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
@@ -90,7 +91,7 @@ export default function IndustrialSystemAuditPage() {
             </div>
 
             <div className="lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent blur-3xl rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-transparent blur-3xl rounded-full" />
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900/50 backdrop-blur-sm p-4">
                  <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1200&auto=format&fit=crop" alt="" className="" />
               </div>
@@ -99,15 +100,15 @@ export default function IndustrialSystemAuditPage() {
         </div>
       </section>
       <div className="w-[0%] mx-auto">
-      <CyberSectionDivider theme="blue"/> 
+      <CyberSectionDivider theme="red"/> 
       </div>
       <section className="py-10 bg-zinc-50">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16 text-center mx-auto">
-            <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-              <span className="w-8 h-px bg-blue-600/30"></span>
+            <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-red-600/30"></span>
               Zero-Disruption Industrial Methodology
-              <span className="w-8 h-px bg-blue-600/30"></span>
+              <span className="w-8 h-px bg-red-600/30"></span>
             </h2>
             <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
               Technical Steps
@@ -116,13 +117,13 @@ export default function IndustrialSystemAuditPage() {
               Understanding the fragility of Legacy OT hardware, our approach aligns strictly with IEC 62443 standards and emphasizes entirely non-disruptive analytical techniques.
             </p>
           </div>
-          <InteractiveProcessSection steps={industrialSteps} theme="blue"/>
+          <InteractiveProcessSection steps={industrialSteps} theme="red"/>
         </div>
       </section>
 <div className="w-[0%] mx-auto">
-      <CyberSectionDivider theme="blue"/> 
+      <CyberSectionDivider theme="red"/> 
       </div>
-      <DEFCTASection />
+      <RedTeamCTASection />
     </main>
   );
 }

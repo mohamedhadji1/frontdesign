@@ -71,13 +71,8 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance & Risk",
     items: [
       {
-        name: "Audits & Risk Assessment",
-      },
-      {
-        name: "Regulatory Compliance (ISO 27001, GDPR, NCA)",
-      },
-      {
-        name: "Awareness & Training",
+        name: "Governance, Risk & Compliance",
+        slug: "governance-risk-compliance",
       },
     ],
   },

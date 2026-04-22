@@ -117,7 +117,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                               
                               // Change hash links to valid routing links for Services components
                               const href = item.href || (section.name === "Services"
-                                ? `/services/${itemName.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`
+                                ? `/services/${item.slug || itemName.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`
                                 : `#${itemName.replace(/[\s(),&]+/g, "-").toLowerCase()}`);
                                 
                               return (

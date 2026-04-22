@@ -91,7 +91,21 @@ export default function Page() {
           </div>
         </div>
       </section>
-
+      <div className="mt-10">
+            <div className="max-w-3xl mb-16 text-center mx-auto">
+              <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+                <span className="w-8 h-px bg-blue-600/30"></span>
+                Our CERT IMPLEMENTATION Methodology
+                <span className="w-8 h-px bg-blue-600/30"></span>
+              </h2>
+              <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+                Technical Steps
+              </h3>
+              <p className="text-zinc-600 text-lg">
+                A rigorous, step-by-step technical methodology to validate the security posture and compliance of your modern cloud workloads (AWS, Azure, GCP).
+              </p>
+            </div>
+        </div>
       <InteractiveProcessSection 
         title="Our Defensive Approach"
         description="A rigorous methodology to bolster your resilience against cyber threats with cutting-edge telemetry, detection, and intelligence capabilities."

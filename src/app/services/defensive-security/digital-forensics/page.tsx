@@ -111,28 +111,28 @@ export default function Page() {
         </div>
       </section>
 
-                  <section className="py-24 bg-zinc-50 flex-grow relative overflow-hidden">
+          <CyberSectionDivider theme="blue" />
+        
+        <section className="py-10 bg-zinc-50 flex-grow relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.05),transparent_50%)] pointer-events-none" />
         
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
-          <div className="mb-16 flex flex-col items-center text-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-600 mb-6 shadow-sm"
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase">Tactical Playbook</span>
-            </motion.div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-6 uppercase">
-              Our Methodology
-            </h2>
-            <p className="text-zinc-600 text-lg max-w-2xl font-medium">
-              Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats.
-            </p>
-          </div>
+          <div className="mt-5 ">
+            <div className="max-w-3xl mb-16 text-center mx-auto">
+              <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+                <span className="w-8 h-px bg-blue-600/30"></span>
+                Tactical Playbook
+                <span className="w-8 h-px bg-blue-600/30"></span>
+              </h2>
+              <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+                Technical Steps
+              </h3>
+              <p className="text-zinc-600 text-lg">
+                Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats. From initial evidence collection to final reporting, we follow a meticulous process to ensure no detail is overlooked in our forensic investigations.
+              </p>
+            </div>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Interactive Tabs */}
@@ -235,6 +235,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      
       <CyberSectionDivider theme="blue"/>
       <DEFCTASection />
     </main>

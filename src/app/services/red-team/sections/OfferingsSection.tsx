@@ -71,7 +71,7 @@ export function OfferingsSection() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="py-24 md:py-32 bg-white text-zinc-600 relative border-t border-zinc-200 overflow-hidden group"
+      className="py-24 md:py-10 bg-white text-zinc-600 relative border-t border-zinc-200 overflow-hidden group"
     >
       {/* Interactive Spotlight */}
       <motion.div

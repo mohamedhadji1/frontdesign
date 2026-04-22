@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { ShieldAlert, Zap, Layers, RefreshCw, ClipboardList } from "lucide-react";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -111,14 +112,29 @@ export default function Page() {
           </div>
         </div>
       </section>
-
-                  <InteractiveProcessSection 
+      <CyberSectionDivider theme="blue"/>
+      <div className="mt-10 ">
+            <div className="max-w-3xl mb-16 text-center mx-auto">
+              <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+                <span className="w-8 h-px bg-blue-600/30"></span>
+                Our Methodology
+                <span className="w-8 h-px bg-blue-600/30"></span>
+              </h2>
+              <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+                Technical Steps
+              </h3>
+              <p className="text-zinc-600 text-lg">
+                From initial evidence collection to final reporting, we follow a meticulous process to ensure no detail is overlooked in our forensic investigations.
+              </p>
+            </div>
+            </div>
+       <InteractiveProcessSection 
         title="Our Methodology" 
         description="Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats." 
         steps={features} 
         theme="blue" 
       />
-
+      <CyberSectionDivider theme="blue"/>
       <DEFCTASection />
     </main>
   );

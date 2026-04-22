@@ -27,15 +27,22 @@ export function CombinedDeepDive() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-12"
+          className="max-w-3xl mb-12 mx-auto text-center"
         >
-        <h3 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-900 mb-5 ">
-          Deep Dive: Specialized Modules
-        </h3>
-        <p className="text-zinc-600 text-lg md:text-xl leading-relaxed mb-8">
-          Explore the core pillars of our advanced defensive tactics. Select a module below to expose our specialized methodologies for CERT Deployment Strategy and Antiphishing.
-        </p>
+          <div className="text-center mb-4">
         
+            <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-blue-600/30"></span>
+              Our MODULES
+              <span className="w-8 h-px bg-blue-600/30"></span>
+            </h2>
+            <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+              Deep Dive: Specialized Modules
+            </h3>
+            <p className="text-zinc-600 text-lg">
+              Explore the core pillars of our advanced defensive tactics. Select a module below to expose our specialized methodologies for CERT Deployment Strategy and Antiphishing.
+            </p>
+        </div>
         <div className="inline-flex relative p-1.5 bg-zinc-100/80 rounded-2xl border border-zinc-200/80 shadow-inner backdrop-blur-md">
           {tabs.map((tab) => {
             const isActive = activeModule === tab.id;
@@ -47,7 +54,7 @@ export function CombinedDeepDive() {
                 onClick={() => setActiveModule(tab.id)}
                 className={`relative z-10 flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold transition-colors duration-300 w-1/2 sm:w-auto ${
                   isActive 
-                    ? "text-red-700" 
+                    ? "text-blue-700" 
                     : "text-zinc-500 hover:text-zinc-800"
                 }`}
               >
@@ -59,7 +66,7 @@ export function CombinedDeepDive() {
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2.5">
-                  <Icon className={`w-5 h-5 ${isActive ? "text-red-600" : ""}`} />
+                  <Icon className={`w-5 h-5 ${isActive ? "text-blue-600" : ""}`} />
                   {tab.label}
                 </span>
               </button>

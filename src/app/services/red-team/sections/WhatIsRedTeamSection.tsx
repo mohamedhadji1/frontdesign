@@ -51,7 +51,7 @@ export function WhatIsRedTeamSection() {
     <section 
       ref={containerRef} 
       onMouseMove={handleMouseMove}
-      className="bg-white text-zinc-900 py-24 md:py-32 relative overflow-hidden group"
+      className="bg-white text-zinc-900 py-24 md:py-10 relative overflow-hidden group"
     >
       {/* Interactive Spotlight */}
       <motion.div
@@ -82,29 +82,27 @@ export function WhatIsRedTeamSection() {
       <div className="max-w-7xl mx-auto px-12 relative z-10 pl-16 md:pl-24">
         
         {/* Top Intro */}
-        <div className="max-w-4xl mb-20">
-<h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-                  <span className="w-8 h-px bg-red-600/30"></span>
-                  Infrastructure Assessment
-                  <span className="w-8 h-px bg-red-600/30"></span>
-                </h2> 
-                
-          <motion.h2 
+        <div className="max-w-4xl mb-20 mx-auto text-center">
+          <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-px bg-red-600/30"></span>
+            Infrastructure Assessment
+            <span className="w-8 h-px bg-red-600/30"></span>
+          </h2>
+          <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight uppercase"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight uppercase mx-auto max-w-3xl text-center"
           >
             What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900">Red Teaming?</span>
-          </motion.h2>
-          
+          </motion.h3>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-zinc-600 text-lg md:text-xl leading-relaxed"
+            className="text-zinc-600 text-lg md:text-xl leading-relaxed mx-auto text-center max-w-2xl"
           >
             Unlike standard vulnerability assessments that check boxes, Red Teaming is an unrestricted, objective-based assessment. We emulate Advanced Persistent Threats (APTs) to subject your entire organization—technology, physical security, and human elements—to realistic cyberattacks.
           </motion.p>

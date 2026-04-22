@@ -64,7 +64,7 @@ export function MethodologySection() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="py-24 md:py-32 bg-white relative border-t border-zinc-200 overflow-hidden group"
+      className="py-24 md:py-10 bg-white relative border-t border-zinc-200 overflow-hidden group"
     >
       {/* Interactive Spotlight */}
       <motion.div
@@ -82,7 +82,7 @@ export function MethodologySection() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
         
-        <div className="text-center mb-20 md:mb-32">
+        <div className="text-center mb-20 md:mb-10">
           <h2 className="text-red-500 font-medium text-xs tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
             <span className="w-4 h-px bg-red-500/50"></span>
             SYS.EXEC(KILL_CHAIN)

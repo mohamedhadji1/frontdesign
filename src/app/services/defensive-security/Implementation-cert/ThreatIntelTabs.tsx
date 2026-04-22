@@ -17,7 +17,7 @@ export function ThreatIntelTabs() {
     {
       id: "trend",
       title: "Trend Analysis",
-      description: "In-depth trend analysis helps understand the evolution of attacks, attacker motivations, and techniques used. This helps predict future threats and take preventive measures.",
+      description: "In-depth trend analysis helps understand the evolution of attacks, attacker motivations, and techniques used. This helps pblueict future threats and take preventive measures.",
       icon: <TrendingUp className="w-8 h-8" />
     },
     {
@@ -45,10 +45,10 @@ export function ThreatIntelTabs() {
   return (
     <div className="flex flex-col lg:flex-row min-h-[440px] w-full bg-white rounded-3xl shadow-2xl border border-zinc-100 overflow-hidden ring-1 ring-zinc-900/5">
       <div className="lg:w-2/5 bg-zinc-50/80 border-r border-zinc-100 p-6 flex flex-col gap-3 relative overflow-hidden backdrop-blur-sm">
-        <h3 className="text-xs font-black text-red-600 tracking-widest uppercase mb-4 px-2 opacity-80">Methodology</h3>
+        <h3 className="text-xs font-black text-blue-600 tracking-widest uppercase mb-4 px-2 opacity-80">Methodology</h3>
         
         {/* Subtle background glow */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-red-400/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
         
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -58,14 +58,14 @@ export function ThreatIntelTabs() {
               onClick={() => setActiveTab(tab.id)}
               className={`relative flex items-center justify-between px-6 py-4 rounded-2xl text-left transition-colors duration-300 ${
                 isActive 
-                  ? "text-red-900" 
-                  : "text-zinc-600 hover:text-red-600 hover:bg-white/50"
+                  ? "text-blue-900" 
+                  : "text-zinc-600 hover:text-blue-600 hover:bg-white/50"
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="activeThreatIntelTab"
-                  className="absolute inset-0 bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.06)] border border-red-100/50"
+                  className="absolute inset-0 bg-white rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.06)] border border-blue-100/50"
                   transition={{ type: "spring", bounce: 0, duration: 0.5 }}
                 />
               )}
@@ -74,7 +74,7 @@ export function ThreatIntelTabs() {
               {isActive && (
                 <motion.div 
                   layoutId="activeThreatLine"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-red-600 rounded-r-full"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-blue-600 rounded-r-full"
                   transition={{ type: "spring", bounce: 0, duration: 0.5 }}
                 />
               )}
@@ -96,7 +96,7 @@ export function ThreatIntelTabs() {
               transition={{ duration: 0.4 }}
               className="max-w-2xl relative z-10"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-50 to-red-100 text-red-600 flex items-center justify-center mb-6 shadow-sm border border-red-200/50 transform-gpu hover:scale-105 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 flex items-center justify-center mb-6 shadow-sm border border-blue-200/50 transform-gpu hover:scale-105 transition-transform duration-500">
                 {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
                   className: "w-7 h-7",
                 })}
@@ -118,7 +118,7 @@ export function ThreatIntelTabs() {
               animate={{ opacity: 0.04, scale: 1 }}
               exit={{ opacity: 0, scale: 1.1 }}
               transition={{ duration: 0.8 }}
-              className="absolute right-0 bottom-0 pointer-events-none -mb-4 -mr-4 text-red-900"
+              className="absolute right-0 bottom-0 pointer-events-none -mb-4 -mr-4 text-blue-900"
             >
               {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
                 className: "w-56 h-56",
