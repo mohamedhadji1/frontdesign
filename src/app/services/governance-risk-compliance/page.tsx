@@ -1,8 +1,8 @@
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
-import { GrcCTASection } from "./sections/GrcCTASection";
 import { HeroSection } from "./sections/HeroSection";
 import { PillarsSection } from "./sections/PillarsSection";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
+import { ContactCTASection } from "@/components/home/ContactCTASection";
 
 export const metadata = {
   title: "Governance, Risk & Compliance | Keystone",
@@ -19,7 +19,7 @@ export default function GovernanceRiskCompliancePage() {
       <CyberSectionDivider />
       <WhyChooseSection />
       <CyberSectionDivider />
-      <GrcCTASection />
+      <ContactCTASection />
     </main>
   );
 }

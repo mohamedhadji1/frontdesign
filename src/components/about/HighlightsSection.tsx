@@ -7,7 +7,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export function HighlightsSection() {
   return (
-    <section className="bg-[#f4f5f5] text-gray-900 border-t border-gray-200">
+    <section className="bg-[#fff] text-gray-900 border-t border-gray-200">
       
       {/* Divider exactly matching previous red top-aligns */}
       <SectionDivider title="OUR VALUES" className="bg-transparent mb-16 relative z-20" />

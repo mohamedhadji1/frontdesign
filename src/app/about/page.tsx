@@ -18,6 +18,7 @@ export default function AboutPage() {
       <AboutHeroSection />
       <SectionDivider title="KEYSTONE MISSION" />
       <MissionSection z-index={10} />
+      <SectionDivider title="OUR VALUES" className="bg-white" />
       <HighlightsSection />
       <ContactCTASection />
       <div className="mb-[30px] bg-[#0a0a0a00] margin-bottom-[-27px]">

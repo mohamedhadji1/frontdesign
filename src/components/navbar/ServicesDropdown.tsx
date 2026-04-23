@@ -53,7 +53,6 @@ export const servicesDetails: ServiceCategory[] = [
         slug: "defensive-security/virtual-ciso-dpo",
       },
       {
-        
         name: "Implementation CERT",
         slug: "defensive-security/Implementation-cert",
         subCategory: "Emergency Teams",
@@ -63,7 +62,7 @@ export const servicesDetails: ServiceCategory[] = [
           { name: "Digital Forensics", slug: "services/defensive-security/digital-forensics" },
           { name: "Threat Hunting", slug: "services/defensive-security/threat-hunting" }
         ]
-},
+      },
     ],
   },
   {
@@ -82,6 +81,17 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "Cybersecurity Strategy Consulting",
+        slug: "cybersecurity-strategy-consulting",
+        subCategory: "Strategic Services",
+        subItems: [
+          "Development of National and Sectoral Cybersecurity Strategy",
+          "CERT Implementation",
+          "SOC Implementation",
+          "Critical Infrastructure Protection",
+          "Cyber Crisis Management Framework",
+          "Capacity and Maturity Assessment",
+          "Cyber Resilience Framework"
+        ]
       },
     ],
   },

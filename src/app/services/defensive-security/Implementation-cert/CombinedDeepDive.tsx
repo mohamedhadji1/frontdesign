@@ -6,8 +6,30 @@ import { ThreatIntelTabs } from "./ThreatIntelTabs";
 import { AntiphishingTabs } from "./AntiphishingTabs";
 import { ShieldAlert, MailWarning } from "lucide-react";
 
-export function CombinedDeepDive() {
+type Theme = "red" | "blue";
+
+interface CombinedDeepDiveProps {
+  theme?: Theme;
+}
+
+export function CombinedDeepDive({ theme = "blue" }: CombinedDeepDiveProps) {
   const [activeModule, setActiveModule] = useState<"threat" | "antiphishing">("threat");
+
+  const colors = {
+    blue: {
+      textTitle: "text-blue-600",
+      bgDivider: "bg-blue-600/30",
+      textActive: "text-blue-700",
+      iconActive: "text-blue-600",
+    },
+    red: {
+      textTitle: "text-red-600",
+      bgDivider: "bg-red-600/30",
+      textActive: "text-red-700",
+      iconActive: "text-red-600",
+    }
+  };
+  const t = colors[theme];
 
   const tabs = [
     { id: "threat", label: "CERT Deployment Strategy", icon: ShieldAlert },
@@ -31,10 +53,10 @@ export function CombinedDeepDive() {
         >
           <div className="text-center mb-4">
         
-            <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-              <span className="w-8 h-px bg-blue-600/30"></span>
+            <h2 className={`${t.textTitle} font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4`}>
+              <span className={`w-8 h-px ${t.bgDivider}`}></span>
               Our MODULES
-              <span className="w-8 h-px bg-blue-600/30"></span>
+              <span className={`w-8 h-px ${t.bgDivider}`}></span>
             </h2>
             <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
               Deep Dive: Specialized Modules
@@ -54,7 +76,7 @@ export function CombinedDeepDive() {
                 onClick={() => setActiveModule(tab.id)}
                 className={`relative z-10 flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold transition-colors duration-300 w-1/2 sm:w-auto ${
                   isActive 
-                    ? "text-blue-700" 
+                    ? t.textActive 
                     : "text-zinc-500 hover:text-zinc-800"
                 }`}
               >
@@ -66,7 +88,7 @@ export function CombinedDeepDive() {
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2.5">
-                  <Icon className={`w-5 h-5 ${isActive ? "text-blue-600" : ""}`} />
+                  <Icon className={`w-5 h-5 ${isActive ? t.iconActive : ""}`} />
                   {tab.label}
                 </span>
               </button>
@@ -85,7 +107,7 @@ export function CombinedDeepDive() {
               exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
               transition={{ duration: 0.4 }}
             >
-              <ThreatIntelTabs />
+              <ThreatIntelTabs theme={theme} />
             </motion.div>
           ) : (
             <motion.div
@@ -95,7 +117,7 @@ export function CombinedDeepDive() {
               exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
               transition={{ duration: 0.4 }}
             >
-              <AntiphishingTabs />
+              <AntiphishingTabs theme={theme} />
             </motion.div>
           )}
         </AnimatePresence>

@@ -5,21 +5,21 @@ import { BarChart3, Compass, Target } from "lucide-react";
 
 const reasons = [
   {
-    title: "Expertise pointue",
+    title: "Specialized expertise",
     description:
-      "Notre equipe possede une expertise approfondie en gouvernance, gestion des risques et conformite pour livrer des solutions adaptees a vos besoins uniques.",
+      "Our team brings deep expertise in governance, risk management, and compliance to deliver solutions tailored to your specific needs.",
     icon: <Compass className="h-6 w-6" />,
   },
   {
-    title: "Approche personnalisee",
+    title: "Tailored approach",
     description:
-      "Chaque entreprise fait face a des enjeux GRC differents. Nous adaptons nos services a votre contexte, vos objectifs et vos contraintes.",
+      "Every organization faces different GRC challenges. We adapt our services to your context, goals, and operational constraints.",
     icon: <Target className="h-6 w-6" />,
   },
   {
-    title: "Resultats concrets",
+    title: "Measurable results",
     description:
-      "Nos interventions reduisent les risques, ameliorent la conformite et renforcent durablement la resilience de votre organisation.",
+      "Our engagements reduce risk, improve compliance, and strengthen your organization&apos;s resilience in a meaningful way.",
     icon: <BarChart3 className="h-6 w-6" />,
   },
 ];
@@ -31,16 +31,15 @@ export function WhyChooseSection() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
             <span className="h-px w-8 bg-red-600/30" />
-            Pourquoi Keystone
+            Why Keystone
             <span className="h-px w-8 bg-red-600/30" />
           </h2>
           <h3 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-5xl">
-            Pourquoi choisir Keystone pour votre GRC ?
+            Why choose Keystone for your GRC program?
           </h3>
           <p className="mt-5 text-lg leading-relaxed text-zinc-600">
-            Nous transformons les exigences de gouvernance, de risque et de
-            conformite en un dispositif concret, lisible et utile pour vos
-            equipes.
+            We turn governance, risk, and compliance requirements into a clear,
+            practical operating model that supports your teams.
           </p>
         </div>
 

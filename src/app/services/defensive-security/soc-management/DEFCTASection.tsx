@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TerminalIcon } from "@/components/animate-ui/icons/terminal";
 import Link from "next/link";
 
 export function DEFCTASection() {
@@ -22,8 +23,9 @@ export function DEFCTASection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold text-blue-600 mb-3 tracking-tight uppercase"
+            className="text-2xl md:text-3xl font-bold text-zinc-900 mb-3 tracking-tight uppercase flex items-center gap-2"
           >
+            <TerminalIcon className="w-6 h-6" animateOnHover />
             READY TO SECURE YOUR FUTURE?
           </motion.h2>
 

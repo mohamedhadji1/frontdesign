@@ -5,36 +5,36 @@ import { BadgeCheck, Landmark, ShieldCheck, TriangleAlert } from "lucide-react";
 
 const pillars = [
   {
-    title: "Gouvernance",
+    title: "Governance",
     description:
-      "Nous collaborons avec votre equipe pour etablir des structures de gouvernance solides qui soutiennent les decisions strategiques, la transparence et la responsabilite.",
+      "We work closely with your team to establish strong governance structures that support strategic decisions, transparency, and accountability.",
     icon: <Landmark className="h-6 w-6" />,
     points: [
-      "Cadrage des roles et responsabilites",
-      "Pilotage des priorites de securite",
-      "Alignement entre strategie et execution",
+      "Clear roles and responsibilities",
+      "Security priority governance",
+      "Alignment between strategy and execution",
     ],
   },
   {
-    title: "Gestion des risques",
+    title: "Risk management",
     description:
-      "Nous identifions, evaluons et priorisons les risques pour construire un dispositif de maitrise realiste, mesurable et adapte a votre exposition.",
+      "We identify, assess, and prioritize risks to build a practical and measurable control framework aligned with your exposure.",
     icon: <TriangleAlert className="h-6 w-6" />,
     points: [
-      "Audits et evaluations de risques",
-      "Cartographie des menaces et vulnerabilites",
-      "Plans de traitement et reduction du risque",
+      "Audits and risk assessments",
+      "Threat and vulnerability mapping",
+      "Risk treatment and reduction plans",
     ],
   },
   {
-    title: "Conformite",
+    title: "Compliance",
     description:
-      "Nous vous aidons a respecter les exigences reglementaires et normatives tout en transformant la conformite en levier de confiance et de performance.",
+      "We help you meet regulatory and standards-based requirements while turning compliance into a driver of trust and performance.",
     icon: <BadgeCheck className="h-6 w-6" />,
     points: [
-      "ISO 27001, GDPR, NCA et exigences locales",
-      "Accompagnement documentaire et controles",
-      "Suivi de conformite continue",
+      "ISO 27001, GDPR, NCA, and local requirements",
+      "Documentation and control support",
+      "Continuous compliance monitoring",
     ],
   },
 ];
@@ -52,12 +52,12 @@ export function PillarsSection() {
             <span className="h-px w-8 bg-red-600/30" />
           </h2>
           <h3 className="text-3xl font-bold tracking-tight md:text-5xl">
-            Une approche GRC construite sur trois piliers
+            A GRC approach built on three pillars
           </h3>
           <p className="mt-5 text-lg leading-relaxed text-zinc-600">
-            Nous combinons gouvernance, maitrise des risques et conformite pour
-            donner a votre organisation un cadre robuste, durable et utile au
-            quotidien.
+            We combine governance, risk control, and compliance to give your
+            organization a robust, durable framework that supports day-to-day
+            decision-making.
           </p>
         </div>
 
@@ -93,22 +93,21 @@ export function PillarsSection() {
         <div className="mt-16 grid items-center gap-10 rounded-[2rem] border border-zinc-200 bg-zinc-50 p-8 lg:grid-cols-[1.2fr_0.8fr] lg:p-12">
           <div>
             <h4 className="text-3xl font-bold tracking-tight text-zinc-900">
-              Nous structurons votre GRC avec une approche claire et actionnable
+              We structure your GRC program with a clear and actionable approach
             </h4>
             <p className="mt-5 text-lg leading-relaxed text-zinc-600">
-              Notre intervention aide votre entreprise a mettre en place des
-              fondations solides, a reduire les risques operationnels et a
-              maintenir une conformite continue dans un cadre national et
-              international exigeant.
+              Our engagement helps your business establish solid foundations,
+              reduce operational risk, and maintain continuous compliance across
+              demanding local and international frameworks.
             </p>
             <ul className="mt-6 space-y-3 text-zinc-700">
               <li className="flex items-start gap-3">
                 <span className="mt-1 h-2.5 w-2.5 rounded-full bg-red-500" />
-                Gestion des risques
+                Risk management
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-1 h-2.5 w-2.5 rounded-full bg-red-500" />
-                Conformite reglementaire et normative
+                Regulatory and standards compliance
               </li>
             </ul>
           </div>
@@ -120,8 +119,8 @@ export function PillarsSection() {
                 Governance, Risk & Compliance
               </p>
               <p className="mt-4 text-2xl font-bold leading-tight text-white">
-                Une vision unifiee pour proteger l&apos;entreprise et respecter les
-                standards de securite de l&apos;information.
+                A unified vision to protect the business and align with
+                information security standards.
               </p>
             </div>
           </div>

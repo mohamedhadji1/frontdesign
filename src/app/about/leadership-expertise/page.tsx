@@ -6,6 +6,7 @@ import { OurLeaderSection } from "./components/OurLeaderSection";
 import { MapSection } from "@/components/home/MapSection";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HighlightsSection } from "../strategic-vision/sections/HighlightsSection";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export const metadata: Metadata = {
   title: "Our Leadership & Expertise | Keystone",
@@ -16,25 +17,30 @@ export default function LeadershipExpertisePage() {
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Gotham', -apple-system, BlinkMacSystemFont" }}>
       <HeroSection />
-
+      <SectionDivider title="KEYSTONE EXPERTISE" className="bg-white" />
       <section
         className="py-24 px-6 lg:px-12 container mx-auto max-w-[1600px] relative overflow-hidden"
         style={{
           backgroundImage: "url('/background/bg1.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat",
         }}
       >
+        
         <div className="absolute inset-0 bg-white/80 pointer-events-none" />
         <div className="relative z-10 max-w-6xl mx-auto">
+          
           <AdvancedExpertiseSection />
+          
           <VersatilityAndImpartialitySection />
+          
         </div>
       </section>
-
+      <SectionDivider title="KEYSTONE LEADERSHIP" className="bg-black" />
       <OurLeaderSection />
       <ContactCTASection />
+      <SectionDivider title="GLOBAL PRESENCE" className="bg-white" />
       <MapSection />
     </div>
   );
