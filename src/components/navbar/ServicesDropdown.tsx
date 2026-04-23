@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 
 type ServiceItem = {
   name: string;
@@ -96,32 +97,31 @@ export const servicesDetails: ServiceCategory[] = [
     ],
   },
   {
-    category: "Training",
-    title: "Training",
+    category: "Training & Awareness",
+    title: "Training & Awareness",
     items: [
       {
-        name: "Cyber Exercise Management & Technique",
+        name: "Awareness",
+        subCategory: "Awareness Programs",
+        subItems: [
+          { name: "Cyber Escape Room", slug: "services/awareness/cyber-escape-room" },
+          { name: "Cyber Card Game", slug: "services/awareness/cyber-card-game" },
+          { name: "Quiz", slug: "services/awareness/quiz" },
+          { name: "Awareness Workshops", slug: "services/awareness/awareness-workshops" },
+          { name: "Attack Simulation", slug: "services/awareness/attack-simulation" },
+          { name: "Phishing Campaigns", slug: "services/awareness/phishing-campaigns" },
+          { name: "Agent619", slug: "services/awareness/agent619" },
+        ],
+      },
+      {
+        name: "Cyber Exercise",
+        subCategory: "Cyber Exercise Programs",
+        subItems: [
+          "Cyber Exercise Management & Technique",
+        ],
       },
       {
         name: "CTF Competition Organization",
-      },
-    ],
-  },
-  {
-    category: "Awareness",
-    title: "Awareness",
-    items: [
-      {
-        name: "Awareness Workshops",
-      },
-      {
-        name: "Cybersecurity Card Game",
-      },
-      {
-        name: "Cyber Escape Room",
-      },
-      {
-        name: "Attack Simulation",
       },
     ],
   },
@@ -134,6 +134,7 @@ export function ServicesDropdown() {
   const currentCategoryObj = servicesDetails.find((c) => c.category === activeCategory);
   
   return (
+    
     <div className="absolute top-full left-0 w-full pt-6 pointer-events-auto">
       <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
         
@@ -265,9 +266,12 @@ export function ServicesDropdown() {
               )}
             </motion.div>
           </AnimatePresence>
+          
         </div>
-
+              
       </div>
+    
     </div>
+    
   );
 }
