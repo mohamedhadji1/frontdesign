@@ -7,12 +7,15 @@ import {
   BookOpenCheck,
   FileSearch,
   LockKeyhole,
+  ScanLine,
   ScanSearch,
   ShieldAlert,
   UserRoundCheck,
 } from "lucide-react";
+import { TypeAnimation } from "react-type-animation";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { InteractiveExercisePanel } from "../components/InteractiveExercisePanel";
 
 const importance = [
   {
@@ -62,6 +65,33 @@ const programs = [
   "Forensic analysis modules for examining and interpreting digital evidence after security events.",
 ];
 
+const investigationPanelItems = [
+  {
+    id: "monitor",
+    label: "Monitor",
+    value: "Signal fidelity +37%",
+    detail:
+      "Participants learn to detect relevant anomalies sooner and separate noise from meaningful indicators.",
+    icon: ShieldAlert,
+  },
+  {
+    id: "investigate",
+    label: "Investigate",
+    value: "Evidence chain 100%",
+    detail:
+      "The training emphasizes rigorous incident handling, documentation, and defensible collection practices.",
+    icon: FileSearch,
+  },
+  {
+    id: "analyze",
+    label: "Analyze",
+    value: "Forensic clarity +29%",
+    detail:
+      "Hands-on analysis improves how teams reconstruct events, explain impact, and guide remediation.",
+    icon: ScanLine,
+  },
+];
+
 export default function CybersecurityAndInvestigationPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -106,6 +136,22 @@ export default function CybersecurityAndInvestigationPage() {
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-400">
+                <span className="mb-3 block text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+                  <TypeAnimation
+                    sequence={[
+                      "Threat detection drills",
+                      1200,
+                      "Digital investigation workflows",
+                      1200,
+                      "Forensic analysis practice",
+                      1200,
+                    ]}
+                    wrapper="span"
+                    repeat={Infinity}
+                    speed={58}
+                    deletionSpeed={72}
+                  />
+                </span>
                 Develop advanced expertise to protect sensitive data and conduct
                 effective digital investigations. This program is designed for
                 professionals who need deeper technical skills to respond to
@@ -249,6 +295,15 @@ export default function CybersecurityAndInvestigationPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-12">
+            <InteractiveExercisePanel
+              eyebrow="Interactive Investigation Flow"
+              title="Follow the path from signal to evidence"
+              description="Hover the modules to preview how the program develops stronger monitoring, investigation discipline, and forensic analysis."
+              items={investigationPanelItems}
+            />
           </div>
         </div>
       </motion.section>

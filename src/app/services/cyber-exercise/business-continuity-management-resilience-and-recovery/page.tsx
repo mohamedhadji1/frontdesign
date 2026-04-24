@@ -7,12 +7,15 @@ import {
   BadgeCheck,
   BriefcaseBusiness,
   ClipboardList,
+  FileClock,
   ShieldCheck,
   Siren,
   TimerReset,
 } from "lucide-react";
+import { TypeAnimation } from "react-type-animation";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { InteractiveExercisePanel } from "../components/InteractiveExercisePanel";
 
 const priorities = [
   {
@@ -62,6 +65,33 @@ const offerings = [
   "Testing and evaluation processes to validate and improve continuity plans over time.",
 ];
 
+const continuityPanelItems = [
+  {
+    id: "prepare",
+    label: "Prepare",
+    value: "Recovery plan coverage 88%",
+    detail:
+      "Teams map dependencies, define owners, and align continuity measures to the most critical services.",
+    icon: ClipboardList,
+  },
+  {
+    id: "simulate",
+    label: "Simulate",
+    value: "Exercise confidence +41%",
+    detail:
+      "Crisis scenarios reveal operational friction points and improve coordination before real disruptions occur.",
+    icon: Siren,
+  },
+  {
+    id: "restore",
+    label: "Restore",
+    value: "Downtime exposure -31%",
+    detail:
+      "Recovery steps become faster and clearer when teams rehearse sequencing, escalation, and fallback actions.",
+    icon: FileClock,
+  },
+];
+
 export default function BusinessContinuityPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -106,6 +136,22 @@ export default function BusinessContinuityPage() {
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-400">
+                <span className="mb-3 block text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+                  <TypeAnimation
+                    sequence={[
+                      "Business continuity planning",
+                      1200,
+                      "Crisis simulation exercises",
+                      1200,
+                      "Recovery readiness training",
+                      1200,
+                    ]}
+                    wrapper="span"
+                    repeat={Infinity}
+                    speed={58}
+                    deletionSpeed={72}
+                  />
+                </span>
                 Prepare for disruption and recover with speed. This training
                 program equips professionals with the skills needed to preserve
                 critical operations, improve resilience, and organize effective
@@ -249,6 +295,15 @@ export default function BusinessContinuityPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-12">
+            <InteractiveExercisePanel
+              eyebrow="Interactive Resilience Drill"
+              title="Test the continuity cycle in motion"
+              description="Hover across the stages to see how the program turns continuity planning into a repeatable, measurable recovery exercise."
+              items={continuityPanelItems}
+            />
           </div>
         </div>
       </motion.section>

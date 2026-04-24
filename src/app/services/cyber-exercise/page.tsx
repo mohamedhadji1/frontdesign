@@ -2,9 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Search, ShieldAlert, TimerReset } from "lucide-react";
+import {
+  ArrowRight,
+  Radar,
+  Search,
+  ShieldAlert,
+  TimerReset,
+} from "lucide-react";
+import { TypeAnimation } from "react-type-animation";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { InteractiveExercisePanel } from "./components/InteractiveExercisePanel";
 
 const programs = [
   {
@@ -20,6 +28,33 @@ const programs = [
       "Build advanced capabilities to protect sensitive information, investigate incidents, and analyze digital evidence with confidence.",
     href: "/services/cyber-exercise/cybersecurity-and-investigation",
     icon: Search,
+  },
+];
+
+const panelItems = [
+  {
+    id: "detect",
+    label: "Detect",
+    value: "Threat visibility +34%",
+    detail:
+      "Interactive scenarios expose weak signals early so teams can recognize issues before they cascade.",
+    icon: Radar,
+  },
+  {
+    id: "respond",
+    label: "Respond",
+    value: "Response time -28%",
+    detail:
+      "Exercises train decision-making under pressure and improve coordination between operational roles.",
+    icon: ShieldAlert,
+  },
+  {
+    id: "recover",
+    label: "Recover",
+    value: "Recovery readiness 92%",
+    detail:
+      "Continuity and investigation tracks help organizations return to stable operations with clearer playbooks.",
+    icon: TimerReset,
   },
 ];
 
@@ -57,6 +92,22 @@ export default function CyberExercisePage() {
             </h1>
 
             <p className="max-w-3xl text-lg leading-relaxed text-zinc-400">
+              <span className="mb-3 block text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+                <TypeAnimation
+                  sequence={[
+                    "Scenario-driven readiness",
+                    1200,
+                    "Interactive response drills",
+                    1200,
+                    "Resilience-focused cyber exercises",
+                    1200,
+                  ]}
+                  wrapper="span"
+                  repeat={Infinity}
+                  speed={58}
+                  deletionSpeed={72}
+                />
+              </span>
               Keystone designs practical cyber exercise programs that help teams
               prepare for disruption, sharpen investigation skills, and respond
               with more confidence in high-pressure scenarios.
@@ -116,24 +167,13 @@ export default function CyberExercisePage() {
             })}
           </div>
 
-          <div
-            className="mt-12 rounded-3xl border border-zinc-200 p-8 shadow-sm"
-            style={{ backgroundColor: "lab(97 0 -0.01)" }}
-          >
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
-                  Keystone Approach
-                </p>
-                <h3 className="text-2xl font-bold text-zinc-900">
-                  Scenario-led, practical, and aligned with real operations
-                </h3>
-              </div>
-              <div className="flex items-center gap-3 text-zinc-600">
-                <ShieldAlert className="h-5 w-5 text-red-600" />
-                <span>Exercises built for realistic decision-making.</span>
-              </div>
-            </div>
+          <div className="mt-12">
+            <InteractiveExercisePanel
+              eyebrow="Interactive Simulation"
+              title="Move through the exercise lifecycle"
+              description="Hover the modules to preview how Keystone structures practical cyber exercises around detection, coordinated response, and resilient recovery."
+              items={panelItems}
+            />
           </div>
         </div>
       </motion.section>
