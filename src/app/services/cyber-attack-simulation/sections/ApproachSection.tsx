@@ -12,7 +12,7 @@ const steps = [
 
 export function ApproachSection() {
   return (
-    <section className="bg-[#05080f] text-white pb-10 px-6 relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-[#05080f] text-white pb-10 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col gap-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,6 +48,6 @@ export function ApproachSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

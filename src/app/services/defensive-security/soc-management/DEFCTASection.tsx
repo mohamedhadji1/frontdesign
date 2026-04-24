@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function DEFCTASection() {
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       className="relative py-24 md:py-32 overflow-hidden bg-[#ffffff]"
       style={{
         backgroundImage: "url('/background/bg7.png')",
@@ -59,6 +59,6 @@ export function DEFCTASection() {
           </Link>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

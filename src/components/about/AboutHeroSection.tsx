@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function AboutHeroSection() {
   return (
-    <section className="relative w-full h-[60dvh] min-h-[500px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-[60dvh] min-h-[500px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -46,6 +46,6 @@ export function AboutHeroSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

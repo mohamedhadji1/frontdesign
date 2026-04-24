@@ -114,7 +114,7 @@ export function HeroSection() {
   }, [events]);
 
   return (
-    <section className="relative w-full h-auto min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-auto min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -150,7 +150,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto"
           >
             <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg">
-              Get Security Assessment 
+              Get Security Assessment
               <span>→</span>
             </button>
             <button className="border-b border-white/50 hover:border-white text-white font-medium py-3 px-6 flex items-center justify-center gap-3 transition-all bg-transparent hover:bg-transparent">
@@ -184,7 +184,7 @@ export function HeroSection() {
                       </svg>
                       {new Date(event.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                     </p>
-                    
+
                     {idx === 0 && timeRemaining && !timeRemaining.started && (
                       <div className="mt-5">
                         <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-3">Starts In</p>
@@ -247,22 +247,22 @@ export function HeroSection() {
           }}
         >
           {Array(40).fill("/certif/27001.png").map((src, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="relative w-28 h-28 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer"
             >
-              <Image 
-                src={src} 
-                alt="ISO 27001 Certification" 
-                fill 
+              <Image
+                src={src}
+                alt="ISO 27001 Certification"
+                fill
                 sizes="112px"
-                className="object-contain" 
+                className="object-contain"
               />
             </div>
           ))}
         </motion.div>
       </div>
 
-    </section>
+    </motion.section>
   );
 }

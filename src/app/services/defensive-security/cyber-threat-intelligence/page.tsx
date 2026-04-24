@@ -32,7 +32,7 @@ const steps = [
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -82,9 +82,9 @@ export default function Page() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="py-24 bg-zinc-50">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-24 bg-zinc-50">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16 mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-4">
@@ -97,7 +97,7 @@ export default function Page() {
           </div>
           <InteractiveProcessSection steps={steps} />
         </div>
-      </section>
+      </motion.section>
 
       <DEFCTASection />
       

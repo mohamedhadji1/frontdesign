@@ -41,7 +41,7 @@ const pillars = [
 
 export function PillarsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 text-zinc-900">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative overflow-hidden bg-white py-20 text-zinc-900">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.07),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(248,113,113,0.08),transparent_30%)]" />
 
       <div className="container relative z-10 mx-auto px-6">
@@ -126,6 +126,6 @@ export function PillarsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

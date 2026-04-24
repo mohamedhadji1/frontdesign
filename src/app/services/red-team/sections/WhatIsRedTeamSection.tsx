@@ -48,7 +48,7 @@ export function WhatIsRedTeamSection() {
   };
 
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       ref={containerRef} 
       onMouseMove={handleMouseMove}
       className="bg-white text-zinc-900 py-24 md:py-10 relative overflow-hidden group"
@@ -252,6 +252,6 @@ export function WhatIsRedTeamSection() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

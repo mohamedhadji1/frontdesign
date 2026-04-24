@@ -7,7 +7,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export function HighlightsSection() {
   return (
-    <section className="bg-[#fff] text-gray-900 border-t border-gray-200">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-[#fff] text-gray-900 border-t border-gray-200">
       
       {/* Divider exactly matching previous red top-aligns */}
       <SectionDivider title="OUR VALUES" className="bg-transparent mb-16 relative z-20" />
@@ -113,6 +113,6 @@ export function HighlightsSection() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

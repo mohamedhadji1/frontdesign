@@ -6,7 +6,7 @@ import { TerminalIcon } from "../animate-ui/icons/terminal";
 
 export function ContactCTASection() {
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       className="relative py-24 md:py-32 overflow-hidden bg-[#ffffff]"
       style={{
         backgroundImage: "url('/background/vector/circuit-glow-light.svg')",
@@ -62,6 +62,6 @@ export function ContactCTASection() {
           </Link>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -18,7 +18,7 @@ export default function Page() {
       <HeroSection />
       <SectionDivider title="KEYSTONE STRATEGY" className="bg-[#F3F3F1]" />
       <StrategySection />
-      <SectionDivider title="KEYSTONE APPROACH" className="bg-black" />
+      <SectionDivider title="KEYSTONE APPROACH" className="bg-black/20" />
       <ApproachSection />
       <ContactCTASection />
       <HighlightsSection />

@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function CyberAttackSimulationPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black/20">
       <HeroSection />
       <ApproachSection />
       <div className="bg-white">

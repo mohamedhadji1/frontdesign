@@ -44,7 +44,7 @@ export function MethodologySection() {
   ];
 
   return (
-    <section className="py-10 md:py-10 bg-black text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 md:py-10 bg-black/20 text-white relative overflow-hidden" onMouseMove={handleMouseMove}>
       <motion.div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
         style={{
@@ -84,7 +84,7 @@ export function MethodologySection() {
               
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-12 h-12 bg-black border border-[#333] group-hover:border-red-500/50 group-hover:bg-red-500/10 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-red-500 transition-all duration-300">
+                  <div className="w-12 h-12 bg-black/20 border border-[#333] group-hover:border-red-500/50 group-hover:bg-red-500/10 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-red-500 transition-all duration-300">
                     {step.icon}
                   </div>
                   <div className="text-5xl font-black text-[#111] group-hover:text-red-500/10 transition-colors duration-500 font-mono tracking-tighter">
@@ -103,6 +103,6 @@ export function MethodologySection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

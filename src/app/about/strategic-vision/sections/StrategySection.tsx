@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Container } from "../ui/Container";
 import { MeshBackground } from "../ui/MeshBackground";
@@ -12,7 +14,7 @@ const paragraphs = [
 
 export function StrategySection() {
   return (
-    <section className={styles.section}>
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className={styles.section}>
       <Container>
         <div className={styles.grid}>
           <div className={styles.copy}>
@@ -40,6 +42,6 @@ export function StrategySection() {
 
         <MeshBackground className={styles.mesh} />
       </Container>
-    </section>
+    </motion.section>
   );
 }

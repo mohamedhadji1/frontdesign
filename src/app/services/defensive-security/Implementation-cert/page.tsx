@@ -40,7 +40,7 @@ const steps = [
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -90,7 +90,7 @@ export default function Page() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
       <div className="mt-10">
             <div className="max-w-3xl mb-16 text-center mx-auto">
               <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
@@ -114,13 +114,13 @@ export default function Page() {
       />
         <CyberSectionDivider className="mx-auto width-[0%]" theme="blue"/>
 
-      <section className="bg-zinc-50 mt-20">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-zinc-50 mt-20">
         <CombinedDeepDive />
-      </section>
+      </motion.section>
 
       <CyberSectionDivider theme="blue" />
 
-      <section className="bg-white py-24">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-24">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
             <motion.div 
@@ -192,7 +192,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <CyberSectionDivider theme="blue" />
 

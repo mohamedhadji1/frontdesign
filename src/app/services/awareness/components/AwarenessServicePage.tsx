@@ -10,8 +10,8 @@ const icons = [ShieldCheck, Sparkles, Target];
 
 export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
   return (
-    <main className="min-h-screen bg-black">
-      <section className="relative overflow-hidden bg-zinc-950 pt-32 pb-20 lg:pt-44 lg:pb-28">
+    <main className="min-h-screen bg-black/20">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative overflow-hidden bg-zinc-950 pt-32 pb-20 lg:pt-44 lg:pb-28">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#7f1d1d1a_1px,transparent_1px),linear-gradient(to_bottom,#7f1d1d1a_1px,transparent_1px)] bg-[size:16px_28px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.22),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(239,68,68,0.16),transparent_30%)]" />
 
@@ -109,9 +109,9 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
             </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="bg-white py-20">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-20">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
@@ -157,7 +157,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
             </div>
           ) : null}
         </div>
-      </section>
+      </motion.section>
 
       <ContactCTASection />
 

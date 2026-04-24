@@ -27,7 +27,7 @@ const methodologySteps = [
 
 export function ApproachSection() {
   return (
-    <section className="py-24 bg-white text-gray-900 border-t border-gray-100">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-24 bg-white text-gray-900 border-t border-gray-100">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">Our <span className="text-red-600">Methodology</span></h2>
@@ -59,6 +59,6 @@ export function ApproachSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

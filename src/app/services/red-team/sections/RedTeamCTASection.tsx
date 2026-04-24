@@ -18,9 +18,9 @@ export function RedTeamCTASection() {
   }
 
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       onMouseMove={handleMouseMove}
-      className="relative py-16 md:py-20 overflow-hidden border-t border-red-900/30 bg-cover bg-center group bg-black" 
+      className="relative py-16 md:py-20 overflow-hidden border-t border-red-900/30 bg-cover bg-center group bg-black/20" 
       style={{ backgroundImage: 'url("/background/vector/circuit-glow.svg")' }}
     >
       {/* Interactive Spotlight */}
@@ -91,6 +91,6 @@ export function RedTeamCTASection() {
           </Link>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

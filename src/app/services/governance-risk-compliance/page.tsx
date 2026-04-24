@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function GovernanceRiskCompliancePage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black/20">
       <HeroSection />
       <CyberSectionDivider />
       <PillarsSection />

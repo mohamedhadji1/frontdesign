@@ -6,23 +6,24 @@ import { TerminalIcon } from "../animate-ui/icons/terminal";
 
 export function ContactCTASection() {
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       className="relative py-24 md:py-32 overflow-hidden bg-[#ffffff]"
       style={{
-        backgroundImage: "url('/background/vector/circuit-glow-light.svg')",
+        backgroundImage: "url('/background/bg3.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 bg-[#ffffff]/40 z-0"></div>
+        backgroundRepeat: "no-repeat",
 
+      }}
+    > 
+      <div className="absolute inset-0 bg-[#ffffff]/5 z-0"></div>
       <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-        <div className="flex flex-col text-center md:text-left">
+        <div className="flex flex-col text-center md:text-left ">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold text-zinc-900 mb-3 tracking-tight uppercase flex items-center gap-10"
+            className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight uppercase flex items-center gap-10"
           >
             <TerminalIcon className="w-6 h-6" animateOnHover />
             READY TO SECURE YOUR FUTURE?
@@ -33,7 +34,7 @@ export function ContactCTASection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-base text-zinc-600 font-medium max-w-2xl leading-relaxed"
+            className="text-base text-white font-medium max-w-2xl leading-relaxed"
           >
             Reach out to our experts and discover how Keystone can accelerate your digital transformation with uncompromising cybersecurity.
           </motion.p>
@@ -61,6 +62,6 @@ export function ContactCTASection() {
           </Link>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -53,7 +53,7 @@ export default function Page() {
     <main className="min-h-screen bg-white flex flex-col">
       <Navbar />
 
-      <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[#09090b]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         </div>
@@ -111,7 +111,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       <CyberSectionDivider theme="blue"/>
       <div className="mt-10 ">
             <div className="max-w-3xl mb-16 text-center mx-auto">

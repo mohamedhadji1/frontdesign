@@ -26,7 +26,7 @@ const reasons = [
 
 export function WhyChooseSection() {
   return (
-    <section className="bg-white py-20">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-20">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
@@ -66,6 +66,6 @@ export function WhyChooseSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

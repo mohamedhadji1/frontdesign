@@ -49,13 +49,13 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled || forceDarkNavbar
-          ? "bg-black/90 backdrop-blur-md py-4 shadow-xl border-b border-white/10"
-          : "bg-transparent py-6"
-      }`}
-    >
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled || forceDarkNavbar
+            ? "bg-black/90 backdrop-blur-md py-4 shadow-xl border-b border-white/10"
+            : "bg-transparent py-6"
+        }`}
+      >
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full relative">
         {/* Left: Logo */}
         <Logo />

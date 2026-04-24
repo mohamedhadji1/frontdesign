@@ -44,7 +44,7 @@ const subServices = [
 
 export function SubServicesSection() {
   return (
-    <section className="py-24 bg-gray-50 text-gray-900 relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-24 bg-gray-50 text-gray-900 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-white to-gray-50 z-0" />
       <div className="absolute -top-[200px] -right-[200px] w-[600px] h-[600px] bg-red-50/50 rounded-full blur-[100px] z-0 pointer-events-none" />
@@ -108,6 +108,6 @@ export function SubServicesSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

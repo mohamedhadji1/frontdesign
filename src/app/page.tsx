@@ -23,7 +23,7 @@ export default function Home() {
       <SectorsSection />
       <CallToActionSection />
       <NewsSection />
-      <SectionDivider title="TRUSTED BY" className="bg-black pb-0" />
+      <SectionDivider title="TRUSTED BY" className="bg-black/20 pb-0" />
       <TrustedBySection />
       <SectionDivider title="GLOBAL PRESENCE" className="bg-[#ffffff] pb-0" />
       <MapSection />

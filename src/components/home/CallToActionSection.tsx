@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function CallToActionSection() {
   return (
-    <section className="bg-gray-900 py-20 relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-gray-900 py-20 relative overflow-hidden">
       {/* Background styling for tech look */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -54,6 +54,6 @@ export function CallToActionSection() {
           </Link>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

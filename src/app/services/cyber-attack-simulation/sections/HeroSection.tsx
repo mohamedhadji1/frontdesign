@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black text-white">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black/20 text-white">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -66,6 +66,6 @@ export function HeroSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

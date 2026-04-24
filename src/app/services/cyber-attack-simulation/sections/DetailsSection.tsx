@@ -7,7 +7,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export function DetailsSection() {
   return (
-    <section className="relative w-full py-24 px-6 md:px-12 bg-white overflow-hidden text-zinc-900">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full py-24 px-6 md:px-12 bg-white overflow-hidden text-zinc-900">
       {/* Background pattern if provided, roughly estimated by radial gradient or simple shapes */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-400 via-transparent to-transparent pointer-events-none" />
 
@@ -105,6 +105,6 @@ export function DetailsSection() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

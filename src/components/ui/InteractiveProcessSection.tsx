@@ -41,7 +41,7 @@ export function InteractiveProcessSection({
 
   return (
     
-    <section className="py-5 relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-5 relative overflow-hidden">
       {/* Background Effects */}
       <div className={`absolute inset-0 pointer-events-none`} />
       
@@ -177,6 +177,6 @@ export function InteractiveProcessSection({
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

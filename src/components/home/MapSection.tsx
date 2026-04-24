@@ -39,7 +39,7 @@ export function MapSection() {
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
 
   return (
-    <section id="map-section" className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} id="map-section" className="pb-20 pt-8 bg-[#ffffff] relative px-4 text-zinc-900">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -198,6 +198,6 @@ export function MapSection() {
           <Tooltip id="map-tooltip" style={{ backgroundColor: "#18181b", color: "#fff", borderRadius: "8px", fontWeight: "500", fontSize: "12px", zIndex: 100 }} />
         </div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 }

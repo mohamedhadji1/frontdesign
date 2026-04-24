@@ -24,7 +24,7 @@ export function CrossSellingSection() {
   ];
 
   return (
-    <section className="py-10 bg-zinc-50 border-t border-zinc-200">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-zinc-50 border-t border-zinc-200">
       
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
@@ -71,6 +71,6 @@ export function CrossSellingSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

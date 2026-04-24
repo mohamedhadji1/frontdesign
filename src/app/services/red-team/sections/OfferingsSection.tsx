@@ -69,7 +69,7 @@ export function OfferingsSection() {
   ];
 
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       onMouseMove={handleMouseMove}
       className="py-24 md:py-10 bg-white text-zinc-600 relative border-t border-zinc-200 overflow-hidden group"
     >
@@ -206,6 +206,6 @@ export function OfferingsSection() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

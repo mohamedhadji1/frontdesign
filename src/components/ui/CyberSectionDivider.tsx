@@ -30,7 +30,7 @@ export function CyberSectionDivider({
         <div
           className={`absolute h-px w-32 bg-gradient-to-r from-transparent ${current.glow} to-transparent md:w-64`}
         />
-        <div className="absolute flex items-center justify-center rounded-sm border border-zinc-800 bg-black p-1">
+        <div className="absolute flex items-center justify-center rounded-sm border border-zinc-800 bg-black/20 p-1">
           <div className={`h-1.5 w-1.5 rounded-full animate-pulse ${current.dot}`} />
         </div>
         <div className="absolute flex h-px w-12 items-center justify-between bg-transparent md:w-24">

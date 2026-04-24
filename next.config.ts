@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
   turbopack: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ziedhamdi.com",
+      },
+    ],
+  },
 
   async rewrites() {
     return {

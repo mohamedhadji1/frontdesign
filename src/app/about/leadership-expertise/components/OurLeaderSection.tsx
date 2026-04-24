@@ -1,8 +1,10 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function OurLeaderSection() {
   return (
-    <section className="bg-black py-24 relative overflow-hidden" style={{ fontFamily: "'Gotham', sans-serif" }}>
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-black/20 py-24 relative overflow-hidden" style={{ fontFamily: "'Gotham', sans-serif" }}>
       {/* Optional faint background pattern overlay */}
       <div className="absolute top-0 right-0 opacity-10 pointer-events-none w-1/2 h-full z-0">
          {/* Faint pattern usually goes here */}
@@ -53,6 +55,6 @@ export function OurLeaderSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

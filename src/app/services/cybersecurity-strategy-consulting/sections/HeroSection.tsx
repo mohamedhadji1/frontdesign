@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section className="relative w-full h-auto min-h-[100dvh] flex items-center justify-center overflow-hidden bg-black text-white pt-24 pb-16">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-auto min-h-[100dvh] flex items-center justify-center overflow-hidden bg-black/20 text-white pt-24 pb-16">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0 bg-black">
+      <div className="absolute inset-0 z-0 bg-black/20">
         <video
           src="/vids/videoplayback.mp4"
           autoPlay
@@ -91,6 +91,6 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

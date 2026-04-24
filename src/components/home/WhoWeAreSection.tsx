@@ -53,7 +53,7 @@ export function WhoWeAreSection() {
   ];
 
   return (
-    <section className="bg-white relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white relative overflow-hidden">
       {/* Top Part - White Background */}
       <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-20 pb-16">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
@@ -400,6 +400,6 @@ export function WhoWeAreSection() {
         )}
       </div>
 
-    </section>
+    </motion.section>
   );
 }

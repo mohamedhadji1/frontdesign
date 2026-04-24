@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
 import { HighlightCard } from "../ui/HighlightCard";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
@@ -5,7 +7,7 @@ import styles from "./HighlightsSection.module.css";
 
 export function HighlightsSection() {
   return (
-    <section className={styles.section}>
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className={styles.section}>
       <Container>
         <SectionEyebrow label="HIGHLIGHTS" />
 
@@ -22,6 +24,6 @@ export function HighlightsSection() {
           />
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 }

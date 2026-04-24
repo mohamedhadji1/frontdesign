@@ -61,7 +61,7 @@ export function TestingBenefitsSection() {
   ];
 
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       className="relative w-full py-24 md:py-40 px-6 md:px-12 bg-white overflow-hidden text-zinc-600 border-t border-zinc-200 group"
       onMouseMove={handleMouseMove}
     >
@@ -265,6 +265,6 @@ export function TestingBenefitsSection() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

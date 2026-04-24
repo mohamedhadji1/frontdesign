@@ -50,7 +50,7 @@ export function ContactSection() {
   };
 
   return (
-    <section className="relative w-full min-h-[90vh] py-24 flex items-center justify-center bg-[#f7f8f9] overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full min-h-[90vh] py-24 flex items-center justify-center bg-[#f7f8f9] overflow-hidden">
       {/* Background Graphic Overlay */}
       <div 
         className="absolute inset-0 w-full h-full opacity-30"
@@ -216,6 +216,6 @@ export function ContactSection() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -19,7 +19,7 @@ export function VersatilityAndImpartialitySection() {
             className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 flex items-start gap-4"
             style={{ fontFamily: "'Gotham', sans-serif" }}
           >
-            <span className="w-2.5 h-2.5 bg-black inline-block flex-shrink-0 mt-2"></span> 
+            <span className="w-2.5 h-2.5 bg-black/20 inline-block flex-shrink-0 mt-2"></span> 
             <span>VERSATILITY AND<br/>IMPARTIALITY</span>
           </h2>
           <p

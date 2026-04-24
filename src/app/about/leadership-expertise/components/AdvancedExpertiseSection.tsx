@@ -9,7 +9,7 @@ export function AdvancedExpertiseSection() {
             className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-4"
             style={{ fontFamily: "'Gotham', sans-serif" }}
           >
-            <span className="w-2.5 h-2.5 bg-black inline-block flex-shrink-0"></span> ADVANCED EXPERTISE
+            <span className="w-2.5 h-2.5 bg-black/20 inline-block flex-shrink-0"></span> ADVANCED EXPERTISE
           </h2>
           <p
             className="text-gray-700 mb-6 leading-[1.8]"

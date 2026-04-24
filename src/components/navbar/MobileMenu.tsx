@@ -11,6 +11,16 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
+type MenuLinkItem =
+  | string
+  | {
+      name?: string;
+      label?: string;
+      href?: string;
+      slug?: string;
+      subItems?: (string | { name: string; slug?: string })[];
+    };
+
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
@@ -112,7 +122,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         <div key={idx}>
                           <h4 className="text-red-500 text-sm font-semibold mb-3 tracking-wide">{group.category}</h4>
                           <ul className="flex flex-col space-y-3">
-                            {group.items.map((item: any, itemIdx: number) => {
+                            {group.items.map((item: MenuLinkItem, itemIdx: number) => {
                               const itemName = typeof item === 'string' ? item : (item.name || item.label);
                               
                               // Change hash links to valid routing links for Services components
@@ -131,9 +141,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                       {itemName}
                                     </Link>
                                   </li>
-                                  {item.subItems && (
+                                      {typeof item !== "string" && item.subItems && (
                                     <ul className="pl-4 mt-2 flex flex-col space-y-2 border-l border-white/10">
-                                      {item.subItems.map((sub: any, subIdx: number) => {
+                                      {item.subItems.map((sub: string | { name: string; slug?: string }, subIdx: number) => {
                                         const subName = typeof sub === 'object' ? sub.name : sub;
                                         const subHref = typeof sub === 'object' && sub.slug 
                                           ? `/${sub.slug}` 

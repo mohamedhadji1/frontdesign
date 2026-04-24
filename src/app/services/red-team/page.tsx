@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RedTeamPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black/20">
       <HeroSection />
       <CyberSectionDivider />
       <WhatIsRedTeamSection />

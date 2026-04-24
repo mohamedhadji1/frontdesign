@@ -51,7 +51,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-white flex flex-col">
       <Navbar />
-      <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         
         <div className="absolute inset-0 bg-[#09090b]">
            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
@@ -121,7 +121,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       <CyberSectionDivider theme="blue"/>
       <div className="mt-10">
             <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
@@ -147,7 +147,7 @@ export default function Page() {
 
 
       <CyberSectionDivider theme="blue"/>
-      <section className="py-10 lg:py-10 bg-zinc-50 border-t border-b border-zinc-200/50 overflow-hidden relative">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 lg:py-10 bg-zinc-50 border-t border-b border-zinc-200/50 overflow-hidden relative">
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <div className="max-w-3xl mb-16 text-center mx-auto">
             <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
@@ -247,7 +247,7 @@ export default function Page() {
 
           </div>
         </div>
-      </section> 
+      </motion.section> 
 <CyberSectionDivider theme="blue"/>
       <DEFCTASection />
 

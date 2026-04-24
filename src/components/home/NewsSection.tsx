@@ -90,7 +90,7 @@ export function NewsSection() {
     : [];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full overflow-hidden bg-white">
       <SectionDivider title="COMPANY NEWS" className="bg-transparent pt-0 pb-12 mix-blend-multiply z-20 relative" />
 
       {/* Background Image */}
@@ -255,6 +255,6 @@ export function NewsSection() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

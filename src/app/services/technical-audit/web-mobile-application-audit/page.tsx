@@ -13,7 +13,7 @@ import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
 export default function WebMobileAppAuditPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <section className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -63,9 +63,9 @@ export default function WebMobileAppAuditPage() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
       <CyberSectionDivider theme="red"/>
-      <section className="py-10 bg-zinc-50 border-b border-zinc-200">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-zinc-50 border-b border-zinc-200">
         
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16 text-center mx-auto">
@@ -111,11 +111,11 @@ export default function WebMobileAppAuditPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       <div className="width-10% mx-auto">
       <CyberSectionDivider theme="red" />
       </div>
-      <section className="py-10 bg-white">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-white">
         <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-20 flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-red-600/30"></span>
               wEB & MOBILE aPPLICATION aUDIT mETHODOLOGY
@@ -183,7 +183,7 @@ export default function WebMobileAppAuditPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       <div className="width-10% mx-auto">
         <CyberSectionDivider theme="red"/>
       </div>

@@ -37,7 +37,7 @@ export default function LeadershipExpertisePage() {
           
         </div>
       </section>
-      <SectionDivider title="KEYSTONE LEADERSHIP" className="bg-black" />
+      <SectionDivider title="KEYSTONE LEADERSHIP" className="bg-black/20" />
       <OurLeaderSection />
       <ContactCTASection />
       <SectionDivider title="GLOBAL PRESENCE" className="bg-white" />

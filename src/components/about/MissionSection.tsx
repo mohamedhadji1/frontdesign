@@ -51,7 +51,7 @@ const Hexagon = ({
 
 export function MissionSection() {
   return (
-    <section 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
       className="relative w-full py-24 bg-white overflow-hidden flex flex-col items-center"
       style={{
         backgroundImage: "url('/background/bg5.png')",
@@ -72,7 +72,7 @@ export function MissionSection() {
           className="w-full xl:w-5/12 flex flex-col items-start"
         >
           <div className="flex items-center mb-8">
-            <div className="w-3 h-3 bg-black mr-4 mt-1"></div>
+            <div className="w-3 h-3 bg-black/20 mr-4 mt-1"></div>
             <h2 className="text-3xl md:text-4xl font-black text-black tracking-wider">OUR MISSION</h2>
           </div>
 
@@ -132,6 +132,6 @@ export function MissionSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -3,14 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 
 type ServiceItem = {
   name: string;
   slug?: string;
   subCategory?: string;
   subItems?: (string | { name: string; slug?: string })[];
-  [key: string]: any;
 };
 
 type ServiceCategory = {
@@ -115,9 +113,17 @@ export const servicesDetails: ServiceCategory[] = [
       },
       {
         name: "Cyber Exercise",
+        slug: "cyber-exercise",
         subCategory: "Cyber Exercise Programs",
         subItems: [
-          "Cyber Exercise Management & Technique",
+          {
+            name: "Business continuity management, resilience, and recovery",
+            slug: "services/cyber-exercise/business-continuity-management-resilience-and-recovery",
+          },
+          {
+            name: "Cybersecurity and investigation",
+            slug: "services/cyber-exercise/cybersecurity-and-investigation",
+          },
         ],
       },
       {
