@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FileText, ShieldAlert, Users, Gamepad2, LineChart } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function CyberCrisisManagementFrameworkPage() {
   const breadcrumbs = [
@@ -75,6 +76,9 @@ export default function CyberCrisisManagementFrameworkPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 National Cyber Crisis <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Management Framework</span>
               </h1>
+              <HeroTypeLine
+                items={["Crisis governance", "National response coordination", "Operational continuity under attack"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Keystone offers its expertise to develop a national cyber crisis management framework, an essential mechanism to anticipate and manage cyber incidents at the national level. We work with governments to develop harmonized strategies and response plans to ensure national resilience and security.

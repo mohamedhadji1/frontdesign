@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export function AboutHeroSection() {
   return (
@@ -30,6 +31,10 @@ export function AboutHeroSection() {
           <h1 className="text-4xl sm:text-5xl md:text-[4rem] font-bold tracking-tight text-white leading-[1.1] mb-6">
             Keystone : Your Trusted<br className="hidden md:block" /> Cybersecurity Partner
           </h1>
+
+          <HeroTypeLine
+            items={["Trusted cybersecurity leadership", "Strategic digital protection", "Security that scales with you"]}
+          />
 
           <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10">
             We secure what matters most to you.

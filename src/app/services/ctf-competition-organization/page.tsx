@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const eventFormats = [
   {
@@ -115,6 +116,10 @@ export default function CtfCompetitionOrganizationPage() {
               <p className="mb-4 max-w-2xl text-xl text-zinc-300">
                 Develop cybersecurity skills through play.
               </p>
+
+              <HeroTypeLine
+                items={["Game-based cyber training", "Capture the flag design", "Team learning through challenge"]}
+              />
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-400">
                 Capture The Flag competitions are more than games. They create

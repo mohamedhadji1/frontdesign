@@ -9,6 +9,7 @@ import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSec
 import { Target, Scan, ShieldAlert, Crosshair, Network, Activity, Search, Users } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -78,6 +79,10 @@ export default function Page() {
               >
                 Threat <wbr /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Hunting</span>
               </motion.h1>
+              <HeroTypeLine
+                items={["Proactive threat discovery", "Hidden attacker tracing", "Hunt-led defensive improvement"]}
+                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -85,7 +90,7 @@ export default function Page() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-lg md:text-xl text-zinc-400 mb-8 leading-relaxed max-w-xl font-light mx-auto"
               >
-                Our cybersecurity experts proactively hunt for hidden threats in our clients' networks before they can cause harm to the environment.
+                Our cybersecurity experts proactively hunt for hidden threats in our clients&apos; networks before they can cause harm to the environment.
               </motion.p>
 
               <motion.div

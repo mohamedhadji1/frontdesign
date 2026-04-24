@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { CloudCog, ShieldCheck, AlertTriangle, FileText, Activity } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function CriticalInfrastructureProtectionPage() {
   const breadcrumbs = [
@@ -75,6 +76,9 @@ export default function CriticalInfrastructureProtectionPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Critical Infrastructure <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">& Cloud Protection</span>
               </h1>
+              <HeroTypeLine
+                items={["Critical asset protection", "Cloud security posture", "Infrastructure resilience planning"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Keystone supports you in auditing and securing your Cloud environments and critical infrastructures. Contact us for an in-depth evaluation and recommendations tailored to your operational needs.

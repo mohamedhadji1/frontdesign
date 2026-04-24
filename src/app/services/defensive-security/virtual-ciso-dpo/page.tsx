@@ -9,6 +9,7 @@ import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSec
 import { Award, Route, FileCheck, ShieldAlert, Handshake, Search, Activity, Eye, DownloadCloud, FileWarning, Ghost } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -80,7 +81,11 @@ export default function Page() {
               >
                 Virtual CISO <wbr/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">& DPO</span>  
               </motion.h1>
-              
+              <HeroTypeLine
+                items={["Security leadership on demand", "Data protection guidance", "Governance without full-time overhead"]}
+                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
+               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

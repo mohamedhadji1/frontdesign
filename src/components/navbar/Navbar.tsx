@@ -38,7 +38,7 @@ export function Navbar() {
         setScrolled(false);
       }
     };
-    
+
     // Check initial scroll position
     handleScroll();
 
@@ -49,13 +49,12 @@ export function Navbar() {
   }, []);
 
   return (
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled || forceDarkNavbar
-            ? "bg-black/90 backdrop-blur-md py-4 shadow-xl border-b border-white/10"
-            : "bg-transparent py-6"
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled || forceDarkNavbar
+          ? "bg-black/90 backdrop-blur-md py-4 shadow-xl border-b border-white/10"
+          : "bg-transparent py-6"
         }`}
-      >
+    >
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full relative">
         {/* Left: Logo */}
         <Logo />
@@ -63,57 +62,57 @@ export function Navbar() {
         {/* Center: Navigation Links */}
         <div className="hidden lg:flex space-x-8 items-center h-full">
 
-          <div 
-            className="h-full flex items-center relative py-6"
+          <div
+            className="h-full flex items-center py-6"
             onMouseEnter={() => handleMouseEnter("About")}
             onMouseLeave={handleMouseLeave}
           >
-            <NavItem 
-              label="About" 
-              href="/about" 
-              hasDropdown 
+            <NavItem
+              label="About"
+              href="/about"
+              hasDropdown
               isActive={activeDropdown === "About"}
             />
             {activeDropdown === "About" && <AboutDropdown />}
           </div>
 
-          <div 
+          <div
             className="h-full flex items-center py-6"
             onMouseEnter={() => handleMouseEnter("Services")}
             onMouseLeave={handleMouseLeave}
           >
-            <NavItem 
-              label="Services" 
-              href="/services" 
-              hasDropdown 
+            <NavItem
+              label="Services"
+              href="/services"
+              hasDropdown
               isActive={activeDropdown === "Services"}
             />
             {activeDropdown === "Services" && <ServicesDropdown />}
           </div>
 
-          <div 
+          <div
             className="h-full flex items-center py-6"
             onMouseEnter={() => handleMouseEnter("Sectors")}
             onMouseLeave={handleMouseLeave}
           >
-            <NavItem 
-              label="Sectors" 
-              href="/sectors" 
-              hasDropdown 
+            <NavItem
+              label="Sectors"
+              href="/sectors"
+              hasDropdown
               isActive={activeDropdown === "Sectors"}
             />
             {activeDropdown === "Sectors" && <SectorsDropdown />}
           </div>
 
-          <div 
+          <div
             className="h-full flex items-center py-6"
             onMouseEnter={() => handleMouseEnter("Careers")}
             onMouseLeave={handleMouseLeave}
           >
-            <NavItem 
-              label="Careers" 
-              href="/careers" 
-              hasDropdown 
+            <NavItem
+              label="Careers"
+              href="/careers"
+              hasDropdown
               isActive={activeDropdown === "Careers"}
             />
             {activeDropdown === "Careers" && <CareersDropdown />}
@@ -128,7 +127,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="lg:hidden text-white focus:outline-none"
           onClick={() => setIsMobileMenuOpen(true)}
         >
@@ -148,9 +147,9 @@ export function Navbar() {
       </div>
 
       {/* Render Mobile Fullscreen Menu */}
-      <MobileMenu 
-        isOpen={isMobileMenuOpen} 
-        onClose={() => setIsMobileMenuOpen(false)} 
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
       />
     </nav>
   );

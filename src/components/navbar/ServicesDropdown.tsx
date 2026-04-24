@@ -165,7 +165,30 @@ export function ServicesDropdown() {
         </div>
 
         {/* Right Content Area */}
-        <div className="w-3/4 pl-10 flex">
+        <div className="w-3/4 pl-10 flex relative overflow-hidden">
+          {/* Subtle Animated Decorative Watermark */}
+          <motion.div 
+            className="absolute -right-20 top-1/2 -translate-y-1/2 text-red-600 pointer-events-none"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: [0.08, 0.15, 0.08], y: [0, -15, 0], scale: [1, 1.05, 1] }}
+            transition={{ 
+              duration: 8, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          >
+            <svg className="w-[600px] h-[600px]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
+              <circle cx="50" cy="50" r="48" strokeDasharray="4 8" opacity="0.5" />
+              <circle cx="50" cy="50" r="42" opacity="0.3" />
+              <polygon points="50,15 80,32.5 80,67.5 50,85 20,67.5 20,32.5" opacity="0.2" />
+              <path d="M50 25 L70 35 V55 C70 70 50 80 50 80 C50 80 30 70 30 55 V35 Z" strokeWidth="1" />
+              <path d="M50 40 L60 45 V50 M50 40 V60 M50 40 L40 45 V50" opacity="0.6" />
+              <circle cx="50" cy="60" r="2" fill="currentColor" opacity="0.8" />
+              <circle cx="60" cy="50" r="1.5" fill="currentColor" opacity="0.8" />
+              <circle cx="40" cy="50" r="1.5" fill="currentColor" opacity="0.8" />
+            </svg>
+          </motion.div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -173,7 +196,7 @@ export function ServicesDropdown() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2 }}
-              className="flex w-full"
+              className="flex w-full relative z-10"
             >
               {currentCategoryObj?.items.some(i => i.subItems) ? (
                 // Special nested layout for Offensive Security

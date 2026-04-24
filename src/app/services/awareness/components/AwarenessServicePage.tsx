@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Sparkles, Target } from "lucide-react";
 import type { AwarenessPageData } from "../data";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const icons = [ShieldCheck, Sparkles, Target];
 
@@ -49,6 +50,10 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
               >
                 {page.title}
               </motion.h1>
+
+              <HeroTypeLine
+                items={[page.eyebrow, "Interactive awareness journeys", "Human-centered cyber learning"]}
+              />
 
               <motion.p
                 initial={{ opacity: 0, y: 28 }}

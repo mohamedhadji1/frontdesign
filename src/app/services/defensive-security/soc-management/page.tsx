@@ -6,6 +6,7 @@ import { ShieldAlert, Activity, Search, Terminal, Siren, Globe, Eye, AlertCircle
 import { motion } from "framer-motion";
 import { DEFCTASection } from "./DEFCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 
 const steps = [
@@ -75,7 +76,11 @@ export default function Page() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 SOC <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">Management</span>
               </h1>
-              
+              <HeroTypeLine
+                items={["24/7 security operations", "Threat monitoring at scale", "Managed defensive visibility"]}
+                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
+               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Comprehensive defense operations protecting your organization through 24/7 monitoring, automated vulnerability scanning, proactive threat intelligence, high-speed incident management, and advanced anti-phishing protection.
               </p>

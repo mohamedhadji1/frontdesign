@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export function HeroSection() {
   return (
@@ -45,6 +46,10 @@ export function HeroSection() {
           >
             Cybersecurity <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Strategy</span> Consulting
           </motion.h1>
+
+          <HeroTypeLine
+            items={["Security leadership", "National and sector strategy", "Resilience by design"]}
+          />
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

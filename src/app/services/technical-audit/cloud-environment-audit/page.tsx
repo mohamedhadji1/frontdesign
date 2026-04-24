@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
 import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const cloudSteps = [
   {
@@ -75,6 +76,10 @@ export default function CloudEnvironmentAuditPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Hardening the Perimeter of Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Cloud Infrastructure</span>
               </h1>
+
+              <HeroTypeLine
+                items={["Cloud configuration assurance", "IAM and container review", "Misconfiguration exposure reduction"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 As your organization scales, cloud misconfigurations become the primary attack vector. Our profound technical assessments unearth complex IAM privilege escalations, insecure storage configurations, and Kubernetes weaknesses before they can be exploited. 

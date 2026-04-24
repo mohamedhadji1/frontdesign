@@ -9,6 +9,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { ContactCTASection } from "@/components/about/ContactCTASection";
 import { motion } from "framer-motion";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
 import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
 
@@ -75,6 +76,9 @@ export default function SystemHardeningPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Endpoint & Server <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">System Hardening</span>
               </h1>
+              <HeroTypeLine
+                items={["Attack surface reduction", "Secure baseline enforcement", "Endpoint and server resilience"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Securing an environment requires more than deploying an EDR. True resilience demands closing inherent operating system loopholes. We methodically reduce the attack surface of your Windows and Linux fleets to frustrate lateral movement and persistent threats.
@@ -127,5 +131,4 @@ export default function SystemHardeningPage() {
     </main>
   );
 }
-
 

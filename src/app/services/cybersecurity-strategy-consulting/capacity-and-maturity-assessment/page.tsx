@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { LineChart, BookOpenCheck, ShieldAlert, Target, RefreshCw } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function CapacityAndMaturityAssessmentPage() {
   const breadcrumbs = [
@@ -76,9 +77,12 @@ export default function CapacityAndMaturityAssessmentPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Assessment of National Capacities and <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Cybersecurity Maturity</span>
               </h1>
+              <HeroTypeLine
+                items={["National capability mapping", "Maturity benchmarking", "Cyber readiness assessment"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers its expertise to assess a country's national capacities and cybersecurity maturity. We work with governments to establish a comprehensive and accurate assessment of cybersecurity infrastructures, policies, and operational capacities.
+                Keystone offers its expertise to assess a country&apos;s national capacities and cybersecurity maturity. We work with governments to establish a comprehensive and accurate assessment of cybersecurity infrastructures, policies, and operational capacities.
               </p>
               
               <div className="flex flex-wrap items-center gap-4">

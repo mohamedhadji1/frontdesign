@@ -9,6 +9,7 @@ import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSec
 import { ContactCTASection } from "@/components/about/ContactCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { motion } from "framer-motion";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
 import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
 
@@ -75,6 +76,9 @@ export default function IndustrialSystemAuditPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Safeguarding Critical <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">ICS & SCADA</span> Infrastructure
               </h1>
+              <HeroTypeLine
+                items={["OT environment review", "ICS and SCADA resilience", "Safety-aware security testing"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 The convergence of OT and IT introduces massive kinetic risks. Our industrial audits prioritize extreme safety and availability, utilizing passive network monitoring and deep protocol analysis to secure PLCs, HMIs, and the vital components of your operations.

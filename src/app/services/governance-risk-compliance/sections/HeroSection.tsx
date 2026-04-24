@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export function HeroSection() {
   return (
@@ -46,6 +47,10 @@ export function HeroSection() {
             Governance, <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Risk</span> & Compliance
           </motion.h1>
 
+          <HeroTypeLine
+            items={["Risk clarity", "Compliance confidence", "Governance that strengthens resilience"]}
+          />
+
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +58,7 @@ export function HeroSection() {
             className="text-lg md:text-xl lg:text-2xl text-gray-300 font-medium mb-6 leading-relaxed max-w-3xl"
           >
             Master your risks, meet regulatory expectations, and strengthen your
-            organization's resilience with a structured GRC approach tailored to
+            organization&apos;s resilience with a structured GRC approach tailored to
             your environment.
           </motion.p>
 
@@ -64,7 +69,7 @@ export function HeroSection() {
             className="text-base md:text-lg text-gray-400 font-normal mb-10 leading-relaxed max-w-3xl"
           >
             Effective governance, risk, and compliance management is essential
-            in today's fast-changing regulatory landscape. At Keystone, we help your business protect operations, reduce exposure, and align
+            in today&apos;s fast-changing regulatory landscape. At Keystone, we help your business protect operations, reduce exposure, and align
             with information security standards.
           </motion.p>
 

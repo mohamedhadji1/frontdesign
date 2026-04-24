@@ -7,6 +7,7 @@ import { DEFCTASection } from "../soc-management/DEFCTASection";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { ShieldAlert, Activity, Search, Terminal, Siren, Globe, Eye } from "lucide-react";
 import { motion } from "framer-motion";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const steps = [
   {
@@ -54,6 +55,11 @@ export default function Page() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Cyber <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">Threat Intelligence</span>
               </h1>
+
+              <HeroTypeLine
+                items={["Dark web monitoring", "Actionable intelligence feeds", "Threat visibility before impact"]}
+                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Empower your security posture with actionable intelligence. We monitor the dark web, malicious infrastructure, and geopolitical trends to anticipate attacks tailored to your industry.

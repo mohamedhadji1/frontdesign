@@ -8,6 +8,7 @@ import { ServerCog, FileCheck, Users, Gamepad2, Network } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { CombinedDeepDive } from "../../defensive-security/Implementation-cert/CombinedDeepDive";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function CertImplementationPage() {
   const breadcrumbs = [
@@ -77,6 +78,10 @@ export default function CertImplementationPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 CERT <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Implementation</span>
               </h1>
+
+              <HeroTypeLine
+                items={["Incident response capability", "CERT operating model", "Detection-to-response readiness"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Keystone offers its expertise in the implementation of CERTs, teams dedicated to managing IT security incidents. We collaborate with organizations to establish CERTs capable of detecting, analyzing, and responding quickly to cyber threats.

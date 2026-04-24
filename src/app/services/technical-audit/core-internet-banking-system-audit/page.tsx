@@ -9,6 +9,7 @@ import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSec
 import { ContactCTASection } from "@/components/about/ContactCTASection";
 import { motion } from "framer-motion";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
 import { RedTeamCTASection } from "../../red-team/sections/RedTeamCTASection";
 
@@ -77,6 +78,9 @@ export default function CoreBankingAuditPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Securing the Financial Core: <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Banking Systems Audit</span>
               </h1>
+              <HeroTypeLine
+                items={["Core banking assurance", "Transaction logic review", "Financial platform hardening"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 The core banking system is the critical nervous system of any financial institution. Our elite technical audits dive deep into transaction logic, API integration, and cryptographic protocols to prevent exploitation and ensure strict regulatory alignment.

@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Search, Cpu, Activity, Database, Gavel } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -79,7 +80,11 @@ export default function Page() {
               >
                 Digital <wbr/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Forensics</span>
               </motion.h1>
-              
+              <HeroTypeLine
+                items={["Evidence preservation", "Intrusion reconstruction", "Defensible forensic analysis"]}
+                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
+               
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -181,7 +186,7 @@ export default function Page() {
                            animate={{ opacity: 1, height: 'auto' }}
                            className="text-xs text-blue-600 mt-1 font-mono font-medium"
                          >
-                           PHASE 0{index + 1} // ACTIVE
+                            PHASE 0{index + 1} {"// ACTIVE"}
                          </motion.p>
                       )}
                     </div>

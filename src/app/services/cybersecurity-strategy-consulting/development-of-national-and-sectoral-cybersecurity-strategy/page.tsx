@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Search, Compass, Users, Activity, GlobeLock } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function NationalSectoralStrategyPage() {
   const breadcrumbs = [
@@ -75,6 +76,9 @@ export default function NationalSectoralStrategyPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Development of National & Sectoral <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Cybersecurity Strategy</span>
               </h1>
+              <HeroTypeLine
+                items={["National cyber policy", "Sectoral strategy design", "Long-term security direction"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Keystone offers a specialized service in the development of national and sectoral cybersecurity strategies, aiming to strengthen security at the national and sectoral levels. We work closely with governments and sectoral entities to design robust strategies that meet the specific challenges of each domain.

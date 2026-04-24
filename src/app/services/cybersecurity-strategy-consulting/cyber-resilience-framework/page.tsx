@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Search, Shield, Lock, Crosshair, GraduationCap, CheckCircle2 } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function CyberResilienceFrameworkPage() {
   const breadcrumbs = [
@@ -75,6 +76,9 @@ export default function CyberResilienceFrameworkPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Cyber Resilience <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Framework Development</span>
               </h1>
+              <HeroTypeLine
+                items={["Resilience architecture", "Preparedness and recovery", "Adaptive cyber operations"]}
+              />
               
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
                 Keystone offers expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring rapid recovery after an attack.
