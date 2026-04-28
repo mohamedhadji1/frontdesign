@@ -62,7 +62,7 @@ export function WhoWeAreSection() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0, 0, 0.2, 1] }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
@@ -100,7 +100,7 @@ export function WhoWeAreSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0, 0, 0.2, 1] }}
             className="w-full lg:w-1/2 flex flex-col items-center lg:items-start lg:justify-center gap-10 lg:gap-12 lg:pl-10 mt-8 lg:mt-0 text-center lg:text-left"
           >
             {/* Stat 1 */}
@@ -249,7 +249,7 @@ export function WhoWeAreSection() {
               <motion.div 
                 className="absolute inset-0 bg-cover bg-center"
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: [0, 0, 0.2, 1] }}
                 style={{ backgroundImage: "url('/images/team.jpg')" }} 
               />
             </div>
@@ -283,7 +283,7 @@ export function WhoWeAreSection() {
                     key={idx} 
                     variants={{
                       hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0, 0, 0.2, 1] } }
                     }}
                     className="flex items-center gap-4"
                   >

@@ -21,6 +21,12 @@ type MenuLinkItem =
       subItems?: (string | { name: string; slug?: string })[];
     };
 
+const slugify = (value: string) =>
+  value
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .toLowerCase();
+
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
@@ -123,12 +129,17 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                           <h4 className="text-red-500 text-sm font-semibold mb-3 tracking-wide">{group.category}</h4>
                           <ul className="flex flex-col space-y-3">
                             {group.items.map((item: MenuLinkItem, itemIdx: number) => {
-                              const itemName = typeof item === 'string' ? item : (item.name || item.label);
-                              
-                              // Change hash links to valid routing links for Services components
-                              const href = item.href || (section.name === "Services"
-                                ? `/services/${item.slug || itemName.replace(/[\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}`
-                                : `#${itemName.replace(/[\s(),&]+/g, "-").toLowerCase()}`);
+                              const itemName =
+                                typeof item === "string" ? item : item.name || item.label || "";
+                              const itemHref = typeof item === "string" ? undefined : item.href;
+                              const itemSlug = typeof item === "string" ? undefined : item.slug;
+                              const href =
+                                itemHref ||
+                                (section.name === "Services"
+                                  ? `/services/${itemSlug || slugify(itemName)}`
+                                  : section.name === "Sectors"
+                                    ? `/sectors/${slugify(itemName)}`
+                                    : `#${slugify(itemName)}`);
                                 
                               return (
                                 <div key={itemIdx}>
@@ -147,7 +158,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         const subName = typeof sub === 'object' ? sub.name : sub;
                                         const subHref = typeof sub === 'object' && sub.slug 
                                           ? `/${sub.slug}` 
-                                          : `/services/${itemName.replace(/[\\s(),&]+/g, "-").replace(/-+/g, '-').toLowerCase()}#${subName.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
+                                          : `/services/${itemSlug || slugify(itemName)}#${slugify(subName)}`;
                                           
                                         return (
                                         <li key={subIdx}>

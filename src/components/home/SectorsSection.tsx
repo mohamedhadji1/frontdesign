@@ -89,7 +89,7 @@ export function SectorsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{
-            visible: { opacity: 1, transition: { staggerChildren: 0.15, duration: 1, ease: "easeOut" } },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15, duration: 1, ease: [0, 0, 0.2, 1] } },
             hidden: { opacity: 0 }
           }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:auto-rows-[120px] gap-4 grid-flow-dense"
@@ -103,7 +103,7 @@ export function SectorsSection() {
                 layout
                 variants={{
                   hidden: { opacity: 0, y: 15 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0, 0, 0.2, 1] } }
                 }}
                 key={index}
                 onClick={() => setActiveIndex(isActive ? -1 : index)}

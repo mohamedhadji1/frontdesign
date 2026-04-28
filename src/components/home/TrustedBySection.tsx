@@ -19,7 +19,7 @@ export function TrustedBySection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: [0, 0, 0.2, 1] }}
         className="max-w-5xl mx-auto relative z-10 flex flex-col items-center"
       >
         <p className="text-zinc-400 max-w-2xl mx-auto mb-10 text-center font-medium text-sm md:text-base">
@@ -44,7 +44,7 @@ export function TrustedBySection() {
               key={index} 
               variants={{
                 hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: "easeOut" } }
+                visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0, 0, 0.2, 1] } }
               }}
               whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
               className="relative w-40 h-20 md:w-48 md:h-24 cursor-pointer"
