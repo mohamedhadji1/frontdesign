@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { servicesDetails } from "./ServicesDropdown";
 import { sectorsDetails } from "./SectorsDropdown";
-import { careersDetails } from "./CareersDropdown";
+import { careersDetails } from "@/lib/careers";
 
 interface MobileMenuProps {
   isOpen: boolean;

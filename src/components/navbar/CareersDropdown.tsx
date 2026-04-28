@@ -4,35 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const careersDetails = [
-  {
-    category: "Internships Offers",
-    items: [
-      "Cybersecurity Analyst Intern",
-      "Penetration Testing Intern",
-      "Governance, Risk & Compliance Intern",
-      "Malware Analysis Intern",
-    ],
-  },
-  {
-    category: "Junior Offers",
-    items: [
-      "Junior Cybersecurity Analyst",
-      "Junior Penetration Tester",
-      "Junior GRC Consultant",
-      "Junior Threat Intelligence Analyst",
-    ],
-  },
-  {
-    category: "Senior Offers",
-    items: [
-      "Senior Cybersecurity Consultant",
-      "Senior SOC & Incident Response Lead",
-      "Senior Penetration Testing Lead",
-      "Senior GRC & Compliance Consultant",
-    ],
-  },
-];
+import { careersDetails } from "@/lib/careers";
 
 export function CareersDropdown() {
   const [activeCategory, setActiveCategory] = useState(careersDetails[0].category);
@@ -44,8 +16,9 @@ export function CareersDropdown() {
         {/* Left Column: Categories */}
         <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
           {careersDetails.map((group, index) => (
-            <button
+            <Link
               key={index}
+              href={`/careers/${group.category.toLowerCase().replace(/\s+/g, '-')}`}
               onMouseEnter={() => setActiveCategory(group.category)}
               className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
                 activeCategory === group.category
@@ -57,7 +30,7 @@ export function CareersDropdown() {
               <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -104,7 +77,7 @@ export function CareersDropdown() {
                 {currentCategoryObj?.items.map((item, idx) => (
                   <Link 
                     key={idx}
-                    href={`#${item.replace(/[\\s(),&]+/g, '-').toLowerCase()}`}
+                    href={`/careers/${currentCategoryObj.category.toLowerCase().replace(/\s+/g, '-')}?offer=${encodeURIComponent(item)}`}
                     className="group flex items-start"
                   >
                     <span className="mr-2 text-gray-300">•</span>

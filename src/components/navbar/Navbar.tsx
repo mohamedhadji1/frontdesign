@@ -16,7 +16,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const forceDarkNavbar = pathname === "/contact";
+  const forceDarkNavbar = pathname === "/contact" || pathname === "/careers";
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = (dropdown: string) => {

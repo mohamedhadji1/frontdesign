@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { servicesDetails } from "@/components/navbar/ServicesDropdown";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,11 +12,12 @@ export function ContactSection() {
     email: "",
     phone: "",
     company: "",
+    service: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -42,7 +44,7 @@ export function ContactSection() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
@@ -188,6 +190,32 @@ export function ContactSection() {
                   onChange={handleChange}
                   className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
                 />
+                <div className="relative w-full">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="bg-white px-5 py-4 w-full text-sm outline-none text-gray-700 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100 appearance-none pr-10"
+                  >
+                    <option value="" disabled>Select a Service</option>
+                    {servicesDetails.map(category => (
+                      <optgroup key={category.category} label={category.category} className="font-bold text-gray-900 bg-gray-50">
+                        {category.items.map((item, idx) => {
+                          const itemName = typeof item === 'string' ? item : item.name;
+                          return (
+                            <option key={`${category.category}-${idx}`} value={itemName} className="bg-white text-gray-700 font-normal">
+                              {itemName}
+                            </option>
+                          );
+                        })}
+                      </optgroup>
+                    ))}
+                    <option value="Other">Other</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                  </div>
+                </div>
               </div>
               <textarea 
                 name="message"
