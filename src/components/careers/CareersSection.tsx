@@ -271,11 +271,7 @@ export function CareersSection({
           <section className="relative w-full py-24 bg-white border-t border-gray-100">
             <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
               <div className="mb-16">
-                <div className="flex items-center gap-3 text-[11px] font-bold text-red-600 uppercase tracking-[0.3em] mb-4">
-                  <span className="w-10 h-[1px] bg-red-600" />
-                  Opportunities
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight text-center">
                   We are hiring, <span className="text-black-400">Come join us.</span>
                 </h2>
               </div>
@@ -314,68 +310,11 @@ export function CareersSection({
               </div>
             </div>
           </section>
-          <CyberSectionDivider />
-          <SectionDivider title="Application" className="py-12" />
         </>
       ) : (
         <>
-          <CyberSectionDivider />
-          <SectionDivider title="Application" className="py-12" />
-        </>
+                </>
       )}
-
-      {/* Form Section (Always White) */}
-      <section id="application-form" className="relative w-full py-24 bg-white">
-        <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4">
-              <div className="sticky top-32">
-                <div className="flex items-center gap-3 text-[11px] font-bold text-red-600 uppercase tracking-[0.3em] mb-6">
-                  <span className="w-10 h-[1px] bg-red-600" />
-                  Application
-                </div>
-                <h2 className="text-4xl font-bold text-black tracking-tight mb-6">
-                  Ready to <span className="text-gray-400 italic">Apply?</span>
-                </h2>
-                <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                  {category === "General" 
-                    ? "Choose a position and tell us why you're the perfect fit for Keystone. We're always looking for exceptional talent to join our mission."
-                    : `Apply for our ${category} positions. Share your experience and aspirations with us.`}
-                </p>
-                
-                <div className="space-y-6">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 shrink-0 bg-gray-50 flex items-center justify-center border border-gray-100">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    </div>
-                    <div>
-                      <h4 className="text-[11px] font-bold uppercase tracking-widest text-black mb-1">Response Time</h4>
-                      <p className="text-xs text-gray-400">Our team usually responds within 48-72 hours.</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 shrink-0 bg-gray-50 flex items-center justify-center border border-gray-100">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div>
-                      <h4 className="text-[11px] font-bold uppercase tracking-widest text-black mb-1">Privacy First</h4>
-                      <p className="text-xs text-gray-400">Your data is handled with the highest security standards.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="lg:col-span-8">
-              <div className="bg-white border border-gray-100 p-8 md:p-12 shadow-2xl shadow-gray-200/50">
-                <Suspense fallback={<div className="h-[400px] flex items-center justify-center text-gray-400 text-xs font-bold uppercase tracking-widest">Loading Application Form...</div>}>
-                  <CareersForm category={category} items={items} />
-                </Suspense>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
