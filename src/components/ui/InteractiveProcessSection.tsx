@@ -105,15 +105,6 @@ export function InteractiveProcessSection({
                     }`}>
                       {step.title}
                     </h3>
-                    {isActive && (
-                       <motion.p 
-                         initial={{ opacity: 0, height: 0 }}
-                         animate={{ opacity: 1, height: 'auto' }}
-                         className={`text-xs ${textTheme} mt-1 font-mono font-medium`}
-                       >
-                         PHASE 0{index + 1} // ACTIVE
-                       </motion.p>
-                    )}
                   </div>
                 </button>
               );

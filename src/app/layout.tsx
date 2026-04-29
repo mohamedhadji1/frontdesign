@@ -7,22 +7,27 @@ import { Footer } from "@/components/layout/Footer";
 const gotham = localFont({
   src: [
     {
-      path: "./fonts/GothamLight.ttf",
+      path: "./fonts/Gotham-Light.otf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "./fonts/GothamMedium.ttf",
+      path: "./fonts/Gotham-Book.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Gotham-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/GothamBold.ttf",
+      path: "./fonts/Gotham-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "./fonts/GothamBlack.ttf",
+      path: "./fonts/Gotham-Black.otf",
       weight: "900",
       style: "normal",
     },

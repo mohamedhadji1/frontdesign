@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { careersDetails } from "@/lib/careers";
+import { careerSlug, careersDetails } from "@/lib/careers";
 
 export function CareersDropdown() {
   const [activeCategory, setActiveCategory] = useState(careersDetails[0].category);
@@ -18,7 +18,7 @@ export function CareersDropdown() {
           {careersDetails.map((group, index) => (
             <Link
               key={index}
-              href={`/careers/${group.category.toLowerCase().replace(/\s+/g, '-')}`}
+              href={`/careers/${careerSlug(group.category)}`}
               onMouseEnter={() => setActiveCategory(group.category)}
               className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
                 activeCategory === group.category
@@ -77,7 +77,7 @@ export function CareersDropdown() {
                 {currentCategoryObj?.items.map((item, idx) => (
                   <Link 
                     key={idx}
-                    href={`/careers/${currentCategoryObj.category.toLowerCase().replace(/\s+/g, '-')}?offer=${encodeURIComponent(item)}`}
+                    href={`/careers/${careerSlug(currentCategoryObj.category)}/${careerSlug(item)}`}
                     className="group flex items-start"
                   >
                     <span className="mr-2 text-gray-300">•</span>

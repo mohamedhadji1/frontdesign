@@ -1,7 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, Server, ShieldAlert, Network, ShieldCheck, Radar, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Cloud,
+  Network,
+  Radar,
+  Server,
+  ShieldAlert,
+  ShieldCheck,
+} from "lucide-react";
 
 const offerings = [
   {
@@ -9,36 +19,41 @@ const offerings = [
     desc: "Rigorous assessment of AWS, Azure, and GCP configurations. We identify misconfigured IAM roles, exposed buckets, and compliance gaps to harden your cloud perimeter.",
     icon: <Cloud className="w-8 h-8" />,
     threats: ["Misconfigured IAM", "Exposed Storage"],
-    features: ["Architecture Review", "CIS/SOC2 Compliance"]
+    features: ["Architecture Review", "CIS/SOC2 Compliance"],
+    href: "/services/technical-audit/cloud-environment-audit",
   },
   {
     title: "Core Banking Systems",
     desc: "Deep vulnerability testing for Core & Internet Banking platforms. We focus on transaction manipulation, API flaws, and strict financial regulatory alignment.",
     icon: <Server className="w-8 h-8" />,
     threats: ["Transaction Manipulation", "Logic Flaws"],
-    features: ["Protocol Security", "Regulatory Compliance"]
+    features: ["Protocol Security", "Regulatory Compliance"],
+    href: "/services/technical-audit/core-internet-banking-system-audit",
   },
   {
     title: "Industrial System (OT/IT)",
     desc: "End-to-end security evaluation of automated control systems (ICS/SCADA). We detect operational risks and ensure alignment with IEC 62443 standard.",
     icon: <Network className="w-8 h-8" />,
     threats: ["PLC Manipulation", "OT/IT Convergence Leaks"],
-    features: ["Automated Systems Eval", "ICS Threat ID"]
+    features: ["Automated Systems Eval", "ICS Threat ID"],
+    href: "/services/technical-audit/industrial-system-audit",
   },
   {
     title: "Critical Infrastructure",
     desc: "Evaluation of essential services against advanced cyber threats. Protecting network segmentation and resilience against nation-state or ransomware attacks.",
     icon: <ShieldAlert className="w-8 h-8" />,
     threats: ["Cyber-Physical Attacks", "Ransomware"],
-    features: ["Segmentation", "Threat Modeling"]
+    features: ["Segmentation", "Threat Modeling"],
+    href: "/services/technical-audit/industrial-system-audit",
   },
   {
     title: "System Hardening",
     desc: "We secure core servers, OS configurations, and network equipment by applying vendor best practices and CIS Benchmarks to massively reduce attack surfaces.",
     icon: <ShieldCheck className="w-8 h-8" />,
     threats: ["Default Credentials", "Open Ports"],
-    features: ["CIS Benchmarks", "Attack Surface Reduction"]
-  }
+    features: ["CIS Benchmarks", "Attack Surface Reduction"],
+    href: "/services/technical-audit/system-hardening",
+  },
 ];
 
 export function OfferingsSection() {
@@ -118,6 +133,14 @@ export function OfferingsSection() {
                     </ul>
                   </div>
                 </div>
+
+                <Link
+                  href={offer.href}
+                  className="mt-2 inline-flex w-fit items-center gap-2 text-sm font-semibold text-red-600 transition-colors hover:text-red-700"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </motion.div>
           ))}

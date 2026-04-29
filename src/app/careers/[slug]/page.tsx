@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { CareersSection } from "@/components/careers/CareersSection";
-import { careersDetails } from "@/lib/careers";
+import { careerSlug, careersDetails } from "@/lib/careers";
 
 interface PageProps {
   params: Promise<{
@@ -13,7 +13,7 @@ export default async function CareerCategoryPage({ params }: PageProps) {
   const categorySlug = resolvedParams.slug.toLowerCase();
   
   const categoryData = careersDetails.find(cat => 
-    cat.category.toLowerCase().replace(/\s+/g, '-') === categorySlug
+    careerSlug(cat.category) === categorySlug
   );
 
   if (!categoryData) {
@@ -25,8 +25,8 @@ export default async function CareerCategoryPage({ params }: PageProps) {
       <CareersSection 
         category={categoryData.category} 
         items={categoryData.items}
-        title={`${categoryData.category}`}
-        description={`Kickstart your journey with our ${categoryData.category.toLowerCase()}. We're looking for passionate individuals to join our team.`}
+        title={categoryData.category}
+        description={categoryData.description}
       />
     </main>
   );
@@ -35,6 +35,6 @@ export default async function CareerCategoryPage({ params }: PageProps) {
 // Generate static params for all categories
 export async function generateStaticParams() {
   return careersDetails.map((cat) => ({
-    slug: cat.category.toLowerCase().replace(/\s+/g, '-'),
+    slug: careerSlug(cat.category),
   }));
 }

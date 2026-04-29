@@ -114,9 +114,7 @@ export function MethodologySection() {
                 <div className="text-red-500">
                   {step.icon}
                 </div>
-                <div className="font-medium text-zinc-500 text-xs">
-                  {`PHASE.0${idx + 1}`}
-                </div>
+
               </div>
 
               <h4 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-wide">
