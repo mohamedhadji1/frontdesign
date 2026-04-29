@@ -9,6 +9,7 @@ import { TrustedBySection } from "@/components/home/TrustedBySection";
 import { MapSection } from "@/components/home/MapSection";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export default function Home() {
   return (
@@ -28,6 +29,8 @@ export default function Home() {
       <SectionDivider title="GLOBAL PRESENCE" className="bg-[#ffffff] pb-0" />
       <MapSection />
       <ContactCTASection />
+      {/* Fixed Back-to-Top button — appears after scrolling past the hero */}
+      <BackToTop />
     </div>
   );
 }

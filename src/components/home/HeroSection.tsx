@@ -5,10 +5,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import Link from "next/link";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
-// Helper to animate text character by character
+const MotionLink = motion(Link);
+
 function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const characters = Array.from(text);
+  const words = text.split(" ");
   return (
     <motion.span
       initial="hidden"
@@ -17,18 +20,26 @@ function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
         visible: { transition: { staggerChildren: 0.05, delayChildren: delay } },
         hidden: {},
       }}
+      aria-label={text}
     >
-      {characters.map((char, index) => (
-        <motion.span
-          key={index}
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex}>
+          <span className="inline-block whitespace-nowrap">
+            {Array.from(word).map((char, charIndex) => (
+              <motion.span
+                key={charIndex}
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
+          {wordIndex !== words.length - 1 && " "}
+        </span>
       ))}
     </motion.span>
   );
@@ -114,7 +125,7 @@ export function HeroSection() {
   }, [events]);
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-auto min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32">
+    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative w-full h-[100dvh] flex flex-col overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -131,9 +142,9 @@ export function HeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-start pt-12 pb-24 h-full overflow-y-auto lg:overflow-visible">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-1 flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10 lg:gap-0 pt-28 lg:pt-24 pb-28 lg:overflow-visible">
         {/* Left Side: Hero Text */}
-        <div className="w-full lg:w-2/3 flex flex-col items-center text-center lg:items-start lg:text-left gap-6 lg:gap-10 mt-10 md:mt-0">
+        <div className="w-full lg:w-2/3 flex flex-col items-center text-center lg:items-start lg:text-left gap-6 lg:gap-10">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
             <TypingText text="Building The Digital" delay={0} />
             <br />
@@ -149,14 +160,20 @@ export function HeroSection() {
             transition={{ delay: 3, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto"
           >
-            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg">
+            <MotionLink
+            href="/contact"
+              whileHover={{ x: 10 }}
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg inline-flex"
+            >
               Get Security Assessment
               <span>→</span>
-            </button>
-            <button className="border-b border-white/50 hover:border-white text-white font-medium py-3 px-6 flex items-center justify-center gap-3 transition-all bg-transparent hover:bg-transparent">
-              Emergency Response
-              <span>→</span>
-            </button>
+            </MotionLink>
+            <Link href="./about">
+              <motion.button whileHover={{ x: 10 }} className="border-b border-white/50 hover:border-white text-white font-medium py-3 px-6 flex items-center justify-center gap-3 transition-all bg-transparent hover:bg-transparent">
+                About Us
+                <span>→</span>
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
 
@@ -262,6 +279,9 @@ export function HeroSection() {
           ))}
         </motion.div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <ScrollIndicator className="bottom-36 pointer-events-none" />
 
     </motion.section>
   );
