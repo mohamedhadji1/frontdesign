@@ -17,7 +17,7 @@ const animations = {
     path1: {},
     rect: {},
     path2: {},
-    path2: {},
+    path3: {},
     path4: {
       initial: {
         x: 0,
@@ -51,7 +51,7 @@ const animations = {
     path1: {},
     rect: {},
     path2: {},
-    path2: {},
+    path3: {},
     path4: {
       initial: {
         scaleY: 1,
@@ -81,7 +81,7 @@ const animations = {
     path1: {},
     rect: {},
     path2: {},
-    path2: {},
+    path3: {},
     path4: {
       initial: {
         scaleY: 1,

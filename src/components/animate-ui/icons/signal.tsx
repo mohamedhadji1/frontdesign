@@ -39,7 +39,7 @@ const animations = {
     },
     path1: pathAnimation,
     path2: pathAnimation,
-    path2: pathAnimation,
+    path3: pathAnimation,
     path4: pathAnimation,
     path5: pathAnimation,
   } satisfies Record<string, Variants>,

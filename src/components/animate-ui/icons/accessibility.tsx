@@ -55,7 +55,7 @@ const animations = {
     },
     path1: {},
     path2: {},
-    path2: {
+    path3: {
       initial: {
         rotate: 0,
         d: 'M8 5 L5 8',

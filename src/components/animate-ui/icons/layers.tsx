@@ -27,7 +27,7 @@ const animations = {
       },
     },
     path2: {},
-    path2: {
+    path3: {
       initial: {
         y: 0,
       },
@@ -54,7 +54,7 @@ const animations = {
       },
     },
     path2: {},
-    path2: {
+    path3: {
       initial: {
         y: 0,
       },

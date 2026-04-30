@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./HighlightCard.module.css";
+import { motion } from "framer-motion";
 
 type HighlightCardProps = {
   imageSrc: string;

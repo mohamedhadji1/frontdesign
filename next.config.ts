@@ -11,7 +11,7 @@ const csp = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https:",
   "connect-src 'self' https:",
-  "upgrade-insecure-requests",
+//  "upgrade-insecure-requests",
   "frame-src https://www.google.com https://maps.google.com",
 ].join("; ");
 
@@ -59,10 +59,10 @@ const nextConfig: NextConfig = {
             key: "X-DNS-Prefetch-Control",
             value: "on",
           },
-          {
+/*          {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
-          },
+          }, */
           {
             key: "X-Frame-Options",
             value: "DENY",

@@ -43,7 +43,7 @@ const animations = {
     },
     path1: {},
     path2: {},
-    path2: {},
+    path3: {},
     path4: {},
   } satisfies Record<string, Variants>,
 } as const;
