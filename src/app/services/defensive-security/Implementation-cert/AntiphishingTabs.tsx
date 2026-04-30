@@ -75,22 +75,21 @@ export function AntiphishingTabs({ theme = "blue" }: AntiphishingTabsProps) {
   return (
     <div className="flex flex-col lg:flex-row min-h-[440px] w-full bg-white rounded-3xl shadow-2xl border border-zinc-100 overflow-hidden ring-1 ring-zinc-900/5">
       <div className="lg:w-2/5 bg-zinc-50/80 border-r border-zinc-100 p-6 flex flex-col gap-3 relative overflow-hidden backdrop-blur-sm">
-        <h3 className={`text-xs font-black tracking-widest uppercase mb-4 px-2 opacity-80 ${t.textTitle}`}>Methodology</h3>
-        
+        <motion.h2 className={`text-xs font-black tracking-widest uppercase mb-4 px-2 opacity-80 ${t.textTitle}`}>Methodology</motion.h2>
+
         {/* Subtle background glow */}
         <div className={`absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full blur-3xl pointer-events-none ${t.bgGlow}`} />
-        
+
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative flex items-center justify-between px-6 py-4 rounded-2xl text-left transition-colors duration-300 ${
-                isActive 
-                  ? t.textActive 
-                  : `text-zinc-600 hover:bg-white/50 ${t.textHover}`
-              }`}
+              className={`relative flex items-center justify-between px-6 py-4 rounded-2xl text-left transition-colors duration-300 ${isActive
+                ? t.textActive
+                : `text-zinc-600 hover:bg-white/50 ${t.textHover}`
+                }`}
             >
               {isActive && (
                 <motion.div
@@ -99,16 +98,16 @@ export function AntiphishingTabs({ theme = "blue" }: AntiphishingTabsProps) {
                   transition={{ type: "spring", bounce: 0, duration: 0.5 }}
                 />
               )}
-              
+
               {/* Indicator line */}
               {isActive && (
-                <motion.div 
+                <motion.div
                   layoutId="activeAntiphishingLine"
                   className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 rounded-r-full ${t.bgLine}`}
                   transition={{ type: "spring", bounce: 0, duration: 0.5 }}
                 />
               )}
-              
+
               <span className="relative z-10 font-bold text-[15px] tracking-tight">{tab.title}</span>
             </button>
           );
@@ -118,8 +117,8 @@ export function AntiphishingTabs({ theme = "blue" }: AntiphishingTabsProps) {
       <div className="lg:w-3/5 p-10 lg:p-16 flex flex-col justify-center bg-white relative">
         <AnimatePresence mode="wait">
           {activeContent && (
-            <motion.div 
-              key={activeContent.id} 
+            <motion.div
+              key={activeContent.id}
               initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, x: -20, filter: "blur(4px)" }}
@@ -127,15 +126,15 @@ export function AntiphishingTabs({ theme = "blue" }: AntiphishingTabsProps) {
               className="max-w-2xl relative z-10"
             >
               <div className="flex flex-row gap-3 align-center">
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 shadow-sm border transform-gpu hover:scale-105 transition-transform duration-500 ${t.bgIconWrap}`}>
-                {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
-                  className: "w-7 h-7",
-                })}
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 mb-6 tracking-tight leading-tight">{activeContent.title}</h2>
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 shadow-sm border transform-gpu hover:scale-105 transition-transform duration-500 ${t.bgIconWrap}`}>
+                  {React.cloneElement(activeContent.icon as React.ReactElement<any>, {
+                    className: "w-7 h-7",
+                  })}
+                </div>
+                <motion.h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 mb-6 tracking-tight leading-tight">{activeContent.title}</motion.h2>
               </div>
               <p className="text-xl text-zinc-600 leading-relaxed font-light">
-              {activeContent.description}
+                {activeContent.description}
               </p>
             </motion.div>
           )}

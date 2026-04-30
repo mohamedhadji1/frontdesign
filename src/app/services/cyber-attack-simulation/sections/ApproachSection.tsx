@@ -40,9 +40,9 @@ export function ApproachSection() {
                 <div className="w-24 h-24 rounded-full bg-[#8b0000] border-4 border-[#05080f] flex items-center justify-center text-xl font-bold mb-6 text-white shadow-lg shadow-black">
                   {step.id}
                 </div>
-                <h3 className="text-lg font-semibold tracking-wide text-gray-100">
+                <motion.h2 className="text-lg font-semibold tracking-wide text-gray-100">
                   {step.title}
-                </h3>
+                </motion.h2>
               </motion.div>
             ))}
           </div>

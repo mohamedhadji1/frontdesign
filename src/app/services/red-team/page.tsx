@@ -5,6 +5,7 @@ import { OfferingsSection } from "./sections/OfferingsSection";
 import { MethodologySection } from "./sections/MethodologySection";
 import { TestingBenefitsSection } from "./sections/TestingBenefitsSection";
 import { RedTeamCTASection } from "./sections/RedTeamCTASection";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export const metadata = {
   title: "Red Team & Offensive Security | Keystone",
@@ -25,6 +26,7 @@ export default function RedTeamPage() {
       <TestingBenefitsSection />
       <CyberSectionDivider />
       <RedTeamCTASection />
+      <BackToTop/>
     </main>
   );
 }

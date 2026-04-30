@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { servicesDetails } from "@/components/navbar/ServicesDropdown";
@@ -16,6 +16,8 @@ export function ContactSection() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,224 +28,143 @@ export function ContactSection() {
     setStatus("loading");
 
     try {
-      // 1. Save to Firebase
       await addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: serverTimestamp(),
       });
 
-      // 2. Send email via Next.js API
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, captchaToken }),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to send email");
-      }
+      if (!res.ok) throw new Error("Failed to send email");
 
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+      setCaptchaToken(null);
+      if (recaptchaRef.current) recaptchaRef.current.reset();
+      setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full min-h-[90vh] py-24 flex items-center justify-center bg-[#f7f8f9] overflow-hidden">
-      {/* Background Graphic Overlay */}
-      <div 
-        className="absolute inset-0 w-full h-full opacity-30"
-        style={{
-          backgroundImage: "url('/background/bg1.jpg')", 
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          mixBlendMode: "multiply"
-        }}
-      />
-      
-      <div className="container mx-auto px-6 lg:px-12 max-w-6xl relative z-10 pt-16">
-        
-        {/* Header Area */}
-        <div className="mb-20 mt-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-[52px] font-medium text-black mb-4 tracking-[-0.02em]"
-          >
-            Contact Us
-          </motion.h1>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex items-center text-[10px] font-bold text-gray-500 mb-16 uppercase tracking-wider gap-2"
-          >
-            <span className="text-gray-500">HOME</span>
-            <span className="text-gray-400 font-normal">›</span>
-            <span className="text-black">CONTACT US</span>
-          </motion.div>
+    <section className="w-full h-screen pt-20 pb-4 flex items-center justify-center bg-[#f4f4f5] overflow-hidden">
+      <div className="w-full max-w-3xl px-4">
+        <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[22px] text-gray-800 font-medium max-w-2xl leading-relaxed"
-          >
-            Interested in our Cyber Security services or need advice? Then please
-            <br className="hidden lg:block"/> get in touch and we&apos;ll be glad to help.
-          </motion.p>
-        </div>
+          <div className="mb-6 text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Contact Us</h1>
+            <p className="text-sm text-gray-500">Interested in our services? Send us a message and we'll be in touch.</p>
+          </div>
 
-        {/* Two Column Layout container */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 mb-12">
-          
-          {/* Left Column - Contact Informations */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-col"
-          >
-            <h3 className="text-[22px] font-medium text-black mb-1">Contact Informations</h3>
-            <p className="text-gray-500 text-sm mb-12">Get in touch and let us know how we can help</p>
-
-            <div className="space-y-8">
-              <div>
-                <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Phone</h5>
-                <p className="text-gray-900 font-medium">+0(850) 544 7514</p>
-              </div>
-              
-              <div>
-                <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Mail</h5>
-                <a href="mailto:hello@keystone.com" className="text-gray-900 font-medium hover:text-[#e60000] inline-block transition-colors">
-                  hello@keystone.com
-                </a>
-              </div>
-              
-              <div>
-                <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Address</h5>
-                <p className="text-gray-900 font-medium max-w-[200px] leading-relaxed">
-                  One Apple Park Way; Cupertino CA<br/>95014, U.S.A.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-12 flex items-center gap-6">
-              <a 
-                href="#"
-                className="bg-[#e60000] text-white text-sm font-semibold py-3.5 px-6 inline-flex items-center gap-3 hover:bg-red-700 transition-colors"
-              >
-                Get Direction
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              </a>
-              <a href="#" className="font-semibold text-sm underline underline-offset-4 decoration-1 decoration-gray-400 hover:text-[#e60000] hover:decoration-[#e60000] transition-colors">
-                See on Map
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <h3 className="text-[22px] font-medium text-black mb-1">Contact Form</h3>
-            <p className="text-gray-500 text-sm mb-12">Get in touch and let us know how we can help</p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <input 
-                  type="text" 
-                  name="name"
-                  placeholder="Name Surname" 
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
-                />
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="E-Mail Address" 
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
-                />
-                <input 
-                  type="tel" 
-                  name="phone"
-                  placeholder="Phone Number" 
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
-                />
-                <input 
-                  type="text" 
-                  name="company"
-                  placeholder="Your Company" 
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
-                />
-                <div className="relative w-full">
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="bg-white px-5 py-4 w-full text-sm outline-none text-gray-700 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100 appearance-none pr-10"
-                  >
-                    <option value="" disabled>Select a Service</option>
-                    {servicesDetails.map(category => (
-                      <optgroup key={category.category} label={category.category} className="font-bold text-gray-900 bg-gray-50">
-                        {category.items.map((item, idx) => {
-                          const itemName = typeof item === 'string' ? item : item.name;
-                          return (
-                            <option key={`${category.category}-${idx}`} value={itemName} className="bg-white text-gray-700 font-normal">
-                              {itemName}
-                            </option>
-                          );
-                        })}
-                      </optgroup>
-                    ))}
-                    <option value="Other">Other</option>
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                  </div>
-                </div>
-              </div>
-              <textarea 
-                name="message"
-                placeholder="Your Message" 
-                rows={6}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
                 required
-                value={formData.message}
+                value={formData.name}
                 onChange={handleChange}
-                className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all resize-none border border-gray-100"
+                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+              />
+              <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                value={formData.company}
+                onChange={handleChange}
+                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
               />
               
-              <div className="flex justify-end items-center mt-2">
-                {status === "success" && <span className="mr-6 text-green-600 font-semibold text-sm">Message sent successfully!</span>}
-                {status === "error" && <span className="mr-6 text-red-600 font-semibold text-sm">Failed to send message. Check settings.</span>}
-                <button 
-                  type="submit" 
-                  disabled={status === "loading"}
-                  className="bg-[#e60000] text-white text-sm font-semibold py-3.5 px-10 inline-flex items-center gap-3 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              <div className="relative w-full md:col-span-2">
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  required
+                  className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
                 >
-                  {status === "loading" ? "Sending..." : "Submit"}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                  <option value="" disabled>Select a Service</option>
+                  {servicesDetails.map(category => (
+                    <optgroup key={category.category} label={category.category} className="font-bold text-gray-900 bg-gray-100">
+                      {category.items.map((item, idx) => {
+                        const itemName = typeof item === 'string' ? item : item.name;
+                        return (
+                          <option key={`${category.category}-${idx}`} value={itemName} className="bg-white text-gray-700 font-normal">
+                            {itemName}
+                          </option>
+                        );
+                      })}
+                    </optgroup>
+                  ))}
+                  <option value="Other">Other</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                </div>
               </div>
-            </form>
-          </motion.div>
+            </div>
+            
+            <textarea
+              name="message"
+              placeholder="How can we help you?"
+              rows={4}
+              required
+              value={formData.message}
+              onChange={handleChange}
+              className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
+            />
+
+            
+
+            <div className="flex justify-between items-center mt-2">
+              <div className="mt-2 w-full">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                onChange={(token) => setCaptchaToken(token)}
+              />
+            </div>
+              <div className="flex-1">
+                {status === "success" && <span className="text-green-600 font-medium text-sm">Message sent successfully!</span>}
+                {status === "error" && <span className="text-red-600 font-medium text-sm">Failed to send message.</span>}
+              </div>
+              <button
+                type="submit"
+                disabled={status === "loading" || !captchaToken}
+                className="bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
+              >
+                {status === "loading" ? "Sending..." : "Submit"}
+              </button>
+            </div>
+          </form>
 
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

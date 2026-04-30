@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export function AboutHeroSection() {
   return (
@@ -51,6 +52,7 @@ export function AboutHeroSection() {
           </div>
         </motion.div>
       </div>
+      <ScrollIndicator />
     </motion.section>
   );
 }

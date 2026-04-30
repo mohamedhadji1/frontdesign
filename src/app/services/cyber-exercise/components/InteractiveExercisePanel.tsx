@@ -60,9 +60,9 @@ export function InteractiveExercisePanel({
           <p className="text-sm font-bold uppercase tracking-[0.28em] text-red-600">
             {eyebrow}
           </p>
-          <h3 className="text-2xl font-bold tracking-tight text-zinc-900">
+          <motion.h2 className="text-2xl font-bold tracking-tight text-zinc-900">
             {title}
-          </h3>
+          </motion.h2>
           <p className="text-sm leading-relaxed text-zinc-600">{description}</p>
 
           <div className="space-y-3">
@@ -77,16 +77,14 @@ export function InteractiveExercisePanel({
                   onMouseEnter={() => setActiveId(item.id)}
                   onFocus={() => setActiveId(item.id)}
                   onClick={() => setActiveId(item.id)}
-                  className={`flex w-full items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-all duration-300 ${
-                    isActive
-                      ? "border-red-200 bg-red-50 shadow-sm"
-                      : "border-zinc-200 bg-white hover:border-red-100 hover:bg-zinc-50"
-                  }`}
+                  className={`flex w-full items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-all duration-300 ${isActive
+                    ? "border-red-200 bg-red-50 shadow-sm"
+                    : "border-zinc-200 bg-white hover:border-red-100 hover:bg-zinc-50"
+                    }`}
                 >
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
-                      isActive ? "bg-red-600 text-white" : "bg-zinc-100 text-zinc-600"
-                    }`}
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${isActive ? "bg-red-600 text-white" : "bg-zinc-100 text-zinc-600"
+                      }`}
                   >
                     <Icon className="h-5 w-5" />
                   </div>

@@ -51,7 +51,7 @@ export function SubServicesSection() {
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl">
         <div className="mb-20 text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -59,7 +59,7 @@ export function SubServicesSection() {
           >
             Our <span className="text-red-600">Strategic</span> Capabilities
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -88,19 +88,19 @@ export function SubServicesSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
+
+                <motion.h2 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
                   {service.title}
-                </h3>
-                
+                </motion.h2>
+
                 <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                   {service.description}
                 </p>
-                
+
                 <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Explore Capability
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4h2" />
                   </svg>
                 </div>
               </Link>

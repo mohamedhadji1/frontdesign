@@ -124,19 +124,19 @@ export default function Page() {
             </div>
           </div>
         </div>
-        
+
       </motion.section>
-      
+
       <div className="mt-10">
         <div className="max-w-3xl mb-16 text-center mx-auto">
-          <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+          <motion.h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
             <span className="w-8 h-px bg-blue-600/30"></span>
             Tactical Playbook
             <span className="w-8 h-px bg-blue-600/30"></span>
-          </h2>
-          <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+          </motion.h2>
+          <motion.h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
             Our Methodology
-          </h3>
+          </motion.h2>
           <p className="text-zinc-600 text-lg">
             Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats.
           </p>

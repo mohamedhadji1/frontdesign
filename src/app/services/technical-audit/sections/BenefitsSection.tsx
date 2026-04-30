@@ -62,15 +62,15 @@ export function BenefitsSection() {
         {/* ── Header: top center ── */}
         <div className=" text-center">
           <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
-            <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+            <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-red-600/30"></span>
               APPLICATION AUDIT
               <span className="w-8 h-px bg-red-600/30"></span>
-            </h2>          
+            </motion.h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
             Why Conduct an Application Audit
-          </h2>
+          </motion.h2>
         </div>
 
         {/* ── Two-column body ── */}
@@ -84,37 +84,32 @@ export function BenefitsSection() {
                   key={idx}
                   onMouseEnter={() => setActiveIdx(idx)}
                   onClick={() => setActiveIdx(idx)}
-                  className={`group relative text-left p-5 rounded-xl transition-all duration-300 flex items-center justify-between border overflow-hidden ${
-                    activeIdx === idx
-                      ? "bg-zinc-50 border-red-500/30 shadow-md shadow-red-900/5 ring-1 ring-red-500/10"
-                      : "bg-white border-zinc-100 hover:border-red-500/10 hover:bg-zinc-50/50"
-                  }`}
+                  className={`group relative text-left p-5 rounded-xl transition-all duration-300 flex items-center justify-between border overflow-hidden ${activeIdx === idx
+                    ? "bg-zinc-50 border-red-500/30 shadow-md shadow-red-900/5 ring-1 ring-red-500/10"
+                    : "bg-white border-zinc-100 hover:border-red-500/10 hover:bg-zinc-50/50"
+                    }`}
                 >
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent transition-opacity duration-300 ${
-                      activeIdx === idx ? "opacity-100" : "opacity-0"
-                    }`}
+                    className={`absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent transition-opacity duration-300 ${activeIdx === idx ? "opacity-100" : "opacity-0"
+                      }`}
                   />
 
                   <div className="flex items-center gap-4 relative z-10">
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${
-                      activeIdx === idx ? "bg-red-100 text-red-600" : "bg-zinc-100 text-zinc-500 group-hover:text-red-500"
-                    }`}>
+                    <div className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${activeIdx === idx ? "bg-red-100 text-red-600" : "bg-zinc-100 text-zinc-500 group-hover:text-red-500"
+                      }`}>
                       {benefit.icon}
                     </div>
-                    <h3 className={`font-semibold text-base transition-colors duration-300 ${
-                      activeIdx === idx ? "text-zinc-900" : "text-zinc-600 group-hover:text-zinc-900"
-                    }`}>
+                    <motion.h2 className={`font-semibold text-base transition-colors duration-300 ${activeIdx === idx ? "text-zinc-900" : "text-zinc-600 group-hover:text-zinc-900"
+                      }`}>
                       {benefit.title}
-                    </h3>
+                    </motion.h2>
                   </div>
 
                   <div className="relative w-6 h-6 overflow-hidden flex items-center justify-center">
-                    <ArrowRight className={`w-4 h-4 transition-all duration-300 text-red-600 absolute ${
-                      activeIdx === idx
-                        ? "transform translate-x-0 opacity-100"
-                        : "transform -translate-x-full opacity-0 group-hover:-translate-x-1 group-hover:opacity-50"
-                    }`} />
+                    <ArrowRight className={`w-4 h-4 transition-all duration-300 text-red-600 absolute ${activeIdx === idx
+                      ? "transform translate-x-0 opacity-100"
+                      : "transform -translate-x-full opacity-0 group-hover:-translate-x-1 group-hover:opacity-50"
+                      }`} />
                   </div>
                 </button>
               ))}
@@ -135,9 +130,9 @@ export function BenefitsSection() {
                 <div className="w-14 h-14 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-6">
                   {benefits[activeIdx].icon}
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-4">
+                <motion.h2 className="text-2xl font-bold text-zinc-900 mb-4">
                   {benefits[activeIdx].title}
-                </h3>
+                </motion.h2>
                 <p className="text-zinc-600 leading-relaxed">
                   {benefits[activeIdx].desc}
                 </p>

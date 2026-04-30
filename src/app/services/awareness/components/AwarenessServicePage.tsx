@@ -119,14 +119,14 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-20">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
+            <motion.h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
               <span className="h-px w-8 bg-red-600/30" />
               Awareness
               <span className="h-px w-8 bg-red-600/30" />
-            </h2>
-            <h3 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-5xl">
+            </motion.h2>
+            <motion.h2 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-5xl">
               {page.featureTitle ?? "What this experience delivers"}
-            </h3>
+            </motion.h2>
           </div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">

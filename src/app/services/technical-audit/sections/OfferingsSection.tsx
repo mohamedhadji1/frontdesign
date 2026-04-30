@@ -60,18 +60,18 @@ export function OfferingsSection() {
   return (
     <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 md:py-10 bg-zinc-50 border-y border-zinc-200 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-200/50 via-zinc-50 to-zinc-50 pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+
         <div className="mb-16 md:mb-24 text-center max-w-3xl mx-auto">
-          <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+          <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
             <span className="w-8 h-px bg-red-600/30"></span>
             Specialized Infrastructure
             <span className="w-8 h-px bg-red-600/30"></span>
-          </h2>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-zinc-900">
+          </motion.h2>
+          <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-zinc-900">
             Technical Capabilities
-          </h3>
+          </motion.h2>
           <p className="text-zinc-600 text-lg leading-relaxed">
             Go beyond surface-level scanning. We evaluate the configurations, code, and foundational architecture powering your highly specialized environments.
           </p>
@@ -90,16 +90,16 @@ export function OfferingsSection() {
               className="bg-white rounded-xl p-8 shadow-xl border border-gray-100 relative overflow-hidden flex flex-col h-full"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-red-600" />
-              
+
               <div className="relative z-10 flex flex-col flex-1 gap-5">
                 <div className="text-red-600 bg-red-50 p-3 rounded-xl w-fit">
                   {offer.icon}
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 leading-tight">
+
+                <motion.h2 className="text-xl font-bold text-gray-900 leading-tight">
                   {offer.title}
-                </h3>
-                
+                </motion.h2>
+
                 <p className="text-gray-600 text-sm leading-relaxed flex-1">
                   {offer.desc}
                 </p>
@@ -145,7 +145,7 @@ export function OfferingsSection() {
             </motion.div>
           ))}
         </div>
-        
+
       </div>
     </motion.section>
   );

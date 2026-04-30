@@ -47,7 +47,7 @@ export function ServicesCTASection() {
             View All Services
             <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold ml-1 flex items-center">
               <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12h2" />
               </svg>
             </span>
           </Link>

@@ -39,7 +39,7 @@ const animations = {
     },
     path1: {},
     path2: pathAnimation,
-    path3: pathAnimation,
+    path2: pathAnimation,
     path4: pathAnimation,
   } satisfies Record<string, Variants>,
 } as const;
@@ -69,7 +69,7 @@ function IconComponent({ size, ...props }: Axis3DProps) {
       />
       <motion.g variants={variants.group} initial="initial" animate={controls}>
         <motion.path d="M4.293 19.707 6 18" variants={variants.path2} />
-        <motion.path d="m9 15 1.5-1.5" variants={variants.path3} />
+        <motion.path d="m9 15 1.5-1.5" variants={variants.path2} />
         <motion.path d="M13.5 10.5 15 9" variants={variants.path4} />
       </motion.g>
     </motion.svg>

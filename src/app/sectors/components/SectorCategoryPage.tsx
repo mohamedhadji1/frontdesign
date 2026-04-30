@@ -88,7 +88,7 @@ export function SectorCategoryPage({
 
         <motion.div variants={stagger} className="relative z-10 mx-auto w-full max-w-7xl">
           <motion.div
-            variants={fadeUp}
+
             className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300 backdrop-blur-md"
           >
             <span className="h-2 w-2 rounded-full bg-red-500" />
@@ -99,13 +99,13 @@ export function SectorCategoryPage({
             <span>{eyebrow}</span>
           </motion.div>
 
-          <motion.div variants={fadeUp}>
+          <motion.div >
             <Icon className="mb-6 h-12 w-12 text-red-500" aria-hidden="true" />
           </motion.div>
-          <motion.h1 variants={fadeUp} className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
+          <motion.h1 className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
             {title}
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
+          <motion.p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
             {description}
           </motion.p>
         </motion.div>
@@ -119,7 +119,7 @@ export function SectorCategoryPage({
         className="px-6 pb-20 md:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp}>
+          <motion.div >
             <SectionDivider title={`${eyebrow} AREAS`} className="mb-12" />
           </motion.div>
           <motion.div variants={stagger} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -127,16 +127,16 @@ export function SectorCategoryPage({
               <motion.article
                 id={item.id}
                 key={item.id}
-                variants={fadeUp}
+
                 whileHover={{ y: -6, scale: 1.01 }}
                 className="scroll-mt-28 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40"
               >
                 <motion.div whileHover={{ rotate: -4, scale: 1.08 }}>
                   <CheckCircle2 className="mb-5 h-7 w-7 text-red-600" aria-hidden="true" />
                 </motion.div>
-                <h2 className="mb-3 text-xl font-bold text-zinc-950">
+                <motion.h2 className="mb-3 text-xl font-bold text-zinc-950">
                   {item.title}
-                </h2>
+                </motion.h2>
                 <p className="text-sm leading-7 text-zinc-600">
                   {item.description}
                 </p>

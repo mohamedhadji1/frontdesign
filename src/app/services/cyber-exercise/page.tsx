@@ -13,6 +13,7 @@ import { TypeAnimation } from "react-type-animation";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { InteractiveExercisePanel } from "./components/InteractiveExercisePanel";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const programs = [
   {
@@ -114,6 +115,7 @@ export default function CyberExercisePage() {
             </p>
           </div>
         </div>
+        <ScrollIndicator />
       </motion.section>
 
       <CyberSectionDivider theme="red" />
@@ -130,9 +132,9 @@ export default function CyberExercisePage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
               Explore The Tracks
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Two focused programs for resilience and cyber expertise
-            </h2>
+            </motion.h2>
             <p className="text-lg leading-relaxed text-zinc-600">
               Choose the training path that best matches your operational
               priorities, from continuity planning to digital investigation.
@@ -152,9 +154,9 @@ export default function CyberExercisePage() {
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mb-3 text-2xl font-bold text-zinc-900">
+                  <motion.h2 className="mb-3 text-2xl font-bold text-zinc-900">
                     {program.title}
-                  </h3>
+                  </motion.h2>
                   <p className="mb-6 leading-relaxed text-zinc-600">
                     {program.description}
                   </p>

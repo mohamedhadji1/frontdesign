@@ -42,31 +42,31 @@ export default function Page() {
     <main className="flex min-h-screen flex-col bg-white">
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-            
+
             <div className="lg:w-1/2 text-center lg:text-center flex flex-col items-center">
-              <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
-              <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Implementation Cert</span>
-              </div>
-            </motion.div>
-              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
+              >
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+                <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
+                  <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Implementation Cert</span>
+                </div>
+              </motion.div>
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Implementation <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">CERT</span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-400 font-light mb-10 max-w-2xl">
-                Keystone provides expert consulting, framework deployment, and technical implementation 
+                Keystone provides expert consulting, framework deployment, and technical implementation
                 to help your organization build, launch, and mature a Computer Emergency Response Team (CERT) customized to your threat landscape.
               </p>
-              
+
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/25">
                   Secure Your Defenses
@@ -80,9 +80,9 @@ export default function Page() {
             <div className="lg:w-1/2 relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent blur-3xl rounded-full" />
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900/50 backdrop-blur-sm p-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop" 
-                  alt="SOC Management" 
+                <img
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
+                  alt="SOC Management"
                   className="w-full h-[400px] rounded-xl object-cover"
                 />
               </div>
@@ -92,27 +92,27 @@ export default function Page() {
         </div>
       </motion.section>
       <div className="mt-10">
-            <div className="max-w-3xl mb-16 text-center mx-auto">
-              <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-                <span className="w-8 h-px bg-blue-600/30"></span>
-                Our CERT IMPLEMENTATION Methodology
-                <span className="w-8 h-px bg-blue-600/30"></span>
-              </h2>
-              <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
-                Technical Steps
-              </h3>
-              <p className="text-zinc-600 text-lg">
-                A rigorous, step-by-step technical methodology to validate the security posture and compliance of your modern cloud workloads (AWS, Azure, GCP).
-              </p>
-            </div>
+        <div className="max-w-3xl mb-16 text-center mx-auto">
+          <motion.h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-px bg-blue-600/30"></span>
+            Our CERT IMPLEMENTATION Methodology
+            <span className="w-8 h-px bg-blue-600/30"></span>
+          </motion.h2>
+          <motion.h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+            Technical Steps
+          </motion.h2>
+          <p className="text-zinc-600 text-lg">
+            A rigorous, step-by-step technical methodology to validate the security posture and compliance of your modern cloud workloads (AWS, Azure, GCP).
+          </p>
         </div>
-      <InteractiveProcessSection 
+      </div>
+      <InteractiveProcessSection
         title="Our Defensive Approach"
         description="A rigorous methodology to bolster your resilience against cyber threats with cutting-edge telemetry, detection, and intelligence capabilities."
-        steps={steps} 
+        steps={steps}
         theme="blue"
       />
-        <CyberSectionDivider className="mx-auto width-[0%]" theme="blue"/>
+      <CyberSectionDivider className="mx-auto width-[0%]" theme="blue" />
 
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-zinc-50 mt-20">
         <CombinedDeepDive />
@@ -123,7 +123,7 @@ export default function Page() {
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-24">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -134,57 +134,57 @@ export default function Page() {
                 <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Implementation Cert</span>
               </div>
             </motion.div>
-            <h2 className="text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 mb-6">
+            <motion.h2 className="text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 mb-6">
               Discover Our Defensive Services
-            </h2>
+            </motion.h2>
             <p className="text-neutral-600 xl:text-lg max-w-2xl mx-auto">
               Strengthen your organization's resilience by exploring our specialized security and investigation services.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link 
+            <Link
               href="/services/defensive-security/threat-hunting"
               className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <Search className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Threat Hunting</h3>
+              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Threat Hunting</motion.h2>
               <p className="text-neutral-600 mb-6 text-sm">Proactively detect hidden adversaries across your networks.</p>
               <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
                 Learn more <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </Link>
 
-            <Link 
+            <Link
               href="/services/defensive-security/digital-forensics"
               className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <Terminal className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Digital Forensics</h3>
+              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Digital Forensics</motion.h2>
               <p className="text-neutral-600 mb-6 text-sm">Gather & investigate digital evidence post-breach.</p>
               <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
                 Learn more <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </Link>
 
-            <Link 
+            <Link
               href="/services/defensive-security/virtual-ciso-dpo"
               className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <Siren className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Virtual CISO & DPO</h3>
+              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Virtual CISO & DPO</motion.h2>
               <p className="text-neutral-600 mb-6 text-sm">Strategic cybersecurity leadership and compliance management.</p>
               <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
                 Learn more <ArrowRight className="w-4 h-4 ml-2" />
               </div>
             </Link>
 
-            <Link 
+            <Link
               href="/services/defensive-security/malware-analysis"
               className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <ShieldAlert className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Malware Analysis</h3>
+              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Malware Analysis</motion.h2>
               <p className="text-neutral-600 mb-6 text-sm">Dissect and reverse-engineer malicious payloads.</p>
               <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
                 Learn more <ArrowRight className="w-4 h-4 ml-2" />
@@ -197,7 +197,7 @@ export default function Page() {
       <CyberSectionDivider theme="blue" />
 
       <DEFCTASection />
-      
+
     </main>
   );
 }

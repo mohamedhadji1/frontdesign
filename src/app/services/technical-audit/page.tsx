@@ -6,6 +6,7 @@ import { MethodologySection } from "./sections/MethodologySection";
 import { BenefitsSection } from "./sections/BenefitsSection";
 import { CrossSellingSection } from "./sections/CrossSellingSection";
 
+
 export const metadata = {
   title: "Technical Audit & Infrastructure Security | Keystone",
   description: "Secure your critical infrastructure, cloud environments, and core banking systems with deep technical audits and architecture reviews.",
@@ -29,6 +30,7 @@ export default function TechnicalAuditPage() {
         <CyberSectionDivider />
       </div>
       <ContactCTASection />
+
     </main>
   );
 }

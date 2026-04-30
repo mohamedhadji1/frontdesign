@@ -138,23 +138,22 @@ export function ServicesDropdown() {
   const [activeItem, setActiveItem] = useState("Red Team");
 
   const currentCategoryObj = servicesDetails.find((c) => c.category === activeCategory);
-  
+
   return (
-    
+
     <div className="absolute top-full left-0 w-full pt-6 pointer-events-auto">
       <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
-        
+
         {/* Left Column: Categories */}
         <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
           {servicesDetails.map((group, index) => (
             <button
               key={index}
               onMouseEnter={() => { setActiveCategory(group.category); setActiveItem(group.items[0].name); }}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
-                activeCategory === group.category
-                  ? "bg-gray-100 text-red-600"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              }`}
+              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
+                ? "bg-gray-100 text-red-600"
+                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                }`}
             >
               {group.category}
               <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,14 +166,14 @@ export function ServicesDropdown() {
         {/* Right Content Area */}
         <div className="w-3/4 pl-10 flex relative overflow-hidden">
           {/* Subtle Animated Decorative Watermark */}
-          <motion.div 
+          <motion.div
             className="absolute -right-20 top-1/2 -translate-y-1/2 text-red-600 pointer-events-none"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: [0.08, 0.15, 0.08], y: [0, -15, 0], scale: [1, 1.05, 1] }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
           >
             <svg className="w-[600px] h-[600px]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
@@ -203,22 +202,20 @@ export function ServicesDropdown() {
                 <div className="w-full flex">
                   {/* Sub-categories */}
                   <div className="w-1/3 border-r border-gray-200 pr-6">
-                    <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                    <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                       {currentCategoryObj?.title}
-                    </h3>
+                    </motion.h2>
                     <ul className="space-y-1">
                       {currentCategoryObj?.items.map((item, idx) => (
                         <li key={idx}>
                           <Link
-                            href={`/services/${
-                              item.slug || item.name.replace(/\s+/g, '-').toLowerCase()
-                            }`}
+                            href={`/services/${item.slug || item.name.replace(/\s+/g, '-').toLowerCase()
+                              }`}
                             onMouseEnter={() => setActiveItem(item.name)}
-                            className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${
-                              activeItem === item.name
-                                ? "text-red-600 bg-gray-50"
-                                : "text-gray-600 hover:text-gray-900"
-                            }`}
+                            className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${activeItem === item.name
+                              ? "text-red-600 bg-gray-50"
+                              : "text-gray-600 hover:text-gray-900"
+                              }`}
                           >
                             {item.name}
                             {'subItems' in item && (
@@ -242,29 +239,29 @@ export function ServicesDropdown() {
                           animate={{ opacity: 1 }}
                           className="flex flex-col"
                         >
-                          <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                          <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                             {('subCategory' in item) ? item.subCategory : ''}
-                          </h3>
+                          </motion.h2>
                           <ul className="space-y-4 mt-2">
                             {item.subItems.map((subItem, subIdx) => {
-    const isObj = typeof subItem === 'object';
-    const subName = isObj ? subItem.name : subItem;
-    const subHref = isObj && subItem.slug 
-      ? `/${subItem.slug}` 
-      : `/services/${item.name.replace(/\s+/g, '-').toLowerCase()}/${(typeof subItem === "string" ? subItem : subItem.name).replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
-    
-    return (
-      <li key={subIdx}>
-        <Link 
-          href={subHref}
-          className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
-        >
-          <span className="mr-2 text-gray-300">•</span>
-          {subName}
-        </Link>
-      </li>
-    );
-  })}
+                              const isObj = typeof subItem === 'object';
+                              const subName = isObj ? subItem.name : subItem;
+                              const subHref = isObj && subItem.slug
+                                ? `/${subItem.slug}`
+                                : `/services/${item.name.replace(/\s+/g, '-').toLowerCase()}/${(typeof subItem === "string" ? subItem : subItem.name).replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
+
+                              return (
+                                <li key={subIdx}>
+                                  <Link
+                                    href={subHref}
+                                    className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
+                                  >
+                                    <span className="mr-2 text-gray-300">•</span>
+                                    {subName}
+                                  </Link>
+                                </li>
+                              );
+                            })}
                           </ul>
                         </motion.div>
                       )
@@ -274,12 +271,12 @@ export function ServicesDropdown() {
               ) : (
                 // Standard layout for other categories
                 <div className="w-full">
-                  <h3 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                  <motion.h2 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                     {currentCategoryObj?.title}
-                  </h3>
+                  </motion.h2>
                   <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                     {currentCategoryObj?.items.map((item, idx) => (
-                      <Link 
+                      <Link
                         key={idx}
                         href={`/services/${item.slug || item.name.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`}
                         className="group flex items-start"
@@ -295,12 +292,12 @@ export function ServicesDropdown() {
               )}
             </motion.div>
           </AnimatePresence>
-          
+
         </div>
-              
+
       </div>
-    
+
     </div>
-    
+
   );
 }

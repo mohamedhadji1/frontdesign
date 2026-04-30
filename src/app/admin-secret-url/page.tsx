@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function AdminSecretUrl() {
   // AUTH STATE
@@ -9,6 +10,8 @@ export default function AdminSecretUrl() {
   const [password, setPassword] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   // EVENTS STATE
   const [title, setTitle] = useState("");
@@ -44,7 +47,7 @@ export default function AdminSecretUrl() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ action: "login", email, password }),
+        body: JSON.stringify({ action: "login", email, password, captchaToken }),
       });
 
       const result = await response.json();
@@ -63,6 +66,8 @@ export default function AdminSecretUrl() {
       setLoginError(error instanceof Error ? error.message : "Login failed");
     } finally {
       setLoginLoading(false);
+      setCaptchaToken(null);
+      if (recaptchaRef.current) recaptchaRef.current.reset();
     }
   };
 
@@ -252,10 +257,19 @@ export default function AdminSecretUrl() {
               />
             </div>
 
+            <div className="mt-2">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                onChange={(token) => setCaptchaToken(token)}
+                theme="dark"
+              />
+            </div>
+
             <button
               type="submit"
-              disabled={loginLoading}
-              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors"
+              disabled={loginLoading || !captchaToken}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors disabled:cursor-not-allowed"
             >
               {loginLoading ? "Logging in..." : "Login"}
             </button>

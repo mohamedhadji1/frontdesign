@@ -27,11 +27,10 @@ export function AboutDropdown() {
             <button
               key={index}
               onMouseEnter={() => setActiveCategory(group.category)}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
-                activeCategory === group.category
-                  ? "bg-gray-100 text-red-600"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              }`}
+              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
+                ? "bg-gray-100 text-red-600"
+                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                }`}
             >
               {group.category}
               <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,13 +43,13 @@ export function AboutDropdown() {
         {/* Right Content Area */}
         <div className="w-3/4 pl-10 flex relative overflow-hidden">
           {/* Subtle Animated Decorative Watermark */}
-          <motion.div 
+          <motion.div
             className="absolute -right-20 top-1/2 -translate-y-1/2 text-red-600 pointer-events-none"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: [0.08, 0.15, 0.08], rotate: 360 }}
-            transition={{ 
+            transition={{
               opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 120, repeat: Infinity, ease: "linear" } 
+              rotate: { duration: 120, repeat: Infinity, ease: "linear" }
             }}
           >
             <svg className="w-[600px] h-[600px]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
@@ -73,12 +72,12 @@ export function AboutDropdown() {
               transition={{ duration: 0.2 }}
               className="w-full relative z-10"
             >
-              <h3 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+              <motion.h2 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                 {currentCategoryObj?.category}
-              </h3>
+              </motion.h2>
               <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                 {currentCategoryObj?.items.map((item, idx) => (
-                  <Link 
+                  <Link
                     key={idx}
                     href={item.href}
                     className="group flex items-start"

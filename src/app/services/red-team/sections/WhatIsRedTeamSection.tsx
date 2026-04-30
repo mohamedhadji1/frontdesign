@@ -15,7 +15,7 @@ import { Disc3Icon } from "@/components/animate-ui/icons/disc-3";
 
 export function WhatIsRedTeamSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { damping: 30, stiffness: 200, mass: 1 });
@@ -48,8 +48,8 @@ export function WhatIsRedTeamSection() {
   };
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
-      ref={containerRef} 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }}
+      ref={containerRef}
       onMouseMove={handleMouseMove}
       className="bg-white text-zinc-900 py-24 md:py-10 relative overflow-hidden group"
     >
@@ -63,41 +63,41 @@ export function WhatIsRedTeamSection() {
 
       {/* Scroll-linked vertical tracking line */}
       <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-zinc-200 z-0">
-        <motion.div 
-          className="absolute top-0 left-0 w-full bg-gradient-to-b from-red-600 via-red-500 to-transparent shadow-sm" 
-          style={{ height: lineHeight }} 
+        <motion.div
+          className="absolute top-0 left-0 w-full bg-gradient-to-b from-red-600 via-red-500 to-transparent shadow-sm"
+          style={{ height: lineHeight }}
         />
       </div>
 
       {/* Decorative Grid / Mesh */}
       <div className="absolute inset-0 bg-white z-0 pointer-events-none" />
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none mix-blend-multiply"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.05),transparent_70%)] pointer-events-none z-0" />
-      
+
       <div className="max-w-7xl mx-auto px-12 relative z-10 pl-16 md:pl-24">
-        
+
         {/* Top Intro */}
         <div className="max-w-4xl mb-20 mx-auto text-center">
-          <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+          <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
             <span className="w-8 h-px bg-red-600/30"></span>
             Infrastructure Assessment
             <span className="w-8 h-px bg-red-600/30"></span>
-          </h2>
-          <motion.h3 
+          </motion.h2>
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight uppercase mx-auto max-w-3xl text-center"
           >
-            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-900">Red Teaming?</span>
-          </motion.h3>
-          <motion.p 
+            What is Red Teaming?
+          </motion.h2>
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -117,25 +117,25 @@ export function WhatIsRedTeamSection() {
             viewport={{ once: true }}
             className="space-y-12"
           >
-            <motion.div variants={fadeUp} className="relative">
+            <motion.div className="relative">
               <div className="absolute -left-12 top-2 w-4 h-px bg-red-600/50 hidden md:block" />
-              <h3 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Goal-Oriented Testing</h3>
+              <motion.h2 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Goal-Oriented Testing</motion.h2>
               <p className="text-zinc-600 leading-relaxed font-medium text-sm">
                 Instead of finding every flaw, we focus on specific goals—like stealing sensitive customer data, compromising domain administrator credentials, or breaching a physical vault. It proves true business impact.
               </p>
             </motion.div>
-            
-            <motion.div variants={fadeUp} className="relative">
+
+            <motion.div className="relative">
               <div className="absolute -left-12 top-2 w-4 h-px bg-red-600/50 hidden md:block" />
-              <h3 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Evaluating Blue Teams</h3>
+              <motion.h2 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Evaluating Blue Teams</motion.h2>
               <p className="text-zinc-600 leading-relaxed font-medium text-sm">
                 A true Red Team engagement measures how effectively your internal security operations (SOC and Blue Team) can detect, respond to, and mitigate a persistent, stealthy attacker in real-time.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="relative">
+            <motion.div className="relative">
               <div className="absolute -left-12 top-2 w-4 h-px bg-red-600/50 hidden md:block" />
-              <h3 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Beyond Perimeter Defenses</h3>
+              <motion.h2 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Beyond Perimeter Defenses</motion.h2>
               <p className="text-zinc-600 leading-relaxed font-medium text-sm">
                 We assume the mindset of a determined threat actor. If the firewall is too strong, we pivot. We might drop malware on a USB drive in your parking lot, tailgate employees, or use elaborate spear-phishing campaigns.
               </p>
@@ -143,7 +143,7 @@ export function WhatIsRedTeamSection() {
           </motion.div>
 
           {/* Vectors Cards */}
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -169,7 +169,7 @@ export function WhatIsRedTeamSection() {
             ].map((pillar, idx) => (
               <motion.div
                 key={idx}
-                variants={fadeUp}
+
                 whileHover={{ x: 10 }}
                 className="flex items-start gap-6 p-6 bg-zinc-50 border border-zinc-200 transition-all hover:border-red-300 group relative overflow-hidden shadow-sm hover:shadow-md"
               >
@@ -181,7 +181,7 @@ export function WhatIsRedTeamSection() {
                   {pillar.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-zinc-900 mb-2 uppercase tracking-wide group-hover:text-red-700 transition-colors">{pillar.title}</h3>
+                  <motion.h2 className="text-lg font-bold text-zinc-900 mb-2 uppercase tracking-wide group-hover:text-red-700 transition-colors">{pillar.title}</motion.h2>
                   <p className="text-zinc-600 font-medium text-xs leading-relaxed">{pillar.desc}</p>
                 </div>
               </motion.div>
@@ -198,13 +198,13 @@ export function WhatIsRedTeamSection() {
           className="mt-16 pt-16 border-t border-zinc-200 relative"
         >
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4 tracking-wide uppercase">Adversary Emulation Focus</h3>
+            <motion.h2 className="text-2xl font-bold text-zinc-900 mb-4 tracking-wide uppercase">Adversary Emulation Focus</motion.h2>
             <p className="text-zinc-600 font-medium text-sm max-w-2xl leading-relaxed">
               Unlike our broader methodological approach, this specific chain reflects the exact tactical impact an Advanced Persistent Threat (APT) brings during an active breach scenario.
             </p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -237,7 +237,7 @@ export function WhatIsRedTeamSection() {
                 icon: <Disc3Icon className="text-current" animateOnHover={true} />
               }
             ].map((phase, i) => (
-              <motion.div key={i} variants={fadeUp} className="relative p-6 bg-white shadow-sm border border-zinc-200 hover:border-red-300 hover:shadow-md transition-all group">
+              <motion.div key={i} className="relative p-6 bg-white shadow-sm border border-zinc-200 hover:border-red-300 hover:shadow-md transition-all group">
                 <div className="absolute top-2 right-2 text-2xl font-bold text-zinc-200 select-none group-hover:text-red-100 transition-colors">
                   {phase.step}
                 </div>

@@ -99,7 +99,7 @@ function IconComponent({ size, ...props }: RadioTowerProps) {
       />
       <motion.path
         d="M9.5 18h5"
-        variants={variants.path3}
+        variants={variants.path2}
         initial="initial"
         animate={controls}
       />

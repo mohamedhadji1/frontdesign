@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export function HeroSection() {
   return (
@@ -40,7 +41,7 @@ export function HeroSection() {
             className="mb-6 inline-flex items-center flex-wrap gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-red-400"
           >
             <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 animate-pulse" />
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide">
+            <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
               <Link href="/services" className="transition-colors hover:text-red-400">
                 Services
               </Link>
@@ -77,6 +78,7 @@ export function HeroSection() {
           </div>
         </motion.div>
       </div>
+      <ScrollIndicator />
     </motion.section>
   );
 }

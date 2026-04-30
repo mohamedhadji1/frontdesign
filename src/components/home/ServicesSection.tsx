@@ -66,24 +66,24 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative pb-20 overflow-hidden" style={{ backgroundImage: "url('/background/bg1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
-      
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative overflow-hidden pb-16 sm:pb-20" style={{ backgroundImage: "url('/background/bg1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+
       {/* Dark overlay to make the text readable if the image is dark */}
-      <div className="absolute inset-0 bg-white/75 z-1 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-white/75" />
 
       {/* Section Title Header */}
-      <div className="container mx-auto px-6 lg:px-12 relative z-20 mb-16 flex flex-col items-center text-center">
+      <div className="container relative z-20 mx-auto mb-12 flex flex-col items-center px-4 text-center sm:mb-16 sm:px-6 lg:px-12">
         <div className="max-w-3xl flex flex-col items-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-gray-600 text-lg leading-relaxed font-medium"
+            className="mt-4 text-base font-medium leading-relaxed text-gray-600 sm:text-lg"
           >
             Comprehensive cybersecurity solutions designed to protect your organization anticipate threats, and strengthen your digital resilience.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true }}
@@ -94,14 +94,14 @@ export function ServicesSection() {
       </div>
 
       {/* Interactive Interactive Hub Layout (Desktop) */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="hidden lg:flex relative max-w-[1152px] mx-auto h-[600px] items-center text-gray-900 z-20 overflow-visible mt-10"
       >
-        
+
         {/* Background Concentric Dotted Hexagons for the Center Hub */}
         <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 pointer-events-auto flex items-center justify-center">
           {/* Hexagon 1: 120px */}
@@ -135,12 +135,12 @@ export function ServicesSection() {
           {services.map((_, idx) => {
             const isActive = activeIndex === idx;
             const yPos = (idx * 90) + 75; // Y positions: 75, 165, 255, 345, 435, 535
-            
+
             // X coordinates: left list ends roughly around 380px. Center Hub is at 576px.
             const startX = 380;
             const targetX = 576;
             const targetY = 300;
-            
+
             return (
               <g key={`connection-${idx}`}>
                 {/* Connecting Curved Line */}
@@ -161,9 +161,9 @@ export function ServicesSection() {
           {services.map((service, idx) => {
             const isActive = activeIndex === idx;
             const yPos = (idx * 90) + 75;
-            
+
             return (
-              <div 
+              <div
                 key={`left-item-${idx}`}
                 className="absolute right-0 flex justify-end items-center cursor-pointer group"
                 style={{ top: `${yPos}px`, transform: 'translateY(-50%)', width: '500px' }}
@@ -171,17 +171,18 @@ export function ServicesSection() {
                 onClick={() => setActiveIndex(idx)}
               >
                 {/* Horizontal Gradient Tail matching the screenshot */}
-                <div 
-                  className={`absolute inset-y-0 right-0 left-0 bg-gradient-to-r from-transparent ${isActive ? 'to-red-50' : 'to-gray-100/50 group-hover:to-red-50/50'} -z-10 transition-colors duration-300`} 
+                <div
+                  className={`absolute inset-y-0 right-0 left-0 bg-gradient-to-r from-transparent ${isActive ? 'to-red-50' : 'to-gray-100/50 group-hover:to-red-50/50'} -z-10 transition-colors duration-300`}
                 />
-                
+
                 <span className={`pr-4 pl-8 py-3 text-[17px] font-bold transition-all duration-300 ${isActive ? 'text-red-600 sm:text-red-600' : 'text-gray-500 sm:text-gray-600'}`}>
                   {service.title}
                 </span>
-                
-                {/* Plus Icon Box */}
-                <span className={`w-6 h-6 mr-6 flex items-center justify-center text-sm font-bold bg-white rounded-md shadow-sm border transition-colors ${isActive ? 'text-red-600 border-red-200' : 'text-gray-400 border-gray-100'} group-hover:border-red-200 group-hover:text-red-600`}>
-                  +
+
+                <span className={`w-7 h-7 mr-6 flex items-center justify-center bg-white rounded-full shadow-sm border transition-all duration-300 ${isActive ? 'text-red-600 border-red-200 translate-x-1' : 'text-gray-400 border-gray-100'} group-hover:border-red-200 group-hover:text-red-600 group-hover:translate-x-1`}>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                  </svg>
                 </span>
               </div>
             );
@@ -191,14 +192,16 @@ export function ServicesSection() {
         {/* Center Hub Graphic */}
         <div className="absolute left-[576px] top-[300px] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
           <div className="bg-white w-[100px] h-[100px] shadow-lg flex items-center justify-center relative over border-gray-100" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
-            
+
             {/* Site Icon */}
-            <Image 
-              src="/logos/site icon black.png" 
-              alt="Keystone Icon black" 
-              width={50} 
-              height={50} 
-              className="z-10 object-contain drop-shadow-sm" 
+            <Image
+              src="/logos/site icon black.png"
+              alt="Keystone Icon black"
+              width={50}
+              height={50}
+              style={{ width: "auto", height: "auto" }}
+
+              className="z-10 object-contain drop-shadow-sm"
             />
           </div>
         </div>
@@ -214,9 +217,9 @@ export function ServicesSection() {
               transition={{ duration: 0.3 }}
               className="flex flex-col items-start"
             >
-              <h3 className="text-[28px] font-bold text-gray-900 mb-6 leading-tight">
+              <motion.h2 className="text-[28px] font-bold text-gray-900 mb-6 leading-tight">
                 {services[activeIndex].title}
-              </h3>
+              </motion.h2>
               <p className="text-gray-600 text-[17px] leading-relaxed">
                 {services[activeIndex].description}
               </p>
@@ -227,7 +230,7 @@ export function ServicesSection() {
 
       {/* Mobile Layout Fallback (Normal Stack Grid) */}
       <div className="container mx-auto px-6 lg:px-12 relative z-20 lg:hidden font-sans">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -236,16 +239,16 @@ export function ServicesSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
               whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)" }}
-              className="bg-white rounded-xl p-8 shadow-xl border border-gray-100 relative overflow-hidden"
+              className="relative overflow-hidden rounded-xl border border-gray-100 bg-white p-5 shadow-xl sm:p-8"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-red-600" />
               <div className="relative z-10 flex flex-col items-start gap-5">
                 <div className="text-red-600 bg-red-50 p-3 rounded-xl">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                <motion.h2 className="text-xl font-bold text-gray-900 leading-tight">
                   {service.title}
-                </h3>
+                </motion.h2>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {service.description}
                 </p>

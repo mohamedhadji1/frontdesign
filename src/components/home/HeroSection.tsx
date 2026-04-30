@@ -8,7 +8,7 @@ import { db } from "@/lib/firebase";
 import Link from "next/link";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
   const words = text.split(" ");
@@ -125,7 +125,7 @@ export function HeroSection() {
   }, [events]);
 
   return (
-    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative w-full h-[100dvh] flex flex-col overflow-hidden">
+    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex min-h-[100svh] w-full flex-col overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -142,34 +142,34 @@ export function HeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-1 flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10 lg:gap-0 pt-28 lg:pt-24 pb-28 lg:overflow-visible">
+      <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
         {/* Left Side: Hero Text */}
-        <div className="w-full lg:w-2/3 flex flex-col items-center text-center lg:items-start lg:text-left gap-6 lg:gap-10">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+        <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
+          <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             <TypingText text="Building The Digital" delay={0} />
             <br />
             <TypingText text="Keystone" delay={1} />
           </h1>
 
-          <p className="text-lg md:text-2xl text-gray-300 font-medium tracking-wide">
+          <p className="text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-2xl">
             <TypingText text="We secure what matters most to you." delay={2} />
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4 w-full sm:w-auto"
+            className="mt-2 flex w-full flex-col gap-3 text-white sm:mt-4 sm:w-auto sm:flex-row sm:gap-6"
           >
             <MotionLink
-            href="/contact"
+              href="/contact"
               whileHover={{ x: 10 }}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg inline-flex"
+              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
               Get Security Assessment
               <span>→</span>
             </MotionLink>
-            <Link href="./about">
-              <motion.button whileHover={{ x: 10 }} className="border-b border-white/50 hover:border-white text-white font-medium py-3 px-6 flex items-center justify-center gap-3 transition-all bg-transparent hover:bg-transparent">
+            <Link href="/about" className="w-full sm:w-auto">
+              <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:text-base">
                 About Us
                 <span>→</span>
               </motion.button>
@@ -182,11 +182,11 @@ export function HeroSection() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1, duration: 1 }}
-          className="w-full lg:w-1/3 max-w-sm mt-12 lg:mt-0 lg:ml-auto"
+          className="relative z-20 mt-4 w-full max-w-md lg:mt-0 lg:ml-auto lg:w-1/3 lg:max-w-sm"
         >
-          <div className="bg-black/30 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-white uppercase tracking-wider">Events</h2>
+          <div className="rounded-2xl border border-white/20 bg-black/40 p-4 shadow-2xl backdrop-blur-xl sm:p-6">
+            <div className="mb-6 flex items-center justify-between gap-3">
+              <motion.h2 className="text-lg font-bold uppercase tracking-wider text-white sm:text-xl">Events</motion.h2>
               <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Coming Soon</span>
             </div>
 
@@ -194,7 +194,7 @@ export function HeroSection() {
               <div className="flex flex-col gap-6">
                 {events.map((event, idx) => (
                   <div key={event.id} className={`border-b border-white/10 pb-6 last:border-0 last:pb-0 ${idx > 0 ? "hidden sm:block" : ""}`}>
-                    <h3 className="text-white font-bold text-lg leading-snug">{event.title}</h3>
+                    <motion.h2 className="text-white font-bold text-lg leading-snug">{event.title}</motion.h2>
                     <p className="flex items-center gap-1.5 text-gray-300 text-sm mt-2 font-medium">
                       <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -205,25 +205,25 @@ export function HeroSection() {
                     {idx === 0 && timeRemaining && !timeRemaining.started && (
                       <div className="mt-5">
                         <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-3">Starts In</p>
-                        <div className="flex bg-black/40 rounded-lg p-3 justify-between items-center text-center border border-white/10 shadow-inner">
-                          <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.d}</span>
-                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Days</span>
+                        <div className="flex items-center justify-between rounded-lg border border-white/10 bg-black/40 p-3 text-center shadow-inner">
+                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
+                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.d}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Days</span>
                           </div>
                           <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.h}</span>
-                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Hrs</span>
+                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
+                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.h}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Hrs</span>
                           </div>
                           <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-white font-bold font-mono">{timeRemaining.m}</span>
-                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Min</span>
+                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
+                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.m}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Min</span>
                           </div>
                           <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-12 hover:scale-105 transition-transform">
-                            <span className="text-xl text-red-400 font-bold font-mono">{timeRemaining.s}</span>
-                            <span className="text-[9px] text-gray-400 font-bold uppercase mt-0.5">Sec</span>
+                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
+                            <span className="text-lg sm:text-xl text-red-400 font-bold font-mono">{timeRemaining.s}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Sec</span>
                           </div>
                         </div>
                       </div>
@@ -253,9 +253,9 @@ export function HeroSection() {
       </div>
 
       {/* Infinite Certifications Marquee (Bottom of Hero) */}
-      <div className="absolute bottom-0 left-0 w-full pb-8 z-10 overflow-hidden pointer-events-auto">
+      <div className="pointer-events-auto absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8">
         <motion.div
-          className="flex whitespace-nowrap gap-16 sm:gap-24 px-8 items-center w-max"
+          className="flex w-max items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             ease: "linear",
@@ -266,7 +266,7 @@ export function HeroSection() {
           {Array(40).fill("/certif/27001.png").map((src, idx) => (
             <div
               key={idx}
-              className="relative w-28 h-28 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer"
+                className="relative h-14 w-14 shrink-0 cursor-pointer opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
             >
               <Image
                 src={src}
@@ -281,7 +281,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Down Indicator */}
-      <ScrollIndicator className="bottom-36 pointer-events-none" />
+      <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
 
     </motion.section>
   );

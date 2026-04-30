@@ -13,13 +13,10 @@ export function BackToTop() {
       const docH = document.documentElement.scrollHeight;
 
       if (scrollY < vh * 0.6) {
-        // Still inside / just past hero — hide
         setState("hidden");
       } else if (scrollY + vh >= docH - 40) {
-        // At the bottom — show "go up"
         setState("up");
       } else {
-        // Mid-page — show "more to scroll"
         setState("down");
       }
     };
@@ -52,10 +49,9 @@ export function BackToTop() {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           aria-label={isDown ? "Scroll down" : "Back to top"}
-          className="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-1.5 cursor-pointer"
+          className="fixed bottom-4 right-4 z-50 flex cursor-pointer flex-col items-center gap-1 sm:bottom-6 sm:right-6 sm:gap-1.5 md:bottom-8 md:right-8"
         >
-          {/* Icon circle — clean, no glow */}
-          <span className="flex items-center justify-center w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-sm">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/60 backdrop-blur-sm sm:h-10 sm:w-10">
             <motion.svg
               animate={{ y: isDown ? [0, 4, 0] : [0, -4, 0] }}
               transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
@@ -69,16 +65,11 @@ export function BackToTop() {
               strokeLinejoin="round"
               className="text-white"
             >
-              {isDown ? (
-                <polyline points="6 9 12 15 18 9" />
-              ) : (
-                <polyline points="18 15 12 9 6 15" />
-              )}
+              {isDown ? <polyline points="6 9 12 15 18 9" /> : <polyline points="18 15 12 9 6 15" />}
             </motion.svg>
           </span>
 
-          {/* Label */}
-          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-red-600/50 select-none">
+          <span className="hidden select-none text-[9px] font-bold uppercase tracking-[0.2em] text-red-600/50 sm:block">
             {isDown ? "More" : "Top"}
           </span>
         </motion.button>

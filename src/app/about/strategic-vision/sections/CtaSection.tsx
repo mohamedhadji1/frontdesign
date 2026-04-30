@@ -11,7 +11,7 @@ export function CtaSection() {
       <Container>
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.title}>Ready to Work with the Best?</h2>
+            <motion.h2 className={styles.title}>Ready to Work with the Best?</motion.h2>
             <p className={styles.description}>
               Join hundreds of satisfied clients who trust Keystone to protect
               their most valuable digital assets.

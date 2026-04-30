@@ -49,108 +49,111 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled || forceDarkNavbar
-          ? "bg-black/90 backdrop-blur-md py-4 shadow-xl border-b border-white/10"
-          : "bg-transparent py-6"
+    <>
+      <nav
+        className={`fixed inset-x-0 top-0 z-[70] transition-all duration-300 ${
+          scrolled || forceDarkNavbar
+            ? "border-b border-white/10 bg-black/90 shadow-xl backdrop-blur-md"
+            : "bg-transparent py-4 md:py-6"
         }`}
-    >
-      <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center h-full relative">
-        {/* Left: Logo */}
-        <Logo />
+      >
+        <div className="container relative mx-auto flex min-h-[72px] items-center justify-between px-4 sm:px-6 lg:px-12">
+          {/* Left: Logo */}
+          <Logo />
 
-        {/* Center: Navigation Links */}
-        <div className="hidden lg:flex space-x-8 items-center h-full">
+          {/* Center: Navigation Links */}
+          <div className="hidden lg:flex space-x-8 items-center h-full">
 
-          <div
-            className="h-full flex items-center py-6"
-            onMouseEnter={() => handleMouseEnter("About")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <NavItem
-              label="About"
-              href="/about"
-              hasDropdown
-              isActive={activeDropdown === "About"}
-            />
-            {activeDropdown === "About" && <AboutDropdown />}
+            <div
+              className="h-full flex items-center py-6"
+              onMouseEnter={() => handleMouseEnter("About")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavItem
+                label="About"
+                href="/about"
+                hasDropdown
+                isActive={activeDropdown === "About"}
+              />
+              {activeDropdown === "About" && <AboutDropdown />}
+            </div>
+
+            <div
+              className="h-full flex items-center py-6"
+              onMouseEnter={() => handleMouseEnter("Services")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavItem
+                label="Services"
+                href="/services"
+                hasDropdown
+                isActive={activeDropdown === "Services"}
+              />
+              {activeDropdown === "Services" && <ServicesDropdown />}
+            </div>
+
+            <div
+              className="h-full flex items-center py-6"
+              onMouseEnter={() => handleMouseEnter("Sectors")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavItem
+                label="Sectors"
+                href="/sectors"
+                hasDropdown
+                isActive={activeDropdown === "Sectors"}
+              />
+              {activeDropdown === "Sectors" && <SectorsDropdown />}
+            </div>
+
+            <div
+              className="h-full flex items-center py-6"
+              onMouseEnter={() => handleMouseEnter("Careers")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavItem
+                label="Careers"
+                href="/careers"
+                hasDropdown
+                isActive={activeDropdown === "Careers"}
+              />
+              {activeDropdown === "Careers" && <CareersDropdown />}
+            </div>
+
+            <NavItem label="Contact Us" href="/contact" />
           </div>
 
-          <div
-            className="h-full flex items-center py-6"
-            onMouseEnter={() => handleMouseEnter("Services")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <NavItem
-              label="Services"
-              href="/services"
-              hasDropdown
-              isActive={activeDropdown === "Services"}
-            />
-            {activeDropdown === "Services" && <ServicesDropdown />}
+          {/* Right: Action Button */}
+          <div className="hidden lg:block">
+            <ActionButton label="incident report" />
           </div>
 
-          <div
-            className="h-full flex items-center py-6"
-            onMouseEnter={() => handleMouseEnter("Sectors")}
-            onMouseLeave={handleMouseLeave}
+          {/* Mobile Menu Toggle */}
+          <button
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 focus:outline-none lg:hidden"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
           >
-            <NavItem
-              label="Sectors"
-              href="/sectors"
-              hasDropdown
-              isActive={activeDropdown === "Sectors"}
-            />
-            {activeDropdown === "Sectors" && <SectorsDropdown />}
-          </div>
-
-          <div
-            className="h-full flex items-center py-6"
-            onMouseEnter={() => handleMouseEnter("Careers")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <NavItem
-              label="Careers"
-              href="/careers"
-              hasDropdown
-              isActive={activeDropdown === "Careers"}
-            />
-            {activeDropdown === "Careers" && <CareersDropdown />}
-          </div>
-
-          <NavItem label="Contact Us" href="/contact" />
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
+      </nav>
 
-        {/* Right: Action Button */}
-        <div className="hidden lg:block">
-          <ActionButton label="incident report" />
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden text-white focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Render Mobile Fullscreen Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
-    </nav>
+    </>
   );
 }

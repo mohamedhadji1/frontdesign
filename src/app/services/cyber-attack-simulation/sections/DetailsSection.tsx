@@ -12,7 +12,7 @@ export function DetailsSection() {
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-zinc-400 via-transparent to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 relative z-10">
-        
+
         {/* Left Column */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -21,10 +21,10 @@ export function DetailsSection() {
           transition={{ duration: 0.6 }}
           className="flex-1 space-y-8"
         >
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <motion.h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             Cyber Attack Simulation
-          </h2>
-          
+          </motion.h2>
+
           <div className="text-lg text-zinc-600 space-y-4 max-w-xl">
             <p>
               We replicate real-world cyberattacks to uncover vulnerabilities,
@@ -75,7 +75,7 @@ export function DetailsSection() {
             />
             {/* Gradient to darken the image for text readability overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
-            
+
             {/* Overlay Content */}
             <div className="absolute inset-0 p-8 flex flex-col justify-center items-center text-center">
               <div className="mb-4 text-left w-full pl-6">

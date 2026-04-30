@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 const gotham = localFont({
   src: [
@@ -60,10 +61,11 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-full flex flex-col bg-neutral-900 text-white font-sans" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-neutral-900 text-white font-sans" suppressHydrationWarning>
         <Navbar />
         <main className="grow">{children}</main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );

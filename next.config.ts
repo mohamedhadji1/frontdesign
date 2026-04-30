@@ -12,6 +12,7 @@ const csp = [
   "font-src 'self' data: https:",
   "connect-src 'self' https:",
   "upgrade-insecure-requests",
+  "frame-src https://www.google.com https://maps.google.com",
 ].join("; ");
 
 const nextConfig: NextConfig = {

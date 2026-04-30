@@ -7,6 +7,7 @@ import { MapSection } from "@/components/home/MapSection";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HighlightsSection } from "../strategic-vision/sections/HighlightsSection";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export const metadata: Metadata = {
   title: "Our Leadership & Expertise | Keystone",
@@ -37,11 +38,13 @@ export default function LeadershipExpertisePage() {
           
         </div>
       </section>
-      <SectionDivider title="KEYSTONE LEADERSHIP" className="bg-black/20" />
+      <SectionDivider title="KEYSTONE LEADERSHIP" className="bg-black" />
       <OurLeaderSection />
+      <SectionDivider title="CONTACT US" className="bg-black" />
       <ContactCTASection />
       <SectionDivider title="GLOBAL PRESENCE" className="bg-white" />
       <MapSection />
+      <BackToTop/>
     </div>
   );
 }

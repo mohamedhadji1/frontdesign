@@ -6,6 +6,7 @@ import { MapSection } from "@/components/home/MapSection";
 import { Footer } from "@/components/layout/Footer";
 import { ApproachSection } from "@/components/about/ApproachSection";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export const metadata = {
   title: "About Us | Keystone",
@@ -18,13 +19,13 @@ export default function AboutPage() {
       <AboutHeroSection />
       <SectionDivider title="KEYSTONE MISSION" />
       <MissionSection z-index={10} />
-      <SectionDivider title="OUR VALUES" className="bg-white" />
       <HighlightsSection />
       <ContactCTASection />
       <div className="mb-[30px] bg-[#0a0a0a00] margin-bottom-[-27px]">
       <SectionDivider title="GLOBAL PRESENCE" className="bg-white mt-[-27px]" />
       </div>
       <MapSection />
+      <BackToTop/>
     </main>
   );
 }

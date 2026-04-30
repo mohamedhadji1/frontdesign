@@ -3,9 +3,27 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, email, password } = body;
+    const { action, email, password, captchaToken } = body;
 
     if (action === 'login') {
+      if (!captchaToken) {
+        return NextResponse.json({ error: 'reCAPTCHA token is required' }, { status: 400 });
+      }
+
+      // Verify the reCAPTCHA token
+      const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+      });
+
+      const verifyData = await verifyRes.json();
+
+      if (!verifyData.success) {
+        return NextResponse.json({ error: 'Invalid reCAPTCHA token' }, { status: 400 });
+      }
       // Verify credentials against environment variables
       const adminEmail = process.env.ADMIN_EMAIL;
       const adminPassword = process.env.ADMIN_PASSWORD;

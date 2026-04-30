@@ -15,6 +15,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import Image from "next/image";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -79,10 +80,10 @@ export default function TrainingAwarenessPage() {
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f24_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f24_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_68%,transparent_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.15),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(239,68,68,0.1),transparent_28%)]" />
-        
+
         <div className="relative z-10 mx-auto max-w-7xl">
           <motion.div
-            variants={fadeUp}
+
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300"
           >
             <span className="h-2 w-2 rounded-full bg-red-500" />
@@ -91,13 +92,14 @@ export default function TrainingAwarenessPage() {
             <span>Training & Awareness</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
+          <motion.h1 className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
             Training & <span className="text-red-600">Awareness</span>
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
+          <motion.p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
             Empower your workforce with the knowledge and skills needed to defend against modern cyber threats through immersive, gamified, and practical learning experiences.
           </motion.p>
         </div>
+        <ScrollIndicator />
       </motion.section>
 
       <CyberSectionDivider />
@@ -111,7 +113,7 @@ export default function TrainingAwarenessPage() {
         className="px-6 py-24 md:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp}>
+          <motion.div >
             <SectionDivider title="OUR PROGRAMS" className="mb-16" />
           </motion.div>
 
@@ -119,7 +121,7 @@ export default function TrainingAwarenessPage() {
             {trainingServices.map((service) => (
               <motion.div
                 key={service.title}
-                variants={fadeUp}
+
                 whileHover={{ y: -8 }}
                 className="group relative flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition-all hover:border-red-200 hover:shadow-xl"
               >
@@ -127,10 +129,10 @@ export default function TrainingAwarenessPage() {
                   <service.icon className="h-8 w-8" />
                 </div>
 
-                <h2 className="mb-4 text-2xl font-bold text-zinc-950 group-hover:text-red-600 transition-colors">
+                <motion.h2 className="mb-4 text-2xl font-bold text-zinc-950 group-hover:text-red-600 transition-colors">
                   {service.title}
-                </h2>
-                
+                </motion.h2>
+
                 <p className="mb-8 flex-grow text-base leading-relaxed text-zinc-600">
                   {service.description}
                 </p>
@@ -168,15 +170,15 @@ export default function TrainingAwarenessPage() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <motion.div variants={fadeUp}>
+            <motion.div >
               <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">The Human Element</p>
-              <h2 className="mb-6 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
+              <motion.h2 className="mb-6 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
                 Turning your weakest link into your strongest defense.
-              </h2>
+              </motion.h2>
               <p className="mb-8 text-lg leading-relaxed text-zinc-600">
                 Technology alone isn't enough. Our training programs are built on the principle that an informed and vigilant workforce is the most effective barrier against cyberattacks. We don't just provide information; we build lasting security habits.
               </p>
-              
+
               <div className="space-y-4">
                 {[
                   "80%+ of breaches involve a human element",
@@ -193,8 +195,8 @@ export default function TrainingAwarenessPage() {
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-200 bg-white p-4 shadow-2xl">
-              <Image 
+            <motion.div className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-200 bg-white p-4 shadow-2xl">
+              <Image
                 src="https://ziedhamdi.com/wp-content/uploads/2025/01/ctf.jpg"
                 alt="Cybersecurity Training Session"
                 fill

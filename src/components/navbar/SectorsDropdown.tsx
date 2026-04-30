@@ -23,19 +23,17 @@ export function SectorsDropdown() {
             <button
               key={index}
               onMouseEnter={() => setActiveCategory(group.category)}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
-                activeCategory === group.category
-                  ? "bg-gray-100 text-red-600"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              }`}
+              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
+                ? "bg-gray-100 text-red-600"
+                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                }`}
             >
               {group.category}
               <svg
-                className={`w-4 h-4 transition-transform ${
-                  activeCategory === group.category
-                    ? "text-red-500"
-                    : "text-gray-400"
-                }`}
+                className={`w-4 h-4 transition-transform ${activeCategory === group.category
+                  ? "text-red-500"
+                  : "text-gray-400"
+                  }`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -105,9 +103,9 @@ export function SectorsDropdown() {
               transition={{ duration: 0.2 }}
               className="w-full relative z-10"
             >
-              <h3 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+              <motion.h2 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                 {currentCategoryObj?.category}
-              </h3>
+              </motion.h2>
               <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                 {sectorLinks.map((sector) => (
                   <Link
@@ -117,11 +115,10 @@ export function SectorsDropdown() {
                   >
                     <span className="mr-3 mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 transition-colors group-hover:bg-red-600" />
                     <span
-                      className={`text-sm transition-colors group-hover:text-red-600 ${
-                        sector.highlighted
-                          ? "text-gray-500"
-                          : "text-gray-500"
-                      }`}
+                      className={`text-sm transition-colors group-hover:text-red-600 ${sector.highlighted
+                        ? "text-gray-500"
+                        : "text-gray-500"
+                        }`}
                     >
                       {sector.name}
                     </span>

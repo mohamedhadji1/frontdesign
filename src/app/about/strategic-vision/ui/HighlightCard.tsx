@@ -25,7 +25,7 @@ export function HighlightCard({
       </div>
 
       <div className={styles.copy}>
-        <h3 className={styles.title}>{title}</h3>
+        <motion.h2 className={styles.title}>{title}</motion.h2>
         {accent ? <span className={styles.accent} /> : null}
       </div>
     </article>

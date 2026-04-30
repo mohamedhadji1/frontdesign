@@ -16,18 +16,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { serviceLinks } from "@/lib/services";
 import Image from "next/image";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.65,
-      ease: [0, 0, 0.2, 1] as const,
-    },
-  },
-};
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const stagger: Variants = {
   hidden: {},
@@ -59,7 +48,7 @@ export function ServicesIndexPage() {
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="relative flex min-h-[100dvh] items-center overflow-hidden bg-zinc-950 px-6 pb-20 pt-32 text-white md:px-12"
+        className="relative flex min-h-[100svh] items-center overflow-hidden bg-zinc-950 px-4 pb-16 pt-28 text-white sm:px-6 sm:pb-20 sm:pt-32 md:px-12"
       >
         <motion.div
           animate={{ scale: [1, 1.06, 1], x: ["0%", "-3%", "0%"] }}
@@ -81,33 +70,34 @@ export function ServicesIndexPage() {
         <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
         <motion.div variants={stagger} className="relative z-10 mx-auto max-w-7xl">
           <motion.div
-            variants={fadeUp}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300"
+
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-red-300 sm:text-sm"
           >
             <span className="h-2 w-2 rounded-full bg-red-500" />
             Services
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
+          <motion.h1 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
             Cybersecurity Services
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
-            Comprehensive cybersecurity solutions designed to protect your organization, 
+          <motion.p className="mt-6 max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl md:leading-8">
+            Comprehensive cybersecurity solutions designed to protect your organization,
             anticipate threats, and strengthen your digital resilience.
           </motion.p>
         </motion.div>
+        <ScrollIndicator className="hidden md:flex" />
       </motion.section>
-      <CyberSectionDivider/>
-        
+      <CyberSectionDivider />
+
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
         variants={stagger}
-        className="px-6 md:px-12 mb-20"
+        className="mb-16 px-4 sm:px-6 md:px-12 md:mb-20"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp}>
+          <motion.div >
             <SectionDivider title="SERVICES" className="mb-12" />
           </motion.div>
           <motion.div variants={stagger} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -118,21 +108,21 @@ export function ServicesIndexPage() {
                 <motion.div
                   id={getServiceId(service.href)}
                   key={service.href}
-                  variants={fadeUp}
+
                   whileHover={{ y: -8, scale: 1.01 }}
                   className="scroll-mt-28"
                 >
                   <Link
                     href={service.href}
-                    className="group block h-full rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40"
+                    className="group block h-full rounded-lg border border-zinc-200 bg-white p-5 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40 sm:p-6"
                   >
                     <motion.div whileHover={{ rotate: -4, scale: 1.08 }}>
                       <Icon className="mb-6 h-9 w-9 text-red-600" aria-hidden="true" />
                     </motion.div>
-                    <h2 className="mb-3 text-xl font-bold text-zinc-950">
+                    <motion.h2 className="mb-3 text-xl font-bold text-zinc-950">
                       {service.name}
-                    </h2>
-                    <p className="min-h-16 text-sm leading-7 text-zinc-600">
+                    </motion.h2>
+                    <p className="text-sm leading-7 text-zinc-600 sm:min-h-16">
                       {service.description}
                     </p>
                     <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-red-600">
@@ -146,18 +136,18 @@ export function ServicesIndexPage() {
                 </motion.div>
               );
             })}
-            
+
           </motion.div>
-          
+
         </div>
       </motion.section>
-      <CyberSectionDivider/>
+      <CyberSectionDivider />
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
         variants={stagger}
-        className="relative overflow-hidden bg-zinc-950 px-6 py-24 text-white md:px-12"
+        className="relative overflow-hidden bg-zinc-950 px-4 py-16 text-white sm:px-6 sm:py-20 md:px-12 md:py-24"
       >
         <motion.div
           animate={{ x: ["0%", "-4%", "0%"] }}
@@ -173,25 +163,25 @@ export function ServicesIndexPage() {
         </motion.div>
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <motion.div variants={stagger} className="max-w-3xl">
-            <motion.p variants={fadeUp} className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+            <motion.p className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-red-400">
               Protect Your Digital Assets
             </motion.p>
-            <motion.h2 variants={fadeUp} className="text-3xl font-black tracking-tight md:text-5xl">
+            <motion.h2 className="text-3xl font-black tracking-tight md:text-5xl">
               Ready to secure your future?
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
-              Contact our experts today to discuss your specific cybersecurity needs 
+            <motion.p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
+              Contact our experts today to discuss your specific cybersecurity needs
               and build a tailored defense strategy.
             </motion.p>
           </motion.div>
           <motion.div
-            variants={fadeUp}
+
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.98 }}
           >
             <Link
               href="/contact"
-              className="inline-flex w-fit items-center gap-3 rounded-full bg-red-600 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
+              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700 sm:w-fit"
             >
               Get in Touch
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -199,7 +189,7 @@ export function ServicesIndexPage() {
           </motion.div>
         </div>
       </motion.section>
-      <CyberSectionDivider/>
+      <CyberSectionDivider />
     </main>
   );
 }

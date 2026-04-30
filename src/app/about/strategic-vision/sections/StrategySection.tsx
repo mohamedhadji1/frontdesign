@@ -18,10 +18,9 @@ export function StrategySection() {
       <Container>
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.title}>
-              <span className={styles.marker}>▪</span>
-              <span>OUR STRATEGY</span>
-            </h2>
+            <motion.h2 className="text-4xl lg:text-5xl leading-tight font-medium text-black mb-6">
+              OUR STRATEGY
+            </motion.h2>
 
             <ParagraphStack paragraphs={paragraphs} />
           </div>

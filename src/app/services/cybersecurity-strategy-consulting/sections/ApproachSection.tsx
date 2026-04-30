@@ -30,7 +30,7 @@ export function ApproachSection() {
     <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-24 bg-white text-gray-900 border-t border-gray-100">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">Our <span className="text-red-600">Methodology</span></h2>
+          <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">Our <span className="text-red-600">Methodology</span></motion.h2>
           <p className="text-gray-600 text-lg max-w-3xl font-medium">
             We don't believe in one-size-fits-all. Our approach to cybersecurity strategy is highly tailored, business-aligned, and focused on tangible outcomes.
           </p>
@@ -49,9 +49,9 @@ export function ApproachSection() {
               <div className="absolute top-8 right-8 text-6xl font-black text-gray-100 group-hover:text-red-50 transition-colors duration-300 pointer-events-none select-none">
                 {item.step}
               </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900 relative z-10 mt-8">
+              <motion.h2 className="text-xl font-bold mb-4 text-gray-900 relative z-10 mt-8">
                 {item.title}
-              </h3>
+              </motion.h2>
               <p className="text-gray-600 leading-relaxed relative z-10">
                 {item.description}
               </p>

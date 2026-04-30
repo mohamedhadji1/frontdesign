@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React from 'react';
 import styles from './HeroSection.module.css';
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export function HeroSection() {
   return (
@@ -25,6 +26,7 @@ export function HeroSection() {
           </a>
         </div>
       </div>
+      <ScrollIndicator/>
     </motion.section>
   );
 }

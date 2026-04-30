@@ -43,7 +43,7 @@ const animations = {
     },
     path1: {},
     path2: {},
-    path3: {},
+    path2: {},
     path4: {},
   } satisfies Record<string, Variants>,
 } as const;
@@ -87,7 +87,7 @@ function IconComponent({ size, ...props }: ClapperboardProps) {
           />
           <motion.path
             d="m12.4 3.4 3.1 4"
-            variants={variants.path3}
+            variants={variants.path2}
             initial="initial"
             animate={controls}
           />

@@ -214,9 +214,9 @@ export default function CybersecurityAndInvestigationPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
               Why It Matters
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Cyber defense and investigation must work together
-            </h2>
+            </motion.h2>
             <p className="mb-8 text-lg leading-relaxed text-zinc-600">
               Effective cybersecurity goes beyond protecting systems. Teams also
               need the ability to investigate incidents, understand what
@@ -236,9 +236,9 @@ export default function CybersecurityAndInvestigationPage() {
                       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-600">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <h3 className="text-lg font-semibold text-zinc-900">
+                      <motion.h2 className="text-lg font-semibold text-zinc-900">
                         {item.title}
-                      </h3>
+                      </motion.h2>
                     </div>
                     <p className="leading-relaxed text-zinc-600">
                       {item.description}
@@ -265,9 +265,9 @@ export default function CybersecurityAndInvestigationPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
               Training Approach
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Technical expertise built through practice and casework
-            </h2>
+            </motion.h2>
             <p className="text-lg leading-relaxed text-zinc-600">
               Our methodology combines workshops, practitioner insight, and
               real-world scenarios to create a stronger learning curve.
@@ -286,9 +286,9 @@ export default function CybersecurityAndInvestigationPage() {
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-zinc-900">
+                  <motion.h2 className="mb-3 text-xl font-bold text-zinc-900">
                     {item.title}
-                  </h3>
+                  </motion.h2>
                   <p className="leading-relaxed text-zinc-600">
                     {item.description}
                   </p>
@@ -323,9 +323,9 @@ export default function CybersecurityAndInvestigationPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-500">
               Program Scope
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Specialized modules for defense, inquiry, and forensics
-            </h2>
+            </motion.h2>
             <div className="space-y-4">
               {programs.map((program) => (
                 <div

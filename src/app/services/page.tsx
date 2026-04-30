@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ServicesIndexPage } from "./components/ServicesIndexPage";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export const metadata: Metadata = {
   title: "Services | Keystone",
@@ -9,4 +10,5 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return <ServicesIndexPage />;
+  <BackToTop />
 }

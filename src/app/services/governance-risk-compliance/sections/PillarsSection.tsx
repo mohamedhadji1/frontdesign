@@ -46,14 +46,14 @@ export function PillarsSection() {
 
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
+          <motion.h2 className="mb-4 flex items-center justify-center gap-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">
             <span className="h-px w-8 bg-red-600/30" />
             GRC
             <span className="h-px w-8 bg-red-600/30" />
-          </h2>
-          <h3 className="text-3xl font-bold tracking-tight md:text-5xl">
+          </motion.h2>
+          <motion.h2 className="text-3xl font-bold tracking-tight md:text-5xl">
             A GRC approach built on three pillars
-          </h3>
+          </motion.h2>
           <p className="mt-5 text-lg leading-relaxed text-zinc-600">
             We combine governance, risk control, and compliance to give your
             organization a robust, durable framework that supports day-to-day

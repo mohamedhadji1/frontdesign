@@ -14,7 +14,7 @@ const partners = [
 
 export function TrustedBySection() {
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="pb-10 pt-8 bg-black/20 px-4">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-black/20 px-4 pb-10 pt-8 sm:px-6">
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -37,7 +37,7 @@ export function TrustedBySection() {
               transition: { staggerChildren: 0.15, delayChildren: 0.2 }
             }
           }}
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-16 w-full"
+          className="flex w-full flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-16"
         >
           {partners.map((partner, index) => (
             <motion.div 
@@ -47,7 +47,7 @@ export function TrustedBySection() {
                 visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0, 0, 0.2, 1] } }
               }}
               whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
-              className="relative w-40 h-20 md:w-48 md:h-24 cursor-pointer"
+              className="relative h-14 w-28 cursor-pointer sm:h-16 sm:w-32 md:h-24 md:w-48"
             >
               <Image 
                 src={partner.logo} 

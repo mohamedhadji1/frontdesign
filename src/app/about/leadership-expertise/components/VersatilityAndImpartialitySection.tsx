@@ -1,5 +1,7 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 export function VersatilityAndImpartialitySection() {
   return (
     <div className="mb-20"
@@ -15,13 +17,12 @@ export function VersatilityAndImpartialitySection() {
           />
         </div>
         <div className="order-1 lg:order-2 lg:pl-12">
-          <h2
+          <motion.h2
             className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 flex items-start gap-4"
             style={{ fontFamily: "'Gotham', sans-serif" }}
           >
-            <span className="w-2.5 h-2.5 bg-black/20 inline-block flex-shrink-0 mt-2"></span> 
-            <span>VERSATILITY AND<br/>IMPARTIALITY</span>
-          </h2>
+            VERSATILITY AND<br />IMPARTIALITY
+          </motion.h2>
           <p
             className="text-gray-700 leading-[1.8]"
             style={{ fontFamily: "'Gotham', sans-serif" }}

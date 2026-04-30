@@ -18,6 +18,7 @@ import {
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const eventFormats = [
   {
@@ -159,6 +160,7 @@ export default function CtfCompetitionOrganizationPage() {
             </div>
           </div>
         </div>
+        <ScrollIndicator />
       </motion.section>
 
       <CyberSectionDivider theme="red" />
@@ -175,10 +177,10 @@ export default function CtfCompetitionOrganizationPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
               An Overview Of CTFs
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Realistic cyber exercises that train teams to think, react, and
               collaborate
-            </h2>
+            </motion.h2>
             <p className="mb-6 text-lg leading-relaxed text-zinc-600">
               CTF events simulate real-world cybersecurity situations in which
               participants solve a sequence of challenges to capture the flag.
@@ -230,9 +232,9 @@ export default function CtfCompetitionOrganizationPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
               Our Tailored CTF Events
             </p>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
               Custom competitions designed around your team and objectives
-            </h2>
+            </motion.h2>
             <p className="text-lg leading-relaxed text-zinc-600">
               We adapt each event to your learning goals, team maturity, and
               operational context so the experience feels relevant, demanding,
@@ -253,9 +255,9 @@ export default function CtfCompetitionOrganizationPage() {
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-zinc-900">
+                  <motion.h2 className="mb-3 text-xl font-bold text-zinc-900">
                     {item.title}
-                  </h3>
+                  </motion.h2>
                   <p className="leading-relaxed text-zinc-600">
                     {item.description}
                   </p>
@@ -282,9 +284,9 @@ export default function CtfCompetitionOrganizationPage() {
               Why It Works
             </p>
 
-            <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
+            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
               A cybersecurity learning format people actually remember
-            </h2>
+            </motion.h2>
 
             <p className="text-lg leading-relaxed text-zinc-600">
               CTF competitions bring together challenge, collaboration, and feedback
@@ -303,9 +305,9 @@ export default function CtfCompetitionOrganizationPage() {
                 >
                   <Icon className="mb-5 h-8 w-8 text-red-500" />
 
-                  <h3 className="mb-3 text-xl font-semibold text-zinc-900">
+                  <motion.h2 className="mb-3 text-xl font-semibold text-zinc-900">
                     {item.title}
-                  </h3>
+                  </motion.h2>
 
                   <p className="leading-relaxed text-zinc-600">
                     {item.description}

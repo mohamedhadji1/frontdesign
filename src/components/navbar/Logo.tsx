@@ -13,7 +13,7 @@ export function Logo({ isLight = false }: LogoProps) {
         isLight ? "bg-black/45 backdrop-blur-sm rounded-md px-2 py-1" : ""
       }`}
     >
-      <div className="relative w-40 h-10 md:w-48 md:h-12">
+      <div className="relative h-11 w-44 sm:h-12 sm:w-48">
         <Image 
           src="/logos/logo.png" 
           alt="Keystone Logo"

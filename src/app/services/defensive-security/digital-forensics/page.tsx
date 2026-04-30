@@ -14,7 +14,7 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
 
   const features = [
-    
+
     {
       id: "deep-forensic",
       title: "Deep Forensic Analysis",
@@ -45,7 +45,7 @@ export default function Page() {
       description: "Provide detailed technical discoveries, clear explanations, and expert testimony for legal or internal proceedings.",
       icon: Gavel,
     }
-    
+
   ];
 
   return (
@@ -54,13 +54,13 @@ export default function Page() {
 
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[#09090b]">
-           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
         </div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 text-center lg:text-center flex flex-col items-center">
-                            <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -71,21 +71,21 @@ export default function Page() {
                   <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors">Defensive Security</Link><span className="text-blue-500/50">/</span><span className="text-blue-400">Digital Forensics</span>
                 </div>
               </motion.div>
-              
-              <motion.h1 
+
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
               >
-                Digital <wbr/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Forensics</span>
+                Digital <wbr /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Forensics</span>
               </motion.h1>
               <HeroTypeLine
                 items={["Evidence preservation", "Intrusion reconstruction", "Defensible forensic analysis"]}
                 className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
               />
-               
-              <motion.p 
+
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,7 +97,7 @@ export default function Page() {
 
             <div className="lg:w-1/2 w-full mt-12 lg:mt-0 relative">
               <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/30 to-transparent blur-3xl rounded-full opacity-70" />
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -105,9 +105,9 @@ export default function Page() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent z-10 opacity-80" />
                 <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors duration-700 z-10 mix-blend-overlay" />
-                <img 
-                  src="https://images.unsplash.com/photo-1614064641913-a520faff3f89?auto=format&fit=crop&q=80&w=800" 
-                  alt="Digital Forensics" 
+                <img
+                  src="https://images.unsplash.com/photo-1614064641913-a520faff3f89?auto=format&fit=crop&q=80&w=800"
+                  alt="Digital Forensics"
                   className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out"
                 />
               </motion.div>
@@ -116,28 +116,28 @@ export default function Page() {
         </div>
       </motion.section>
 
-          <CyberSectionDivider theme="blue" />
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-zinc-50 flex-grow relative overflow-hidden">
+      <CyberSectionDivider theme="blue" />
+
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-zinc-50 flex-grow relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.05),transparent_50%)] pointer-events-none" />
-        
+
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <div className="mt-5 ">
             <div className="max-w-3xl mb-16 text-center mx-auto">
-              <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+              <motion.h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
                 <span className="w-8 h-px bg-blue-600/30"></span>
                 Tactical Playbook
                 <span className="w-8 h-px bg-blue-600/30"></span>
-              </h2>
-              <h3 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+              </motion.h2>
+              <motion.h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
                 Technical Steps
-              </h3>
+              </motion.h2>
               <p className="text-zinc-600 text-lg">
                 Discover how our CERT operatives execute high-stakes maneuvers to analyze, contain, and eradicate threats. From initial evidence collection to final reporting, we follow a meticulous process to ensure no detail is overlooked in our forensic investigations.
               </p>
             </div>
-            </div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Interactive Tabs */}
@@ -151,35 +151,32 @@ export default function Page() {
                   <button
                     key={feature.id}
                     onClick={() => setActiveTab(index)}
-                    className={`group relative flex items-center gap-5 p-4 rounded-xl text-left transition-all duration-300 ${
-                      isActive 
-                        ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-200 ring-1 ring-blue-500/10" 
-                        : "bg-transparent hover:bg-white/60 border border-transparent hover:border-zinc-200"
-                    }`}
+                    className={`group relative flex items-center gap-5 p-4 rounded-xl text-left transition-all duration-300 ${isActive
+                      ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-200 ring-1 ring-blue-500/10"
+                      : "bg-transparent hover:bg-white/60 border border-transparent hover:border-zinc-200"
+                      }`}
                   >
                     {isActive && (
-                      <motion.div 
+                      <motion.div
                         layoutId="activeTabIndicator"
                         className="absolute left-0 w-1 h-full bg-blue-600 rounded-l-xl"
                         initial={false}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
-                    
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${
-                      isActive 
-                        ? "bg-blue-600 text-white shadow-blue-600/20" 
-                        : "bg-white border border-zinc-200 text-zinc-500 group-hover:text-blue-500 group-hover:border-blue-200"
-                    }`}>
+
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 shadow-sm ${isActive
+                      ? "bg-blue-600 text-white shadow-blue-600/20"
+                      : "bg-white border border-zinc-200 text-zinc-500 group-hover:text-blue-500 group-hover:border-blue-200"
+                      }`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    
+
                     <div>
-                      <h3 className={`font-bold text-sm md:text-base tracking-wide uppercase transition-colors duration-300 ${
-                        isActive ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-700"
-                      }`}>
+                      <motion.h2 className={`font-bold text-sm md:text-base tracking-wide uppercase transition-colors duration-300 ${isActive ? "text-zinc-900" : "text-zinc-500 group-hover:text-zinc-700"
+                        }`}>
                         {feature.title}
-                      </h3>
+                      </motion.h2>
                     </div>
                   </button>
                 );
@@ -191,7 +188,7 @@ export default function Page() {
               <div className="relative h-full rounded-3xl bg-white border border-zinc-200/80 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 blur-[100px] rounded-full pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-50 blur-[100px] rounded-full pointer-events-none" />
-                
+
                 <div className="p-8 lg:p-12 relative z-10 h-full flex flex-col justify-center">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -212,17 +209,17 @@ export default function Page() {
                           0{activeTab + 1}
                         </div>
                       </div>
-                      
-                      <h3 className="text-3xl lg:text-4xl font-black text-zinc-900 mb-6 uppercase tracking-tight">
+
+                      <motion.h2 className="text-3xl lg:text-4xl font-black text-zinc-900 mb-6 uppercase tracking-tight">
                         {features[activeTab].title}
-                      </h3>
-                      
+                      </motion.h2>
+
                       <div className="w-12 h-1 bg-blue-600 mb-8 rounded-full" />
-                      
+
                       <p className="text-lg text-zinc-600 leading-relaxed">
                         {features[activeTab].description}
                       </p>
-                      
+
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -231,8 +228,8 @@ export default function Page() {
           </div>
         </div>
       </motion.section>
-      
-      <CyberSectionDivider theme="blue"/>
+
+      <CyberSectionDivider theme="blue" />
       <DEFCTASection />
     </main>
   );

@@ -55,7 +55,7 @@ const animations = {
     },
     path1: {},
     path2: {},
-    path3: {
+    path2: {
       initial: {
         rotate: 0,
         d: 'M8 5 L5 8',
@@ -117,7 +117,7 @@ function IconComponent({ size, ...props }: AccessibilityProps) {
         />
         <motion.path
           d="M8 5 L5 8"
-          variants={variants.path3}
+          variants={variants.path2}
           initial="initial"
           animate={controls}
         />

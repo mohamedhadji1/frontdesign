@@ -39,7 +39,7 @@ const animations = {
     },
     path1: pathAnimation,
     path2: pathAnimation,
-    path3: pathAnimation,
+    path2: pathAnimation,
     path4: pathAnimation,
     path5: pathAnimation,
   } satisfies Record<string, Variants>,
@@ -67,7 +67,7 @@ function IconComponent({ size, ...props }: SignalProps) {
     >
       <motion.path d="M2 20h.01" variants={variants.path1} />
       <motion.path d="M7 20v-4" variants={variants.path2} />
-      <motion.path d="M12 20v-8" variants={variants.path3} />
+      <motion.path d="M12 20v-8" variants={variants.path2} />
       <motion.path d="M17 20V8" variants={variants.path4} />
       <motion.path d="M22 20V4" variants={variants.path5} />
     </motion.svg>

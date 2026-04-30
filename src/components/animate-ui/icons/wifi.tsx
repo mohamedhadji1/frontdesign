@@ -79,7 +79,7 @@ function IconComponent({ size, ...props }: WifiProps) {
       />
       <motion.path
         d="M5 12.859a10 10 0 0 1 14 0"
-        variants={variants.path3}
+        variants={variants.path2}
         initial="initial"
         animate={controls}
       />

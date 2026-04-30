@@ -58,13 +58,13 @@ export function MethodologySection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-20 text-center max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
-            <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+            <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-red-600/30"></span>
               OUR APPROACH
               <span className="w-8 h-px bg-red-600/30"></span>
-            </h2>          
+            </motion.h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Audit Methodology</h2>
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Audit Methodology</motion.h2>
           <p className="text-gray-400 text-lg leading-relaxed">
             Our structured audit process guarantees thorough coverage of your specialized environments, ensuring no misconfiguration or hidden vulnerability is overlooked.
           </p>
@@ -81,7 +81,7 @@ export function MethodologySection() {
               className="group relative bg-[#0a0a0a] border border-[#222] hover:border-red-500/30 p-8 rounded-xl transition-all duration-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8">
                   <div className="w-12 h-12 bg-black/20 border border-[#333] group-hover:border-red-500/50 group-hover:bg-red-500/10 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-red-500 transition-all duration-300">
@@ -91,10 +91,10 @@ export function MethodologySection() {
                     0{idx + 1}
                   </div>
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-100 mb-4 group-hover:text-white transition-colors">
+
+                <motion.h2 className="text-xl font-bold text-gray-100 mb-4 group-hover:text-white transition-colors">
                   {step.name}
-                </h3>
+                </motion.h2>
                 <p className="text-gray-500 group-hover:text-gray-400 text-sm leading-relaxed transition-colors duration-300">
                   {step.desc}
                 </p>

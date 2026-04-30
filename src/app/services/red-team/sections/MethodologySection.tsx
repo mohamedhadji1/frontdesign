@@ -62,7 +62,7 @@ export function MethodologySection() {
   ];
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} 
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }}
       onMouseMove={handleMouseMove}
       className="py-24 md:py-10 bg-white relative border-t border-zinc-200 overflow-hidden group"
     >
@@ -81,61 +81,61 @@ export function MethodologySection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.05),transparent_50%)] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center">
-        
+
         <div className="text-center mb-20 md:mb-10">
-          <h2 className="text-red-500 font-medium text-xs tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
+          <motion.h2 className="text-red-500 font-medium text-xs tracking-[0.2em] mb-4 flex items-center justify-center gap-4">
             <span className="w-4 h-px bg-red-500/50"></span>
             SYS.EXEC(KILL_CHAIN)
             <span className="w-4 h-px bg-red-500/50"></span>
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight uppercase">
-            Execution <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">Protocol</span>
-          </h3>
-        </div>
-
-        {/* Step-by-step layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative group bg-white/60 backdrop-blur-sm border border-zinc-200 p-8 flex flex-col h-full hover:border-red-500/30 transition-colors shadow-sm hover:shadow-md"
-            >
-              {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
-              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
-
-              <div className="mb-6 flex items-center justify-between">
-                <div className="text-red-500">
-                  {step.icon}
-                </div>
-
-              </div>
-
-              <h4 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-wide">
-                {step.name}
-              </h4>
-              
-              <p className="text-zinc-600 text-sm leading-relaxed flex-grow">
-                {step.desc}
-              </p>
-
-              <div className="mt-8 border-t border-zinc-200 pt-4 flex items-center gap-2 group-hover:text-red-600 transition-colors">
-                <Terminal className="w-3 h-3 text-red-600 group-hover:text-red-500 transition-colors" animateOnHover={true} />
-                <span className="font-medium text-[10px] uppercase text-zinc-500 tracking-wider">
-                  {`> run_module_${step.id}()`}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
+          </motion.h2>
+          <motion.h2 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight uppercase">
+            Execution Protocol
+        </motion.h2>
       </div>
-    </motion.section>
+
+      {/* Step-by-step layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
+        {steps.map((step, idx) => (
+          <motion.div
+            key={step.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            className="relative group bg-white/60 backdrop-blur-sm border border-zinc-200 p-8 flex flex-col h-full hover:border-red-500/30 transition-colors shadow-sm hover:shadow-md"
+          >
+            {/* Corner brackets */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-red-600/0 group-hover:border-red-600/50 transition-colors" />
+
+            <div className="mb-6 flex items-center justify-between">
+              <div className="text-red-500">
+                {step.icon}
+              </div>
+
+            </div>
+
+            <h4 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-wide">
+              {step.name}
+            </h4>
+
+            <p className="text-zinc-600 text-sm leading-relaxed flex-grow">
+              {step.desc}
+            </p>
+
+            <div className="mt-8 border-t border-zinc-200 pt-4 flex items-center gap-2 group-hover:text-red-600 transition-colors">
+              <Terminal className="w-3 h-3 text-red-600 group-hover:text-red-500 transition-colors" animateOnHover={true} />
+              <span className="font-medium text-[10px] uppercase text-zinc-500 tracking-wider">
+                {`> run_module_${step.id}()`}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+    </div>
+    </motion.section >
   );
 }

@@ -185,7 +185,7 @@ function IconTile({ item }: { item: IconCard }) {
 
   return (
     <motion.article
-      variants={fadeUp}
+
       whileHover={{ y: -6, scale: 1.01 }}
       transition={{ duration: 0.2 }}
       className="group h-full rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40"
@@ -196,7 +196,7 @@ function IconTile({ item }: { item: IconCard }) {
       >
         <Icon className="h-6 w-6" aria-hidden="true" />
       </motion.div>
-      <h3 className="mb-3 text-lg font-bold text-zinc-950">{item.title}</h3>
+      <motion.h2 className="mb-3 text-lg font-bold text-zinc-950">{item.title}</motion.h2>
       <p className="text-sm leading-7 text-zinc-600">{item.description}</p>
     </motion.article>
   );
@@ -234,20 +234,18 @@ function InteractiveHubSection({ items }: { items: IconCard[] }) {
                 )}
                 {/* Icon */}
                 <div
-                  className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border transition-colors ${
-                    isActive
-                      ? "border-red-600 bg-red-600 text-white"
-                      : "border-zinc-200 bg-zinc-50 text-zinc-500 group-hover:border-zinc-300"
-                  }`}
+                  className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border transition-colors ${isActive
+                    ? "border-red-600 bg-red-600 text-white"
+                    : "border-zinc-200 bg-zinc-50 text-zinc-500 group-hover:border-zinc-300"
+                    }`}
                 >
                   <ItemIcon className="h-[18px] w-[18px]" aria-hidden="true" />
                 </div>
 
                 {/* Title */}
                 <span
-                  className={`flex-1 text-sm font-medium leading-snug ${
-                    isActive ? "text-black" : "text-zinc-700"
-                  }`}
+                  className={`flex-1 text-sm font-medium leading-snug ${isActive ? "text-black" : "text-zinc-700"
+                    }`}
                 >
                   {item.title}
                 </span>
@@ -295,9 +293,9 @@ function InteractiveHubSection({ items }: { items: IconCard[] }) {
             </div>
 
             {/* Content */}
-            <h3 className="mb-4 text-xl font-medium leading-snug text-black">
+            <motion.h2 className="mb-4 text-xl font-medium leading-snug text-black">
               {selected.title}
-            </h3>
+            </motion.h2>
             <p className="max-w-sm text-sm leading-7 text-black/50">
               {selected.description}
             </p>
@@ -349,7 +347,7 @@ export function PublicSectorPage() {
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div variants={stagger} className="max-w-4xl">
             <motion.div
-              variants={fadeUp}
+
               className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300 backdrop-blur-md"
             >
               <span className="h-2 w-2 rounded-full bg-red-500" />
@@ -361,14 +359,14 @@ export function PublicSectorPage() {
             </motion.div>
 
             <motion.h1
-              variants={fadeUp}
+
               className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
             >
               Cybersecurity for Governments and Public Organizations
             </motion.h1>
 
             <motion.p
-              variants={fadeUp}
+
               className="max-w-3xl text-lg font-medium leading-8 text-zinc-200 md:text-xl"
             >
               Governments and public organizations face unique cybersecurity
@@ -377,7 +375,7 @@ export function PublicSectorPage() {
               targets for cyberattacks.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
+            <motion.div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/contact?sector=public"
                 className="inline-flex items-center gap-3 rounded-full bg-red-600 px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
@@ -404,7 +402,7 @@ export function PublicSectorPage() {
               {["Protect", "Detect", "Respond", "Recover"].map((label, index) => (
                 <motion.div
                   key={label}
-                  variants={fadeUp}
+
                   whileHover={{ y: -8, borderColor: "rgba(220,38,38,0.65)" }}
                   animate={{ y: [0, index % 2 === 0 ? -8 : 8, 0] }}
                   transition={{
@@ -427,9 +425,9 @@ export function PublicSectorPage() {
         </div>
       </motion.section>
       <CyberSectionDivider />
-              <motion.div variants={fadeUp}>
-            <SectionDivider title="Public-Sector Exposure" className="bg-[#f7f7f8]" />
-          </motion.div>
+      <motion.div >
+        <SectionDivider title="Public-Sector Exposure" className="bg-[#f7f7f8]" />
+      </motion.div>
 
       <motion.section
         id="emerging-risks"
@@ -440,16 +438,16 @@ export function PublicSectorPage() {
         className="bg-[#f7f7f8] px-6 py-16 md:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp} className="mb-16">
-            <h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl text-center">
+          <motion.div className="mb-16">
+            <motion.h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl text-center">
               Emerging Risks
-            </h2>
+            </motion.h2>
           </motion.div>
-          
+
           <InteractiveHubSection items={emergingRisks} />
         </div>
       </motion.section>
-              <CyberSectionDivider />
+      <CyberSectionDivider />
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -458,7 +456,7 @@ export function PublicSectorPage() {
         className="bg-zinc-950 px-6 text-white md:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp}>
+          <motion.div >
             <SectionDivider title="SPECIFIC RISKS" className="mb-12" />
           </motion.div>
           <motion.div variants={stagger} className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 pb-20">
@@ -468,14 +466,14 @@ export function PublicSectorPage() {
               return (
                 <motion.article
                   key={risk.title}
-                  variants={fadeUp}
+
                   whileHover={{ y: -6, backgroundColor: "rgba(255,255,255,0.07)" }}
                   className="rounded-lg border border-white/10 bg-white/[0.04] p-6"
                 >
                   <Icon className="mb-5 h-8 w-8 text-red-500" aria-hidden="true" />
-                  <h3 className="mb-3 text-lg font-bold text-white">
+                  <motion.h2 className="mb-3 text-lg font-bold text-white">
                     {risk.title}
-                  </h3>
+                  </motion.h2>
                   <p className="text-sm leading-7 text-zinc-400">
                     {risk.description}
                   </p>
@@ -487,9 +485,9 @@ export function PublicSectorPage() {
       </motion.section>
 
       <CyberSectionDivider />
-            <motion.div variants={fadeUp}>
-            <SectionDivider title="Adapted Solutions"/>
-          </motion.div>
+      <motion.div >
+        <SectionDivider title="Adapted Solutions" />
+      </motion.div>
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -499,10 +497,10 @@ export function PublicSectorPage() {
       >
         <div className="mx-auto">
           <motion.div variants={stagger} className="mb-12">
-            <motion.h2 variants={fadeUp} className="text-center mb-5 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
+            <motion.h2 className="text-center mb-5 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
               Solutions Adapted to Public Organizations
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-center text-base leading-8 text-zinc-600 md:text-lg">
+            <motion.p className="text-center text-base leading-8 text-zinc-600 md:text-lg">
               Keystone translates risk findings into practical controls for
               public infrastructure, digital services, and the people operating
               them.
@@ -517,9 +515,9 @@ export function PublicSectorPage() {
         </div>
       </motion.section>
       <CyberSectionDivider />
-      <motion.div variants={fadeUp}>
-            <SectionDivider title="Keystone Response Framework" className="bg-[#f7f7f8]" />
-          </motion.div>
+      <motion.div >
+        <SectionDivider title="Keystone Response Framework" className="bg-[#f7f7f8]" />
+      </motion.div>
 
       <motion.section
         initial="hidden"
@@ -529,15 +527,15 @@ export function PublicSectorPage() {
         className="bg-[#f7f7f8] px-6 py-10 md:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <motion.div variants={fadeUp} className="mb-10 text-center">
-            <motion.h2 variants={fadeUp} className="text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
+          <motion.div className="mb-10 text-center">
+            <motion.h2 className="text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
               Designed for Government Infrastructure
             </motion.h2>
-          </motion.div>          
+          </motion.div>
           <InteractiveHubSection items={keystoneSolutions} />
         </div>
       </motion.section>
-       <CyberSectionDivider />
+      <CyberSectionDivider />
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -559,19 +557,19 @@ export function PublicSectorPage() {
         </motion.div>
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <motion.div variants={stagger} className="max-w-3xl">
-            <motion.p variants={fadeUp} className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-red-400">
+            <motion.p className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-red-400">
               Building the Digital Keystone
             </motion.p>
-            <motion.h2 variants={fadeUp} className="text-3xl font-black tracking-tight md:text-5xl">
+            <motion.h2 className="text-3xl font-black tracking-tight md:text-5xl">
               Do not fight cyber threats alone.
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
+            <motion.p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
               Work with Keystone to strengthen public services, protect
               critical data, and respond to threats with confidence.
             </motion.p>
           </motion.div>
           <motion.div
-            variants={fadeUp}
+
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.98 }}
           >

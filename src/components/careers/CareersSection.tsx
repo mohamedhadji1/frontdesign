@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import ReCAPTCHA from "react-google-recaptcha";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { careerSlug, careersDetails } from "@/lib/careers";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 import { SectionDivider } from "../ui/SectionDivider";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 interface CareersFormProps {
   category: string;
@@ -26,6 +28,8 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
     setFormData((prev) => {
@@ -66,6 +70,7 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         body: JSON.stringify({
           ...formData,
           subject: `Career Application: ${formData.offer} (${category})`,
+          captchaToken,
         }),
       });
 
@@ -79,6 +84,9 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         offer: selectedOffer ?? "",
         message: "",
       });
+      setCaptchaToken(null);
+      if (recaptchaRef.current) recaptchaRef.current.reset();
+      setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
@@ -87,25 +95,25 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
 
   if (variant === "contact") {
     return (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             name="name"
-            placeholder="Name Surname"
+            placeholder="Full Name"
             required
             value={formData.name}
             onChange={handleChange}
-            className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
+            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
           />
           <input
             type="email"
             name="email"
-            placeholder="E-Mail Address"
+            placeholder="Email Address"
             required
             value={formData.email}
             onChange={handleChange}
-            className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
+            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
           />
           <input
             type="tel"
@@ -113,7 +121,7 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
             placeholder="Phone Number"
             value={formData.phone}
             onChange={handleChange}
-            className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100"
+            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
           />
           <div className="relative w-full">
             {selectedOffer ? (
@@ -123,7 +131,7 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
                 value={formData.offer}
                 readOnly
                 required
-                className="bg-white px-5 py-4 w-full text-sm outline-none text-gray-700 border border-gray-100"
+                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 border border-gray-200 rounded-md"
               />
             ) : (
               <>
@@ -132,11 +140,9 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
                   value={formData.offer}
                   onChange={handleChange}
                   required
-                  className="bg-white px-5 py-4 w-full text-sm outline-none text-gray-700 focus:ring-2 focus:ring-[#e60000]/20 transition-all border border-gray-100 appearance-none pr-10"
+                  className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
                 >
-                  <option value="" disabled>
-                    Select a Position
-                  </option>
+                  <option value="" disabled>Select a Position</option>
                   {items.map((item) => (
                     <option key={item} value={item} className="bg-white text-gray-700 font-normal">
                       {item}
@@ -144,18 +150,7 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
                   ))}
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                 </div>
               </>
             )}
@@ -164,43 +159,35 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
 
         <textarea
           name="message"
-          placeholder="Your Message"
-          rows={6}
+          placeholder="Your Message / Cover Letter"
+          rows={4}
           required
           value={formData.message}
           onChange={handleChange}
-          className="bg-white px-5 py-4 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#e60000]/20 transition-all resize-none border border-gray-100"
+          className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
         />
 
-        <div className="flex justify-end items-center mt-2">
-          {status === "success" && (
-            <span className="mr-6 text-green-600 font-semibold text-sm">
-              Application sent successfully!
-            </span>
-          )}
-          {status === "error" && (
-            <span className="mr-6 text-red-600 font-semibold text-sm">
-              Failed to send application. Check settings.
-            </span>
-          )}
+        
+
+        <div className="flex justify-between items-center mt-2">
+          <div className="mt-2 w-full">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            onChange={(token) => setCaptchaToken(token)}
+          />
+        </div>
+          <div className="flex-1">
+            {status === "success" && <span className="text-green-600 font-medium text-sm">Application sent!</span>}
+            {status === "error" && <span className="text-red-600 font-medium text-sm">Failed to send.</span>}
+          </div>
+
           <button
             type="submit"
-            disabled={status === "loading"}
-            className="bg-[#e60000] text-white text-sm font-semibold py-3.5 px-10 inline-flex items-center gap-3 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={status === "loading" || !captchaToken}
+            className="bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
           >
             {status === "loading" ? "Sending..." : "Submit"}
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
           </button>
         </div>
       </form>
@@ -321,6 +308,14 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         />
       </div>
 
+      <div className="mt-2">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          onChange={(token) => setCaptchaToken(token)}
+        />
+      </div>
+
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
         <p className="text-[11px] text-gray-400 max-w-xs leading-relaxed italic">
           By submitting this form, you agree to our privacy policy and the processing of your
@@ -345,8 +340,8 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
           {status === "error" && <span className="text-red-600 font-bold text-xs">ERROR</span>}
           <button
             type="submit"
-            disabled={status === "loading"}
-            className="group relative overflow-hidden bg-black text-white text-[11px] font-bold uppercase tracking-[0.2em] py-5 px-10 inline-flex items-center gap-4 transition-all hover:pr-12 disabled:opacity-70"
+            disabled={status === "loading" || !captchaToken}
+            className="group relative overflow-hidden bg-black text-white text-[11px] font-bold uppercase tracking-[0.2em] py-5 px-10 inline-flex items-center gap-4 transition-all hover:pr-12 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             <span className="relative z-10">
               {status === "loading" ? "Processing..." : "Submit Application"}
@@ -487,6 +482,7 @@ export function CareersSection({
             </div>
           </motion.div>
         </div>
+        <ScrollIndicator />
       </motion.section>
 
       <CyberSectionDivider />
@@ -500,9 +496,9 @@ export function CareersSection({
           >
             <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
               <div className="mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight text-center">
+                <motion.h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight text-center">
                   We are hiring, <span className="text-black-400">Come join us.</span>
-                </h2>
+                </motion.h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -521,9 +517,9 @@ export function CareersSection({
                       </span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors">
+                    <motion.h2 className="text-2xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors">
                       {cat.category}
-                    </h3>
+                    </motion.h2>
 
                     <p className="text-gray-500 text-sm leading-relaxed mb-6 min-h-[60px]">
                       {cat.description}
@@ -586,9 +582,9 @@ export function CareersSection({
                         <span className="absolute right-6 top-6 text-4xl font-black italic tracking-tighter text-red-600/10">
                           0{idx + 1}
                         </span>
-                        <h3 className="max-w-sm text-2xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors">
+                        <motion.h2 className="max-w-sm text-2xl font-bold text-black mb-4 group-hover:text-red-600 transition-colors">
                           {item}
-                        </h3>
+                        </motion.h2>
                         <p className="text-sm leading-relaxed text-gray-500 mb-8">
                           Apply directly for this role and tell us how your skills fit Keystone.
                         </p>
@@ -621,290 +617,75 @@ export function CareersSection({
           {selectedOffer ? (
             <motion.section
               id="application-form"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full min-h-[90vh] py-24 flex items-center justify-center bg-[#f7f8f9] overflow-hidden"
+              transition={{ duration: 0.5 }}
+              className="relative w-full py-20 flex items-center justify-center bg-[#f4f4f5] overflow-hidden"
             >
-              <div
-                className="absolute inset-0 w-full h-full opacity-30"
-                style={{
-                  backgroundImage: "url('/background/bg1.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  mixBlendMode: "multiply",
-                }}
-              />
-
-              <div className="container mx-auto px-6 lg:px-12 max-w-6xl relative z-10">
-                <div className="mb-20">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-4xl md:text-[52px] font-medium text-black mb-4"
-                  >
-                    Apply for {selectedOffer}
-                  </motion.h2>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="flex flex-wrap items-center text-[10px] font-bold text-gray-500 mb-16 uppercase tracking-wider gap-2"
-                  >
-                    <span className="text-gray-500">HOME</span>
-                    <span className="text-gray-400 font-normal">/</span>
-                    <span className="text-gray-500">CAREERS</span>
-                    <span className="text-gray-400 font-normal">/</span>
-                    <span className="text-gray-500">{category}</span>
-                    <span className="text-gray-400 font-normal">/</span>
-                    <span className="text-black">{selectedOffer}</span>
-                  </motion.div>
-
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="text-[22px] text-gray-800 font-medium max-w-2xl leading-relaxed"
-                  >
-                    You selected this role from the careers menu. Send us your profile and
-                    tell us why you are a strong match.
-                  </motion.p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 mb-12">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="flex flex-col"
-                  >
-                    <h3 className="text-[22px] font-medium text-black mb-1">
-                      Role Information
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-12">
-                      This application is connected to one selected opportunity.
+              <div className="w-full max-w-3xl px-4 relative z-10">
+                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
+                  <div className="mb-6 text-center">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">
+                      Apply for {selectedOffer}
+                    </h2>
+                    <p className="text-sm text-gray-500">
+                      Submit your application for the {selectedOffer} position in the {category} team.
                     </p>
+                  </div>
 
-                    <div className="space-y-8">
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                          Position
-                        </h5>
-                        <p className="text-gray-900 font-medium">{selectedOffer}</p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                          Category
-                        </h5>
-                        <p className="text-gray-900 font-medium">{category}</p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                          Process
-                        </h5>
-                        <p className="text-gray-900 font-medium max-w-[260px] leading-relaxed">
-                          Submit your application and our team will review your profile for this
-                          position.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-12 flex items-center gap-6">
-                      <Link
-                        href={categoryPath}
-                        className="bg-[#e60000] text-white text-sm font-semibold py-3.5 px-6 inline-flex items-center gap-3 hover:bg-red-700 transition-colors"
-                      >
-                        Back to Offers
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="m9 18 6-6-6-6" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <h3 className="text-[22px] font-medium text-black mb-1">
-                      Application Form
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-12">
-                      Share your details and we&apos;ll be glad to review your application.
-                    </p>
-
-                    <CareersForm
-                      category={category}
-                      items={items}
-                      selectedOffer={selectedOffer}
-                      variant="contact"
-                    />
-                  </motion.div>
+                  <CareersForm
+                    category={category}
+                    items={items}
+                    selectedOffer={selectedOffer}
+                    variant="contact"
+                  />
+                  
+                  <div className="mt-8 text-center">
+                    <Link
+                      href={categoryPath}
+                      className="text-xs font-semibold text-gray-400 hover:text-red-600 transition-colors"
+                    >
+                      &larr; Back to Offers
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.section>
           ) : (
             <motion.section
               id="application-form"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full min-h-[90vh] py-24 flex items-center justify-center bg-[#f7f8f9] overflow-hidden"
+              transition={{ duration: 0.5 }}
+              className="relative w-full py-20 flex items-center justify-center bg-[#f4f4f5] overflow-hidden"
             >
-              <div
-                className="absolute inset-0 w-full h-full opacity-30"
-                style={{
-                  backgroundImage: "url('/background/bg1.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  mixBlendMode: "multiply",
-                }}
-              />
-
-              <div className="container mx-auto px-6 lg:px-12 max-w-6xl relative z-10">
-                <div className="mb-20">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-4xl md:text-[52px] font-medium text-black mb-4"
-                  >
-                    General Application
-                  </motion.h2>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="flex items-center text-[10px] font-bold text-gray-500 mb-16 uppercase tracking-wider gap-2"
-                  >
-                    <span className="text-gray-500">HOME</span>
-                    <span className="text-gray-400 font-normal">/</span>
-                    <span className="text-gray-500">CAREERS</span>
-                    <span className="text-gray-400 font-normal">/</span>
-                    <span className="text-black">{category}</span>
-                  </motion.div>
-
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="text-[22px] text-gray-800 font-medium max-w-2xl leading-relaxed"
-                  >
-                    Interested in joining Keystone? Choose a role in this category and send us
-                    your profile.
-                  </motion.p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 mb-12">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="flex flex-col"
-                  >
-                    <h3 className="text-[22px] font-medium text-black mb-1">
-                      Application Information
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-12">
-                      Pick one position and tell us how you can contribute.
+              <div className="w-full max-w-3xl px-4 relative z-10">
+                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
+                  <div className="mb-6 text-center">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">
+                      General Application
+                    </h2>
+                    <p className="text-sm text-gray-500">
+                      Interested in joining the {category} team? Select a role and send us your profile.
                     </p>
+                  </div>
 
-                    <div className="space-y-8">
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                          Category
-                        </h5>
-                        <p className="text-gray-900 font-medium">{category}</p>
-                      </div>
-
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                          Open Positions
-                        </h5>
-                        <div className="space-y-2">
-                          {items.map((item) => (
-                            <Link
-                              key={item}
-                              href={`${categoryPath}/${careerSlug(item)}`}
-                              className="flex items-start gap-2 text-gray-900 font-medium hover:text-[#e60000] transition-colors"
-                            >
-                              <span className="mt-1 text-[#e60000]">&bull;</span>
-                              <span>{item}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                          Process
-                        </h5>
-                        <p className="text-gray-900 font-medium max-w-[260px] leading-relaxed">
-                          Submit your application and our team will review your profile for the
-                          selected opportunity.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-12 flex items-center gap-6">
-                      <Link
-                        href="/careers"
-                        className="bg-[#e60000] text-white text-sm font-semibold py-3.5 px-6 inline-flex items-center gap-3 hover:bg-red-700 transition-colors"
-                      >
-                        All Careers
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="m9 18 6-6-6-6" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <h3 className="text-[22px] font-medium text-black mb-1">
-                      Application Form
-                    </h3>
-                    <p className="text-gray-500 text-sm mb-12">
-                      Share your details and we&apos;ll be glad to review your application.
-                    </p>
-
-                    <CareersForm category={category} items={items} variant="contact" />
-                  </motion.div>
+                  <CareersForm 
+                    category={category} 
+                    items={items} 
+                    variant="contact" 
+                  />
+                  
+                  <div className="mt-8 text-center">
+                    <Link
+                      href="/careers"
+                      className="text-xs font-semibold text-gray-400 hover:text-red-600 transition-colors"
+                    >
+                      &larr; View All Careers
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.section>

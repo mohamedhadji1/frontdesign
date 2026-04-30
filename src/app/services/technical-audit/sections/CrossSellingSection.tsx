@@ -25,20 +25,20 @@ export function CrossSellingSection() {
 
   return (
     <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="py-10 bg-zinc-50 border-t border-zinc-200">
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
-                <h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-                  <span className="w-8 h-px bg-red-600/30"></span>
-                  Infrastructure Assessment
-                  <span className="w-8 h-px bg-red-600/30"></span>
-                </h2>            
-            </div>
-        
+          <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
+            <span className="w-8 h-px bg-red-600/30"></span>
+            Infrastructure Assessment
+            <span className="w-8 h-px bg-red-600/30"></span>
+          </motion.h2>
+        </div>
+
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-zinc-900">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-zinc-900">
             Go Beyond
-          </h2>
+          </motion.h2>
           <p className="text-zinc-600">
             Combine your Technical Audit with our specialized offensive security and assessment services for a 360-degree view of your organization's resilience.
           </p>
@@ -58,9 +58,9 @@ export function CrossSellingSection() {
               <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Link className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-zinc-900 mb-4 group-hover:text-red-600 transition-colors">
+              <motion.h2 className="text-xl font-bold text-zinc-900 mb-4 group-hover:text-red-600 transition-colors">
                 {service.title}
-              </h3>
+              </motion.h2>
               <p className="text-zinc-600 text-sm leading-relaxed mb-6">
                 {service.desc}
               </p>
