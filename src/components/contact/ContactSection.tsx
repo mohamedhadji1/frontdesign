@@ -60,7 +60,10 @@ export function ContactSection() {
           
           <div className="mb-6 text-center">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Contact Us</h1>
-            <p className="text-sm text-gray-500">Interested in our services? Send us a message and we'll be in touch.</p>
+            <p className="text-sm text-gray-500">
+              Interested in our services? Send us a message and we'll be in touch.<br />
+              <span className="font-semibold text-red-600">Need to report a security incident? Use this form for urgent incident response requests.</span>
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
