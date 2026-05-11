@@ -1,211 +1,270 @@
 "use client";
 
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
-  GraduationCap,
-  Gamepad2,
-  Trophy,
-  Users,
   ShieldCheck,
-  Target,
+  Cpu,
+  GraduationCap,
+  LayoutGrid,
+  ShieldAlert,
+  TimerReset,
+  Search,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
-import Image from "next/image";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.65,
-      ease: [0, 0, 0.2, 1] as const,
-    },
+const informationMenu = [
+  { 
+    name: "Security Management", 
+    href: "/services/strategy-governance", 
+    desc: "Strategic oversight and policy development for complex organizations.",
+    icon: LayoutGrid 
   },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
+  { 
+    name: "Governance, Risk, and Compliance", 
+    href: "/services/governance-risk-compliance", 
+    desc: "Ensuring regulatory alignment and sustainable risk frameworks.",
+    icon: ShieldAlert 
   },
-};
-
-const trainingServices = [
-  {
-    title: "Awareness Programs",
-    description: "Interactive programs designed to transform employees into a strong link in your security chain. From workshops to gamified experiences, we build a durable security culture.",
-    href: "/services/awareness/awareness-workshops",
-    icon: ShieldCheck,
-    color: "bg-blue-600",
-    shadow: "shadow-blue-600/20",
-    features: ["Workshops", "Escape Rooms", "Serious Games"]
+  { 
+    name: "Business Continuity & Resilience", 
+    href: "/services/cyber-exercise/business-continuity-management-resilience-and-recovery", 
+    desc: "Operational recovery planning for critical infrastructure.",
+    icon: TimerReset 
   },
-  {
-    title: "Cyber Exercise",
-    description: "Scenario-driven readiness and interactive response drills. Prepare your teams for disruption, sharpen investigation skills, and respond with confidence in high-pressure scenarios.",
-    href: "/services/cyber-exercise",
-    icon: Target,
-    color: "bg-red-600",
-    shadow: "shadow-red-600/20",
-    features: ["Crisis Management", "Incident Response", "Business Continuity"]
-  },
-  {
-    title: "CTF Competition Organization",
-    description: "Develop cybersecurity skills through play. Custom-designed Capture The Flag events that transform technical challenges into a valuable learning experience for your team.",
-    href: "/services/ctf-competition-organization",
-    icon: Trophy,
-    color: "bg-zinc-900",
-    shadow: "shadow-zinc-950/20",
-    features: ["Technical Challenges", "Team Building", "Skill Assessment"]
+  { 
+    name: "Cybersecurity & Investigation", 
+    href: "/services/cyber-exercise/cybersecurity-and-investigation", 
+    desc: "Deep technical analysis and incident forensic investigation.",
+    icon: Search 
   }
 ];
 
+const mainPrograms = [
+  {
+    title: "Basic Training",
+    description: "Initiation to cybersecurity fundamentals for all employees to build a baseline of safety.",
+    icon: GraduationCap,
+  },
+  {
+    title: "Advanced Technical Training",
+    description: "Deepening skills for IT and security teams in high-pressure technical environments.",
+    icon: Cpu,
+  },
+  {
+    title: "Bespoke Training",
+    description: "Creation of custom programs adapted to your specific organizational needs and tech stack.",
+    icon: ShieldCheck,
+  },
+];
+
 export default function TrainingAwarenessPage() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20]);
+
   return (
-    <main className="min-h-screen bg-white text-zinc-950">
+    <main ref={targetRef} className="min-h-screen bg-white text-zinc-950 overflow-hidden">
+      
       {/* Hero Section */}
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={stagger}
-        className="relative flex min-h-[70dvh] items-center overflow-hidden bg-zinc-950 px-6 pb-20 pt-32 text-white md:px-12"
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8 }} 
+        className="relative w-full h-[60dvh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f24_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f24_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_68%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.15),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(239,68,68,0.1),transparent_28%)]" />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/background/bg8.jpeg"
+            alt="Keystone Training Background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
+        </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
           <motion.div
-
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl pt-10"
           >
-            <span className="h-2 w-2 rounded-full bg-red-500" />
-            <Link href="/services" className="hover:text-red-200 transition-colors">Services</Link>
-            <span className="text-red-500/50">/</span>
-            <span>Training & Awareness</span>
-          </motion.div>
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Training & Awareness
+            </h1>
 
-          <motion.h1 className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
-            Training & <span className="text-red-600">Awareness</span>
-          </motion.h1>
-          <motion.p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">
-            Empower your workforce with the knowledge and skills needed to defend against modern cyber threats through immersive, gamified, and practical learning experiences.
-          </motion.p>
+            <HeroTypeLine
+              items={["Build Human Resilience", "Transform Behaviors", "Strengthen Your Defense"]}
+            />
+
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              Information security relies on the awareness of your team. Our training is designed to educate and equip your team with the knowledge necessary to face today's challenges.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+              <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
+                Get Security Assessment
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+          </motion.div>
         </div>
         <ScrollIndicator />
       </motion.section>
 
       <CyberSectionDivider />
 
-      {/* Main Content */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={stagger}
-        className="px-6 py-24 md:px-12"
-      >
-        <div className="mx-auto max-w-7xl">
-          <motion.div >
-            <SectionDivider title="OUR PROGRAMS" className="mb-16" />
-          </motion.div>
+      {/* Section 1: Main Programs - Compact Grid */}
+      <section className="py-24 bg-white relative">
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+          <motion.div style={{ y: y1, rotate }} className="absolute top-[10%] right-[5%] w-64 h-64 border border-red-500/5 rounded-full" />
+        </div>
 
-          <div className="grid gap-8 lg:grid-cols-3">
-            {trainingServices.map((service) => (
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl mx-auto mb-20 text-center">
+            <SectionDivider title="OUR PROGRAMS" className="mb-10" />
+            <h2 className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]">
+               Capability Building
+            </h2>
+            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
+               Transforming each employee into a strong link.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {mainPrograms.map((program) => (
               <motion.div
-                key={service.title}
-
-                whileHover={{ y: -8 }}
-                className="group relative flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition-all hover:border-red-200 hover:shadow-xl"
+                key={program.title}
+                whileHover={{ y: -10 }}
+                className="group bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full"
               >
-                <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${service.color} text-white shadow-lg ${service.shadow}`}>
-                  <service.icon className="h-8 w-8" />
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                   <program.icon size={24} />
                 </div>
-
-                <motion.h2 className="mb-4 text-2xl font-bold text-zinc-950 group-hover:text-red-600 transition-colors">
-                  {service.title}
-                </motion.h2>
-
-                <p className="mb-8 flex-grow text-base leading-relaxed text-zinc-600">
-                  {service.description}
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
+                  {program.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed text-base font-medium mb-8 flex-grow">
+                  {program.description}
                 </p>
-
-                <div className="mb-8 flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <span key={feature} className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href={service.href}
-                  className="inline-flex items-center gap-2 font-bold uppercase tracking-wider text-red-600 group/link"
-                >
-                  Explore Program
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                <Link href="/contact" className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all">
+                   Explore Program <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <CyberSectionDivider />
 
-      {/* Why Training Matters */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        variants={stagger}
-        className="bg-zinc-50 py-24 px-6 md:px-12"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <motion.div >
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-red-600">The Human Element</p>
-              <motion.h2 className="mb-6 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
-                Turning your weakest link into your strongest defense.
-              </motion.h2>
-              <p className="mb-8 text-lg leading-relaxed text-zinc-600">
-                Technology alone isn't enough. Our training programs are built on the principle that an informed and vigilant workforce is the most effective barrier against cyberattacks. We don't just provide information; we build lasting security habits.
-              </p>
+      {/* Section 2: Expertise (Replacing Sidebar) - Compact Cards */}
+      <section className="py-24 bg-zinc-50/30">
+        <div className="container mx-auto px-6 lg:px-12">
+           <div className="max-w-3xl mx-auto mb-20 text-center">
+              <SectionDivider title="AREAS OF EXPERTISE" className="mb-10" />
+              <h2 className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]">
+                 Strategic Impact
+              </h2>
+           </div>
 
-              <div className="space-y-4">
-                {[
-                  "80%+ of breaches involve a human element",
-                  "Gamified learning improves retention by up to 60%",
-                  "Practical exercises build real-world confidence"
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 text-red-600">
-                      <ShieldCheck className="h-4 w-4" />
-                    </div>
-                    <span className="font-medium text-zinc-800">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {informationMenu.map((item, idx) => (
+                <Link 
+                  key={item.name} 
+                  href={item.href}
+                  className="group relative bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
+                >
+                   <div className="absolute top-0 right-0 w-24 h-24 bg-red-600/5 rounded-full blur-2xl group-hover:bg-red-600/10 transition-colors" />
+                   <div className="flex flex-col md:flex-row gap-8 items-start">
+                      <div className="h-12 w-12 shrink-0 rounded-xl bg-zinc-900 text-white flex items-center justify-center group-hover:bg-red-600 transition-colors shadow-xl">
+                         <item.icon size={20} />
+                      </div>
+                      <div className="flex-1">
+                         <h4 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic">{item.name}</h4>
+                         <p className="text-zinc-500 text-base font-medium leading-relaxed mb-6">{item.desc}</p>
+                         <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-red-600">
+                            Visit Service <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                         </div>
+                      </div>
+                   </div>
+                </Link>
+              ))}
+           </div>
+        </div>
+      </section>
 
-            <motion.div className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-200 bg-white p-4 shadow-2xl">
-              <Image
-                src="https://ziedhamdi.com/wp-content/uploads/2025/01/ctf.jpg"
-                alt="Cybersecurity Training Session"
-                fill
-                className="object-cover rounded-2xl p-4"
-              />
-            </motion.div>
+      <CyberSectionDivider />
+
+      {/* Section 3: Final Impact - Compact Layout */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+             <motion.div 
+               initial={{ opacity: 0, x: -40 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               className="space-y-8"
+             >
+                <SectionDivider title="THE VISION" className="!justify-start mb-6" />
+                <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
+                   Security Culture
+                </h2>
+                <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
+                   Information security relies on the awareness of your team.
+                </p>
+                <div className="flex flex-col gap-4 pt-6">
+                   {[
+                     "Strengthen Skills",
+                     "Create Culture",
+                     "Reduce Risks"
+                   ].map(item => (
+                     <div key={item} className="flex gap-4 items-center group">
+                        <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">✓</div>
+                        <p className="text-zinc-700 text-lg font-bold uppercase tracking-tight">{item}</p>
+                     </div>
+                   ))}
+                </div>
+             </motion.div>
+
+             <motion.div 
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: true }}
+               className="relative"
+             >
+                <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
+                   <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
+                   <h2 className="text-3xl font-bold mb-8 uppercase tracking-tighter italic">Why Keystone?</h2>
+                   <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
+                      "Our vision is to become the preferred cybersecurity partner in the EMEA region."
+                   </p>
+                   <div className="pt-10 border-t border-white/10">
+                      <Link href="/contact" className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all">
+                         Get Started Now <ArrowRight size={18} />
+                      </Link>
+                   </div>
+                </div>
+             </motion.div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <CyberSectionDivider />
       <ContactCTASection />

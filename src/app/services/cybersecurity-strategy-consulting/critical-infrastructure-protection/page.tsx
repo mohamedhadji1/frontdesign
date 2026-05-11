@@ -37,8 +37,8 @@ export default function CriticalInfrastructureProtectionPage() {
       icon: FileText,
     },
     {
-      title: "Post-Audit Follow-up and Continuous Support",
-      description: "We offer post-audit follow-up to help you implement the recommendations and ensure continuous and secure use of the Cloud.",
+      title: "Post-Assessment Follow-up and Continuous Support",
+      description: "We offer post-Assessment follow-up to help you implement the recommendations and ensure continuous and secure use of the Cloud.",
       icon: Activity,
     },
   ];
@@ -81,7 +81,7 @@ export default function CriticalInfrastructureProtectionPage() {
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone supports you in auditing and securing your Cloud environments and critical infrastructures. Contact us for an in-depth evaluation and recommendations tailored to your operational needs.
+                Keystone supports you in Assessmenting and securing your Cloud environments and critical infrastructures. Contact us for an in-depth evaluation and recommendations tailored to your operational needs.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

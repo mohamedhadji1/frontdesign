@@ -7,9 +7,9 @@ import { Link } from "lucide-react";
 export function CrossSellingSection() {
   const services = [
     {
-      title: "Web & Mobile Application Audit",
+      title: "Web & Mobile Application Assessment",
       desc: "Analyze the security of your internal, web, and mobile applications to identify OWASP vulnerabilities, business logic errors, and API weaknesses.",
-      href: "/services/technical-audit"
+      href: "/services/technical-Assessment"
     },
     {
       title: "Physical Penetration Testing",
@@ -40,7 +40,7 @@ export function CrossSellingSection() {
             Go Beyond
           </motion.h2>
           <p className="text-zinc-600">
-            Combine your Technical Audit with our specialized offensive security and assessment services for a 360-degree view of your organization's resilience.
+            Combine your Technical Assessment with our specialized offensive security and assessment services for a 360-degree view of your organization's resilience.
           </p>
         </div>
 

@@ -13,6 +13,7 @@ type ServiceItem = {
 
 type ServiceCategory = {
   category: string;
+  href: string;
   title: string;
   items: ServiceItem[];
 };
@@ -20,28 +21,30 @@ type ServiceCategory = {
 export const servicesDetails: ServiceCategory[] = [
   {
     category: "Offensive Security",
-    title: "Red Teaming",
+    href: "/services/offensive-security",
+    title: "Offensive Security",
     items: [
+      {
+        name: "Assessment and Technical Assistance",
+        subCategory: "Assessment & Infrastructure",
+        subItems: [
+          "Web & Mobile Application Assessment",
+          "Cloud Environment Assessment",
+          "Core Internet Banking System Assessment",
+          "Industrial System Assessment",
+          "System Hardening"
+        ]
+      },
       {
         name: "Red Team",
         subCategory: "Offensive Security Testing",
       },
-      {
-        name: "Technical Audit",
-        subCategory: "Infrastructure Assessment",
-        subItems: [
-          "Web & Mobile Application Audit",
-          "Cloud Environment Audit",
-          "Core Internet Banking System Audit",
-          "Industrial System Audit",
-          "System Hardening"
-        ]
-      },
     ],
   },
   {
-    category: "Defensive Security",
-    title: "Defensive Security",
+    category: "Managed Services",
+    href: "/services/defensive-security",
+    title: "Managed Services",
     items: [
       {
         name: "SOC Management",
@@ -54,32 +57,27 @@ export const servicesDetails: ServiceCategory[] = [
       {
         name: "Implementation CERT",
         slug: "defensive-security/Implementation-cert",
-        subCategory: "Emergency Teams",
-        subItems: [
-          { name: "Malware Analysis", slug: "services/defensive-security/malware-analysis" },
-          { name: "Incident Response", slug: "services/defensive-security/incident-response" },
-          { name: "Digital Forensics", slug: "services/defensive-security/digital-forensics" },
-          { name: "Threat Hunting", slug: "services/defensive-security/threat-hunting" }
-        ]
       },
     ],
   },
   {
-    category: "Governance, Risk & Compliance",
-    title: "Governance & Risk",
+    category: "GRC",
+    href: "/services/governance-risk-compliance",
+    title: "Governance, Risk and Compliance",
     items: [
       {
-        name: "Governance, Risk & Compliance",
+        name: "Governance, Risk and Compliance",
         slug: "governance-risk-compliance",
       },
     ],
   },
   {
-    category: "Cybersecurity Consulting",
-    title: "Cybersecurity Consulting",
+    category: "Strategic Consulting",
+    href: "/services/cybersecurity-strategy-consulting",
+    title: "Strategic Consulting",
     items: [
       {
-        name: "Cybersecurity Strategy Consulting",
+        name: "Cybersecurity Strategic Consulting",
         slug: "cybersecurity-strategy-consulting",
         subCategory: "Strategic Services",
         subItems: [
@@ -96,10 +94,22 @@ export const servicesDetails: ServiceCategory[] = [
   },
   {
     category: "Training & Awareness",
+    href: "/services/awareness",
     title: "Training & Awareness",
     items: [
       {
-        name: "Awareness",
+        name: "Information",
+        slug: "awareness",
+        subCategory: "Strategic Frameworks",
+        subItems: [
+          { name: "Security Management", slug: "strategy-governance" },
+          { name: "Governance, Risk, and Compliance", slug: "governance-risk-compliance" },
+          { name: "Business Continuity Management, Resilience, and Recovery", slug: "cyber-exercise/business-continuity-management-resilience-and-recovery" },
+          { name: "Cybersecurity and Investigation", slug: "cyber-exercise/cybersecurity-and-investigation" },
+        ],
+      },
+      {
+        name: "Awareness Programs",
         subCategory: "Awareness Programs",
         subItems: [
           { name: "Cyber Escape Room", slug: "services/awareness/cyber-escape-room" },
@@ -112,19 +122,8 @@ export const servicesDetails: ServiceCategory[] = [
         ],
       },
       {
-        name: "Cyber Exercise",
+        name: "Cyber Exercice Management & Technique",
         slug: "cyber-exercise",
-        subCategory: "Cyber Exercise Programs",
-        subItems: [
-          {
-            name: "Business continuity management, resilience, and recovery",
-            slug: "services/cyber-exercise/business-continuity-management-resilience-and-recovery",
-          },
-          {
-            name: "Cybersecurity and investigation",
-            slug: "services/cyber-exercise/cybersecurity-and-investigation",
-          },
-        ],
       },
       {
         name: "CTF Competition Organization",
@@ -132,6 +131,15 @@ export const servicesDetails: ServiceCategory[] = [
     ],
   },
 ];
+
+function normalizeServiceHref(slug: string | undefined, fallbackName: string) {
+  if (slug) {
+    const normalized = slug.replace(/^\//, '').replace(/^services\//, '');
+    return `/services/${normalized}`;
+  }
+
+  return `/services/${fallbackName.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
+}
 
 export function ServicesDropdown() {
   const [activeCategory, setActiveCategory] = useState("Offensive Security");
@@ -147,8 +155,9 @@ export function ServicesDropdown() {
         {/* Left Column: Categories */}
         <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
           {servicesDetails.map((group, index) => (
-            <button
+            <Link
               key={index}
+              href={group.href}
               onMouseEnter={() => { setActiveCategory(group.category); setActiveItem(group.items[0].name); }}
               className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
                 ? "bg-gray-100 text-red-600"
@@ -159,7 +168,7 @@ export function ServicesDropdown() {
               <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -209,8 +218,7 @@ export function ServicesDropdown() {
                       {currentCategoryObj?.items.map((item, idx) => (
                         <li key={idx}>
                           <Link
-                            href={`/services/${item.slug || item.name.replace(/\s+/g, '-').toLowerCase()
-                              }`}
+                            href={normalizeServiceHref(item.slug, item.name)}
                             onMouseEnter={() => setActiveItem(item.name)}
                             className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${activeItem === item.name
                               ? "text-red-600 bg-gray-50"
@@ -246,14 +254,11 @@ export function ServicesDropdown() {
                             {item.subItems.map((subItem, subIdx) => {
                               const isObj = typeof subItem === 'object';
                               const subName = isObj ? subItem.name : subItem;
-                              const subHref = isObj && subItem.slug
-                                ? `/${subItem.slug}`
-                                : `/services/${item.name.replace(/\s+/g, '-').toLowerCase()}/${(typeof subItem === "string" ? subItem : subItem.name).replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
 
                               return (
                                 <li key={subIdx}>
                                   <Link
-                                    href={subHref}
+                                    href={normalizeServiceHref(isObj ? subItem.slug : undefined, subName)}
                                     className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
                                   >
                                     <span className="mr-2 text-gray-300">•</span>
@@ -278,7 +283,7 @@ export function ServicesDropdown() {
                     {currentCategoryObj?.items.map((item, idx) => (
                       <Link
                         key={idx}
-                        href={`/services/${item.slug || item.name.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`}
+                        href={normalizeServiceHref(item.slug, item.name)}
                         className="group flex items-start"
                       >
                         <span className="mr-2 text-gray-300">•</span>

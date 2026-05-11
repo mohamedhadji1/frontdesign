@@ -1,186 +1,313 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  Radar,
-  Search,
-  ShieldAlert,
-  TimerReset,
+  Activity,
+  AlertTriangle,
+  UserCheck,
+  Target,
+  Layout,
+  Cpu,
+  Trophy,
+  Shield,
+  Users,
+  Zap,
 } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
-import { InteractiveExercisePanel } from "./components/InteractiveExercisePanel";
-import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { AboutHeroSection } from "@/components/about/AboutHeroSection";
 
-const programs = [
+const importanceItems = [
   {
-    title: "Business Continuity Management, Resilience, and Recovery",
-    description:
-      "Prepare teams to maintain operations during disruption, recover quickly after crisis events, and strengthen organizational resilience.",
-    href: "/services/cyber-exercise/business-continuity-management-resilience-and-recovery",
-    icon: TimerReset,
+    title: "Test the Preparation",
+    description: "Simulate realistic scenarios to assess your team's responsiveness and readiness against potential attacks.",
+    icon: Activity,
   },
   {
-    title: "Cybersecurity and Investigation",
-    description:
-      "Build advanced capabilities to protect sensitive information, investigate incidents, and analyze digital evidence with confidence.",
-    href: "/services/cyber-exercise/cybersecurity-and-investigation",
-    icon: Search,
+    title: "Identify Weaknesses",
+    description: "Detect vulnerabilities in your systems, policies, and user behaviors to strengthen them.",
+    icon: AlertTriangle,
+  },
+  {
+    title: "Train in Real Situations",
+    description: "Provide your team with the practical and necessary experience to better manage crises in the event of a real incident.",
+    icon: UserCheck,
   },
 ];
 
-const panelItems = [
+const approachItems = [
   {
-    id: "detect",
-    label: "Detect",
-    value: "Threat visibility +34%",
-    detail:
-      "Interactive scenarios expose weak signals early so teams can recognize issues before they cascade.",
-    icon: Radar,
+    title: "Realistic Simulation",
+    description: "Exercises based on real scenarios to simulate attacks and assess your organization's response.",
+    icon: Target,
   },
   {
-    id: "respond",
-    label: "Respond",
-    value: "Response time -28%",
-    detail:
-      "Exercises train decision-making under pressure and improve coordination between operational roles.",
-    icon: ShieldAlert,
+    title: "Crisis Management",
+    description: "Clear protocols and effective incident management to minimize damage in the event of an attack.",
+    icon: Layout,
   },
   {
-    id: "recover",
-    label: "Recover",
-    value: "Recovery readiness 92%",
-    detail:
-      "Continuity and investigation tracks help organizations return to stable operations with clearer playbooks.",
-    icon: TimerReset,
+    title: "Technical Training",
+    description: "Strengthening your team's technical skills to better anticipate and counter threats.",
+    icon: Cpu,
   },
 ];
 
 export default function CyberExercisePage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32"
-      >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f24_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f24_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_68%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.22),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(239,68,68,0.14),transparent_28%)]" />
-
-        <div className="container relative z-10 mx-auto px-6">
-          <div className="max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-red-400">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 animate-pulse" />
-              <div className="flex flex-wrap items-center gap-2 text-sm font-semibold uppercase tracking-wide">
-                <Link href="/services" className="transition-colors hover:text-red-300">
-                  Services
-                </Link>
-                <span className="text-red-500/50">/</span>
-                <span className="text-red-300">Cyber Exercise</span>
-              </div>
-            </div>
-
-            <h1 className="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-              Cyber Exercise
-              <span className="block bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
-                Programs
-              </span>
-            </h1>
-
-            <p className="max-w-3xl text-lg leading-relaxed text-zinc-400">
-              <span className="mb-3 block text-sm font-bold uppercase tracking-[0.3em] text-red-400">
-                <TypeAnimation
-                  sequence={[
-                    "Scenario-driven readiness",
-                    1200,
-                    "Interactive response drills",
-                    1200,
-                    "Resilience-focused cyber exercises",
-                    1200,
-                  ]}
-                  wrapper="span"
-                  repeat={Infinity}
-                  speed={58}
-                  deletionSpeed={72}
-                />
-              </span>
-              Keystone designs practical cyber exercise programs that help teams
-              prepare for disruption, sharpen investigation skills, and respond
-              with more confidence in high-pressure scenarios.
-            </p>
-          </div>
-        </div>
-        <ScrollIndicator />
-      </motion.section>
+      {/* Standardized Hero Section */}
+      <AboutHeroSection 
+        title="Cyber Exercise"
+        description="The management of cyber exercises is an essential component to strengthen your company's preparedness against digital threats."
+        heroItems={[
+          "Strengthen Your Preparation",
+          "Anticipate Threats",
+          "Scenario-driven Readiness"
+        ]}
+      />
 
       <CyberSectionDivider theme="red" />
-
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="bg-zinc-50 py-20"
-      >
-        <div className="container mx-auto px-6">
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
-              Explore The Tracks
-            </p>
-            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
-              Two focused programs for resilience and cyber expertise
-            </motion.h2>
-            <p className="text-lg leading-relaxed text-zinc-600">
-              Choose the training path that best matches your operational
-              priorities, from continuity planning to digital investigation.
-            </p>
+          <SectionDivider title="Cyber Exercise"/>
+{/* Intro Context Section */}
+      <section className="pb-20 pt-10 bg-white relative overflow-hidden">
+        <div className="px-6 lg:px-16">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-2xl lg:text-3xl text-zinc-800 leading-relaxed font-light"
+            >
+              The Cyber Exercise Management & Technique activity at KEYSTONE aims to transform awareness into proactive action, enabling your team to acquire the necessary skills to face any cyber scenario they may encounter.
+            </motion.p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid gap-8 lg:grid-cols-2">
-            {programs.map((program) => {
-              const Icon = program.icon;
+      {/* Section 1: The Importance */}
+      <CyberSectionDivider />
+      <section className="mb-20 bg-white relative overflow-hidden">
+        <div className="px-6 lg:px-16">
+          <div className="max-w-6xl mx-auto">
+            <SectionDivider title="WHY IT MATTERS" className="mb-12 lg:mb-16" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-20 lg:mb-28"
+            >
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+                The Importance of Cyber Exercises
+              </h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+                Cybersecurity threats are constantly evolving. Our exercise management is crucial for maintaining a high state of readiness.
+              </p>
+            </motion.div>
 
-              return (
-                <Link
-                  key={program.title}
-                  href={program.href}
-                  className="group rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-xl"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {importanceItems.map((item, idx) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: idx * 0.1 }}
+                  className="group"
                 >
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
-                    <Icon className="h-7 w-7" />
+                  <div className="flex flex-col h-full">
+                    <div className="mb-8">
+                      <div className="inline-flex p-4 bg-red-100 rounded-lg">
+                        <item.icon size={28} className="text-red-600" strokeWidth={1.5} />
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                      {item.title}
+                    </h3>
+                    <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
+                      {item.description}
+                    </p>
+                    <motion.div 
+                      className="mt-8 h-0.5 w-0 rounded-full bg-red-600 group-hover:w-12 transition-all duration-500"
+                    />
                   </div>
-                  <motion.h2 className="mb-3 text-2xl font-bold text-zinc-900">
-                    {program.title}
-                  </motion.h2>
-                  <p className="mb-6 leading-relaxed text-zinc-600">
-                    {program.description}
-                  </p>
-                  <div className="inline-flex items-center gap-2 font-semibold text-red-600">
-                    View program
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="mt-12">
-            <InteractiveExercisePanel
-              eyebrow="Interactive Simulation"
-              title="Move through the exercise lifecycle"
-              description="Hover the modules to preview how Keystone structures practical cyber exercises around detection, coordinated response, and resilient recovery."
-              items={panelItems}
-            />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
+
+      <CyberSectionDivider />
+
+      {/* Section 2: Our Approach */}
+      <section className="mb-20 bg-white relative overflow-hidden">
+        <div className="px-6 lg:px-16">
+          <div className="max-w-6xl mx-auto">
+            <SectionDivider title="OUR APPROACH" className="mb-12 lg:mb-16" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-20 lg:mb-28"
+            >
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+                Combining Management & Technical Skills
+              </h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+                We believe in a holistic approach that integrates both strategic management and technical excellence to build true resilience.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {approachItems.map((item, idx) => {
+                const isRed = idx % 2 === 0;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: idx * 0.1 }}
+                    className="group"
+                  >
+                    <div className="flex flex-col h-full">
+                      <div className="mb-8">
+                        <div className={`inline-flex p-4 rounded-lg ${isRed ? 'bg-red-100' : 'bg-blue-100'}`}>
+                          <item.icon size={28} className={isRed ? 'text-red-600' : 'text-blue-600'} strokeWidth={1.5} />
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
+                        {item.description}
+                      </p>
+                      <motion.div 
+                        className={`mt-8 h-0.5 w-0 rounded-full group-hover:w-12 transition-all duration-500 ${isRed ? 'bg-red-600' : 'bg-blue-600'}`}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <CyberSectionDivider theme="red" />
+
+      {/* Section 3: Invest in Resilience */}
+      <section className="bg-white relative overflow-hidden ">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/3 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600/3 rounded-full blur-3xl" />
+        </div>
+        <div className="px-6 lg:px-16 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <SectionDivider title="INVESTMENT & OUTCOMES" className="mb-12 lg:mb-16" />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-20 lg:mb-28 inline-flex"
+            >
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+                Invest in Resilience
+              </h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+                By collaborating with KEYSTONE, you are investing in the resilience of your business. We support you in adopting practices and strategies that promote agile and effective responsiveness to cyber threats.
+              </p>
+            </motion.div>
+
+            {/* Benefits Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="group"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-8">
+                    <div className="inline-flex p-4 bg-red-100 rounded-lg">
+                      <Shield size={28} className="text-red-600" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                    Enhanced Security
+                  </h3>
+                  <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
+                    Build a robust defense posture with comprehensive threat awareness and mitigation strategies.
+                  </p>
+                  <motion.div 
+                    className="mt-8 h-0.5 w-0 rounded-full bg-red-600 group-hover:w-12 transition-all duration-500"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="group"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-8">
+                    <div className="inline-flex p-4 bg-blue-100 rounded-lg">
+                      <Users size={28} className="text-blue-600" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                    Team Readiness
+                  </h3>
+                  <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
+                    Equip your teams with the skills and confidence to respond effectively to any cyber incident.
+                  </p>
+                  <motion.div 
+                    className="mt-8 h-0.5 w-0 rounded-full bg-blue-600 group-hover:w-12 transition-all duration-500"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="group"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-8">
+                    <div className="inline-flex p-4 bg-red-100 rounded-lg">
+                      <Zap size={28} className="text-red-600" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                    Rapid Response
+                  </h3>
+                  <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
+                    Minimize incident impact with faster detection, response, and recovery capabilities.
+                  </p>
+                  <motion.div 
+                    className="mt-8 h-0.5 w-0 rounded-full bg-red-600 group-hover:w-12 transition-all duration-500"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CyberSectionDivider />
       <ContactCTASection />
     </main>
   );

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function AuditsRiskAssessmentPage() {
+export default function AssessmentsRiskAssessmentPage() {
   redirect("/services/governance-risk-compliance");
 }

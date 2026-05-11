@@ -53,7 +53,7 @@ export function ThreatIntelTabs({ theme = "blue" }: ThreatIntelTabsProps) {
     {
       id: "data",
       title: "Data Collection",
-      description: "Keystone collects and analyzes a variety of data, including indicators of compromise (IOCs), threat actor information, vulnerabilities, incident reports, etc., for a comprehensive risk assessment.",
+      description: "Keystone collects and analyzes a variety of data, including indicators of compromise (IOCs), threat actor information, vulnerabilities, Report an incidents, etc., for a comprehensive risk assessment.",
       icon: <Database className="w-8 h-8" />
     },
     {

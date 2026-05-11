@@ -28,13 +28,13 @@ export const servicesDetails: ServiceCategory[] = [
         subCategory: "Offensive Security Testing",
       },
       {
-        name: "Technical Audit",
+        name: "Technical Assessment",
         subCategory: "Infrastructure Assessment",
         subItems: [
-          "Web & Mobile Application Audit",
-          "Cloud Environment Audit",
-          "Core Internet Banking System Audit",
-          "Industrial System Audit",
+          "Web & Mobile Application Assessment",
+          "Cloud Environment Assessment",
+          "Core Internet Banking System Assessment",
+          "Industrial System Assessment",
           "System Hardening"
         ]
       },
@@ -63,7 +63,7 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance & Risk",
     items: [
       {
-        name: "Audits & Risk Assessment",
+        name: "Assessments & Risk Assessment",
       },
       {
         name: "Regulatory Compliance (ISO 27001, GDPR, NCA)",
@@ -87,7 +87,7 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Training",
     items: [
       {
-        name: "Cyber Exercise Management & Technique",
+        name: "Cyber Exercice Management & TechniqueManagement & Technique",
       },
       {
         name: "CTF Competition Organization",

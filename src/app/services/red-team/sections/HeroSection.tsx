@@ -69,7 +69,7 @@ export function HeroSection() {
               href="/contact"
               className="group flex items-center gap-2 rounded-full bg-red-600 px-8 py-3 font-bold text-white shadow-xl shadow-red-600/20 transition-colors hover:bg-red-700"
             >
-              Schedule an Audit
+              Schedule an Assessment
               <span className="transition-transform group-hover:translate-x-1">
                 →
               </span>

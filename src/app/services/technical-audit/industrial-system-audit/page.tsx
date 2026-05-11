@@ -52,7 +52,7 @@ const industrialSteps = [
   }
 ];
 
-export default function IndustrialSystemAuditPage() {
+export default function IndustrialSystemAssessmentPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -69,7 +69,7 @@ export default function IndustrialSystemAuditPage() {
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-red-400 transition-colors break-keep">Technical Audit</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Industrial System Audit</span>
+                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-Assessment" className="hover:text-red-400 transition-colors break-keep">Technical Assessment</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Industrial System Assessment</span>
                 </div>
               </motion.div>
 
@@ -81,15 +81,15 @@ export default function IndustrialSystemAuditPage() {
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                The convergence of OT and IT introduces massive kinetic risks. Our industrial audits prioritize extreme safety and availability, utilizing passive network monitoring and deep protocol analysis to secure PLCs, HMIs, and the vital components of your operations.
+                The convergence of OT and IT introduces massive kinetic risks. Our industrial Assessments prioritize extreme safety and availability, utilizing passive network monitoring and deep protocol analysis to secure PLCs, HMIs, and the vital components of your operations.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
-                  Request an OT Audit
+                  Request an OT Assessment
                 </Link>
-                <Link href="/services/technical-audit" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
-                  Back to Audits
+                <Link href="/services/technical-Assessment" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
+                  Back to Assessments
                 </Link>
               </div>
             </div>

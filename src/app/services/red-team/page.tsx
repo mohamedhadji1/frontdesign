@@ -9,7 +9,7 @@ import { BackToTop } from "@/components/ui/BackToTop";
 
 export const metadata = {
   title: "Red Team & Offensive Security | Keystone",
-  description: "Identify and exploit real-world vulnerabilities with our Red Team, Web & Mobile Audits, and Technical Assessment services.",
+  description: "Identify and exploit real-world vulnerabilities with our Red Team, Web & Mobile Assessments, and Technical Assessment services.",
 };
 
 export default function RedTeamPage() {
@@ -26,7 +26,7 @@ export default function RedTeamPage() {
       <TestingBenefitsSection />
       <CyberSectionDivider />
       <RedTeamCTASection />
-      <BackToTop/>
+      <BackToTop />
     </main>
   );
 }

@@ -64,9 +64,9 @@ export function MethodologySection() {
               <span className="w-8 h-px bg-red-600/30"></span>
             </motion.h2>
           </div>
-          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Audit Methodology</motion.h2>
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Assessment Methodology</motion.h2>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Our structured audit process guarantees thorough coverage of your specialized environments, ensuring no misconfiguration or hidden vulnerability is overlooked.
+            Our structured Assessment process guarantees thorough coverage of your specialized environments, ensuring no misconfiguration or hidden vulnerability is overlooked.
           </p>
         </div>
 

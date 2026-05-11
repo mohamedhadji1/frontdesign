@@ -120,7 +120,7 @@ export const sectorPages = {
     ],
     solutions: [
       {
-        title: "In-Depth Audit and Risk Management",
+        title: "In-Depth Assessment and Risk Management",
         description:
           "Keystone carefully assesses healthcare infrastructure to identify vulnerabilities and manage risks before attackers exploit them.",
         icon: "fileSearch",
@@ -229,9 +229,9 @@ export const sectorPages = {
     ],
     solutions: [
       {
-        title: "Network Audit and Assessment",
+        title: "Network Assessment and Assessment",
         description:
-          "Keystone performs in-depth audits to identify weaknesses in telecom infrastructure and recommend stronger network security.",
+          "Keystone performs in-depth Assessments to identify weaknesses in telecom infrastructure and recommend stronger network security.",
         icon: "fileSearch",
       },
       {
@@ -556,9 +556,9 @@ export const sectorPages = {
     ],
     solutions: [
       {
-        title: "Audit and Evaluation",
+        title: "Assessment and Evaluation",
         description:
-          "Keystone performs complete audits to identify weaknesses and vulnerabilities in fintech and start-up systems.",
+          "Keystone performs complete Assessments to identify weaknesses and vulnerabilities in fintech and start-up systems.",
         icon: "fileSearch",
       },
       {
@@ -585,7 +585,7 @@ export const sectorPages = {
       {
         title: "Secure the Product",
         description:
-          "Audits and tailored controls protect digital products, APIs, and transaction workflows.",
+          "Assessments and tailored controls protect digital products, APIs, and transaction workflows.",
         icon: "cpu",
       },
       {
@@ -665,9 +665,9 @@ export const sectorPages = {
     ],
     solutions: [
       {
-        title: "Audit and Risk Management",
+        title: "Assessment and Risk Management",
         description:
-          "Keystone performs complete audits to evaluate financial infrastructure security and reduce potential weaknesses.",
+          "Keystone performs complete Assessments to evaluate financial infrastructure security and reduce potential weaknesses.",
         icon: "fileSearch",
       },
       {

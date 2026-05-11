@@ -104,7 +104,7 @@ export function WhatIsRedTeamSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-zinc-600 text-lg md:text-xl leading-relaxed mx-auto text-center max-w-2xl"
           >
-            Unlike standard vulnerability assessments that check boxes, Red Teaming is an unrestricted, objective-based assessment. We emulate Advanced Persistent Threats (APTs) to subject your entire organization—technology, physical security, and human elements—to realistic cyberattacks.
+            Unlike standard vulnerability assessments that check boxes, Red Teaming is an unrestricted, objective based assessment. We emulate Advanced Persistent Threats (APTs) to subject your entire organization technology, physical security, and human elements to realistic cyberattacks.
           </motion.p>
         </div>
 
@@ -121,7 +121,7 @@ export function WhatIsRedTeamSection() {
               <div className="absolute -left-12 top-2 w-4 h-px bg-red-600/50 hidden md:block" />
               <motion.h2 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-wide">Goal-Oriented Testing</motion.h2>
               <p className="text-zinc-600 leading-relaxed font-medium text-sm">
-                Instead of finding every flaw, we focus on specific goals—like stealing sensitive customer data, compromising domain administrator credentials, or breaching a physical vault. It proves true business impact.
+                Instead of finding every flaw, we focus on specific goals like stealing sensitive customer data, compromising domain administrator credentials, or breaching a physical vault. It proves true business impact.
               </p>
             </motion.div>
 

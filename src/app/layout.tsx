@@ -4,7 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { DisableDevTools } from "@/components/DisableDevTools";
+//import { DisableDevTools } from "@/components/DisableDevTools";
 
 const gotham = localFont({
   src: [
@@ -67,7 +67,7 @@ export default function RootLayout({
         <main className="grow">{children}</main>
         <Footer />
         <BackToTop />
-        <DisableDevTools />
+       {/* <DisableDevTools /> */}
       </body>
     </html>
   );

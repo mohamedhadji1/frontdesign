@@ -13,59 +13,50 @@ export type SectorGroup = {
 
 export const sectorLinks = [
   {
+    name: "Governments and Public Organizations",
+    description: "We collaborate with governments and public entities to strengthen the resilience of their critical infrastructure, ensuring the security of sensitive data and essential services.",
+    href: "/sectors/public",
+    highlighted: true,
+  },
+  {
     name: "Healthcare",
-    description:
-      "Security programs for patient data, clinical platforms, medical operations, and healthcare compliance needs.",
+    description: "In the healthcare sector, we preserve the integrity of medical data, ensuring compliance with strict security standards and protecting patient confidentiality.",
     href: "/sectors/healthcare",
   },
   {
-    name: "Telecom & IT",
-    description:
-      "Security for communication networks, cloud environments, APIs, managed platforms, and enterprise technology operations.",
+    name: "Financial Services",
+    description: "For financial institutions, we provide robust security solutions to protect transactions, secure customer data, and ensure regulatory compliance.",
+    href: "/sectors/finance",
+  },
+  {
+    name: "Telecommunications and Information Technology",
+    description: "We secure the networks and IT infrastructure of telecommunications companies, guaranteeing reliable and secure connectivity for their customers.",
     href: "/sectors/telecom-it",
   },
   {
+    name: "Fintech and Start-ups",
+    description: "For Fintech companies and start-ups, we offer agile and scalable solutions to secure their digital innovations while respecting budgetary constraints.",
+    href: "/sectors/fintech-start-up",
+  },
+  {
+    name: "Media",
+    description: "We protect the intellectual assets and sensitive data of media companies, guaranteeing continuity of operations and confidentiality of information.",
+    href: "/sectors/media",
+  },
+  {
     name: "Transportation",
-    description:
-      "Security for logistics platforms, mobility systems, fleet operations, and connected transport infrastructure.",
+    description: "In the transport sector, we ensure the security of critical infrastructure and logistics management systems, thus protecting data flows and mobility.",
     href: "/sectors/transportation",
   },
   {
     name: "Energy",
-    description:
-      "Protection for generation, distribution, smart-grid, and energy-management environments.",
+    description: "For the energy sector, we secure critical infrastructure, guaranteeing continuity of services and protection of data related to energy production and distribution.",
     href: "/sectors/energy",
   },
   {
-    name: "Fintech & Start-up",
-    description:
-      "Practical protection for payment flows, digital products, sensitive customer data, and scaling engineering teams.",
-    href: "/sectors/fintech-start-up",
-  },
-  {
-    name: "Finance",
-    description:
-      "Controls for banking, insurance, risk management, payment environments, and financial compliance.",
-    href: "/sectors/finance",
-  },
-  {
-    name: "Media",
-    description:
-      "Protection for content platforms, broadcast workflows, publication operations, and digital audience services.",
-    href: "/sectors/media",
-  },
-  {
     name: "Industrial",
-    description:
-      "Assessment and hardening for OT, ICS, manufacturing systems, and operational networks.",
+    description: "In the industrial field, we strengthen the security of control systems and manufacturing processes, protecting operations against cyber threats and interruptions.",
     href: "/sectors/industrial",
-  },
-  {
-    name: "Governments and Public Organizations",
-    description:
-      "Cybersecurity programs for public institutions, citizen services, sensitive data, and critical state infrastructure.",
-    href: "/sectors/public",
-    highlighted: true,
   },
 ] satisfies SectorLink[];
 

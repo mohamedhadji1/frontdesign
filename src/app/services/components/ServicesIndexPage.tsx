@@ -100,7 +100,7 @@ export function ServicesIndexPage() {
           <motion.div >
             <SectionDivider title="SERVICES" className="mb-12" />
           </motion.div>
-          <motion.div variants={stagger} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div variants={stagger} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {serviceLinks.map((service) => {
               const Icon = serviceIcons[service.iconName];
 
@@ -114,24 +114,24 @@ export function ServicesIndexPage() {
                 >
                   <Link
                     href={service.href}
-                    className="group block h-full rounded-lg border border-zinc-200 bg-white p-5 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40 sm:p-6"
+                    className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.1)] hover:-translate-y-2 transition-all duration-300 group border border-gray-100 flex flex-col h-full block"
                   >
-                    <motion.div whileHover={{ rotate: -4, scale: 1.08 }}>
-                      <Icon className="mb-6 h-9 w-9 text-red-600" aria-hidden="true" />
-                    </motion.div>
-                    <motion.h2 className="mb-3 text-xl font-bold text-zinc-950">
+                    <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm border border-red-100 group-hover:border-red-600 shrink-0">
+                      <Icon className="w-6 h-6" aria-hidden="true" />
+                    </div>
+
+                    <motion.h2 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
                       {service.name}
                     </motion.h2>
-                    <p className="text-sm leading-7 text-zinc-600 sm:min-h-16">
+
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                       {service.description}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-red-600">
+
+                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Explore Service
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
-                    </span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
+                    </div>
                   </Link>
                 </motion.div>
               );

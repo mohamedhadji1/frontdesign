@@ -100,7 +100,7 @@ export function SectorsSection() {
                 key={index}
                 onClick={() => setActiveIndex(isActive ? -1 : index)}
                 className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-[1rem] border transition-all duration-500 ${isActive
-                  ? "col-span-1 min-h-[220px] border-red-600 bg-red-600 shadow-xl md:col-span-2 md:row-span-2 md:min-h-0"
+                  ? "col-span-1 min-h-[220px] border-red-600 bg-red-600 shadow-xl md:col-span-3 md:row-span-2 md:min-h-0"
                   : "col-span-1 min-h-[104px] border-zinc-200 bg-white/70 backdrop-blur-sm hover:border-red-400 hover:shadow-sm"
                   }`}
               >
@@ -115,7 +115,7 @@ export function SectorsSection() {
                     </div>
 
                     <motion.h2
-                      className={`font-semibold transition-colors duration-300 ${isActive ? 'text-lg text-white md:text-2xl' : 'text-sm text-zinc-800 group-hover:text-red-600'}`}
+                      className={`font-bold transition-colors duration-300 ${isActive ? 'text-2xl text-white' : 'text-sm text-zinc-800 group-hover:text-red-600'}`}
                     >
                       {sector.title}
                     </motion.h2>
@@ -125,7 +125,7 @@ export function SectorsSection() {
                     className={`custom-scrollbar mt-2 flex-1 overflow-visible pr-0 transition-opacity duration-300 md:overflow-y-auto md:pr-2 ${isActive ? 'opacity-100 delay-200' : 'pointer-events-none opacity-0'
                       }`}
                   >
-                    <p className="text-sm md:text-base text-white leading-relaxed font-medium">
+                    <p className="text-sm md:text-lg text-white leading-relaxed font-medium">
                       {sector.description}
                     </p>
                   </div>

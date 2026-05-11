@@ -43,14 +43,6 @@ const locations: Location[] = [
   { id: "sn", name: "Dakar", coordinates: [-17.4441, 14.6937], type: "client", address: "West Africa client base\nDakar, Senegal" },
   { id: "gh", name: "Accra", coordinates: [-0.187, 5.6037], type: "client", address: "West Africa expansion\nAccra, Ghana" },
   { id: "ci", name: "Abidjan", coordinates: [-4.0305, 5.36], type: "client", address: "Francophone West Africa\nAbidjan, Cote d'Ivoire" },
-
-  // Clients inside office countries
-  { id: "tn-sfax", name: "Sfax", coordinates: [10.7603, 34.7406], type: "client", address: "Client operations\nSfax, Tunisia" },
-  { id: "tn-sousse", name: "Sousse", coordinates: [10.6412, 35.8245], type: "client", address: "Client operations\nSousse, Tunisia" },
-  { id: "dz-oran", name: "Oran", coordinates: [-0.6417, 35.6969], type: "client", address: "Client operations\nOran, Algeria" },
-  { id: "dz-constantine", name: "Constantine", coordinates: [6.6147, 36.365], type: "client", address: "Client operations\nConstantine, Algeria" },
-  { id: "ly-benghazi", name: "Benghazi", coordinates: [20.0686, 32.1194], type: "client", address: "Client operations\nBenghazi, Libya" },
-  { id: "mr-nouadhibou", name: "Nouadhibou", coordinates: [-17.034, 20.931], type: "client", address: "Client operations\nNouadhibou, Mauritania" },
 ];
 
 export function MapSection() {
@@ -299,7 +291,7 @@ export function MapSection() {
 
         <div
           ref={mapWrapperRef}
-          className="map-wrapper relative z-20 mx-auto mt-6 w-full overflow-hidden rounded-[28px] border border-zinc-200/70 bg-gradient-to-b from-zinc-50 to-white shadow-sm md:-mt-24 md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
+          className="map-wrapper relative z-20 mx-auto mt-6 w-full overflow-hidden rounded-[28px] border border-zinc-200/70 to-white shadow-sm md:-mt-24 md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
           onClick={() => {
             setActiveLocation(null);
             setPopupPos(null);

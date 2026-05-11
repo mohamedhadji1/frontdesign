@@ -23,7 +23,7 @@ const hardeningSteps = [
   {
     id: "identity",
     title: "Active Directory & Privileges",
-    description: "Deep audit of Active Directory group policies (GPOs), Kerberos configurations, and IAM to prevent lateral movement and credential dumping attacks.",
+    description: "Deep Assessment of Active Directory group policies (GPOs), Kerberos configurations, and IAM to prevent lateral movement and credential dumping attacks.",
     icon: <Lock className="w-8 h-8 text-white" />
   },
   {
@@ -69,7 +69,7 @@ export default function SystemHardeningPage() {
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-red-400 transition-colors break-keep">Technical Audit</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">System Hardening</span>
+                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-Assessment" className="hover:text-red-400 transition-colors break-keep">Technical Assessment</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">System Hardening</span>
                 </div>
               </motion.div>
 
@@ -88,8 +88,8 @@ export default function SystemHardeningPage() {
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
                   Request Hardening
                 </Link>
-                <Link href="/services/technical-audit" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
-                  Back to Audits
+                <Link href="/services/technical-Assessment" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
+                  Back to Assessments
                 </Link>
               </div>
             </div>

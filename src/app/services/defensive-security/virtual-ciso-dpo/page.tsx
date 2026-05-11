@@ -196,7 +196,7 @@ export default function Page() {
                 <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 border border-blue-100">
                   <Eye className="w-7 h-7" />
                 </div>
-                <motion.h2 className="text-2xl font-bold text-zinc-900 mb-3 tracking-tight">Continuous Auditing</motion.h2>
+                <motion.h2 className="text-2xl font-bold text-zinc-900 mb-3 tracking-tight">Continuous Assessmenting</motion.h2>
                 <p className="text-zinc-600 leading-relaxed text-lg">Learn immediately if your sensitive information ends up on the dark web so you can pivot your defenses instantly.</p>
               </div>
             </div>

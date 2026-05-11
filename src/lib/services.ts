@@ -8,14 +8,14 @@ export type ServiceLink = {
 export const serviceLinks: ServiceLink[] = [
   {
     name: "Managed Services",
-    description: "Continuous monitoring and proactive protection to relieve your organization of daily security management.",
-    href: "/services/defensive-security/soc-management",
+    description: "Continuous monitoring and proactive protection through Keystone's defensive security hub.",
+    href: "/services/defensive-security",
     iconName: "ShieldCheck",
   },
   {
     name: "Offensive Security",
     description: "Simulating real-world attacks to identify and remediate vulnerabilities before they can be exploited.",
-    href: "/services/red-team",
+    href: "/services/offensive-security",
     iconName: "Target",
   },
   {
@@ -37,9 +37,9 @@ export const serviceLinks: ServiceLink[] = [
     iconName: "Briefcase",
   },
   {
-    name: "Audit and Technical Assistance",
+    name: "Assessment and Technical Assistance",
     description: "Comprehensive assessments and technical support to identify gaps and enhance your security posture.",
-    href: "/services/technical-audit",
+    href: "/services/technical-Assessment",
     iconName: "Search",
   },
 ];

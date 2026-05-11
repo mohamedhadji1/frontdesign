@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { NavItem } from "./NavItem";
 import { ActionButton } from "./ActionButton";
 import { ServicesDropdown } from "./ServicesDropdown";
+import { SolutionsDropdown } from "./SolutionsDropdown";
 import { SectorsDropdown } from "./SectorsDropdown";
 import { CareersDropdown } from "./CareersDropdown";
 import { MobileMenu } from "./MobileMenu";
@@ -51,11 +52,10 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed inset-x-0 top-0 z-[70] transition-all duration-300 ${
-          scrolled || forceDarkNavbar
+        className={`fixed inset-x-0 top-0 z-[70] transition-all duration-300 ${scrolled || forceDarkNavbar
             ? "border-b border-white/10 bg-black/90 shadow-xl backdrop-blur-md"
             : "bg-transparent py-4 md:py-6"
-        }`}
+          }`}
       >
         <div className="container relative mx-auto flex min-h-[72px] items-center justify-between px-4 sm:px-6 lg:px-12">
           {/* Left: Logo */}
@@ -94,6 +94,20 @@ export function Navbar() {
 
             <div
               className="h-full flex items-center py-6"
+              onMouseEnter={() => handleMouseEnter("Solutions")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavItem
+                label="Solutions"
+                href="/solutions"
+                hasDropdown
+                isActive={activeDropdown === "Solutions"}
+              />
+              {activeDropdown === "Solutions" && <SolutionsDropdown />}
+            </div>
+
+            <div
+              className="h-full flex items-center py-6"
               onMouseEnter={() => handleMouseEnter("Sectors")}
               onMouseLeave={handleMouseLeave}
             >
@@ -125,7 +139,7 @@ export function Navbar() {
 
           {/* Right: Action Button */}
           <div className="hidden lg:block">
-            <ActionButton label="incident report" onClick={() => {
+            <ActionButton label="Report an incident" onClick={() => {
               window.location.href = "/contact?incident=1";
             }} />
           </div>

@@ -27,7 +27,7 @@ export function OfferingsSection() {
 
   const offerings = [
     {
-      title: "Web & Mobile Application Audit",
+      title: "Web & Mobile Application Assessment",
       desc: "We conduct exhaustive black-box and gray-box assessments of your business-critical web portals, APIs, and mobile applications. Our experts manually hunt for complex vulnerabilities that automated scanners miss, including severe business logic flaws, unauthorized access chains, and cryptographic weaknesses.",
       icon: <Smartphone className="w-5 h-5" animateOnHover={true} />,
       number: "01",
@@ -96,115 +96,115 @@ export function OfferingsSection() {
           </motion.h2>
           <motion.h2 className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight mb-6 uppercase">
             Threat Landscape
-        </motion.h2>
-        <p className="text-zinc-600 max-w-2xl text-sm md:text-base leading-relaxed">
-          Standard vulnerability scanning is obsolete. We deploy multi-vector offensive simulations that target your digital perimeter, physical facilities, and human psychology simultaneously.
-        </p>
-      </div>
-
-      {/* Interactive Console Layout */}
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 lg:h-[600px] border border-zinc-200 rounded-xl overflow-hidden bg-white/80 backdrop-blur-md shadow-xl relative">
-
-        {/* Left panel: Directory / Menu */}
-        <div className="lg:w-1/3 border-b lg:border-b-0 lg:border-r border-zinc-200 bg-zinc-50/50 flex flex-col">
-          <div className="p-4 border-b border-zinc-200 flex items-center gap-3 text-zinc-500 text-xs font-medium">
-            <Terminal className="w-4 h-4 text-red-600" animateOnHover={true} />
-            <span>root@rt-ops:~/modules/</span>
-            <span className="ml-auto animate-pulse text-red-500">_</span>
-          </div>
-          <div className="flex-1 overflow-y-auto">
-            {offerings.map((offer, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveTab(idx)}
-                className={`w-full text-left p-6 transition-all duration-300 border-l-2 flex flex-col gap-2 ${activeTab === idx
-                  ? "bg-red-50 border-red-600"
-                  : "border-transparent hover:bg-zinc-50"
-                  }`}
-              >
-                <div className="flex items-center gap-4">
-                  <span className={`font-medium text-xs ${activeTab === idx ? "text-red-600" : "text-zinc-500"}`}>
-                    [{offer.number}]
-                  </span>
-                  <span className={`font-bold uppercase tracking-wider text-sm ${activeTab === idx ? "text-zinc-900" : "text-zinc-500"}`}>
-                    {offer.title}
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+          </motion.h2>
+          <p className="text-zinc-600 max-w-2xl text-sm md:text-base leading-relaxed">
+            Standard vulnerability scanning is obsolete. We deploy multi-vector offensive simulations that target your digital perimeter, physical facilities, and human psychology simultaneously.
+          </p>
         </div>
 
-        {/* Right panel: Active Display */}
-        <div className="lg:w-2/3 relative h-[400px] lg:h-auto flex flex-col bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.02)_0%,transparent_60%)]">
-          {/* Top scanning bar animation */}
-          <motion.div
-            className="absolute top-0 left-0 right-0 h-1 bg-red-500/30 shadow-[0_0_10px_rgba(220,38,38,0.5)] z-20"
-            animate={{ y: [0, 600, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          />
+        {/* Interactive Console Layout */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 lg:h-[600px] border border-zinc-200 rounded-xl overflow-hidden bg-white/80 backdrop-blur-md shadow-xl relative">
 
-          <AnimatePresence mode="wait">
+          {/* Left panel: Directory / Menu */}
+          <div className="lg:w-1/3 border-b lg:border-b-0 lg:border-r border-zinc-200 bg-zinc-50/50 flex flex-col">
+            <div className="p-4 border-b border-zinc-200 flex items-center gap-3 text-zinc-500 text-xs font-medium">
+              <Terminal className="w-4 h-4 text-red-600" animateOnHover={true} />
+              <span>root@rt-ops:~/modules/</span>
+              <span className="ml-auto animate-pulse text-red-500">_</span>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              {offerings.map((offer, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTab(idx)}
+                  className={`w-full text-left p-6 transition-all duration-300 border-l-2 flex flex-col gap-2 ${activeTab === idx
+                    ? "bg-red-50 border-red-600"
+                    : "border-transparent hover:bg-zinc-50"
+                    }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className={`font-medium text-xs ${activeTab === idx ? "text-red-600" : "text-zinc-500"}`}>
+                      [{offer.number}]
+                    </span>
+                    <span className={`font-bold uppercase tracking-wider text-sm ${activeTab === idx ? "text-zinc-900" : "text-zinc-500"}`}>
+                      {offer.title}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Right panel: Active Display */}
+          <div className="lg:w-2/3 relative h-[400px] lg:h-auto flex flex-col bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.02)_0%,transparent_60%)]">
+            {/* Top scanning bar animation */}
             <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.02, filter: "blur(4px)" }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 p-8 flex flex-col justify-center"
-            >
-              {/* Huge faded background number */}
-              <div className="absolute right-8 top-8 text-[180px] font-bold text-zinc-100 leading-none select-none z-0">
-                {offerings[activeTab].number}
-              </div>
+              className="absolute top-0 left-0 right-0 h-1 bg-red-500/30 shadow-[0_0_10px_rgba(220,38,38,0.5)] z-20"
+              animate={{ y: [0, 600, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            />
 
-              <div className="relative z-10 max-w-lg">
-                <div className="w-16 h-16 border border-red-200 bg-red-50 text-red-600 flex items-center justify-center rounded-lg mb-8 shadow-sm">
-                  {offerings[activeTab].icon}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.02, filter: "blur(4px)" }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 p-8 flex flex-col justify-center"
+              >
+                {/* Huge faded background number */}
+                <div className="absolute right-8 top-8 text-[180px] font-bold text-zinc-100 leading-none select-none z-0">
+                  {offerings[activeTab].number}
                 </div>
 
-                <h4 className="text-3xl lg:text-4xl font-bold text-zinc-900 mb-6 uppercase tracking-tight">
-                  {offerings[activeTab].title}
-                </h4>
+                <div className="relative z-10 max-w-lg">
+                  <div className="w-16 h-16 border border-red-200 bg-red-50 text-red-600 flex items-center justify-center rounded-lg mb-8 shadow-sm">
+                    {offerings[activeTab].icon}
+                  </div>
 
-                <p className="text-zinc-600 text-[15px] lg:text-[17px] leading-relaxed mb-10 max-w-xl">
-                  {offerings[activeTab].desc}
-                </p>
+                  <h4 className="text-3xl lg:text-4xl font-bold text-zinc-900 mb-6 uppercase tracking-tight">
+                    {offerings[activeTab].title}
+                  </h4>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                  {/* Column 1: Weaknesses */}
-                  <div className="space-y-4">
-                    <h5 className="font-bold text-xs text-zinc-400 tracking-widest uppercase border-b border-zinc-200 pb-2">Targeted Weaknesses</h5>
-                    <div className="flex flex-col gap-2">
-                      {offerings[activeTab].threats.map((threat, i) => (
-                        <div key={i} className="flex items-center gap-2 group/threat w-fit cursor-default">
-                          <Radar className="w-3.5 h-3.5 text-zinc-400 group-hover/threat:text-red-600 transition-colors" animateOnHover={true} />
-                          <span className="text-[13px] font-semibold text-zinc-800 group-hover/threat:text-red-700 transition-colors">{threat}</span>
-                        </div>
-                      ))}
+                  <p className="text-zinc-600 text-[15px] lg:text-[17px] leading-relaxed mb-10 max-w-xl">
+                    {offerings[activeTab].desc}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    {/* Column 1: Weaknesses */}
+                    <div className="space-y-4">
+                      <h5 className="font-bold text-xs text-zinc-400 tracking-widest uppercase border-b border-zinc-200 pb-2">Targeted Weaknesses</h5>
+                      <div className="flex flex-col gap-2">
+                        {offerings[activeTab].threats.map((threat, i) => (
+                          <div key={i} className="flex items-center gap-2 group/threat w-fit cursor-default">
+                            <Radar className="w-3.5 h-3.5 text-zinc-400 group-hover/threat:text-red-600 transition-colors" animateOnHover={true} />
+                            <span className="text-[13px] font-semibold text-zinc-800 group-hover/threat:text-red-700 transition-colors">{threat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Column 2: Key Features */}
+                    <div className="space-y-4">
+                      <h5 className="font-bold text-xs text-zinc-400 tracking-widest uppercase border-b border-zinc-200 pb-2">Core Focus</h5>
+                      <ul className="space-y-2">
+                        {offerings[activeTab].features?.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-zinc-700 font-medium">
+                            <span className="text-red-500 mt-[2px] opacity-70">▹</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-
-                  {/* Column 2: Key Features */}
-                  <div className="space-y-4">
-                    <h5 className="font-bold text-xs text-zinc-400 tracking-widest uppercase border-b border-zinc-200 pb-2">Core Focus</h5>
-                    <ul className="space-y-2">
-                      {offerings[activeTab].features?.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-zinc-700 font-medium">
-                          <span className="text-red-500 mt-[2px] opacity-70">▹</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
+        </div>
       </div>
-    </div>
     </motion.section >
   );
 }

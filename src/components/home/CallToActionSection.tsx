@@ -45,7 +45,7 @@ export function CallToActionSection() {
             href="/contact"
             className="group flex w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-red-600 px-8 py-3 text-sm font-medium text-white transition-all hover:bg-red-700 sm:w-auto md:text-base"
           >
-            Contact an expert now
+            Contact US
             <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold ml-1 flex items-center">
               <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12h2" />

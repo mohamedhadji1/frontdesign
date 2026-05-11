@@ -52,7 +52,7 @@ const coreBankingSteps = [
   }
 ];
 
-export default function CoreBankingAuditPage() {
+export default function CoreBankingAssessmentPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
 
@@ -71,27 +71,27 @@ export default function CoreBankingAuditPage() {
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-red-400 transition-colors break-keep">Technical Audit</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Core Internet Banking System Audit</span>
+                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-Assessment" className="hover:text-red-400 transition-colors break-keep">Technical Assessment</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Core Internet Banking System Assessment</span>
                 </div>
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Securing the Financial Core: <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Banking Systems Audit</span>
+                Securing the Financial Core: <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Banking Systems Assessment</span>
               </h1>
               <HeroTypeLine
                 items={["Core banking assurance", "Transaction logic review", "Financial platform hardening"]}
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                The core banking system is the critical nervous system of any financial institution. Our elite technical audits dive deep into transaction logic, API integration, and cryptographic protocols to prevent exploitation and ensure strict regulatory alignment.
+                The core banking system is the critical nervous system of any financial institution. Our elite technical Assessments dive deep into transaction logic, API integration, and cryptographic protocols to prevent exploitation and ensure strict regulatory alignment.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
-                  Schedule an Audit
+                  Schedule an Assessment
                 </Link>
-                <Link href="/services/technical-audit" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
-                  Back to Audits
+                <Link href="/services/technical-Assessment" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
+                  Back to Assessments
                 </Link>
               </div>
             </div>

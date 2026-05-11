@@ -18,7 +18,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/background/bg14.avif"
-          alt="Technical Audit Assessment Cover"
+          alt="Technical Assessment Assessment Cover"
           fill
           priority
           className="object-cover object-center opacity-80"
@@ -46,12 +46,12 @@ export function HeroSection() {
                 Services
               </Link>
               <span className="shrink-0 text-red-500/50">/</span>
-              <span className="text-red-400">Technical Audit</span>
+              <span className="text-red-400">Technical Assessment</span>
             </div>
           </motion.div>
 
           <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl">
-            Technical Audit
+            Technical Assessment
           </h1>
 
           <HeroTypeLine
@@ -70,7 +70,7 @@ export function HeroSection() {
               href="/contact"
               className="group flex items-center gap-2 rounded-full bg-red-600 px-8 py-3 font-semibold text-white shadow-xl shadow-red-600/20 transition-colors hover:bg-red-700"
             >
-              Schedule an Audit
+              Schedule an Assessment
               <span className="transition-transform group-hover:translate-x-1">
                 →
               </span>

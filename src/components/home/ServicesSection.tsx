@@ -24,7 +24,7 @@ const services = [
     ),
   },
   {
-    title: "GRC (Governance, Risk, and Compliance)",
+    title: "Governance, Risk, and Compliance",
     description: "Our approach to GRC is based on holistic risk and compliance management. We help companies establish policies and processes to meet regulatory requirements, minimize risks, and maximize compliance, while integrating a culture of security at the heart of their operations.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,8 +52,8 @@ const services = [
     ),
   },
   {
-    title: "Audit and Technical Assistance",
-    description: "Our audit and technical assistance services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
+    title: "Assessment and Technical Assistance",
+    description: "Our Assessment and technical assistance services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />

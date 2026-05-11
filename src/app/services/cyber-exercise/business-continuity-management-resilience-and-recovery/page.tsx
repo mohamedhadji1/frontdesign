@@ -1,356 +1,180 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
 import {
-  BadgeCheck,
-  BriefcaseBusiness,
-  ClipboardList,
-  FileClock,
   ShieldCheck,
-  Siren,
   TimerReset,
+  Zap,
+  RefreshCw,
+  AlertTriangle,
+  ClipboardList,
+  RotateCcw,
+  ArrowRight,
+  ChevronRight,
 } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
-import { InteractiveExercisePanel } from "../components/InteractiveExercisePanel";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const priorities = [
-  {
-    title: "Plan for the unexpected",
-    description:
-      "Train professionals to anticipate disruption and prepare action plans that keep operations running during major incidents.",
-    icon: ClipboardList,
-  },
-  {
-    title: "Strengthen resilience",
-    description:
-      "Develop practical recovery strategies so teams can restore critical capabilities quickly and effectively after a crisis.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Reduce operational loss",
-    description:
-      "Minimize financial and operational impact by improving readiness, coordination, and response discipline.",
-    icon: BriefcaseBusiness,
-  },
+const importanceItems = [
+  { title: "Plan for Unexpected", d: "Prepare action plans to maintain operations even during major disruptions.", icon: ClipboardList },
+  { title: "Strengthen Resilience", d: "Develop strategies to recover quickly and effectively after a crisis.", icon: Zap },
+  { title: "Reduce Losses", d: "Minimize financial and operational losses during unforeseen situations.", icon: AlertTriangle },
 ];
 
-const methodology = [
-  {
-    title: "Simulated crisis scenarios",
-    description:
-      "Practical exercises help teams execute continuity plans and assess their response under pressure.",
-    icon: Siren,
-  },
-  {
-    title: "Expert guidance",
-    description:
-      "Experienced specialists share actionable practices for business continuity planning and resilience improvement.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Tailored programs",
-    description:
-      "Training is adapted to sector-specific continuity and recovery requirements rather than using generic templates.",
-    icon: TimerReset,
-  },
+const programs = [
+  { title: "Continuity Planning", d: "Developing plans to maintain critical operations during and after a crisis.", icon: TimerReset },
+  { title: "Disaster Recovery", d: "Technical strategies to recover effectively after a major interruption.", icon: RefreshCw },
+  { title: "Plan Evaluation", d: "Implementing processes to test and improve continuity plans through rigor.", icon: RotateCcw },
 ];
 
-const offerings = [
-  "Business continuity planning for critical operations during and after a crisis.",
-  "Disaster recovery strategies to restore services rapidly after major disruption.",
-  "Testing and evaluation processes to validate and improve continuity plans over time.",
-];
+export default function BcmPage() {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"]
+  });
 
-const continuityPanelItems = [
-  {
-    id: "prepare",
-    label: "Prepare",
-    value: "Recovery plan coverage 88%",
-    detail:
-      "Teams map dependencies, define owners, and align continuity measures to the most critical services.",
-    icon: ClipboardList,
-  },
-  {
-    id: "simulate",
-    label: "Simulate",
-    value: "Exercise confidence +41%",
-    detail:
-      "Crisis scenarios reveal operational friction points and improve coordination before real disruptions occur.",
-    icon: Siren,
-  },
-  {
-    id: "restore",
-    label: "Restore",
-    value: "Downtime exposure -31%",
-    detail:
-      "Recovery steps become faster and clearer when teams rehearse sequencing, escalation, and fallback actions.",
-    icon: FileClock,
-  },
-];
-
-export default function BusinessContinuityPage() {
   return (
-    <main className="flex min-h-screen flex-col bg-white">
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32"
+    <main ref={targetRef} className="min-h-screen bg-white text-zinc-950 overflow-hidden">
+      
+      {/* Hero Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8 }} 
+        className="relative w-full h-[60dvh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f24_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f24_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_68%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.22),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(239,68,68,0.14),transparent_28%)]" />
-
-        <div className="container relative z-10 mx-auto px-6">
-          <div className="flex flex-col items-start gap-16 lg:flex-row lg:items-center">
-            <div className="lg:w-1/2">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-red-400">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 animate-pulse" />
-                <div className="flex flex-wrap items-center gap-2 text-sm font-semibold uppercase tracking-wide">
-                  <Link href="/services" className="transition-colors hover:text-red-300">
-                    Services
-                  </Link>
-                  <span className="text-red-500/50">/</span>
-                  <Link
-                    href="/services/cyber-exercise"
-                    className="transition-colors hover:text-red-300"
-                  >
-                    Cyber Exercise
-                  </Link>
-                  <span className="text-red-500/50">/</span>
-                  <span className="text-red-300">
-                    Business Continuity Management
-                  </span>
-                </div>
-              </div>
-
-              <h1 className="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                Business Continuity,
-                <span className="block bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
-                  Resilience & Recovery
-                </span>
-              </h1>
-
-              <p className="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-400">
-                <span className="mb-3 block text-sm font-bold uppercase tracking-[0.3em] text-red-400">
-                  <TypeAnimation
-                    sequence={[
-                      "Business continuity planning",
-                      1200,
-                      "Crisis simulation exercises",
-                      1200,
-                      "Recovery readiness training",
-                      1200,
-                    ]}
-                    wrapper="span"
-                    repeat={Infinity}
-                    speed={58}
-                    deletionSpeed={72}
-                  />
-                </span>
-                Prepare for disruption and recover with speed. This training
-                program equips professionals with the skills needed to preserve
-                critical operations, improve resilience, and organize effective
-                recovery in high-stakes situations.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact?service=business-continuity-management-resilience-and-recovery"
-                  className="rounded-lg bg-red-600 px-8 py-3.5 font-medium text-white shadow-lg shadow-red-600/25 transition-all duration-300 hover:bg-red-700"
-                >
-                  Request This Program
-                </Link>
-                <Link
-                  href="/services/cyber-exercise"
-                  className="rounded-lg border border-white/10 bg-white/5 px-8 py-3.5 font-medium text-white transition-all duration-300 hover:bg-white/10"
-                >
-                  Back to Cyber Exercise
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:w-1/2">
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/60 p-4 shadow-2xl backdrop-blur-sm">
-                <Image
-                  src="https://ziedhamdi.com/wp-content/uploads/2024/10/photo20_vertical.jpg"
-                  alt="Business continuity and recovery training"
-                  width={1200}
-                  height={1600}
-                  className="h-[440px] w-full rounded-2xl object-cover"
-                />
-              </div>
-            </div>
-          </div>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/background/bg10.png"
+            alt="Operational Resilience"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
         </div>
-      </motion.section>
 
-      <CyberSectionDivider theme="red" />
-
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="bg-zinc-50 py-20"
-      >
-        <div className="container mx-auto grid items-center gap-12 px-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="relative">
-            <div className="relative rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-xl">
-              <Image
-                src="https://ziedhamdi.com/wp-content/uploads/2024/10/photo11_vertcal-1.jpg"
-                alt="Continuity and resilience planning workshop"
-                width={1200}
-                height={1600}
-                className="h-[360px] w-full rounded-[1.5rem] object-cover"
-              />
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl pt-10"
+          >
+            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+               <span>Resilience</span>
+               <ChevronRight size={8} />
+               <span className="text-white/60">Recovery</span>
             </div>
-          </div>
-          <div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
-              Why It Matters
-            </p>
-            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
-              Continuity goes beyond crisis reaction
-            </motion.h2>
-            <p className="mb-8 text-lg leading-relaxed text-zinc-600">
-              This program helps teams move from reactive crisis handling to
-              structured continuity management. Participants learn how to keep
-              critical functions operating, recover faster, and reduce the
-              impact of unexpected disruption.
-            </p>
-            <div className="grid gap-4">
-              {priorities.map((item) => {
-                const Icon = item.icon;
 
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm"
-                  >
-                    <div className="mb-3 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-600">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <motion.h2 className="text-lg font-semibold text-zinc-900">
-                        {item.title}
-                      </motion.h2>
-                    </div>
-                    <p className="leading-relaxed text-zinc-600">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </motion.section>
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Operational Resilience
+            </h1>
 
-      <CyberSectionDivider theme="red" />
-
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="bg-white py-20"
-      >
-        <div className="container mx-auto px-6">
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-600">
-              Training Method
-            </p>
-            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
-              Practice-led preparation for continuity and recovery
-            </motion.h2>
-            <p className="text-lg leading-relaxed text-zinc-600">
-              The program is designed around realistic exercises, practitioner
-              guidance, and adaptation to real organizational needs.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {methodology.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={item.title}
-                  className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-200 hover:bg-white hover:shadow-xl"
-                >
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <motion.h2 className="mb-3 text-xl font-bold text-zinc-900">
-                    {item.title}
-                  </motion.h2>
-                  <p className="leading-relaxed text-zinc-600">
-                    {item.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-12">
-            <InteractiveExercisePanel
-              eyebrow="Interactive Resilience Drill"
-              title="Test the continuity cycle in motion"
-              description="Hover across the stages to see how the program turns continuity planning into a repeatable, measurable recovery exercise."
-              items={continuityPanelItems}
+            <HeroTypeLine
+              items={["Continuity Planning", "Disaster Recovery", "Business Resilience"]}
             />
-          </div>
-        </div>
-      </motion.section>
 
-      <CyberSectionDivider theme="red" />
-
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-        className="py-20 text-white"
-        style={{ backgroundColor: "lab(97 0 -0.01)" }}
-      >
-        <div className="container mx-auto grid items-center gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-red-500">
-              Program Scope
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              Prepare for the unexpected and recover quickly. Keystone's training equips professionals to ensure operational continuity in critical situations.
             </p>
-            <motion.h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 lg:text-4xl">
-              Training modules focused on real recovery readiness
-            </motion.h2>
-            <div className="space-y-4">
-              {offerings.map((offering) => (
-                <div
-                  key={offering}
-                  className="rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-zinc-600"
-                >
-                  {offering}
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white/80 p-4 shadow-2xl backdrop-blur-sm">
-            <Image
-              src="https://ziedhamdi.com/wp-content/uploads/2024/10/5.jpg"
-              alt="Resilience and recovery program"
-              width={1200}
-              height={1600}
-              className="h-[400px] w-full rounded-2xl object-cover"
-            />
-          </div>
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+               <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
+                  Build your BCP <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
         </div>
+        <ScrollIndicator />
       </motion.section>
 
-      <CyberSectionDivider theme="red" />
+      <CyberSectionDivider />
+
+      {/* Operational Continuity - Compact grid */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl mx-auto mb-20 text-center">
+            <SectionDivider title="CONTINUITY IMPORTANCE" className="mb-10" />
+            <h2 className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]">
+               Operational Continuity
+            </h2>
+            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
+               A resilient business is one that survives disruptions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+            {importanceItems.map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="group bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full"
+              >
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                   <item.icon size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
+                  {item.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed text-base font-medium">{item.d}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <CyberSectionDivider />
+
+          {/* Building Resilience - Compact Vision */}
+          <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+             <div className="space-y-8">
+                <SectionDivider title="CORE BCM MODULES" className="!justify-start mb-6" />
+                <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
+                   Building Resilience
+                </h2>
+                <div className="space-y-8">
+                   {programs.map((item, idx) => (
+                     <div key={idx} className="flex gap-6 group">
+                        <div className="w-12 h-12 shrink-0 rounded-xl bg-zinc-900 text-white flex items-center justify-center group-hover:bg-red-600 transition-colors shadow-lg">
+                           <item.icon size={18} />
+                        </div>
+                        <div>
+                           <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2 italic">{item.title}</h4>
+                           <p className="text-zinc-500 text-base font-medium leading-relaxed">{item.d}</p>
+                        </div>
+                     </div>
+                   ))}
+                </div>
+             </div>
+
+             <motion.div 
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: true }}
+               className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
+             >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px] animate-pulse" />
+                <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter italic">Resilience Vision</h3>
+                <p className="text-xl md:text-2xl font-light italic leading-relaxed text-zinc-300 relative z-10 mb-12 text-center">
+                  "Resilience is the ability to rebound and thrive despite adversity."
+                </p>
+                <div className="pt-10 border-t border-white/10 text-center">
+                   <Link href="/contact" className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all">
+                      Consult with BCM Experts <ArrowRight size={18} />
+                   </Link>
+                </div>
+             </motion.div>
+          </div>
+        </div>
+      </section>
+
       <ContactCTASection />
     </main>
   );

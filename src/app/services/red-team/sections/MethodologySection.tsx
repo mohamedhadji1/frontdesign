@@ -38,7 +38,7 @@ export function MethodologySection() {
     {
       id: "breach",
       name: "Initial Compromise",
-      desc: "Executing the attack vector—breaching your perimeter through software exploits, physical tailgating, or deceptive social engineering.",
+      desc: "Executing the attack vector breaching your perimeter through software exploits, physical tailgating, or deceptive social engineering.",
       icon: <Zap className="w-5 h-5" animateOnHover={true} />
     },
     {

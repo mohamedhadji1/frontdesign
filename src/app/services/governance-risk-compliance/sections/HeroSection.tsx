@@ -16,7 +16,7 @@ export function HeroSection() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale mix-blend-luminosity"
+          className="absolute inset-0 w-full h-full object-cover "
         />
         {/* Gradient overlays for readability and dramatic effect */}
         <div className="absolute inset-0" />

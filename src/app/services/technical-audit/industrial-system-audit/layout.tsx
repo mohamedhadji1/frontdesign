@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ICS/SCADA Industrial Security Audit | Keystone",
+  title: "ICS/SCADA Industrial Security Assessment | Keystone",
   description: "Protect critical infrastructure. Keystone provides passive discovery and safe OT security assessments aligning with IEC 62443 and the Purdue Model.",
 };
 

@@ -57,7 +57,7 @@ export function SubServicesSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight"
           >
-            Our <span className="text-red-600">Strategic</span> Capabilities
+            Our Strategic Capabilities
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ export function SubServicesSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {subServices.map((service, index) => (
             <motion.div
               key={index}
@@ -81,7 +81,7 @@ export function SubServicesSection() {
             >
               <Link
                 href={`/services/cybersecurity-strategy-consulting/${service.slug}`}
-                className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.1)] hover:-translate-y-2 transition-all duration-300 group border border-gray-100 flex flex-col h-full block"
+                  className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.1)] hover:-translate-y-2 transition-all duration-300 group border border-gray-100 flex flex-col h-full block"
               >
                 <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm border border-red-100 group-hover:border-red-600 shrink-0">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

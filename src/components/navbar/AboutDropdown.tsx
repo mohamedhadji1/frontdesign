@@ -6,10 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export const aboutDetails = [
   {
-    category: "About Us",
+    category: "About Keystone",
     items: [
-      { label: "Our Strategic Vision", href: "/about/strategic-vision" },
-      { label: "Our leadership & expertise", href: "/about/leadership-expertise" },
+      { label: "Company Overview", href: "/about/company-overview" },
+      { label: "Vision, Mission & Values", href: "/about/vision-mission-values" },
+      { label: "Our Team", href: "/about/our-team" },
+      { label: "Awards & Recognition", href: "/about/awards-recognition" },
+      { label: "Client Testimonials", href: "/about/testimonials" },
     ],
   },
 ];

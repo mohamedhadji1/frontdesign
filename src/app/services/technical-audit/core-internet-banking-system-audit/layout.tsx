@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Core Banking System Security Audit | Keystone",
+  title: "Core Banking System Security Assessment | Keystone",
   description: "Secure your financial backbone. We provide advanced vulnerability assessments for core banking systems, ensuring SWIFT and PCI-DSS compliance.",
 };
 

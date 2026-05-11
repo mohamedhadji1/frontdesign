@@ -15,12 +15,12 @@ import {
 
 const offerings = [
   {
-    title: "Cloud Environment Audit",
+    title: "Cloud Environment Assessment",
     desc: "Rigorous assessment of AWS, Azure, and GCP configurations. We identify misconfigured IAM roles, exposed buckets, and compliance gaps to harden your cloud perimeter.",
     icon: <Cloud className="w-8 h-8" />,
     threats: ["Misconfigured IAM", "Exposed Storage"],
     features: ["Architecture Review", "CIS/SOC2 Compliance"],
-    href: "/services/technical-audit/cloud-environment-audit",
+    href: "/services/technical-Assessment/cloud-environment-Assessment",
   },
   {
     title: "Core Banking Systems",
@@ -28,7 +28,7 @@ const offerings = [
     icon: <Server className="w-8 h-8" />,
     threats: ["Transaction Manipulation", "Logic Flaws"],
     features: ["Protocol Security", "Regulatory Compliance"],
-    href: "/services/technical-audit/core-internet-banking-system-audit",
+    href: "/services/technical-Assessment/core-internet-banking-system-Assessment",
   },
   {
     title: "Industrial System (OT/IT)",
@@ -36,7 +36,7 @@ const offerings = [
     icon: <Network className="w-8 h-8" />,
     threats: ["PLC Manipulation", "OT/IT Convergence Leaks"],
     features: ["Automated Systems Eval", "ICS Threat ID"],
-    href: "/services/technical-audit/industrial-system-audit",
+    href: "/services/technical-Assessment/industrial-system-Assessment",
   },
   {
     title: "Critical Infrastructure",
@@ -44,7 +44,7 @@ const offerings = [
     icon: <ShieldAlert className="w-8 h-8" />,
     threats: ["Cyber-Physical Attacks", "Ransomware"],
     features: ["Segmentation", "Threat Modeling"],
-    href: "/services/technical-audit/industrial-system-audit",
+    href: "/services/technical-Assessment/industrial-system-Assessment",
   },
   {
     title: "System Hardening",
@@ -52,7 +52,7 @@ const offerings = [
     icon: <ShieldCheck className="w-8 h-8" />,
     threats: ["Default Credentials", "Open Ports"],
     features: ["CIS Benchmarks", "Attack Surface Reduction"],
-    href: "/services/technical-audit/system-hardening",
+    href: "/services/technical-Assessment/system-hardening",
   },
 ];
 

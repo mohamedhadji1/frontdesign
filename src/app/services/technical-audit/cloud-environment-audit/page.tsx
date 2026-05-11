@@ -40,7 +40,7 @@ const cloudSteps = [
   },
   {
     id: "vulnerability",
-    title: "Control Plane & Container Audit",
+    title: "Control Plane & Container Assessment",
     description: "Evaluating Kubernetes (EKS/AKS/GKE) configurations, serverless functions, and CI/CD pipelines for misconfigurations leading to container escape or supply chain attacks.",
     icon: <Settings className="w-8 h-8 text-white" />
   },
@@ -52,7 +52,7 @@ const cloudSteps = [
   }
 ];
 
-export default function CloudEnvironmentAuditPage() {
+export default function CloudEnvironmentAssessmentPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
       <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -69,7 +69,7 @@ export default function CloudEnvironmentAuditPage() {
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-audit" className="hover:text-red-400 transition-colors break-keep">Technical Audit</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Cloud Environment Audit</span>
+                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/technical-Assessment" className="hover:text-red-400 transition-colors break-keep">Technical Assessment</Link><span className="text-red-500/50 flex flex-nowrap shrink-0">/</span><span className="text-red-400">Cloud Environment Assessment</span>
                 </div>
               </motion.div>
 
@@ -87,10 +87,10 @@ export default function CloudEnvironmentAuditPage() {
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
-                  Request a Cloud Audit
+                  Request a Cloud Assessment
                 </Link>
-                <Link href="/services/technical-audit" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
-                  Back to Audits
+                <Link href="/services/technical-Assessment" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
+                  Back to Assessments
                 </Link>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function CloudEnvironmentAuditPage() {
           <div className="max-w-3xl mb-16 text-center mx-auto">
             <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-red-600/30"></span>
-              Our Cloud Audit Methodology
+              Our Cloud Assessment Methodology
               <span className="w-8 h-px bg-red-600/30"></span>
             </motion.h2>
             <motion.h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">

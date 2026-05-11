@@ -21,7 +21,7 @@ const pillars = [
       "We identify, assess, and prioritize risks to build a practical and measurable control framework aligned with your exposure.",
     icon: <TriangleAlert className="h-6 w-6" />,
     points: [
-      "Audits and risk assessments",
+      "Assessments and risk assessments",
       "Threat and vulnerability mapping",
       "Risk treatment and reduction plans",
     ],

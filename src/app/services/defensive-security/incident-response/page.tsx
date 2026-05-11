@@ -43,7 +43,7 @@ export default function Page() {
     },
     {
       id: "post-incident",
-      title: "Post-Incident Reporting",
+      title: "Post-Report an incidenting",
       description: "Applying tactical lessons learned via highly detailed technical reporting to reinforce future security postures.",
       icon: <ClipboardList />,
     }

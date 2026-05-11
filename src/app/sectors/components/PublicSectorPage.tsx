@@ -134,9 +134,9 @@ const specificRisks: IconCard[] = [
 
 const adaptedSolutions: IconCard[] = [
   {
-    title: "Audit and Assessment",
+    title: "Assessment and Assessment",
     description:
-      "Keystone conducts complete audits to evaluate public infrastructure security and proposes risk-management strategies that reduce potential weaknesses.",
+      "Keystone conducts complete Assessments to evaluate public infrastructure security and proposes risk-management strategies that reduce potential weaknesses.",
     icon: FileSearch,
   },
   {
@@ -161,7 +161,7 @@ const adaptedSolutions: IconCard[] = [
 
 const keystoneSolutions: IconCard[] = [
   {
-    title: "In-Depth Audit and Evaluation",
+    title: "In-Depth Assessment and Evaluation",
     description:
       "Detailed assessments identify vulnerabilities specific to government infrastructures, evaluate security maturity, and recommend improvements.",
     icon: FileSearch,

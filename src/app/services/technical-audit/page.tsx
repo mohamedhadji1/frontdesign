@@ -8,11 +8,11 @@ import { CrossSellingSection } from "./sections/CrossSellingSection";
 
 
 export const metadata = {
-  title: "Technical Audit & Infrastructure Security | Keystone",
-  description: "Secure your critical infrastructure, cloud environments, and core banking systems with deep technical audits and architecture reviews.",
+  title: "Technical Assessment & Infrastructure Security | Keystone",
+  description: "Secure your critical infrastructure, cloud environments, and core banking systems with deep technical Assessments and architecture reviews.",
 };
 
-export default function TechnicalAuditPage() {
+export default function TechnicalAssessmentPage() {
   return (
     <main className="min-h-screen bg-black/20">
       <HeroSection />
@@ -22,7 +22,7 @@ export default function TechnicalAuditPage() {
       <MethodologySection />
       <CyberSectionDivider />
       <BenefitsSection />
-     <div className="w-[0%] mx-auto">
+      <div className="w-[0%] mx-auto">
         <CyberSectionDivider />
       </div>
       <CrossSellingSection />

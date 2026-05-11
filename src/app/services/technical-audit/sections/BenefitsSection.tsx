@@ -64,12 +64,12 @@ export function BenefitsSection() {
           <div className="flex items-center justify-center gap-4 mb-6 text-red-500 font-semibold tracking-wider text-sm uppercase">
             <motion.h2 className="text-red-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-red-600/30"></span>
-              APPLICATION AUDIT
+              APPLICATION Assessment
               <span className="w-8 h-px bg-red-600/30"></span>
             </motion.h2>
           </div>
           <motion.h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Why Conduct an Application Audit
+            Why Conduct an Application Assessment
           </motion.h2>
         </div>
 
