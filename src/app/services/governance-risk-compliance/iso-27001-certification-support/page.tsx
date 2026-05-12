@@ -7,12 +7,12 @@ import Image from "next/image";
 import {
   ArrowRight,
   ChevronRight,
-  Landmark,
-  AlertTriangle,
-  FileCheck,
+  ShieldCheck,
+  CheckCircle2,
+  Users,
   Award,
-  Handshake,
-  BarChart3,
+  Bookmark,
+  FileCheck2,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -20,50 +20,43 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const grcServices = [
+const features = [
   {
-    title: "Corporate Governance",
+    title: "Commitment to Your Success",
     description:
-      "We collaborate with your team to establish robust governance structures that guide strategic decisions while ensuring transparency and accountability within your organization.",
-    icon: Landmark,
+      "We are committed to supporting you at every single stage of the certification process, helping you seamlessly navigate through the complex requirements of ISO 27001 to solidify your overall security posture.",
+    icon: ShieldCheck,
   },
   {
-    title: "Risk Management",
+    title: "A Trusted Partner",
     description:
-      "Our holistic approach evaluates, mitigates, and manages potential risks, providing your business with a greater capacity to anticipate and respond to threats.",
-    icon: AlertTriangle,
+      "Keystone is recognized for its highly advanced expertise in the information security field. Our certified consultants offer both strategic and practical advice to help you reach ISO 27001 certification with complete confidence.",
+    icon: Users,
   },
   {
-    title: "Compliance",
+    title: "Proven Success Stories",
     description:
-      "We help you meet the legal, regulatory, contractual, and ethical requirements specific to your industry, ensuring seamless compliance.",
-    icon: FileCheck,
-  },
-];
-
-const whyKeystone = [
-  {
-    title: "Deep Expertise",
-    description:
-      "Our team possesses in-depth expertise in risk management, compliance, and governance, delivering solutions tailored to your unique needs.",
+      "We have helped numerous companies successfully secure their ISO 27001 certification. Their success stories illustrate our deep ability to transform complex challenges into practical opportunities for security excellence.",
     icon: Award,
   },
+];
+
+const subFeatures = [
   {
-    title: "Personalized Approach",
+    title: "Our References Speak For Us",
     description:
-      "Every business faces specific GRC challenges. We customize our services to meet your particular needs and objectives.",
-    icon: Handshake,
+      "We are proud of the robust references we have built over years of delivering client-centric security services. The organizations we have supported stand as living proof of our capacity to secure a successful ISO 27001 journey.",
+    icon: Bookmark,
   },
   {
-    title: "Tangible Results",
+    title: "The Path to Recognition",
     description:
-      "Our GRC services and solutions deliver real impact — reducing risks, improving compliance, and strengthening your business resilience against today's challenges.",
-    icon: BarChart3,
+      "ISO 27001 certification goes way beyond mere technical compliance. It serves as a strong sign of absolute reliability for your partners, customers, and stakeholders, testifying to your ultimate commitment to data security.",
+    icon: FileCheck2,
   },
 ];
 
-
-export default function GrcPage() {
+export default function ISO27001SupportPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -71,7 +64,7 @@ export default function GrcPage() {
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -20]);
 
   return (
     <main
@@ -83,7 +76,7 @@ export default function GrcPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -106,29 +99,21 @@ export default function GrcPage() {
             className="w-full max-w-5xl pt-10"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Governance</span>
+              <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Risk & Compliance</span>
+              <span className="text-white/60">ISO 27001 Certification Support</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Governance, Risk & Compliance
+              ISO 27001 Support
             </h1>
 
             <HeroTypeLine
-              items={[
-                "Master Your Risks",
-                "Meet the Standards",
-                "Protect Your Business",
-              ]}
+              items={["Recognition", "Security", "Compliance"]}
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective governance, risk, and compliance management is essential
-              for any business navigating an ever-evolving national and
-              international regulatory landscape. At Keystone, we deliver
-              cutting-edge GRC services to help you protect your business,
-              reduce risks, and meet information security standards.
+              At Keystone, we understand that ISO 27001 certification is much more than a seal of compliance. It is the tangible proof of your absolute commitment to information security. Our support service is the fruit of years of experience, backed by numerous references and success stories.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -136,7 +121,7 @@ export default function GrcPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request GRC Audit <ArrowRight size={18} />
+                Secure ISO 27001 <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -153,7 +138,6 @@ export default function GrcPage() {
               repeat: Infinity,
             }}
           >
-            {/* Repeat the full logo set multiple times for seamless infinite scroll */}
             {Array(5)
               .fill([
                 { src: "/certif/SWIFT.png", alt: "SWIFT" },
@@ -190,18 +174,18 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* GRC Services Section */}
+      {/* Services Section */}
       <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div
             style={{ y: y1, rotate }}
-            className="absolute top-[10%] right-[5%] w-64 h-64 border border-red-500/5 rounded-full"
+            className="absolute top-[10%] left-[5%] w-64 h-64 border border-red-500/5 rounded-full"
           />
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR GRC SERVICES" className="mb-10" />
+            <SectionDivider title="ISO 27001 PATHWAYS" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -209,22 +193,15 @@ export default function GrcPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Comprehensive GRC Solutions
+              Your Path to Recognition
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-lg text-zinc-600 leading-relaxed font-medium"
-            >
-              From governance frameworks to risk mitigation and regulatory
-              compliance — we cover every dimension of GRC.
-            </motion.p>
+            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
+              Achieve highly trusted, international certification to reassure stakeholders and solidy information security.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {grcServices.map((service, idx) => (
+            {features.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -248,7 +225,7 @@ export default function GrcPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Learn More <ArrowRight size={14} />
+                  Consult an Expert <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -258,27 +235,20 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Why Choose Keystone Section */}
-      <section className="mb-20 bg-zinc-50/30">
+      {/* Why Choose Section */}
+      <section className="mb-20 bg-zinc-50/30 py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider
-              title="WHY CHOOSE KEYSTONE"
-              className="mb-10"
-            />
+            <SectionDivider title="RELIABLE RECOGNITION" className="mb-10" />
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Your Trusted GRC Partner
+              Built for Security Excellence
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {whyKeystone.map((item, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {subFeatures.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -309,12 +279,9 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Partner Section - Vision CTA */}
+      {/* Guide Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider
-          title="YOUR GRC PARTNER"
-          className="!justify-start mb-6"
-        />
+        <SectionDivider title="YOUR PRESTIGIOUS PREPARATION GUIDE" className="!justify-start mb-20" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -324,23 +291,18 @@ export default function GrcPage() {
               className="space-y-8"
             >
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase"
               >
-                Robust GRC, Continuous Compliance
+                Your Certification Guide
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                At Keystone, we are your trusted partner for robust GRC,
-                continuous compliance, and risk reduction.
+                Keystone is here to make your journey to ISO 27001 certification a successful and highly rewarding experience. Contact us today to discover how we can help you secure your valuable data assets and achieve this world-class recognition.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Reduce Risks",
-                  "Strengthen Resilience",
-                  "Ensure Compliance",
+                  "Detailed ISO 27001 Roadmap & Gap Audit",
+                  "Comprehensive Risk Assessment Support",
+                  "Expert-led Security Policy Authoring & Implementation",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -369,24 +331,19 @@ export default function GrcPage() {
               <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
                 >
-                  Why Keystone?
+                  Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us to discuss how our GRC services can support your
-                  business and build lasting resilience."
+                  "Ready to achieve ISO 27001 certification? Contact us today to learn how our seasoned consultants can easily guide your organization to security excellence."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Get Started Now <ArrowRight size={18} />
+                    Start Certification Journey <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

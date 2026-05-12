@@ -7,12 +7,14 @@ import Image from "next/image";
 import {
   ArrowRight,
   ChevronRight,
-  Landmark,
-  AlertTriangle,
-  FileCheck,
+  ClipboardList,
+  Target,
+  Users,
   Award,
-  Handshake,
-  BarChart3,
+  ShieldAlert,
+  Flame,
+  ThumbsUp,
+  Briefcase,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -20,50 +22,49 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const grcServices = [
+const approachCards = [
   {
-    title: "Corporate Governance",
+    title: "Comprehensive Initial Assessment",
     description:
-      "We collaborate with your team to establish robust governance structures that guide strategic decisions while ensuring transparency and accountability within your organization.",
-    icon: Landmark,
+      "We begin our journey together with an in-depth, rigorous evaluation of your current operations compared against target international frameworks, identifying gap areas and designing a custom strategic path.",
+    icon: ClipboardList,
   },
   {
-    title: "Risk Management",
+    title: "Strategic Planning",
     description:
-      "Our holistic approach evaluates, mitigates, and manages potential risks, providing your business with a greater capacity to anticipate and respond to threats.",
-    icon: AlertTriangle,
+      "Our experienced team designs a custom-tailored strategy for your organization, mapping out critical steps to align and easily maintain compliance with each individual framework.",
+    icon: Target,
   },
   {
-    title: "Compliance",
+    title: "Expert Support",
     description:
-      "We help you meet the legal, regulatory, contractual, and ethical requirements specific to your industry, ensuring seamless compliance.",
-    icon: FileCheck,
+      "We support your teams step-by-step, providing expert knowledge, training resources, and hands-on guidance to easily adopt industry-leading security controls.",
+    icon: Users,
   },
 ];
 
-const whyKeystone = [
+const strengthsCards = [
   {
-    title: "Deep Expertise",
+    title: "Multi-Standard Expertise",
     description:
-      "Our team possesses in-depth expertise in risk management, compliance, and governance, delivering solutions tailored to your unique needs.",
+      "Our team of consultants has advanced, up-to-date expertise in each of the listed standards, delivering precise and highly certified guidance tailored for your industry.",
     icon: Award,
   },
   {
-    title: "Personalized Approach",
+    title: "Flexibility & Adaptability",
     description:
-      "Every business faces specific GRC challenges. We customize our services to meet your particular needs and objectives.",
-    icon: Handshake,
+      "We continuously adjust our alignment methods to fit your evolving business dynamic, ensuring continuous adherence to compliance rules without interrupting output.",
+    icon: ThumbsUp,
   },
   {
     title: "Tangible Results",
     description:
-      "Our GRC services and solutions deliver real impact — reducing risks, improving compliance, and strengthening your business resilience against today's challenges.",
-    icon: BarChart3,
+      "Our objective is to build an extremely solid, continuous compliance foundation that actively protects your organization's reputation and client trust.",
+    icon: ShieldAlert,
   },
 ];
 
-
-export default function GrcPage() {
+export default function InternationalStandardsPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -71,7 +72,7 @@ export default function GrcPage() {
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -20]);
 
   return (
     <main
@@ -83,7 +84,7 @@ export default function GrcPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -106,29 +107,23 @@ export default function GrcPage() {
             className="w-full max-w-5xl pt-10"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Governance</span>
+              <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Risk & Compliance</span>
+              <span>Compliance Alignment</span>
+              <ChevronRight size={8} />
+              <span className="text-white/60">International Standards</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Governance, Risk & Compliance
+              International Standards
             </h1>
 
             <HeroTypeLine
-              items={[
-                "Master Your Risks",
-                "Meet the Standards",
-                "Protect Your Business",
-              ]}
+              items={["ISO 27001", "PCI DSS", "GDPR", "SOC 2", "SWIFT"]}
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective governance, risk, and compliance management is essential
-              for any business navigating an ever-evolving national and
-              international regulatory landscape. At Keystone, we deliver
-              cutting-edge GRC services to help you protect your business,
-              reduce risks, and meet information security standards.
+              Compliance with standards and regulations is essential to guarantee the security, confidentiality, and stakeholder trust in your company. At Keystone, our specialized support service guides you through the process of complying with specific standards such as ISO27001, ISO22301, ISO27701, PCI/DSS, HIPAA, GDPR, SWIFT CSP, NIST CSF, and SOC2.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -136,7 +131,7 @@ export default function GrcPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request GRC Audit <ArrowRight size={18} />
+                Secure Your Compliance <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -153,7 +148,6 @@ export default function GrcPage() {
               repeat: Infinity,
             }}
           >
-            {/* Repeat the full logo set multiple times for seamless infinite scroll */}
             {Array(5)
               .fill([
                 { src: "/certif/SWIFT.png", alt: "SWIFT" },
@@ -190,7 +184,7 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* GRC Services Section */}
+      {/* Our Dedicated Approach Section */}
       <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div
@@ -201,30 +195,19 @@ export default function GrcPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR GRC SERVICES" className="mb-10" />
+            <SectionDivider title="OUR APPROACH TO COMPLIANCE" className="mb-10" />
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Comprehensive GRC Solutions
+              Dedicated To Your Success
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-lg text-zinc-600 leading-relaxed font-medium"
-            >
-              From governance frameworks to risk mitigation and regulatory
-              compliance — we cover every dimension of GRC.
-            </motion.p>
+            <p className="text-lg text-zinc-600 font-medium leading-relaxed">
+              We leverage detailed analysis and customized strategic roadmaps to simplify standard compliance.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {grcServices.map((service, idx) => (
+            {approachCards.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -248,7 +231,7 @@ export default function GrcPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Learn More <ArrowRight size={14} />
+                  Request Strategy <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -258,27 +241,20 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Why Choose Keystone Section */}
-      <section className="mb-20 bg-zinc-50/30">
+      {/* Our Strengths Section */}
+      <section className="mb-20 bg-zinc-50/30 py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider
-              title="WHY CHOOSE KEYSTONE"
-              className="mb-10"
-            />
+            <SectionDivider title="OUR STRENGTHS" className="mb-10" />
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Your Trusted GRC Partner
+              Why We Deliver More
             </motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {whyKeystone.map((item, idx) => (
+            {strengthsCards.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -309,12 +285,9 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Partner Section - Vision CTA */}
+      {/* Why Keystone Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider
-          title="YOUR GRC PARTNER"
-          className="!justify-start mb-6"
-        />
+        <SectionDivider title="WHY KEYSTONE" className="!justify-start mb-6" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -324,23 +297,18 @@ export default function GrcPage() {
               className="space-y-8"
             >
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase"
               >
-                Robust GRC, Continuous Compliance
+                Your Assured Journey
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                At Keystone, we are your trusted partner for robust GRC,
-                continuous compliance, and risk reduction.
+                At Keystone, our priority is guaranteeing a highly efficient, successful transformation that allows your company to comply with key international security standards.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Reduce Risks",
-                  "Strengthen Resilience",
-                  "Ensure Compliance",
+                  "Laser Focus on Compliance Success",
+                  "Deep Tailoring to Business Realities",
+                  "Continuous Guidance and Long-Term Partnership",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -369,24 +337,19 @@ export default function GrcPage() {
               <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
                 >
-                  Why Keystone?
+                  Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us to discuss how our GRC services can support your
-                  business and build lasting resilience."
+                  "Ready to advance your business toward international standards compliance? Contact us today to secure stakeholder trust and build sustainable processes."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Get Started Now <ArrowRight size={18} />
+                    Start Alignment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

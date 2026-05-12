@@ -101,7 +101,7 @@ export default function CybersecurityInvestigationPage() {
       <CyberSectionDivider />
 
       {/* Forensic Prowess - Compact Grid */}
-      <section className="py-24 bg-white relative">
+      <section className="mb-20 bg-white relative">
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
             <SectionDivider title="EXPERT ANALYSIS" className="mb-10" />
@@ -133,11 +133,11 @@ export default function CybersecurityInvestigationPage() {
           </div>
 
           <CyberSectionDivider />
+          <SectionDivider title="EXPERTISE PROGRAMS" className="!justify-start mb-6" />
 
           {/* Advanced Defense Section - Compact vision style */}
           <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <div className="space-y-8">
-                <SectionDivider title="EXPERTISE PROGRAMS" className="!justify-start mb-6" />
                 <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
                    Advanced Defense
                 </h2>
@@ -176,7 +176,7 @@ export default function CybersecurityInvestigationPage() {
           </div>
         </div>
       </section>
-
+      <CyberSectionDivider />
       <ContactCTASection />
     </main>
   );

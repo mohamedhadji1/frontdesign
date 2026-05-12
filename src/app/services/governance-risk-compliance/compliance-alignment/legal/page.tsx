@@ -7,12 +7,14 @@ import Image from "next/image";
 import {
   ArrowRight,
   ChevronRight,
-  Landmark,
-  AlertTriangle,
+  Scale,
+  Briefcase,
   FileCheck,
-  Award,
+  ShieldCheck,
+  Bookmark,
+  Gavel,
+  ShieldAlert,
   Handshake,
-  BarChart3,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -20,50 +22,49 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const grcServices = [
+const helpCards = [
   {
-    title: "Corporate Governance",
+    title: "In-Depth Compliance Assessment",
     description:
-      "We collaborate with your team to establish robust governance structures that guide strategic decisions while ensuring transparency and accountability within your organization.",
-    icon: Landmark,
+      "We begin with a thorough examination of your current legal compliance status, identifying regulatory gaps and outlining clear, corrective actions to minimize legal liabilities.",
+    icon: Scale,
   },
   {
-    title: "Risk Management",
+    title: "Strategic Compliance Planning",
     description:
-      "Our holistic approach evaluates, mitigates, and manages potential risks, providing your business with a greater capacity to anticipate and respond to threats.",
-    icon: AlertTriangle,
+      "Our team designs a customized compliance blueprint for your company, detailing clear steps, milestones, and resource requirements to successfully align with regional and sector-specific laws.",
+    icon: Briefcase,
   },
   {
-    title: "Compliance",
+    title: "Personalized Support",
     description:
-      "We help you meet the legal, regulatory, contractual, and ethical requirements specific to your industry, ensuring seamless compliance.",
-    icon: FileCheck,
-  },
-];
-
-const whyKeystone = [
-  {
-    title: "Deep Expertise",
-    description:
-      "Our team possesses in-depth expertise in risk management, compliance, and governance, delivering solutions tailored to your unique needs.",
-    icon: Award,
-  },
-  {
-    title: "Personalized Approach",
-    description:
-      "Every business faces specific GRC challenges. We customize our services to meet your particular needs and objectives.",
+      "We guide you continuously throughout your alignment journey, offering ongoing advisory services, training modules, and strategic resources to secure legal compliance.",
     icon: Handshake,
   },
+];
+
+const approachCards = [
   {
-    title: "Tangible Results",
+    title: "Legal Expertise",
     description:
-      "Our GRC services and solutions deliver real impact — reducing risks, improving compliance, and strengthening your business resilience against today's challenges.",
-    icon: BarChart3,
+      "Our specialized consultants possess comprehensive knowledge in cybersecurity and regulatory law, supplying highly precise and practical recommendations for your sector.",
+    icon: Gavel,
+  },
+  {
+    title: "Adaptability & Flexibility",
+    description:
+      "We systematically monitor evolving regulations and adjust your compliance blueprint accordingly, ensuring your organization stays compliant amidst shifting legal climates.",
+    icon: FileCheck,
+  },
+  {
+    title: "Reduction of Legal Risks",
+    description:
+      "We work systematically to neutralize gaps in your compliance, providing peace of mind so you can focus resources entirely on growing your core business.",
+    icon: ShieldCheck,
   },
 ];
 
-
-export default function GrcPage() {
+export default function LegalCompliancePage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -83,7 +84,7 @@ export default function GrcPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -106,29 +107,23 @@ export default function GrcPage() {
             className="w-full max-w-5xl pt-10"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Governance</span>
+              <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Risk & Compliance</span>
+              <span>Compliance Alignment</span>
+              <ChevronRight size={8} />
+              <span className="text-white/60">Legal Compliance</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Governance, Risk & Compliance
+              Legal Compliance Support
             </h1>
 
             <HeroTypeLine
-              items={[
-                "Master Your Risks",
-                "Meet the Standards",
-                "Protect Your Business",
-              ]}
+              items={["Laws", "Regulations", "Mitigation"]}
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective governance, risk, and compliance management is essential
-              for any business navigating an ever-evolving national and
-              international regulatory landscape. At Keystone, we deliver
-              cutting-edge GRC services to help you protect your business,
-              reduce risks, and meet information security standards.
+              Legal compliance is essential to ensure your business respects all regulatory and legal obligations. At Keystone, our legal compliance support service offers specialized expertise to help you navigate the complexities of laws and regulations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -136,7 +131,7 @@ export default function GrcPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request GRC Audit <ArrowRight size={18} />
+                Secure Legal Alignment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -153,7 +148,6 @@ export default function GrcPage() {
               repeat: Infinity,
             }}
           >
-            {/* Repeat the full logo set multiple times for seamless infinite scroll */}
             {Array(5)
               .fill([
                 { src: "/certif/SWIFT.png", alt: "SWIFT" },
@@ -190,7 +184,7 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* GRC Services Section */}
+      {/* How We Can Help Section */}
       <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div
@@ -201,30 +195,19 @@ export default function GrcPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR GRC SERVICES" className="mb-10" />
+            <SectionDivider title="HOW WE CAN HELP YOU" className="mb-10" />
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Comprehensive GRC Solutions
+              Defend Your Organization
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-lg text-zinc-600 leading-relaxed font-medium"
-            >
-              From governance frameworks to risk mitigation and regulatory
-              compliance — we cover every dimension of GRC.
-            </motion.p>
+            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
+              We leverage analytical expertise and clear roadmap strategies to guarantee robust and continuous alignment to legal directives.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {grcServices.map((service, idx) => (
+            {helpCards.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -248,7 +231,7 @@ export default function GrcPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Learn More <ArrowRight size={14} />
+                  Request Legal Review <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -258,27 +241,20 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Why Choose Keystone Section */}
+      {/* Our Law-Focused Approach Section */}
       <section className="mb-20 bg-zinc-50/30">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider
-              title="WHY CHOOSE KEYSTONE"
-              className="mb-10"
-            />
+            <SectionDivider title="OUR APPROACH" className="mb-10" />
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Your Trusted GRC Partner
+              Upholding Legal Safety
             </motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {whyKeystone.map((item, idx) => (
+            {approachCards.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -309,12 +285,9 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Partner Section - Vision CTA */}
+      {/* Why Choose Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider
-          title="YOUR GRC PARTNER"
-          className="!justify-start mb-6"
-        />
+        <SectionDivider title="WHY CHOOSE KEYSTONE" className="!justify-start mb-20" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -324,23 +297,18 @@ export default function GrcPage() {
               className="space-y-8"
             >
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase"
               >
-                Robust GRC, Continuous Compliance
+                Your Legal Compliance
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                At Keystone, we are your trusted partner for robust GRC,
-                continuous compliance, and risk reduction.
+                Keystone is your reliable partner to ensure your business remains compliant with regional and international law, reducing regulatory risks and protecting operations.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Reduce Risks",
-                  "Strengthen Resilience",
-                  "Ensure Compliance",
+                  "Absolute Commitment to Legal Alignment",
+                  "Expert Customized Assessment and Strategy",
+                  "Proactive Guidance and Continuous Audit Updates",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -369,24 +337,19 @@ export default function GrcPage() {
               <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
                 >
-                  Why Keystone?
+                  Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us to discuss how our GRC services can support your
-                  business and build lasting resilience."
+                  "Contact us today to explore how our specialized legal compliance support services can strengthen your legal defenses and safeguard operations."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Get Started Now <ArrowRight size={18} />
+                    Request Support <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

@@ -130,7 +130,7 @@ export default function TrainingAwarenessPage() {
       <CyberSectionDivider />
 
       {/* Section 1: Main Programs - Compact Grid */}
-      <section className="py-24 bg-white relative">
+      <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div style={{ y: y1, rotate }} className="absolute top-[10%] right-[5%] w-64 h-64 border border-red-500/5 rounded-full" />
         </div>
@@ -175,7 +175,7 @@ export default function TrainingAwarenessPage() {
       <CyberSectionDivider />
 
       {/* Section 2: Expertise (Replacing Sidebar) - Compact Cards */}
-      <section className="py-24 bg-zinc-50/30">
+      <section className="mb-20 bg-zinc-50/30">
         <div className="container mx-auto px-6 lg:px-12">
            <div className="max-w-3xl mx-auto mb-20 text-center">
               <SectionDivider title="AREAS OF EXPERTISE" className="mb-10" />
@@ -213,7 +213,8 @@ export default function TrainingAwarenessPage() {
       <CyberSectionDivider />
 
       {/* Section 3: Final Impact - Compact Layout */}
-      <section className="py-32 bg-white">
+      <section className="mb-20 bg-white">
+        <SectionDivider title="THE VISION" className="!justify-start mb-6" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <motion.div 
@@ -222,7 +223,7 @@ export default function TrainingAwarenessPage() {
                viewport={{ once: true }}
                className="space-y-8"
              >
-                <SectionDivider title="THE VISION" className="!justify-start mb-6" />
+                
                 <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
                    Security Culture
                 </h2>

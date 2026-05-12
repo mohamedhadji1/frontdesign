@@ -8,6 +8,7 @@ type ServiceItem = {
   name: string;
   slug?: string;
   subCategory?: string;
+  description?: string;
   subItems?: (string | { name: string; slug?: string })[];
 };
 
@@ -66,9 +67,68 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance, Risk and Compliance",
     items: [
       {
-        name: "Governance, Risk and Compliance",
-        slug: "governance-risk-compliance",
+        name: "IS Security Audit",
+        slug: "governance-risk-compliance/is-security-audit",
+        subCategory: "IS Security Audit",
+        subItems: [
+          { name: "Regulatory Audit", slug: "governance-risk-compliance/is-security-audit/regulatory" },
+          { name: "Standards Compliance Audit (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/is-security-audit/standards" }
+        ]
       },
+      {
+        name: "Compliance Alignment",
+        slug: "governance-risk-compliance/compliance-alignment",
+        subCategory: "Compliance Alignment",
+        subItems: [
+          { name: "International Standards Compliance (ISO, PCI/DSS, GDPR, etc.)", slug: "governance-risk-compliance/compliance-alignment/international-standards" },
+          { name: "Legal Compliance Support", slug: "governance-risk-compliance/compliance-alignment/legal" }
+        ]
+      },
+      {
+        name: "ISO 27001 Certification Support",
+        slug: "governance-risk-compliance/iso-27001-certification-support",
+        description: "ISO 27001 certification is a tangible proof of your commitment to information security. Our consultants support you at every stage to successfully achieve certification."
+      },
+      {
+        name: "ISO 22301 Certification Support",
+        slug: "governance-risk-compliance/iso-22301-certification-support",
+        description: "Go beyond simple compliance and build business resilience. We guide you towards ISO 22301 certification to keep your business running smoothly during any crisis."
+      },
+      {
+        name: "Risk Assessment",
+        slug: "governance-risk-compliance/risk-assessment",
+        description: "We offer a holistic perspective to anticipate potential risks, evaluate their impact, and formulate strategic mitigation plans."
+      },
+      {
+        name: "Security Policy Development",
+        slug: "governance-risk-compliance/security-policy-development",
+        description: "Establish robust security policies customized to your business goals, integrating industry best practices for comprehensive asset protection."
+      },
+      {
+        name: "BCP & DRP Development",
+        slug: "governance-risk-compliance/bcp-drp-development",
+        description: "Ensure your business is fully prepared for interruptions. We design tailored business continuity and disaster recovery plans to minimize downtime."
+      },
+      {
+        name: "Data Classification",
+        slug: "governance-risk-compliance/data-classification",
+        description: "Map, identify, and categorize your sensitive information. Apply custom security rules and access governance to safeguard your business data."
+      },
+      {
+        name: "Personal Data Protection",
+        slug: "governance-risk-compliance/personal-data-protection",
+        description: "Ensure responsible management of personal data in strict alignment with regulations like GDPR. We assist with consent, privacy rights, and data protection."
+      },
+      {
+        name: "Access Rights Audit",
+        slug: "governance-risk-compliance/access-rights-audit",
+        description: "Verify that permissions and access rights are securely distributed. Realize comprehensive user permission audits to prevent security gaps."
+      },
+      {
+        name: "Virtual CISO & DPO",
+        slug: "governance-risk-compliance/virtual-ciso-dpo",
+        description: "Get expert cybersecurity and privacy leadership as virtual extensions of your management team, delivering ongoing strategy and compliance guidance."
+      }
     ],
   },
   {
@@ -239,38 +299,70 @@ export function ServicesDropdown() {
 
                   {/* Sub-items (Third Level) */}
                   <div className="w-2/3 pl-8">
-                    {currentCategoryObj?.items.map((item, idx) => (
-                      item.name === activeItem && 'subItems' in item && item.subItems && (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="flex flex-col"
-                        >
-                          <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
-                            {('subCategory' in item) ? item.subCategory : ''}
-                          </motion.h2>
-                          <ul className="space-y-4 mt-2">
-                            {item.subItems.map((subItem, subIdx) => {
-                              const isObj = typeof subItem === 'object';
-                              const subName = isObj ? subItem.name : subItem;
+                    {currentCategoryObj?.items.map((item, idx) => {
+                      if (item.name !== activeItem) return null;
 
-                              return (
-                                <li key={subIdx}>
-                                  <Link
-                                    href={normalizeServiceHref(isObj ? subItem.slug : undefined, subName)}
-                                    className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
-                                  >
-                                    <span className="mr-2 text-gray-300">•</span>
-                                    {subName}
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </motion.div>
-                      )
-                    ))}
+                      if ('subItems' in item && item.subItems) {
+                        return (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex flex-col"
+                          >
+                            <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                              {('subCategory' in item) ? item.subCategory : ''}
+                            </motion.h2>
+                            <ul className="space-y-4 mt-2">
+                              {item.subItems.map((subItem, subIdx) => {
+                                const isObj = typeof subItem === 'object';
+                                const subName = isObj ? subItem.name : subItem;
+
+                                return (
+                                  <li key={subIdx}>
+                                    <Link
+                                      href={normalizeServiceHref(isObj ? subItem.slug : undefined, subName)}
+                                      className="text-gray-500 hover:text-red-600 transition-colors text-sm flex items-center"
+                                    >
+                                      <span className="mr-2 text-gray-300">•</span>
+                                      {subName}
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </motion.div>
+                        );
+                      }
+
+                      if ('description' in item && item.description) {
+                        return (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex flex-col h-full justify-center max-w-lg"
+                          >
+                            <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                              About This Service
+                            </motion.h2>
+                            <p className="text-gray-500 text-sm leading-relaxed mt-2 font-medium">
+                              {item.description}
+                            </p>
+                            <div className="mt-6">
+                              <Link
+                                href={normalizeServiceHref(item.slug, item.name)}
+                                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-600 hover:gap-3 transition-all"
+                              >
+                                Explore Service <span className="text-sm">→</span>
+                              </Link>
+                            </div>
+                          </motion.div>
+                        );
+                      }
+
+                      return null;
+                    })}
                   </div>
                 </div>
               ) : (

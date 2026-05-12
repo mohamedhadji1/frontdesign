@@ -99,7 +99,7 @@ export default function BcmPage() {
       <CyberSectionDivider />
 
       {/* Operational Continuity - Compact grid */}
-      <section className="py-24 bg-white relative">
+      <section className="mb-20 bg-white relative">
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
             <SectionDivider title="CONTINUITY IMPORTANCE" className="mb-10" />
@@ -131,11 +131,10 @@ export default function BcmPage() {
           </div>
 
           <CyberSectionDivider />
-
+          <SectionDivider title="CORE BCM MODULES" className="!justify-start mb-6" />
           {/* Building Resilience - Compact Vision */}
           <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <div className="space-y-8">
-                <SectionDivider title="CORE BCM MODULES" className="!justify-start mb-6" />
                 <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
                    Building Resilience
                 </h2>
@@ -174,7 +173,7 @@ export default function BcmPage() {
           </div>
         </div>
       </section>
-
+      <CyberSectionDivider />
       <ContactCTASection />
     </main>
   );

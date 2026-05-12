@@ -7,12 +7,14 @@ import Image from "next/image";
 import {
   ArrowRight,
   ChevronRight,
-  Landmark,
+  ShieldCheck,
+  Cpu,
+  Search,
+  Activity,
   AlertTriangle,
-  FileCheck,
   Award,
-  Handshake,
-  BarChart3,
+  Eye,
+  CheckCircle,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -20,50 +22,49 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const grcServices = [
+const auditServices = [
   {
-    title: "Corporate Governance",
+    title: "Comprehensive Security Assessment",
     description:
-      "We collaborate with your team to establish robust governance structures that guide strategic decisions while ensuring transparency and accountability within your organization.",
-    icon: Landmark,
+      "Our team conducts complete and deep audits of your information systems to assess their level of security by identifying potential flaws and proposing recommendations to strengthen your protection.",
+    icon: Eye,
   },
   {
-    title: "Risk Management",
+    title: "In-Depth Vulnerability Analysis",
     description:
-      "Our holistic approach evaluates, mitigates, and manages potential risks, providing your business with a greater capacity to anticipate and respond to threats.",
-    icon: AlertTriangle,
+      "We perform deep analyses to identify vulnerabilities and potential risks, placing key emphasis on protecting sensitive data and critical infrastructure.",
+    icon: Search,
   },
   {
-    title: "Compliance",
+    title: "Personalized Recommendations",
     description:
-      "We help you meet the legal, regulatory, contractual, and ethical requirements specific to your industry, ensuring seamless compliance.",
-    icon: FileCheck,
+      "Our audit reports provide clear, practical, and highly personalized recommendations to reinforce security, ensuring enhanced protection against current and emerging threats.",
+    icon: ShieldCheck,
   },
 ];
 
-const whyKeystone = [
+const whyChooseKeystone = [
   {
-    title: "Deep Expertise",
+    title: "Technical Expertise",
     description:
-      "Our team possesses in-depth expertise in risk management, compliance, and governance, delivering solutions tailored to your unique needs.",
+      "Our team possesses cutting-edge expertise in information systems security auditing, utilizing advanced methodologies to identify security gaps and strengthen defenses.",
+    icon: Cpu,
+  },
+  {
+    title: "Detailed Analysis",
+    description:
+      "We offer highly detailed analysis of audit findings, clearly explaining risks and presenting specific solutions to fortify the security of your systems.",
+    icon: Activity,
+  },
+  {
+    title: "Unwavering Commitment",
+    description:
+      "We are committed to helping you strengthen your systems' security, protect your critical data, and ensure absolute confidentiality of sensitive information.",
     icon: Award,
   },
-  {
-    title: "Personalized Approach",
-    description:
-      "Every business faces specific GRC challenges. We customize our services to meet your particular needs and objectives.",
-    icon: Handshake,
-  },
-  {
-    title: "Tangible Results",
-    description:
-      "Our GRC services and solutions deliver real impact — reducing risks, improving compliance, and strengthening your business resilience against today's challenges.",
-    icon: BarChart3,
-  },
 ];
 
-
-export default function GrcPage() {
+export default function IsSecurityAuditPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -83,7 +84,7 @@ export default function GrcPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -106,29 +107,21 @@ export default function GrcPage() {
             className="w-full max-w-5xl pt-10"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Governance</span>
+              <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Risk & Compliance</span>
+              <span className="text-white/60">IS Security Audit</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Governance, Risk & Compliance
+              IS Security Audit
             </h1>
 
             <HeroTypeLine
-              items={[
-                "Master Your Risks",
-                "Meet the Standards",
-                "Protect Your Business",
-              ]}
+              items={["Evaluate", "Identify", "Protect"]}
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective governance, risk, and compliance management is essential
-              for any business navigating an ever-evolving national and
-              international regulatory landscape. At Keystone, we deliver
-              cutting-edge GRC services to help you protect your business,
-              reduce risks, and meet information security standards.
+              An information systems security audit is a crucial pillar to ensure your company's resilience against constantly evolving digital threats. At Keystone, we offer advanced audit services to assess your systems' security, identify vulnerabilities, and reinforce your defenses.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -136,7 +129,7 @@ export default function GrcPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request GRC Audit <ArrowRight size={18} />
+                Request Security Audit <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -153,7 +146,6 @@ export default function GrcPage() {
               repeat: Infinity,
             }}
           >
-            {/* Repeat the full logo set multiple times for seamless infinite scroll */}
             {Array(5)
               .fill([
                 { src: "/certif/SWIFT.png", alt: "SWIFT" },
@@ -190,7 +182,7 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* GRC Services Section */}
+      {/* Services Section */}
       <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div
@@ -201,7 +193,7 @@ export default function GrcPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR GRC SERVICES" className="mb-10" />
+            <SectionDivider title="OUR SECURITY AUDIT SERVICES" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -209,7 +201,7 @@ export default function GrcPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Comprehensive GRC Solutions
+              Protect Your Infrastructures
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -218,13 +210,12 @@ export default function GrcPage() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-lg text-zinc-600 leading-relaxed font-medium"
             >
-              From governance frameworks to risk mitigation and regulatory
-              compliance — we cover every dimension of GRC.
+              Get a thorough diagnosis of your infrastructure to identify structural, configuration, and systemic security flaws.
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {grcServices.map((service, idx) => (
+            {auditServices.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -248,7 +239,7 @@ export default function GrcPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Learn More <ArrowRight size={14} />
+                  Request Assessment <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -258,14 +249,11 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Why Choose Keystone Section */}
+      {/* Why Choose Section */}
       <section className="mb-20 bg-zinc-50/30">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider
-              title="WHY CHOOSE KEYSTONE"
-              className="mb-10"
-            />
+            <SectionDivider title="WHY CHOOSE KEYSTONE" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -273,12 +261,12 @@ export default function GrcPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Your Trusted GRC Partner
+              Auditing with Excellence
             </motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {whyKeystone.map((item, idx) => (
+            {whyChooseKeystone.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -309,12 +297,9 @@ export default function GrcPage() {
 
       <CyberSectionDivider />
 
-      {/* Partner Section - Vision CTA */}
+      {/* Partner Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider
-          title="YOUR GRC PARTNER"
-          className="!justify-start mb-6"
-        />
+        <SectionDivider title="YOUR SECURITY AUDIT PARTNER" className="!justify-start mb-6" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -330,17 +315,16 @@ export default function GrcPage() {
                 transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase"
               >
-                Robust GRC, Continuous Compliance
+                Guarantee Robustness
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                At Keystone, we are your trusted partner for robust GRC,
-                continuous compliance, and risk reduction.
+                Keystone is your reliable partner for conducting in-depth security audits, identifying potential risks, and reinforcing the protection of your information systems.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Reduce Risks",
-                  "Strengthen Resilience",
-                  "Ensure Compliance",
+                  "Evaluate Infrastructure",
+                  "Identify Vulnerabilities",
+                  "Reinforce Defense",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -375,18 +359,17 @@ export default function GrcPage() {
                   transition={{ duration: 0.6 }}
                   className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
                 >
-                  Why Keystone?
+                  Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us to discuss how our GRC services can support your
-                  business and build lasting resilience."
+                  "Contact us today to discuss how our information systems security audit services can strengthen your business and infrastructure resilience."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Get Started Now <ArrowRight size={18} />
+                    Request Audit <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>
