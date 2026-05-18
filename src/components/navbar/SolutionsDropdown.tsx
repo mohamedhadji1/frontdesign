@@ -27,7 +27,23 @@ export const solutionsDetails: SolutionCategory[] = [
         name: "Keystone ARENA (CTI Platform)",
         slug: "solutions/keystone-arena",
         description: "Centralize threat intelligence, analyst workflows, and operational visibility in one secure platform. Built to help security teams maintain focus under pressure and keep responses structured."
-      }
+      },
+      {
+        name: "DNS Security",
+        slug: "solutions/dns-security",
+        description: "Enhance your organization's security with intelligent DNS filtering. DNS Security blocks malicious domains, phishing attempts, and malware spread, ensuring uninterrupted productivity."
+      },
+      {
+        name: "DLP",
+        slug: "solutions/keystone-arena",
+        description: "Centralize threat intelligence, analyst workflows, and operational visibility in one secure platform. Built to help security teams maintain focus under pressure and keep responses structured."
+      },
+      {
+        name: "3rd Party Assessment",
+        slug: "solutions/3rd_party_Assessment",
+        description: "3rd Party Assessment."
+      },
+
     ]
   }
 ];

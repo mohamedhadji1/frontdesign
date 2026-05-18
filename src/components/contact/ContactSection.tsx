@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -62,7 +63,7 @@ export function ContactSection() {
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Contact Us</h1>
             <p className="text-sm text-gray-500">
               Interested in our services? Send us a message and we'll be in touch.<br />
-              <span className="font-semibold text-red-600">Need to report a security incident? Use this form for urgent incident response requests.</span>
+              <span className="font-semibold text-red-600">Need to report a security incident? <Link href="/report-incident" className="underline hover:text-red-700 transition-colors">Use our dedicated emergency reporting portal</Link> for 24/7 priority support.</span>
             </p>
           </div>
 

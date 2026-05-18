@@ -79,6 +79,7 @@ export function Footer() {
                 <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">General inquiries</p>
                 <a href="mailto:info@keystonegroup.dz" className="mt-1 block transition-colors hover:text-white">
                   info@keystonegroup.dz
+                  contact@Keystone-corporation.com
                 </a>
               </div>
               <div>
