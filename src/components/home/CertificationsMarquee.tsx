@@ -1,9 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function CertificationsMarquee() {
-  // Duplicate the array of images enough times to fill the screen twice so it loops smoothly
-  const images = Array(10).fill("/public/certif/27001.png"); 
+  const certImages = [
+    { src: "/certif/27001.png", alt: "ISO 27001", slug: "iso-27001" },
+    { src: "/certif/27002.svg", alt: "ISO 27002", slug: "iso-27002" },
+    { src: "/certif/27005.png", alt: "ISO 27005", slug: "iso-27005" },
+    { src: "/certif/27701.png", alt: "ISO 27701", slug: "iso-27701" },
+    { src: "/certif/22301.png", alt: "ISO 22301", slug: "iso-22301" },
+    { src: "/certif/GDPR.webp", alt: "GDPR", slug: "gdpr" },
+    { src: "/certif/Nist.webp", alt: "NIST", slug: "nist-framework" },
+    { src: "/certif/PCIDSS.png", alt: "PCI DSS", slug: "pci-dss" },
+    { src: "/certif/SOC2.webp", alt: "SOC 2", slug: "soc-2" },
+    { src: "/certif/SWIFT.png", alt: "SWIFT", slug: "swift-csp" },
+    { src: "/certif/hipaa.png", alt: "HIPAA", slug: "hipaa" },
+    { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity", slug: "nist-cybersecurity" }
+  ];
+
+  // Triplicate the array of images to ensure there is enough horizontal space to loop smoothly
+  const repeatedImages = [...certImages, ...certImages, ...certImages];
 
   return (
     <motion.section 
@@ -22,22 +38,23 @@ export function CertificationsMarquee() {
         animate={{ x: ["0%", "-50%"] }}
         transition={{
           ease: "linear",
-          duration: 30, // Adjust this to speed up or slow down
+          duration: 40, // Adjust this to speed up or slow down
           repeat: Infinity,
         }}
       >
-        {images.map((src, idx) => (
-          <div 
+        {repeatedImages.map((img, idx) => (
+          <Link 
             key={idx} 
-            className="relative w-32 h-16 shrink-0 filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer"
+            href={`/certifications#${img.slug}`}
+            className="relative w-32 h-16 shrink-0 opacity-70 hover:opacity-100 transition-all duration-500 cursor-pointer block"
           >
             <Image 
-              src={src} 
-              alt="ISO 27001 Certification" 
+              src={img.src} 
+              alt={img.alt} 
               fill 
               className="object-contain" 
             />
-          </div>
+          </Link>
         ))}
       </motion.div>
     </motion.section>

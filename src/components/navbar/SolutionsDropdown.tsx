@@ -29,7 +29,7 @@ export const solutionsDetails: SolutionCategory[] = [
         description: "Centralize threat intelligence, analyst workflows, and operational visibility in one secure platform. Built to help security teams maintain focus under pressure and keep responses structured."
       }
     ]
-  },
+  }
 ];
 
 function normalizeSolutionHref(slug: string | undefined, fallbackName: string) {

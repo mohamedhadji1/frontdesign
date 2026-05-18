@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function WhoWeAreSection() {
   const [activeTab, setActiveTab] = useState(0); // Default to the 1st tab (Team)
@@ -89,9 +90,11 @@ export function WhoWeAreSection() {
                   </svg>
                 </span>
               </button>
-              <a href="#" className="whitespace-nowrap border-b-2 border-gray-900 pb-0.5 text-xs font-semibold text-gray-900 transition-colors hover:border-red-600 hover:text-red-600 sm:text-sm">
-                Quality Certificates
-              </a>
+              <Link href="/certifications">
+              <button className="group flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 border-b-2 border-black px-6 py-3 text-xs font-semibold text-black transition-all hover:border-gray-700 sm:w-auto sm:gap-3 sm:px-10 sm:py-4 sm:text-sm">
+                Quality Certificates 
+              </button>
+            </Link>
             </div>
           </motion.div>
 

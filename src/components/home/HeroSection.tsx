@@ -124,6 +124,22 @@ export function HeroSection() {
     };
   }, [events]);
 
+  const certImages = [
+    { src: "/certif/27001.png", alt: "ISO 27001", slug: "iso-27001" },
+    { src: "/certif/27002.svg", alt: "ISO 27002", slug: "iso-27002" },
+    { src: "/certif/27005.png", alt: "ISO 27005", slug: "iso-27005" },
+    { src: "/certif/27701.png", alt: "ISO 27701", slug: "iso-27701" },
+    { src: "/certif/22301.png", alt: "ISO 22301", slug: "iso-22301" },
+    { src: "/certif/GDPR.webp", alt: "GDPR", slug: "gdpr" },
+    { src: "/certif/Nist.webp", alt: "NIST", slug: "nist-framework" },
+    { src: "/certif/PCIDSS.png", alt: "PCI DSS", slug: "pci-dss" },
+    { src: "/certif/SOC2.webp", alt: "SOC 2", slug: "soc-2" },
+    { src: "/certif/SWIFT.png", alt: "SWIFT", slug: "swift-csp" },
+    { src: "/certif/hipaa.png", alt: "HIPAA", slug: "hipaa" },
+    { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity", slug: "nist-cybersecurity" }
+  ];
+  const repeatedImages = [...certImages, ...certImages, ...certImages, ...certImages];
+
   return (
     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex min-h-[100svh] w-full flex-col overflow-hidden">
       {/* Background Video */}
@@ -263,19 +279,20 @@ export function HeroSection() {
             repeat: Infinity,
           }}
         >
-          {Array(40).fill("/certif/27001.png").map((src, idx) => (
-            <div
+          {repeatedImages.map((img, idx) => (
+            <Link
               key={idx}
-                className="relative h-14 w-14 shrink-0 cursor-pointer opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
+              href={`/certifications#${img.slug}`}
+              className="relative h-14 w-14 shrink-0 cursor-pointer opacity-70 transition-all duration-500 hover:opacity-100 sm:h-20 sm:w-20 lg:h-28 lg:w-28 block"
             >
               <Image
-                src={src}
-                alt="ISO 27001 Certification"
+                src={img.src}
+                alt={img.alt}
                 fill
                 sizes="112px"
                 className="object-contain"
               />
-            </div>
+            </Link>
           ))}
         </motion.div>
       </div>
