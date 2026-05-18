@@ -136,7 +136,7 @@ export default function GrcPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request GRC Audit <ArrowRight size={18} />
+                Request GRC Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>

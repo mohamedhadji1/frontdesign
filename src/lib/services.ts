@@ -39,7 +39,13 @@ export const serviceLinks: ServiceLink[] = [
   {
     name: "Assessment and Technical Assistance",
     description: "Comprehensive assessments and technical support to identify gaps and enhance your security posture.",
-    href: "/services/technical-Assessment",
+    href: "/services/technical-audit",
     iconName: "Search",
+  },
+  {
+    name: "AI & Cybersecurity",
+    description: "Securing AI systems and using AI to enhance cybersecurity defenses, threat detection, and LLM posture.",
+    href: "/services/ai-cybersecurity",
+    iconName: "BrainCircuit",
   },
 ];

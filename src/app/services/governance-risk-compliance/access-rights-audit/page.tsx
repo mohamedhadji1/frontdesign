@@ -23,7 +23,7 @@ const features = [
   {
     title: "Complete Assessment of Access Rights",
     description:
-      "We conduct exhaustive, deep-dive audits to inspect granted permissions, flagging critical anomalies and evaluating potential security risks to your overall digital infrastructure.",
+      "We conduct exhaustive, deep-dive Assessments to inspect granted permissions, flagging critical anomalies and evaluating potential security risks to your overall digital infrastructure.",
     icon: Search,
   },
   {
@@ -44,18 +44,18 @@ const subFeatures = [
   {
     title: "Access Security Expertise",
     description:
-      "Our team has solid, proven experience in user privilege auditing, supplying highly practical, technical recommendations to align your directories with the Principle of Least Privilege.",
+      "Our team has solid, proven experience in user privilege Assessmenting, supplying highly practical, technical recommendations to align your directories with the Principle of Least Privilege.",
     icon: BookmarkCheck,
   },
   {
     title: "Reinforce System Security",
     description:
-      "An effective access rights audit significantly reduces corporate risk profiles by eliminating orphan accounts and neutralizing over-privileged user credentials.",
+      "An effective access rights Assessment significantly reduces corporate risk profiles by eliminating orphan accounts and neutralizing over-privileged user credentials.",
     icon: Zap,
   },
 ];
 
-export default function AccessRightsAuditPage() {
+export default function AccessRightsAssessmentPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -100,11 +100,11 @@ export default function AccessRightsAuditPage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Access Rights Audit</span>
+              <span className="text-white/60">Access Rights Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Access Audit
+              Access Assessment
             </h1>
 
             <HeroTypeLine
@@ -112,7 +112,7 @@ export default function AccessRightsAuditPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              At Keystone, our user permission and access rights audit service guarantees that access rights are securely and appropriately distributed within your organization. We conduct detailed evaluations to identify risks linked to user permissions and ensure solid access governance.
+              At Keystone, our user permission and access rights Assessment service guarantees that access rights are securely and appropriately distributed within your organization. We conduct detailed evaluations to identify risks linked to user permissions and ensure solid access governance.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -120,7 +120,7 @@ export default function AccessRightsAuditPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Access Audit <ArrowRight size={18} />
+                Request Access Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -195,7 +195,7 @@ export default function AccessRightsAuditPage() {
               Control Access Securely
             </motion.h2>
             <p className="text-lg text-zinc-600 leading-relaxed font-medium">
-              We inspect, audit, and systematically optimize directory roles to secure files against lateral threats.
+              We inspect, Assessment, and systematically optimize directory roles to secure files against lateral threats.
             </p>
           </div>
 
@@ -224,7 +224,7 @@ export default function AccessRightsAuditPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Request Audit <ArrowRight size={14} />
+                  Request Assessment <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -278,7 +278,7 @@ export default function AccessRightsAuditPage() {
 
       <CyberSectionDivider />
 
-      {/* Audit Block */}
+      {/* Assessment Block */}
       <section className="mb-20 bg-white">
         <SectionDivider title="YOUR SECURITY OF ACCESS GUARANTEE" className="!justify-start mb-20" />
         <div className="container mx-auto px-6 lg:px-12">
@@ -295,7 +295,7 @@ export default function AccessRightsAuditPage() {
                 Your Security Guarantee
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is ready to collaborate with you to realize in-depth, completely secure user credential and permission audits, significantly solidifying your directory boundaries.
+                Keystone is ready to collaborate with you to realize in-depth, completely secure user credential and permission Assessments, significantly solidifying your directory boundaries.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
@@ -335,14 +335,14 @@ export default function AccessRightsAuditPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Ensure credentials are secure and appropriate. Reach out to our access audit specialists today to perform a precise directory assessment."
+                  "Ensure credentials are secure and appropriate. Reach out to our access Assessment specialists today to perform a precise directory assessment."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Access Audit <ArrowRight size={18} />
+                    Request Access Assessment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

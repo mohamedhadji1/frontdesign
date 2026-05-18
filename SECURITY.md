@@ -25,7 +25,7 @@
 2. **Secure API Route** (src/api/admin/route.ts)
    - Server-side Firebase Admin SDK operations
    - Rate limiting to prevent abuse
-   - Request logging for audit trail
+   - Request logging for Assessment trail
    - Token verification
 
 3. **Environment Configuration**
@@ -61,7 +61,7 @@
    - [ ] Add exponential backoff for failed attempts
 
 ### 4. **Add Request Logging & Monitoring**
-   - [ ] Log all admin actions to a separate audit collection
+   - [ ] Log all admin actions to a separate Assessment collection
    - [ ] Set up alerts for suspicious activity
    - [ ] Monitor failed auth attempts
 

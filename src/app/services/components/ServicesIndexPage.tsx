@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Briefcase,
   Search,
+  BrainCircuit,
   type LucideIcon,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
@@ -34,6 +35,7 @@ const serviceIcons: Record<string, LucideIcon> = {
   GraduationCap: GraduationCap,
   Briefcase: Briefcase,
   Search: Search,
+  BrainCircuit: BrainCircuit,
 };
 
 const getServiceId = (href: string) =>

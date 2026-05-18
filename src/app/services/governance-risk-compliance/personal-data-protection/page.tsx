@@ -35,7 +35,7 @@ const features = [
   {
     title: "Consent Management Systems",
     description:
-      "We assist you in building clear consent systems, enabling your business to easily obtain, audit, and log permissions for processing and collecting user data.",
+      "We assist you in building clear consent systems, enabling your business to easily obtain, Assessment, and log permissions for processing and collecting user data.",
     icon: Award,
   },
 ];

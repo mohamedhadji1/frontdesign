@@ -33,7 +33,7 @@ const offensiveCards: OffensiveCard[] = [
     icon: Target,
   },
   {
-    title: "Technical Assessment",
+    title: "Technical Assessments",
     description:
       "Assess application, infrastructure, cloud, and industrial environments with deep technical reviews and remediation guidance.",
     href: "/services/technical-Assessment",
@@ -78,7 +78,8 @@ export default function OffensiveSecurityPage() {
             Offensive Security Hub
           </motion.h1>
           <motion.p className="mt-6 max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl md:leading-8">
-            Start with the red team track or the technical Assessment track to explore the offensive services that fit your objective.
+            Start with the red team track or the technical assessments track to
+            explore the offensive services that fit your objective.
           </motion.p>
         </motion.div>
         <ScrollIndicator className="hidden md:flex" />

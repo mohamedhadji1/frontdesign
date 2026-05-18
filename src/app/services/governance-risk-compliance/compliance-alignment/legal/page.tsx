@@ -308,7 +308,7 @@ export default function LegalCompliancePage() {
                 {[
                   "Absolute Commitment to Legal Alignment",
                   "Expert Customized Assessment and Strategy",
-                  "Proactive Guidance and Continuous Audit Updates",
+                  "Proactive Guidance and Continuous Assessment Updates",
                 ].map((item) => (
                   <motion.div
                     key={item}

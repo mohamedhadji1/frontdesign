@@ -120,7 +120,7 @@ export default function RiskAssessmentPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Perform Risk Audit <ArrowRight size={18} />
+                Perform Risk Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -342,7 +342,7 @@ export default function RiskAssessmentPage() {
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Risk Audit <ArrowRight size={18} />
+                    Request Risk Assessment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

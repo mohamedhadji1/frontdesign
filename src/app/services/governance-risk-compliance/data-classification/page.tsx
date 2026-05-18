@@ -50,7 +50,7 @@ const subFeatures = [
   {
     title: "Reinforced Confidentiality",
     description:
-      "Structured data classification actively minimizes data leakage risks and satisfies critical regulatory audit directives, reinforcing stakeholder peace of mind.",
+      "Structured data classification actively minimizes data leakage risks and satisfies critical regulatory Assessment directives, reinforcing stakeholder peace of mind.",
     icon: EyeOff,
   },
 ];

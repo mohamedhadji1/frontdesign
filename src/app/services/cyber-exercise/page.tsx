@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Activity,
   AlertTriangle,
@@ -12,11 +13,14 @@ import {
   Shield,
   Users,
   Zap,
+  ChevronRight,
+  ArrowRight,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
-import { AboutHeroSection } from "@/components/about/AboutHeroSection";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 const importanceItems = [
   {
@@ -56,21 +60,75 @@ const approachItems = [
 
 export default function CyberExercisePage() {
   return (
-    <main className="flex min-h-screen flex-col bg-white">
-      {/* Standardized Hero Section */}
-      <AboutHeroSection 
-        title="Cyber Exercise"
-        description="The management of cyber exercises is an essential component to strengthen your company's preparedness against digital threats."
-        heroItems={[
-          "Strengthen Your Preparation",
-          "Anticipate Threats",
-          "Scenario-driven Readiness"
-        ]}
-      />
+    <main className="flex min-h-screen flex-col bg-white overflow-hidden">
+      {/* 1. Deep Cyber Hero Section with Background Video */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
+          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl pt-10"
+          >
+            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <Link href="/services" className="hover:text-red-300 transition-colors">Services</Link>
+              <ChevronRight size={8} />
+              <span className="text-white/60">Cyber Exercise</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Cyber <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Exercise</span>
+            </h1>
+
+            <HeroTypeLine
+              items={[
+                "Strengthen Your Preparation",
+                "Anticipate Threats",
+                "Scenario-driven Readiness"
+              ]}
+              className="mb-6"
+            />
+
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              The management of cyber exercises is an essential component to strengthen your company&apos;s preparedness against digital threats. At Keystone, we build immersive environments to test your resilience under real-world conditions.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+              <Link
+                href="/contact"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
+              >
+                Launch Cyber Exercise <ArrowRight size={18} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        <ScrollIndicator />
+      </motion.section>
 
       <CyberSectionDivider theme="red" />
-          <SectionDivider title="Cyber Exercise"/>
-{/* Intro Context Section */}
+      <SectionDivider title="Cyber Exercise"/>
+
+      {/* Intro Context Section */}
       <section className="pb-20 pt-10 bg-white relative overflow-hidden">
         <div className="px-6 lg:px-16">
           <div className="max-w-3xl mx-auto text-center">
@@ -100,10 +158,16 @@ export default function CyberExercisePage() {
               transition={{ duration: 0.8 }}
               className="mb-20 lg:mb-28"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
+              >
                 The Importance of Cyber Exercises
-              </h2>
-              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+              </motion.h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
                 Cybersecurity threats are constantly evolving. Our exercise management is crucial for maintaining a high state of readiness.
               </p>
             </motion.div>
@@ -155,10 +219,16 @@ export default function CyberExercisePage() {
               transition={{ duration: 0.8 }}
               className="mb-20 lg:mb-28"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
+              >
                 Combining Management & Technical Skills
-              </h2>
-              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+              </motion.h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
                 We believe in a holistic approach that integrates both strategic management and technical excellence to build true resilience.
               </p>
             </motion.div>
@@ -216,12 +286,18 @@ export default function CyberExercisePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="mb-20 lg:mb-28 inline-flex"
+              className="mb-20 lg:mb-28 flex flex-col"
             >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-900 leading-tight mb-8">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
+              >
                 Invest in Resilience
-              </h2>
-              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl">
+              </motion.h2>
+              <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
                 By collaborating with KEYSTONE, you are investing in the resilience of your business. We support you in adopting practices and strategies that promote agile and effective responsiveness to cyber threats.
               </p>
             </motion.div>

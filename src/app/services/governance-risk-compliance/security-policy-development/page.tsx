@@ -235,7 +235,7 @@ export default function SecurityPolicyDevelopmentPage() {
       <CyberSectionDivider />
 
       {/* Sub Features Section */}
-      <section className="mb-20 bg-zinc-50/30 py-20">
+      <section className="mb-20 bg-zinc-50/30">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
             <SectionDivider title="POLICIES IN MOTION" className="mb-10" />

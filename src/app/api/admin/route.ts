@@ -20,13 +20,13 @@ const initializeAdminApp = () => {
 // Middleware to verify Bearer token
 function verifyAdminToken(request: NextRequest): boolean {
   const authHeader = request.headers.get('Authorization');
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return false;
   }
 
   const token = authHeader.slice(7); // Remove 'Bearer ' prefix
-  
+
   // Token is valid if it's not empty (simple validation)
   // In production, you'd validate JWT or check against a session store
   return token.length > 0;
@@ -38,14 +38,14 @@ const requestCounts = new Map<string, number[]>();
 function checkRateLimit(ip: string, maxRequests: number = 5, windowMs: number = 60000): boolean {
   const now = Date.now();
   const requests = requestCounts.get(ip) || [];
-  
+
   // Filter out requests outside the window
   const recentRequests = requests.filter(time => now - time < windowMs);
-  
+
   if (recentRequests.length >= maxRequests) {
     return false;
   }
-  
+
   recentRequests.push(now);
   requestCounts.set(ip, recentRequests);
   return true;
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
     const db = getFirestore(admin);
 
     if (action === 'addEvent') {
-      // Log the action for audit trail
+      // Log the action for Assessment trail
       console.log(`[ADMIN] Event added by ${ip} at ${new Date().toISOString()}`);
 
       await db.collection('events').add({

@@ -9,17 +9,17 @@ export function CrossSellingSection() {
     {
       title: "Web & Mobile Application Assessment",
       desc: "Analyze the security of your internal, web, and mobile applications to identify OWASP vulnerabilities, business logic errors, and API weaknesses.",
-      href: "/services/technical-Assessment"
+      href: "/services/offensive-security/web-mobile-application-assessment"
     },
     {
       title: "Physical Penetration Testing",
       desc: "Comprehensive evaluation of premises security, including access control, surveillance evasion, and employee social engineering vectors.",
-      href: "/services/physical-penetration-testing"
+      href: "/services/offensive-security/physical-intrusion-test"
     },
     {
       title: "Internal & External Penetration Test",
       desc: "Realistic cyber attack simulations originating from the public Internet or a compromised host inside your internal network.",
-      href: "/services/red-team"
+      href: "/services/offensive-security/external-internal-penetration-testing"
     }
   ];
 

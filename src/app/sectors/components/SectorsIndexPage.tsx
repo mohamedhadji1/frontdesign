@@ -32,11 +32,11 @@ const stagger: Variants = {
 
 const sectorIcons: Record<string, LucideIcon> = {
   Healthcare: HeartPulse,
-  "Telecom & IT": RadioTower,
+  "Telecommunications and Information Technology": RadioTower,
   Transportation: Truck,
   Energy: Zap,
-  "Fintech & Start-up": Rocket,
-  Finance: Banknote,
+  "Fintech and Start-ups": Rocket,
+  "Financial Services": Banknote,
   Media: Newspaper,
   Industrial: Factory,
   "Governments and Public Organizations": Landmark,

@@ -1,18 +1,18 @@
 const fs = require('fs');
 
 const files = [
-  {file: 'Analyse de malware.html', out: 'src/app/services/defensive-security/malware-analysis/page.tsx'},
-  {file: 'incident response.html', out: 'src/app/services/defensive-security/incident-response-forensics/page.tsx'},
-  {file: 'Investigation numérique.html', out: 'src/app/services/defensive-security/digital-forensics/page.tsx'},
-  {file: 'threat hunting.html', out: 'src/app/services/defensive-security/threat-hunting/page.tsx'}
+  { file: 'Analyse de malware.html', out: 'src/app/services/defensive-security/malware-analysis/page.tsx' },
+  { file: 'incident response.html', out: 'src/app/services/defensive-security/incident-response-forensics/page.tsx' },
+  { file: 'Investigation numérique.html', out: 'src/app/services/defensive-security/digital-forensics/page.tsx' },
+  { file: 'threat hunting.html', out: 'src/app/services/defensive-security/threat-hunting/page.tsx' }
 ];
 
 function extractData(content) {
-  const heroStartMatch = content.indexOf('<section class="audit-hero-section">');
+  const heroStartMatch = content.indexOf('<section class="Assessment-hero-section">');
   const heroEndMatch = content.indexOf("</section>", heroStartMatch) + 10;
   let heroHtml = content.substring(heroStartMatch, heroEndMatch);
 
-  const styleStartMatch = content.indexOf('<style>\n.audit-hero-section');
+  const styleStartMatch = content.indexOf('<style>\n.Assessment-hero-section');
   const styleEndMatch = content.indexOf('</style>', styleStartMatch) + 8;
   const heroStyle = content.substring(styleStartMatch, styleEndMatch);
 
@@ -30,7 +30,7 @@ function extractData(content) {
   return { heroHtml, tabDataStr, cyberStyle };
 }
 
-for (const {file, out} of files) {
+for (const { file, out } of files) {
   const content = fs.readFileSync('html/' + file, 'utf8');
   let { heroHtml, tabDataStr, cyberStyle } = extractData(content);
 
@@ -39,10 +39,10 @@ for (const {file, out} of files) {
   let cleanedHero = heroHtml
     .replace(/class=/g, "className=")
     .replace(/<img(.*?)>/g, "<img$1 />");
-    
+
   // Escape curly braces in text
   cleanedHero = cleanedHero.replace(/<p(.*?)>([\\s\\S]*?)<\/p>/g, (match, p1, p2) => {
-      return `<p${p1}>${p2.replace(/\\{/g, '&#123;').replace(/\\}/g, '&#125;')}</p>`;
+    return `<p${p1}>${p2.replace(/\\{/g, '&#123;').replace(/\\}/g, '&#125;')}</p>`;
   });
 
   const reactCode = `'use client';

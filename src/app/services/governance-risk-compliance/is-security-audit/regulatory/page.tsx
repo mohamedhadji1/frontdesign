@@ -26,7 +26,7 @@ const regulatoryServices = [
   {
     title: "In-Depth Compliance Assessment",
     description:
-      "We conduct detailed audits to evaluate your compliance with legal and regulatory requirements specific to your sector and business context, identifying gaps and proposing corrective solutions.",
+      "We conduct detailed Assessments to evaluate your compliance with legal and regulatory requirements specific to your sector and business context, identifying gaps and proposing corrective solutions.",
     icon: ShieldAlert,
   },
   {
@@ -36,9 +36,9 @@ const regulatoryServices = [
     icon: BookOpen,
   },
   {
-    title: "Precise & Actionable Audit Reports",
+    title: "Precise & Actionable Assessment Reports",
     description:
-      "We deliver clear, detailed audit reports accompanied by highly specific and practical recommendations to help you successfully achieve and maintain compliance.",
+      "We deliver clear, detailed Assessment reports accompanied by highly specific and practical recommendations to help you successfully achieve and maintain compliance.",
     icon: FileText,
   },
 ];
@@ -47,7 +47,7 @@ const whyChooseKeystone = [
   {
     title: "Customized Approach",
     description:
-      "We tailor our audits to your specific needs, taking into account regulations specific to your sector and your unique compliance requirements.",
+      "We tailor our Assessments to your specific needs, taking into account regulations specific to your sector and your unique compliance requirements.",
     icon: UserCheck,
   },
   {
@@ -64,7 +64,7 @@ const whyChooseKeystone = [
   },
 ];
 
-export default function RegulatoryAuditPage() {
+export default function RegulatoryAssessmentPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -109,13 +109,13 @@ export default function RegulatoryAuditPage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>GRC</span>
               <ChevronRight size={8} />
-              <span>IS Security Audit</span>
+              <span>IS Security Assessment</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Regulatory Audit</span>
+              <span className="text-white/60">Regulatory Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Regulatory Audit
+              Regulatory Assessment
             </h1>
 
             <HeroTypeLine
@@ -123,7 +123,7 @@ export default function RegulatoryAuditPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              A regulatory audit is a cornerstone to ensure compliance with legal and regulatory requirements, reinforcing stakeholder confidence. At Keystone, our regulatory audit service is designed to assess your compliance and help you maintain a high level of alignment with legal and regulatory requirements.
+              A regulatory Assessment is a cornerstone to ensure compliance with legal and regulatory requirements, reinforcing stakeholder confidence. At Keystone, our regulatory Assessment service is designed to assess your compliance and help you maintain a high level of alignment with legal and regulatory requirements.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -131,7 +131,7 @@ export default function RegulatoryAuditPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Regulatory Audit <ArrowRight size={18} />
+                Request Regulatory Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -195,7 +195,7 @@ export default function RegulatoryAuditPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR REGULATORY AUDIT SERVICES" className="mb-10" />
+            <SectionDivider title="OUR REGULATORY Assessment SERVICES" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -295,7 +295,7 @@ export default function RegulatoryAuditPage() {
 
       {/* Partner Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider title="YOUR REGULATORY AUDIT PARTNER" className="!justify-start mb-6" />
+        <SectionDivider title="YOUR REGULATORY Assessment PARTNER" className="!justify-start mb-6" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -314,7 +314,7 @@ export default function RegulatoryAuditPage() {
                 Préservez la Confiance
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Your compliance is our commitment. Keystone is your partner for maintaining rigorous compliance. Our regulatory audit service guarantees a comprehensive evaluation, practical recommendations, and continuous compliance.
+                Your compliance is our commitment. Keystone is your partner for maintaining rigorous compliance. Our regulatory Assessment service guarantees a comprehensive evaluation, practical recommendations, and continuous compliance.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
@@ -358,14 +358,14 @@ export default function RegulatoryAuditPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us today to discuss how our regulatory audit service can ensure your legal compliance and maintain stakeholder trust."
+                  "Contact us today to discuss how our regulatory Assessment service can ensure your legal compliance and maintain stakeholder trust."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Audit <ArrowRight size={18} />
+                    Request Assessment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

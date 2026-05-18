@@ -300,7 +300,7 @@ export default function ISO27001SupportPage() {
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Detailed ISO 27001 Roadmap & Gap Audit",
+                  "Detailed ISO 27001 Roadmap & Gap Assessment",
                   "Comprehensive Risk Assessment Support",
                   "Expert-led Security Policy Authoring & Implementation",
                 ].map((item) => (

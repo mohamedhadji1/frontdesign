@@ -46,23 +46,20 @@ export function HeroSection() {
                 Services
               </Link>
               <span className="shrink-0 text-red-500/50">/</span>
-              <span className="text-red-400">Technical Assessment</span>
+              <span className="text-red-400">Assessment & Technical Assistance</span>
             </div>
           </motion.div>
-
+ 
           <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl">
-            Technical Assessment
+            Assessment &<br />Technical Assistance
           </h1>
-
+ 
           <HeroTypeLine
-            items={["Deep infrastructure assessment", "Cloud, banking, and industrial systems", "Baseline-to-remediation visibility"]}
+            items={["In-depth infrastructure assessment", "Expert technical hardening & resolution", "Standards compliance & optimization"]}
           />
-
+ 
           <p className="mb-10 text-lg font-light leading-relaxed text-gray-300 md:text-xl lg:text-2xl">
-            Ensure the structural integrity of your specialized IT
-            environments. We deeply analyze your Cloud systems, Core Banking,
-            Critical Infrastructure, and Industrial Networks to uncover hidden
-            vulnerabilities and align with industry baselines.
+            Expertise for Compliance and Resolution. Keystone offers in-depth assessment services, followed by robust technical assistance, to ensure compliance and resolve identified vulnerabilities within your critical infrastructures.
           </p>
 
           <div className="flex flex-wrap items-center gap-6">

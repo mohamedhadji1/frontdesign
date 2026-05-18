@@ -22,11 +22,11 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-const auditServices = [
+const AssessmentServices = [
   {
     title: "Comprehensive Security Assessment",
     description:
-      "Our team conducts complete and deep audits of your information systems to assess their level of security by identifying potential flaws and proposing recommendations to strengthen your protection.",
+      "Our team conducts complete and deep Assessments of your information systems to assess their level of security by identifying potential flaws and proposing recommendations to strengthen your protection.",
     icon: Eye,
   },
   {
@@ -38,7 +38,7 @@ const auditServices = [
   {
     title: "Personalized Recommendations",
     description:
-      "Our audit reports provide clear, practical, and highly personalized recommendations to reinforce security, ensuring enhanced protection against current and emerging threats.",
+      "Our Assessment reports provide clear, practical, and highly personalized recommendations to reinforce security, ensuring enhanced protection against current and emerging threats.",
     icon: ShieldCheck,
   },
 ];
@@ -47,13 +47,13 @@ const whyChooseKeystone = [
   {
     title: "Technical Expertise",
     description:
-      "Our team possesses cutting-edge expertise in information systems security auditing, utilizing advanced methodologies to identify security gaps and strengthen defenses.",
+      "Our team possesses cutting-edge expertise in information systems security Assessmenting, utilizing advanced methodologies to identify security gaps and strengthen defenses.",
     icon: Cpu,
   },
   {
     title: "Detailed Analysis",
     description:
-      "We offer highly detailed analysis of audit findings, clearly explaining risks and presenting specific solutions to fortify the security of your systems.",
+      "We offer highly detailed analysis of Assessment findings, clearly explaining risks and presenting specific solutions to fortify the security of your systems.",
     icon: Activity,
   },
   {
@@ -64,7 +64,7 @@ const whyChooseKeystone = [
   },
 ];
 
-export default function IsSecurityAuditPage() {
+export default function IsSecurityAssessmentPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -109,11 +109,11 @@ export default function IsSecurityAuditPage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">IS Security Audit</span>
+              <span className="text-white/60">IS Security Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              IS Security Audit
+              IS Security Assessment
             </h1>
 
             <HeroTypeLine
@@ -121,7 +121,7 @@ export default function IsSecurityAuditPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              An information systems security audit is a crucial pillar to ensure your company's resilience against constantly evolving digital threats. At Keystone, we offer advanced audit services to assess your systems' security, identify vulnerabilities, and reinforce your defenses.
+              An information systems security Assessment is a crucial pillar to ensure your company's resilience against constantly evolving digital threats. At Keystone, we offer advanced Assessment services to assess your systems' security, identify vulnerabilities, and reinforce your defenses.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -129,7 +129,7 @@ export default function IsSecurityAuditPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Security Audit <ArrowRight size={18} />
+                Request Security Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -193,7 +193,7 @@ export default function IsSecurityAuditPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="OUR SECURITY AUDIT SERVICES" className="mb-10" />
+            <SectionDivider title="OUR SECURITY Assessment SERVICES" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +215,7 @@ export default function IsSecurityAuditPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {auditServices.map((service, idx) => (
+            {AssessmentServices.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -261,7 +261,7 @@ export default function IsSecurityAuditPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Auditing with Excellence
+              Assessmenting with Excellence
             </motion.h2>
           </div>
 
@@ -299,7 +299,7 @@ export default function IsSecurityAuditPage() {
 
       {/* Partner Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider title="YOUR SECURITY AUDIT PARTNER" className="!justify-start mb-6" />
+        <SectionDivider title="YOUR SECURITY Assessment PARTNER" className="!justify-start mb-6" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -318,7 +318,7 @@ export default function IsSecurityAuditPage() {
                 Guarantee Robustness
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is your reliable partner for conducting in-depth security audits, identifying potential risks, and reinforcing the protection of your information systems.
+                Keystone is your reliable partner for conducting in-depth security Assessments, identifying potential risks, and reinforcing the protection of your information systems.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
@@ -362,14 +362,14 @@ export default function IsSecurityAuditPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us today to discuss how our information systems security audit services can strengthen your business and infrastructure resilience."
+                  "Contact us today to discuss how our information systems security Assessment services can strengthen your business and infrastructure resilience."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Audit <ArrowRight size={18} />
+                    Request Assessment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

@@ -302,7 +302,7 @@ export default function VirtualCISODPOPage() {
                 {[
                   "On-Demand Executive Cybersecurity Advisory & Leadership",
                   "Comprehensive Security Strategy Engineering & Roadmaps",
-                  "Proactive Regulatory Compliance Audits (GDPR, PCI DSS, ISO)",
+                  "Proactive Regulatory Compliance Assessments (GDPR, PCI DSS, ISO)",
                 ].map((item) => (
                   <motion.div
                     key={item}

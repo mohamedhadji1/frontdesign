@@ -22,7 +22,7 @@ Your security infrastructure has been fully implemented:
 ### 4. **Admin Panel Protection**
 - Token-based authentication
 - Rate limiting (5 requests per minute)
-- Audit logging for all admin actions
+- Assessment logging for all admin actions
 - Server-side Firebase Admin SDK
 
 ### 5. **Environment Variables**
@@ -117,7 +117,7 @@ AFTER (Secure):
 │ Secure API Route (/api/admin)        │
 │ - Verifies admin token               │
 │ - Rate limits requests               │
-│ - Logs audit trail                   │
+│ - Logs Assessment trail                   │
 │ - Uses Firebase Admin SDK            │
 └──────────────────────────────────────┘
          ↓ (Secure credentials)
@@ -131,7 +131,7 @@ AFTER (Secure):
 | **Database Access** | Client-side keys | Server-only Admin SDK |
 | **Authentication** | None | Token verification |
 | **Rate Limiting** | None | 5 requests/minute per IP |
-| **Audit Trail** | None | Logged with IP & timestamp |
+| **Assessment Trail** | None | Logged with IP & timestamp |
 | **Source Code** | Visible in DevTools | Hidden |
 | **HTTPS** | Optional | Enforced |
 
@@ -213,7 +213,7 @@ setup-security.ps1               # Automated setup script
 
 ### DO:
 - ✅ Rotate your admin token periodically
-- ✅ Monitor audit logs in Firebase for admin activities
+- ✅ Monitor Assessment logs in Firebase for admin activities
 - ✅ Use environment variables for ALL secrets
 - ✅ Update dependencies regularly: `npm update`
 - ✅ Enable 2FA on Firebase Console

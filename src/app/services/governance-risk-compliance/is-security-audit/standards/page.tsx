@@ -26,19 +26,19 @@ const complianceServices = [
   {
     title: "In-Depth Compliance Evaluation",
     description:
-      "We conduct comprehensive audits to evaluate your alignment with the specific norms and standards you target, identifying gaps and proposing customized solutions to meet strict requirements.",
+      "We conduct comprehensive Assessments to evaluate your alignment with the specific norms and standards you target, identifying gaps and proposing customized solutions to meet strict requirements.",
     icon: FileCheck,
   },
   {
     title: "Adaptation to Required Standards",
     description:
-      "Our team possesses extensive expertise in each framework, tailoring our audits to your operational realities while meeting the targeted standards' requirements.",
+      "Our team possesses extensive expertise in each framework, tailoring our Assessments to your operational realities while meeting the targeted standards' requirements.",
     icon: Compass,
   },
   {
-    title: "Precise & Actionable Audit Reports",
+    title: "Precise & Actionable Assessment Reports",
     description:
-      "We deliver thorough audit reports detailing every compliance gap, complete with practical, step-by-step remediation plans to ensure quick and robust compliance.",
+      "We deliver thorough Assessment reports detailing every compliance gap, complete with practical, step-by-step remediation plans to ensure quick and robust compliance.",
     icon: Cpu,
   },
 ];
@@ -51,15 +51,15 @@ const whyChooseKeystone = [
     icon: Globe,
   },
   {
-    title: "Audit Personalization",
+    title: "Assessment Personalization",
     description:
-      "We customize our auditing processes to align with your business context, ensuring standard requirements are achieved smoothly without disrupting operations.",
+      "We customize our Assessmenting processes to align with your business context, ensuring standard requirements are achieved smoothly without disrupting operations.",
     icon: Settings,
   },
   {
     title: "Sustainable Compliance",
     description:
-      "We don't just help you pass audits; we build sustainable security processes that continuously maintain compliance, reinforcing buyer and partner trust.",
+      "We don't just help you pass Assessments; we build sustainable security processes that continuously maintain compliance, reinforcing buyer and partner trust.",
     icon: Award,
   },
 ];
@@ -172,9 +172,9 @@ export default function StandardsCompliancePage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>GRC</span>
               <ChevronRight size={8} />
-              <span>IS Security Audit</span>
+              <span>IS Security Assessment</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Standards Compliance Audit</span>
+              <span className="text-white/60">Standards Compliance Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
@@ -186,7 +186,7 @@ export default function StandardsCompliancePage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Normative compliance auditing is essential to respect international norms and guarantee the security of your operations. At Keystone, our audit service supports you to achieve and maintain compliance with standards such as ISO27001, ISO 27005, ISO22301, ISO27701, PCI/DSS, HIPAA, GDPR, SWIFT CSP, NIST CSF, and SOC2.
+              Normative compliance Assessmenting is essential to respect international norms and guarantee the security of your operations. At Keystone, our Assessment service supports you to achieve and maintain compliance with standards such as ISO27001, ISO 27005, ISO22301, ISO27701, PCI/DSS, HIPAA, GDPR, SWIFT CSP, NIST CSF, and SOC2.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -194,7 +194,7 @@ export default function StandardsCompliancePage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Standards Audit <ArrowRight size={18} />
+                Request Standards Assessment <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -318,7 +318,7 @@ export default function StandardsCompliancePage() {
               Align with Global Standards
             </motion.h2>
             <p className="text-lg text-zinc-600 leading-relaxed font-medium">
-              We guide you from initial alignment assessment to successful certification and post-compliance audits.
+              We guide you from initial alignment assessment to successful certification and post-compliance Assessments.
             </p>
           </div>
 
@@ -365,7 +365,7 @@ export default function StandardsCompliancePage() {
             <motion.h2
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Auditing with Confidence
+              Assessmenting with Confidence
             </motion.h2>
           </div>
 
@@ -458,14 +458,14 @@ export default function StandardsCompliancePage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us today to discuss how our standards compliance audit services can ensure your business aligns with key international frameworks."
+                  "Contact us today to discuss how our standards compliance Assessment services can ensure your business aligns with key international frameworks."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Audit <ArrowRight size={18} />
+                    Request Assessment <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>

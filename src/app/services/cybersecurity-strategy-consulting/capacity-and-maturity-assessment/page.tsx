@@ -57,7 +57,7 @@ export default function CapacityAndMaturityAssessmentPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 mb-6"
+                className="inline-flex items-center flex-wrap gap-2 text-red-400 mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">

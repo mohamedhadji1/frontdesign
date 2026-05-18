@@ -26,21 +26,68 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Offensive Security",
     items: [
       {
-        name: "Assessment and Technical Assistance",
-        subCategory: "Assessment & Infrastructure",
+        name: "Offensive Assessments",
+        subCategory: "Advanced Penetration Testing",
         subItems: [
-          "Web & Mobile Application Assessment",
-          "Cloud Environment Assessment",
-          "Core Internet Banking System Assessment",
-          "Industrial System Assessment",
-          "System Hardening"
+          {
+            name: "Web & Mobile Application Assessment",
+            slug: "offensive-security/web-mobile-application-assessment",
+          },
+          {
+            name: "External and Internal Penetration Testing",
+            slug: "offensive-security/external-internal-penetration-testing",
+          },
+          {
+            name: "Social Engineering",
+            slug: "offensive-security/social-engineering",
+          },
+          {
+            name: "Physical Intrusion Test",
+            slug: "offensive-security/physical-intrusion-test",
+          },
+          {
+            name: "Hardware Testing and Reverse Engineering",
+            slug: "offensive-security/hardware-testing-reverse-engineering",
+          },
+        ]
+      },
+
+      {
+        name: "Red Team",
+        slug: "red-team",
+        subCategory: "Offensive Security Testing",
+        description: "Test the limits of your perimeter. Identify zero-day vulnerabilities, physical weaknesses, and social engineering risks through full-scale adversarial emulation."
+      },
+    ],
+  },
+  {
+    category: "Assessment and Technical Assistance",
+    href: "/services/technical-audit",
+    title: "Assessment and Technical Assistance",
+    items: [
+      {
+        name: "Technical Audit",
+        subCategory: "Technical Audit: In-Depth Systems Evaluation",
+        subItems: [
+          { name: "Infrastructure Assessment", slug: "technical-audit/infrastructure-assessment" },
+          { name: "Cloud Environment Assessment", slug: "technical-audit/cloud-environment-assessment" },
+          { name: "Industrial System Assessment", slug: "technical-audit/industrial-system-assessment" },
+          { name: "Core Banking and Internet Banking System Assessment", slug: "technical-audit/core-internet-banking-system-assessment" },
+          { name: "Architecture Assessment", slug: "technical-audit/architecture-assessment" },
+          { name: "Active Directory Infrastructure Assessment", slug: "technical-audit/active-directory-assessment" },
         ]
       },
       {
-        name: "Red Team",
-        subCategory: "Offensive Security Testing",
-      },
-    ],
+        name: "Technical Assistance",
+        subCategory: "Technical Assistance: Professional and Responsive Support",
+        subItems: [
+          { name: "System Hardening", slug: "technical-audit/system-hardening" },
+          { name: "Hardening Guides Development", slug: "technical-audit/hardening-guides" },
+          { name: "Network Security Architecture Design", slug: "technical-audit/network-security-architecture" },
+          { name: "Application Security Support", slug: "technical-audit/application-security-support" },
+        ]
+      }
+    ]
   },
   {
     category: "Managed Services",
@@ -49,15 +96,26 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "SOC Management",
-        slug: "defensive-security/soc-management",
+        subCategory: "SOC Management: Proactive Monitoring & Response",
+        subItems: [
+          { name: "Blue Team", slug: "defensive-security/blue-team" },
+          { name: "Vulnerability Scanning", slug: "defensive-security/vulnerability-scanning" },
+          { name: "Incident Management", slug: "defensive-security/incident-management" },
+          { name: "Threat Intelligence", slug: "defensive-security/threat-intelligence" },
+          { name: "Dark Web Monitoring", slug: "defensive-security/dark-web-monitoring" },
+          { name: "Anti-Phishing", slug: "defensive-security/anti-phishing" },
+          { name: "Vulnerability Watch", slug: "defensive-security/vulnerability-watch" },
+        ]
       },
       {
-        name: "Virtual CISO & DPO",
-        slug: "defensive-security/virtual-ciso-dpo",
-      },
-      {
-        name: "Implementation CERT",
-        slug: "defensive-security/Implementation-cert",
+        name: "CERT",
+        subCategory: "CERT (CSIRT.tn): Critical Threat Response",
+        subItems: [
+          { name: "Incident Response", slug: "defensive-security/incident-response" },
+          { name: "Digital Forensics", slug: "defensive-security/digital-forensics" },
+          { name: "Threat Hunting", slug: "defensive-security/threat-hunting" },
+          { name: "Malware Analysis", slug: "defensive-security/malware-analysis" },
+        ]
       },
     ],
   },
@@ -67,12 +125,12 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance, Risk and Compliance",
     items: [
       {
-        name: "IS Security Audit",
-        slug: "governance-risk-compliance/is-security-audit",
-        subCategory: "IS Security Audit",
+        name: "IS Security Assessment",
+        slug: "governance-risk-compliance/is-security-Assessment",
+        subCategory: "IS Security Assessment",
         subItems: [
-          { name: "Regulatory Audit", slug: "governance-risk-compliance/is-security-audit/regulatory" },
-          { name: "Standards Compliance Audit (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/is-security-audit/standards" }
+          { name: "Regulatory Assessment", slug: "governance-risk-compliance/is-security-Assessment/regulatory" },
+          { name: "Standards Compliance Assessment (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/is-security-Assessment/standards" }
         ]
       },
       {
@@ -120,9 +178,9 @@ export const servicesDetails: ServiceCategory[] = [
         description: "Ensure responsible management of personal data in strict alignment with regulations like GDPR. We assist with consent, privacy rights, and data protection."
       },
       {
-        name: "Access Rights Audit",
-        slug: "governance-risk-compliance/access-rights-audit",
-        description: "Verify that permissions and access rights are securely distributed. Realize comprehensive user permission audits to prevent security gaps."
+        name: "Access Rights Assessment",
+        slug: "governance-risk-compliance/access-rights-Assessment",
+        description: "Verify that permissions and access rights are securely distributed. Realize comprehensive user permission Assessments to prevent security gaps."
       },
       {
         name: "Virtual CISO & DPO",
@@ -184,12 +242,33 @@ export const servicesDetails: ServiceCategory[] = [
       {
         name: "Cyber Exercice Management & Technique",
         slug: "cyber-exercise",
+        description: "Prepare your operational and leadership teams for real-world cyber incidents through customizable crisis management exercises, simulation drills, and technical stress-testing."
       },
       {
         name: "CTF Competition Organization",
+        slug: "ctf-competition-organization",
+        description: "Foster cybersecurity interest and build technical capability in your organization through customized Capture the Flag (CTF) challenges, security tournaments, and training platforms."
       },
     ],
   },
+  {
+    category: "AI & Cybersecurity",
+    href: "/services/ai-cybersecurity",
+    title: "AI & Cybersecurity",
+    items: [
+      {
+        name: "AI Security & Threat Defense",
+        subCategory: "AI Security & Threat Defense: Smart Protection",
+        subItems: [
+          { name: "LLM Security Assessment", slug: "ai-cybersecurity/llm-security-assessment" },
+          { name: "AI-Powered Threat Detection", slug: "ai-cybersecurity/ai-powered-threat-detection" },
+          { name: "Adversarial Machine Learning Defense", slug: "ai-cybersecurity/adversarial-ml-defense" },
+          { name: "Generative AI Governance", slug: "ai-cybersecurity/generative-ai-governance" },
+          { name: "Deepfake & Deep Identity Detection", slug: "ai-cybersecurity/deepfake-identity-detection" },
+        ]
+      }
+    ]
+  }
 ];
 
 function normalizeServiceHref(slug: string | undefined, fallbackName: string) {
@@ -201,11 +280,35 @@ function normalizeServiceHref(slug: string | undefined, fallbackName: string) {
   return `/services/${fallbackName.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}`;
 }
 
+function getDropdownItems(category: ServiceCategory | undefined): ServiceItem[] {
+  if (!category) {
+    return [];
+  }
+
+  if (category.category !== "GRC" || category.items.length <= 2) {
+    return category.items;
+  }
+
+  const [firstItem, secondItem, ...remainingItems] = category.items;
+
+  return [
+    firstItem,
+    secondItem,
+    {
+      name: "Additional GRC Services",
+      subCategory: "Additional GRC Services",
+      subItems: remainingItems.map(({ name, slug }) => ({ name, slug })),
+    },
+  ];
+}
+
 export function ServicesDropdown() {
   const [activeCategory, setActiveCategory] = useState("Offensive Security");
   const [activeItem, setActiveItem] = useState("Red Team");
 
   const currentCategoryObj = servicesDetails.find((c) => c.category === activeCategory);
+  const dropdownItems = getDropdownItems(currentCategoryObj);
+  const isDenseSecondColumn = dropdownItems.length > 6;
 
   return (
 
@@ -266,7 +369,7 @@ export function ServicesDropdown() {
               transition={{ duration: 0.2 }}
               className="flex w-full relative z-10"
             >
-              {currentCategoryObj?.items.some(i => i.subItems) ? (
+              {dropdownItems.some((item) => item.subItems || item.description) ? (
                 // Special nested layout for Offensive Security
                 <div className="w-full flex">
                   {/* Sub-categories */}
@@ -274,24 +377,42 @@ export function ServicesDropdown() {
                     <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
                       {currentCategoryObj?.title}
                     </motion.h2>
-                    <ul className="space-y-1">
-                      {currentCategoryObj?.items.map((item, idx) => (
+                    <ul className={isDenseSecondColumn ? "space-y-0.5" : "space-y-1"}>
+                      {dropdownItems.map((item, idx) => (
                         <li key={idx}>
-                          <Link
-                            href={normalizeServiceHref(item.slug, item.name)}
-                            onMouseEnter={() => setActiveItem(item.name)}
-                            className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${activeItem === item.name
-                              ? "text-red-600 bg-gray-50"
-                              : "text-gray-600 hover:text-gray-900"
-                              }`}
-                          >
-                            {item.name}
-                            {'subItems' in item && (
-                              <svg className={`w-3 h-3 ${activeItem === item.name ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            )}
-                          </Link>
+                          {item.slug ? (
+                            <Link
+                              href={normalizeServiceHref(item.slug, item.name)}
+                              onMouseEnter={() => setActiveItem(item.name)}
+                              className={`w-full text-left px-3 rounded text-sm flex justify-between items-center transition-colors ${isDenseSecondColumn ? "py-1.5 leading-5" : "py-2.5"} ${activeItem === item.name
+                                ? "text-red-600 bg-gray-50"
+                                : "text-gray-600 hover:text-gray-900"
+                                }`}
+                            >
+                              {item.name}
+                              {'subItems' in item && (
+                                <svg className={`w-3 h-3 ${activeItem === item.name ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              )}
+                            </Link>
+                          ) : (
+                            <button
+                              type="button"
+                              onMouseEnter={() => setActiveItem(item.name)}
+                              className={`w-full text-left px-3 rounded text-sm flex justify-between items-center transition-colors ${isDenseSecondColumn ? "py-1.5 leading-5" : "py-2.5"} ${activeItem === item.name
+                                ? "text-red-600 bg-gray-50"
+                                : "text-gray-600 hover:text-gray-900"
+                                }`}
+                            >
+                              {item.name}
+                              {'subItems' in item && (
+                                <svg className={`w-3 h-3 ${activeItem === item.name ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              )}
+                            </button>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -299,7 +420,7 @@ export function ServicesDropdown() {
 
                   {/* Sub-items (Third Level) */}
                   <div className="w-2/3 pl-8">
-                    {currentCategoryObj?.items.map((item, idx) => {
+                    {dropdownItems.map((item, idx) => {
                       if (item.name !== activeItem) return null;
 
                       if ('subItems' in item && item.subItems) {

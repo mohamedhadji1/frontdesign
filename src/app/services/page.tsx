@@ -9,6 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesIndexPage />;
-  <BackToTop />
+  return (
+    <>
+      <ServicesIndexPage />
+      <BackToTop />
+    </>
+  );
 }

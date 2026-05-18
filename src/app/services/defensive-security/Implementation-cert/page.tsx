@@ -1,203 +1,186 @@
 "use client";
 
-import { AnimatedBreadcrumb } from "@/components/ui/AnimatedBreadcrumb";
-import React from "react";
 import Link from "next/link";
-import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
-import { ShieldAlert, Activity, Search, Terminal, Siren, Globe, Eye, AlertCircle, MailWarning, ArrowRight } from "lucide-react";
-import { CombinedDeepDive } from "./CombinedDeepDive";
-import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import React from "react";
 import { motion } from "framer-motion";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import {
+  ShieldCheck,
+  Award,
+  Terminal,
+  Network,
+  ArrowRight,
+  Activity,
+  Globe
+} from "lucide-react";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
-
-const steps = [
-  {
-    "id": "cert-strategy",
-    "title": "CERT Strategy & Design",
-    "description": "We establish a core roadmap defining the scope, mandate, and authority of your future CERT. We align its operational capabilities with your business objectives, regulatory landscape, and specific industry threats to ensure a structured, fully integrated security function.",
-    "icon": <Activity className="w-8 h-8 text-white" />
-  },
-  {
-    "id": "team-structure",
-    "title": "Team Structuring & Staffing",
-    "description": "Building a CERT requires top-tier expertise. We assist in defining role descriptions, establishing skill requirements, creating hiring strategies, and structuring the team into L1, L2, and L3 analyst tiers for optimal escalation and investigation capabilities.",
-    "icon": <Search className="w-8 h-8 text-white" />
-  },
-  {
-    "id": "tooling-architecture",
-    "title": "Tooling & Architecture",
-    "description": "We evaluate, select, and deploy the optimal technology stack for your CERT. From SIEM systems and SOAR platforms for automation to high-fidelity Endpoint Detection and Response (EDR) solutions, we build an architecture tailored to rapid incident containment.",
-    "icon": <Terminal className="w-8 h-8 text-white" />
-  },
-  {
-    "id": "process-playbooks",
-    "title": "Incident Playbooks",
-    "description": "A rapid response requires predefined procedures. We develop customized incident response playbooks for scenarios ranging from ransomware infections to insider threats, standardizing your team's reaction times and reducing decision fatigue during a crisis.",
-    "icon": <ShieldAlert className="w-8 h-8 text-white" />
-  }
-];
+import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 export default function Page() {
+  const steps = [
+    {
+      title: "Active Member of FIRST and AfricaCERT",
+      desc: "As a recognized member of FIRST and AfricaCERT, our CERT benefits from close collaboration and information sharing with other CERT teams globally. This cooperation strengthens our capacity to respond to threats in a global and coordinated manner.",
+      icon: <Award className="w-6 h-6 text-blue-600" />
+    },
+    {
+      title: "High-Level Technical Expertise",
+      desc: "Composed of highly qualified IT security experts, our team has deep technical expertise. This skill allows us to manage complex security incidents with maximum efficiency and speed.",
+      icon: <Terminal className="w-6 h-6 text-blue-600" />
+    },
+    {
+      title: "Effective Response to Critical Threats",
+      desc: "In the face of attacks from the most dangerous hacker groups in the world, our team has demonstrated its ability to react rapidly and in a coordinated manner. This responsiveness limits impact, counters attacks, and restores system security.",
+      icon: <ShieldCheck className="w-6 h-6 text-blue-600" />
+    },
+    {
+      title: "On-Site Direct Intervention",
+      desc: "For urgent cases, our CSIRT.tn team travels directly on-site. This physical presence guarantees an in-depth evaluation of the situation and immediate intervention to counter threats and restore security.",
+      icon: <Network className="w-6 h-6 text-blue-600" />
+    },
+    {
+      title: "Real-Time Remote Handling",
+      desc: "When necessary, our CSIRT.tn is capable of providing real-time remote assistance. This flexibility allows us to react quickly to threats by taking immediate measures to counter attacks.",
+      icon: <Activity className="w-6 h-6 text-blue-600" />
+    },
+    {
+      title: "Global Expertise and Collaboration",
+      desc: "As a recognized member of FIRST and AfricaCERT, our CSIRT.tn benefits from tight cooperation, enabling instantaneous threat sharing and global synergy to counter complex security incidents.",
+      icon: <Globe className="w-6 h-6 text-blue-600" />
+    }
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col bg-white">
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+    <main className="min-h-screen bg-white flex flex-col">
+      <Navbar />
 
-        <div className="container mx-auto px-6 relative z-10">
+      {/* Hero Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, amount: 0.1 }} 
+        transition={{ duration: 0.8 }} 
+        className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-
-            <div className="lg:w-1/2 text-center lg:text-center flex flex-col items-center">
+            <div className="w-full lg:w-3/5">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
+                className="inline-flex items-center flex-wrap gap-2 text-blue-400 mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
                 <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Implementation Cert</span>
+                  <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link>
+                  <span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span>
+                  <Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors">Managed Services</Link>
+                  <span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span>
+                  <span className="text-white">CERT (CSIRT.tn)</span>
                 </div>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Implementation <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">CERT</span>
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                CERT <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">(CSIRT.tn)</span>
               </h1>
-              <p className="text-lg md:text-xl text-neutral-400 font-light mb-10 max-w-2xl">
-                Keystone provides expert consulting, framework deployment, and technical implementation
-                to help your organization build, launch, and mature a Computer Emergency Response Team (CERT) customized to your threat landscape.
+
+              <HeroTypeLine
+                items={[
+                  "Active Member of FIRST",
+                  "Active Member of AfricaCERT",
+                  "Cutting-Edge Technical Expertise",
+                  "Global Resilience Support"
+                ]}
+                className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+              />
+
+              <p className="text-lg md:text-xl text-zinc-400 mb-10 leading-relaxed max-w-2xl font-light">
+                Keystone&apos;s CSIRT.tn, your dedicated CERT, ensures a rapid and effective response to IT security incidents, thereby minimizing impacts on your activities.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="px-8 py-3.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/25">
-                  Secure Your Defenses
-                </Link>
-                <Link href="/services" className="px-8 py-3.5 bg-white/5 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 border border-white/10">
-                  View All Services
+                <Link href="/contact" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/20 uppercase tracking-widest text-xs">
+                  Contact Our CERT
                 </Link>
               </div>
             </div>
 
-            <div className="lg:w-1/2 relative">
+            <div className="w-full lg:w-2/5 relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent blur-3xl rounded-full" />
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900/50 backdrop-blur-sm p-4">
                 <img
                   src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
-                  alt="SOC Management"
-                  className="w-full h-[400px] rounded-xl object-cover"
+                  alt="CSIRT.tn CERT"
+                  className="w-full h-[350px] rounded-xl object-cover"
                 />
               </div>
             </div>
-
           </div>
         </div>
       </motion.section>
-      <div className="mt-10">
-        <div className="max-w-3xl mb-16 text-center mx-auto">
-          <motion.h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-4 flex items-center justify-center gap-4">
-            <span className="w-8 h-px bg-blue-600/30"></span>
-            Our CERT IMPLEMENTATION Methodology
-            <span className="w-8 h-px bg-blue-600/30"></span>
-          </motion.h2>
-          <motion.h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
-            Technical Steps
-          </motion.h2>
-          <p className="text-zinc-600 text-lg">
-            A rigorous, step-by-step technical methodology to validate the security posture and compliance of your modern cloud workloads (AWS, Azure, GCP).
-          </p>
-        </div>
-      </div>
-      <InteractiveProcessSection
-        title="Our Defensive Approach"
-        description="A rigorous methodology to bolster your resilience against cyber threats with cutting-edge telemetry, detection, and intelligence capabilities."
-        steps={steps}
-        theme="blue"
-      />
-      <CyberSectionDivider className="mx-auto width-[0%]" theme="blue" />
 
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-zinc-50 mt-20">
-        <CombinedDeepDive />
-      </motion.section>
-
-      <CyberSectionDivider theme="blue" />
-
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-white py-24">
+      {/* Content Section */}
+      <section className="py-24 bg-white flex-grow">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center flex-wrap gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
-              <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                <Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors break-keep">Defensive Security</Link><span className="text-blue-500/50 flex flex-nowrap shrink-0">/</span><span className="text-blue-400">Implementation Cert</span>
-              </div>
-            </motion.div>
-            <motion.h2 className="text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 mb-6">
-              Discover Our Defensive Services
-            </motion.h2>
-            <p className="text-neutral-600 xl:text-lg max-w-2xl mx-auto">
-              Strengthen your organization's resilience by exploring our specialized security and investigation services.
+          <div className="max-w-4xl mx-auto mb-16 text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4 inline-block">
+              Critical Threat Response
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-zinc-900 tracking-tight leading-tight mt-2">
+              CSIRT.tn: Your Guarantee of Critical Threat Response
+            </h2>
+            <p className="text-zinc-600 text-lg mt-6 leading-relaxed">
+              Discover the key features of our computer emergency response team dedicated to the resilience of critical infrastructures.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link
-              href="/services/defensive-security/threat-hunting"
-              className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-            >
-              <Search className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Threat Hunting</motion.h2>
-              <p className="text-neutral-600 mb-6 text-sm">Proactively detect hidden adversaries across your networks.</p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                Learn more <ArrowRight className="w-4 h-4 ml-2" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {steps.map((item, idx) => (
+              <div key={idx} className="p-8 bg-zinc-50 border border-zinc-200/80 rounded-2xl hover:border-blue-500 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 mb-3">{item.title}</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
-            </Link>
+            ))}
+          </div>
 
-            <Link
-              href="/services/defensive-security/digital-forensics"
-              className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-            >
-              <Terminal className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Digital Forensics</motion.h2>
-              <p className="text-neutral-600 mb-6 text-sm">Gather & investigate digital evidence post-breach.</p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                Learn more <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
-            </Link>
-
-            <Link
-              href="/services/defensive-security/virtual-ciso-dpo"
-              className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-            >
-              <Siren className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Virtual CISO & DPO</motion.h2>
-              <p className="text-neutral-600 mb-6 text-sm">Strategic cybersecurity leadership and compliance management.</p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                Learn more <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
-            </Link>
-
-            <Link
-              href="/services/defensive-security/malware-analysis"
-              className="group block p-8 bg-zinc-50 border border-neutral-200 rounded-2xl hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-            >
-              <ShieldAlert className="w-10 h-10 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <motion.h2 className="text-xl font-bold text-neutral-900 mb-3">Malware Analysis</motion.h2>
-              <p className="text-neutral-600 mb-6 text-sm">Dissect and reverse-engineer malicious payloads.</p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                Learn more <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
+          <div className="mt-16 max-w-5xl mx-auto p-8 bg-zinc-950 text-white rounded-2xl border border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="max-w-3xl">
+              <h3 className="text-2xl font-bold mb-3">Keystone: Your Trusted Partner for Resilience</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Keystone&apos;s CSIRT.tn is your trusted partner to address security incidents and strengthen your resilience against cyberattacks. Contact us to learn more about our services.
+              </p>
+            </div>
+            <Link href="/contact" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/20 whitespace-nowrap uppercase tracking-widest text-xs">
+              Contact Us
             </Link>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <CyberSectionDivider theme="blue" />
 
       <DEFCTASection />
 
+      <Footer />
     </main>
   );
 }

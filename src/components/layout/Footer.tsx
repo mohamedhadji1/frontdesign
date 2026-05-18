@@ -37,6 +37,7 @@ export function Footer() {
             <motion.h2 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">SERVICES</motion.h2>
             <ul className="flex flex-col space-y-4">
               <li><Link href="/services/red-team" className="text-sm text-zinc-400 transition-colors hover:text-white">Offensive Security / Red Teaming</Link></li>
+              <li><Link href="/services/technical-Assessment" className="text-sm text-zinc-400 transition-colors hover:text-white">Assessment & Technical Assistance</Link></li>
               <li><Link href="/services/defensive-security/soc-management" className="text-sm text-zinc-400 transition-colors hover:text-white">Defensive Security / Blue Teaming</Link></li>
               <li><Link href="/services/governance-risk-compliance" className="text-sm text-zinc-400 transition-colors hover:text-white">Governance, Risk & Compliance</Link></li>
               <li><Link href="/services/cybersecurity-strategy-consulting" className="text-sm text-zinc-400 transition-colors hover:text-white">Cybersecurity Consulting</Link></li>
@@ -102,7 +103,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-                  <div className="text-center text-sm text-zinc-500">Copyright 2026 Keystone. All Rights Reserved.</div>
+        <div className="text-center text-sm text-zinc-500">Copyright 2026 Keystone. All Rights Reserved.</div>
 
       </div>
     </footer>
