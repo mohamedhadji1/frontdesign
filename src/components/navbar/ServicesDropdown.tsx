@@ -178,9 +178,9 @@ export const servicesDetails: ServiceCategory[] = [
         description: "Ensure responsible management of personal data in strict alignment with regulations like GDPR. We assist with consent, privacy rights, and data protection."
       },
       {
-        name: "Access Rights Assessment",
-        slug: "governance-risk-compliance/access-rights-Assessment",
-        description: "Verify that permissions and access rights are securely distributed. Realize comprehensive user permission Assessments to prevent security gaps."
+        name: "Audit of authorizations",
+        slug: "governance-risk-compliance/access-rights-audit",
+        description: "Ensure access rights are assigned securely and appropriately. We conduct thorough audits to identify privileges risks and ensure effective governance."
       },
       {
         name: "Virtual CISO & DPO",
@@ -199,13 +199,13 @@ export const servicesDetails: ServiceCategory[] = [
         slug: "cybersecurity-strategy-consulting",
         subCategory: "Strategic Services",
         subItems: [
-          "Development of National and Sectoral Cybersecurity Strategy",
-          "CERT Implementation",
-          "SOC Implementation",
-          "Critical Infrastructure Protection",
-          "Cyber Crisis Management Framework",
-          "Capacity and Maturity Assessment",
-          "Cyber Resilience Framework"
+          { name: "Development of National and Sectoral Cybersecurity Strategy", slug: "cybersecurity-strategy-consulting/development-of-national-and-sectoral-cybersecurity-strategy" },
+          { name: "CERT Implementation", slug: "cybersecurity-strategy-consulting/cert-implementation" },
+          { name: "SOC Implementation", slug: "cybersecurity-strategy-consulting/soc-implementation" },
+          { name: "Critical Infrastructure Protection", slug: "cybersecurity-strategy-consulting/critical-infrastructure-protection" },
+          { name: "Cyber Crisis Management Framework", slug: "cybersecurity-strategy-consulting/cyber-crisis-management-framework" },
+          { name: "Capacity and Maturity Assessment", slug: "cybersecurity-strategy-consulting/capacity-and-maturity-assessment" },
+          { name: "Cyber Resilience Framework", slug: "cybersecurity-strategy-consulting/cyber-resilience-framework" }
         ]
       },
     ],
@@ -312,7 +312,7 @@ export function ServicesDropdown() {
 
   return (
 
-    <div className="absolute top-full left-0 w-full pt-6 pointer-events-auto">
+    <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
       <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
 
         {/* Left Column: Categories */}

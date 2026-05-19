@@ -200,7 +200,7 @@ export function HeroSection() {
           transition={{ delay: 1, duration: 1 }}
           className="relative z-20 mt-4 w-full max-w-md lg:mt-0 lg:ml-auto lg:w-1/3 lg:max-w-sm"
         >
-          <div className="rounded-2xl border border-white/20 bg-black/40 p-4 shadow-2xl backdrop-blur-xl sm:p-6">
+          <div className="rounded-2xl border border-white/20 bg-black/40 p-4 shadow-2xl backdrop-blur-l sm:p-6">
             <div className="mb-6 flex items-center justify-between gap-3">
               <motion.h2 className="text-lg font-bold uppercase tracking-wider text-white sm:text-xl">Events</motion.h2>
               <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Coming Soon</span>

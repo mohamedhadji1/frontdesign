@@ -58,42 +58,42 @@ function normalizeSolutionHref(slug: string | undefined, fallbackName: string) {
 }
 
 export function SolutionsDropdown() {
-  const [activeCategory, setActiveCategory] = useState("Operational Platforms");
+  const currentCategoryObj = solutionsDetails[0];
   const [activeItem, setActiveItem] = useState("Keystone ARENA (CTI Platform)");
 
-  const currentCategoryObj = solutionsDetails.find((c) => c.category === activeCategory);
-
   return (
-    <div className="absolute top-full left-0 w-full pt-6 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
+    <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
+      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
         
-        {/* Left Column: Categories */}
-        <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
-          {solutionsDetails.map((group, index) => (
-            <Link
-              key={index}
-              href={group.href}
-              onMouseEnter={() => {
-                setActiveCategory(group.category);
-                if (group.items.length > 0) {
-                  setActiveItem(group.items[0].name);
-                }
-              }}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
-                ? "bg-gray-100 text-red-600"
-                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
-            >
-              {group.category}
-              <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          ))}
+        {/* Left Column: Vertical list of items */}
+        <div className="w-1/3 border-r border-gray-200 pr-6">
+          <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+            Operational Platforms
+          </h2>
+          <ul className="space-y-1">
+            {currentCategoryObj.items.map((item, idx) => (
+              <li key={idx}>
+                <button
+                  type="button"
+                  onMouseEnter={() => setActiveItem(item.name)}
+                  className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${
+                    activeItem === item.name
+                      ? "text-red-600 bg-gray-50"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {item.name}
+                  <svg className={`w-3 h-3 ${activeItem === item.name ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Right Content Area */}
-        <div className="w-3/4 pl-10 flex relative overflow-hidden">
+        {/* Right Content Area: Details & Watermark */}
+        <div className="w-2/3 pl-10 flex relative overflow-hidden">
           {/* Subtle Animated Decorative Watermark */}
           <motion.div
             className="absolute -right-20 top-1/2 -translate-y-1/2 text-red-600 pointer-events-none"
@@ -115,74 +115,37 @@ export function SolutionsDropdown() {
             </svg>
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.2 }}
-              className="flex w-full relative z-10"
-            >
-              {/* Sub-categories (Middle Column) */}
-              <div className="w-1/3 border-r border-gray-200 pr-6">
-                <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
-                  {currentCategoryObj?.title}
-                </motion.h2>
-                <ul className="space-y-1">
-                  {currentCategoryObj?.items.map((item, idx) => (
-                    <li key={idx}>
-                      <button
-                        type="button"
-                        onMouseEnter={() => setActiveItem(item.name)}
-                        className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${activeItem === item.name
-                          ? "text-red-600 bg-gray-50"
-                          : "text-gray-600 hover:text-gray-900"
-                          }`}
-                      >
-                        {item.name}
-                        <svg className={`w-3 h-3 ${activeItem === item.name ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="w-full relative z-10 flex flex-col justify-center">
+            {currentCategoryObj.items.map((item, idx) => {
+              if (item.name !== activeItem) return null;
 
-              {/* Detail Panel (Right Column) */}
-              <div className="w-2/3 pl-8">
-                {currentCategoryObj?.items.map((item, idx) => {
-                  if (item.name !== activeItem) return null;
-
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="flex flex-col h-full justify-center max-w-lg"
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex flex-col h-full justify-center max-w-lg"
+                >
+                  <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                    About This Solution
+                  </h2>
+                  <p className="text-gray-500 text-sm leading-relaxed mt-2 font-medium">
+                    {item.description}
+                  </p>
+                  <div className="mt-6">
+                    <Link
+                      href={normalizeSolutionHref(item.slug, item.name)}
+                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-600 hover:gap-3 transition-all"
                     >
-                      <motion.h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
-                        About This Solution
-                      </motion.h2>
-                      <p className="text-gray-500 text-sm leading-relaxed mt-2 font-medium">
-                        {item.description}
-                      </p>
-                      <div className="mt-6">
-                        <Link
-                          href={normalizeSolutionHref(item.slug, item.name)}
-                          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-600 hover:gap-3 transition-all"
-                        >
-                          Explore Solution <span className="text-sm">→</span>
-                        </Link>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                      Explore Solution <span className="text-sm">→</span>
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
+
       </div>
     </div>
   );

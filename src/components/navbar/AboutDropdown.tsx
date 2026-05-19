@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,43 +6,71 @@ export const aboutDetails = [
   {
     category: "About Keystone",
     items: [
-      { label: "Company Overview", href: "/about/company-overview" },
-      { label: "Vision, Mission & Values", href: "/about/vision-mission-values" },
-      { label: "Our Team", href: "/about/our-team" },
-      { label: "Awards & Recognition", href: "/about/awards-recognition" },
-      { label: "Client Testimonials", href: "/about/testimonials" },
+      { 
+        label: "Company Overview", 
+        href: "/about/company-overview",
+        description: "Discover Keystone's journey, our history of cybersecurity excellence, and how we empower organizations to defend against evolving cyber threats globally."
+      },
+      { 
+        label: "Vision, Mission & Values", 
+        href: "/about/vision-mission-values",
+        description: "Our guiding principles. We strive to be the global benchmark for trust and cyber resilience, driven by innovation, integrity, and relentless dedication to client security."
+      },
+      { 
+        label: "Our Team", 
+        href: "/about/our-team",
+        description: "Meet the elite minds at Keystone. A world-class collective of ethical hackers, certified security auditors, threat intelligence analysts, and strategic GRC consultants."
+      },
+      { 
+        label: "Awards & Recognition", 
+        href: "/about/awards-recognition",
+        description: "Celebrating our milestones and industry honors. Keystone's commitment to cutting-edge research and outstanding client services recognized by top cybersecurity authorities."
+      },
+      { 
+        label: "Client Testimonials", 
+        href: "/about/testimonials",
+        description: "What our partners say about us. Real feedback from market leaders, government bodies, and global enterprises who rely on Keystone to secure their digital frontiers."
+      },
     ],
   },
 ];
 
 export function AboutDropdown() {
-  const [activeCategory, setActiveCategory] = useState(aboutDetails[0].category);
-  const currentCategoryObj = aboutDetails.find((c) => c.category === activeCategory);
+  const currentCategoryObj = aboutDetails[0];
+  const [activeItem, setActiveItem] = useState(currentCategoryObj.items[0].label);
 
   return (
-    <div className="absolute top-full left-0 w-full pt-6 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
-        {/* Left Column: Categories */}
-        <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
-          {aboutDetails.map((group, index) => (
-            <button
-              key={index}
-              onMouseEnter={() => setActiveCategory(group.category)}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
-                ? "bg-gray-100 text-red-600"
-                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
-            >
-              {group.category}
-              <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          ))}
+    <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
+      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
+        {/* Left Column: Vertical list menu (under each other) */}
+        <div className="w-1/3 border-r border-gray-200 pr-6">
+          <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+            About Keystone
+          </h2>
+          <ul className="space-y-1">
+            {currentCategoryObj.items.map((item, idx) => (
+              <li key={idx}>
+                <Link
+                  href={item.href}
+                  onMouseEnter={() => setActiveItem(item.label)}
+                  className={`w-full text-left px-3 py-2.5 rounded text-sm flex justify-between items-center transition-colors ${
+                    activeItem === item.label
+                      ? "text-red-600 bg-gray-50"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {item.label}
+                  <svg className={`w-3 h-3 ${activeItem === item.label ? "text-red-600" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Right Content Area */}
-        <div className="w-3/4 pl-10 flex relative overflow-hidden">
+        {/* Right Content Area: Detailed Description Card & Watermark */}
+        <div className="w-2/3 pl-10 flex relative overflow-hidden">
           {/* Subtle Animated Decorative Watermark */}
           <motion.div
             className="absolute -right-20 top-1/2 -translate-y-1/2 text-red-600 pointer-events-none"
@@ -66,38 +92,35 @@ export function AboutDropdown() {
             </svg>
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.2 }}
-              className="w-full relative z-10"
-            >
-              <motion.h2 className="text-gray-900 font-semibold mb-6 flex items-center text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
-                {currentCategoryObj?.category}
-              </motion.h2>
-              <div className="grid grid-cols-2 gap-x-12 gap-y-6">
-                {currentCategoryObj?.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="group flex items-start"
-                  >
-                    <span className="mr-3 text-red-500 mt-0.5 transition-transform group-hover:translate-x-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-600 hover:text-red-600 transition-colors text-sm font-medium">
-                      {item.label}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <div className="w-full relative z-10">
+            {currentCategoryObj.items.map((item, idx) => {
+              if (item.label !== activeItem) return null;
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex flex-col h-full justify-center max-w-lg"
+                >
+                  <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">
+                    About {item.label}
+                  </h2>
+                  <p className="text-gray-500 text-sm leading-relaxed mt-2 font-medium">
+                    {item.description}
+                  </p>
+                  <div className="mt-6">
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-600 hover:gap-3 transition-all"
+                    >
+                      Learn More <span className="text-sm">→</span>
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

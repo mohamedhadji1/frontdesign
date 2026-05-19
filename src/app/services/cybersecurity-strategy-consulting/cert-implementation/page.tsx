@@ -20,7 +20,7 @@ export default function CertImplementationPage() {
   const methodologies = [
     {
       title: "CERT Infrastructure Design",
-      description: "We develop the architecture and processes necessary to create a CERT, tailored to the specific needs of the organization.",
+      description: "We design the architecture and processes necessary to create a CERT, tailored to the specific needs of the organization.",
       icon: ServerCog,
     },
     {
@@ -30,7 +30,7 @@ export default function CertImplementationPage() {
     },
     {
       title: "Training and Recruitment",
-      description: "We offer training programs and recommendations to recruit and train experts capable of managing incidents efficiently.",
+      description: "We offer training programs and recommendations to recruit and train experts capable of handling incidents effectively.",
       icon: Users,
     },
     {
@@ -40,7 +40,7 @@ export default function CertImplementationPage() {
     },
     {
       title: "Integration with Relevant Stakeholders",
-      description: "We facilitate the CERT's integration with other entities, promoting effective cooperation during major incident management.",
+      description: "We facilitate the CERT's integration with other entities, promoting effective cooperation during the management of major incidents.",
       icon: Network,
     },
   ];
@@ -84,7 +84,7 @@ export default function CertImplementationPage() {
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers its expertise in the implementation of CERTs, teams dedicated to managing IT security incidents. We collaborate with organizations to establish CERTs capable of detecting, analyzing, and responding quickly to cyber threats.
+                Keystone offers its expertise in the implementation of CERTs (Computer Emergency Response Teams), teams dedicated to managing IT security incidents. We collaborate with organizations to establish CERTs capable of detecting, analyzing, and responding quickly to cyber threats.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

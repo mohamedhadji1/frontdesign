@@ -4,7 +4,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { LineChart, BookOpenCheck, ShieldAlert, Target, RefreshCw } from "lucide-react";
+import { LineChart, BookOpenCheck, ShieldAlert, Target, RefreshCw, Network, FileCheck, Users, ServerCog, Gamepad2 } from 'lucide-react';
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
@@ -19,28 +19,28 @@ export default function CapacityAndMaturityAssessmentPage() {
   const methodologies = [
     {
       title: "Comprehensive Infrastructure Assessment",
-      description: "We conduct an in-depth analysis of national infrastructures and security measures to identify strengths and weaknesses.",
-      icon: ShieldAlert,
+      description: "We conduct an in-depth analysis of national infrastructures and security systems to identify strengths and weaknesses.",
+      icon: Network,
     },
     {
       title: "Analysis of Policies and Regulatory Frameworks",
-      description: "We assess compliance with existing policies and regulatory frameworks, identifying gaps and proposing actionable recommendations.",
-      icon: BookOpenCheck,
+      description: "We evaluate compliance with current policies and regulatory frameworks, identifying gaps and proposing recommendations.",
+      icon: FileCheck,
     },
     {
       title: "Highlighting Operational Capabilities",
-      description: "We highlight existing operational capabilities in detecting, responding to, and preventing complex cyber threats.",
-      icon: Target,
+      description: "We highlight existing operational capabilities in terms of detection, response, and prevention of cyber-threats.",
+      icon: Users,
     },
     {
       title: "Strategic Recommendations",
       description: "Based on our assessments, we formulate strategic recommendations to improve overall cybersecurity maturity.",
-      icon: LineChart,
+      icon: ServerCog,
     },
     {
       title: "Support for Continuous Improvement",
-      description: "We provide ongoing support for continuous improvement, facilitating cooperation and integration to evolve with emerging threats.",
-      icon: RefreshCw,
+      description: "We offer support for implementing recommendations and progressively strengthening cybersecurity maturity.",
+      icon: Gamepad2,
     },
   ];
 
@@ -75,14 +75,14 @@ export default function CapacityAndMaturityAssessmentPage() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Assessment of National Capacities and <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Cybersecurity Maturity</span>
+                Capacity and Maturity <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Assessment</span>
               </h1>
               <HeroTypeLine
                 items={["National capability mapping", "Maturity benchmarking", "Cyber readiness assessment"]}
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers its expertise to assess a country&apos;s national capacities and cybersecurity maturity. We work with governments to establish a comprehensive and accurate assessment of cybersecurity infrastructures, policies, and operational capacities.
+                Keystone proposes its expertise to assess a country's national capabilities and cybersecurity maturity. We work with governments to establish a comprehensive and accurate assessment of cybersecurity infrastructures, policies, and operational capabilities.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

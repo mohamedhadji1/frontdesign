@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FileText, ShieldAlert, Users, Gamepad2, LineChart } from "lucide-react";
+import { FileText, ShieldAlert, Users, Gamepad2, LineChart, ShieldCheck, Activity, AlertTriangle, CloudCog } from 'lucide-react';
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
@@ -17,29 +17,29 @@ export default function CyberCrisisManagementFrameworkPage() {
 
   const methodologies = [
     {
-      title: "Development of National Guidelines",
-      description: "We collaborate with national authorities to define cyber crisis management guidelines and protocols tailored to the specific needs of the country.",
+      title: "Development of National Directives",
+      description: "We collaborate with national authorities to define directives and cyber-crisis management protocols adapted to the specific needs of the country.",
       icon: FileText,
     },
     {
       title: "Prevention and Response Strategies",
       description: "We design comprehensive strategies including preventive measures and detailed response plans to deal with cyber incidents.",
-      icon: ShieldAlert,
+      icon: ShieldCheck,
     },
     {
       title: "Inter-Agency Coordination",
-      description: "We foster collaboration between government agencies and key players for consistent and coordinated management of cyber crises.",
-      icon: Users,
+      description: "We promote collaboration between government agencies and key stakeholders for a coherent and coordinated management of cyber crises.",
+      icon: Activity,
     },
     {
       title: "National Simulations and Exercises",
       description: "We organize national-scale simulations to test the effectiveness of plans and train stakeholders to react in the event of a crisis.",
-      icon: Gamepad2,
+      icon: AlertTriangle,
     },
     {
       title: "Post-Crisis Analysis and Continuous Improvements",
-      description: "After each incident, we conduct in-depth analyses to identify gaps and continuously improve cyber crisis management protocols.",
-      icon: LineChart,
+      description: "After each incident, we conduct in-depth analyses to identify gaps and continuously improve cyber-crisis management protocols.",
+      icon: CloudCog,
     },
   ];
 
@@ -74,14 +74,14 @@ export default function CyberCrisisManagementFrameworkPage() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                National Cyber Crisis <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Management Framework</span>
+                Cyber-Crisis Management <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Framework</span>
               </h1>
               <HeroTypeLine
                 items={["Crisis governance", "National response coordination", "Operational continuity under attack"]}
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers its expertise to develop a national cyber crisis management framework, an essential mechanism to anticipate and manage cyber incidents at the national level. We work with governments to develop harmonized strategies and response plans to ensure national resilience and security.
+                Keystone proposes its expertise to develop a national cyber-crisis management framework, an essential setup to anticipate and manage cyber incidents on a national scale. We work with governments to develop harmonized response strategies and plans to ensure national resilience and security.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

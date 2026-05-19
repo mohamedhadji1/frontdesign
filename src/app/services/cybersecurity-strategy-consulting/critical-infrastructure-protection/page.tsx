@@ -17,28 +17,28 @@ export default function CriticalInfrastructureProtectionPage() {
 
   const methodologies = [
     {
-      title: "Analysis of Security Configurations and Policies",
-      description: "We review your Cloud configurations and security policies to identify potential risks and strengthen your security posture.",
+      title: "Development of National Frameworks",
+      description: "We work closely with authorities to develop national frameworks that specifically meet the protection needs of critical infrastructures.",
       icon: CloudCog,
     },
     {
-      title: "Compliance Assessment to Standards",
-      description: "We verify compliance with security standards, Cloud best practices, and current regulations.",
+      title: "In-depth Infrastructure Audit",
+      description: "We conduct detailed audits to assess the security of these infrastructures, identifying gaps and recommending appropriate solutions.",
       icon: ShieldCheck,
     },
     {
-      title: "Identification of Potential Risks",
-      description: "We identify potential gaps, vulnerabilities, and suboptimal configurations that could affect security.",
+      title: "Security Support",
+      description: "We provide expert support to secure these infrastructures, implementing solutions adapted to each domain.",
       icon: AlertTriangle,
     },
     {
-      title: "Detailed Report and Personalized Recommendations",
-      description: "We provide a detailed report of our findings, along with personalized recommendations to improve Cloud security and efficiency.",
+      title: "Compliance Frameworks",
+      description: "We help establish compliance frameworks in accordance with national and international regulatory and security requirements.",
       icon: FileText,
     },
     {
-      title: "Post-Assessment Follow-up and Continuous Support",
-      description: "We offer post-Assessment follow-up to help you implement the recommendations and ensure continuous and secure use of the Cloud.",
+      title: "Training and Awareness",
+      description: "We offer training programs to raise awareness among stakeholders involved in the security and management of critical infrastructures.",
       icon: Activity,
     },
   ];
@@ -74,14 +74,14 @@ export default function CriticalInfrastructureProtectionPage() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Critical Infrastructure <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">& Cloud Protection</span>
+                Critical Infrastructure <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Protection</span>
               </h1>
               <HeroTypeLine
                 items={["Critical asset protection", "Cloud security posture", "Infrastructure resilience planning"]}
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone supports you in Assessmenting and securing your Cloud environments and critical infrastructures. Contact us for an in-depth evaluation and recommendations tailored to your operational needs.
+                Keystone offers specialized expertise in developing national frameworks for the protection of critical infrastructures. We support governments and relevant entities in establishing standards, audits, and compliance frameworks adapted to these vital infrastructures.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

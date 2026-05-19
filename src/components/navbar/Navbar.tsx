@@ -49,11 +49,16 @@ export function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    setActiveDropdown(null);
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   return (
     <>
       <nav
         className={`fixed inset-x-0 top-0 z-[70] transition-all duration-300 ${scrolled || forceDarkNavbar
-            ? "border-b border-white/10 bg-black/90 shadow-xl backdrop-blur-md"
+            ? "border-b border-white/10 bg-black/35 shadow-2xl backdrop-blur-lg"
             : "bg-transparent py-4 md:py-6"
           }`}
       >

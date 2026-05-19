@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Search, Shield, Lock, Crosshair, GraduationCap, CheckCircle2 } from "lucide-react";
+import { Search, Shield, Lock, Crosshair, GraduationCap, CheckCircle2, Network, FileCheck, ServerCog, Users, Gamepad2 } from 'lucide-react';
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
@@ -18,28 +18,28 @@ export default function CyberResilienceFrameworkPage() {
   const methodologies = [
     {
       title: "In-depth Risk Analysis",
-      description: "We conduct a comprehensive risk analysis to understand the potential threats facing your organization.",
-      icon: Search,
+      description: "We conduct an exhaustive risk analysis to understand the potential threats facing your organization.",
+      icon: Network,
     },
     {
       title: "Development of Resilience Strategies",
-      description: "We design proactive strategies to strengthen your organization's ability to withstand attacks and maintain critical operations.",
-      icon: Shield,
+      description: "We design proactive strategies to strengthen your organization's ability to resist attacks and maintain critical activities.",
+      icon: FileCheck,
     },
     {
       title: "Business Continuity Planning",
       description: "We develop detailed business continuity plans to ensure rapid recovery after a cyberattack, thereby minimizing impacts.",
-      icon: Lock,
+      icon: ServerCog,
     },
     {
       title: "Integration of Detection Mechanisms",
-      description: "We implement advanced detection mechanisms to quickly identify and respond to security incidents.",
-      icon: Crosshair,
+      description: "We implement advanced detection mechanisms to identify and respond rapidly to security incidents.",
+      icon: Users,
     },
     {
       title: "Training and Awareness",
       description: "We offer training programs to raise awareness among your staff regarding cyber resilience and incident response.",
-      icon: GraduationCap,
+      icon: Gamepad2,
     },
   ];
 
@@ -74,14 +74,14 @@ export default function CyberResilienceFrameworkPage() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Cyber Resilience <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Framework Development</span>
+                Cyber Resilience <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Framework</span>
               </h1>
               <HeroTypeLine
                 items={["Resilience architecture", "Preparedness and recovery", "Adaptive cyber operations"]}
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring rapid recovery after an attack.
+                Keystone offers its expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring near-immediate recovery after an attack.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">

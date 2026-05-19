@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Activity, LayoutDashboard, Shield, BookOpen, Settings } from "lucide-react";
+import { Activity, LayoutDashboard, Shield, BookOpen, Settings, ServerCog, Network, FileCheck, Users, Gamepad2 } from 'lucide-react';
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 
 export default function SocImplementationPage() {
@@ -15,29 +15,29 @@ export default function SocImplementationPage() {
 
   const methodologies = [
     {
-      title: "Requirements & Architecture Design",
-      description: "We assess your organizational needs and design a scalable SOC architecture integrating SIEM, SOAR, and advanced threat intelligence.",
-      icon: LayoutDashboard,
+      title: "SOC Design and Implementation",
+      description: "We design the SOC architecture and guide its implementation to ensure continuous monitoring of security activities.",
+      icon: ServerCog,
     },
     {
-      title: "Technology Deployment",
-      description: "We implement and configure cutting-edge security technologies to ensure comprehensive visibility across your network and endpoints.",
-      icon: Shield,
+      title: "Tool and Technology Selection",
+      description: "We recommend tools and technologies suited for proactive detection and rapid response to security incidents.",
+      icon: Network,
     },
     {
-      title: "Playbook & Use Case Development",
-      description: "We create customized incident response playbooks and high-fidelity use cases to automate responses and reduce alert fatigue.",
-      icon: BookOpen,
+      title: "Development of Operational Processes",
+      description: "We define clear operational processes for the SOC, integrating surveillance, detection, and incident response.",
+      icon: FileCheck,
     },
     {
-      title: "Team Training & Augmentation",
-      description: "We help recruit, train, and augment your security operations team to handle complex cyber incidents efficiently and effectively.",
-      icon: Activity,
+      title: "Training and Recruitment",
+      description: "We offer training programs for SOC personnel and provide advice on recruiting the appropriate talents.",
+      icon: Users,
     },
     {
-      title: "Continuous Optimization",
-      description: "We provide ongoing tuning, threat hunting, and maturity assessments to ensure your SOC evolves alongside emerging threats.",
-      icon: Settings,
+      title: "Simulation and Training Exercises",
+      description: "We organize simulations to test the SOC's responsiveness and improve its capabilities to manage real incidents.",
+      icon: Gamepad2,
     },
   ];
 
@@ -72,11 +72,11 @@ export default function SocImplementationPage() {
               </motion.div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                Security Operations Center <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">(SOC) Implementation</span>
+                SOC <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Implementation</span>
               </h1>
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers specialized expertise in designing, building, and deploying fully operational Security Operations Centers (SOC). We work closely with organizations to establish a robust, 24/7 monitoring capability tailored to detect, analyze, and mitigate advanced cyber threats.
+                Keystone proposes its expertise for the creation of SOCs (Security Operations Centers), charged with monitoring, detecting, and responding to IT security threats. We work with organizations to establish effective SOCs capable of guaranteeing continuous protection against cyber-threats.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
