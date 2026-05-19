@@ -31,10 +31,16 @@ const locations: Location[] = [
   { id: "fr", name: "France", coordinates: [2.2137, 46.2276], type: "client", address: "Major operations across multiple client facilities in France." },
   { id: "de", name: "Germany", coordinates: [10.4515, 51.1657], type: "client", address: "Client facilities across Germany." },
   // African clients
-  { id: "sn", name: "Senegal", coordinates: [-17.4441, 14.6937], type: "client", address: "West Africa client base\nDakar, Senegal" },
-  { id: "ci", name: "Ivory Coast", coordinates: [-4.0305, 5.3600], type: "client", address: "Francophone West Africa\nAbidjan, Ivory Coast" },
-  { id: "bj", name: "Benin", coordinates: [2.4267, 6.3727], type: "client", address: "West Africa operations\nCotonou, Benin" }
-];
+{ id: "tz", name: "Tanzania", coordinates: [39.2083, -6.7924], type: "client", address: "East Africa expansion\nDar es Salaam, Tanzania" },
+  { id: "et", name: "Ethiopia", coordinates: [38.7578, 8.9806], type: "client", address: "East Africa operations hub\nAddis Ababa, Ethiopia" },
+  { id: "dj", name: "Djibouti", coordinates: [43.1450, 11.5890], type: "client", address: "Horn of Africa footprint\nDjibouti City, Djibouti" },
+  { id: "rw", name: "Rwanda", coordinates: [30.0619, -1.9441], type: "client", address: "East Africa regional hub\nKigali, Rwanda" },
+  { id: "mz", name: "Mozambique", coordinates: [32.5732, -25.9653], type: "client", address: "Southeast Africa operations\nMaputo, Mozambique" },
+  { id: "cv", name: "Cape Verde", coordinates: [-23.5087, 14.9315], type: "client", address: "Atlantic island operations\nPraia, Cape Verde" },
+  { id: "km", name: "Comoros", coordinates: [43.2536, -11.6986], type: "client", address: "East Africa island operations\nMoroni, Comoros"},
+  { id: "td", name: "Chad", coordinates: [15.0557, 12.1348], type: "client", address: "Central Africa presence\nN'Djamena, Chad" },
+  { id: "cm", name: "Cameroon", coordinates: [11.5021, 3.8480], type: "client", address: "Central Africa operations\nYaoundé, Cameroon" },
+  { id: "ga", name: "Gabon", coordinates: [9.4544, 0.4162], type: "client", address: "Central Africa hub\nLibreville, Gabon" }];
 
 export function MapSection() {
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
