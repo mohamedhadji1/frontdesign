@@ -171,7 +171,7 @@ export default function KeystoneArenaPage() {
         </div>
 
         {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="pointer-events-auto absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8">
+        <div className="pointer-events-none absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8">
           <motion.div
             className="flex w-max items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24"
             animate={{ x: ["0%", "-50%"] }}
@@ -184,7 +184,7 @@ export default function KeystoneArenaPage() {
             {Array(40).fill("/certif/27001.png").map((src, idx) => (
               <div
                 key={idx}
-                className="relative h-14 w-14 shrink-0 cursor-pointer opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
+                className="relative h-14 w-14 shrink-0 opacity-50 grayscale sm:h-20 sm:w-20 lg:h-28 lg:w-28"
               >
                 <Image
                   src={src}

@@ -6,19 +6,18 @@ import { TerminalIcon } from "../animate-ui/icons/terminal";
 
 export function ContactCTASection() {
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }}
+    <section
       className="relative overflow-hidden bg-[#ffffff] py-16 md:py-32"
       style={{
         backgroundImage: "url('/background/bg3.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-
       }}
     >
       <div className="absolute inset-0 bg-[#ffffff]/5 z-0"></div>
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-8 px-4 sm:px-6 md:flex-row md:gap-12">
-        <div className="flex flex-col text-center md:text-left ">
+        <div className="flex flex-col text-center md:text-left">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -62,6 +61,6 @@ export function ContactCTASection() {
           </Link>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

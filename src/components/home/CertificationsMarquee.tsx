@@ -27,26 +27,33 @@ export function CertificationsMarquee() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className="w-full bg-white py-10 overflow-hidden border-b border-gray-100 flex items-center"
+      className="w-full bg-white py-10 overflow-hidden border-b border-gray-100 flex items-center pointer-events-auto cursor-default"
     >
+      <style>{`
+        @keyframes marquee-cert {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee-track-cert {
+          display: flex;
+          width: max-content;
+          animation: marquee-cert 40s linear infinite;
+        }
+        .marquee-track-cert:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
       {/* 
-        This motion div moves precisely from 0 to -50% to cycle half the duplicated array constantly,
+        This div moves precisely from 0 to -50% to cycle half the duplicated array constantly,
         creating an infinite scroll illusion.
       */}
-      <motion.div
-        className="flex whitespace-nowrap gap-16 sm:gap-24 px-8 items-center"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          ease: "linear",
-          duration: 40, // Adjust this to speed up or slow down
-          repeat: Infinity,
-        }}
+      <div
+        className="marquee-track-cert gap-16 sm:gap-24 px-8 items-center"
       >
         {repeatedImages.map((img, idx) => (
-          <Link 
+          <div 
             key={idx} 
-            href={`/certifications#${img.slug}`}
-            className="relative w-32 h-16 shrink-0 opacity-70 hover:opacity-100 transition-all duration-500 cursor-pointer block"
+            className="relative w-32 h-16 shrink-0 opacity-70 block"
           >
             <Image 
               src={img.src} 
@@ -54,9 +61,9 @@ export function CertificationsMarquee() {
               fill 
               className="object-contain" 
             />
-          </Link>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </motion.section>
   );
 }

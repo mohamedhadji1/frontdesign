@@ -66,7 +66,7 @@ export function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative overflow-hidden pb-16 sm:pb-20" style={{ backgroundImage: "url('/background/bg1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <section className="relative overflow-hidden pb-16 sm:pb-20" style={{ backgroundImage: "url('/background/bg1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
 
       {/* Dark overlay to make the text readable if the image is dark */}
       <div className="pointer-events-none absolute inset-0 z-[1] bg-white/75" />
@@ -257,6 +257,6 @@ export function ServicesSection() {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

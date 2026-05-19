@@ -66,7 +66,7 @@ export function SectorsSection() {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }}
+    <section
       className="bg-white bg-[length:0%] bg-no-repeat px-4 pt-10 pb-16 sm:px-6 md:bg-[length:50%] md:bg-[position:right_center] md:px-8 md:pb-20"
       style={{ backgroundImage: "url('/background/bg4.png')" }}
     >
@@ -135,6 +135,6 @@ export function SectorsSection() {
           })}
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

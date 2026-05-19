@@ -269,21 +269,26 @@ export function HeroSection() {
       </div>
 
       {/* Infinite Certifications Marquee (Bottom of Hero) */}
-      <div className="pointer-events-auto absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8">
-        <motion.div
-          className="flex w-max items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            ease: "linear",
-            duration: 60, // Slower speed since we increased total length
-            repeat: Infinity,
-          }}
-        >
+      <div className="absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default">
+        <style>{`
+          @keyframes marquee-hero {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-track-hero {
+            display: flex;
+            width: max-content;
+            animation: marquee-hero 60s linear infinite;
+          }
+          .marquee-track-hero:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+        <div className="marquee-track-hero items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
           {repeatedImages.map((img, idx) => (
-            <Link
+            <div
               key={idx}
-              href={`/certifications#${img.slug}`}
-              className="relative h-14 w-14 shrink-0 cursor-pointer opacity-70 transition-all duration-500 hover:opacity-100 sm:h-20 sm:w-20 lg:h-28 lg:w-28 block"
+              className="relative h-14 w-14 shrink-0 opacity-70 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
             >
               <Image
                 src={img.src}
@@ -292,9 +297,9 @@ export function HeroSection() {
                 sizes="112px"
                 className="object-contain"
               />
-            </Link>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Down Indicator */}

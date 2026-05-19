@@ -62,7 +62,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-full flex flex-col overflow-x-hidden bg-neutral-900 text-white font-sans" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-white text-gray-900 font-sans" suppressHydrationWarning>
         <Navbar />
         <main className="grow">{children}</main>
         <Footer />

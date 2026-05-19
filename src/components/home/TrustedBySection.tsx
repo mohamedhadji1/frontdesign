@@ -14,7 +14,7 @@ const partners = [
 
 export function TrustedBySection() {
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="bg-black/20 px-4 pb-10 pt-8 sm:px-6">
+    <section className="bg-white px-4 pb-10 pt-8 sm:px-6">
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -60,6 +60,6 @@ export function TrustedBySection() {
           ))}
         </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }

@@ -128,16 +128,22 @@ export default function ISO22301SupportPage() {
         </div>
 
         {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="pointer-events-auto absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8">
-          <motion.div
-            className="flex w-max items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              ease: "linear",
-              duration: 60,
-              repeat: Infinity,
-            }}
-          >
+        <div className="absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default">
+          <style>{`
+            @keyframes marquee-grc {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .marquee-track-grc {
+              display: flex;
+              width: max-content;
+              animation: marquee-grc 60s linear infinite;
+            }
+            .marquee-track-grc:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+          <div className="marquee-track-grc items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
             {Array(5)
               .fill([
                 { src: "/certif/SWIFT.png", alt: "SWIFT" },
@@ -155,7 +161,7 @@ export default function ISO22301SupportPage() {
               .map((logo, idx) => (
                 <div
                   key={idx}
-                  className="relative h-14 w-14 shrink-0 cursor-pointer transition-transform duration-300 hover:scale-110 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
+                  className="relative h-14 w-14 shrink-0 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
                 >
                   <Image
                     src={logo.src}
@@ -166,7 +172,7 @@ export default function ISO22301SupportPage() {
                   />
                 </div>
               ))}
-          </motion.div>
+          </div>
         </div>
 
         <ScrollIndicator />

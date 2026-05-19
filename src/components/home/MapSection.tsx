@@ -19,6 +19,7 @@ type Location = {
   address?: string;
 };
 
+
 const locations: Location[] = [
   // Offices
   { id: "tn", name: "Tunisia", coordinates: [9.5375, 33.8869], type: "office", address: "Headquarters\nTunis, Tunisia" },
@@ -28,21 +29,11 @@ const locations: Location[] = [
 
   // Global clients
   { id: "fr", name: "France", coordinates: [2.2137, 46.2276], type: "client", address: "Major operations across multiple client facilities in France." },
-  { id: "cn", name: "Shanghai", coordinates: [121.4737, 31.2304], type: "client", address: "Park Place, Unit 04-05, 37/F\nNo.1601, Nanjing West Road\nJing'an District Shanghai,\nChina" },
-  { id: "ae", name: "Dubai", coordinates: [55.2708, 25.2048], type: "client", address: "Client presence in Dubai\nUnited Arab Emirates" },
-  { id: "au", name: "Sydney", coordinates: [151.2093, -33.8688], type: "client", address: "Client presence in Sydney\nAustralia" },
-  { id: "uk", name: "London", coordinates: [-0.1276, 51.5072], type: "client", address: "Client presence in London\nUnited Kingdom" },
-  { id: "es", name: "Spain", coordinates: [-3.7038, 40.4168], type: "client", address: "Client presence in Madrid\nSpain" },
-
+  { id: "de", name: "Germany", coordinates: [10.4515, 51.1657], type: "client", address: "Client facilities across Germany." },
   // African clients
-  { id: "eg", name: "Cairo", coordinates: [31.2357, 30.0444], type: "client", address: "Client operations in Egypt\nCairo, Egypt" },
-  { id: "ma", name: "Casablanca", coordinates: [-7.5898, 33.5731], type: "client", address: "Client presence in Morocco\nCasablanca, Morocco" },
-  { id: "ng", name: "Lagos", coordinates: [3.3792, 6.5244], type: "client", address: "West Africa operations\nLagos, Nigeria" },
-  { id: "za", name: "Johannesburg", coordinates: [28.0473, -26.2041], type: "client", address: "Southern Africa hub\nJohannesburg, South Africa" },
-  { id: "ke", name: "Nairobi", coordinates: [36.8219, -1.2921], type: "client", address: "East Africa operations\nNairobi, Kenya" },
-  { id: "sn", name: "Dakar", coordinates: [-17.4441, 14.6937], type: "client", address: "West Africa client base\nDakar, Senegal" },
-  { id: "gh", name: "Accra", coordinates: [-0.187, 5.6037], type: "client", address: "West Africa expansion\nAccra, Ghana" },
-  { id: "ci", name: "Abidjan", coordinates: [-4.0305, 5.36], type: "client", address: "Francophone West Africa\nAbidjan, Cote d'Ivoire" },
+  { id: "sn", name: "Senegal", coordinates: [-17.4441, 14.6937], type: "client", address: "West Africa client base\nDakar, Senegal" },
+  { id: "ci", name: "Ivory Coast", coordinates: [-4.0305, 5.3600], type: "client", address: "Francophone West Africa\nAbidjan, Ivory Coast" },
+  { id: "bj", name: "Benin", coordinates: [2.4267, 6.3727], type: "client", address: "West Africa operations\nCotonou, Benin" }
 ];
 
 export function MapSection() {
@@ -138,9 +129,8 @@ export function MapSection() {
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.18 }}
         onClick={(e) => e.stopPropagation()}
-        className={`pointer-events-auto absolute z-50 rounded-[24px] border border-zinc-200 bg-white p-4 shadow-2xl ${
-          fullscreen ? "inset-x-4 bottom-4" : "inset-x-3 bottom-3"
-        }`}
+        className={`pointer-events-auto absolute z-50 rounded-[24px] border border-zinc-200 bg-white p-4 shadow-2xl ${fullscreen ? "inset-x-4 bottom-4" : "inset-x-3 bottom-3"
+          }`}
       >
         <button
           type="button"
@@ -154,10 +144,15 @@ export function MapSection() {
           <X size={14} />
         </button>
 
-        <h4 className={`pr-6 text-base font-bold ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"}`}>
-          {activeLocation.name}
+        <h4 className={`pr-6 text-base font-bold ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"} flex items-center gap-2`}>
+          <span>{activeLocation.name}</span>
+          <img 
+            src={`https://flagcdn.com/${activeLocation.id.toLowerCase()}.svg`} 
+            alt={`${activeLocation.name} flag`} 
+            className="w-5 h-3.5 object-cover rounded-xs border border-zinc-200/50 shadow-xs"
+          />
           {activeLocation.type === "office" && (
-            <span className="ml-2 rounded-sm bg-red-50 px-2 py-0.5 align-middle text-[10px] uppercase tracking-[0.24em] text-red-400">
+            <span className="ml-2 rounded-sm bg-red-50 px-2 py-0.5 align-middle text-[10px] uppercase tracking-[0.24em] text-red-400 font-medium">
               Office
             </span>
           )}
@@ -207,14 +202,19 @@ export function MapSection() {
               geographies.map((geo) => {
                 const countryName = geo.properties.name;
                 const isOfficeCountry = officeCountries.includes(countryName);
-                const officeLocation = locations.find((loc) => loc.name === countryName && loc.type === "office");
+                const matchedLocation = locations.find((loc) => 
+                  loc.name === countryName || 
+                  (countryName === "Ivory Coast" && loc.name === "Ivory Coast")
+                );
+                const officeLocation = matchedLocation?.type === "office" ? matchedLocation : undefined;
+                const tooltipContent = matchedLocation ? `${matchedLocation.name}|${matchedLocation.id}` : undefined;
 
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
                     data-tooltip-id={!isMobile ? "map-tooltip" : undefined}
-                    data-tooltip-content={!isMobile && isOfficeCountry ? countryName : undefined}
+                    data-tooltip-content={!isMobile ? tooltipContent : undefined}
                     fill={isOfficeCountry ? "#DC2626" : "#E4E7EB"}
                     stroke="#FFFFFF"
                     strokeWidth={0.5}
@@ -241,7 +241,7 @@ export function MapSection() {
                 coordinates={loc.coordinates}
                 onClick={(e: React.MouseEvent) => handleLocationClick(loc, e)}
                 data-tooltip-id={!isMobile ? "map-tooltip" : undefined}
-                data-tooltip-content={!isMobile ? loc.name : undefined}
+                data-tooltip-content={!isMobile ? `${loc.name}|${loc.id}` : undefined}
                 style={{ default: { outline: "none" }, hover: { outline: "none" }, pressed: { outline: "none" } }}
                 className="group cursor-pointer"
               >
@@ -258,11 +258,7 @@ export function MapSection() {
   );
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.8 }}
+    <section
       id="map-section"
       className="relative bg-[#ffffff] px-3 pt-8 pb-16 text-zinc-900 md:px-4 md:pb-20"
     >
@@ -356,10 +352,15 @@ export function MapSection() {
                   <X size={14} />
                 </button>
 
-                <h4 className={`mb-2 pr-6 text-base font-bold md:text-lg ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"}`}>
-                  {activeLocation.name}
+                <h4 className={`mb-2 pr-6 text-base font-bold md:text-lg ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"} flex items-center gap-2`}>
+                  <span>{activeLocation.name}</span>
+                  <img 
+                    src={`https://flagcdn.com/${activeLocation.id.toLowerCase()}.svg`} 
+                    alt={`${activeLocation.name} flag`} 
+                    className="w-5 h-3.5 object-cover rounded-xs border border-zinc-200/50 shadow-xs"
+                  />
                   {activeLocation.type === "office" && (
-                    <span className="ml-2 rounded-sm bg-red-50 px-2 py-0.5 align-middle text-xs uppercase tracking-widest text-red-400">
+                    <span className="ml-2 rounded-sm bg-red-50 px-2 py-0.5 align-middle text-xs uppercase tracking-widest text-red-400 font-medium">
                       Office
                     </span>
                   )}
@@ -396,6 +397,23 @@ export function MapSection() {
             <Tooltip
               id="map-tooltip"
               style={{ backgroundColor: "#18181b", color: "#fff", borderRadius: "8px", fontWeight: "500", fontSize: "12px", zIndex: 100 }}
+              render={({ content }) => {
+                if (!content) return null;
+                const [name, id] = content.split("|");
+                if (id) {
+                  return (
+                    <div className="flex items-center gap-2 px-1 py-0.5">
+                      <img 
+                        src={`https://flagcdn.com/${id.toLowerCase()}.svg`} 
+                        alt={`${name} flag`} 
+                        className="w-4.5 h-3 object-cover rounded-xs border border-zinc-700/50 shadow-xs"
+                      />
+                      <span>{name}</span>
+                    </div>
+                  );
+                }
+                return <span>{content}</span>;
+              }}
             />
           )}
         </div>
@@ -449,6 +467,6 @@ export function MapSection() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.section>
+    </section>
   );
 }
