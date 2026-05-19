@@ -109,7 +109,7 @@ export default function Page() {
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/20 uppercase tracking-widest text-xs">
+                <Link href="/report-incident" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/20 uppercase tracking-widest text-xs">
                   Report An Incident
                 </Link>
               </div>

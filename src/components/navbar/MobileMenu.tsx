@@ -233,12 +233,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* Footer Action */}
           <div className="mt-12 mb-6 pt-6 border-t border-gray-100">
-            <button
+            <Link
+              href="/report-incident"
               onClick={handleClose}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded text-center transition-colors shadow-lg shadow-red-600/20"
+              className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded text-center transition-colors shadow-lg shadow-red-600/20"
             >
               Report an incident
-            </button>
+            </Link>
           </div>
         </div>
       </div>
