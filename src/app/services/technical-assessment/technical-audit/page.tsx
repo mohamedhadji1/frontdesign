@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
-import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
+import { DEFCTASection } from "@/app/services/defensive-security/soc-management/DEFCTASection";
 
 const offerings = [
   {

@@ -13,7 +13,7 @@ import {
   CheckCircle2,
   ArrowRight
 } from "lucide-react";
-import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
+import { DEFCTASection } from "@/app/services/defensive-security/soc-management/DEFCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 

@@ -9,7 +9,7 @@ import { Activity, Network, ShieldCheck, FileText, CheckCircle, Settings, Shield
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
-import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASection";
+import { DEFCTASection } from "@/app/services/defensive-security/soc-management/DEFCTASection";
 
 const steps = [
   {
