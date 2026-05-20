@@ -92,12 +92,12 @@ export default function LLMSecurityAssessmentPage() {
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Audit and secure your proprietary or open-source large language models (LLMs) against prompt injections and logic bypass attacks.
+                Assessment and secure your proprietary or open-source large language models (LLMs) against prompt injections and logic bypass attacks.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
-                  Schedule an LLM Audit
+                  Schedule an LLM Assessment
                 </Link>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function LLMSecurityAssessmentPage() {
 
       {/* Interactive Process Section */}
       <InteractiveProcessSection
-        title="LLM Audit Methodology"
+        title="LLM Assessment Methodology"
         description="Discover the rigorous steps of our evaluation to guarantee the integrity of your AI models."
         steps={steps}
       />

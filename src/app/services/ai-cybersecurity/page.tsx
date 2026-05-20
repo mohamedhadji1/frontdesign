@@ -52,7 +52,7 @@ const offerings = [
     desc: "Establishment of governance and compliance frameworks for secure and ethical adoption of generative AI within your enterprise, aligned with the EU AI Act.",
     icon: <BrainCircuit className="w-8 h-8" />,
     threats: ["Regulatory non-compliance", "Unregulated AI usage"],
-    features: ["AI charter creation", "Ethical & technical audits"],
+    features: ["AI charter creation", "Ethical & technical assessments"],
     href: "/services/ai-cybersecurity/generative-ai-governance",
   },
   {
@@ -135,7 +135,7 @@ export default function AICybersecurityLandingPage() {
             />
 
             <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-2xl">
-              As Artificial Intelligence deeply transforms the corporate landscape, protecting your models from malicious exploitation becomes critical. Keystone delivers advanced security audits for your AI systems and deploys intelligent defenses to immunize your future operations.
+              As Artificial Intelligence deeply transforms the corporate landscape, protecting your models from malicious exploitation becomes critical. Keystone delivers advanced security assessments for your AI systems and deploys intelligent defenses to immunize your future operations.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -172,7 +172,7 @@ export default function AICybersecurityLandingPage() {
                   <div>
                     <h3 className="text-lg font-bold text-zinc-900 mb-2">1. Securing AI</h3>
                     <p className="text-zinc-600 text-sm leading-relaxed">
-                      Your AI models (LLMs, predictive pipelines) process highly sensitive data. We audit them to block prompt injections, behavioral evasion, model extraction, and training dataset poisoning.
+                      Your AI models (LLMs, predictive pipelines) process highly sensitive data. We assessment them to block prompt injections, behavioral evasion, model extraction, and training dataset poisoning.
                     </p>
                   </div>
                 </div>

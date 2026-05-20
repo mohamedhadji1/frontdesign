@@ -14,7 +14,7 @@ import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASec
 const steps = [
   {
     id: "inventory",
-    title: "Shadow AI Mapping & Usage Audit",
+    title: "Shadow AI Mapping & Usage Assessment",
     description: "We identify unauthorized generative AI services utilized by your employees to prevent silent data exposure.",
     icon: <Settings className="w-8 h-8 text-white" />
   },
@@ -37,9 +37,9 @@ const steps = [
     icon: <ShieldCheck className="w-8 h-8 text-white" />
   },
   {
-    id: "audit",
-    title: "Continuous Ethical & Technical Audits",
-    description: "We implement metrics and automated control tools to continuously audit the behavioral drift of your AI deployments.",
+    id: "assessment",
+    title: "Continuous Ethical & Technical Assessments",
+    description: "We implement metrics and automated control tools to continuously assessment the behavioral drift of your AI deployments.",
     icon: <CheckCircle className="w-8 h-8 text-white" />
   }
 ];

@@ -42,7 +42,7 @@ const offerings = [
     desc: "Establishing governance and compliance frameworks for secure and ethical adoption of Generative AI within the enterprise.",
     icon: <BrainCircuit className="w-8 h-8" />,
     threats: ["Compliance Violations", "Unregulated AI Usage"],
-    features: ["AI Policy Creation", "Ethical AI Audits"],
+    features: ["AI Policy Creation", "Ethical AI Assessments"],
     href: "/contact",
   },
   {

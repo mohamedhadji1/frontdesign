@@ -58,33 +58,39 @@ export const servicesDetails: ServiceCategory[] = [
         subCategory: "Offensive Security Testing",
         description: "Test the limits of your perimeter. Identify zero-day vulnerabilities, physical weaknesses, and social engineering risks through full-scale adversarial emulation."
       },
+          {
+            name: "Web & Mobile Application Assessment",
+            slug: "web-mobile-application-assessment",
+            subCategory: "Web & Mobile Application Assessment",
+            description: "Keystone offers a specialized assessment service to assess the security of your company's web and mobile applications, thereby ensuring enhanced protection against cyber threats."
+          },
     ],
   },
   {
     category: "Assessment and Technical Assistance",
-    href: "/services/technical-audit",
+    href: "/services/technical-assessment",
     title: "Assessment and Technical Assistance",
     items: [
       {
-        name: "Technical Audit",
-        subCategory: "Technical Audit: In-Depth Systems Evaluation",
+        name: "Technical Assessment",
+        subCategory: "Technical Assessment: In-Depth Systems Evaluation",
         subItems: [
-          { name: "Infrastructure Assessment", slug: "technical-audit/infrastructure-assessment" },
-          { name: "Cloud Environment Assessment", slug: "technical-audit/cloud-environment-assessment" },
-          { name: "Industrial System Assessment", slug: "technical-audit/industrial-system-assessment" },
-          { name: "Core Banking and Internet Banking System Assessment", slug: "technical-audit/core-internet-banking-system-assessment" },
-          { name: "Architecture Assessment", slug: "technical-audit/architecture-assessment" },
-          { name: "Active Directory Infrastructure Assessment", slug: "technical-audit/active-directory-assessment" },
+          { name: "Infrastructure Assessment", slug: "technical-assessment/infrastructure-assessment" },
+          { name: "Cloud Environment Assessment", slug: "technical-assessment/cloud-environment-assessment" },
+          { name: "Industrial System Assessment", slug: "technical-assessment/industrial-system-assessment" },
+          { name: "Core Banking and Internet Banking System Assessment", slug: "technical-assessment/core-internet-banking-system-assessment" },
+          { name: "Architecture Assessment", slug: "technical-assessment/architecture-assessment" },
+          { name: "Active Directory Infrastructure Assessment", slug: "technical-assessment/active-directory-assessment" },
         ]
       },
       {
         name: "Technical Assistance",
         subCategory: "Technical Assistance: Professional and Responsive Support",
         subItems: [
-          { name: "System Hardening", slug: "technical-audit/system-hardening" },
-          { name: "Hardening Guides Development", slug: "technical-audit/hardening-guides" },
-          { name: "Network Security Architecture Design", slug: "technical-audit/network-security-architecture" },
-          { name: "Application Security Support", slug: "technical-audit/application-security-support" },
+          { name: "System Hardening", slug: "technical-assessment/system-hardening" },
+          { name: "Hardening Guides Development", slug: "technical-assessment/hardening-guides" },
+          { name: "Network Security Architecture Design", slug: "technical-assessment/network-security-architecture" },
+          { name: "Application Security Support", slug: "technical-assessment/application-security-support" },
         ]
       }
     ]
@@ -125,12 +131,12 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance, Risk and Compliance",
     items: [
       {
-        name: "IS Security Assessment",
-        slug: "governance-risk-compliance/is-security-Assessment",
-        subCategory: "IS Security Assessment",
+        name: "Information System Security Assessment",
+        slug: "governance-risk-compliance/information-system-security-assessment",
+        subCategory: "Information System Security Assessment",
         subItems: [
-          { name: "Regulatory Assessment", slug: "governance-risk-compliance/is-security-Assessment/regulatory" },
-          { name: "Standards Compliance Assessment (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/is-security-Assessment/standards" }
+          { name: "Regulatory Assessment", slug: "governance-risk-compliance/information-system-security-assessment/regulatory" },
+          { name: "Standards Compliance Assessment (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/information-system-security-assessment/standards" }
         ]
       },
       {
@@ -178,9 +184,9 @@ export const servicesDetails: ServiceCategory[] = [
         description: "Ensure responsible management of personal data in strict alignment with regulations like GDPR. We assist with consent, privacy rights, and data protection."
       },
       {
-        name: "Audit of authorizations",
-        slug: "governance-risk-compliance/access-rights-audit",
-        description: "Ensure access rights are assigned securely and appropriately. We conduct thorough audits to identify privileges risks and ensure effective governance."
+        name: "Assessment of authorizations",
+        slug: "governance-risk-compliance/access-rights-assessment",
+        description: "Ensure access rights are assigned securely and appropriately. We conduct thorough assessments to identify privileges risks and ensure effective governance."
       },
       {
         name: "Virtual CISO & DPO",

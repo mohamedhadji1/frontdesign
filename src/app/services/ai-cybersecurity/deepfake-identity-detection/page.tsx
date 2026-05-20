@@ -14,7 +14,7 @@ import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASec
 const steps = [
   {
     id: "assess",
-    title: "KYC Channel Robustness Audit",
+    title: "KYC Channel Robustness Assessment",
     description: "We evaluate your online identity verification procedures, biometric controls, and passive/active liveness check solutions.",
     icon: <Settings className="w-8 h-8 text-white" />
   },
@@ -97,7 +97,7 @@ export default function DeepfakeIdentityDetectionPage() {
 
               <div className="flex flex-wrap items-center gap-4">
                 <Link href="/contact" className="px-8 py-3.5 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/25">
-                  Audit Your KYC Process
+                  Assessment Your KYC Process
                 </Link>
               </div>
             </div>

@@ -55,7 +55,7 @@ const certificationsList: Certification[] = [
       "Cryptographic Protection",
       "Physical & Ops Security"
     ],
-    keystoneApproach: "Executes gap assessments, authors customized policies, and guides you through the final registrar audit."
+    keystoneApproach: "Executes gap assessments, authors customized policies, and guides you through the final registrar assessment."
   },
   {
     slug: "iso-27002",
@@ -153,7 +153,7 @@ const certificationsList: Certification[] = [
     details: "A comprehensive catalog of security and privacy controls designed to protect federal assets and systems.",
     keyControls: [
       "Identification & Auth",
-      "Audit Logging Controls",
+      "Assessment Logging Controls",
       "Configuration Hardening",
       "System Integrity Validation"
     ],
@@ -179,11 +179,11 @@ const certificationsList: Certification[] = [
   {
     slug: "soc-2",
     src: "/certif/SOC2.webp",
-    alt: "SOC 2 Audit",
+    alt: "SOC 2 Assessment",
     title: "SOC 2 Type I & II",
     category: "Regulatory & Industry",
     categoryPill: "Trust Services",
-    overview: "The premiere audit framework for technology and cloud service organizations.",
+    overview: "The premiere assessment framework for technology and cloud service organizations.",
     details: "Evaluates client systems based on AICPA trust criteria: security, availability, and confidentiality.",
     keyControls: [
       "Infrastructure Monitoring",
@@ -191,7 +191,7 @@ const certificationsList: Certification[] = [
       "Software SDLC Governance",
       "System Recovery Validation"
     ],
-    keystoneApproach: "Streamlines SOC 2 readiness, designs continuous control monitors, and prepares pre-audit evidence."
+    keystoneApproach: "Streamlines SOC 2 readiness, designs continuous control monitors, and prepares pre-assessment evidence."
   },
   {
     slug: "swift-csp",
@@ -220,12 +220,12 @@ const certificationsList: Certification[] = [
     overview: "U.S. standard for protecting sensitive patient health information (PHI).",
     details: "Establishes administrative, physical, and technical safeguards for protected health information.",
     keyControls: [
-      "PHI Encryption & Auditing",
+      "PHI Encryption & Assessing",
       "Facility Security Controls",
       "Risk Analysis Governance",
       "BAA Partner Attestations"
     ],
-    keystoneApproach: "Conducts HIPAA risk assessments, audits technical safeguards, and implements encryption for health data."
+    keystoneApproach: "Conducts HIPAA risk assessments, assessments technical safeguards, and implements encryption for health data."
   },
   {
     slug: "nist-cybersecurity",
@@ -580,7 +580,7 @@ export default function CertificationsPage() {
             <div className="space-y-3">
               <div className="flex justify-center text-red-600"><Compass size={36} /></div>
               <p className="text-4xl font-extrabold text-zinc-950 tracking-tighter">100+</p>
-              <h5 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Audits Assisted</h5>
+              <h5 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Assessments Assisted</h5>
               <p className="text-sm text-zinc-600 font-medium">A pristine track record of helping companies satisfy auditor inquiries.</p>
             </div>
           </div>

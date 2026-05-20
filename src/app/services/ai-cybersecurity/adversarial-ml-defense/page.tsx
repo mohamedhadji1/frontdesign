@@ -14,7 +14,7 @@ import { DEFCTASection } from "../../defensive-security/soc-management/DEFCTASec
 const steps = [
   {
     id: "pipeline",
-    title: "Machine Learning Pipeline Audit",
+    title: "Machine Learning Pipeline Assessment",
     description: "We map the data flow: from initial ingestion to training, validation, and production model inference.",
     icon: <Settings className="w-8 h-8 text-white" />
   },

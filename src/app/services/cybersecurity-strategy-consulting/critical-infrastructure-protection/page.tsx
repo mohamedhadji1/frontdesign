@@ -22,8 +22,8 @@ export default function CriticalInfrastructureProtectionPage() {
       icon: CloudCog,
     },
     {
-      title: "In-depth Infrastructure Audit",
-      description: "We conduct detailed audits to assess the security of these infrastructures, identifying gaps and recommending appropriate solutions.",
+      title: "In-depth Infrastructure Assessment",
+      description: "We conduct detailed assessments to assess the security of these infrastructures, identifying gaps and recommending appropriate solutions.",
       icon: ShieldCheck,
     },
     {
@@ -81,7 +81,7 @@ export default function CriticalInfrastructureProtectionPage() {
               />
 
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">
-                Keystone offers specialized expertise in developing national frameworks for the protection of critical infrastructures. We support governments and relevant entities in establishing standards, audits, and compliance frameworks adapted to these vital infrastructures.
+                Keystone offers specialized expertise in developing national frameworks for the protection of critical infrastructures. We support governments and relevant entities in establishing standards, assessments, and compliance frameworks adapted to these vital infrastructures.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
