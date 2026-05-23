@@ -222,7 +222,7 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Training & Awareness",
     items: [
       {
-        name: "Information",
+        name: "Training",
         slug: "awareness",
         subCategory: "Strategic Frameworks",
         subItems: [
@@ -243,6 +243,7 @@ export const servicesDetails: ServiceCategory[] = [
           { name: "Attack Simulation", slug: "services/awareness/attack-simulation" },
           { name: "Phishing Campaigns", slug: "services/awareness/phishing-campaigns" },
           { name: "Agent619", slug: "services/awareness/agent619" },
+          { name: "Development of an Awareness Program", slug: "services/awareness/development-of-an-awareness-program" },
         ],
       },
       {

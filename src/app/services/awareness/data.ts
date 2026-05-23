@@ -19,7 +19,7 @@ export const awarenessPages: AwarenessPageData[] = [
     slug: "awareness-workshops",
     title: "Awareness Workshops",
     eyebrow: "Interactive Learning",
-    subtitle: "Dive into immersive security workshops",
+    subtitle: "Dive into immersive security workshops that go beyond traditional awareness sessions carefully designed to engage participants in realistic, interactive scenarios that highlight today’s most pressing cybersecurity threats. security workshops",
     description:
       "Our awareness workshops go far beyond simple information sessions. They are carefully designed to immerse participants in realistic, interactive scenarios that highlight today's most relevant security threats. Led by experienced experts, these workshops cover data protection, cybersecurity best practices, and risk management in an engaging and memorable way.",
     heroImage:
@@ -224,6 +224,35 @@ export const awarenessPages: AwarenessPageData[] = [
           "By experiencing the attacker perspective, teams develop a deeper and more lasting understanding of defensive behavior.",
       },
     ],
+  },
+  {
+    slug: "development-of-an-awareness-program",
+    title: "Development of an Awareness Program",
+    eyebrow: "Customized for Your Protection",
+    subtitle: "We understand that every organization has unique awareness needs. That is why we design bespoke awareness programs to strengthen the security culture within your company.",
+    description:
+      "We understand that every organization has unique awareness needs. That is why we design bespoke awareness programs to strengthen the security culture within your company. Our professional service provides a comprehensive approach to planning, structuring, and delivering security training tailored to your organizational structure.",
+    heroImage:
+      "https://ziedhamdi.com/wp-content/uploads/2024/10/photo047_vertical.jpg",
+    features: [
+      {
+        title: "1. Adaptability",
+        description:
+          "Create programs specifically tailored to your teams and objectives. We design security training modules specifically customized to different operational groups (such as Finance, HR, Developers, and Executives) to maximize relevance and retention, while mapping specific cultural and behavioral vulnerabilities within your teams to tailor the curriculum directly to your exact organizational threat profile.",
+      },
+      {
+        title: "2. Continuous engagement",
+        description:
+          "Integrate security awareness into your long-term corporate culture. We combine active workshops, bite-sized micro-learning, mock campaigns, and direct awareness newsletters to keep security at the forefront of daily activities, building a persistent security-first company culture supported by active internal security champion networks and custom onboarding paths.",
+      },
+      {
+        title: "3. Monitoring and evaluation",
+        description:
+          "Measure the effectiveness of your programs and make adjustments as needed. We launch realistic phishing, vishing, and social engineering simulations to test employee alertness under real-world conditions, leveraging intuitive dashboard analytics and compliance reports to measure program effectiveness and demonstrate clear risk reduction.",
+      },
+    ],
+    closing:
+      "Invest in awareness programs that educate, empower, and protect your organization against potential threats.",
   },
 ];
 

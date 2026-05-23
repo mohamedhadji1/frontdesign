@@ -181,7 +181,7 @@ export function HeroSection() {
               whileHover={{ x: 10 }}
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
-              Get Security Assessment
+              Get information about the programs
               <span>→</span>
             </MotionLink>
             <Link href="/about" className="w-full sm:w-auto">

@@ -11,7 +11,7 @@ export default function CareersPage() {
   const allItems = careersDetails.flatMap(cat => cat.items);
   
   return (
-    <main className="min-h-screen bg-[#0a0a0a]">
+    <main className="min-h-screen bg-white text-zinc-950 overflow-x-hidden">
       <CareersSection 
         category="General" 
         items={allItems} 

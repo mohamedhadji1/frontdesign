@@ -21,7 +21,7 @@ export default async function CareerCategoryPage({ params }: PageProps) {
   }
 
   return (
-    <main className="bg-[#0a0a0a]">
+    <main className="min-h-screen bg-white text-zinc-950 overflow-x-hidden">
       <CareersSection 
         category={categoryData.category} 
         items={categoryData.items}

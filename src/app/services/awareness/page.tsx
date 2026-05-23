@@ -118,7 +118,7 @@ export default function TrainingAwarenessPage() {
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
               <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
-                Get Security Assessment
+                Get information about the programs
                 <ArrowRight size={18} />
               </Link>
             </div>

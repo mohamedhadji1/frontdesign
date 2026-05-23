@@ -53,7 +53,7 @@ export function AboutHeroSection({
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto items-center lg:items-start">
             <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full flex items-center justify-center gap-3 transition-colors shadow-lg whitespace-nowrap">
-              Get Security Assessment
+              Get information about the programs
               <span className="font-bold">→</span>
             </button>
             <button className="border-b border-white hover:border-red-500 text-white hover:text-red-500 font-medium py-3 px-6 flex items-center justify-center transition-all bg-transparent w-max">
