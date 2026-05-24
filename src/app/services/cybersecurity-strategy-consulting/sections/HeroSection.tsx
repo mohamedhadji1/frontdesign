@@ -85,15 +85,6 @@ export function HeroSection() {
                 →
               </span>
             </Link>
-            <Link
-              href="/services"
-              className="border-b border-white/30 hover:border-white text-white font-medium py-3 px-6 flex items-center gap-2 transition-all bg-transparent group"
-            >
-              View all services
-              <span className="group-hover:translate-x-1 transition-transform">
-                →
-              </span>
-            </Link>
           </motion.div>
         </div>
       </div>

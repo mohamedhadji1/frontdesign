@@ -81,28 +81,31 @@ export default function TrainingAwarenessPage() {
       
       {/* Hero Section */}
       <motion.section 
-        initial={{ opacity: 0, y: 40 }} 
-        animate={{ opacity: 1, y: 0 }} 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
         transition={{ duration: 0.8 }} 
-        className="relative w-full h-[60dvh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/background/bg8.jpeg"
-            alt="Keystone Training Background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
+          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl pt-10"
+            className="w-full max-w-5xl"
           >
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Training & Awareness

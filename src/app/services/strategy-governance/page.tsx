@@ -25,14 +25,14 @@ import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const importanceItems = [
   { title: "Strategic Oversight", d: "Train managers to develop policies, manage risks, and lead security strategies with precision.", icon: Layout },
-  { title: "Resilient Culture", d: "Encourage awareness at all levels and foster a proactive protection culture throughout the org.", icon: Users },
-  { title: "Data-Driven Choices", d: "Equip leaders to make strategic choices aligned with business goals and risk appetite.", icon: Target },
+  { title: "Resilient Culture", d: "Encourage awareness at all levels and foster a proactive protection culture throughout the organization.", icon: Users },
+  { title: "Data-Driven Choices", d: "Equip leaders to make strategic choices aligned with business goals.", icon: Target },
 ];
 
 const programs = [
   { title: "Risk & Compliance", d: "Strategies to assess and manage risks while respecting international standards.", icon: ClipboardCheck },
   { title: "Executive Leadership", d: "Developing leadership skills to lead high-performing technical security teams.", icon: Trophy },
-  { title: "Strategic Roadmaps", d: "Developing plans for proactive security aligned with corporate objectives.", icon: ShieldCheck },
+  { title: "Strategic Roadmaps", d: "Developing strategic plans for proactive security aligned with business objectives.", icon: ShieldCheck },
 ];
 
 export default function SecurityManagementPage() {
@@ -63,12 +63,12 @@ export default function SecurityManagementPage() {
           <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl pt-10"
+            className="w-full max-w-5xl"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
                <span>Information</span>

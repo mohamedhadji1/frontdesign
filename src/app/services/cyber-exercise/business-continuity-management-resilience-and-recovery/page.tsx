@@ -45,28 +45,31 @@ export default function BcmPage() {
       
       {/* Hero Section */}
       <motion.section 
-        initial={{ opacity: 0, y: 40 }} 
-        animate={{ opacity: 1, y: 0 }} 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
         transition={{ duration: 0.8 }} 
-        className="relative w-full h-[60dvh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
+        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/background/bg10.png"
-            alt="Operational Resilience"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
+          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl pt-10"
+            className="w-full max-w-5xl"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
                <span>Resilience</span>
@@ -88,7 +91,7 @@ export default function BcmPage() {
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
                <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
-                  Build your BCP <ArrowRight size={18} />
+                  Request your training <ArrowRight size={18} />
                </Link>
             </div>
           </motion.div>

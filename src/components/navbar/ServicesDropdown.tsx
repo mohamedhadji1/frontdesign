@@ -227,7 +227,7 @@ export const servicesDetails: ServiceCategory[] = [
         subCategory: "Strategic Frameworks",
         subItems: [
           { name: "Security Management", slug: "strategy-governance" },
-          { name: "Governance, Risk, and Compliance", slug: "governance-risk-compliance" },
+          { name: "Governance, Risk, and Compliance", slug: "cyber-exercise/governance-risk-compliance" },
           { name: "Business Continuity Management, Resilience, and Recovery", slug: "cyber-exercise/business-continuity-management-resilience-and-recovery" },
           { name: "Cybersecurity and Investigation", slug: "cyber-exercise/cybersecurity-and-investigation" },
         ],

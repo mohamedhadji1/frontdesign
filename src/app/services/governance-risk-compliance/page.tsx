@@ -83,7 +83,7 @@ export default function GrcPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -98,12 +98,12 @@ export default function GrcPage() {
           <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl pt-10"
+            className="w-full max-w-5xl"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>Governance</span>
@@ -143,7 +143,7 @@ export default function GrcPage() {
         </div>
 
         {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default">
+        <div className="relative w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default mt-auto">
           <style>{`
             @keyframes marquee-grc {
               0% { transform: translateX(0); }
@@ -177,7 +177,7 @@ export default function GrcPage() {
               .map((logo, idx) => (
                 <div
                   key={idx}
-                  className="relative h-14 w-14 shrink-0 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
+                  className="relative h-[80px] w-[80px] shrink-0 sm:h-[100px] sm:w-[100px] lg:h-[120px] lg:w-[120px]"
                 >
                   <Image
                     src={logo.src}
