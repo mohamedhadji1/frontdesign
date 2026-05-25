@@ -42,7 +42,16 @@ export const metadata: Metadata = {
   title: "Keystone",
   description: "Keystone - Digital Transformation and Cybersecurity",
   icons: {
-    icon: "/logos/site icon.png",
+    icon: [
+      {
+        url: "/logos/site icon black.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/logos/site icon.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
     shortcut: "/logos/site icon.png",
     apple: "/logos/site icon.png",
   },

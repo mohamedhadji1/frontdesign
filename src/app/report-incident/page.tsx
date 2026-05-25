@@ -149,6 +149,10 @@ ${formData.message}
                     <span className="font-semibold text-zinc-700">Keystone Algeria:</span>
                     <a href="tel:+21321000000" className="font-extrabold text-red-650 hover:underline">+213 21 000 000</a>
                   </div>
+                  <div className="flex items-center justify-between border-t border-zinc-200/40 pt-2">
+                    <span className="font-semibold text-zinc-700">Keystone Mauritania:</span>
+                    <a href="tel:+22220000000" className="font-extrabold text-red-650 hover:underline">+222 20 000 000</a>
+                  </div>
                 </div>
               </div>
 
