@@ -31,7 +31,7 @@ export const serviceLinks: ServiceLink[] = [
     iconName: "GraduationCap",
   },
   {
-    name: "Strategic Advisors",
+    name: "Strategic Advisory",
     description: "Cybersecurity strategies aligned with business objectives to maximize ROI and strengthen resilience.",
     href: "/services/cybersecurity-strategy-consulting",
     iconName: "Briefcase",
