@@ -223,7 +223,7 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "Training",
-        slug: "awareness",
+        slug: "training",
         subCategory: "Strategic Frameworks",
         subItems: [
           { name: "Security Management", slug: "strategy-governance" },
@@ -234,6 +234,7 @@ export const servicesDetails: ServiceCategory[] = [
       },
       {
         name: "Awareness",
+        slug: "awareness",
         subCategory: "Awareness Programs",
         subItems: [
           { name: "Cyber Escape Room", slug: "services/awareness/cyber-escape-room" },

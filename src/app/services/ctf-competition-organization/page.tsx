@@ -82,6 +82,24 @@ const outcomes = [
   },
 ];
 
+const approachItems = [
+  {
+    title: "Premium Custom Architecture",
+    description: "Every CTF event features custom-tailored challenges, vulnerable assets, and puzzle systems built exactly around your specific software stacks and operational risks.",
+    icon: Flag,
+  },
+  {
+    title: "High-Fidelity Gamification",
+    description: "We deploy real-time cyber scoreboards, interactive hint systems, dynamic achievement badges, and realistic simulated environments that hook participants instantly.",
+    icon: Gamepad2,
+  },
+  {
+    title: "Targeted Uplift Playbooks",
+    description: "After the buzzer, we deliver deep-dive walkthrough videos for all challenges and a detailed organizational capability scorecard to guide future training budgets.",
+    icon: ClipboardCheck,
+  },
+];
+
 export default function CtfCompetitionOrganizationPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white overflow-hidden">
@@ -260,6 +278,52 @@ export default function CtfCompetitionOrganizationPage() {
           </div>
         </div>
       </motion.section>
+
+      <CyberSectionDivider theme="red" />
+
+      {/* Our Strategic Approach Section */}
+      <section className="py-24 bg-white text-zinc-950 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl mx-auto mb-20 text-center">
+            <div className="mb-6 inline-flex items-center gap-3 text-red-600 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <span>OUR STRATEGY</span>
+            </div>
+            <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 tracking-tighter uppercase leading-[0.95] text-zinc-900">
+              Our Approach to CTF Competitions
+            </h2>
+            <p className="text-lg text-zinc-600 max-w-2xl mx-auto font-medium">
+              We engineer world-class, custom-tailored gaming environments designed to educate, test, and elevate.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {approachItems.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="group relative bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-red-600/5 rounded-full blur-2xl group-hover:bg-red-600/10 transition-colors" />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
+                  <item.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
+                  {item.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed text-base font-medium">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CyberSectionDivider theme="red" />
 

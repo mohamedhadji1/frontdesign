@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  ShieldCheck,
-  TrendingDown,
-  FileCheck,
-  Zap,
-  Users,
-  BarChart3,
   Shield,
+  Users,
+  TrendingDown,
+  BookOpen,
+  Award,
+  Settings,
+  Target,
   Lightbulb,
-  Lock,
+  GraduationCap,
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
@@ -21,49 +21,49 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
-const whyCrucialItems = [
+const whyEssentialItems = [
   {
-    title: "Protect Your Brand",
+    title: "Strengthen Skills",
     description:
-      "Avoid data breaches and reputational damage by strengthening secure behaviours within your organization. Your brand's trust is built on the vigilance of your people.",
-    icon: ShieldCheck,
+      "Develop security expertise to better detect and counter threats. Empower your team with the knowledge to act decisively when facing cyber incidents.",
+    icon: Shield,
+  },
+  {
+    title: "Create a Security Culture",
+    description:
+      "Involve the entire team in the protection of the company's data and assets. Security is everyone's responsibility, not just the IT department.",
+    icon: Users,
   },
   {
     title: "Reduce Risks",
     description:
-      "Reduce vulnerabilities by actively involving your team in defending against threats. An aware workforce is the most effective security layer you can deploy.",
+      "Reduce the chances of data and system compromise through better preparation. A well-trained team is your strongest line of defense.",
     icon: TrendingDown,
   },
+];
+
+const pedagogicalApproachItems = [
   {
-    title: "Ensure Compliance",
+    title: "Practical & Theoretical Courses",
     description:
-      "Be in compliance with safety standards and protect sensitive data by educating your team on best practices. Stay ahead of regulatory requirements.",
-    icon: FileCheck,
+      "Programs that combine theoretical knowledge and practical exercises, providing participants a complete learning experience to acquire applicable cybersecurity skills.",
+    icon: BookOpen,
+  },
+  {
+    title: "Expert Instructors",
+    description:
+      "Courses led by certified professionals with extensive field experience. Our instructors bring real-world scenarios and insights from the frontlines of cybersecurity.",
+    icon: Award,
+  },
+  {
+    title: "Customized Programs",
+    description:
+      "Training modules that can be adapted to the specific needs and maturity level of your organization, ensuring maximum relevance and impact for every participant.",
+    icon: Settings,
   },
 ];
 
-const awarenessApproachItems = [
-  {
-    title: "Captivating Content",
-    description:
-      "Interactive workshops, educational games, and immersive simulations that engage and educate simultaneously. We move beyond boring compliance slides to create memorable learning experiences.",
-    icon: Zap,
-  },
-  {
-    title: "Personalisation",
-    description:
-      "Tailored programs, adapted to the specific needs of your company and industry. Every department faces unique threats, and our training reflects that reality.",
-    icon: Users,
-  },
-  {
-    title: "Impact Measurement",
-    description:
-      "Advanced assessment tools to track and measure the evolution of safety-related behaviours and knowledge. Data-driven insights to continuously improve your security posture.",
-    icon: BarChart3,
-  },
-];
-
-export default function AwarenessPage() {
+export default function TrainingPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white overflow-hidden">
       {/* Hero Section */}
@@ -97,27 +97,27 @@ export default function AwarenessPage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <Link href="/services" className="hover:text-red-300 transition-colors">Services</Link>
               <ChevronRight size={8} />
-              <span className="text-white/60">Awareness</span>
+              <span className="text-white/60">Training</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Cybersecurity{" "}
+              Information Security{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
-                Awareness
+                Training
               </span>
             </h1>
 
             <HeroTypeLine
               items={[
-                "Protect Your Business",
-                "Educate Your Team",
-                "Build Human Resilience",
+                "Strengthen Key Skills",
+                "Protect Your Assets",
+                "Build Cyber Resilience",
               ]}
               className="mb-6"
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Cybersecurity awareness represents much more than just an initiative. It is the key to protecting your business against increasingly sophisticated and emerging threats. KEYSTONE offers a comprehensive awareness approach based on in-depth technical expertise and a customised program tailored to your needs.
+              Information security training is a fundamental element to ensure the robustness of your organization against growing digital threats. At KEYSTONE, our training program is designed to educate and equip your team with the knowledge and skills necessary to face the current cybersecurity challenges.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -125,7 +125,7 @@ export default function AwarenessPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Start Your Awareness Program <ArrowRight size={18} />
+                Explore Training Programs <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -134,7 +134,7 @@ export default function AwarenessPage() {
       </motion.section>
 
       <CyberSectionDivider theme="red" />
-      <SectionDivider title="Awareness" />
+      <SectionDivider title="Training" />
 
       {/* Intro Context Section */}
       <section className="pb-20 pt-10 bg-white relative overflow-hidden">
@@ -147,13 +147,13 @@ export default function AwarenessPage() {
               transition={{ duration: 0.8 }}
               className="text-2xl lg:text-3xl text-zinc-800 leading-relaxed font-light"
             >
-              In today&apos;s digital landscape, every business is a potential target. Cybersecurity awareness is not just about informing your team about the dangers. It is a fundamental pillar for protecting your brand, reducing risks, and ensuring compliance.
+              Information security is not just a matter of technology; it relies on the skills and awareness of your team. Our training aims to develop expertise, create a security culture, and reduce risks across your entire organization.
             </motion.p>
           </div>
         </div>
       </section>
 
-      {/* Section 1: Why Awareness is Crucial */}
+      {/* Section 1: Why Training is Essential */}
       <CyberSectionDivider />
       <section className="mb-20 bg-white relative overflow-hidden">
         <div className="px-6 lg:px-16">
@@ -173,15 +173,15 @@ export default function AwarenessPage() {
                 transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
               >
-                Why is Awareness Crucial?
+                Why Information Security Training is Essential
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
-                In today&apos;s digital landscape, every business is a potential target. Cybersecurity awareness is a fundamental pillar for securing your organization from the inside out.
+                Information security is not just a matter of technology; it relies on the skills and awareness of your team. Our training empowers every member of your organization to be a frontline defender.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {whyCrucialItems.map((item, idx) => (
+              {whyEssentialItems.map((item, idx) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -215,7 +215,7 @@ export default function AwarenessPage() {
 
       <CyberSectionDivider />
 
-      {/* Section 2: Our Awareness Approach */}
+      {/* Section 2: Our Pedagogical Approach */}
       <section className="mb-20 bg-white relative overflow-hidden">
         <div className="px-6 lg:px-16">
           <div className="max-w-6xl mx-auto">
@@ -234,15 +234,15 @@ export default function AwarenessPage() {
                 transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
               >
-                Our Awareness Approach
+                Our Pedagogical Approach
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
-                Being aware of the importance of making cybersecurity awareness captivating, relevant, and memorable, the experts at KEYSTONE have developed an approach based on security expertise.
+                Our training programs blend theory and practice, delivered by industry experts and customized to your organization&apos;s unique threat landscape and operational needs.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {awarenessApproachItems.map((item, idx) => {
+              {pedagogicalApproachItems.map((item, idx) => {
                 const isRed = idx % 2 === 0;
                 return (
                   <motion.div
@@ -279,7 +279,7 @@ export default function AwarenessPage() {
 
       <CyberSectionDivider theme="red" />
 
-      {/* Section 3: Invest in Prevention */}
+      {/* Section 3: Invest in Skills */}
       <section className="bg-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/3 rounded-full blur-3xl" />
@@ -303,10 +303,10 @@ export default function AwarenessPage() {
                 transition={{ duration: 0.7 }}
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
               >
-                Invest in Prevention, Protect Your Future
+                Invest in Skills
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-700 font-light leading-relaxed max-w-2xl mt-6">
-                By choosing KEYSTONE, you are investing in the protection of your business against growing digital threats. We help you build a proactive security culture, thereby strengthening your resilience and competitiveness in the market.
+                By collaborating with KEYSTONE for your training needs, you are investing in the long-term security and resilience of your organization. We support you in building a team that is prepared, vigilant, and capable of navigating the complex cybersecurity landscape.
               </p>
             </motion.div>
 
@@ -322,14 +322,14 @@ export default function AwarenessPage() {
                 <div className="flex flex-col h-full">
                   <div className="mb-8">
                     <div className="inline-flex p-4 bg-red-100 rounded-lg">
-                      <Shield size={28} className="text-red-600" strokeWidth={1.5} />
+                      <Target size={28} className="text-red-600" strokeWidth={1.5} />
                     </div>
                   </div>
                   <h3 className="text-2xl font-light text-zinc-900 mb-4">
-                    Proactive Security Culture
+                    Targeted Expertise
                   </h3>
                   <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
-                    Transform your team from potential vulnerabilities into your strongest line of defense through continuous awareness and engagement.
+                    Build specialized competencies aligned to your organization&apos;s specific risk profile and industry requirements.
                   </p>
                   <motion.div
                     className="mt-8 h-0.5 w-0 rounded-full bg-red-600 group-hover:w-12 transition-all duration-500"
@@ -351,10 +351,10 @@ export default function AwarenessPage() {
                     </div>
                   </div>
                   <h3 className="text-2xl font-light text-zinc-900 mb-4">
-                    Strengthened Resilience
+                    Proactive Defense
                   </h3>
                   <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
-                    Build organizational resilience against increasingly sophisticated threats through knowledge and behavioural change.
+                    Transform reactive security postures into proactive defense strategies through continuous skill development.
                   </p>
                   <motion.div
                     className="mt-8 h-0.5 w-0 rounded-full bg-blue-600 group-hover:w-12 transition-all duration-500"
@@ -372,14 +372,14 @@ export default function AwarenessPage() {
                 <div className="flex flex-col h-full">
                   <div className="mb-8">
                     <div className="inline-flex p-4 bg-red-100 rounded-lg">
-                      <Lock size={28} className="text-red-600" strokeWidth={1.5} />
+                      <GraduationCap size={28} className="text-red-600" strokeWidth={1.5} />
                     </div>
                   </div>
                   <h3 className="text-2xl font-light text-zinc-900 mb-4">
-                    Safer Digital Future
+                    Certified Excellence
                   </h3>
                   <p className="text-zinc-700 leading-relaxed font-light text-base flex-grow">
-                    Your safety is our priority. Together, let&apos;s educate, protect, and transform your business for a safer digital future.
+                    Achieve recognized certifications and credentials that validate your team&apos;s cybersecurity capabilities.
                   </p>
                   <motion.div
                     className="mt-8 h-0.5 w-0 rounded-full bg-red-600 group-hover:w-12 transition-all duration-500"

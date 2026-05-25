@@ -14,12 +14,32 @@ import {
   RotateCcw,
   ArrowRight,
   ChevronRight,
+  Users,
+  GraduationCap,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+
+const approachItems = [
+  {
+    title: "Crisis Simulation Exercises",
+    description: "Immersive, realistic crisis simulations to evaluate and reinforce your team's decision-making and operational reflexes under extreme pressure.",
+    icon: Zap,
+  },
+  {
+    title: "Seasoned Expert Guidance",
+    description: "Benefit from direct mentoring, active feedback, and tactical insights from business continuity professionals with extensive real-world field experience.",
+    icon: Users,
+  },
+  {
+    title: "Tailored Customization",
+    description: "Bespoke training programs designed specifically to match your organization's unique technical architecture, industry-specific risks, and operational needs.",
+    icon: GraduationCap,
+  },
+];
 
 const importanceItems = [
   { title: "Plan for Unexpected", d: "Prepare action plans to maintain operations even during major disruptions.", icon: ClipboardList },
@@ -176,6 +196,51 @@ export default function BcmPage() {
           </div>
         </div>
       </section>
+      
+      <CyberSectionDivider />
+
+      {/* Our Practical Approach Section */}
+      <section className="py-24 bg-white text-zinc-950 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-3xl mx-auto mb-20 text-center">
+            <SectionDivider title="OUR APPROACH" className="mb-10 !justify-center text-red-600" />
+            <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 tracking-tighter uppercase leading-[0.95] text-zinc-900">
+              A Practical Approach to Resilience
+            </h2>
+            <p className="text-lg text-zinc-600 max-w-2xl mx-auto font-medium">
+              We translate theory into action, preparing your workforce to lead through high-stress operational crises.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {approachItems.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="group relative bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-red-600/5 rounded-full blur-2xl group-hover:bg-red-600/10 transition-colors" />
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                  <item.icon size={22} />
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
+                  {item.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed text-base font-medium">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CyberSectionDivider />
       <ContactCTASection />
     </main>

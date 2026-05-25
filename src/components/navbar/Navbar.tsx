@@ -58,7 +58,7 @@ export function Navbar() {
     <>
       <nav
         className={`fixed inset-x-0 top-0 z-[70] transition-all duration-300 ${scrolled || forceDarkNavbar
-            ? "border-b border-white/10 bg-zinc-950/85 shadow-2xl backdrop-blur-xl"
+            ? "border-b border-white/10 bg-black shadow-2xl"
             : "bg-transparent py-4 md:py-6"
           }`}
       >
