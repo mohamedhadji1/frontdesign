@@ -114,16 +114,9 @@ export function ContactSection() {
                 >
                   <option value="" disabled>Select a Service</option>
                   {servicesDetails.map(category => (
-                    <optgroup key={category.category} label={category.category} className="font-bold text-gray-900 bg-gray-100">
-                      {category.items.map((item, idx) => {
-                        const itemName = typeof item === 'string' ? item : item.name;
-                        return (
-                          <option key={`${category.category}-${idx}`} value={itemName} className="bg-white text-gray-700 font-normal">
-                            {itemName}
-                          </option>
-                        );
-                      })}
-                    </optgroup>
+                    <option key={category.category} value={category.category} className="bg-white text-gray-700 font-normal">
+                      {category.category}
+                    </option>
                   ))}
                   <option value="Other">Other</option>
                 </select>
