@@ -100,11 +100,9 @@ export default function AwarenessPage() {
               <span className="text-white/60">Awareness</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-red leading-[1] mb-6 uppercase">
               Cybersecurity{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
                 Awareness
-              </span>
             </h1>
 
             <HeroTypeLine
@@ -113,7 +111,7 @@ export default function AwarenessPage() {
                 "Educate Your Team",
                 "Build Human Resilience",
               ]}
-              className="mb-6"
+              className="mb-6 text-red-400"
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">

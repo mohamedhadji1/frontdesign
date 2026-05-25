@@ -14,7 +14,7 @@ type ServiceItem = {
 
 type ServiceCategory = {
   category: string;
-  href: string;
+  href?: string;
   title: string;
   items: ServiceItem[];
 };
@@ -218,7 +218,6 @@ export const servicesDetails: ServiceCategory[] = [
   },
   {
     category: "Training & Awareness",
-    href: "/services/awareness",
     title: "Training & Awareness",
     items: [
       {
@@ -325,22 +324,31 @@ export function ServicesDropdown() {
 
         {/* Left Column: Categories */}
         <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">
-          {servicesDetails.map((group, index) => (
-            <Link
-              key={index}
-              href={group.href}
-              onMouseEnter={() => { setActiveCategory(group.category); setActiveItem(group.items[0].name); }}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
-                ? "bg-gray-100 text-red-600"
-                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
-            >
-              {group.category}
-              <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          ))}
+          {servicesDetails.map((group, index) => {
+            const classes = `text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${activeCategory === group.category
+              ? "bg-gray-100 text-red-600"
+              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              }`;
+            const inner = (
+              <>
+                {group.category}
+                <svg className={`w-4 h-4 transition-transform ${activeCategory === group.category ? "text-red-500" : "text-gray-400"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </>
+            );
+            const onEnter = () => { setActiveCategory(group.category); setActiveItem(group.items[0].name); };
+
+            return group.href ? (
+              <Link key={index} href={group.href} onMouseEnter={onEnter} className={classes}>
+                {inner}
+              </Link>
+            ) : (
+              <div key={index} onMouseEnter={onEnter} className={`${classes} cursor-default`}>
+                {inner}
+              </div>
+            );
+          })}
         </div>
 
         {/* Right Content Area */}

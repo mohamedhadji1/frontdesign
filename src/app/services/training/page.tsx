@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Shield,
   Users,
@@ -100,12 +101,15 @@ export default function TrainingPage() {
               <span className="text-white/60">Training</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase"
+            >
               Information Security{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
                 Training
-              </span>
-            </h1>
+            </motion.h1>
 
             <HeroTypeLine
               items={[
@@ -113,7 +117,8 @@ export default function TrainingPage() {
                 "Protect Your Assets",
                 "Build Cyber Resilience",
               ]}
-              className="mb-6"
+              className="mb-6 text-red-400"
+
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
@@ -392,7 +397,83 @@ export default function TrainingPage() {
       </section>
 
       <CyberSectionDivider />
-      <ContactCTASection />
+
+      {/* Get Ready + Our Partners Section */}
+      <section className="py-28 bg-zinc-900 relative overflow-hidden pt-10 pb-10">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-40 -left-40 w-96 h-96 bg-red-600/10 rounded-full blur-[120px]" />
+          <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-red-600/8 rounded-full blur-[120px]" />
+        </div>
+
+        <div className="px-6 lg:px-16 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+              {/* Left: Text */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="w-12 h-1 bg-red-600 rounded-full mb-8" />
+                <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-8 tracking-tighter uppercase leading-[0.95]">
+                  Get Ready
+                </h2>
+                <p className="text-lg lg:text-xl text-zinc-400 font-light leading-relaxed">
+                  Get ready to strengthen your defences, enhance your skills, and face threats with confidence through our comprehensive information security training programs.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-10 inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-xs py-4 px-8 rounded-full transition-all shadow-xl"
+                >
+                  Start Your Journey <ArrowRight size={16} />
+                </Link>
+              </motion.div>
+
+              {/* Right: Partner Logos */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="flex flex-col items-center lg:items-end"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500 mb-8">
+                  Our Partners
+                </p>
+                <div className="flex items-center gap-8 flex-wrap justify-center lg:justify-end">
+                  <div className="group relative">
+                    <div className="absolute inset-0 bg-red-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative rounded-2xl p-6 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                      <Image
+                        src="/certif/PECB.png"
+                        alt="PECB"
+                        width={100}
+                        height={100}
+                        className="object-contain w-24 h-24"
+                      />
+                    </div>
+                  </div>
+                  <div className="group relative">
+                    <div className="absolute inset-0 bg-red-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative rounded-2xl p-6 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                      <Image
+                        src="/certif/EC-council.png"
+                        alt="EC-Council"
+                        width={100}
+                        height={100}
+                        className="object-contain w-24 h-24"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
