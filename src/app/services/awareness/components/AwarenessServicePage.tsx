@@ -12,10 +12,6 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
-// GSAP Imports
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
 const icons = [ShieldCheck, Sparkles, Target];
 
 export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
@@ -32,73 +28,52 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
   const numFeatures = page.features.length;
   const itemSpacing = numFeatures > 1 ? 480 / (numFeatures - 1) : 0;
 
-  // Initialize and register scroll-pinning triggers
+  // Scroll-based active index tracking using IntersectionObserver
   useEffect(() => {
     if (typeof window === "undefined" || !sectionRef.current) return;
-
-    // Register GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Disable pinning on mobile screens for perfect readability
     if (window.innerWidth < 1024) return;
 
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      pin: true,
-      start: "center center",
-      end: "+=900", // Scroll distance
-      scrub: true,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const step = 1 / numFeatures;
-        let index = Math.floor(progress / step);
-        if (index >= numFeatures) index = numFeatures - 1;
-        if (index < 0) index = 0;
-        
-        setActiveIndex(index);
-      },
-    });
-
-    return () => {
-      trigger.kill();
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const viewportCenter = window.innerHeight / 2;
+      const progress = Math.max(0, Math.min(1, (viewportCenter - rect.top) / sectionHeight));
+      const step = 1 / numFeatures;
+      let index = Math.floor(progress / step);
+      if (index >= numFeatures) index = numFeatures - 1;
+      if (index < 0) index = 0;
+      setActiveIndex(index);
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [numFeatures]);
 
-  // Smoothly animate gear rotations and core scales whenever activeIndex updates
+  // Apply CSS transitions for hexagon rotations when activeIndex changes
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Rotate concentric hexagons in opposite directions
     if (hexagon1Ref.current) {
-      gsap.to(hexagon1Ref.current, {
-        rotate: activeIndex * 120,
-        duration: 0.8,
-        ease: "power2.out",
-      });
+      hexagon1Ref.current.style.transition = "transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)";
+      hexagon1Ref.current.style.transform = `rotate(${activeIndex * 120}deg)`;
     }
     if (hexagon2Ref.current) {
-      gsap.to(hexagon2Ref.current, {
-        rotate: -activeIndex * 120,
-        duration: 0.8,
-        ease: "power2.out",
-      });
+      hexagon2Ref.current.style.transition = "transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)";
+      hexagon2Ref.current.style.transform = `rotate(${-activeIndex * 120}deg)`;
     }
     if (hexagon3Ref.current) {
-      gsap.to(hexagon3Ref.current, {
-        rotate: activeIndex * 60,
-        duration: 0.8,
-        ease: "power2.out",
-      });
+      hexagon3Ref.current.style.transition = "transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)";
+      hexagon3Ref.current.style.transform = `rotate(${activeIndex * 60}deg)`;
     }
-    
-    // Scale core hub slightly as a visual response
     if (centerHubRef.current) {
-      gsap.to(centerHubRef.current, {
-        scale: 1.05,
-        duration: 0.3,
-        yoyo: true,
-        repeat: 1,
-      });
+      centerHubRef.current.style.transition = "transform 0.3s ease";
+      centerHubRef.current.style.transform = "scale(1.05)";
+      setTimeout(() => {
+        if (centerHubRef.current) {
+          centerHubRef.current.style.transform = "scale(1)";
+        }
+      }, 300);
     }
   }, [activeIndex]);
 
