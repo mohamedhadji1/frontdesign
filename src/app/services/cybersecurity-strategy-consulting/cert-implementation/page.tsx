@@ -18,7 +18,6 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
-import { CombinedDeepDive } from "../../defensive-security/Implementation-cert/CombinedDeepDive";
 
 const methodologies = [
   {
@@ -239,12 +238,8 @@ export default function CertImplementationPage() {
       {/* Embedded deep dive section for CERT specific details */}
       <section className="mb-20 bg-white relative">
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <CombinedDeepDive theme="red" />
         </div>
       </section>
-
-      <CyberSectionDivider />
-
       {/* Strategic Block */}
       <section className="mb-20 bg-white">
         <SectionDivider title="YOUR STRATEGIC PARTNER" className="!justify-start mb-20" />

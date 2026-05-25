@@ -101,7 +101,7 @@ export default function CriticalInfrastructureProtectionPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Critical Protection
+              Critical Infrastracture Protection
             </h1>
 
             <HeroTypeLine
@@ -121,7 +121,7 @@ export default function CriticalInfrastructureProtectionPage() {
                 href="/contact"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Schedule Assessment <ArrowRight size={18} />
+                Schedule Consultation <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>

@@ -30,9 +30,15 @@ const importanceItems = [
 ];
 
 const programs = [
-  { title: "Risk & Compliance", d: "Strategies to assess and manage risks while respecting international standards.", icon: ClipboardCheck },
+  { title: "Risk & Compliance", d: "Developing strategies to assess and manage risks while respecting international standards.", icon: ClipboardCheck },
   { title: "Executive Leadership", d: "Developing leadership skills to lead high-performing technical security teams.", icon: Trophy },
   { title: "Strategic Roadmaps", d: "Developing strategic plans for proactive security aligned with business objectives.", icon: ShieldCheck },
+];
+
+const approachItems = [
+  { title: "Practice-Oriented Courses", d: "Interactive sessions emphasising the practical application of theoretical concepts.", icon: Layout },
+  { title: "Expert Trainers", d: "Seasoned professionals in the field of security to share their experience and expertise.", icon: UserCheck },
+  { title: "Customised Modules", d: "Programs tailored to the specific needs of security management in your industry.", icon: Target },
 ];
 
 export default function SecurityManagementPage() {
@@ -131,9 +137,38 @@ export default function SecurityManagementPage() {
               </motion.div>
             ))}
           </div>
-
           <CyberSectionDivider />
-             <SectionDivider title="CORE PROGRAMS" className="!justify-start mb-6" />
+
+          <div className="max-w-3xl mx-auto mb-20 text-center">
+            <SectionDivider title="TRAINING APPROACH" className="mb-10" />
+            <h2 className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]">
+               Our Specialised Training Approach
+            </h2>
+            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
+               Our Security Management training offers:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+            {approachItems.map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="group bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full"
+              >
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                   <item.icon size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 flex items-center gap-3">
+                  <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
+                  {item.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed text-base font-medium">{item.d}</p>
+              </motion.div>
+            ))}
+          </div>
+          <CyberSectionDivider />
+             <SectionDivider title="CORE PROGRAMS" className="!justify-start mb-20" />
 
           {/* Core Programs Style vision section - Compact */}
           <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

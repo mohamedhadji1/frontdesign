@@ -67,7 +67,7 @@ export default function RootLayout({
         <main className="grow">{children}</main>
         <Footer />
         <BackToTop />
-        <DisableDevTools />
+       {/* <DisableDevTools /> */}
       </body>
     </html>
   );

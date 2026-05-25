@@ -229,7 +229,7 @@ export default function GrcTrainingPage() {
           <CyberSectionDivider />
 
           {/* Practical Approach Grid */}
-          <div className="my-32">
+          <div className="my-32 mb-20">
             <div className="max-w-3xl mx-auto mb-20 text-center">
               <SectionDivider title="OUR APPROACH" className="mb-10" />
               <h2 className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]">
@@ -264,7 +264,7 @@ export default function GrcTrainingPage() {
           <SectionDivider title="TRAINING MODULES" className="!justify-start mb-6" />
 
           {/* Core Programs Section */}
-          <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="mt-32 mb-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase">
                 GRC Programs
