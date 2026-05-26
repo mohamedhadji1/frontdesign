@@ -58,7 +58,7 @@ export default function NotFound() {
             className="group flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold text-black transition-all hover:bg-red-50 hover:ring-4 hover:ring-red-500/20"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Return to Dashboard
+            Return
           </Link>
           
           <Link

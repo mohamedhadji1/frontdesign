@@ -30,7 +30,6 @@ export default function Home() {
       <CyberSectionDivider />
       <CallToActionSection />
       <CyberSectionDivider />
-      <SectionDivider title="NEWS" className="bg-white pb-0" />
       <NewsSection />
       <CyberSectionDivider />
       <SectionDivider title="TRUSTED BY" className="bg-white pb-0" />
