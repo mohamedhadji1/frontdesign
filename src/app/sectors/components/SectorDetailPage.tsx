@@ -510,7 +510,7 @@ export function SectorDetailPage({ page }: { page: SectorPageContent }) {
           className="absolute inset-0 opacity-20"
         >
           <Image
-            src="/background/vector/cyber-matrix.svg"
+            src="/vids/videoplayback.mp4"
             alt=""
             fill
             className="object-cover"

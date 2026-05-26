@@ -58,7 +58,8 @@ export function AwardsSection() {
       role: "Official Member",
       desc: "Keystone is a recognized member of FIRST, the global leader in incident response. This prestigious coalition enables us to collaborate with security teams worldwide, exchange high-value threat intelligence, and coordinate instant incident response globally.",
       link: "https://www.first.org",
-      badgeColor: "bg-red-50 text-red-600 border-red-100",
+      badgeColor: "bg-red-50 text-red-600 border-red-200",
+      bgImage: "/images/first-big-icon.png",
     },
     {
       title: "AfricaCERT (African Incident Response Union)",
@@ -66,6 +67,7 @@ export function AwardsSection() {
       desc: "As an active member of AfricaCERT, Keystone participates directly in strengthening digital resilience, raising cybersecurity standards, and fostering collaboration on digital threats and cyber emergencies across the African continent.",
       link: "https://www.africacert.org",
       badgeColor: "bg-zinc-100 text-zinc-800 border-zinc-200",
+      bgImage: "/images/AfricaCERT.png",
     },
   ];
 
@@ -212,35 +214,75 @@ export function AwardsSection() {
                 transition={{ duration: 0.7 }}
                 className="flex flex-col bg-zinc-50 text-zinc-900 rounded-[2.5rem] p-10 border border-zinc-100 relative overflow-hidden group hover:bg-white hover:border-red-100 hover:shadow-xl transition-all duration-500"
               >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/5 rounded-full blur-[80px] group-hover:bg-red-600/10 transition-colors duration-500" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/5 rounded-full blur-[80px] group-hover:bg-red-600/10 transition-colors duration-500 pointer-events-none" />
                 
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-8 relative z-10">
-                  <div className={`px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest ${member.badgeColor}`}>
-                    {member.role}
+                {/* Background Image Watermark */}
+                {member.bgImage && (
+                  <div className="absolute right-4 bottom-4 w-60 h-60 opacity-[0.02] group-hover:opacity-[0.04] transition-opacity duration-500 pointer-events-none z-0">
+                    <Image 
+                      src={member.bgImage} 
+                      alt="" 
+                      fill 
+                      className="object-contain object-right-bottom"
+                    />
                   </div>
-                  <a
-                    href={member.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-red-600 transition-colors"
-                  >
-                    Official site
-                    <ArrowUpRight size={14} />
-                  </a>
+                )}
+
+                <div className="flex flex-col md:flex-row md:items-center gap-8 relative z-10 h-full">
+                  <div className="flex-1 flex flex-col h-full">
+                    <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                      <div className={`px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest ${member.badgeColor}`}>
+                        {member.role}
+                      </div>
+                    </div>
+
+                    <motion.h2
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      className="text-xl lg:text-2xl font-black uppercase tracking-tight text-zinc-800 mb-4 group-hover:text-red-600 transition-colors duration-300"
+                    >
+                      {member.title}
+                    </motion.h2>
+
+                    <p className="text-zinc-500 font-medium leading-relaxed mb-6 flex-1 text-sm lg:text-base">
+                      {member.desc}
+                    </p>
+
+                    <a
+                      href={member.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-red-600 hover:gap-3 transition-all"
+                    >
+                      Official site
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </div>
+
+                  {/* Creative Logo Branding Container */}
+                  {member.bgImage && (
+                    <div className={`w-full md:w-40 shrink-0 flex items-center justify-center rounded-3xl relative overflow-hidden group/logo shadow-sm transition-all duration-500 h-36 md:h-40 border ${idx === 1 ? "bg-black border-zinc-900 p-6 group-hover:border-red-900/50" : "bg-white border-zinc-200/60 p-0 group-hover:border-red-200"}`}>
+                      <div className={`absolute inset-0 opacity-[0.03] pointer-events-none z-10 ${idx === 1 ? "bg-[radial-gradient(#fff_1px,transparent_1px)]" : "bg-[radial-gradient(#000_1px,transparent_1px)]"} [background-size:12px_12px]`} />
+                      {idx === 0 ? (
+                        <Image
+                          src={member.bgImage}
+                          alt={member.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/logo:scale-110"
+                        />
+                      ) : (
+                        <Image
+                          src={member.bgImage}
+                          alt={member.title}
+                          width={120}
+                          height={120}
+                          className="object-contain max-h-24 transition-transform duration-500 group-hover/logo:scale-110"
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
-
-                <motion.h2
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-xl lg:text-2xl font-black uppercase tracking-tight text-zinc-800 mb-6 relative z-10 group-hover:text-red-600 transition-colors duration-300"
-                >
-                  {member.title}
-                </motion.h2>
-
-                <p className="text-zinc-500 font-medium leading-relaxed relative z-10 flex-1">
-                  {member.desc}
-                </p>
               </motion.div>
             ))}
           </div>

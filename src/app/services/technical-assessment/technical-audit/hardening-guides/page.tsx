@@ -51,7 +51,7 @@ export default function Page() {
         whileInView={{ opacity: 1, y: 0 }} 
         viewport={{ once: true, amount: 0.1 }} 
         transition={{ duration: 0.8 }} 
-        className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
+        className="relative bg-zinc-950 min-h-[100svh] flex flex-col justify-center pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
       >
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
           <video

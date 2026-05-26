@@ -59,7 +59,7 @@ export default function SolutionsPage() {
           className="absolute inset-0"
         >
           <video
-            src="/vids/herosection.mp4"
+            src="/vids/videoplayback.mp4"
             poster="/background/Rectangle 59.png"
             autoPlay
             loop

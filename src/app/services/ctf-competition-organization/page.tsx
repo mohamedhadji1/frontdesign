@@ -108,7 +108,7 @@ export default function CtfCompetitionOrganizationPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
+        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -118,7 +118,7 @@ export default function CtfCompetitionOrganizationPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/vids/herosection.mp4" type="video/mp4" />
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
           <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />

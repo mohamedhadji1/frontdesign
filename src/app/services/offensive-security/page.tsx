@@ -87,7 +87,7 @@ export default function OffensiveSecurityPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/vids/herosection.mp4" type="video/mp4" />
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
         </div>

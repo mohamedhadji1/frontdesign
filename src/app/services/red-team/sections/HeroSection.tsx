@@ -12,11 +12,11 @@ export function HeroSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8 }}
-      className="relative flex h-screen min-h-[600px] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
     >
       <div className="absolute inset-0 z-0 bg-black/20">
         <video
-          src="/vids/cover red team.mp4"
+          src="/vids/videoplayback.mp4"
           autoPlay
           loop
           muted

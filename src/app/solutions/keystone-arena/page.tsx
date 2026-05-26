@@ -91,7 +91,7 @@ export default function KeystoneArenaPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
           >
-            <source src="/vids/herosection.mp4" type="video/mp4" />
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-zinc-950/45" />
         </div>

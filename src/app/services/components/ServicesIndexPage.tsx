@@ -63,7 +63,7 @@ export function ServicesIndexPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/vids/herosection.mp4" type="video/mp4" />
+            <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </div>

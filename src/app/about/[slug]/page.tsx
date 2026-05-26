@@ -66,7 +66,7 @@ export default async function AboutSubRoute({ params }: { params: Promise<{ slug
       <main className="bg-white">
         <AboutHeroSection 
           title="Awards & Recognition" 
-          description="Notre engagement envers l'excellence et l'innovation en cybersécurité régulièrement salué par l'industrie."
+          description="Our commitment to excellence and innovation in cybersecurity is regularly praised by the industry."
         />
         <CyberSectionDivider />
         <AwardsSection />
@@ -78,8 +78,8 @@ export default async function AboutSubRoute({ params }: { params: Promise<{ slug
     return (
       <main className="bg-white">
         <AboutHeroSection 
-          title="Témoignages Clients" 
-          description="Découvrez l'impact positif de nos solutions à travers les retours d'expérience de nos partenaires et clients."
+          title="Clients Testimonials" 
+          description="Discover the positive impact of our solutions through the feedback from our partners and clients."
         />
         <CyberSectionDivider />
         <TestimonialsSection />

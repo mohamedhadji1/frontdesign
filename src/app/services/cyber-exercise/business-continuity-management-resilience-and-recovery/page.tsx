@@ -68,7 +68,7 @@ export default function BcmPage() {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ duration: 0.8 }} 
-        className="relative w-full h-[100svh] min-h-[600px] flex flex-col justify-center overflow-hidden"
+        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
