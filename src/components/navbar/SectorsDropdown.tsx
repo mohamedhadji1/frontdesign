@@ -7,7 +7,7 @@ import { sectorGroups, sectorLinks } from "@/lib/sectors";
 
 const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }> = {
   "Governments and Public Organizations": {
-    glowClass: "bg-blue-500/10 text-blue-500 group-hover:bg-blue-500/20 group-hover:text-blue-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.5M4.5 21V10.5M2.25 21h19.5" />
@@ -15,7 +15,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Healthcare": {
-    glowClass: "bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500/20 group-hover:text-emerald-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.746 3.746 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
@@ -23,7 +23,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Financial Services": {
-    glowClass: "bg-amber-500/10 text-amber-500 group-hover:bg-amber-500/20 group-hover:text-amber-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -31,7 +31,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Telecommunications and Information Technology": {
-    glowClass: "bg-sky-500/10 text-sky-500 group-hover:bg-sky-500/20 group-hover:text-sky-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.284 16.284A3 3 0 0012 17c1.372 0 2.477-.75 2.851-1.751M12 17V3m0 0L8.25 6.75M12 3l3.75 3.75M19.071 4.929a10 10 0 00-14.142 0M16.243 7.757a6 6 0 00-8.486 0" />
@@ -39,7 +39,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Fintech and Start-ups": {
-    glowClass: "bg-violet-500/10 text-violet-500 group-hover:bg-violet-500/20 group-hover:text-violet-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -47,7 +47,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Media": {
-    glowClass: "bg-rose-500/10 text-rose-500 group-hover:bg-rose-500/20 group-hover:text-rose-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25zM14.25 12l-4.5 3V9l4.5 3z" />
@@ -55,7 +55,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Transportation": {
-    glowClass: "bg-teal-500/10 text-teal-500 group-hover:bg-teal-500/20 group-hover:text-teal-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 0M12 14.25a3 3 0 00-3-3M6.75 19.5h10.5a2.25 2.25 0 002.25-2.25V9.75A2.25 2.25 0 0017.25 7.5H6.75A2.25 2.25 0 004.5 9.75v7.5A2.25 2.25 0 006.75 19.5zM12 3v4.5" />
@@ -63,7 +63,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Energy": {
-    glowClass: "bg-orange-500/10 text-orange-500 group-hover:bg-orange-500/20 group-hover:text-orange-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21l8.904-11.83a.45.45 0 00-.363-.72H13.5l1.31-5.348a.45.45 0 00-.776-.411L5.13 14.542a.45.45 0 00.323.758h4.36z" />
@@ -71,7 +71,7 @@ const sectorStyles: Record<string, { icon: React.ReactNode; glowClass: string }>
     )
   },
   "Industrial": {
-    glowClass: "bg-slate-500/10 text-slate-500 group-hover:bg-slate-500/20 group-hover:text-slate-400",
+    glowClass: "bg-red-500/10 text-red-600 group-hover:bg-red-500/20 group-hover:text-red-500",
     icon: (
       <svg className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.827m11.379-8.16l1.15-.827M8.14 21.27l.7-.964m6.432-8.835l.7-.964m-3.21 11.75v-1.5m0-16.5v1.5" />

@@ -114,7 +114,7 @@ export default function AntiPhishingPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/SOC.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
         </div>
