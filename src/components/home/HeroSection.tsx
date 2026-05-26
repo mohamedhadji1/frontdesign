@@ -7,6 +7,7 @@ import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestor
 import { db } from "@/lib/firebase";
 import Link from "next/link";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 const MotionLink = motion.create(Link);
 
@@ -123,22 +124,6 @@ export function HeroSection() {
       clearInterval(interval);
     };
   }, [events]);
-
-  const certImages = [
-    { src: "/certif/27001.png", alt: "ISO 27001", slug: "iso-27001" },
-    { src: "/certif/27002.svg", alt: "ISO 27002", slug: "iso-27002" },
-    { src: "/certif/27005.png", alt: "ISO 27005", slug: "iso-27005" },
-    { src: "/certif/27701.png", alt: "ISO 27701", slug: "iso-27701" },
-    { src: "/certif/22301.png", alt: "ISO 22301", slug: "iso-22301" },
-    { src: "/certif/GDPR.webp", alt: "GDPR", slug: "gdpr" },
-    { src: "/certif/Nist.webp", alt: "NIST", slug: "nist-framework" },
-    { src: "/certif/PCIDSS.png", alt: "PCI DSS", slug: "pci-dss" },
-    { src: "/certif/SOC2.webp", alt: "SOC 2", slug: "soc-2" },
-    { src: "/certif/SWIFT.png", alt: "SWIFT", slug: "swift-csp" },
-    { src: "/certif/hipaa.png", alt: "HIPAA", slug: "hipaa" },
-    { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity", slug: "nist-cybersecurity" }
-  ];
-  const repeatedImages = [...certImages, ...certImages, ...certImages, ...certImages];
 
   return (
     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex min-h-[100svh] w-full flex-col overflow-hidden">
@@ -268,39 +253,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Infinite Certifications Marquee (Bottom of Hero) */}
-      <div className="absolute bottom-0 left-0 z-10 w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default">
-        <style>{`
-          @keyframes marquee-hero {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .marquee-track-hero {
-            display: flex;
-            width: max-content;
-            animation: marquee-hero 60s linear infinite;
-          }
-          .marquee-track-hero:hover {
-            animation-play-state: paused;
-          }
-        `}</style>
-        <div className="marquee-track-hero items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
-          {repeatedImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="relative h-14 w-14 shrink-0 opacity-70 sm:h-20 sm:w-20 lg:h-28 lg:w-28"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="112px"
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      <CertificationsMarquee isAbsolute />
 
       {/* Scroll Down Indicator */}
       <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />

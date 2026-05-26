@@ -25,14 +25,14 @@ export function ThreatIntelTabs({ theme = "blue" }: ThreatIntelTabsProps) {
       textBgIcon: "text-blue-900",
     },
     red: {
-      textTitle: "text-red-600",
-      bgGlow: "bg-red-400/10",
-      textActive: "text-red-900",
-      textHover: "hover:text-red-600",
-      borderActive: "border-red-100/50",
-      bgLine: "bg-red-600",
-      bgIconWrap: "from-red-50 to-red-100 text-red-600 border-red-200/50",
-      textBgIcon: "text-red-900",
+      textTitle: "text-blue-600",
+      bgGlow: "bg-blue-400/10",
+      textActive: "text-blue-900",
+      textHover: "hover:text-blue-600",
+      borderActive: "border-blue-100/50",
+      bgLine: "bg-blue-600",
+      bgIconWrap: "from-blue-50 to-blue-100 text-blue-600 border-blue-200/50",
+      textBgIcon: "text-blue-900",
     }
   };
   const t = colors[theme];

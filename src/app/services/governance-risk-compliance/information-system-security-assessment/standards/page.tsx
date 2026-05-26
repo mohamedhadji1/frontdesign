@@ -19,6 +19,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 const helpCards = [
   {
@@ -102,11 +103,11 @@ export default function StandardsAssessmentPage() {
               <ChevronRight size={8} />
               <span>IS Security Assessment</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Normative Compliance Assessment</span>
+              <span className="text-white/60">Standards Compliance Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Normative Compliance Assessment
+              Standards Compliance Assessment
             </h1>
 
             <HeroTypeLine
@@ -114,7 +115,7 @@ export default function StandardsAssessmentPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              The assessment of normative compliance is essential to meet international standards and ensure the security of your operations. At Keystone, our assessment service supports you in achieving and maintaining compliance with standards such as ISO27001, ISO 27005 - ISO22301, ISO27701, PCI/DSS, HIPAA, GDPR, SWIFT CSP, NIST CSF, SOC2.
+              The assessment of standards compliance is essential to meet international standards and ensure the security of your operations. At Keystone, our assessment service supports you in achieving and maintaining compliance with standards such as ISO27001, ISO 27005 - ISO22301, ISO27701, PCI/DSS, HIPAA, GDPR, SWIFT CSP, NIST CSF, SOC2.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -127,51 +128,7 @@ export default function StandardsAssessmentPage() {
             </div>
           </motion.div>
         </div>
-
-        <div className="relative w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default mt-auto">
-          <style>{`
-            @keyframes marquee-cert {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .marquee-track-cert {
-              display: flex;
-              width: max-content;
-              animation: marquee-cert 50s linear infinite;
-            }
-            .marquee-track-cert:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-          <div className="marquee-track-cert items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
-            {Array(5)
-              .fill([
-                { src: "/certif/27001.png", alt: "ISO 27001" },
-                { src: "/certif/27005.png", alt: "ISO 27005" },
-                { src: "/certif/22301.png", alt: "ISO 22301" },
-                { src: "/certif/27701.png", alt: "ISO 27701" },
-                { src: "/certif/PCIDSS.png", alt: "PCI DSS" },
-                { src: "/certif/hipaa.png", alt: "HIPAA" },
-                { src: "/certif/GDPR.webp", alt: "GDPR" },
-                { src: "/certif/SWIFT.png", alt: "SWIFT" },
-                { src: "/certif/Nist.webp", alt: "NIST CSF" },
-                { src: "/certif/SOC2.webp", alt: "SOC 2" }
-              ])
-              .flat()
-              .map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="relative h-[80px] w-[80px] shrink-0 sm:h-[100px] sm:w-[100px] lg:h-[120px] lg:w-[120px] opacity-80 hover:opacity-100 transition-opacity"
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="w-full h-full object-contain filter"
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
 
         <ScrollIndicator />
       </motion.section>
@@ -327,7 +284,7 @@ export default function StandardsAssessmentPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Contact us today to explore how our specialized normative compliance assessment services can guarantee adherence to the highest standards."
+                  "Contact us today to explore how our specialized standards compliance assessment services can guarantee adherence to the highest standards."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link

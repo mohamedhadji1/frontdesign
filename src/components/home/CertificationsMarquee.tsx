@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -53,17 +54,17 @@ export function CertificationsMarquee() {
         {repeatedImages.map((img, idx) => (
           <div 
             key={idx} 
-            className="relative w-32 h-16 shrink-0 opacity-70 block"
+            className="shrink-0 opacity-70 block transition-opacity duration-300 hover:opacity-100"
           >
-            <Image 
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
               src={img.src} 
               alt={img.alt} 
-              fill 
-              className="object-contain" 
+              className="h-20 w-auto object-contain sm:h-24 lg:h-28"
             />
           </div>
         ))}
       </div>
     </motion.section>
   );
-}
+}

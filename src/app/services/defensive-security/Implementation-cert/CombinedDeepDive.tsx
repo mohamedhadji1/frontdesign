@@ -23,10 +23,10 @@ export function CombinedDeepDive({ theme = "blue" }: CombinedDeepDiveProps) {
       iconActive: "text-blue-600",
     },
     red: {
-      textTitle: "text-red-600",
-      bgDivider: "bg-red-600/30",
-      textActive: "text-red-700",
-      iconActive: "text-red-600",
+      textTitle: "text-blue-600",
+      bgDivider: "bg-blue-600/30",
+      textActive: "text-blue-700",
+      iconActive: "text-blue-600",
     }
   };
   const t = colors[theme];

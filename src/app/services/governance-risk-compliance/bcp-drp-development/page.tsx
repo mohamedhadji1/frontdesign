@@ -18,6 +18,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 const features = [
   {
@@ -127,52 +128,7 @@ export default function BCPDRPDevelopmentPage() {
         </div>
 
         {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="relative w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default mt-auto">
-          <style>{`
-            @keyframes marquee-grc {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .marquee-track-grc {
-              display: flex;
-              width: max-content;
-              animation: marquee-grc 60s linear infinite;
-            }
-            .marquee-track-grc:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-          <div className="marquee-track-grc items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
-            {Array(5)
-              .fill([
-                { src: "/certif/SWIFT.png", alt: "SWIFT" },
-                { src: "/certif/27001.png", alt: "ISO 27001" },
-                { src: "/certif/27002.svg", alt: "ISO 27002" },
-                { src: "/certif/PCIDSS.png", alt: "PCI DSS" },
-                { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity Framework" },
-                { src: "/certif/GDPR.webp", alt: "GDPR" },
-                { src: "/certif/22301.png", alt: "ISO 22301" },
-                { src: "/certif/27701.png", alt: "ISO 27701" },
-                { src: "/certif/hipaa.png", alt: "HIPAA" },
-                { src: "/certif/SOC2.webp", alt: "SOC 2" },
-              ])
-              .flat()
-              .map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="relative h-[80px] w-[80px] shrink-0 sm:h-[100px] sm:w-[100px] lg:h-[120px] lg:w-[120px]"
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    sizes="112px"
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
 
         <ScrollIndicator />
       </motion.section>

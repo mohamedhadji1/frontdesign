@@ -19,6 +19,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 const helpCards = [
   {
@@ -125,6 +126,7 @@ export default function ISSecurityAssessmentPage() {
             </div>
           </motion.div>
         </div>
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
         <ScrollIndicator />
       </motion.section>
 

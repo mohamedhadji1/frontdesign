@@ -4,12 +4,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/navbar/Navbar";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
-import { Award, Route, FileCheck, ShieldAlert, Handshake, Search, Activity, Eye, DownloadCloud, FileWarning, Ghost } from "lucide-react";
+import { Award, Route, FileCheck, ShieldAlert, Handshake, Search, Activity, Eye, DownloadCloud, FileWarning, Ghost, ChevronRight, ArrowRight } from "lucide-react";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -51,90 +52,65 @@ export default function Page() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col">
-      <Navbar />
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-
-        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
+      >
+        <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/SOC.mp4" type="video/mp4" />
           </video>
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
         </div>
-        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 text-center lg:text-center flex flex-col items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center flex-wrap gap-2 text-blue-400 mb-6"
-              >
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link><span className="text-red-500/50">/</span><Link href="/services/defensive-security" className="hover:text-blue-400 transition-colors">Defensive Security</Link><span className="text-blue-500/50">/</span><span className="text-blue-400">Virtual CISO DPO</span>
-                </div>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 tracking-tight"
-              >
-                Virtual CISO <wbr /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">& DPO</span>
-              </motion.h1>
-              <HeroTypeLine
-                items={["Security leadership on demand", "Data protection guidance", "Governance without full-time overhead"]}
-                className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
-              />
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-zinc-400 mb-8 leading-relaxed max-w-xl font-light mx-auto"
-              >
-                At Keystone, our Virtual CISO & DPO service offers strategic expertise in information security and data protection. Our experienced consultants act as virtual partners to guarantee the security and compliance of your organization.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex gap-4 justify-center"
-              >
-                <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-all duration-300 shadow-[0_0_20px_-5px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_-5px_rgba(37,99,235,0.7)] flex items-center gap-2">
-                  Explore Services
-                </button>
-              </motion.div>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl"
+          >
+            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <span>Managed Services</span>
+              <ChevronRight size={8} />
+              <span className="text-white/60">Virtual CISO DPO</span>
             </div>
 
-            <div className="lg:w-1/2 w-full mt-12 lg:mt-0 relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/30 to-transparent blur-3xl rounded-full opacity-70" />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 aspect-video lg:aspect-[4/3] group"
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Virtual CISO <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">& DPO</span>
+            </h1>
+
+            <HeroTypeLine
+              items={["Security leadership on demand", "Data protection guidance", "Governance without full-time overhead"]}
+              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+            />
+
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              At Keystone, our Virtual CISO & DPO service offers strategic expertise in information security and data protection. Our experienced consultants act as virtual partners to guarantee the security and compliance of your organization.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+              <Link
+                href="/contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent z-10 opacity-80" />
-                <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors duration-700 z-10 mix-blend-overlay" />
-                <img
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
-                  alt="Virtual CISO & DPO"
-                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out"
-                />
-              </motion.div>
+                Secure My Systems <ArrowRight size={18} />
+              </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
+        <ScrollIndicator />
       </motion.section>
       <CyberSectionDivider theme="blue" />
       <div className="mt-10">

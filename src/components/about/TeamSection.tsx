@@ -5,6 +5,7 @@ import { aboutContent } from "@/lib/about-data";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { CheckCircle2, ShieldCheck, Globe, Cpu } from "lucide-react";
+import { ContactCTASection } from "../home/ContactCTASection";
 
 const expertiseIcons = [ShieldCheck, Globe, Cpu, CheckCircle2];
 
@@ -13,7 +14,7 @@ export function TeamSection() {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="container mx-auto px-6 lg:px-12 relative z-10 py-24">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         {/* Header Section */}
         <div className="max-w-4xl mx-auto mb-20 text-center">
           <SectionDivider title="OUR EXPERTS" className="mb-8" />
@@ -70,51 +71,9 @@ export function TeamSection() {
             );
           })}
         </div>
-
-        <CyberSectionDivider />
-
-        {/* Certifications Highlight */}
-        <div className="pt-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-zinc-900 p-12 lg:p-20 rounded-[4rem] text-white relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <SectionDivider title="CERTIFICATIONS" className="!items-start !justify-start mb-8" />
-                <motion.h2 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-3xl lg:text-5xl font-extrabold mb-8 uppercase leading-tight"
-                >
-                  Global Standard Recognition
-                </motion.h2>
-                <p className="text-xl text-zinc-400 font-medium leading-relaxed">
-                  Each of our experts holds renowned certifications such as CISSP, CISM, OSCP, CEH, ISO27001, ISO22301, PMP, PRINCE2, COBIT, as well as other worldwide recognized certificates.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-end">
-                {["CISSP", "CISM", "OSCP", "CEH", "ISO27001", "PMP"].map((cert, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="px-6 py-3 border border-white/20 rounded-full text-sm font-bold tracking-widest hover:bg-white hover:text-zinc-900 transition-colors cursor-default"
-                  >
-                    {cert}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
-      </div>
+        <CyberSectionDivider />
+      <ContactCTASection/>
     </section>
   );
 }

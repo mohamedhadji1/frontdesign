@@ -1,8 +1,10 @@
 "use client";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   ShieldCheck,
   UsersRound,
@@ -28,8 +30,7 @@ import {
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 // Managed Services Benefits (First Column Content)
 const benefits = [
@@ -420,104 +421,73 @@ export default function ManagedServicesPage() {
   const currentPillarData = pillars[activePillar];
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white font-sans overflow-x-hidden selection:bg-red-500 selection:text-white">
-      <Navbar />
-
-      {/* 1. Deep Cyber Hero Section */}
-      <section className="relative flex min-h-[90svh] h-[100vh] items-center overflow-hidden bg-zinc-950 px-6 pb-20 pt-36 lg:px-16 lg:pb-32 lg:pt-48">
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+    <main className="min-h-screen bg-zinc-950 text-white font-sans overflow-x-hidden selection:bg-blue-500 selection:text-white">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
+      >
+        <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/SOC.mp4" type="video/mp4" />
           </video>
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
         </div>
-        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl w-full">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-3/5">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center flex-wrap gap-2 text-red-400 mb-6"
-              >
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
-                <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-300 transition-colors">Services</Link>
-                  <span className="text-red-500/30 flex flex-nowrap shrink-0">/</span>
-                  <span className="text-white/90">Managed Services</span>
-                </div>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7.5xl font-black tracking-tight leading-[1] mb-6 uppercase"
-              >
-                Managed Services
-              </motion.h1>
-
-              <HeroTypeLine
-                items={[
-                  "Active 24/7/365 Security Monitoring",
-                  "Expert CERT & Incident Response Capabilities",
-                  "Advanced EDR/XDR & SIEM Orchestration",
-                  "Continuous Regulatory Compliance Alignment"
-                ]}
-                className="mb-6"
-              />
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.25 }}
-                className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10"
-              >
-                Benefit from continuous monitoring, proactive detection, and ultra-fast technical response driven by our world-class cybersecurity experts.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35 }}
-                className="flex flex-wrap items-center gap-4"
-              >
-                <a href="#explore-catalog" className="px-8 py-4 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/20 uppercase tracking-widest text-xs">
-                  Explore Catalogue
-                </a>
-                <Link href="/contact" className="px-8 py-4 bg-white/5 text-white font-bold rounded-full hover:bg-white/10 transition-all duration-300 border border-white/10 uppercase tracking-widest text-xs">
-                  Request an Assessment
-                </Link>
-              </motion.div>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl"
+          >
+            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <span>Services</span>
+              <ChevronRight size={8} />
+              <span className="text-white/60">Managed Services</span>
             </div>
 
-            <div className="w-full lg:w-2/5 relative flex justify-center items-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-red-500/10 to-blue-500/10 blur-3xl rounded-full" />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900/40 backdrop-blur-md p-4 w-full max-w-md aspect-square flex flex-col justify-center items-center group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                <Shield className="w-24 h-24 text-red-500 mb-6 drop-shadow-[0_0_20px_rgba(220,38,38,0.3)] animate-pulse" />
-                <h3 className="text-2xl font-bold tracking-tight text-white uppercase mb-2">CSIRT & SOC</h3>
-                <p className="text-sm text-zinc-400 text-center max-w-xs px-4">Centralized 24/7 monitoring and real-time incident response based on international standards.</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Managed Services
+            </h1>
 
-      <CyberSectionDivider theme="red" />
+            <HeroTypeLine
+              items={[
+                "Active 24/7/365 Security Monitoring",
+                "Expert CERT & Incident Response Capabilities",
+                "Advanced EDR/XDR & SIEM Orchestration",
+                "Continuous Regulatory Compliance Alignment"
+              ]}
+              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+            />
+
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              Benefit from continuous monitoring, proactive detection, and ultra-fast technical response driven by our world-class cybersecurity experts.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+              <Link
+                href="#explore-catalog"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
+              >
+                Explore Catalogue <ArrowRight size={18} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
+        <ScrollIndicator />
+      </motion.section>
+
+      <CyberSectionDivider theme="blue" />
 
       {/* 2. Main Section: 3-Column Premium Layout */}
       <section id="explore-catalog" className="py-24 bg-white text-zinc-950 relative">
@@ -530,8 +500,8 @@ export default function ManagedServicesPage() {
             {/* COLUMN 1: Services Managés - Capital Importance (Horizontal Full-Width) */}
             <div className="flex flex-col w-full">
               <div>
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-red-600">
-                  <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-600">
+                  <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
                   Keystone Cyber Defence
                 </div>
 
@@ -558,9 +528,9 @@ export default function ManagedServicesPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.08, duration: 0.5 }}
-                      className="group p-5 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-red-200 hover:shadow-lg transition-all duration-300 flex items-start gap-4"
+                      className="group p-5 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 flex items-start gap-4"
                     >
-                      <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-red-600 group-hover:text-white transition-all">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">
                         {idx + 1}
                       </div>
                       <div>
@@ -575,7 +545,7 @@ export default function ManagedServicesPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 p-6 bg-red-50/50 rounded-2xl border border-red-100/50">
+                <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100/50">
                   <p className="text-zinc-700 text-xs italic leading-relaxed font-medium">
                     Outsourcing security to Keystone&apos;s managed service allows businesses to benefit from specialized expertise, focus on their growth, reduce risks, and maintain a reliable level of security while remaining agile in the face of technological developments and emerging threats.
                   </p>
@@ -594,7 +564,7 @@ export default function ManagedServicesPage() {
                     setExpandedItem("blue-team");
                   }}
                   className={`py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activePillar === "soc"
-                      ? "bg-red-600 text-white shadow-md"
+                      ? "bg-blue-600 text-white shadow-md"
                       : "text-zinc-500 hover:text-zinc-900"
                     }`}
                 >
@@ -606,7 +576,7 @@ export default function ManagedServicesPage() {
                     setExpandedItem("incident-response");
                   }}
                   className={`py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${activePillar === "cert"
-                      ? "bg-red-600 text-white shadow-md"
+                      ? "bg-blue-600 text-white shadow-md"
                       : "text-zinc-500 hover:text-zinc-900"
                     }`}
                 >
@@ -622,11 +592,11 @@ export default function ManagedServicesPage() {
                 transition={{ duration: 0.4 }}
                 className="bg-zinc-50 rounded-[2.5rem] p-8 border border-zinc-100 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-36 h-36 bg-red-500/5 rounded-full blur-2xl" />
+                <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 rounded-full blur-2xl" />
 
                 {/* Pillar Slogan Header Card */}
                 <div className="mb-8 pb-6 border-b border-zinc-200/80">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-red-600 mb-1 block">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1 block">
                     {currentPillarData.subtitle}
                   </span>
                   <h3 className="text-2xl font-black tracking-tight text-zinc-900 uppercase mb-4">
@@ -639,7 +609,7 @@ export default function ManagedServicesPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {currentPillarData.features.map((feat, fidx) => (
                       <div key={fidx} className="flex gap-2.5 items-start">
-                        <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                         <div>
                           <h5 className="text-[11px] font-bold text-zinc-900 uppercase tracking-wider">
                             {feat.name}
@@ -671,7 +641,7 @@ export default function ManagedServicesPage() {
                         <div
                           key={item.id}
                           className={`rounded-2xl border transition-all duration-300 ${isExpanded
-                              ? "bg-white border-red-200 shadow-md"
+                              ? "bg-white border-blue-200 shadow-md"
                               : "bg-zinc-100/50 hover:bg-white border-zinc-200/50"
                             }`}
                         >
@@ -681,11 +651,11 @@ export default function ManagedServicesPage() {
                             className="w-full text-left p-5 flex items-center justify-between font-bold text-sm text-zinc-800 uppercase tracking-wider"
                           >
                             <span className="flex items-center gap-3">
-                              <span className={`w-2 h-2 rounded-full transition-transform ${isExpanded ? "bg-red-600 scale-125" : "bg-zinc-400"}`} />
+                              <span className={`w-2 h-2 rounded-full transition-transform ${isExpanded ? "bg-blue-600 scale-125" : "bg-zinc-400"}`} />
                               {item.name}
                             </span>
                             <ChevronRight
-                              className={`w-4 h-4 text-zinc-400 transition-transform ${isExpanded ? "rotate-90 text-red-600" : ""
+                              className={`w-4 h-4 text-zinc-400 transition-transform ${isExpanded ? "rotate-90 text-blue-600" : ""
                                 }`}
                             />
                           </button>
@@ -715,7 +685,7 @@ export default function ManagedServicesPage() {
                                         className="p-4 bg-zinc-50 rounded-xl border border-zinc-100/80"
                                       >
                                         <h5 className="font-bold text-zinc-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-2">
-                                          <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                                           {detail.label}
                                         </h5>
                                         <p className="text-zinc-600 text-[11px] leading-relaxed whitespace-pre-line font-medium">
@@ -734,7 +704,7 @@ export default function ManagedServicesPage() {
                                   <div className="pt-2 flex justify-end">
                                     <Link
                                       href={`/contact?service=${activePillar}&sub=${item.id}`}
-                                      className="inline-flex items-center gap-2 text-xs font-bold text-red-600 uppercase tracking-widest hover:gap-3 transition-all"
+                                      className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest hover:gap-3 transition-all"
                                     >
                                       Request this service <ArrowRight className="w-3.5 h-3.5" />
                                     </Link>
@@ -758,10 +728,10 @@ export default function ManagedServicesPage() {
         </div>
       </section>
 
-      <CyberSectionDivider theme="red" />
+      <CyberSectionDivider theme="blue" className="z-99" />
 
       {/* 3. Static VISION and Partner CTA Section */}
-      <section className="py-24 bg-zinc-950 text-white relative overflow-hidden">
+      <section className="py-24 bg-gray-50 text-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-15">
           <img src="/background/vector/cyber-matrix.svg" alt="" className="w-full h-full object-cover" />
         </div>
@@ -769,13 +739,13 @@ export default function ManagedServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             <div className="space-y-6">
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-500 block">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-600 block">
                 TRUSTED PARTNERSHIP & AGILITY
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1] uppercase">
                 Guarantee Your Digital Resilience
               </h2>
-              <p className="text-lg text-zinc-300 leading-relaxed font-medium border-l-4 border-red-600 pl-6">
+              <p className="text-lg text-slate-700 leading-relaxed font-medium border-l-4 border-blue-600 pl-6">
                 By entrusting your defense posture to Keystone, you benefit from a globally recognized SOC and CERT ecosystem, combining state-of-the-art tools and elite certified engineers.
               </p>
 
@@ -786,31 +756,29 @@ export default function ManagedServicesPage() {
                   "Continuous alignment with security compliance standards (ISO, NIST, etc.)"
                 ].map((point, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center font-bold text-xs shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs shrink-0">
                       ✓
                     </div>
-                    <span className="text-zinc-300 text-sm font-semibold uppercase tracking-wider">{point}</span>
+                    <span className="text-slate-700 text-sm font-semibold uppercase tracking-wider">{point}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="relative flex justify-center lg:justify-end">
-              <div className="bg-zinc-900/60 backdrop-blur-md p-10 rounded-[2.5rem] border border-white/10 shadow-2xl max-w-lg w-full relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full blur-[60px]" />
-
-                <h4 className="text-xl font-bold uppercase tracking-tight italic mb-4">
+              <div className="bg-white rounded-[2rem] p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 max-w-lg w-full relative overflow-hidden group">
+                <h4 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
                   Need a Managed SOC or a CERT?
                 </h4>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-8 font-medium">
+                <p className="text-gray-600 text-sm leading-relaxed mb-8 font-medium">
                   Consult our security architects to design the ideal defense architecture tailored to your size and regulatory compliance objectives.
                 </p>
 
-                <div className="pt-6 border-t border-white/10 flex justify-start">
+                <div className="pt-6 border-t border-gray-100 flex justify-start">
                   <Link
                     href="/contact?service=managed-services"
-                    className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all shadow-lg shadow-red-600/20"
+                    className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-blue-700 transition-all shadow-md shadow-blue-600/10"
                   >
                     Contact Our Experts <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -822,12 +790,10 @@ export default function ManagedServicesPage() {
         </div>
       </section>
 
-      <CyberSectionDivider theme="red" />
+      <CyberSectionDivider theme="blue" />
 
       {/* 4. Contact CTA Section */}
       <ContactCTASection />
-
-      <Footer />
     </main>
   );
 }

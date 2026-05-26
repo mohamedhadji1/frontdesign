@@ -1,12 +1,11 @@
 "use client";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import {
-  ShieldAlert,
+import {ShieldAlert,
   Zap,
   Layers,
   UsersRound,
@@ -14,8 +13,7 @@ import {
   AlertTriangle,
   MessageSquare,
   Scale,
-  ArrowRight
-} from "lucide-react";
+  ArrowRight, ChevronRight} from "lucide-react";
 import { DEFCTASection } from "../soc-management/DEFCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
@@ -25,133 +23,120 @@ export default function Page() {
     {
       title: "Early Threat Detection",
       desc: "Keystone ensures early threat detection through proactive monitoring of suspicious activities on networks and systems. This vigilance helps quickly identify signs of potential attacks.",
-      icon: <ShieldAlert className="w-6 h-6 text-red-600" />
+      icon: <ShieldAlert className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Immediate Intervention",
       desc: "In the event of a confirmed security incident, our team reacts immediately to assess the situation. A rapid response is provided to limit damage, isolate breaches, and restore the security of affected systems.",
-      icon: <Zap className="w-6 h-6 text-red-600" />
+      icon: <Zap className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Incident Analysis and Management",
       desc: "An in-depth analysis is conducted to understand the scope of the incident, identify the entry points of attackers, and determine the corrective measures to implement. Complete management of the incident is ensured to minimize its impact.",
-      icon: <Layers className="w-6 h-6 text-red-600" />
+      icon: <Layers className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Coordination with Stakeholders",
       desc: "Keystone ensures transparent communication with your internal team, relevant authorities, and, if necessary, external parties. This coordination promotes a collective response and efficient resolution of the incident.",
-      icon: <UsersRound className="w-6 h-6 text-red-600" />
+      icon: <UsersRound className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Post-Incident Reports & Improvement",
       desc: "Detailed reports are provided after the resolution of the incident, including actions taken, lessons learned, and recommendations to strengthen resilience against future attacks.",
-      icon: <FileText className="w-6 h-6 text-red-600" />
+      icon: <FileText className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Technical Crisis Management",
       desc: "In the event of a major incident, Keystone ensures effective technical crisis management. This includes immediate interventions to contain the incident, identify vulnerabilities, and restore the security of affected systems as quickly as possible.",
-      icon: <AlertTriangle className="w-6 h-6 text-red-600" />
+      icon: <AlertTriangle className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Crisis Communication",
       desc: "Clear and effective communication is maintained throughout the incident. Keystone ensures transparent communication with internal and external stakeholders to inform them on the situation status, actions taken, and measures implemented to address the incident.",
-      icon: <MessageSquare className="w-6 h-6 text-red-600" />
+      icon: <MessageSquare className="w-6 h-6 text-blue-600" />
     },
     {
       title: "Legal Assistance",
       desc: "Keystone offers legal assistance to help understand the legal implications of the incident. We offer guidance on the steps to take for legal procedures.",
-      icon: <Scale className="w-6 h-6 text-red-600" />
+      icon: <Scale className="w-6 h-6 text-blue-600" />
     }
   ];
 
   return (
     <main className="min-h-screen bg-white flex flex-col">
-      <Navbar />
-
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 40 }} 
-        whileInView={{ opacity: 1, y: 0 }} 
-        viewport={{ once: true, amount: 0.1 }} 
-        transition={{ duration: 0.8 }} 
-        className="relative bg-zinc-950 pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
       >
-        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/SOC.mp4" type="video/mp4" />
           </video>
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
         </div>
-        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-3/5">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center flex-wrap gap-2 text-red-400 mb-6"
-              >
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
-                <div className="flex items-center gap-2 text-sm font-semibold tracking-wide uppercase">
-                  <Link href="/services" className="hover:text-red-400 transition-colors">Services</Link>
-                  <span className="text-red-500/50 flex flex-nowrap shrink-0">/</span>
-                  <Link href="/services/defensive-security" className="hover:text-red-400 transition-colors">Managed Services</Link>
-                  <span className="text-red-500/50 flex flex-nowrap shrink-0">/</span>
-                  <span className="text-white">Incident Response</span>
-                </div>
-              </motion.div>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full max-w-5xl"
+          >
+            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
+              <span>Managed Services</span>
+              <ChevronRight size={8} />
+              <span className="text-white/60">Incident Response</span>
+            </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-                Incident <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Response</span>
-              </h1>
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+              Incident <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Response</span>
+            </h1>
 
-              <HeroTypeLine
-                items={[
+            <HeroTypeLine
+              items={[
                   "Immediate 24/7 Intervention",
                   "Technical Crisis Management",
                   "Rigorous Post-Incident Analysis",
                   "Specialized Legal Assistance"
                 ]}
-                className="mb-6 text-sm font-bold uppercase tracking-[0.3em] text-red-400"
-              />
+              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
+            />
 
-              <p className="text-lg md:text-xl text-zinc-400 mb-10 leading-relaxed max-w-2xl font-light">
-                Keystone&apos;s incident response service is designed to offer a quick and effective reaction in the event of cyberattacks or security incidents.
-              </p>
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+              Keystone&apos;s incident response service is designed to offer a quick and effective reaction in the event of cyberattacks or security incidents.
+            </p>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="px-8 py-4 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-600/20 uppercase tracking-widest text-xs">
-                  Report an URGENT Incident
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+              <Link
+                href="/contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
+              >
+                Report an URGENT Incident <ArrowRight size={18} />
+              </Link>
             </div>
-
-            <div className="w-full lg:w-2/5 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-transparent blur-3xl rounded-full" />
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900/50 backdrop-blur-sm p-4">
-                <img
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
-                  alt="Incident Response"
-                  className="w-full h-[350px] rounded-xl object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
+
+        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
+        <ScrollIndicator />
       </motion.section>
+
+      <CyberSectionDivider theme="blue" />
 
       {/* Content Section */}
       <section className="py-24 bg-white flex-grow">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="max-w-4xl mx-auto mb-16 text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-600 bg-red-50 px-3 py-1 rounded-full mb-4 inline-block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4 inline-block">
               CERT (CSIRT.tn)
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-zinc-900 tracking-tight leading-tight mt-2">
@@ -164,8 +149,8 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((item, idx) => (
-              <div key={idx} className="p-8 bg-zinc-50 border border-zinc-200/80 rounded-2xl hover:border-red-500 hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6">
+              <div key={idx} className="p-8 bg-zinc-50 border border-zinc-200/80 rounded-2xl hover:border-blue-500 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-6">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-zinc-900 mb-3">{item.title}</h3>
@@ -180,7 +165,7 @@ export default function Page() {
                   Keystone guarantees a quick and professional response to security incidents. Contact us for proactive incident management and enhanced protection of your infrastructure against threats.
                 </p>
               </div>
-              <Link href="/contact" className="inline-flex items-center text-red-400 font-bold hover:text-red-300 transition-colors group text-sm uppercase tracking-wider">
+              <Link href="/contact" className="inline-flex items-center text-blue-400 font-bold hover:text-blue-300 transition-colors group text-sm uppercase tracking-wider">
                 Contact the CERT
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -192,8 +177,6 @@ export default function Page() {
       <CyberSectionDivider theme="blue" />
 
       <DEFCTASection />
-
-      <Footer />
     </main>
   );
 }

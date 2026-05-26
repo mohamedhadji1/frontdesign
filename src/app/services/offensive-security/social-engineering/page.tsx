@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 import {
   ArrowRight,
   ChevronRight,
-  ShieldCheck,
-  Lock,
-  Search,
-  BookmarkCheck,
-  Zap,
+  Users,
+  Eye,
+  FileWarning,
+  ClipboardCheck,
+  GraduationCap,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -22,41 +21,41 @@ import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 const features = [
   {
-    title: "Comprehensive Access Rights Assessment",
+    title: "Simulation of Multifaceted Attacks",
     description:
-      "We conduct comprehensive assessments to review the granted access rights, identify anomalies, and assess potential risks to your infrastructure.",
-    icon: Search,
+      "We use a versatile approach by simulating various attacks, such as attempts at physical manipulation and fraudulent phone or email campaigns.",
+    icon: Users,
   },
   {
-    title: "Access Governance",
+    title: "Evaluation of Preparedness and Awareness",
     description:
-      "We help you establish access management policies and clear procedures to ensure secure distribution and management of authorizations.",
-    icon: Lock,
+      "We assess your staff's preparedness for physical manipulations, unauthorized access attempts, as well as their awareness of fraudulent phone calls.",
+    icon: Eye,
   },
   {
-    title: "Identification of Vulnerabilities",
+    title: "Comprehensive Report on Human Vulnerabilities",
     description:
-      "We highlight potential flaws in access management, allowing for proactive correction to strengthen the security of your system.",
-    icon: ShieldCheck,
+      "We provide a detailed report of the identified vulnerabilities, with recommendations to strengthen the human resilience of your organization.",
+    icon: FileWarning,
   },
 ];
 
 const subFeatures = [
   {
-    title: "Access Security Expertise",
+    title: "Testing Policies and Procedures",
     description:
-      "Our team of experts has extensive experience in access rights assessing, providing you with precise recommendations to enhance access security.",
-    icon: BookmarkCheck,
+      "We examine the effectiveness of your security policies regarding visitor reception, identity verification, and telephone call management.",
+    icon: ClipboardCheck,
   },
   {
-    title: "Strengthening Security",
+    title: "Enhanced Awareness & Training",
     description:
-      "An effective access rights assessment strengthens the security of your systems by limiting the risks associated with inappropriate access rights.",
-    icon: Zap,
+      "We offer targeted training programs to strengthen your staff's resilience against social engineering attacks over time.",
+    icon: GraduationCap,
   },
 ];
 
-export default function AccessRightsAssessmentPage() {
+export default function SocialEngineeringPage() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -86,7 +85,7 @@ export default function AccessRightsAssessmentPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/herosection.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
         </div>
@@ -99,34 +98,35 @@ export default function AccessRightsAssessmentPage() {
             className="w-full max-w-5xl"
           >
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>GRC</span>
+              <span>Offensive Security</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Assessment of authorizations</span>
+              <span className="text-white/60">Social Engineering Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Access Rights Assessment
+              Social Engineering
             </h1>
 
             <HeroTypeLine
-              items={["Governance", "Least Privilege", "Identity"]}
+              items={["Human Resilience", "Phishing Tests", "Awareness Training"]}
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              At Keystone, our access rights assessment service aims to ensure that access rights are assigned securely and appropriately within your company. We conduct thorough assessments to identify risks related to access rights and ensure effective access governance.
+              Testing the human element of your security through carefully crafted phishing, vishing, and impersonation campaigns to strengthen security awareness.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
               <Link
-                href="/contact"
+                href="/contact?service=social-engineering"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Access Assessment <ArrowRight size={18} />
+                Request Human Audits <ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
         </div>
 
+        {/* Infinite Certifications Marquee (Bottom of Hero) */}
         <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
 
         <ScrollIndicator />
@@ -134,7 +134,7 @@ export default function AccessRightsAssessmentPage() {
 
       <CyberSectionDivider />
 
-      {/* Services Section */}
+      {/* Scope Section */}
       <section className="mb-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
           <motion.div
@@ -145,7 +145,7 @@ export default function AccessRightsAssessmentPage() {
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="IDENTITY ASSESSMENT" className="mb-10" />
+            <SectionDivider title="HUMAN DECEPTION EXPOSURE" className="mb-10" />
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -153,11 +153,8 @@ export default function AccessRightsAssessmentPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Control Access Securely
+              Social Deception Analysis
             </motion.h2>
-            <p className="text-lg text-zinc-600 leading-relaxed font-medium">
-              We inspect, assessment, and systematically optimize directory roles to secure files against lateral threats.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -185,7 +182,7 @@ export default function AccessRightsAssessmentPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
-                  Request Assessment <ArrowRight size={14} />
+                  Consult an Expert <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}
@@ -199,11 +196,11 @@ export default function AccessRightsAssessmentPage() {
       <section className="mb-20 bg-zinc-50/30 py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <SectionDivider title="IAM HYGIENE STANDARDS" className="mb-10" />
+            <SectionDivider title="HUMAN FIREWALL POLISHING" className="mb-10" />
             <motion.h2
               className="text-3xl lg:text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter uppercase leading-[0.95]"
             >
-              Uphold Least Privilege
+              Audits & Training Modules
             </motion.h2>
           </div>
 
@@ -239,9 +236,9 @@ export default function AccessRightsAssessmentPage() {
 
       <CyberSectionDivider />
 
-      {/* Assessment Block */}
+      {/* Assurance Section */}
       <section className="mb-20 bg-white">
-        <SectionDivider title="YOUR ACCESS SECURITY GUARANTEE" className="!justify-start mb-20" />
+        <SectionDivider title="YOUR DECEPTION TESTER" className="!justify-start mb-20" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -253,16 +250,16 @@ export default function AccessRightsAssessmentPage() {
               <motion.h2
                 className="text-4xl lg:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1] uppercase"
               >
-                Keystone: Your Access Security Guaranty
+                Keystone: Your Human Security Partner
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is ready to collaborate with you to conduct thorough assessments of your authorizations and strengthen the security of your systems. Contact us for secure and efficient access management.
+                Keystone acts as your trusted partner to reinforce the human firewall of your business, transforming employees into active defense nodes.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
-                  "Complete Active Directory, Entra ID, and Okta Privilege Mapping",
-                  "Identification of Orphan, Over-Privileged, or Inactive Corporate Accounts",
-                  "Actionable Remediation Strategy for Strong Access Rights Governance",
+                  "Highly Realistic Simulated Phishing Campaigns",
+                  "Vishing & Voice Social Engineering Vulnerability Audits",
+                  "Human Factors Remediation & Awareness Training Blueprints",
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -296,14 +293,14 @@ export default function AccessRightsAssessmentPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Ensure credentials are secure and appropriate. Reach out to our access assessment specialists today to perform a precise authorizations assessment."
+                  "Expose employee vulnerability to fraudulent calls, phishing links, and badge cloning. Build robust digital awareness today."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
-                    href="/contact"
+                    href="/contact?service=social-engineering"
                     className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-red-700 transition-all"
                   >
-                    Request Access Assessment <ArrowRight size={18} />
+                    Request Support <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>
