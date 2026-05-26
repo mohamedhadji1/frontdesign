@@ -111,7 +111,7 @@ export function ServicesIndexPage() {
             <SectionDivider title="SERVICES" className="mb-10" />
           </motion.div>
 
-          <motion.div variants={stagger} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div variants={stagger} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {serviceLinks.slice(0, 6).map((service) => {
               const Icon = serviceIcons[service.iconName];
 
@@ -119,68 +119,108 @@ export function ServicesIndexPage() {
                 <motion.div
                   id={getServiceId(service.href)}
                   key={service.href}
-                  whileHover={{ y: -8, scale: 1.01 }}
+                  whileHover={{ y: -6 }}
                   className="scroll-mt-28"
                 >
                   <Link
                     href={service.href}
-                    className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.1)] hover:-translate-y-2 transition-all duration-300 group border border-gray-100 flex flex-col h-full block"
+                    className="bg-white rounded-[2rem] p-7 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(239,68,68,0.07)] transition-all duration-300 group border border-gray-100 hover:border-red-500/20 flex flex-col h-full relative overflow-hidden"
                   >
-                    <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm border border-red-100 group-hover:border-red-600 shrink-0">
-                      <Icon className="w-6 h-6" aria-hidden="true" />
+                    {/* Soft red glow on card hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-red-500/0 to-red-500/[0.015] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="w-12 h-12 bg-red-50/80 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm border border-red-100/50 group-hover:border-red-600 shrink-0 relative z-10">
+                      <Icon className="w-5.5 h-5.5" aria-hidden="true" />
                     </div>
-                    <motion.h2 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
+
+                    <h2 className="text-lg font-bold mb-3 text-gray-900 leading-tight relative z-10">
                       {service.name}
-                    </motion.h2>
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-8 flex-grow">
+                    </h2>
+
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow relative z-10">
                       {service.description}
                     </p>
-                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+                    <div className="mt-auto pt-4 border-t border-gray-100/80 flex items-center text-red-600 font-extrabold text-xs tracking-wider uppercase relative z-10">
                       Explore Service
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1.5 transition-transform duration-300" aria-hidden="true" />
                     </div>
                   </Link>
                 </motion.div>
               );
             })}
 
-            {/* Featured AI & Cybersecurity Card (Spans all columns to remove uneven empty slots) */}
-            {serviceLinks[6] && (() => {
-              const service = serviceLinks[6];
-              const Icon = serviceIcons[service.iconName];
-              
-              return (
-                <motion.div
-                  id={getServiceId(service.href)}
-                  className="col-span-1 md:col-span-2 lg:col-span-3 scroll-mt-28 mt-2"
-                  whileHover={{ y: -8, scale: 1.005 }}
-                >
-                  <Link
-                    href={service.href}
-                    className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(220,38,38,0.1)] hover:-translate-y-2 transition-all duration-300 group border border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-8 w-full"
-                  >
-                    <div className="flex flex-col sm:flex-row items-start gap-6 flex-grow">
-                      <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-sm border border-red-100 group-hover:border-red-600 shrink-0">
-                        <Icon className="w-6 h-6" aria-hidden="true" />
+            {/* Featured AI & Cybersecurity Card (Spans all columns, removes last uneven card slot) */}
+            {serviceLinks[6] && (
+              <motion.div
+                id={getServiceId(serviceLinks[6].href)}
+                className="col-span-1 md:col-span-2 lg:col-span-3 scroll-mt-28 mt-2"
+                whileHover={{ y: -6 }}
+              >
+                <div className="bg-gradient-to-br from-white via-white to-red-50/[0.04] rounded-[2rem] p-8 md:p-10 shadow-[0_12px_40px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(239,68,68,0.09)] transition-all duration-300 border border-gray-100 hover:border-red-500/20 relative overflow-hidden flex flex-col lg:flex-row gap-8 items-stretch">
+                  
+                  {/* Decorative glowing gradient aura */}
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-red-500/[0.02] rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+                  
+                  {/* Left half: Main content */}
+                  <div className="flex-1 flex flex-col justify-between relative z-10">
+                    <div>
+                      <div className="inline-flex items-center gap-2 rounded-full border border-red-500/10 bg-red-500/5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-red-600 mb-6">
+                        <BrainCircuit className="w-3.5 h-3.5 animate-pulse" />
+                        Featured Technology
                       </div>
-                      <div className="flex flex-col gap-2">
-                        <h2 className="text-xl font-bold text-gray-900 leading-tight">
-                          {service.name}
-                        </h2>
-                        <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-4xl">
-                          {service.description}
-                        </p>
-                      </div>
+                      
+                      <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight mb-4">
+                        {serviceLinks[6].name}
+                      </h2>
+                      
+                      <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6 max-w-xl">
+                        {serviceLinks[6].description}
+                      </p>
                     </div>
-                    
-                    <div className="pt-4 lg:pt-0 lg:pl-6 shrink-0 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 self-end lg:self-auto">
-                      Explore Service
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
+
+                    <div>
+                      <Link
+                        href={serviceLinks[6].href}
+                        className="inline-flex items-center text-red-600 font-extrabold text-xs tracking-wider uppercase group/btn"
+                      >
+                        Explore AI Solutions
+                        <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                      </Link>
                     </div>
-                  </Link>
-                </motion.div>
-              );
-            })()}
+                  </div>
+
+                  {/* Vertical divider on desktop */}
+                  <div className="hidden lg:block w-px bg-gray-100 self-stretch my-2" />
+
+                  {/* Right half: Sub-services list */}
+                  <div className="flex-1 flex flex-col justify-center relative z-10">
+                    <h4 className="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-4">
+                      Specialized AI Capabilities
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {[
+                        { name: "LLM Security Assessment", slug: "llm-security-assessment" },
+                        { name: "AI Threat Detection", slug: "ai-powered-threat-detection" },
+                        { name: "Adversarial ML Defense", slug: "adversarial-ml-defense" },
+                        { name: "Generative AI Governance", slug: "generative-ai-governance" },
+                        { name: "Deepfake & Identity Detection", slug: "deepfake-identity-detection" }
+                      ].map((sub, idx) => (
+                        <Link
+                          key={idx}
+                          href={`/services/ai-cybersecurity/${sub.slug}`}
+                          className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-gray-50/50 hover:bg-red-50/40 border border-gray-100/50 hover:border-red-500/10 text-gray-700 hover:text-red-600 font-bold text-xs transition-all duration-200 group/sub"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 group-hover/sub:bg-red-600 group-hover/sub:scale-125 transition-all shrink-0" />
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </motion.section>
