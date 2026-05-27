@@ -6,18 +6,18 @@ interface CertificationsMarqueeProps {
 }
 
 const certImages = [
-  { src: "/certif/27001.png", alt: "ISO 27001" },
-  { src: "/certif/27002.svg", alt: "ISO 27002" },
-  { src: "/certif/27005.png", alt: "ISO 27005" },
-  { src: "/certif/27701.png", alt: "ISO 27701" },
-  { src: "/certif/22301.png", alt: "ISO 22301" },
-  { src: "/certif/GDPR.webp", alt: "GDPR" },
-  { src: "/certif/Nist.webp", alt: "NIST Framework" },
-  { src: "/certif/PCIDSS.png", alt: "PCI DSS" },
-  { src: "/certif/SOC2.webp", alt: "SOC 2" },
-  { src: "/certif/SWIFT.png", alt: "SWIFT" },
-  { src: "/certif/hipaa.png", alt: "HIPAA" },
-  { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity" }
+  { src: "/certif/27001.png", alt: "ISO 27001 certification badge" },
+  { src: "/certif/27002.svg", alt: "ISO 27002 certification badge" },
+  { src: "/certif/27005.png", alt: "ISO 27005 certification badge" },
+  { src: "/certif/27701.png", alt: "ISO 27701 certification badge" },
+  { src: "/certif/22301.png", alt: "ISO 22301 certification badge" },
+  { src: "/certif/GDPR.webp", alt: "GDPR compliance badge" },
+  { src: "/certif/Nist.webp", alt: "NIST Framework badge" },
+  { src: "/certif/PCIDSS.png", alt: "PCI DSS certification badge" },
+  { src: "/certif/SOC2.webp", alt: "SOC 2 certification badge" },
+  { src: "/certif/SWIFT.png", alt: "SWIFT CSP badge" },
+  { src: "/certif/hipaa.png", alt: "HIPAA compliance badge" },
+  { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity Framework badge" }
 ];
 
 const repeatedImages = [...certImages, ...certImages, ...certImages, ...certImages, ...certImages];
@@ -49,6 +49,7 @@ export function CertificationsMarquee({ className = "", isAbsolute = false }: Ce
             <img
               src={img.src}
               alt={img.alt}
+              title={img.alt}
               className="h-20 w-20 object-contain sm:h-24 sm:w-24 lg:h-32 lg:w-32"
             />
           </div>
@@ -57,4 +58,3 @@ export function CertificationsMarquee({ className = "", isAbsolute = false }: Ce
     </div>
   );
 }
-

@@ -31,7 +31,7 @@ export function CallToActionSection() {
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             className="max-w-2xl text-base font-medium text-gray-400 md:text-lg"
           >
-            Our security experts are available 24/7 to help protect your organization.
+            Start an incident report with the first details our team needs to triage the request quickly.
           </motion.p>
         </div>
 
@@ -42,10 +42,10 @@ export function CallToActionSection() {
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
         >
           <Link
-            href="/contact"
+            href="/report-incident"
             className="group flex w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-red-600 px-8 py-3 text-sm font-medium text-white transition-all hover:bg-red-700 sm:w-auto md:text-base"
           >
-            Contact US
+            Report Incident Now
             <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold ml-1 flex items-center">
               <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12h2" />

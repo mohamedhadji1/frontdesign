@@ -42,7 +42,7 @@ export function NewsSection() {
           {
             id: "1",
             image: "/background/bg1.jpg",
-            title: "Keystone Holding’s 58th ordinary general assembly convened",
+            title: "Keystone Holding's 58th ordinary general assembly convened",
             excerpt: "Toffee sweet roll caramels oat cake lemon drops cupcake sweet roll halvah ice cream.",
             link: "#",
             date: new Date().toISOString()
@@ -50,7 +50,7 @@ export function NewsSection() {
           {
             id: "2",
             image: "/background/bg2.jpg",
-            title: "Keystone Holding’s new Board of Directors has been determined.",
+            title: "Keystone Holding's new Board of Directors has been determined.",
             excerpt: "Toffee sweet roll caramels oat cake lemon drops cupcake sweet roll halvah ice cream.",
             link: "#",
             date: new Date().toISOString()
@@ -156,9 +156,10 @@ export function NewsSection() {
                         <div className="mt-auto flex w-full sm:mt-0 sm:w-auto">
                           <a
                             href={item.link}
+                            aria-label={`Read full article: ${item.title}`}
                             className="group inline-flex w-full items-center justify-center rounded-sm bg-[#ff0000] px-8 py-3 text-[15px] font-medium text-white transition-colors hover:bg-red-600 sm:w-auto sm:px-10"
                           >
-                            Read More
+                            Read Full Article
                             <span className="ml-3 group-hover:translate-x-1.5 transition-transform duration-300 font-bold">
                               <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-[18px] h-[18px]">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -219,6 +220,7 @@ export function NewsSection() {
               <button
                 onClick={handlePrev}
                 className="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:text-black hover:bg-gray-100 transition-colors shadow-sm"
+                aria-label="Previous news item"
               >
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -243,6 +245,7 @@ export function NewsSection() {
               <button
                 onClick={handleNext}
                 className="w-10 h-10 bg-[#ff0000] text-white flex items-center justify-center shadow-md"
+                aria-label="Next news item"
               >
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

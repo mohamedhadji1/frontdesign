@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -138,8 +137,8 @@ export function HeroSection() {
         >
           <source src="/vids/videoplayback.mp4" type="video/mp4" />
         </video>
-        {/* Subtle Gradient Overlay so content remains quite visible */}
-        <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
+        {/* Stronger overlay keeps the video from competing with the value proposition. */}
+        <div className="absolute inset-0 bg-black/55 sm:bg-linear-to-r sm:from-black/85 sm:via-black/55 sm:to-black/25" />
       </div>
 
       {/* Content Container */}
@@ -147,18 +146,18 @@ export function HeroSection() {
         {/* Left Side: Hero Text */}
         <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            <TypingText text="Building The Digital" delay={0} />
+            <TypingText text="Protect Critical Systems" delay={0} />
             <br />
-            <TypingText text="Keystone" delay={1} />
+            <TypingText text="and Data" delay={0.9} />
           </h1>
 
-          <p className="text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-2xl">
-            <TypingText text="We secure what matters most to you." delay={2} />
+          <p className="max-w-3xl text-base font-medium leading-relaxed tracking-wide text-gray-100 sm:text-lg md:text-2xl">
+            <TypingText text="Enterprise cybersecurity, managed services, and incident response for organizations that cannot afford downtime." delay={1.8} />
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3, duration: 0.8 }}
+            transition={{ delay: 2.4, duration: 0.8 }}
             className="mt-2 flex w-full flex-col gap-3 text-white sm:mt-4 sm:w-auto sm:flex-row sm:gap-6"
           >
             <MotionLink
@@ -166,15 +165,17 @@ export function HeroSection() {
               whileHover={{ x: 10 }}
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
-              Get information about the programs
-              <span>→</span>
+              Request a Security Assessment
+              <span aria-hidden="true">-&gt;</span>
             </MotionLink>
-            <Link href="/about" className="w-full sm:w-auto">
-              <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:text-base">
-                About Us
-                <span>→</span>
-              </motion.button>
-            </Link>
+            <MotionLink
+              href="/report-incident"
+              whileHover={{ x: 10 }}
+              className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:w-auto sm:text-base"
+            >
+              Report Incident Now
+              <span aria-hidden="true">-&gt;</span>
+            </MotionLink>
           </motion.div>
         </div>
 
