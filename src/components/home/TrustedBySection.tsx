@@ -7,11 +7,11 @@ import { gsap } from "gsap";
 
 const partners = [
   { name: "BNA", logo: "/images/trustedby/bna.png" },
-  { name: "BNA", logo: "/images/trustedby/bna.png" },
-  { name: "BNA", logo: "/images/trustedby/bna.png" },
-  { name: "BNA", logo: "/images/trustedby/bna.png" },
-  { name: "BNA", logo: "/images/trustedby/bna.png" },
-  { name: "BNA", logo: "/images/trustedby/bna.png" },
+  { name: "BNA 2", logo: "/images/trustedby/bna.png" },
+  { name: "BNA 3", logo: "/images/trustedby/bna.png" },
+  { name: "BNA 4", logo: "/images/trustedby/bna.png" },
+  { name: "BNA 5", logo: "/images/trustedby/bna.png" },
+  { name: "BNA 6", logo: "/images/trustedby/bna.png" },
 ];
 
 export function TrustedBySection() {
@@ -75,7 +75,7 @@ export function TrustedBySection() {
       {/* Centered Description Text */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
         <p className="text-zinc-400 max-w-2xl mx-auto mb-10 text-center font-medium text-sm md:text-base tracking-wide">
-          Trusted by public and enterprise organizations that depend on resilient cybersecurity operations.
+          We are proud to collaborate with industry leaders and trusted organizations.
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export function TrustedBySection() {
             >
               <Image 
                 src={partner.logo} 
-                alt={`${partner.name} client logo`} 
+                alt={`${partner.name} Logo`} 
                 fill 
                 className="object-contain"
                 sizes="(max-width: 768px) 10rem, 12rem"

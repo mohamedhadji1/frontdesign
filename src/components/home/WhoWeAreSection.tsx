@@ -75,10 +75,10 @@ export function WhoWeAreSection() {
             </motion.h2>
 
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-4 lg:mb-6 font-medium">
-              Keystone has 20 years of experience in red teaming, blue teaming, and cybersecurity consulting for organizations that need reliable protection and practical execution.
+              Keysteone has twenty years’ experience in red teaming, blue teaming and consulting services which has been established in the IT sector for Research, Efficiency and Solution Production.
             </p>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 lg:mb-10 font-medium">
-              Our work combines field-tested expertise with research-led methods to solve the real security needs of the sector.
+              It was not long to discover that supported to knowledge by scientific perspectives, would be the solution to the real needs of the sector.
             </p>
 
             <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-8 lg:justify-start">
@@ -119,7 +119,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 24+ Countries</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in +24 Countries</motion.h2>
                 <p className="text-gray-500 font-medium leading-relaxed">168 companies in 24 countries use our services.</p>
                 <a href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
                   See Our Global Impact
@@ -140,7 +140,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">40+ security experts</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">+40 security expert</motion.h2>
                 <p className="text-gray-500 font-medium leading-relaxed">8 billion threat signals are processed daily by our systems.</p>
               </div>
             </div>
@@ -159,7 +159,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">200+ satisfied clients</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">+200 satisfied client</motion.h2>
                 <p className="text-gray-500 font-medium leading-relaxed">850 million people use platforms secured by our team every day.</p>
               </div>
             </div>

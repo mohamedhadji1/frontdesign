@@ -8,9 +8,7 @@ interface ActionButtonProps {
 export function ActionButton({ label, onClick }: ActionButtonProps) {
   return (
     <button
-      type="button"
       onClick={onClick}
-      aria-label={label}
       className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded text-sm transition-colors shadow-lg flex items-center justify-center gap-2"
     >
       <Phone size={16} className="fill-current" />
