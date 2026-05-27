@@ -238,7 +238,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={handleClose}
               className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded text-center transition-colors shadow-lg shadow-red-600/20"
             >
-              Report Incident
+              Report an Incident
             </Link>
           </div>
         </div>

@@ -146,9 +146,7 @@ export function HeroSection() {
         {/* Left Side: Hero Text */}
         <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            <TypingText text="Protect Critical Systems" delay={0} />
-            <br />
-            <TypingText text="and Data" delay={0.9} />
+            <TypingText text="Protect Critical Systems and Data" delay={0} />
           </h1>
 
           <p className="max-w-3xl text-base font-medium leading-relaxed tracking-wide text-gray-100 sm:text-lg md:text-2xl">
@@ -166,15 +164,13 @@ export function HeroSection() {
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
               Request a Security Assessment
-              <span aria-hidden="true">-&gt;</span>
             </MotionLink>
             <MotionLink
               href="/report-incident"
               whileHover={{ x: 10 }}
               className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:w-auto sm:text-base"
             >
-              Report Incident Now
-              <span aria-hidden="true">-&gt;</span>
+              Report an Incident
             </MotionLink>
           </motion.div>
         </div>
