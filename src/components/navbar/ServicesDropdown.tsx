@@ -30,10 +30,6 @@ export const servicesDetails: ServiceCategory[] = [
         subCategory: "Advanced Penetration Testing",
         subItems: [
           {
-            name: "Web & Mobile Application Assessment",
-            slug: "offensive-security/web-mobile-application-assessment",
-          },
-          {
             name: "External and Internal Penetration Testing",
             slug: "offensive-security/external-internal-penetration-testing",
           },
