@@ -63,31 +63,36 @@ export const servicesDetails: ServiceCategory[] = [
     ],
   },
   {
-    category: "Assessment and Technical Assistance",
-    href: "/services/technical-assessment",
-    title: "Assessment and Technical Assistance",
+    category: "Security assessment",
+    href: "/services/security-assessment",
+    title: "Security assessment",
     items: [
       {
         name: "Technical Assessment",
         subCategory: "Technical Assessment: In-Depth Systems Evaluation",
         subItems: [
-          { name: "Infrastructure Assessment", slug: "technical-assessment/infrastructure-assessment" },
-          { name: "Cloud Environment Assessment", slug: "technical-assessment/cloud-environment-assessment" },
-          { name: "Industrial System Assessment", slug: "technical-assessment/industrial-system-assessment" },
-          { name: "Core Banking and Internet Banking System Assessment", slug: "technical-assessment/core-internet-banking-system-assessment" },
-          { name: "Architecture Assessment", slug: "technical-assessment/architecture-assessment" },
-          { name: "Active Directory Infrastructure Assessment", slug: "technical-assessment/active-directory-assessment" },
+          { name: "Infrastructure Assessment", slug: "security-assessment/infrastructure-assessment" },
+          { name: "Cloud Environment Assessment", slug: "security-assessment/cloud-environment-assessment" },
+          { name: "OT Assessment", slug: "security-assessment/industrial-system-assessment" },
+          { name: "Core Banking and Internet Banking System Assessment", slug: "security-assessment/core-internet-banking-system-assessment" },
+          { name: "Architecture Assessment", slug: "security-assessment/architecture-assessment" },
+          { name: "Active Directory Infrastructure Assessment", slug: "security-assessment/active-directory-assessment" },
         ]
       },
       {
         name: "Technical Assistance",
         subCategory: "Technical Assistance: Professional and Responsive Support",
         subItems: [
-          { name: "System Hardening", slug: "technical-assessment/system-hardening" },
-          { name: "Hardening Guides Development", slug: "technical-assessment/hardening-guides" },
-          { name: "Network Security Architecture Design", slug: "technical-assessment/network-security-architecture" },
-          { name: "Application Security Support", slug: "technical-assessment/application-security-support" },
+          { name: "System Hardening", slug: "security-assessment/system-hardening" },
+          { name: "Hardening Guides Development", slug: "security-assessment/hardening-guides" },
+          { name: "Network Security Architecture Design", slug: "security-assessment/network-security-architecture" },
+          { name: "Application Security Support", slug: "security-assessment/application-security-support" },
         ]
+      },
+      {
+        name: "DevSecOps",
+        slug: "security-assessment/devsecops",
+        description: "Keystone assists your development and operations teams in automating security checks, integrating robust security gates seamlessly into your continuous integration and deployment pipelines."
       }
     ]
   },
@@ -97,8 +102,8 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Managed Services",
     items: [
       {
-        name: "SOC Management",
-        subCategory: "SOC Management: Proactive Monitoring & Response",
+        name: "Managed SOC",
+        subCategory: "Managed SOC: Proactive Monitoring & Response",
         subItems: [
           { name: "Blue Team", slug: "defensive-security/blue-team" },
           { name: "Vulnerability Scanning", slug: "defensive-security/vulnerability-scanning" },
@@ -127,77 +132,50 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Governance, Risk and Compliance",
     items: [
       {
-        name: "Information System Security Assessment",
-        slug: "governance-risk-compliance/information-system-security-assessment",
-        subCategory: "Information System Security Assessment",
+        name: "Cybersecurity & Compliance Assessment",
+        subCategory: "Cybersecurity & Compliance Assessment",
         subItems: [
+          { name: "Information Security Assessment", slug: "governance-risk-compliance/information-system-security-assessment" },
           { name: "Regulatory Assessment", slug: "governance-risk-compliance/information-system-security-assessment/regulatory" },
-          { name: "Standards Compliance Assessment (ISO27001, PCI/DSS, GDPR, SWIFT, NIST, etc.)", slug: "governance-risk-compliance/information-system-security-assessment/standards" }
+          { name: "Standards Compliance Assessment", slug: "governance-risk-compliance/information-system-security-assessment/standards" },
+          { name: "Risk Assessment", slug: "governance-risk-compliance/risk-assessment" },
+          { name: "Authorization Assessment", slug: "governance-risk-compliance/access-rights-assessment" }
         ]
       },
       {
-        name: "Compliance Alignment",
-        slug: "governance-risk-compliance/compliance-alignment",
-        subCategory: "Compliance Alignment",
+        name: "Regulatory Compliance & Certification",
+        subCategory: "Regulatory Compliance & Certification",
         subItems: [
-          { name: "International Standards Compliance (ISO, PCI/DSS, GDPR, etc.)", slug: "governance-risk-compliance/compliance-alignment/international-standards" },
+          { name: "Regulatory Compliance Support", slug: "governance-risk-compliance/compliance-alignment" },
+          { name: "ISO 27001 Certification Support", slug: "governance-risk-compliance/iso-27001-certification-support" },
+          { name: "ISO 22301 Certification Support", slug: "governance-risk-compliance/iso-22301-certification-support" },
+          { name: "ISO 27701 Certification Support", slug: "governance-risk-compliance/iso-27701-certification-support" },
+          { name: "ISO 42001 Certification Support", slug: "governance-risk-compliance/iso-42001-certification-support" },
+          { name: "SWIFT CSP Compliance Support", slug: "governance-risk-compliance/swift-csp-compliance-support" },
+          { name: "Privacy & Data Protection", slug: "governance-risk-compliance/personal-data-protection" },
           { name: "Legal Compliance Support", slug: "governance-risk-compliance/compliance-alignment/legal" }
         ]
       },
       {
-        name: "ISO 27001 Certification Support",
-        slug: "governance-risk-compliance/iso-27001-certification-support",
-        description: "ISO 27001 certification is a tangible proof of your commitment to information security. Our consultants support you at every stage to successfully achieve certification."
-      },
-      {
-        name: "ISO 22301 Certification Support",
-        slug: "governance-risk-compliance/iso-22301-certification-support",
-        description: "Go beyond simple compliance and build business resilience. We guide you towards ISO 22301 certification to keep your business running smoothly during any crisis."
-      },
-      {
-        name: "Risk Assessment",
-        slug: "governance-risk-compliance/risk-assessment",
-        description: "We offer a holistic perspective to anticipate potential risks, evaluate their impact, and formulate strategic mitigation plans."
-      },
-      {
-        name: "Security Policy Development",
-        slug: "governance-risk-compliance/security-policy-development",
-        description: "Establish robust security policies customized to your business goals, integrating industry best practices for comprehensive asset protection."
-      },
-      {
-        name: "BCP & DRP Development",
-        slug: "governance-risk-compliance/bcp-drp-development",
-        description: "Ensure your business is fully prepared for interruptions. We design tailored business continuity and disaster recovery plans to minimize downtime."
-      },
-      {
-        name: "Data Classification",
-        slug: "governance-risk-compliance/data-classification",
-        description: "Map, identify, and categorize your sensitive information. Apply custom security rules and access governance to safeguard your business data."
-      },
-      {
-        name: "Personal Data Protection",
-        slug: "governance-risk-compliance/personal-data-protection",
-        description: "Ensure responsible management of personal data in strict alignment with regulations like GDPR. We assist with consent, privacy rights, and data protection."
-      },
-      {
-        name: "Assessment of authorizations",
-        slug: "governance-risk-compliance/access-rights-assessment",
-        description: "Ensure access rights are assigned securely and appropriately. We conduct thorough assessments to identify privileges risks and ensure effective governance."
-      },
-      {
-        name: "Virtual CISO & DPO",
-        slug: "governance-risk-compliance/virtual-ciso-dpo",
-        description: "Get expert cybersecurity and privacy leadership as virtual extensions of your management team, delivering ongoing strategy and compliance guidance."
+        name: "GRC Advisory Services",
+        subCategory: "GRC Advisory Services",
+        subItems: [
+          { name: "Security Policy Development", slug: "governance-risk-compliance/security-policy-development" },
+          { name: "BCP & DRP Development", slug: "governance-risk-compliance/bcp-drp-development" },
+          { name: "Data Classification", slug: "governance-risk-compliance/data-classification" },
+          { name: "Virtual CISO & DPO", slug: "governance-risk-compliance/virtual-ciso-dpo" },
+          { name: "Governance & Risk Management Support", slug: "governance-risk-compliance/governance-risk-management-support" }
+        ]
       }
     ],
   },
   {
-    category: "Strategic Consulting",
+    category: "Strategic Advisory",
     href: "/services/cybersecurity-strategy-consulting",
-    title: "Strategic Consulting",
+    title: "Strategic Advisory",
     items: [
       {
-        name: "Cybersecurity Strategic Consulting",
+        name: "Cybersecurity Strategic Advisory",
         slug: "cybersecurity-strategy-consulting",
         subCategory: "Strategic Services",
         subItems: [
@@ -260,15 +238,29 @@ export const servicesDetails: ServiceCategory[] = [
     title: "AI & Cybersecurity",
     items: [
       {
+        name: "AI Strategy & Governance",
+        slug: "ai-cybersecurity/ai-strategy-governance",
+        description: "Define a clear, realistic and secure AI strategy aligned with business objectives, cybersecurity priorities and regulatory expectations."
+      },
+      {
+        name: "AI Solutions Implementation",
+        slug: "ai-cybersecurity/ai-solutions-implementation",
+        description: "Design, implement and integrate AI-based solutions — LLMs, RAG, agents — focused on business value, security, scalability and compliance."
+      },
+      {
         name: "AI Security & Threat Defense",
-        subCategory: "AI Security & Threat Defense: Smart Protection",
-        subItems: [
-          { name: "LLM Security Assessment", slug: "ai-cybersecurity/llm-security-assessment" },
-          { name: "AI-Powered Threat Detection", slug: "ai-cybersecurity/ai-powered-threat-detection" },
-          { name: "Adversarial Machine Learning Defense", slug: "ai-cybersecurity/adversarial-ml-defense" },
-          { name: "Generative AI Governance", slug: "ai-cybersecurity/generative-ai-governance" },
-          { name: "Deepfake & Deep Identity Detection", slug: "ai-cybersecurity/deepfake-identity-detection" },
-        ]
+        slug: "ai-cybersecurity/ai-security-threat-defense",
+        description: "Assess and strengthen the security of AI systems against prompts, models, data leakage, and emerging machine learning attack vectors."
+      },
+      {
+        name: "AI for Cybersecurity Operations",
+        slug: "ai-cybersecurity/ai-for-cybersecurity-operations",
+        description: "Integrate cognitive AI capabilities into active operations, reducing MTTR, triaging alerts, and orchestrating security playbooks."
+      },
+      {
+        name: "AI Training & Awareness",
+        slug: "ai-cybersecurity/ai-training-awareness",
+        description: "Train executives, employees, and development teams on prompt safety, secure usage frameworks, and corporate data leakage prevention."
       }
     ]
   }
@@ -287,22 +279,7 @@ function getDropdownItems(category: ServiceCategory | undefined): ServiceItem[] 
   if (!category) {
     return [];
   }
-
-  if (category.category !== "GRC" || category.items.length <= 2) {
-    return category.items;
-  }
-
-  const [firstItem, secondItem, ...remainingItems] = category.items;
-
-  return [
-    firstItem,
-    secondItem,
-    {
-      name: "Additional GRC Services",
-      subCategory: "Additional GRC Services",
-      subItems: remainingItems.map(({ name, slug }) => ({ name, slug })),
-    },
-  ];
+  return category.items;
 }
 
 export function ServicesDropdown() {
@@ -316,7 +293,7 @@ export function ServicesDropdown() {
   return (
 
     <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
+      <div className="w-full bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[400px]">
 
         {/* Left Column: Categories */}
         <div className="w-1/4 border-r border-gray-200 pr-6 flex flex-col space-y-2">

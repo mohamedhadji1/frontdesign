@@ -25,25 +25,24 @@ export const solutionsDetails: SolutionCategory[] = [
     items: [
       {
         name: "Keystone ARENA (CTI Platform)",
-        slug: "solutions/keystone-arena",
-        description: "Centralize threat intelligence, analyst workflows, and operational visibility in one secure platform. Built to help security teams maintain focus under pressure and keep responses structured."
+        slug: "keystone-arena",
+        description: "Centralize threat intelligence, external attack surface monitoring, and third-party risk assessment in one secure platform. Built to move from raw data to actionable intelligence."
       },
       {
-        name: "DNS Security",
-        slug: "solutions/dns-security",
-        description: "Enhance your organization's security with intelligent DNS filtering. DNS Security blocks malicious domains, phishing attempts, and malware spread, ensuring uninterrupted productivity."
+        name: "Keystone DNS Filtering",
+        slug: "dns-filtering",
+        description: "Protect your organization at the DNS layer by blocking malicious, unwanted, or risky domains before connections are established, combining curated blocklists with AI-driven analysis."
       },
       {
-        name: "DLP",
-        slug: "solutions/keystone-arena",
-        description: "Centralize threat intelligence, analyst workflows, and operational visibility in one secure platform. Built to help security teams maintain focus under pressure and keep responses structured."
+        name: "CIP Platform",
+        slug: "cip-platform",
+        description: "Classification, monitoring, and governance of Critical Information Infrastructures. Centralize security indicators and structural risk oversight in a national-level dashboard."
       },
       {
-        name: "3rd Party Assessment",
-        slug: "solutions/3rd_party_Assessment",
-        description: "3rd Party Assessment."
+        name: "Keystone DLP",
+        slug: "keystone-dlp",
+        description: "Protect sensitive data against leakage, unauthorized sharing, and uncontrolled movement. Implement policy-based controls aligned with business compliance."
       },
-
     ]
   }
 ];
@@ -63,7 +62,7 @@ export function SolutionsDropdown() {
 
   return (
     <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
+      <div className="w-full bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
         
         {/* Left Column: Vertical list of items */}
         <div className="w-1/3 border-r border-gray-200 pr-6">

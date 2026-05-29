@@ -13,6 +13,16 @@ import {
   Award,
   Handshake,
   BarChart3,
+  ShieldCheck,
+  ShieldAlert,
+  Lock,
+  Search,
+  Key,
+  Settings,
+  Network,
+  Users,
+  FileText,
+  Database,
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
@@ -21,24 +31,119 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
-const grcServices = [
+const offerings = [
+  // Cybersecurity & Compliance Assessment
   {
-    title: "Corporate Governance",
-    description:
-      "We collaborate with your team to establish robust governance structures that guide strategic decisions while ensuring transparency and accountability within your organization.",
+    title: "Information Security Assessment",
+    description: "Deep-dive evaluation of your information security management systems (ISMS) and core technical controls.",
+    icon: ShieldCheck,
+    href: "/services/governance-risk-compliance/information-system-security-assessment",
+  },
+  {
+    title: "Regulatory Assessment",
+    description: "Gap audits against national cybersecurity frameworks and mandatory government regulatory guidelines.",
     icon: Landmark,
+    href: "/services/governance-risk-compliance/information-system-security-assessment/regulatory",
   },
   {
-    title: "Risk Management",
-    description:
-      "Our holistic approach evaluates, mitigates, and manages potential risks, providing your business with a greater capacity to anticipate and respond to threats.",
-    icon: AlertTriangle,
-  },
-  {
-    title: "Compliance",
-    description:
-      "We help you meet the legal, regulatory, contractual, and ethical requirements specific to your industry, ensuring seamless compliance.",
+    title: "Standards Compliance Assessment",
+    description: "Comprehensive alignment audits against international standards: ISO 27001, PCI-DSS, GDPR, SWIFT, NIST.",
     icon: FileCheck,
+    href: "/services/governance-risk-compliance/information-system-security-assessment/standards",
+  },
+  {
+    title: "Risk Assessment",
+    description: "Holistic evaluation to anticipate potential threats, quantify impact, and formulate strategic mitigation plans.",
+    icon: AlertTriangle,
+    href: "/services/governance-risk-compliance/risk-assessment",
+  },
+  {
+    title: "Authorization Assessment",
+    description: "Thorough audits of directory roles, active permissions, and privileged account access to enforce least privilege.",
+    icon: Key,
+    href: "/services/governance-risk-compliance/access-rights-assessment",
+  },
+
+  // Regulatory Compliance & Certification
+  {
+    title: "Regulatory Compliance Support",
+    description: "Structured assistance to align your business operations with national and local cybersecurity regulatory guidelines.",
+    icon: Settings,
+    href: "/services/governance-risk-compliance/compliance-alignment",
+  },
+  {
+    title: "ISO 27001 Certification Support",
+    description: "Expert consulting to design, implement, and maintain a compliant Information Security Management System (ISMS).",
+    icon: Award,
+    href: "/services/governance-risk-compliance/iso-27001-certification-support",
+  },
+  {
+    title: "ISO 22301 Certification Support",
+    description: "Guidance to build a Business Continuity Management System (BCMS) and achieve certified crisis resilience.",
+    icon: BarChart3,
+    href: "/services/governance-risk-compliance/iso-22301-certification-support",
+  },
+  {
+    title: "ISO 27701 Certification Support",
+    description: "Extend your ISMS with a Privacy Information Management System (PIMS) to ensure compliant personal data processing.",
+    icon: Lock,
+    href: "/services/governance-risk-compliance/iso-27701-certification-support",
+  },
+  {
+    title: "ISO 42001 Certification Support",
+    description: "Establish an Artificial Intelligence Management System (AIMS) to govern algorithmic safety and trust.",
+    icon: Network,
+    href: "/services/governance-risk-compliance/iso-42001-certification-support",
+  },
+  {
+    title: "SWIFT CSP Compliance Support",
+    description: "Independent Customer Security Programme (CSP) audits and Attestation Support on the SWIFT KYC registry.",
+    icon: ShieldAlert,
+    href: "/services/governance-risk-compliance/swift-csp-compliance-support",
+  },
+  {
+    title: "Privacy & Data Protection",
+    description: "Enforce responsible data management rules, user consent compliance, and privacy-by-design standards.",
+    icon: Users,
+    href: "/services/governance-risk-compliance/personal-data-protection",
+  },
+  {
+    title: "Legal Compliance Support",
+    description: "Align your technical infrastructure and operational data flows with regional legal and privacy obligations.",
+    icon: FileText,
+    href: "/services/governance-risk-compliance/compliance-alignment/legal",
+  },
+
+  // GRC Advisory Services
+  {
+    title: "Security Policy Development",
+    description: "Establish robust, customized security policies integrating industry best practices for comprehensive asset protection.",
+    icon: FileCheck,
+    href: "/services/governance-risk-compliance/security-policy-development",
+  },
+  {
+    title: "BCP & DRP Development",
+    description: "Design custom business continuity and disaster recovery plans to minimize downtime during interruptions.",
+    icon: Settings,
+    href: "/services/governance-risk-compliance/bcp-drp-development",
+  },
+  {
+    title: "Data Classification",
+    description: "Map, identify, and categorize sensitive information to apply custom security rules and access governance.",
+    icon: Database,
+    href: "/services/governance-risk-compliance/data-classification",
+  },
+  {
+    title: "Virtual CISO & DPO",
+    description: "Get ongoing strategic cyber leadership, advisory, and privacy compliance guidance from seasoned experts.",
+    icon: ShieldCheck,
+    href: "/services/governance-risk-compliance/virtual-ciso-dpo",
+  },
+  {
+    title: "Governance & Risk Management Support",
+    description: "Strategic partnerships to build resilient corporate risk structures, treatment playbooks, and mitigation models.",
+    icon: Handshake,
+    href: "/services/governance-risk-compliance/governance-risk-management-support",
   },
 ];
 
@@ -92,11 +197,11 @@ export default function GrcPage() {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
@@ -112,9 +217,9 @@ export default function GrcPage() {
               <span className="text-white/60">Risk & Compliance</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <motion.h2 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Governance, Risk & Compliance
-            </h1>
+            </motion.h2>
 
             <HeroTypeLine
               items={[
@@ -184,14 +289,14 @@ export default function GrcPage() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {grcServices.map((service, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {offerings.map((service, idx) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.12 }}
+                transition={{ duration: 0.6, delay: idx * 0.04 }}
                 whileHover={{ y: -10 }}
                 className="group bg-zinc-50 p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full"
               >
@@ -206,7 +311,7 @@ export default function GrcPage() {
                   {service.description}
                 </p>
                 <Link
-                  href="/contact"
+                  href={service.href}
                   className="inline-flex items-center gap-2 font-bold uppercase tracking-widest text-[10px] text-red-600 hover:gap-4 transition-all"
                 >
                   Learn More <ArrowRight size={14} />

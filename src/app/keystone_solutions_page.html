@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keystone Solutions</title>
+  <style>
+    :root {
+      --primary: #e30613;
+      --dark: #101828;
+      --muted: #667085;
+      --light: #f8fafc;
+      --border: #e5e7eb;
+      --card: #ffffff;
+      --accent: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b1220 0%, #1f2937 55%, #3b0b12 100%);
+      color: #ffffff;
+      padding: 90px 24px 80px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      color: #ffffff;
+      background: rgba(227, 6, 19, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      max-width: 900px;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 820px;
+      font-size: 19px;
+      color: #d1d5db;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #c90410;
+    }
+
+    .btn-secondary {
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .intro {
+      padding: 60px 24px 36px;
+      background: #ffffff;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .intro h2,
+    .solutions h2,
+    .why h2,
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.7px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .solution-menu {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .solution-menu h3 {
+      font-size: 19px;
+      margin-bottom: 14px;
+    }
+
+    .solution-menu ul {
+      list-style: none;
+    }
+
+    .solution-menu li + li {
+      border-top: 1px solid var(--border);
+    }
+
+    .solution-menu a {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .solution-menu a span {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .solutions {
+      padding: 36px 24px 70px;
+      background: #ffffff;
+    }
+
+    .solutions-header {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .solutions-header p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .solution-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+    }
+
+    .solution-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      background: rgba(227, 6, 19, 0.08);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+
+    .solution-card h3 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .solution-card .lead {
+      font-size: 18px;
+      color: #475467;
+      max-width: 900px;
+      margin-bottom: 22px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 22px;
+    }
+
+    .content-box {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .content-box h4 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .content-box p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .content-box ul {
+      padding-left: 18px;
+      color: #475467;
+    }
+
+    .content-box li {
+      margin-bottom: 8px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      min-height: 112px;
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .feature-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .why {
+      background: var(--light);
+      padding: 70px 24px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .why-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      min-height: 180px;
+    }
+
+    .why-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      padding: 76px 24px;
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .cta p {
+      color: #d1d5db;
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid,
+      .content-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .solution-menu {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 70px 20px 60px;
+      }
+
+      .intro,
+      .solutions,
+      .why,
+      .cta {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .solution-card {
+        padding: 24px;
+      }
+
+      .solution-card-top {
+        flex-direction: column;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrapper">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-kicker">Keystone Cybersecurity Solutions</div>
+        <h1>Cybersecurity platforms built to protect, monitor and strengthen digital resilience.</h1>
+        <p>
+          Keystone develops advanced cybersecurity solutions designed to help organizations anticipate threats,
+          protect sensitive assets, control critical infrastructures and reduce exposure to data leakage.
+          Our platforms combine field expertise, automation and AI-driven analysis to transform security challenges
+          into actionable intelligence.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#solutions">Explore solutions</a>
+          <a class="btn btn-secondary" href="#why-keystone">Why Keystone</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container intro-grid">
+        <div>
+          <div class="section-label">Overview</div>
+          <h2>Designed by cybersecurity experts for real operational needs.</h2>
+          <p>
+            Keystone solutions are built to address the most pressing cybersecurity priorities: external exposure,
+            threat intelligence, DNS-level protection, critical infrastructure monitoring and data loss prevention.
+          </p>
+          <p>
+            Each solution is designed with a pragmatic approach: easy to integrate, security-oriented, scalable and
+            adapted to both enterprise and national-level cybersecurity programs.
+          </p>
+        </div>
+
+        <aside class="solution-menu" aria-label="Solutions menu">
+          <h3>Solutions Menu</h3>
+          <ul>
+            <li><a href="#arena">ARENA <span>CTI, EASM, TPRM</span></a></li>
+            <li><a href="#dns-filtering">DNS Filtering <span>Cloud & Local</span></a></li>
+            <li><a href="#cip">CIP Platform <span>Critical Infrastructure</span></a></li>
+            <li><a href="#dlp">Keystone DLP <span>Data Protection</span></a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+      <div class="container">
+        <div class="solutions-header">
+          <div class="section-label">Our Solutions</div>
+          <h2>A portfolio of cybersecurity solutions developed by Keystone.</h2>
+          <p>
+            From cyber threat intelligence to data protection, Keystone provides solutions that help decision-makers,
+            SOC teams, risk managers and national cybersecurity authorities gain visibility, control and confidence.
+          </p>
+        </div>
+
+        <article id="arena" class="solution-card">
+          <div class="solution-card-top">
+            <div>
+              <h3>ARENA</h3>
+              <p class="lead">
+                ARENA is Keystone's cyber intelligence and exposure management platform, designed to provide a clear
+                view of external threats, digital exposure and third-party cyber risk. It helps organizations move from
+                fragmented security signals to centralized, actionable intelligence.
+              </p>
+            </div>
+            <span class="tag">CTI / EASM / Third Party Risk</span>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Cyber Threat Intelligence</strong>
+              <p>Monitor threats, indicators, campaigns and adversary activities relevant to your organization.</p>
+            </div>
+            <div class="feature-item">
+              <strong>External Attack Surface</strong>
+              <p>Discover exposed assets, misconfigurations and internet-facing risks before attackers exploit them.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Third-Party Assessment</strong>
+              <p>Assess suppliers and partners to identify cyber risks across your extended ecosystem.</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="content-box">
+              <h4>Marketing positioning</h4>
+              <p>
+                ARENA gives security leaders the visibility they need to understand their exposure, anticipate attacks
+                and prioritize remediation. By combining intelligence, external monitoring and third-party assessment,
+                the platform supports a proactive and risk-based cybersecurity posture.
+              </p>
+              <p>
+                It is built for organizations that want to go beyond reactive security and continuously monitor the
+                threats that matter most to their business.
+              </p>
+            </div>
+            <div class="content-box">
+              <h4>What we offer</h4>
+              <ul>
+                <li>Cyber threat intelligence monitoring and reporting</li>
+                <li>External attack surface discovery and risk scoring</li>
+                <li>Detection of exposed services, leaked credentials and risky assets</li>
+                <li>Third-party cybersecurity assessment and vendor risk visibility</li>
+                <li>Risk dashboards for security teams and executives</li>
+                <li>Actionable recommendations to reduce exposure</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="dns-filtering" class="solution-card">
+          <div class="solution-card-top">
+            <div>
+              <h3>Keystone DNS Filtering</h3>
+              <p class="lead">
+                Keystone DNS Filtering protects users and organizations at the DNS layer by blocking malicious,
+                unwanted or risky domains before connections are established. The solution can be deployed locally
+                or in the cloud and combines blocklist-based filtering with AI-driven analysis.
+              </p>
+            </div>
+            <span class="tag">DNS Security / AI Analysis</span>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Local or Cloud Deployment</strong>
+              <p>Flexible architecture adapted to enterprise, ISP, government or distributed environments.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Blocklist Filtering</strong>
+              <p>Block access to malicious, phishing, malware, C2, suspicious or unauthorized domains.</p>
+            </div>
+            <div class="feature-item">
+              <strong>AI-Based Analysis</strong>
+              <p>Analyze DNS patterns and suspicious domains to enhance detection and prevention capabilities.</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="content-box">
+              <h4>Marketing positioning</h4>
+              <p>
+                DNS is often the first step in a cyberattack. Keystone DNS Filtering turns this critical control point
+                into a powerful protection layer, helping organizations prevent access to dangerous destinations and
+                reduce the risk of phishing, malware infection and command-and-control communication.
+              </p>
+              <p>
+                With cloud and on-premise deployment options, the solution can support both centralized and sensitive
+                environments where control, visibility and sovereignty are key requirements.
+              </p>
+            </div>
+            <div class="content-box">
+              <h4>What we offer</h4>
+              <ul>
+                <li>DNS request filtering based on curated blocklists</li>
+                <li>AI-assisted detection of suspicious domain behavior</li>
+                <li>Protection against phishing, malware and C2 domains</li>
+                <li>Cloud-based or local deployment models</li>
+                <li>Policy-based filtering by user, group or network</li>
+                <li>Dashboards, reporting and security event visibility</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="cip" class="solution-card">
+          <div class="solution-card-top">
+            <div>
+              <h3>CIP Platform</h3>
+              <p class="lead">
+                The Keystone CIP Platform supports the classification, monitoring and governance of Critical
+                Information Infrastructures. It enables authorities and large organizations to structure national-level
+                visibility through a centralized dashboard dedicated to critical infrastructure control and risk oversight.
+              </p>
+            </div>
+            <span class="tag">Critical Infrastructure Protection</span>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Infrastructure Classification</strong>
+              <p>Classify critical information infrastructures by sector, criticality, dependency and risk level.</p>
+            </div>
+            <div class="feature-item">
+              <strong>National Dashboard</strong>
+              <p>Centralize indicators and provide a strategic view of critical infrastructure security posture.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Risk Governance</strong>
+              <p>Support governance, prioritization and monitoring of protection measures across critical entities.</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="content-box">
+              <h4>Marketing positioning</h4>
+              <p>
+                Protecting critical infrastructures requires more than isolated technical controls. Keystone CIP Platform
+                provides a structured approach to identify what is critical, understand dependencies, monitor risk levels
+                and support decision-making at strategic and operational levels.
+              </p>
+              <p>
+                The platform is designed for national cybersecurity programs, regulators, sectoral authorities and large
+                operators that need a clear and consolidated view of critical digital infrastructures.
+              </p>
+            </div>
+            <div class="content-box">
+              <h4>What we offer</h4>
+              <ul>
+                <li>Classification of critical information infrastructures</li>
+                <li>Criticality scoring and sector-based mapping</li>
+                <li>Centralized national dashboard for critical infrastructure control</li>
+                <li>Risk, dependency and maturity indicators</li>
+                <li>Monitoring of remediation plans and security measures</li>
+                <li>Reporting for authorities, operators and decision-makers</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="dlp" class="solution-card">
+          <div class="solution-card-top">
+            <div>
+              <h3>Keystone DLP</h3>
+              <p class="lead">
+                Keystone DLP helps organizations protect sensitive data against leakage, unauthorized sharing and
+                uncontrolled movement. The solution supports the implementation of data protection controls to detect,
+                monitor and prevent risky data flows across the organization.
+              </p>
+            </div>
+            <span class="tag">Data Loss Prevention</span>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>Sensitive Data Protection</strong>
+              <p>Identify and protect confidential, personal, financial, strategic or regulated information.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Leakage Prevention</strong>
+              <p>Detect and reduce data exfiltration risks through monitored channels and user actions.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Policy Enforcement</strong>
+              <p>Apply rules and controls aligned with business, compliance and data governance requirements.</p>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="content-box">
+              <h4>Marketing positioning</h4>
+              <p>
+                Data is one of the most valuable assets of any organization. Keystone DLP gives companies the ability
+                to protect sensitive information, reduce exposure to accidental or malicious leakage and strengthen
+                compliance with internal and regulatory data protection requirements.
+              </p>
+              <p>
+                The solution is designed to help organizations gain control over where sensitive data is located, how it
+                is used and how it can leave the organization.
+              </p>
+            </div>
+            <div class="content-box">
+              <h4>What we offer</h4>
+              <ul>
+                <li>Detection and classification of sensitive data</li>
+                <li>Monitoring of risky data movements and leakage attempts</li>
+                <li>Policy-based data protection and prevention controls</li>
+                <li>Protection against accidental and intentional data leaks</li>
+                <li>Dashboards for data protection visibility and incident tracking</li>
+                <li>Support for compliance and privacy-driven data protection programs</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="why-keystone" class="why">
+      <div class="container">
+        <div class="section-label">Why Keystone</div>
+        <h2>Solutions powered by expertise, intelligence and operational experience.</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>Cybersecurity DNA</h3>
+            <p>Our solutions are developed by cybersecurity practitioners who understand operational constraints and real attack scenarios.</p>
+          </div>
+          <div class="why-card">
+            <h3>AI-Driven Value</h3>
+            <p>We integrate AI where it creates measurable value: analysis, prioritization, detection, automation and decision support.</p>
+          </div>
+          <div class="why-card">
+            <h3>Executive Visibility</h3>
+            <p>Dashboards and reporting are designed to support both technical teams and strategic decision-makers.</p>
+          </div>
+          <div class="why-card">
+            <h3>Flexible Deployment</h3>
+            <p>Our platforms can support different environments, including sensitive, regulated, enterprise and national-level contexts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Build stronger cyber resilience with Keystone solutions.</h2>
+        <p>
+          Whether you need to monitor external threats, protect DNS traffic, govern critical infrastructures or prevent
+          data leakage, Keystone provides solutions designed to help you act faster, smarter and with greater confidence.
+        </p>
+        <a class="btn btn-primary" href="mailto:contact@keystone.tn">Contact Keystone</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

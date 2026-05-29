@@ -39,7 +39,7 @@ export const serviceLinks: ServiceLink[] = [
   {
     name: "Security Assessment ",
     description: "Comprehensive assessments and technical support to identify gaps and enhance your security posture.",
-    href: "/services/technical-assessment",
+    href: "/services/security-assessment",
     iconName: "Search",
   },
   {

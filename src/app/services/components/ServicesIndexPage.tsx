@@ -200,11 +200,11 @@ export function ServicesIndexPage() {
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
-                        { name: "LLM Security Assessment", slug: "llm-security-assessment" },
-                        { name: "AI Threat Detection", slug: "ai-powered-threat-detection" },
-                        { name: "Adversarial ML Defense", slug: "adversarial-ml-defense" },
-                        { name: "Generative AI Governance", slug: "generative-ai-governance" },
-                        { name: "Deepfake & Identity Detection", slug: "deepfake-identity-detection" }
+                        { name: "AI Strategy & Governance", slug: "ai-strategy-governance" },
+                        { name: "AI Solutions Implementation", slug: "ai-solutions-implementation" },
+                        { name: "AI Security & Threat Defense", slug: "ai-security-threat-defense" },
+                        { name: "AI for Cybersecurity Operations", slug: "ai-for-cybersecurity-operations" },
+                        { name: "AI Training & Awareness", slug: "ai-training-awareness" }
                       ].map((sub, idx) => (
                         <Link
                           key={idx}

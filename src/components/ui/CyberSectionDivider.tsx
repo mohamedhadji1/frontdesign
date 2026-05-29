@@ -24,7 +24,7 @@ export function CyberSectionDivider({
 
   return (
     <div
-      className={`relative flex items-center justify-center -my-px z-[9999] ${className ?? ""}`}
+      className={`relative flex items-center justify-center -my-px z-[50] ${className ?? ""}`}
     >
       <div
         className={`absolute h-px w-32 bg-gradient-to-r from-transparent ${current.glow} to-transparent md:w-64`}

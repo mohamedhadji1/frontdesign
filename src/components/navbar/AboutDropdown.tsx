@@ -41,7 +41,7 @@ export function AboutDropdown() {
 
   return (
     <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
+      <div className="w-full bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-8 py-10 origin-top flex min-h-[350px]">
         {/* Left Column: Vertical list menu (under each other) */}
         <div className="w-1/3 border-r border-gray-200 pr-6">
           <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wide border-b border-gray-200 pb-2">

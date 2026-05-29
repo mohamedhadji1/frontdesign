@@ -48,11 +48,6 @@ export default function ReportIncidentPage() {
     setStatus("loading");
 
     try {
-      await addDoc(collection(db, "incidents"), {
-        ...formData,
-        createdAt: serverTimestamp(),
-      });
-
       const structuredMessage = `
 --- URGENT INCIDENT DISCLOSURE ---
 
@@ -67,7 +62,8 @@ ${formData.message}
 
       const incidentSubject = `🚨 [${formData.severity}] Incident Report - ${formData.company}`;
 
-      const res = await fetch("/api/contact", {
+      // Start the email fetch immediately
+      const emailPromise = fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -81,6 +77,16 @@ ${formData.message}
         }),
       });
 
+      // Log to Firestore asynchronously in the background (does not block email sending)
+      addDoc(collection(db, "incidents"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      }).catch(err => {
+        console.error("Non-blocking Firestore logging error:", err);
+      });
+
+      // Await email delivery result
+      const res = await emailPromise;
       if (!res.ok) throw new Error("Failed to send incident email alert");
 
       setStatus("success");
@@ -106,18 +112,18 @@ ${formData.message}
   };
 
   return (
-    <main className="h-screen max-h-screen overflow-hidden bg-white text-zinc-900 relative flex flex-col justify-center p-4 md:p-6 lg:p-8 pt-24 md:pt-28">
+    <main className="min-h-screen bg-white text-zinc-900 relative flex flex-col justify-center px-4 pt-32 pb-12 sm:px-6 sm:pt-36 sm:pb-16 md:px-8 md:py-28 lg:px-12">
       
       {/* Extremely soft, friendly ambient glow in bottom left */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-red-50/50 blur-[120px] pointer-events-none z-0" />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col h-full max-h-[700px] justify-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col justify-center mt-10 sm:mt-14 md:mt-16">
       
 
-        <div className="bg-white border border-zinc-200/80 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden flex flex-col lg:grid lg:grid-cols-12 max-h-[92svh]">
+        <div className="bg-white border border-zinc-200/80 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden flex flex-col lg:grid lg:grid-cols-12">
           
           {/* LEFT SIDE: Empathy & Human Reassurance Panel (5 cols) - Pure White */}
-          <div className="lg:col-span-5 bg-white border-r border-zinc-200/60 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+          <div className="lg:col-span-5 bg-white border-b lg:border-b-0 lg:border-r border-zinc-200/60 p-6 sm:p-8 flex flex-col justify-between">
             
             <div className="space-y-6">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-600 font-extrabold uppercase tracking-widest text-[8px]">
@@ -133,29 +139,6 @@ ${formData.message}
                   Experiencing a security event can be extremely stressful. Our elite incident response squad is on active alert, ready to jump in and protect your infrastructure.
                 </p>
               </div>
-
-              {/* Direct Response Hotline cards */}
-              <div className="bg-zinc-50/50 border border-zinc-200/60 rounded-2xl p-4">
-                <h3 className="text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 mb-2.5 flex items-center gap-1.5">
-                  <PhoneCall size={10} className="text-red-500" />
-                  Direct Crisis Hotlines
-                </h3>
-                <div className="space-y-2 text-xs">
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-zinc-700">Keystone Tunisia:</span>
-                    <a href="tel:+21671000000" className="font-extrabold text-red-650 hover:underline">+216 71 000 000</a>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-zinc-200/40 pt-2">
-                    <span className="font-semibold text-zinc-700">Keystone Algeria:</span>
-                    <a href="tel:+21321000000" className="font-extrabold text-red-650 hover:underline">+213 21 000 000</a>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-zinc-200/40 pt-2">
-                    <span className="font-semibold text-zinc-700">Keystone Mauritania:</span>
-                    <a href="tel:+22220000000" className="font-extrabold text-red-650 hover:underline">+222 20 000 000</a>
-                  </div>
-                </div>
-              </div>
-
               {/* Action Steps Process */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-[9px] font-extrabold uppercase tracking-widest text-zinc-400 flex items-center gap-1.5">
@@ -189,7 +172,7 @@ ${formData.message}
           </div>
 
           {/* RIGHT SIDE: The Compact Form (7 cols) - Pure White */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 flex flex-col justify-center overflow-y-auto max-h-full">
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 flex flex-col justify-center">
             
             <div className="mb-4 shrink-0">
               <h1 className="text-lg font-bold text-zinc-950 uppercase tracking-tight flex items-center gap-2">
@@ -202,7 +185,7 @@ ${formData.message}
             <form onSubmit={handleSubmit} className="flex flex-col gap-3.5 pr-0.5">
               
               {/* Grid block 1 */}
-              <div className="grid grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block">Full Name</label>
                   <input
@@ -257,7 +240,7 @@ ${formData.message}
               </div>
 
               {/* Grid block 2 */}
-              <div className="grid grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider block">Severity / Urgency</label>
                   <div className="relative w-full">
@@ -269,10 +252,10 @@ ${formData.message}
                       className="bg-white text-zinc-950 px-3 py-1.5 w-full text-xs outline-none focus:ring-1 focus:ring-red-500 border border-zinc-200 rounded-lg appearance-none transition-all cursor-pointer focus:border-red-500"
                     >
                       <option value="" disabled className="text-zinc-400">Select Severity</option>
-                      <option value="CRITICAL" className="text-red-650 font-bold">🔴 CRITICAL (Breach Active)</option>
-                      <option value="HIGH" className="text-orange-650 font-bold">🟠 HIGH (System Outage)</option>
-                      <option value="MEDIUM" className="text-yellow-650 font-bold">🟡 MEDIUM (Phishing/Alert)</option>
-                      <option value="LOW" className="text-zinc-650">🟢 LOW (Compliance Check)</option>
+                      <option value="CRITICAL" className="text-red-600 font-bold">🔴 CRITICAL (Breach Active)</option>
+                      <option value="HIGH" className="text-orange-500 font-bold">🟠 HIGH (System Outage)</option>
+                      <option value="MEDIUM" className="text-amber-500 font-bold">🟡 MEDIUM (Phishing/Alert)</option>
+                      <option value="LOW" className="text-zinc-500">🟢 LOW (Compliance Check)</option>
                     </select>
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
@@ -359,7 +342,7 @@ ${formData.message}
                 <button
                   type="submit"
                   disabled={status === "loading" || !captchaToken}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 cursor-pointer rounded-full bg-red-650 hover:bg-red-700 text-white font-extrabold uppercase tracking-widest text-[9px] py-3.5 px-6 shadow-xs transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 cursor-pointer rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold uppercase tracking-widest text-[9px] py-3.5 px-6 shadow-xs transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "loading" ? "Dispatching..." : "Submit Incident Alert"}
                   <ArrowRight size={12} />
@@ -394,7 +377,7 @@ ${formData.message}
                   exit={{ opacity: 0, y: -8 }}
                   className="mt-3.5 p-3 rounded-xl bg-red-50 border border-red-200 flex items-start gap-2 text-red-800 shrink-0"
                 >
-                  <AlertTriangle className="shrink-0 text-red-650 mt-0.5" size={15} />
+                  <AlertTriangle className="shrink-0 text-red-600 mt-0.5" size={15} />
                   <div>
                     <h4 className="font-extrabold uppercase tracking-wider text-[9px] mb-0.5">Submission Failed</h4>
                     <p className="text-[10px] text-red-700 leading-relaxed font-medium">

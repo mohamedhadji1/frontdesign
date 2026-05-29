@@ -132,7 +132,7 @@ export function CompanyOverview() {
         <CyberSectionDivider />
 
         {/* Local Presence Grid */}
-        <div className="py-32">
+        <div className="pb-10">
           <SectionDivider title="WHERE WE OPERATE" className="mb-20" />
           <div className="flex flex-col lg:flex-row items-center gap-6 mb-20">
             <motion.h2 
@@ -192,7 +192,7 @@ export function CompanyOverview() {
                 <h4 className="text-2xl font-bold text-zinc-900 mb-4 group-hover:text-red-600 transition-colors duration-300">
                   {country.country}
                 </h4>
-                <p className="text-zinc-500 text-base leading-relaxed font-medium">
+                <p className="text-zinc-500 text-sm leading-relaxed font-medium whitespace-pre-line">
                   {country.description}
                 </p>
 
@@ -213,7 +213,7 @@ export function CompanyOverview() {
         <CyberSectionDivider />
 
         {/* Future Vision Section */}
-        <div className="pt-32 pb-40">
+        <div className="pb-20">
           <SectionDivider title="FUTURE VISION" className="mb-20" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div 

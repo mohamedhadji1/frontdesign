@@ -52,7 +52,7 @@ export default async function AboutSubRoute({ params }: { params: Promise<{ slug
     return (
       <main className="bg-white">
         <AboutHeroSection 
-          title="Notre Équipe" 
+          title="Our Team" 
           description="Une équipe internationale de spécialistes certifiés, dédiée à l'excellence et à la protection de vos actifs les plus précieux."
         />
         <CyberSectionDivider />

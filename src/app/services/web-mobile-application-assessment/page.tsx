@@ -107,7 +107,7 @@ export default function WebMobileApplicationAssessmentPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Application Audit
+              Application Security Assessment
             </h1>
 
             <HeroTypeLine
@@ -123,7 +123,7 @@ export default function WebMobileApplicationAssessmentPage() {
                 href="/contact?service=web-mobile-application-assessment"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
               >
-                Request Application Audit <ArrowRight size={18} />
+                Request AppSec Assessmention Security Assessment<ArrowRight size={18} />
               </Link>
             </div>
           </motion.div>
@@ -256,7 +256,7 @@ export default function WebMobileApplicationAssessmentPage() {
                 Keystone: Your Application Security Guarantee
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone supports you with its web & mobile application audit service to ensure the robustness and reliability of your applications.
+                Keystone supports you with its web & mobile Application Security Assessmentservice to ensure the robustness and reliability of your applications.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[
@@ -296,7 +296,7 @@ export default function WebMobileApplicationAssessmentPage() {
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Keystone supports you with its web & mobile application audit service to ensure the robustness and reliability of your applications. Contact us to strengthen the security of your application environment."
+                  "Keystone supports you with its web & mobile Application Security Assessmentservice to ensure the robustness and reliability of your applications. Contact us to strengthen the security of your application environment."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link

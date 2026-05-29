@@ -101,11 +101,11 @@ export default function AccessRightsAssessmentPage() {
             <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>GRC</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">Assessment of authorizations</span>
+              <span className="text-white/60">Authorization Assessment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Access Rights Assessment
+              Authorization Assessment
             </h1>
 
             <HeroTypeLine

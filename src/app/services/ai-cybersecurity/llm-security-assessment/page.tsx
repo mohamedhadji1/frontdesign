@@ -10,6 +10,7 @@ import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { DEFCTASection } from "@/app/services/defensive-security/soc-management/DEFCTASection";
+import { CallToActionSection } from "@/components/home/CallToActionSection";
 
 const steps = [
   {
@@ -176,9 +177,7 @@ export default function LLMSecurityAssessmentPage() {
 
       <CyberSectionDivider theme="red" />
 
-      <DEFCTASection />
-
-      <Footer />
+      <CallToActionSection />
     </main>
   );
 }

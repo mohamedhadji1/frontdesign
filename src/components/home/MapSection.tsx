@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 
 const Tooltip = dynamic(() => import("react-tooltip").then((mod) => mod.Tooltip), { ssr: false });
 
-const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
+const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
 const officeCountries = ["Tunisia", "Algeria", "Libya", "Mauritania"];
 
 type Location = {
@@ -22,25 +22,81 @@ type Location = {
 
 const locations: Location[] = [
   // Offices
-  { id: "tn", name: "Tunisia", coordinates: [9.5375, 33.8869], type: "office", address: "Headquarters\nTunis, Tunisia" },
-  { id: "dz", name: "Algeria", coordinates: [1.6596, 28.0339], type: "office", address: "Regional Office\nAlgiers, Algeria" },
-  { id: "ly", name: "Libya", coordinates: [17.2283, 26.3351], type: "office", address: "Regional Branch\nTripoli, Libya" },
-  { id: "mr", name: "Mauritania", coordinates: [-10.9408, 21.0079], type: "office", address: "Regional Branch\nNouakchott, Mauritania" },
+  {
+    id: "tn",
+    name: "Tunisia",
+    coordinates: [9.5375, 33.8869],
+    type: "office",
+    address: `Tunisia Office:
+Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
++216 71 755 755`
+  },
+  {
+    id: "dz",
+    name: "Algeria",
+    coordinates: [1.6596, 28.0339],
+    type: "office",
+    address: `Algeria Office:
+Mohammadia Mall Business Center No. 1272, Algiers
++213 (0) 23 80 47 57`
+  },
+  {
+    id: "ly",
+    name: "Libya",
+    coordinates: [17.2283, 26.3351],
+    type: "office",
+    address: "Regional Branch\nTripoli, Libya"
+  },
+  {
+    id: "mr",
+    name: "Mauritania",
+    coordinates: [-10.9408, 21.0079],
+    type: "office",
+    address: `Mauritania Office:
+No. 225 EXT NOT MODULE L TVZ Nouakchott
+Tel: +222 26976239`
+  },
 
-  // Global clients
+  // Europe clients
   { id: "fr", name: "France", coordinates: [2.2137, 46.2276], type: "client", address: "Major operations across multiple client facilities in France." },
   { id: "de", name: "Germany", coordinates: [10.4515, 51.1657], type: "client", address: "Client facilities across Germany." },
+  { id: "be", name: "Belgium", coordinates: [4.4699, 50.5039], type: "client", address: "Client presence in Brussels, Belgium." },
+  { id: "it", name: "Italy", coordinates: [12.5674, 41.8719], type: "client", address: "Client operations across Italy." },
+  { id: "lu", name: "Luxembourg", coordinates: [6.1296, 49.8153], type: "client", address: "Financial sector clients in Luxembourg." },
+  { id: "cy", name: "Cyprus", coordinates: [33.4299, 35.1264], type: "client", address: "Client presence in Nicosia, Cyprus." },
+
+  // Asia clients
+  { id: "sa", name: "Saudi Arabia", coordinates: [45.0792, 23.8859], type: "client", address: "Strategic client operations in Saudi Arabia." },
+  { id: "qa", name: "Qatar", coordinates: [51.1839, 25.3548], type: "client", address: "Client presence in Doha, Qatar." },
+
   // African clients
-{ id: "tz", name: "Tanzania", coordinates: [39.2083, -6.7924], type: "client", address: "East Africa expansion\nDar es Salaam, Tanzania" },
+  { id: "ma", name: "Morocco", coordinates: [-7.0926, 31.7917], type: "client", address: "Client operations across Morocco." },
+  { id: "eh", name: "Western Sahara", coordinates: [-13.0, 24.5], type: "client", address: "Client presence in Western Sahara." },
+  { id: "ml", name: "Mali", coordinates: [-1.9810, 17.5707], type: "client", address: "Client presence in Bamako, Mali." },
+  { id: "ne", name: "Niger", coordinates: [8.0817, 17.6078], type: "client", address: "Client presence in Niamey, Niger." },
+  { id: "eg", name: "Egypt", coordinates: [30.8025, 26.8206], type: "client", address: "Client operations in Cairo, Egypt." },
+  { id: "bj", name: "Benin", coordinates: [2.3158, 9.3077], type: "client", address: "Client presence in Cotonou, Benin." },
+  { id: "bi", name: "Burundi", coordinates: [29.9189, -3.3731], type: "client", address: "Client presence in Bujumbura, Burundi." },
+  { id: "ci", name: "Côte d'Ivoire", coordinates: [-5.5471, 7.5400], type: "client", address: "Client operations in Abidjan, Côte d'Ivoire." },
+  { id: "cd", name: "DR Congo", coordinates: [23.6560, -2.8770], type: "client", address: "Client presence in Kinshasa, DR Congo." },
+  { id: "gn", name: "Guinea", coordinates: [-11.3414, 9.9456], type: "client", address: "Client presence in Conakry, Guinea." },
+  { id: "ke", name: "Kenya", coordinates: [37.9062, -0.0236], type: "client", address: "East Africa client operations in Nairobi, Kenya." },
+  { id: "ng", name: "Nigeria", coordinates: [8.6753, 9.0820], type: "client", address: "West Africa client operations in Lagos, Nigeria." },
+  { id: "cg", name: "Republic of Congo", coordinates: [15.8277, -0.2280], type: "client", address: "Client presence in Brazzaville, Republic of Congo." },
+  { id: "sn", name: "Senegal", coordinates: [-14.4524, 14.4974], type: "client", address: "Client presence in Dakar, Senegal." },
+  { id: "tg", name: "Togo", coordinates: [0.8248, 8.6195], type: "client", address: "Client presence in Lomé, Togo." },
+  { id: "tz", name: "Tanzania", coordinates: [39.2083, -6.7924], type: "client", address: "East Africa expansion\nDar es Salaam, Tanzania" },
   { id: "et", name: "Ethiopia", coordinates: [38.7578, 8.9806], type: "client", address: "East Africa operations hub\nAddis Ababa, Ethiopia" },
   { id: "dj", name: "Djibouti", coordinates: [43.1450, 11.5890], type: "client", address: "Horn of Africa footprint\nDjibouti City, Djibouti" },
   { id: "rw", name: "Rwanda", coordinates: [30.0619, -1.9441], type: "client", address: "East Africa regional hub\nKigali, Rwanda" },
   { id: "mz", name: "Mozambique", coordinates: [32.5732, -25.9653], type: "client", address: "Southeast Africa operations\nMaputo, Mozambique" },
   { id: "cv", name: "Cape Verde", coordinates: [-23.5087, 14.9315], type: "client", address: "Atlantic island operations\nPraia, Cape Verde" },
-  { id: "km", name: "Comoros", coordinates: [43.2536, -11.6986], type: "client", address: "East Africa island operations\nMoroni, Comoros"},
+  { id: "km", name: "Comoros", coordinates: [43.2536, -11.6986], type: "client", address: "East Africa island operations\nMoroni, Comoros" },
   { id: "td", name: "Chad", coordinates: [15.0557, 12.1348], type: "client", address: "Central Africa presence\nN'Djamena, Chad" },
   { id: "cm", name: "Cameroon", coordinates: [11.5021, 3.8480], type: "client", address: "Central Africa operations\nYaoundé, Cameroon" },
-  { id: "ga", name: "Gabon", coordinates: [9.4544, 0.4162], type: "client", address: "Central Africa hub\nLibreville, Gabon" }];
+  { id: "ga", name: "Gabon", coordinates: [9.4544, 0.4162], type: "client", address: "Central Africa hub\nLibreville, Gabon" },
+];
+
 
 export function MapSection() {
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
@@ -206,10 +262,11 @@ export function MapSection() {
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                const countryName = geo.properties.name;
+                const rawName = geo.properties.name;
+                const countryName = rawName;
                 const isOfficeCountry = officeCountries.includes(countryName);
-                const matchedLocation = locations.find((loc) => 
-                  loc.name === countryName || 
+                const matchedLocation = locations.find((loc) =>
+                  loc.name === countryName ||
                   (countryName === "Ivory Coast" && loc.name === "Ivory Coast")
                 );
                 const officeLocation = matchedLocation?.type === "office" ? matchedLocation : undefined;
@@ -222,7 +279,7 @@ export function MapSection() {
                     data-tooltip-id={!isMobile ? "map-tooltip" : undefined}
                     data-tooltip-content={!isMobile ? tooltipContent : undefined}
                     fill={isOfficeCountry ? "#DC2626" : "#E4E7EB"}
-                    stroke="#FFFFFF"
+                    stroke={rawName === "Western Sahara" ? "#E4E7EB" : "#FFFFFF"}
                     strokeWidth={0.5}
                     onClick={(e: React.MouseEvent) => {
                       if (officeLocation) handleLocationClick(officeLocation, e);
@@ -289,6 +346,66 @@ export function MapSection() {
               <span className="text-zinc-700">Client Locations</span>
             </div>
           </div>
+
+          {/* Stats + Regional bar chart */}
+          {(() => {
+            const offices = locations.filter(l => l.type === "office");
+            const clients = locations.filter(l => l.type === "client");
+            const africa  = clients.filter(l => ["ma","eh","ml","ne","eg","bj","bi","ci","cd","gn","ke","ng","cg","sn","tg","tz","et","dj","rw","mz","cv","km","td","cm","ga"].includes(l.id));
+            const europe  = clients.filter(l => ["fr","de","be","it","lu","cy"].includes(l.id));
+            const asia    = clients.filter(l => ["sa","qa"].includes(l.id));
+            const total   = clients.length;
+            const regions = [
+              { label: "Africa",  count: africa.length,  color: "#DC2626", pct: Math.round((africa.length  / total) * 100) },
+              { label: "Europe",  count: europe.length,  color: "#1E293B", pct: Math.round((europe.length  / total) * 100) },
+              { label: "Asia",    count: asia.length,    color: "#6B7280", pct: Math.round((asia.length    / total) * 100) },
+            ];
+            return (
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="mx-auto mt-6 w-full max-w-2xl rounded-2xl border border-zinc-100 bg-white px-5 py-4 shadow-sm"
+              >
+                {/* Stat counters */}
+                <div className="mb-4 flex items-center justify-around divide-x divide-zinc-100">
+                  <div className="flex flex-col items-center gap-0.5 px-4">
+                    <span className="text-2xl font-black text-red-600">{offices.length}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Offices / HQ</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 px-4">
+                    <span className="text-2xl font-black text-slate-800">{total}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Client Countries</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 px-4">
+                    <span className="text-2xl font-black text-zinc-700">{regions.length}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Regions</span>
+                  </div>
+                </div>
+
+                {/* Regional breakdown bar */}
+                <div className="space-y-2">
+                  {regions.map((r) => (
+                    <div key={r.label} className="flex items-center gap-3">
+                      <span className="w-12 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wide text-zinc-400">{r.label}</span>
+                      <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-zinc-100">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${r.pct}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+                          className="absolute inset-y-0 left-0 rounded-full"
+                          style={{ backgroundColor: r.color }}
+                        />
+                      </div>
+                      <span className="w-8 shrink-0 text-[11px] font-bold text-zinc-600">{r.count}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })()}
         </div>
 
         <div

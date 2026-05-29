@@ -38,13 +38,13 @@ export function AwardsSection() {
       Icon: Globe,
     },
     {
-      value: "150+",
+      value: "200+",
       label: "Enterprise Clients",
       desc: "Securing finance, government, telecom & energy.",
       Icon: Users2,
     },
     {
-      value: "50+",
+      value: "80+",
       label: "Certified Specialists",
       desc: "Holding CISSP, CISM, OSCP, CEH, and ISO LA.",
       Icon: ShieldCheck,

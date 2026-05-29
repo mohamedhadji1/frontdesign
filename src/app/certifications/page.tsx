@@ -331,7 +331,7 @@ export default function CertificationsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-zinc-950 overflow-hidden">
+    <main className="min-h-screen bg-white text-zinc-950 overflow-hidden ">
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -411,7 +411,7 @@ export default function CertificationsPage() {
       </section>
 
       {/* Grid of Certifications */}
-      <section className="py-24 bg-white relative">
+      <section className=" bg-white relative pb-20">
         <div className="container mx-auto px-6 lg:px-12 mb-12">
           <div className="max-w-3xl mx-auto text-center">
             <SectionDivider title="GLOBAL STANDARDS ALIGNMENT" className="mb-10" />
@@ -481,7 +481,7 @@ export default function CertificationsPage() {
                         />
                       </div>
                       <div>
-                        <h3 className="text-base sm:text-lg font-extrabold text-zinc-950 tracking-tight leading-tight group-hover:text-red-650 transition-colors duration-300 uppercase">
+                        <h3 className="text-base sm:text-lg font-extrabold text-zinc-950 tracking-tight leading-tight group-hover:text-red-600 transition-colors duration-300 uppercase">
                           {cert.title}
                         </h3>
                         <span className="text-[7.5px] font-extrabold uppercase tracking-widest text-zinc-400 bg-zinc-100 border border-zinc-200 px-1.5 py-0.5 rounded-md mt-0.5 inline-block">
@@ -558,32 +558,6 @@ export default function CertificationsPage() {
             ))}
           </div>
 
-        </div>
-      </section>
-
-      {/* Elegant Trust Metrics section */}
-      <section className="bg-zinc-50 border-y border-zinc-100 py-20">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto text-center">
-            <div className="space-y-3">
-              <div className="flex justify-center text-red-600"><Globe2 size={36} /></div>
-              <p className="text-4xl font-extrabold text-zinc-950 tracking-tighter">100%</p>
-              <h5 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Global Coverage</h5>
-              <p className="text-sm text-zinc-600 font-medium">Standards applicable worldwide across all tech frameworks.</p>
-            </div>
-            <div className="space-y-3">
-              <div className="flex justify-center text-red-600"><Clock size={36} /></div>
-              <p className="text-4xl font-extrabold text-zinc-950 tracking-tighter">-45%</p>
-              <h5 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Time-to-Attest</h5>
-              <p className="text-sm text-zinc-600 font-medium">Automated evidence gathers and template-driven gap resolution.</p>
-            </div>
-            <div className="space-y-3">
-              <div className="flex justify-center text-red-600"><Compass size={36} /></div>
-              <p className="text-4xl font-extrabold text-zinc-950 tracking-tighter">100+</p>
-              <h5 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">Assessments Assisted</h5>
-              <p className="text-sm text-zinc-600 font-medium">A pristine track record of helping companies satisfy auditor inquiries.</p>
-            </div>
-          </div>
         </div>
       </section>
 

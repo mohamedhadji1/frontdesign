@@ -116,7 +116,7 @@ export default function LegalCompliancePage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Legal Compliance Support
+              Regulatory Compliance Support
             </h1>
 
             <HeroTypeLine

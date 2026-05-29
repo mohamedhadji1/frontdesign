@@ -62,21 +62,20 @@ export default function SocSubscriptionPage() {
             loop
             muted
             playsInline
-            className="h-full w-full object-cover opacity-45"
+            className="h-full w-full object-cover opacity-80"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-zinc-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
         <motion.div variants={stagger} className="relative z-10 mx-auto max-w-7xl">
           <motion.div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-red-300 sm:text-sm">
             <span className="h-2 w-2 rounded-full bg-red-500" />
             Coming soon
           </motion.div>
-
-          <motion.h1 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
+ 
+          <motion.h2 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
             SOC Subscription
-          </motion.h1>
+          </motion.h2>
           <motion.p className="mt-6 max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl md:leading-8">
             A subscription-based SOC offer is in preparation for teams that want managed detection and response with a simpler adoption path.
           </motion.p>

@@ -44,7 +44,7 @@ const services = [
   },
   {
     title: "Strategic Advisory",
-    description: "Our expertise in strategic consulting goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment.",
+    description: "Our expertise in Strategic Advisory goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -52,8 +52,8 @@ const services = [
     ),
   },
   {
-    title: "Assessment and Technical Assistance",
-    description: "Our Assessment and technical assistance services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
+    title: "Security assessment",
+    description: "Our Security assessment services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />

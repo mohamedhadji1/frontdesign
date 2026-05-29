@@ -155,11 +155,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 itemHref ||
                                 (section.name === "Services"
                                   ? `/services/${itemSlug || slugify(itemName)}`
-                                  : section.name === "Sectors"
-                                    ? `/sectors/${slugify(itemName)}`
-                                    : section.name === "Careers"
-                                      ? `/careers/${careerSlug(group.category)}/${careerSlug(itemName)}`
-                                      : `#${slugify(itemName)}`);
+                                  : section.name === "Solutions"
+                                    ? `/solutions/${itemSlug || slugify(itemName)}`
+                                    : section.name === "Sectors"
+                                      ? `/sectors/${slugify(itemName)}`
+                                      : section.name === "Careers"
+                                        ? `/careers/${careerSlug(group.category)}/${careerSlug(itemName)}`
+                                        : `#${slugify(itemName)}`);
 
                               return (
                                 <div key={itemIdx}>

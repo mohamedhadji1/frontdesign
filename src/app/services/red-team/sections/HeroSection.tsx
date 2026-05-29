@@ -14,17 +14,16 @@ export function HeroSection() {
       transition={{ duration: 0.8 }}
       className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
     >
-      <div className="absolute inset-0 z-0 bg-black/20">
+      <div className="absolute inset-0 z-0 bg-black/10">
         <video
-          src="/vids/videoplayback.mp4"
+          src="/vids/cover red team.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-[#0a1128]/10" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-12">
@@ -49,10 +48,10 @@ export function HeroSection() {
               <span className="text-red-400">Red Team</span>
             </div>
           </motion.div>
-
-          <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl">
+ 
+          <motion.h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl">
             Red Team Operations
-          </h1>
+          </motion.h2>
 
           <HeroTypeLine
             items={["Adversarial simulation", "Physical and digital intrusion paths", "Real attack behavior"]}
@@ -71,7 +70,7 @@ export function HeroSection() {
             >
               Schedule an Assessment
               <span className="transition-transform group-hover:translate-x-1">
-                →
+                â†’
               </span>
             </Link>
           </div>

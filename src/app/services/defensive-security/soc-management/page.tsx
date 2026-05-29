@@ -76,7 +76,7 @@ export default function Page() {
             <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>Managed Services</span>
               <ChevronRight size={8} />
-              <span className="text-white/60">SOC Management</span>
+              <span className="text-white/60">Managed SOC</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">

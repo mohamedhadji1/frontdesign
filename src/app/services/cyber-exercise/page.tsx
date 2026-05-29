@@ -109,7 +109,7 @@ export default function CyberExercisePage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              The management of cyber exercises is an essential component to strengthen your company&apos;s preparedness against digital threats. At Keystone, we build immersive environments to test your resilience under real-world conditions.
+              Cyber exercises are essential to strengthening your organization "`"s readiness against digital threats. At Keystone, we design immersive, real-world environments that challenge your teams, test your resilience, and help you respond more effectively to cyber incidents.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
@@ -139,7 +139,7 @@ export default function CyberExercisePage() {
               transition={{ duration: 0.8 }}
               className="text-2xl lg:text-3xl text-zinc-800 leading-relaxed font-light"
             >
-              The Cyber Exercise Management & Technique activity at KEYSTONE aims to transform awareness into proactive action, enabling your team to acquire the necessary skills to face any cyber scenario they may encounter.
+              The Cyber Exercise activity for Management & Technical teams aims to transform awareness into proactive action, enabling your team to acquire the necessary skills to face any cyber scenario they may encounter.
             </motion.p>
           </div>
         </div>

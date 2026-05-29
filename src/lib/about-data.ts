@@ -11,12 +11,27 @@ export const aboutContent = {
       description: "We consider Africa as fertile ground for innovation and growth. Our particular commitment to this region is manifested thru security solutions tailored to local realities and active support to strengthen digital resilience."
     },
     localPresence: [
-      { country: "Tunisia", code: "tn", description: "Keystone operates in the heart of Tunisia, offering cybersecurity solutions to businesses and organizations to protect their digital operations." },
-      { country: "Algeria", code: "dz", description: "Our presence in Algeria strengthens our commitment to data security and digital infrastructure in this rapidly growing country." },
-      { country: "Libya", code: "ly", description: "Keystone is committed to supporting digital resilience in Libya by offering tailored and innovative solutions." },
-      { country: "Benin", code: "bj", description: "Keystone contributes to securing businesses and institutions in Benin, thus protecting their critical operations against digital threats." },
-      { country: "Côte d'Ivoire", code: "ci", description: "Our presence in Côte d'Ivoire aims to strengthen data and system security, thereby contributing to the country's digital growth." },
-      { country: "Senegal", code: "sn", description: "Keystone collaborates with Senegalese companies and organizations to secure their activities in a constantly evolving digital environment." }
+      {
+        country: "Tunisia",
+        code: "tn",
+        description: `Tunisia Office:
+Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
++216 71 755 755`
+      },
+      {
+        country: "Algeria",
+        code: "dz",
+        description: `Algeria Office:
+Mohammadia Mall Business Center No. 1272, Algiers
++213 (0) 23 80 47 57`
+      },
+      {
+        country: "Mauritania",
+        code: "mr",
+        description: `Mauritania Office:
+No. 225 ext not module L TVZ Nouakchott
+Tel: +222 26976239`
+      }
     ],
     impactVision: {
       title: "Our Impact and Our Vision",
@@ -47,21 +62,21 @@ export const aboutContent = {
     title: "Our Team",
     description: "Our team of cybersecurity specialists embodies excellence, holding an impressive array of international certifications and vast expertise in various fields of information security. Each member brings sharp skills and extensive experience, allowing us to offer tailor-made solutions adapted to our clients' specific challenges.",
     expertise: [
-      { 
-        title: "Developed Expertise", 
-        description: "We are proud of our highly competent team, accumulating years of experience in various sectors of cybersecurity such as network security, threat management, regulatory compliance, and much more. Their internationally recognized certifications attest to their mastery in their respective fields." 
+      {
+        title: "Developed Expertise",
+        description: "We are proud of our highly competent team, accumulating years of experience in various sectors of cybersecurity such as network security, threat management, regulatory compliance, and much more. Their internationally recognized certifications attest to their mastery in their respective fields."
       },
-      { 
-        title: "Versatility and Impartiality", 
-        description: "Our team stands out for its versatility and impartiality. Their multiple skills and ability to remain objective in problem analysis and resolution guarantee adapted and impartial solutions, aligned with the unique needs of each client." 
+      {
+        title: "Versatility and Impartiality",
+        description: "Our team stands out for its versatility and impartiality. Their multiple skills and ability to remain objective in problem analysis and resolution guarantee adapted and impartial solutions, aligned with the unique needs of each client."
       },
-      { 
-        title: "International Certifications", 
-        description: "Each of our experts holds renowned certifications such as CISSP, CISM, OSCP, CEH, ISO27001, ISO22301, PMP, PRINCE2, COBIT, as well as other worldwide recognized certificates in specific areas of cybersecurity." 
+      {
+        title: "International Certifications",
+        description: "Each of our experts holds renowned certifications such as CISSP, CISM, OSCP, CEH, ISO27001, ISO22301, PMP, PRINCE2, COBIT, as well as other worldwide recognized certificates in specific areas of cybersecurity."
       },
-      { 
-        title: "Objectivity and Commitment to Quality", 
-        description: "Our team is committed to maintaining an objective approach, highlighting integrity and ethics in all facets of their work. Their main goal is to ensure the quality, reliability, and robustness of the security solutions offered to our clients." 
+      {
+        title: "Objectivity and Commitment to Quality",
+        description: "Our team is committed to maintaining an objective approach, highlighting integrity and ethics in all facets of their work. Their main goal is to ensure the quality, reliability, and robustness of the security solutions offered to our clients."
       }
     ]
   },
@@ -69,21 +84,21 @@ export const aboutContent = {
     title: "Awards & Recognition",
     description: "At Keystone, our commitment to excellence and innovation in cybersecurity has been regularly praised by the industry. These recognitions testify to our dedication to providing top-tier security solutions and pushing boundaries to meet the complex challenges of our time.",
     prizes: [
-      { 
+      {
         category: "Industry Awards",
         items: [
           { title: "Innovation Award", description: "Awarded for innovation and excellence in the design of cybersecurity solutions." },
           { title: "Critical Infrastructure Protection", description: "Honorary distinction for our exceptional contribution to the protection of data and critical infrastructures." }
         ]
       },
-      { 
+      {
         category: "Community Accolades",
         items: [
           { title: "Cyber Awareness Engagement", description: "Special recognition from the community for our commitment to cybersecurity awareness." },
           { title: "Digital Security Excellence", description: "Honorary mention for our significant contribution to securing digital operations." }
         ]
       },
-      { 
+      {
         category: "Certifications and Accreditations",
         items: [
           { title: "Compliance Excellence", description: "Official certification attesting to our compliance with the strictest international cybersecurity standards." },
@@ -112,8 +127,8 @@ export const aboutContent = {
       { title: "Offensive Security", description: "Our team of offensive security experts possesses an in-depth knowledge of attack tactics. We simulate real attacks to identify hidden vulnerabilities in your systems, allowing for proactive remediation before they are exploited by actual attackers." },
       { title: "Governance, Risk, and Compliance", description: "Our approach to GRC is based on holistic risk and compliance management. We help companies establish policies and processes to meet regulatory requirements, minimize risks, and maximize compliance, while integrating a security culture at the heart of their operations." },
       { title: "Training & Awareness", description: "Our training and awareness programs are designed to change safety behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security." },
-      { title: "Strategic Consulting", description: "Our expertise in strategic consulting goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment." },
-      { title: "Technical Assessment and Support", description: "Our Assessment and technical assistance services provide a comprehensive evaluation of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security." }
+      { title: "Strategic Advisory", description: "Our expertise in Strategic Advisory goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment." },
+      { title: "Technical Assessment and Support", description: "Our Security assessment services provide a comprehensive evaluation of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security." }
     ],
     commitment: [
       { title: "Valuation of Invested Return", description: "We do not consider security as an expense, but as a strategic investment. Our results-oriented approach ensures maximum security while optimizing your return on investment." },

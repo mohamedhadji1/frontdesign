@@ -29,17 +29,23 @@ export function ContactSection() {
     setStatus("loading");
 
     try {
-      await addDoc(collection(db, "contacts"), {
-        ...formData,
-        createdAt: serverTimestamp(),
-      });
-
-      const res = await fetch("/api/contact", {
+      // Start the email fetch immediately
+      const emailPromise = fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, captchaToken }),
       });
 
+      // Log to Firestore asynchronously in the background (does not block email sending)
+      addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      }).catch(err => {
+        console.error("Non-blocking Firestore logging error:", err);
+      });
+
+      // Await email delivery result
+      const res = await emailPromise;
       if (!res.ok) throw new Error("Failed to send email");
 
       setStatus("success");
@@ -63,7 +69,7 @@ export function ContactSection() {
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Contact Us</h1>
             <p className="text-sm text-gray-500">
               Interested in our services? Send us a message and we'll be in touch.<br />
-              <span className="font-semibold text-red-600">Need to report a security incident? <Link href="/report-incident" className="underline hover:text-red-700 transition-colors">Use our dedicated emergency reporting portal</Link> for 24/7 priority support.</span>
+              <span className="font-semibold text-red-600">Need to report a security incident? <Link href="/report-incident" className="underline hover:text-red-700 transition-colors">Click here.</Link></span>
             </p>
           </div>
 
@@ -76,7 +82,7 @@ export function ContactSection() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
               />
               <input
                 type="email"
@@ -85,7 +91,7 @@ export function ContactSection() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
               />
               <input
                 type="tel"
@@ -93,7 +99,7 @@ export function ContactSection() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
-                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
               />
               <input
                 type="text"
@@ -101,7 +107,7 @@ export function ContactSection() {
                 placeholder="Company Name"
                 value={formData.company}
                 onChange={handleChange}
-                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
               />
               
               <div className="relative w-full md:col-span-2">
@@ -110,15 +116,15 @@ export function ContactSection() {
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
                 >
-                  <option value="" disabled>Select a Service</option>
+                  <option value="" disabled className="text-zinc-500 bg-white">Select a Service</option>
                   {servicesDetails.map(category => (
-                    <option key={category.category} value={category.category} className="bg-white text-gray-700 font-normal">
+                    <option key={category.category} value={category.category} className="bg-white text-zinc-900 font-normal">
                       {category.category}
                     </option>
                   ))}
-                  <option value="Other">Other</option>
+                  <option value="Other" className="bg-white text-zinc-900">Other</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
@@ -133,7 +139,7 @@ export function ContactSection() {
               required
               value={formData.message}
               onChange={handleChange}
-              className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
+              className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
             />
 
             

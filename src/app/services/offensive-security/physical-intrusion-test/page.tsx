@@ -85,7 +85,7 @@ export default function PhysicalIntrusionTestPage() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
+            <source src="/vids/cover red team.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
         </div>
@@ -272,7 +272,7 @@ export default function PhysicalIntrusionTestPage() {
                     className="flex gap-4 items-center group"
                   >
                     <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">
-                      ✓
+                      âœ“
                     </div>
                     <p className="text-zinc-700 text-lg font-bold uppercase tracking-tight">
                       {item}

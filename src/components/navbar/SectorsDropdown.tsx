@@ -85,7 +85,7 @@ export const sectorsDetails = sectorGroups;
 export function SectorsDropdown() {
   return (
     <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">
-      <div className="bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-12 py-10 origin-top relative">
+      <div className="w-full bg-white text-gray-800 shadow-2xl rounded-b-lg border-t-2 border-red-600 overflow-hidden mx-auto container px-12 py-10 origin-top relative">
         
         {/* Subtle Animated Decorative Watermark */}
         <motion.div

@@ -139,9 +139,9 @@ export default function AboutPage() {
       </section>
 
       <CyberSectionDivider />
-      <SectionDivider title="Commercial Excellence" className="bg-[#FCFCFC]" />
+      <SectionDivider title="Commercial Excellence" className="bg-[#FCFCFC] " />
       {/* 3. Commitment */}
-      <section className="relative w-full py-10 overflow-hidden bg-white">
+      <section className="relative w-full py-10 overflow-hidden bg-white mb-20">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div 
             {...fadeInUp}
