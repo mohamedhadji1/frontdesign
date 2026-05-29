@@ -186,7 +186,7 @@ const data = {
     },
   ]`,
     "h1": `Cyber Resilience <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Framework</span>`,
-    "heroDesc": `Keystone offers its expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring near-immediate recovery after an attack.`
+    "heroDesc": `Keystone offers its expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring rapid recovery after an attack.`
   }
 };
 
@@ -197,16 +197,16 @@ for (const dir of DIRS) {
   const p = path.join(BASE, dir, 'page.tsx');
   if (!fs.existsSync(p)) continue;
   let code = fs.readFileSync(p, 'utf-8');
-  
+
   // Replace methodologies
   code = code.replace(/const methodologies = \\[[\\s\\S]*?\\];/g, 'const methodologies = ' + data[dir].methodologies + ';');
-  
+
   // Replace h1
-  code = code.replace(/<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">[\\s\\S]*?<\\/h1>/g, 
+  code = code.replace(/<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">[\\s\\S]*?<\\/h1 >/g, 
   '<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">\\n                ' + data[dir].h1 + '\\n              </h1>');
 
   // Replace text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl
-  code = code.replace(/<p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">[\\s\\S]*?<\\/p>/g,
+  code = code.replace(/<p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">[\\s\\S]*?<\\/p >/g,
   '<p className="text-lg text-zinc-400 mb-8 leading-relaxed max-w-xl">\\n                ' + data[dir].heroDesc + '\\n              </p>');
 
   fs.writeFileSync(p, code);

@@ -23,25 +23,25 @@ const methodologies = [
   {
     title: "National Directives",
     description:
-      "We collaborate closely with government and sectoral authorities to design clear directives and cyber-crisis management frameworks customized for your enterprise needs.",
+      "We collaborate with national authorities to define cyber crisis management guidelines and protocols tailored to the country’s specific needs.",
     icon: FileText,
   },
   {
-    title: "Response Strategies",
+    title: "Prevention and Response Strategies",
     description:
-      "We engineer comprehensive containment blueprints, defensive procedures, and rigorous playbooks to actively mitigate complex incident escalations.",
+      "We design comprehensive strategies that include preventive measures and detailed response plans to address cyber incidents.",
     icon: ShieldCheck,
   },
   {
     title: "Inter-Agency Coordination",
     description:
-      "We facilitate smooth, high-level operational collaboration between key stakeholder departments and relevant authorities during major cyber disruptions.",
+      "We promote collaboration between government agencies and key stakeholders to ensure coherent and coordinated cyber crisis management.",
     icon: Activity,
   },
   {
-    title: "Crisis Simulations",
+    title: "National Simulation and Exercises",
     description:
-      "We design and coordinate advanced, realistic incident response drills and tabletop simulations to continuously measure and improve team response times.",
+      "We organize nationwide simulations to test the effectiveness of plans and train stakeholders to respond in the event of a crisis.",
     icon: AlertTriangle,
   },
   {
@@ -101,7 +101,7 @@ export default function CyberCrisisManagementFrameworkPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Crisis Framework
+              Cyber Crisis Management Framework
             </h1>
 
             <HeroTypeLine

@@ -23,11 +23,11 @@ const methodologies = [
   {
     title: "CERT Infrastructure Design",
     description:
-      "We design the architecture and processes necessary to build a highly responsive CERT, tailored specifically to your organization's unique requirements.",
+      "We design the architecture and processes necessary to build a highly responsive CERT, tailored specifically to your organization's requirements.",
     icon: ServerCog,
   },
   {
-    title: "Definition of Procedures",
+    title: "Definition of responsibilities and Procedures",
     description:
       "We define clear operational roles, incident response responsibilities, and procedural blueprints to guarantee maximum responsiveness during crises.",
     icon: FileCheck,
@@ -35,7 +35,7 @@ const methodologies = [
   {
     title: "Training and Recruitment",
     description:
-      "We supply specialized training programs and professional recruitment guidelines to equip your CERT with elite incident handling capabilities.",
+      "We offer specialized training programs and professional recruitment guidelines to equip your CERT with elite incident handling capabilities.",
     icon: Users,
   },
   {
@@ -257,7 +257,7 @@ export default function CertImplementationPage() {
                 Build High-End Capabilities
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is ready to act as your virtual partner to design, build, recruit, and test your dedicated incident response center.
+                Keystone is ready to act as your partner to design, build, recruit, and test your dedicated incident response center.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[

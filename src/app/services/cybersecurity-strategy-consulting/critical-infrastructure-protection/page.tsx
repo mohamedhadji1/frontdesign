@@ -23,19 +23,19 @@ const methodologies = [
   {
     title: "National Frameworks",
     description:
-      "We work closely with sectoral and national authorities to develop solid frameworks specifically tailored to protect vital industrial and critical infrastructures.",
+      "We work closely with sectoral and national authorities to develop solid frameworks specifically tailored to the protection needs of critical infrastructure.",
     icon: CloudCog,
   },
   {
     title: "Infrastructure Assessment",
     description:
-      "We perform detailed cybersecurity audits and deep evaluations to measure the security posture of critical assets, identifying vulnerabilities and mitigation paths.",
+      "We conduct detailed audits to assess the security of these infrastructures, identifying gaps and recommending appropriate solutions.",
     icon: ShieldCheck,
   },
   {
-    title: "Security Support",
+    title: "Security Support and Advisory",
     description:
-      "We supply specialized security operations and expert advisory support, implementing robust technologies customized for industrial security domains.",
+      "We provide expert support to secure these infrastructures, implementing solutions tailored to each domain.",
     icon: AlertTriangle,
   },
   {
@@ -47,7 +47,7 @@ const methodologies = [
   {
     title: "Training & Awareness",
     description:
-      "We conduct specialized training programs to elevate security awareness among key executive stakeholders and operators managing critical assets.",
+      "We provide training programs to raise awareness among stakeholders involved in the security and management of critical infrastructure.",
     icon: Activity,
   },
 ];

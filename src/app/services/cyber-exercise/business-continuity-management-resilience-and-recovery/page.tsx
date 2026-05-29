@@ -106,7 +106,7 @@ export default function BcmPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Prepare for the unexpected and recover quickly. Keystone's training equips professionals to ensure operational continuity in critical situations.
+             Training is crucial to ensuring your business can cope with disruptions and resume operations quickly. Our specialized training program in this area aims to equip professionals with the skills needed to ensure business continuity, even in critical situations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">

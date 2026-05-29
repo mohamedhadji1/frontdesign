@@ -45,7 +45,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight text-white"
           >
-            Cybersecurity <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Strategy</span> Consulting
+            Strategic Cybersecurity Advisory
           </motion.h1>
 
           <HeroTypeLine

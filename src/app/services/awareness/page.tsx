@@ -100,9 +100,9 @@ export default function AwarenessPage() {
               <span className="text-white/60">Awareness</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-red leading-[1] mb-6 uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Cybersecurity{" "}
-                Awareness
+              Awareness
             </h1>
 
             <HeroTypeLine
@@ -133,26 +133,6 @@ export default function AwarenessPage() {
 
       <CyberSectionDivider theme="red" />
       <SectionDivider title="Awareness" />
-
-      {/* Intro Context Section */}
-      <section className="pb-20 pt-10 bg-white relative overflow-hidden">
-        <div className="px-6 lg:px-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl lg:text-3xl text-zinc-800 leading-relaxed font-light"
-            >
-              In today&apos;s digital landscape, every business is a potential target. Cybersecurity awareness is not just about informing your team about the dangers. It is a fundamental pillar for protecting your brand, reducing risks, and ensuring compliance.
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 1: Why Awareness is Crucial */}
-      <CyberSectionDivider />
       <section className="mb-20 bg-white relative overflow-hidden">
         <div className="px-6 lg:px-16">
           <div className="max-w-6xl mx-auto">

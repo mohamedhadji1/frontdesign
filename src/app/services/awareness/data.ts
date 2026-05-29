@@ -19,7 +19,7 @@ export const awarenessPages: AwarenessPageData[] = [
     slug: "awareness-workshops",
     title: "Awareness Workshops",
     eyebrow: "Interactive Learning",
-    subtitle: "Dive into immersive security workshops that go beyond traditional awareness sessions carefully designed to engage participants in realistic, interactive scenarios that highlight today’s most pressing cybersecurity threats. security workshops",
+    subtitle: "Dive into immersive security workshops that go beyond traditional awareness sessions carefully designed to engage participants in realistic, interactive scenarios that highlight today’s most pressing cybersecurity threats.",
     description:
       "Our awareness workshops go far beyond simple information sessions. They are carefully designed to immerse participants in realistic, interactive scenarios that highlight today's most relevant security threats. Led by experienced experts, these workshops cover data protection, cybersecurity best practices, and risk management in an engaging and memorable way.",
     heroImage:
@@ -102,7 +102,7 @@ export const awarenessPages: AwarenessPageData[] = [
       {
         title: "Critical thinking",
         description:
-          "Identify threats quickly and make smart decisions under pressure to counter attacks effectively.",
+          "Identify potential threats and make rapid decisions to counter attacks.",
       },
       {
         title: "Team collaboration",
@@ -172,7 +172,7 @@ export const awarenessPages: AwarenessPageData[] = [
     slug: "phishing-campaigns",
     title: "Phishing Campaigns",
     eyebrow: "Human Risk Reduction",
-    subtitle: "Detect, prevent, and protect",
+    subtitle: "Our phishing simulation campaigns are designed to train your teams to recognize and counter phishing attacks. By using realistic simulations, we educate your staff on warning signs and best practices to avoid falling into cybercriminals’ traps.",
     description:
       "Our phishing simulation campaigns train your team to recognize and respond to phishing attempts. Through realistic exercises, we help employees spot warning signs and apply the right behaviors to avoid falling into attackers' traps.",
     heroImage:
@@ -238,17 +238,17 @@ export const awarenessPages: AwarenessPageData[] = [
       {
         title: "1. Adaptability",
         description:
-          "Create programs specifically tailored to your teams and objectives. We design security training modules specifically customized to different operational groups (such as Finance, HR, Developers, and Executives) to maximize relevance and retention, while mapping specific cultural and behavioral vulnerabilities within your teams to tailor the curriculum directly to your exact organizational threat profile.",
+          "Create programs specifically tailored to your teams and objectives.",
       },
       {
         title: "2. Continuous engagement",
         description:
-          "Integrate security awareness into your long-term corporate culture. We combine active workshops, bite-sized micro-learning, mock campaigns, and direct awareness newsletters to keep security at the forefront of daily activities, building a persistent security-first company culture supported by active internal security champion networks and custom onboarding paths.",
+          "Integrate security awareness into your long-term corporate culture.",
       },
       {
         title: "3. Monitoring and evaluation",
         description:
-          "Measure the effectiveness of your programs and make adjustments as needed. We launch realistic phishing, vishing, and social engineering simulations to test employee alertness under real-world conditions, leveraging intuitive dashboard analytics and compliance reports to measure program effectiveness and demonstrate clear risk reduction.",
+          "Measure the effectiveness of your programs and make adjustments as needed.",
       },
     ],
     closing:

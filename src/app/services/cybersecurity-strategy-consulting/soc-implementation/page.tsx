@@ -21,33 +21,33 @@ import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const methodologies = [
   {
-    title: "SOC Design & Architecture",
+    title: "SOC Design & Implementation",
     description:
-      "We design state-of-the-art SOC architectures and guide their complete physical and logical implementation to ensure 24/7 continuous threat visibility.",
+      "We design SOC architecture and guide its implementation to ensure continuous monitoring of security activities.",
     icon: ServerCog,
   },
   {
-    title: "Technology Selection",
+    title: "Tools & technologies selection",
     description:
-      "We select and integrate high-end tools (SIEM/SOAR/XDR) specifically suited for proactive detection and automated rapid breach containment.",
+      "We recommend appropriate tools and technologies to enable proactive detection and rapid response to security incidents.",
     icon: Network,
   },
   {
     title: "Operational Processes",
     description:
-      "We define highly disciplined SOC operational playbooks, coordinating continuous surveillance, threat intelligence, and rapid response.",
+      "We define clear operational processes for the SOC, integrating monitoring, detection, and incident response.",
     icon: FileCheck,
   },
   {
-    title: "Talent & Training",
+    title: "Training and Recruitment",
     description:
-      "We supply comprehensive training programs for security analysts and expert recruitment directives to build your elite operations team.",
+      "We provide training programs for SOC analysts and offer guidance on recruiting suitable talent.",
     icon: Users,
   },
   {
-    title: "Tabletop Simulations",
+    title: "Simulation and Training Exercises",
     description:
-      "We run realistic incident containment exercises and offensive simulations to measure, test, and continuously fortify your SOC responsiveness.",
+      "We organize simulations to test SOC responsiveness and improve its ability to handle real incidents.",
     icon: Gamepad2,
   },
 ];
@@ -113,8 +113,7 @@ export default function SocImplementationPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Keystone proposes its expertise for the creation of SOCs (Security Operations Centers), charged with monitoring, detecting, and responding to IT security threats. We work with organizations to establish effective SOCs capable of guaranteeing continuous protection against cyber-threats.
-            </p>
+Keystone proposes its expertise in building SOCs (Security Operations Centers), responsible for monitoring, detecting, and responding to cybersecurity threats. We work with organizations to establish effective SOCs capable of ensuring continuous protection against cyber threats.            </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
               <Link
@@ -252,7 +251,7 @@ export default function SocImplementationPage() {
                 Secure 24/7 Security Operations
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is ready to act as your virtual partner to design, build, and test your dedicated threat monitoring center.
+                Keystone is ready to act as your partner to design, build, and test your dedicated Security Operations Center.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[

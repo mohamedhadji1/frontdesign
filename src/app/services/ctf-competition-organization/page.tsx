@@ -189,8 +189,7 @@ export default function CtfCompetitionOrganizationPage() {
             <p className="mb-6 text-lg leading-relaxed text-zinc-600">
               CTF events simulate real-world cybersecurity situations in which
               participants solve a sequence of challenges to capture the flag.
-              They blend technical depth, pressure, and teamwork into a format
-              that is both memorable and highly effective for upskilling.
+              These challenges reflect common cybersecurity scenarios, including solving cryptography problems, identifying vulnerabilities in web applications, discovering system flaws, and much more.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">

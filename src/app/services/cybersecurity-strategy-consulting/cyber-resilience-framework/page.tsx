@@ -35,19 +35,19 @@ const methodologies = [
   {
     title: "Business Continuity Planning",
     description:
-      "We develop comprehensive, battle-tested recovery playbooks to guarantee rapid restore times and minimize financial or operational liabilities.",
+      "We develop detailed business continuity plans to ensure rapid recovery after a cyberattack, thereby minimizing impacts.",
     icon: ServerCog,
   },
   {
     title: "Detection Mechanisms",
     description:
-      "We integrate advanced detection layers and response workflows to isolate breaches early and neutralize threats before damage scales.",
+      "We implement advanced detection mechanisms to quickly identify and respond to security incidents.",
     icon: Users,
   },
   {
     title: "Training and Awareness",
     description:
-      "We offer continuous specialized training programs to elevate security resilience awareness across all operational teams.",
+      "We provide training programs to raise your staff’s awareness of cyber resilience and incident response.",
     icon: Gamepad2,
   },
 ];
@@ -113,7 +113,7 @@ export default function CyberResilienceFrameworkPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Keystone offers its expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring near-immediate recovery after an attack.
+              Keystone offers its expertise in the development and implementation of cyber resilience frameworks. We work with organizations to develop robust strategies to prevent, detect, and respond to cyber incidents, while ensuring rapid recovery after an attack.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">

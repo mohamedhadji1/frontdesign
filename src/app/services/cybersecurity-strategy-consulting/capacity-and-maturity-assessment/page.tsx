@@ -26,7 +26,7 @@ const methodologies = [
   {
     title: "Infrastructure Assessment",
     description:
-      "We conduct an in-depth analysis of national infrastructures and security systems to systematically identify operational strengths and hidden weaknesses.",
+      "We conduct a comprehensive analysis of national security infrastructures and mechanisms to identify strengths and weaknesses.",
     icon: Network,
   },
   {
@@ -38,7 +38,7 @@ const methodologies = [
   {
     title: "Operational Capabilities",
     description:
-      "We highlight and assess existing operational capabilities in terms of detection, response, and active prevention of complex cyber threats.",
+      "We highlight and existing operational capabilities in terms of detection, response, and active prevention of cyber threats.",
     icon: Users,
   },
   {
@@ -50,7 +50,7 @@ const methodologies = [
   {
     title: "Continuous Improvement",
     description:
-      "We offer expert ongoing support for implementing recommendations and progressively strengthening your enterprise cybersecurity posture.",
+      "We provide support for the implementation of recommendations and for progressively strengthening cybersecurity maturity.",
     icon: Gamepad2,
   },
 ];
@@ -104,7 +104,7 @@ export default function CapacityAndMaturityAssessmentPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Capacity & Maturity
+              Capacity & maturity assessment
             </h1>
 
             <HeroTypeLine

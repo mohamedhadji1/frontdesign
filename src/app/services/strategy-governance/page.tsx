@@ -24,7 +24,7 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 
 const importanceItems = [
-  { title: "Strategic Oversight", d: "Train managers to develop policies, manage risks, and lead security strategies with precision.", icon: Layout },
+  { title: "Develop Management Skills", d: "Train managers to develop policies, manage risks, and lead security strategies with precision.", icon: Layout },
   { title: "Resilient Culture", d: "Encourage awareness at all levels and foster a proactive protection culture throughout the organization.", icon: Users },
   { title: "Data-Driven Choices", d: "Equip leaders to make strategic choices aligned with business goals.", icon: Target },
 ];

@@ -29,13 +29,13 @@ const methodologies = [
   {
     title: "Strategic Alignment",
     description:
-      "We design state-of-the-art strategies aligned with macro-national and industrial objectives, integrating global frameworks on a grand scale.",
+      "We design strategies aligned with national and sectoral objectives, integrating best practices to strengthen cybersecurity at scale.",
     icon: Compass,
   },
   {
     title: "Intersectoral Collaboration",
     description:
-      "Our approach systematically promotes intersectoral trust partnerships, enabling unified management of cross-cutting cybersecurity threats.",
+      "Our approach promotes collaboration between sectors, enabling unified management of cross-sector threats and stronger resilience against attacks.",
     icon: Users,
   },
   {
@@ -47,7 +47,7 @@ const methodologies = [
   {
     title: "Digital Sovereignty",
     description:
-      "Our custom strategies fortify digital sovereignty by designing rigid protection blueprints for vital national assets and strategic data.",
+      "Our strategies strengthen digital sovereignty by protecting vital infrastructure and national strategic data.",
     icon: GlobeLock,
   },
 ];
@@ -101,7 +101,7 @@ export default function NationalSectoralStrategyPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              National Strategy
+              Cybersecurity Strategy
             </h1>
 
             <HeroTypeLine
@@ -199,7 +199,7 @@ export default function NationalSectoralStrategyPage() {
               transition={{ duration: 0.7 }}
               className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6 uppercase"
             >
-              Engineering Resilient Sectors
+              Large scale Protection
             </motion.h2>
             <p className="text-lg text-zinc-600 leading-relaxed font-medium">
               Our holistic methodology guarantees robust cybersecurity governance, aligning with key national goals and global best practices.
@@ -252,7 +252,7 @@ export default function NationalSectoralStrategyPage() {
                 Architect Sovereign Cyber Policies
               </motion.h2>
               <p className="text-lg lg:text-xl text-zinc-600 leading-relaxed font-medium border-l-4 border-red-600 pl-8">
-                Keystone is ready to assist your nation and sector in establishing highly aligned, proactive, and resilient cybersecurity strategies.
+                Keystone is ready to assist your nation in establishing highly aligned, proactive, and resilient cybersecurity strategies.
               </p>
               <div className="flex flex-col gap-4 pt-6">
                 {[

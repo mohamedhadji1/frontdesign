@@ -140,26 +140,6 @@ export default function TrainingPage() {
 
       <CyberSectionDivider theme="red" />
       <SectionDivider title="Training" />
-
-      {/* Intro Context Section */}
-      <section className="pb-20 pt-10 bg-white relative overflow-hidden">
-        <div className="px-6 lg:px-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl lg:text-3xl text-zinc-800 leading-relaxed font-light"
-            >
-              Information security is not just a matter of technology; it relies on the skills and awareness of your team. Our training aims to develop expertise, create a security culture, and reduce risks across your entire organization.
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 1: Why Training is Essential */}
-      <CyberSectionDivider />
       <section className="mb-20 bg-white relative overflow-hidden">
         <div className="px-6 lg:px-16">
           <div className="max-w-6xl mx-auto">
