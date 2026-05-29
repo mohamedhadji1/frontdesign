@@ -153,7 +153,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-2xl">
-            <TypingText text="We secure what matters most to you." delay={2} />
+            <TypingText text="Bridging the gap between advanced attacks and intelligent cyber defense." delay={2} />
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
