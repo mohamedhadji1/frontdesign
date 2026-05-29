@@ -20,8 +20,38 @@ import {
   HeartHandshake,
   MessageSquareWarning,
   Clock,
-  Sparkles
+  Sparkles,
+  CheckCircle2,
+  X
 } from "lucide-react";
+
+interface ToastProps {
+  message: string;
+  type: "success" | "error";
+  onClose: () => void;
+}
+
+function Toast({ message, type, onClose }: ToastProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-950 text-white px-5 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-zinc-800/80 max-w-sm"
+    >
+      <div className="shrink-0 text-green-500 bg-green-500/10 p-2 rounded-xl">
+        <CheckCircle2 size={18} className="animate-pulse" />
+      </div>
+      <div className="flex-1 text-xs font-bold uppercase tracking-wider text-zinc-200">
+        {message}
+      </div>
+      <button onClick={onClose} type="button" className="text-zinc-500 hover:text-white transition-colors cursor-pointer p-1">
+        <X size={14} />
+      </button>
+    </motion.div>
+  );
+}
 
 export default function ReportIncidentPage() {
   const [formData, setFormData] = useState({
@@ -37,6 +67,7 @@ export default function ReportIncidentPage() {
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -90,6 +121,7 @@ ${formData.message}
       if (!res.ok) throw new Error("Failed to send incident email alert");
 
       setStatus("success");
+      setShowToast(true);
       setFormData({
         name: "",
         email: "",
@@ -392,6 +424,15 @@ ${formData.message}
 
         </div>
       </div>
+      <AnimatePresence>
+        {showToast && (
+          <Toast
+            message="Incident reported securely!"
+            type="success"
+            onClose={() => setShowToast(false)}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

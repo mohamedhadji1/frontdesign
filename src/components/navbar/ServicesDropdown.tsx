@@ -175,19 +175,40 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Strategic Advisory",
     items: [
       {
-        name: "Cybersecurity Strategic Advisory",
-        slug: "cybersecurity-strategy-consulting",
-        subCategory: "Strategic Services",
-        subItems: [
-          { name: "Development of National and Sectoral Cybersecurity Strategy", slug: "cybersecurity-strategy-consulting/development-of-national-and-sectoral-cybersecurity-strategy" },
-          { name: "CERT Implementation", slug: "cybersecurity-strategy-consulting/cert-implementation" },
-          { name: "SOC Implementation", slug: "cybersecurity-strategy-consulting/soc-implementation" },
-          { name: "Critical Infrastructure Protection", slug: "cybersecurity-strategy-consulting/critical-infrastructure-protection" },
-          { name: "Cyber Crisis Management Framework", slug: "cybersecurity-strategy-consulting/cyber-crisis-management-framework" },
-          { name: "Capacity and Maturity Assessment", slug: "cybersecurity-strategy-consulting/capacity-and-maturity-assessment" },
-          { name: "Cyber Resilience Framework", slug: "cybersecurity-strategy-consulting/cyber-resilience-framework" }
-        ]
+        name: "Development of National and Sectoral Cybersecurity Strategy",
+        slug: "cybersecurity-strategy-consulting/development-of-national-and-sectoral-cybersecurity-strategy",
+        description: "Establish resilient, comprehensive national and sectoral cybersecurity strategic frameworks to secure critical infrastructures, define national governance, and mitigate systemic cyber risk."
       },
+      {
+        name: "CERT Implementation",
+        slug: "cybersecurity-strategy-consulting/cert-implementation",
+        description: "Design and implement fully operational Computer Emergency Response Teams (CERT/CSIRT) with advanced incident management capabilities, threat intelligence sharing, and crisis coordination protocols."
+      },
+      {
+        name: "SOC Implementation",
+        slug: "cybersecurity-strategy-consulting/soc-implementation",
+        description: "Build state-of-the-art Security Operations Centers (SOC) integrating SIEM/SOAR technology, certified analysts, playbook automation, and structured incident containment workflows."
+      },
+      {
+        name: "Critical Infrastructure Protection",
+        slug: "cybersecurity-strategy-consulting/critical-infrastructure-protection",
+        description: "Identify, categorize, and monitor Critical Information Infrastructures (CII) using advanced risk metrics and compliance baselines to shield vital national assets from hostile nation-state actors."
+      },
+      {
+        name: "Cyber Crisis Management Framework",
+        slug: "cybersecurity-strategy-consulting/cyber-crisis-management-framework",
+        description: "Author high-impact cyber crisis response runbooks, establish decision-making hierarchies, and conduct live-simulation drills to prepare executive leadership for large-scale security events."
+      },
+      {
+        name: "Capacity and Maturity Assessment",
+        slug: "cybersecurity-strategy-consulting/capacity-and-maturity-assessment",
+        description: "Measure and score your cybersecurity posture against globally recognized maturity models (CMMC, NIST, ISO) to identify capability gaps and align investments with security goals."
+      },
+      {
+        name: "Cyber Resilience Framework",
+        slug: "cybersecurity-strategy-consulting/cyber-resilience-framework",
+        description: "Design and operationalize end-to-end cyber resilience architectures to guarantee continuous business operation, rapid incident recovery, and adaptive system hardening."
+      }
     ],
   },
   {
