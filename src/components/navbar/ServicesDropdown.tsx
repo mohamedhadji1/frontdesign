@@ -127,7 +127,7 @@ export const servicesDetails: ServiceCategory[] = [
     ],
   },
   {
-    category: "GRC",
+    category: "Governance Risk Compliance",
     href: "/services/governance-risk-compliance",
     title: "Governance, Risk and Compliance",
     items: [
