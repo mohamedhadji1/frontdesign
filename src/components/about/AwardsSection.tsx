@@ -57,7 +57,7 @@ export function AwardsSection() {
       title: "FIRST (Forum of Incident Response and Security Teams)",
       role: "Official Member",
       desc: "Keystone is a recognized member of FIRST, the global leader in incident response. This prestigious coalition enables us to collaborate with security teams worldwide, exchange high-value threat intelligence, and coordinate instant incident response globally.",
-      link: "https://www.first.org",
+      link: "https://www.first.org/members/teams/csirt-tn",
       badgeColor: "bg-red-50 text-red-600 border-red-200",
       bgImage: "/images/first-big-icon.png",
     },
@@ -65,7 +65,7 @@ export function AwardsSection() {
       title: "AfricaCERT (African Incident Response Union)",
       role: "Active Member",
       desc: "As an active member of AfricaCERT, Keystone participates directly in strengthening digital resilience, raising cybersecurity standards, and fostering collaboration on digital threats and cyber emergencies across the African continent.",
-      link: "https://www.africacert.org",
+      link: "https://portal.africacert.org/elementor-page-1033/",
       badgeColor: "bg-zinc-100 text-zinc-800 border-zinc-200",
       bgImage: "/images/AfricaCERT.png",
     },
@@ -138,7 +138,7 @@ export function AwardsSection() {
             viewport={{ once: true }}
             className="text-4xl lg:text-6xl font-extrabold text-zinc-900 mb-8 uppercase tracking-tight"
           >
-            Trust, Audits & Expertise
+            Trusted Expertise. Verified Operations. Global Recognition
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

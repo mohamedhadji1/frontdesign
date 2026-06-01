@@ -242,7 +242,7 @@ export const servicesDetails: ServiceCategory[] = [
         ],
       },
       {
-        name: "Cyber Exercice Management & Technique",
+        name: "Cyber Exercice",
         slug: "cyber-exercise",
         description: "Prepare your operational and leadership teams for real-world cyber incidents through customizable crisis management exercises, simulation drills, and technical stress-testing."
       },
