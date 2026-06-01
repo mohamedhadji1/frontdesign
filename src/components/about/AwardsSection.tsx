@@ -32,7 +32,7 @@ export function AwardsSection() {
       Icon: Building2,
     },
     {
-      value: "15+",
+      value: "30+",
       label: "Countries Covered",
       desc: "Active operations across Africa & Europe (EMEA).",
       Icon: Globe,
