@@ -7,7 +7,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { servicesDetails } from "@/components/navbar/ServicesDropdown";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, X } from "lucide-react";
+import { CheckCircle2, X, Building2, Phone, Mail, AlertTriangle, Clock, ArrowRight } from "lucide-react";
 
 interface ToastProps {
   message: string;
@@ -37,26 +37,58 @@ function Toast({ message, type, onClose }: ToastProps) {
   );
 }
 
+const offices = [
+  {
+    name: "Tunisia (HQ)",
+    address: "Rue du Lac Turkana, Les Berges du Lac 1, Tunis 1053, Tunisia",
+    phone: "+216 71 860 000",
+    email: "contact@keystone-corporation.com",
+  },
+  {
+    name: "Algeria Office",
+    address: "12 Rue Djenane Malik, Hydra, Algiers, Algeria",
+    phone: "+213 21 600 000",
+    email: "algeria@keystone-corporation.com",
+  },
+  {
+    name: "Mauritania Office",
+    address: "Avenue Charles de Gaulle, Ilot C, Nouakchott, Mauritania",
+    phone: "+222 45 250 000",
+    email: "mauritania@keystone-corporation.com",
+  },
+];
+
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
+    country: "",
     service: "",
     message: "",
+    consent: false,
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData({ ...formData, [name]: checked });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.consent) return;
     setStatus("loading");
 
     try {
@@ -67,11 +99,11 @@ export function ContactSection() {
         body: JSON.stringify({ ...formData, captchaToken }),
       });
 
-      // Log to Firestore asynchronously in the background (does not block email sending)
+      // Log to Firestore asynchronously in the background
       addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: serverTimestamp(),
-      }).catch(err => {
+      }).catch((err) => {
         console.error("Non-blocking Firestore logging error:", err);
       });
 
@@ -81,7 +113,16 @@ export function ContactSection() {
 
       setStatus("success");
       setShowToast(true);
-      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        country: "",
+        service: "",
+        message: "",
+        consent: false,
+      });
       setCaptchaToken(null);
       if (recaptchaRef.current) recaptchaRef.current.reset();
       setTimeout(() => setStatus("idle"), 5000);
@@ -93,108 +134,218 @@ export function ContactSection() {
   };
 
   return (
-    <section className="w-full h-screen pt-20 pb-4 flex items-center justify-center bg-[#f4f4f5] overflow-hidden">
-      <div className="w-full max-w-3xl px-4">
-        <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
-          
-          <div className="mb-6 text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Contact Us</h1>
-            <p className="text-sm text-gray-500">
-              Interested in our services? Send us a message and we'll be in touch.<br />
-              <span className="font-semibold text-red-600">Need to report a security incident? <Link href="/report-incident" className="underline hover:text-red-700 transition-colors">Click here.</Link></span>
+    <section className="w-full h-[100vh] min-h-[100vh] py-24 flex items-center justify-center bg-[#f4f4f5]">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        {/* Left Column: Office Contacts and SLA Details */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          <div>
+            <h1 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">Contact Us</h1>
+            <p className="text-base leading-relaxed text-gray-600">
+              Get in touch with our cybersecurity experts to discuss your organization's security posture, compliance programs, or training requirements.
             </p>
           </div>
 
+          {/* Response Commitment Box */}
+          <div className="bg-red-50/50 border border-red-100 rounded-xl p-5 flex gap-4 items-start">
+            <Clock className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-bold text-gray-950 text-sm">Our Commitment</h3>
+              <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                We value your security response timelines. A representative will contact you within **one business day**.
+              </p>
+            </div>
+          </div>
+
+          {/* Emergency Alert Box */}
+          <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-5 flex gap-4 items-start shadow-md text-white">
+            <AlertTriangle className="w-6 h-6 text-red-500 shrink-0 mt-0.5 animate-pulse" />
+            <div className="flex-1">
+              <h3 className="font-bold text-sm text-red-400">Emergency Security Assistance?</h3>
+              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                If you are currently experiencing a cyber attack or suspected breach, bypass the standard intake form for immediate containment support.
+              </p>
+              <Link
+                href="/report-incident"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-500 hover:text-red-400 transition-colors mt-3 uppercase tracking-wider group"
+              >
+                Report an Incident Now
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Regional Offices */}
+          <div className="flex flex-col gap-4">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 border-b pb-2">Regional Offices</h2>
+            {offices.map((office) => (
+              <div key={office.name} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                <h3 className="font-bold text-sm text-gray-950 flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-red-600" />
+                  {office.name}
+                </h3>
+                <p className="text-xs text-gray-600 mt-2 leading-relaxed font-medium">
+                  {office.address}
+                </p>
+                <div className="flex flex-wrap gap-4 mt-3 pt-3 border-t border-gray-50 text-xs text-gray-500">
+                  <span className="flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5 text-zinc-400" />
+                    {office.phone}
+                  </span>
+                  <a href={`mailto:${office.email}`} className="flex items-center gap-1.5 hover:text-red-600 transition-colors">
+                    <Mail className="w-3.5 h-3.5 text-zinc-400" />
+                    {office.email}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column: Full B2B Intake Form */}
+        <div className="lg:col-span-7 bg-white p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 border-b pb-3 uppercase tracking-wider text-sm">Security Inquiry Intake</h2>
+          
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
-              />
-              <input
-                type="text"
-                name="company"
-                placeholder="Company Name"
-                value={formData.company}
-                onChange={handleChange}
-                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
-              />
-              
-              <div className="relative w-full md:col-span-2">
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
+              <div>
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Full Name *</label>
+                <input
+                  type="text"
+                  name="name"
                   required
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
-                >
-                  <option value="" disabled className="text-zinc-500 bg-white">Select a Service</option>
-                  {servicesDetails.map(category => (
-                    <option key={category.category} value={category.category} className="bg-white text-zinc-900 font-normal">
-                      {category.category}
-                    </option>
-                  ))}
-                  <option value="Other" className="bg-white text-zinc-900">Other</option>
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  placeholder="e.g. John Doe"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Business Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="e.g. john.doe@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Phone Number *</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  placeholder="e.g. +1 555-0199"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Company Name *</label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  placeholder="e.g. Acme Corp"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Country *</label>
+                <input
+                  type="text"
+                  name="country"
+                  required
+                  placeholder="e.g. Tunisia"
+                  value={formData.country}
+                  onChange={handleChange}
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                />
+              </div>
+              
+              <div className="relative w-full">
+                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Service Needed *</label>
+                <div className="relative">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer font-medium"
+                  >
+                    <option value="" disabled className="text-zinc-500 bg-white">Select a Service...</option>
+                    {servicesDetails.map(category => (
+                      <option key={category.category} value={category.category} className="bg-white text-zinc-900 font-normal">
+                        {category.category}
+                      </option>
+                    ))}
+                    <option value="Other" className="bg-white text-zinc-900">Other</option>
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                  </div>
                 </div>
               </div>
             </div>
             
-            <textarea
-              name="message"
-              placeholder="How can we help you?"
-              rows={4}
-              required
-              value={formData.message}
-              onChange={handleChange}
-              className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
-            />
-
-            
-
-            <div className="flex justify-between items-center mt-2">
-              <div className="mt-2 w-full">
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                onChange={(token) => setCaptchaToken(token)}
+            <div className="mt-2">
+              <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Detailed Message *</label>
+              <textarea
+                name="message"
+                placeholder="How can we help your organization?"
+                rows={5}
+                required
+                value={formData.message}
+                onChange={handleChange}
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none font-medium"
               />
             </div>
+
+            {/* Privacy Consent Checkbox */}
+            <div className="flex items-start gap-3 mt-2 bg-gray-50 border border-gray-200/50 rounded-lg p-3.5">
+              <input
+                type="checkbox"
+                name="consent"
+                id="consent-checkbox"
+                required
+                checked={formData.consent}
+                onChange={handleChange}
+                className="mt-1 accent-red-600 focus:ring-red-500 border-gray-300 rounded cursor-pointer"
+              />
+              <label htmlFor="consent-checkbox" className="text-xs text-gray-600 leading-relaxed cursor-pointer select-none">
+                I consent to Keystone collecting and storing my contact details in accordance with their <Link href="/privacy" className="text-red-600 hover:text-red-700 underline font-semibold">Privacy Policy</Link> for processing this security inquiry.
+              </label>
+            </div>
+
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4">
+              <div className="w-full sm:w-auto">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"} // fallback test key if missing
+                  onChange={(token) => setCaptchaToken(token)}
+                />
+              </div>
               <button
                 type="submit"
-                disabled={status === "loading" || !captchaToken}
-                className="bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
+                disabled={status === "loading" || !captchaToken || !formData.consent}
+                className="w-full sm:w-auto bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
               >
-                {status === "loading" ? "Sending..." : "Submit"}
+                {status === "loading" ? "Sending..." : "Submit Inquiry"}
               </button>
             </div>
           </form>
-
         </div>
+
       </div>
       <AnimatePresence>
         {showToast && (

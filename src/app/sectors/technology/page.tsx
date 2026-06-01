@@ -24,7 +24,7 @@ export default function TechnologyPage() {
             "Security for communication networks, cloud environments, APIs, managed platforms, and enterprise technology operations.",
         },
         {
-          id: "fintech-startups",
+          id: "fintech-start-up",
           title: "Fintech & Start-up",
           description:
             "Practical protection for payment flows, digital products, sensitive customer data, and scaling engineering teams.",

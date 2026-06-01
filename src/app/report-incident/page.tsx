@@ -165,10 +165,10 @@ ${formData.message}
 
               <div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight leading-none mb-3">
-                  We've got your back.
+                  We've got you covered.
                 </h2>
                 <p className="text-xs text-zinc-500 font-medium leading-relaxed">
-                  Experiencing a security event can be extremely stressful. Our elite incident response squad is on active alert, ready to jump in and protect your infrastructure.
+                  Experiencing a security event can be critical. Our incident response team is on active alert, ready to triage and contain the threat.
                 </p>
               </div>
               {/* Action Steps Process */}
@@ -180,11 +180,11 @@ ${formData.message}
                 <div className="space-y-2.5 text-xs text-zinc-600 font-medium">
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-red-50 text-red-600 border border-red-100 font-bold flex items-center justify-center text-[9px] shrink-0">1</span>
-                    <p>Alert goes instantly to our on-duty Lead Incident Responder.</p>
+                    <p>Alert goes instantly to our on-duty Incident Response coordinator.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">2</span>
-                    <p>We phone you back within 15 minutes to establish secure channels.</p>
+                    <p>We contact you rapidly based on severity to establish secure communication channels (such as PGP key exchange, secure upload, or encrypted call bridge) and assign a Case ID.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">3</span>
@@ -209,9 +209,12 @@ ${formData.message}
             <div className="mb-4 shrink-0">
               <h1 className="text-lg font-bold text-zinc-950 uppercase tracking-tight flex items-center gap-2">
                 <MessageSquareWarning size={18} className="text-red-500 shrink-0" />
-                Structured Incident disclosure
+                Structured Incident Report
               </h1>
-              <p className="text-xs text-zinc-400 mt-0.5">Please provide as much operational details as possible so we can triage efficiently.</p>
+              <p className="text-xs text-zinc-500 font-semibold mt-0.5">Please provide as many operational details as possible so we can triage efficiently.</p>
+              <div className="mt-2 text-[10px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-2.5 leading-relaxed font-semibold">
+                ⚠️ IMPORTANT: Do not include passwords, private keys, or regulated personal data (PII) in this form. Details can be securely exchanged via encrypted channels once our team contacts you.
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-3.5 pr-0.5">
@@ -287,7 +290,7 @@ ${formData.message}
                       <option value="CRITICAL" className="text-red-600 font-bold">🔴 CRITICAL (Breach Active)</option>
                       <option value="HIGH" className="text-orange-500 font-bold">🟠 HIGH (System Outage)</option>
                       <option value="MEDIUM" className="text-amber-500 font-bold">🟡 MEDIUM (Phishing/Alert)</option>
-                      <option value="LOW" className="text-zinc-500">🟢 LOW (Compliance Check)</option>
+                      <option value="LOW" className="text-zinc-500">🟢 LOW (Suspicious activity / information request)</option>
                     </select>
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>

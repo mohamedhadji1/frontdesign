@@ -13,7 +13,7 @@ export function HeroSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8 }}
-      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
+      className="relative flex h-[100vh] min-h-[100vh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
     >
       <div className="absolute inset-0 z-0 bg-black/20">
         <video
@@ -64,7 +64,7 @@ export function HeroSection() {
           />
 
           <p className="mb-10 text-lg font-medium leading-relaxed text-gray-300 md:text-xl lg:text-2xl">
-            Evaluate the systems that keep your business running. Keystone combines automated discovery, manual verification, and technical assistance to expose weaknesses and turn findings into durable fixes.
+            Keystone combines automated discovery, manual verification, and technical assistance to evaluate your critical systems, expose weaknesses, and implement durable fixes.
           </p>
 
           <div className="flex flex-wrap items-center gap-6">

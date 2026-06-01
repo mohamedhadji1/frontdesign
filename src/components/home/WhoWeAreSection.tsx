@@ -74,27 +74,26 @@ export function WhoWeAreSection() {
               Keystone is an international group dedicated to the Cybersecurity industry.
             </motion.h2>
 
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-4 lg:mb-6 font-medium">
-              Keysteone has twenty years’ experience in red teaming, blue teaming and consulting services which has been established in the IT sector for Research, Efficiency and Solution Production.
-            </p>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 lg:mb-10 font-medium">
-              It was not long to discover that supported to knowledge by scientific perspectives, would be the solution to the real needs of the sector.
+              Keystone is an international cybersecurity group with over 20 years of experience in red teaming, blue teaming, managed security, GRC, and strategic advisory.
             </p>
 
             <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-8 lg:justify-start">
-              <button className="group flex w-full shrink-0 items-center justify-center gap-2 rounded-sm bg-red-600 px-6 py-3 text-xs font-semibold text-white shadow-md transition-all hover:bg-red-700 sm:w-auto sm:gap-3 sm:px-10 sm:py-4 sm:text-sm">
-                About Us
-                <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold flex items-center">
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12h2" />
-                  </svg>
-                </span>
-              </button>
+              <Link href="/about" className="w-full sm:w-auto">
+                <button className="group flex w-full shrink-0 items-center justify-center gap-2 rounded-sm bg-red-600 px-6 py-3 text-xs font-semibold text-white shadow-md transition-all hover:bg-red-700 sm:w-auto sm:gap-3 sm:px-10 sm:py-4 sm:text-sm">
+                  About Us
+                  <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold flex items-center">
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12h2" />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
               <Link href="/certifications">
-              <button className="group flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 border-b-2 border-black px-6 py-3 text-xs font-semibold text-black transition-all hover:border-gray-700 sm:w-auto sm:gap-3 sm:px-10 sm:py-4 sm:text-sm">
-                Quality Certificates 
-              </button>
-            </Link>
+                <button className="group flex w-full shrink-0 cursor-pointer items-center justify-center gap-2 border-b-2 border-black px-6 py-3 text-xs font-semibold text-black transition-all hover:border-gray-700 sm:w-auto sm:gap-3 sm:px-10 sm:py-4 sm:text-sm">
+                  Quality Certificates 
+                </button>
+              </Link>
             </div>
           </motion.div>
 
@@ -119,8 +118,8 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in +24 Countries</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">168 companies in 24 countries use our services.</p>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 30+ Countries</motion.h2>
+                <p className="text-gray-500 font-medium leading-relaxed">168 companies across 30+ countries use our services.</p>
                 <a href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
                   See Our Global Impact
                 </a>
@@ -140,8 +139,8 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">+40 security expert</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">8 billion threat signals are processed daily by our systems.</p>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">40+ security experts</motion.h2>
+                <p className="text-gray-500 font-medium leading-relaxed">8 billion threat signals processed daily across our global intelligence network in 2025.</p>
               </div>
             </div>
 
@@ -159,8 +158,8 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">+200 satisfied client</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">850 million people use platforms secured by our team every day.</p>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">200+ satisfied clients</motion.h2>
+                <p className="text-gray-500 font-medium leading-relaxed">850 million users worldwide protected by platforms secured by Keystone systems in 2025.</p>
               </div>
             </div>
 

@@ -13,36 +13,14 @@ import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 const MotionLink = motion.create(Link);
 
 function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const words = text.split(" ");
   return (
     <motion.span
-      initial="hidden"
-      animate="visible"
-      variants={{
-        visible: { transition: { staggerChildren: 0.05, delayChildren: delay } },
-        hidden: {},
-      }}
-      aria-label={text}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      className="inline-block"
     >
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex}>
-          <span className="inline-block whitespace-nowrap">
-            {Array.from(word).map((char, charIndex) => (
-              <motion.span
-                key={charIndex}
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
-          </span>
-          {wordIndex !== words.length - 1 && " "}
-        </span>
-      ))}
+      {text}
     </motion.span>
   );
 }
@@ -228,7 +206,7 @@ export default function CipPlatformPage() {
 
   return (
     <main className="min-h-screen bg-white text-zinc-950">
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-zinc-950">
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex h-[100vh] min-h-[100vh] w-full flex-col overflow-hidden bg-zinc-950">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay

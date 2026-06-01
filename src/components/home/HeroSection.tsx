@@ -12,36 +12,14 @@ import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 const MotionLink = motion.create(Link);
 
 function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const words = text.split(" ");
   return (
     <motion.span
-      initial="hidden"
-      animate="visible"
-      variants={{
-        visible: { transition: { staggerChildren: 0.05, delayChildren: delay } },
-        hidden: {},
-      }}
-      aria-label={text}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      className="inline-block animate-none"
     >
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex}>
-          <span className="inline-block whitespace-nowrap">
-            {Array.from(word).map((char, charIndex) => (
-              <motion.span
-                key={charIndex}
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                className="inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
-          </span>
-          {wordIndex !== words.length - 1 && " "}
-        </span>
-      ))}
+      {text}
     </motion.span>
   );
 }
@@ -147,18 +125,16 @@ export function HeroSection() {
         {/* Left Side: Hero Text */}
         <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            <TypingText text="Building The Digital" delay={0} />
-            <br />
-            <TypingText text="Keystone" delay={1} />
+            <TypingText text="Building the Digital Keystone" delay={0} />
           </h1>
 
-          <p className="text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-2xl">
-            <TypingText text="Bridging the gap between advanced attacks and intelligent cyber defense." delay={2} />
+          <p className="text-base font-medium tracking-wide text-zinc-300 sm:text-lg md:text-2xl">
+            <TypingText text="Intelligent cyber defense built to close the gap with advanced attacks." delay={0.6} />
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3, duration: 0.8 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
             className="mt-2 flex w-full flex-col gap-3 text-white sm:mt-4 sm:w-auto sm:flex-row sm:gap-6"
           >
             <MotionLink
@@ -166,7 +142,7 @@ export function HeroSection() {
               whileHover={{ x: 10 }}
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
-              Get information about the programs
+              Talk to a Cybersecurity Expert
               <span>→</span>
             </MotionLink>
             <Link href="/about" className="w-full sm:w-auto">

@@ -7,7 +7,7 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export function HeroSection() {
   return (
-    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-auto min-h-[100dvh] flex items-center justify-center overflow-hidden bg-black/20 text-white pt-24 pb-16">
+    <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative w-full h-auto h-[100vh] min-h-[100vh] flex items-center justify-center overflow-hidden bg-black/20 text-white pt-24 pb-16">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 bg-black/20">
         <video

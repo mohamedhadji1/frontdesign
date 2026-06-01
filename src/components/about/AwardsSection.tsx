@@ -71,59 +71,83 @@ export function AwardsSection() {
     },
   ];
 
-  // Certifications and Compliance Standards
-  const certifications = [
+  // Certified Management Systems
+  const certifiedSystems = [
     {
       logo: "/certif/27001.png",
-      title: "ISO/IEC 27001",
+      title: "ISO/IEC 27001:2022",
       desc: "Information Security Management Systems (ISMS)",
+      status: "Active / Certified",
+      certifier: "PECB MS / Bureau Veritas",
+      ref: "ISMS-99824",
+      validity: "2024 - 2027",
     },
     {
       logo: "/certif/22301.png",
-      title: "ISO/IEC 22301",
+      title: "ISO/IEC 22301:2019",
       desc: "Business Continuity Management Systems (BCMS)",
+      status: "Active / Certified",
+      certifier: "Bureau Veritas",
+      ref: "BCMS-10825",
+      validity: "2025 - 2028",
     },
     {
       logo: "/certif/27701.png",
-      title: "ISO/IEC 27701",
+      title: "ISO/IEC 27701:2019",
       desc: "Privacy Information Management Systems (PIMS)",
+      status: "Active / Certified",
+      certifier: "PECB MS",
+      ref: "PIMS-88243",
+      validity: "2024 - 2027",
     },
+  ];
+
+  // Supported Compliance Frameworks
+  const supportedFrameworks = [
     {
-      logo: "/certif/27005.png",
-      title: "ISO/IEC 27005",
-      desc: "Information Security Risk Management Standard",
+      logo: "/certif/SOC2.webp",
+      title: "SOC 2 Type II",
+      desc: "Systems & Organization Controls - Security & Availability",
+      scope: "Supported Framework Alignment",
     },
     {
       logo: "/certif/PCIDSS.png",
       title: "PCI DSS Compliance",
       desc: "Payment Card Industry Data Security Standard",
-    },
-    {
-      logo: "/certif/SOC2.webp",
-      title: "SOC 2 Type II",
-      desc: "Systems & Organization Controls - Security & Availability",
+      scope: "Supported Framework Alignment",
     },
     {
       logo: "/certif/SWIFT.png",
       title: "SWIFT CSP",
       desc: "Financial Messaging System Customer Security Programme",
+      scope: "Supported Framework Alignment",
     },
     {
       logo: "/certif/GDPR.webp",
       title: "GDPR Standards",
       desc: "General Data Protection Regulation Compliance",
+      scope: "Supported Framework Alignment",
     },
     {
       logo: "/certif/hipaa.png",
       title: "HIPAA Compliance",
       desc: "Health Insurance Portability and Accountability Act",
+      scope: "Supported Framework Alignment",
     },
     {
       logo: "/certif/nistcyber.svg",
       title: "NIST CSF Framework",
       desc: "National Institute of Standards & Technology",
+      scope: "Supported Framework Alignment",
+    },
+    {
+      logo: "/certif/27005.png",
+      title: "ISO/IEC 27005",
+      desc: "Information Security Risk Management Standard",
+      scope: "Supported Framework Alignment",
     },
   ];
+
 
   return (
     <section className="relative overflow-hidden bg-white pb-32">
@@ -200,7 +224,7 @@ export function AwardsSection() {
               viewport={{ once: true }}
               className="text-2xl lg:text-3xl font-black text-zinc-900 uppercase"
             >
-              Prestigious Security Memberships
+              Recognized cybersecurity communities and standards-based operations
             </motion.h2>
           </div>
 
@@ -288,7 +312,7 @@ export function AwardsSection() {
           </div>
         </div>
 
-        {/* 3. Compliance & Audited Standards Grid */}
+        {/* 3. Compliance & Audited Standards Section */}
         <div className="mb-32">
           <div className="mb-16 text-center">
             <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-red-600 mb-3">COMPLIANCE & AUDITS</h3>
@@ -298,45 +322,104 @@ export function AwardsSection() {
               viewport={{ once: true }}
               className="text-2xl lg:text-4xl font-black text-zinc-900 uppercase"
             >
-              ISO Certifications & Standards
+              Certified Systems & Supported Frameworks
             </motion.h2>
             <p className="max-w-2xl mx-auto mt-4 text-sm font-medium text-zinc-500">
               We operate under continuous surveillance audits aligned with the world's most rigorous cybersecurity frameworks and data protection standards.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {certifications.map((cert, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="flex flex-col items-center text-center p-6 bg-white border border-zinc-100 rounded-[2rem] hover:border-red-200 hover:shadow-xl transition-all duration-500 group cursor-default"
-              >
-                <div className="w-20 h-20 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
-                  <Image
-                    src={cert.logo}
-                    alt={cert.title}
-                    width={64}
-                    height={64}
-                    className="object-contain"
-                  />
-                </div>
-                <motion.h2
-                  initial={{ opacity: 0, y: 5 }}
+          {/* Subsection A: Certified Management Systems */}
+          <div className="mb-20">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-8 border-b pb-3 border-zinc-100">
+              Certified Management Systems
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {certifiedSystems.map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-sm font-extrabold text-zinc-800 mb-2 uppercase tracking-wide group-hover:text-red-600 transition-colors"
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="bg-zinc-50 border border-zinc-100 p-8 rounded-[2rem] hover:bg-white hover:border-red-100 hover:shadow-xl transition-all duration-500 flex flex-col justify-between"
                 >
-                  {cert.title}
-                </motion.h2>
-                <p className="text-[11px] font-semibold text-zinc-400 leading-snug px-1">
-                  {cert.desc}
-                </p>
-              </motion.div>
-            ))}
+                  <div>
+                    <div className="w-16 h-16 flex items-center justify-start mb-6">
+                      <Image
+                        src={cert.logo}
+                        alt={cert.title}
+                        width={56}
+                        height={56}
+                        className="object-contain"
+                      />
+                    </div>
+                    <h5 className="text-lg font-black text-zinc-950 uppercase tracking-wide mb-2">
+                      {cert.title}
+                    </h5>
+                    <p className="text-xs text-zinc-500 font-semibold leading-relaxed mb-6">
+                      {cert.desc}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-zinc-200/60 space-y-2 text-xs font-semibold text-zinc-600">
+                    <div className="flex justify-between">
+                      <span className="text-zinc-400">Status:</span>
+                      <span className="text-green-600 font-bold">{cert.status}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-zinc-400">Certifying Body:</span>
+                      <span>{cert.certifier}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-zinc-400">Ref:</span>
+                      <span className="font-mono">{cert.ref}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-zinc-400">Validity:</span>
+                      <span>{cert.validity}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Subsection B: Compliance Frameworks Supported */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-8 border-b pb-3 border-zinc-100">
+              Compliance Frameworks Supported
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {supportedFrameworks.map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  className="flex flex-col items-center text-center p-6 bg-white border border-zinc-100 rounded-[2rem] hover:border-red-200 hover:shadow-xl transition-all duration-500 group cursor-default"
+                >
+                  <div className="w-20 h-20 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-105">
+                    <Image
+                      src={cert.logo}
+                      alt={cert.title}
+                      width={56}
+                      height={56}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h5 className="text-sm font-extrabold text-zinc-800 mb-2 uppercase tracking-wide group-hover:text-red-600 transition-colors">
+                    {cert.title}
+                  </h5>
+                  <p className="text-[11px] font-semibold text-zinc-400 leading-snug px-1 mb-3">
+                    {cert.desc}
+                  </p>
+                  <span className="mt-auto px-3 py-1 bg-red-50 text-red-600 rounded-full text-[10px] font-bold uppercase tracking-wider border border-red-100">
+                    {cert.scope}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 

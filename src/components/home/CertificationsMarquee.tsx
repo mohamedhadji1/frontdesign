@@ -19,8 +19,8 @@ export function CertificationsMarquee() {
     { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity", slug: "nist-cybersecurity" }
   ];
 
-  // Triplicate the array of images to ensure there is enough horizontal space to loop smoothly
-  const repeatedImages = [...certImages, ...certImages, ...certImages];
+  // Duplicate the array of images to ensure there is enough horizontal space to loop smoothly
+  const repeatedImages = [...certImages, ...certImages];
 
   return (
     <motion.section 
@@ -28,8 +28,11 @@ export function CertificationsMarquee() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className="w-full bg-white py-10 overflow-hidden border-b border-gray-100 flex items-center pointer-events-auto cursor-default"
+      className="w-full bg-white py-12 overflow-hidden border-b border-gray-100 flex flex-col items-center pointer-events-auto cursor-default"
     >
+      <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400 mb-8 text-center">
+        Standards and frameworks we support
+      </h3>
       <style>{`
         @keyframes marquee-cert {
           0% { transform: translateX(0); }

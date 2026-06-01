@@ -65,7 +65,7 @@ export function SectorCategoryPage({
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="relative flex min-h-[100dvh] items-center overflow-hidden bg-zinc-950 px-6 pb-16 pt-32 text-white md:px-12"
+        className="relative flex h-[100vh] min-h-[100vh] items-center overflow-hidden bg-zinc-950 px-6 pb-16 pt-32 text-white md:px-12"
       >
         <motion.div
           animate={{ scale: [1, 1.06, 1], x: ["0%", "-2%", "0%"] }}
@@ -124,23 +124,32 @@ export function SectorCategoryPage({
           </motion.div>
           <motion.div variants={stagger} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (
-              <motion.article
-                id={item.id}
+              <Link
                 key={item.id}
-
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="scroll-mt-28 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40"
+                href={`/sectors/${item.id}`}
+                className="block group cursor-pointer"
               >
-                <motion.div whileHover={{ rotate: -4, scale: 1.08 }}>
-                  <CheckCircle2 className="mb-5 h-7 w-7 text-red-600" aria-hidden="true" />
-                </motion.div>
-                <motion.h2 className="mb-3 text-xl font-bold text-zinc-950">
-                  {item.title}
-                </motion.h2>
-                <p className="text-sm leading-7 text-zinc-600">
-                  {item.description}
-                </p>
-              </motion.article>
+                <motion.article
+                  id={item.id}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="h-full scroll-mt-28 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50/40"
+                >
+                  <div className="flex justify-between items-start mb-5">
+                    <motion.div whileHover={{ rotate: -4, scale: 1.08 }}>
+                      <CheckCircle2 className="h-7 w-7 text-red-600" aria-hidden="true" />
+                    </motion.div>
+                    <span className="text-xs font-semibold text-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
+                      Learn More <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                  </div>
+                  <motion.h2 className="mb-3 text-xl font-bold text-zinc-950 group-hover:text-red-700 transition-colors duration-200">
+                    {item.title}
+                  </motion.h2>
+                  <p className="text-sm leading-7 text-zinc-600">
+                    {item.description}
+                  </p>
+                </motion.article>
+              </Link>
             ))}
           </motion.div>
         </div>

@@ -56,6 +56,9 @@ export type SectorPageContent = {
   framework: SectorCard[];
   ctaText: string;
   posts?: SectorPost[];
+  regulations: string[];
+  recommendedServices: { name: string; href: string }[];
+  expectedOutcomes: string[];
 };
 
 export const sectorPages = {
@@ -167,6 +170,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect patient data, clinical systems, and healthcare service continuity.",
+    regulations: ["GDPR", "HIPAA", "NIST CSF"],
+    recommendedServices: [
+      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "Governance, Risk & Compliance", href: "/services/governance-risk-compliance" },
+      { name: "Security Assessment", href: "/services/security-assessment" }
+    ],
+    expectedOutcomes: [
+      "Patient record protection assured",
+      "HIPAA audit-readiness achieved",
+      "Zero medical service downtime during testing"
+    ],
   },
   "telecom-it": {
     slug: "telecom-it",
@@ -229,7 +243,7 @@ export const sectorPages = {
     ],
     solutions: [
       {
-        title: "Network Assessment and Assessment",
+        title: "Security Assessment & Risk Management",
         description:
           "Keystone performs in-depth Assessments to identify weaknesses in telecom infrastructure and recommend stronger network security.",
         icon: "fileSearch",
@@ -276,6 +290,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to secure networks, protect customer data, and keep digital services available.",
+    regulations: ["NIS 2 Directive", "ISO 27001", "GDPR"],
+    recommendedServices: [
+      { name: "Red Team Assessment", href: "/services/offensive-security/red-team" },
+      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "DNS Filtering Solutions", href: "/solutions/dns-filtering" }
+    ],
+    expectedOutcomes: [
+      "Carrier-grade core infrastructure secured",
+      "API-level exposure minimized",
+      "Service availability SLAs maintained"
+    ],
   },
   transportation: {
     slug: "transportation",
@@ -385,6 +410,16 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect passenger data, control systems, and transport service continuity.",
+    regulations: ["NIS 2 Directive", "ISO 27001", "NIST CSF"],
+    recommendedServices: [
+      { name: "Industrial System Security (OT/ICS)", href: "/services/offensive-security/industrial-systems" },
+      { name: "Incident Response Retainer", href: "/services/defensive-security/incident-response" }
+    ],
+    expectedOutcomes: [
+      "Operational fleet control systems secured",
+      "Supply chain disruption risks mitigated",
+      "Rapid response readiness verified"
+    ],
   },
   energy: {
     slug: "energy",
@@ -494,6 +529,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to secure critical energy infrastructure and preserve operational resilience.",
+    regulations: ["Critical Infrastructure Protection (CIP)", "NIS 2 Directive", "ISO 27001"],
+    recommendedServices: [
+      { name: "Industrial System OT Security", href: "/services/offensive-security/industrial-systems" },
+      { name: "Keystone CIP Platform", href: "/solutions/cip-platform" },
+      { name: "Incident Response", href: "/services/defensive-security/incident-response" }
+    ],
+    expectedOutcomes: [
+      "SCADA/ICS environment segmented & secured",
+      "National grid compliance alignment achieved",
+      "Early threat detection in OT networks"
+    ],
   },
   "fintech-start-up": {
     slug: "fintech-start-up",
@@ -603,6 +649,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect financial innovation, customer data, and product growth.",
+    regulations: ["PCI DSS", "GDPR", "SOC 2 Type II"],
+    recommendedServices: [
+      { name: "Offensive Assessments", href: "/services/offensive-security/offensive-assessments" },
+      { name: "Governance, Risk & Compliance", href: "/services/governance-risk-compliance" },
+      { name: "Keystone DLP", href: "/solutions/keystone-dlp" }
+    ],
+    expectedOutcomes: [
+      "Payment transaction flows fully secured",
+      "Accelerated compliance audit timelines",
+      "Secure-by-design product release lifecycle"
+    ],
   },
   finance: {
     slug: "finance",
@@ -712,6 +769,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect sensitive financial data, transactions, and regulated operations.",
+    regulations: ["PCI DSS", "DORA", "SWIFT CSP", "SOC 2 Type II", "ISO 27001"],
+    recommendedServices: [
+      { name: "Red Team Simulation", href: "/services/offensive-security/red-team" },
+      { name: "Managed SOC Services", href: "/services/defensive-security/managed-soc" },
+      { name: "Keystone ARENA Platform", href: "/solutions/keystone-arena" }
+    ],
+    expectedOutcomes: [
+      "Zero financial transaction leakage",
+      "SWIFT and DORA regulatory compliance",
+      "Robust defense against insider threat vectors"
+    ],
   },
   media: {
     slug: "media",
@@ -837,6 +905,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect media platforms, audiences, and brand trust.",
+    regulations: ["GDPR", "NIST CSF", "ISO 27001"],
+    recommendedServices: [
+      { name: "Security Assessment", href: "/services/security-assessment" },
+      { name: "DNS Filtering", href: "/solutions/dns-filtering" },
+      { name: "Employee Training & Awareness", href: "/services/ai-cybersecurity/ai-training-awareness" }
+    ],
+    expectedOutcomes: [
+      "Brand assets and publication channels protected",
+      "Audience trust preserved from fraud campaigns",
+      "Quick containment of phishing attempts"
+    ],
   },
   industrial: {
     slug: "industrial",
@@ -940,6 +1019,17 @@ export const sectorPages = {
     ],
     ctaText:
       "Work with Keystone to protect industrial systems, production continuity, and critical operations.",
+    regulations: ["NIS 2 Directive", "ISO 27001", "IEC 62443"],
+    recommendedServices: [
+      { name: "OT/ICS Assessment", href: "/services/offensive-security/industrial-systems" },
+      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "Incident Response Retainer", href: "/services/defensive-security/incident-response" }
+    ],
+    expectedOutcomes: [
+      "OT/SCADA production integrity assured",
+      "IEC 62443 compliance alignment",
+      "Industrial IoT attack surface reduced"
+    ],
   },
 } satisfies Record<string, SectorPageContent>;
 

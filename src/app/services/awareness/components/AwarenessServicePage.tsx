@@ -84,7 +84,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -109,12 +109,6 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-               <Link href="/services/awareness" className="hover:text-white transition-colors">Awareness</Link>
-               <ChevronRight size={8} />
-               <span className="text-white/60">Service Details</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               {page.title}
             </h1>
@@ -142,7 +136,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
       {/* Experience Outcomes Section - Pinned on Desktop scroll via GSAP */}
       <section 
         ref={sectionRef} 
-        className="py-24 bg-white relative w-full overflow-hidden flex flex-col justify-center min-h-screen lg:min-h-0"
+        className="py-24 bg-white relative w-full overflow-hidden flex flex-col justify-center h-[100vh] min-h-[100vh] lg:min-h-0"
       >
         {/* Soft Background Spotlight Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-500/[0.01] rounded-full blur-[150px] pointer-events-none" />

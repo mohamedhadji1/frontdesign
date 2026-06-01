@@ -6,11 +6,12 @@ import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { careerSlug, careersDetails } from "@/lib/careers";
+import { careerSlug, careersDetails, jobSpecifications } from "@/lib/careers";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 import { SectionDivider } from "../ui/SectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Briefcase, MapPin, CheckCircle2, Award, ListTodo, Upload, AlertCircle, Check, ArrowRight, Star } from "lucide-react";
 
 interface CareersFormProps {
   category: string;
@@ -24,9 +25,14 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
     name: "",
     email: "",
     phone: "",
+    linkedin: "",
+    portfolio: "",
     offer: selectedOffer ?? "",
     message: "",
+    consent: false,
   });
+  const [cvFile, setCvFile] = useState<File | null>(null);
+  const [cvError, setCvError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -34,32 +40,56 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
   useEffect(() => {
     setFormData((prev) => {
       const nextOffer = selectedOffer ?? (items.includes(prev.offer) ? prev.offer : "");
-
-      if (prev.offer === nextOffer) {
-        return prev;
-      }
-
-      return {
-        ...prev,
-        offer: nextOffer,
-      };
+      if (prev.offer === nextOffer) return prev;
+      return { ...prev, offer: nextOffer };
     });
   }, [items, selectedOffer]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target;
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const ext = file.name.split('.').pop()?.toLowerCase();
+      if (ext !== "pdf" && ext !== "docx") {
+        setCvError("Only PDF and DOCX files are allowed.");
+        setCvFile(null);
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        setCvError("File size must be under 5MB.");
+        setCvFile(null);
+        return;
+      }
+      setCvError(null);
+      setCvFile(file);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.consent) return;
+    if (!cvFile) {
+      setCvError("CV file upload is required.");
+      return;
+    }
     setStatus("loading");
 
     try {
       await addDoc(collection(db, "career_applications"), {
         ...formData,
+        cvFileName: cvFile.name,
+        cvFileSize: cvFile.size,
         category,
         createdAt: serverTimestamp(),
       });
@@ -81,285 +111,209 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         name: "",
         email: "",
         phone: "",
+        linkedin: "",
+        portfolio: "",
         offer: selectedOffer ?? "",
         message: "",
+        consent: false,
       });
+      setCvFile(null);
       setCaptchaToken(null);
       if (recaptchaRef.current) recaptchaRef.current.reset();
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
-  if (variant === "contact") {
-    return (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+      <div className="grid grid-cols-1 gap-4">
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Full Name *</label>
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
+            placeholder="e.g. Jane Doe"
             required
             value={formData.name}
             onChange={handleChange}
-            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+            className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
           />
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Email Address *</label>
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="e.g. jane.doe@company.com"
             required
             value={formData.email}
             onChange={handleChange}
-            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+            className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
           />
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Phone Number *</label>
           <input
             type="tel"
             name="phone"
-            placeholder="Phone Number"
+            placeholder="e.g. +216 98 123 456"
+            required
             value={formData.phone}
             onChange={handleChange}
-            className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all"
+            className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
           />
-          <div className="relative w-full">
-            {selectedOffer ? (
-              <input
-                type="text"
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">LinkedIn Profile URL *</label>
+          <input
+            type="url"
+            name="linkedin"
+            placeholder="e.g. https://linkedin.com/in/username"
+            required
+            value={formData.linkedin}
+            onChange={handleChange}
+            className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+          />
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Portfolio / GitHub URL (Optional)</label>
+          <input
+            type="url"
+            name="portfolio"
+            placeholder="e.g. https://github.com/username"
+            value={formData.portfolio}
+            onChange={handleChange}
+            className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+          />
+        </div>
+
+        <div className="relative w-full">
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Position *</label>
+          {selectedOffer ? (
+            <input
+              type="text"
+              name="offer"
+              value={formData.offer}
+              readOnly
+              required
+              className="bg-zinc-100 text-zinc-700 px-4 py-3 w-full text-sm outline-none border border-gray-200 rounded-md font-medium cursor-not-allowed"
+            />
+          ) : (
+            <div className="relative">
+              <select
                 name="offer"
                 value={formData.offer}
-                readOnly
+                onChange={handleChange}
                 required
-                className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 border border-gray-200 rounded-md"
-              />
-            ) : (
-              <>
-                <select
-                  name="offer"
-                  value={formData.offer}
-                  onChange={handleChange}
-                  required
-                  className="bg-gray-50 px-4 py-3 w-full text-sm outline-none text-gray-700 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer"
-                >
-                  <option value="" disabled>Select a Position</option>
-                  {items.map((item) => (
-                    <option key={item} value={item} className="bg-white text-gray-700 font-normal">
-                      {item}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                </div>
-              </>
+                className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer font-medium"
+              >
+                <option value="" disabled>Select a Position...</option>
+                {items.map((item) => (
+                  <option key={item} value={item} className="bg-white text-zinc-900 font-normal">
+                    {item}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Upload CV (PDF or DOCX, Max 5MB) *</label>
+          <div className="flex flex-col gap-2">
+            <input
+              type="file"
+              name="cv"
+              id="cv-upload-file"
+              accept=".pdf,.docx"
+              required
+              onChange={handleFileChange}
+              className="hidden"
+            />
+            <label
+              htmlFor="cv-upload-file"
+              className="flex items-center justify-center gap-2 border-2 border-dashed border-gray-300 hover:border-red-500 rounded-lg py-5 px-4 bg-gray-50 hover:bg-red-50/20 cursor-pointer transition-all text-center"
+            >
+              <Upload className="w-5 h-5 text-gray-400" />
+              <span className="text-xs font-semibold text-zinc-700">
+                {cvFile ? `Selected: ${cvFile.name}` : "Click to select CV file"}
+              </span>
+            </label>
+            {cvFile && (
+              <p className="text-[10px] text-green-600 font-semibold flex items-center gap-1">
+                <Check className="w-3.5 h-3.5" /> File verified: {(cvFile.size / (1024 * 1024)).toFixed(2)} MB
+              </p>
+            )}
+            {cvError && (
+              <p className="text-[10px] text-red-600 font-semibold flex items-center gap-1">
+                <AlertCircle className="w-3.5 h-3.5" /> {cvError}
+              </p>
             )}
           </div>
         </div>
+      </div>
 
+      <div className="mt-2">
+        <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Cover Letter / Motivation Message *</label>
         <textarea
           name="message"
-          placeholder="Your Message / Cover Letter"
+          placeholder="Tell us why you want to join Keystone and how your skills align with this role..."
           rows={4}
           required
           value={formData.message}
           onChange={handleChange}
-          className="bg-gray-50 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none"
+          className="bg-gray-50 text-zinc-950 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none font-medium"
         />
+      </div>
 
-        
+      <div className="flex items-start gap-3 mt-2 bg-gray-50 border border-gray-200/50 rounded-lg p-3">
+        <input
+          type="checkbox"
+          name="consent"
+          id="careers-consent-checkbox"
+          required
+          checked={formData.consent}
+          onChange={handleChange}
+          className="mt-1 accent-red-600 focus:ring-red-500 border-gray-300 rounded cursor-pointer"
+        />
+        <label htmlFor="careers-consent-checkbox" className="text-[11px] text-gray-600 leading-relaxed cursor-pointer select-none">
+          I consent to Keystone keeping my CV and personal information for consideration in current and future opportunities in accordance with their privacy policy.
+        </label>
+      </div>
 
-        <div className="flex justify-between items-center mt-2">
-          <div className="mt-2 w-full">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4">
+        <div className="w-full sm:w-auto">
           <ReCAPTCHA
             ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
             onChange={(token) => setCaptchaToken(token)}
           />
         </div>
-          <div className="flex-1">
-            {status === "success" && <span className="text-green-600 font-medium text-sm">Application sent!</span>}
-            {status === "error" && <span className="text-red-600 font-medium text-sm">Failed to send.</span>}
-          </div>
 
-          <button
-            type="submit"
-            disabled={status === "loading" || !captchaToken}
-            className="bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
-          >
-            {status === "loading" ? "Sending..." : "Submit"}
-          </button>
-        </div>
-      </form>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.1em] ml-1">
-            Full Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            placeholder="e.g. John Doe"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="bg-gray-50 px-6 py-4 w-full text-sm outline-none placeholder:text-gray-300 focus:ring-1 focus:ring-red-600 transition-all border border-gray-100 hover:border-gray-200 rounded-none"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.1em] ml-1">
-            Email Address
-          </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="e.g. john@company.com"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="bg-gray-50 px-6 py-4 w-full text-sm outline-none placeholder:text-gray-300 focus:ring-1 focus:ring-red-600 transition-all border border-gray-100 hover:border-gray-200 rounded-none"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.1em] ml-1">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="+1 (555) 000-0000"
-            value={formData.phone}
-            onChange={handleChange}
-            className="bg-gray-50 px-6 py-4 w-full text-sm outline-none placeholder:text-gray-300 focus:ring-1 focus:ring-red-600 transition-all border border-gray-100 hover:border-gray-200 rounded-none"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.1em] ml-1">
-            Position
-          </label>
-          <div className="relative w-full">
-            {selectedOffer ? (
-              <input
-                type="text"
-                name="offer"
-                value={formData.offer}
-                readOnly
-                required
-                className="bg-gray-50 px-6 py-4 w-full text-sm outline-none text-gray-700 border border-gray-100 rounded-none"
-              />
-            ) : (
-              <>
-                <select
-                  name="offer"
-                  value={formData.offer}
-                  onChange={handleChange}
-                  required
-                  className="bg-gray-50 px-6 py-4 w-full text-sm outline-none text-gray-700 focus:ring-1 focus:ring-red-600 transition-all border border-gray-100 hover:border-gray-200 appearance-none pr-12 rounded-none"
-                >
-                  <option value="" disabled>
-                    Select a position
-                  </option>
-                  {items.map((item) => (
-                    <option key={item} value={item} className="bg-white text-gray-700 font-normal">
-                      {item}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.1em] ml-1">
-          Cover Letter / Message
-        </label>
-        <textarea
-          name="message"
-          placeholder="Tell us about your expertise and why you want to join Keystone..."
-          rows={5}
-          required
-          value={formData.message}
-          onChange={handleChange}
-          className="bg-gray-50 px-6 py-4 w-full text-sm outline-none placeholder:text-gray-300 focus:ring-1 focus:ring-red-600 transition-all resize-none border border-gray-100 hover:border-gray-200 rounded-none"
-        />
-      </div>
-
-      <div className="mt-2">
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          onChange={(token) => setCaptchaToken(token)}
-        />
-      </div>
-
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-4">
-        <p className="text-[11px] text-gray-400 max-w-xs leading-relaxed italic">
-          By submitting this form, you agree to our privacy policy and the processing of your
-          personal data.
-        </p>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
           {status === "success" && (
-            <span className="text-green-600 font-bold text-xs flex items-center gap-1.5">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              SENT
+            <span className="text-green-600 font-bold text-xs flex items-center gap-1">
+              <Check className="w-4 h-4" /> SENT
             </span>
           )}
           {status === "error" && <span className="text-red-600 font-bold text-xs">ERROR</span>}
           <button
             type="submit"
-            disabled={status === "loading" || !captchaToken}
-            className="group relative overflow-hidden bg-black text-white text-[11px] font-bold uppercase tracking-[0.2em] py-5 px-10 inline-flex items-center gap-4 transition-all hover:pr-12 disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={status === "loading" || !captchaToken || !formData.consent || !cvFile}
+            className="w-full sm:w-auto bg-red-600 text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-md hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm shadow-red-600/20 flex items-center justify-center gap-2"
           >
-            <span className="relative z-10">
-              {status === "loading" ? "Processing..." : "Submit Application"}
-            </span>
-            <svg
-              className="relative z-10 transition-transform group-hover:translate-x-1"
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-            <div className="absolute inset-0 bg-red-600 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
+            {status === "loading" ? "Submitting..." : "Apply Now"}
           </button>
         </div>
       </div>
@@ -398,7 +352,7 @@ export function CareersSection({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
-        className="relative flex h-screen min-h-[600px] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
+        className="relative flex h-[100vh] min-h-[100vh] min-h-[600px] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
       >
         <div className="absolute inset-0 z-0 bg-black/20">
           <video
@@ -477,7 +431,7 @@ export function CareersSection({
                 className="group flex items-center gap-2 rounded-full bg-red-600 px-8 py-3 font-bold text-white shadow-xl shadow-red-600/20 transition-colors hover:bg-red-700"
               >
                 {heroButtonLabel}
-                <span className="transition-transform group-hover:translate-x-1">-&gt;</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </button>
             </div>
           </motion.div>
@@ -497,7 +451,7 @@ export function CareersSection({
             <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
               <div className="mb-16">
                 <motion.h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight text-center">
-                  We are hiring, <span className="text-black-400">Come join us.</span>
+                  We're hiring. <span className="text-red-600 font-extrabold">Join us.</span>
                 </motion.h2>
               </div>
 
@@ -561,6 +515,75 @@ export function CareersSection({
               </div>
             </div>
           </section>
+
+          {/* Employer Branding Section */}
+          <CyberSectionDivider />
+          <SectionDivider title="OUR CULTURE & ENVIRONMENT" className="bg-[#f4f4f5]" />
+          <section className="relative w-full py-24 bg-[#f4f4f5]">
+            <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+              <div className="mb-16 text-center">
+                <motion.p className="text-xs font-bold uppercase tracking-[0.3em] text-red-600 mb-3">
+                  Life at Keystone
+                </motion.p>
+                <motion.h2 className="text-4xl md:text-5xl font-black text-zinc-950 tracking-tight">
+                  Growth, Impact & Innovation
+                </motion.h2>
+                <motion.p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500 font-medium">
+                  We empower our security professionals to solve some of the world's most complex digital resilience challenges in a collaborative, learning-focused environment.
+                </motion.p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="bg-white p-6 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col justify-between hover:border-red-600/30 transition-all duration-300">
+                  <div>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-red-600 mb-4 font-bold">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base font-bold text-zinc-950 mb-3">Elite Team & Training</h3>
+                    <p className="text-xs leading-relaxed text-zinc-500 font-medium">
+                      Work alongside internationally certified experts (CISSP, OSCP, CISM). Every team member receives an annual training budget to master the latest technologies and certifications.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col justify-between hover:border-red-600/30 transition-all duration-300">
+                  <div>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-red-600 mb-4 font-bold">
+                      <Briefcase className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base font-bold text-zinc-950 mb-3">Mission-Critical Projects</h3>
+                    <p className="text-xs leading-relaxed text-zinc-500 font-medium">
+                      From securing critical grids and banking platforms to operating sovereign security operation centers, you will work on projects that have a tangible impact on cyber defense.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col justify-between hover:border-red-600/30 transition-all duration-300">
+                  <div>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-red-600 mb-4 font-bold">
+                      <Star className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base font-bold text-zinc-950 mb-3">Engineering-First Culture</h3>
+                    <p className="text-xs leading-relaxed text-zinc-500 font-medium">
+                      We believe in flexible hybrid arrangements, high-spec developer setups, and minimal meetings. Our environment is built by and for engineers who value technical quality.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col justify-between hover:border-red-600/30 transition-all duration-300">
+                  <div>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-red-600 mb-4 font-bold">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base font-bold text-zinc-950 mb-3">Global Resiliency Mission</h3>
+                    <p className="text-xs leading-relaxed text-zinc-500 font-medium">
+                      Help us bridge the security gap across Europe, the Middle East, and Africa. We foster local partnerships and support the digital maturation of developing markets.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </>
       ) : (
         <>
@@ -615,43 +638,148 @@ export function CareersSection({
           )}
 
           {selectedOffer ? (
-            <motion.section
-              id="application-form"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5 }}
-              className="relative w-full py-20 flex items-center justify-center bg-[#f4f4f5] overflow-hidden"
-            >
-              <div className="w-full max-w-3xl px-4 relative z-10">
-                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
-                  <div className="mb-6 text-center">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 tracking-tight">
-                      Apply for {selectedOffer}
-                    </h2>
-                    <p className="text-sm text-gray-500">
-                      Submit your application for the {selectedOffer} position in the {category} team.
-                    </p>
-                  </div>
+            (() => {
+              const specKey = careerSlug(selectedOffer);
+              const spec = jobSpecifications[specKey];
 
-                  <CareersForm
-                    category={category}
-                    items={items}
-                    selectedOffer={selectedOffer}
-                    variant="contact"
-                  />
-                  
-                  <div className="mt-8 text-center">
-                    <Link
-                      href={categoryPath}
-                      className="text-xs font-semibold text-gray-400 hover:text-red-600 transition-colors"
-                    >
-                      &larr; Back to Offers
-                    </Link>
+              return (
+                <motion.section
+                  id="application-form"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative w-full py-20 bg-[#f4f4f5] overflow-hidden"
+                >
+                  <div className="container mx-auto px-6 lg:px-12 max-w-7xl relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                      
+                      {/* Left Column: Detailed Job Description */}
+                      <div className="lg:col-span-7 space-y-6">
+                        <div className="bg-white p-8 rounded-xl border border-gray-200/80 shadow-sm text-zinc-950">
+                          <div className="border-b pb-6 mb-6">
+                            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4 text-zinc-950">
+                              {selectedOffer}
+                            </h2>
+                            <div className="flex flex-wrap gap-4 text-xs font-semibold text-zinc-500">
+                              <span className="flex items-center gap-1.5 bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-md">
+                                <MapPin className="w-3.5 h-3.5 text-red-600" />
+                                {spec?.location || "EMEA Region"}
+                              </span>
+                              <span className="flex items-center gap-1.5 bg-zinc-50 border border-zinc-200 px-3 py-1.5 rounded-md">
+                                <Briefcase className="w-3.5 h-3.5 text-zinc-400" />
+                                {spec?.employmentType || "Full-Time"}
+                              </span>
+                            </div>
+                          </div>
+
+                          {spec && (
+                            <div className="space-y-6">
+                              {/* Responsibilities */}
+                              <div>
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
+                                  <ListTodo className="w-4 h-4 text-red-600" />
+                                  Core Responsibilities
+                                </h3>
+                                <ul className="space-y-2.5 text-xs text-zinc-600 font-medium">
+                                  {spec.responsibilities.map((resp, i) => (
+                                    <li key={i} className="flex gap-2.5 items-start">
+                                      <span className="h-1.5 w-1.5 rounded-full bg-red-600 shrink-0 mt-1.5" />
+                                      <span>{resp}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Requirements */}
+                              <div>
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-red-600" />
+                                  Requirements (Need-to-Have)
+                                </h3>
+                                <ul className="space-y-2.5 text-xs text-zinc-600 font-medium">
+                                  {spec.requirements.map((req, i) => (
+                                    <li key={i} className="flex gap-2.5 items-start">
+                                      <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                                      <span>{req}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Nice to Have */}
+                              {spec.niceToHave && spec.niceToHave.length > 0 && (
+                                <div>
+                                  <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
+                                    <Star className="w-4 h-4 text-red-600" />
+                                    Nice-to-Have Skills
+                                  </h3>
+                                  <ul className="space-y-2.5 text-xs text-zinc-600 font-medium">
+                                    {spec.niceToHave.map((nice, i) => (
+                                      <li key={i} className="flex gap-2.5 items-start">
+                                        <span className="text-red-500 font-bold shrink-0">&bull;</span>
+                                        <span>{nice}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+
+                              {/* Process */}
+                              <div>
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 flex items-center gap-2">
+                                  <Award className="w-4 h-4 text-red-600" />
+                                  Application & Interview Process
+                                </h3>
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                                  {spec.process.map((step, idx) => (
+                                    <div key={idx} className="bg-zinc-50 border border-zinc-200/60 rounded-xl p-3 flex flex-col items-center justify-center gap-1.5">
+                                      <span className="h-5 w-5 rounded-full bg-red-100 text-red-600 font-black text-[10px] flex items-center justify-center shrink-0">
+                                        0{idx + 1}
+                                      </span>
+                                      <span className="text-[10px] font-bold text-zinc-800 leading-snug">{step}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right Column: Application Form */}
+                      <div className="lg:col-span-5 bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-zinc-950">
+                        <div className="mb-6">
+                          <h2 className="text-lg font-bold text-zinc-950 uppercase tracking-wider border-b pb-3 text-sm">
+                            Apply For This Role
+                          </h2>
+                          <p className="text-xs text-zinc-400 mt-2">
+                            Please fill out the intake form to submit your candidacy. All fields marked with * are required.
+                          </p>
+                        </div>
+
+                        <CareersForm
+                          category={category}
+                          items={items}
+                          selectedOffer={selectedOffer}
+                          variant="contact"
+                        />
+                        
+                        <div className="mt-8 text-center border-t pt-4 border-zinc-100">
+                          <Link
+                            href={categoryPath}
+                            className="text-xs font-semibold text-gray-400 hover:text-red-600 transition-colors inline-flex items-center gap-1"
+                          >
+                            &larr; Back to Offers
+                          </Link>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
-                </div>
-              </div>
-            </motion.section>
+                </motion.section>
+              );
+            })()
           ) : (
             <motion.section
               id="application-form"

@@ -8,29 +8,35 @@ export const aboutContent = {
     },
     focusAfrica: {
       title: "Focus on Africa",
-      description: "We consider Africa as fertile ground for innovation and growth. Our particular commitment to this region is manifested thru security solutions tailored to local realities and active support to strengthen digital resilience."
+      description: "We consider Africa as fertile ground for innovation and growth. Our particular commitment to this region is reflected through security solutions tailored to local realities and active support to strengthen digital resilience."
     },
     localPresence: [
       {
         country: "Tunisia",
         code: "tn",
-        description: `Tunisia Office:
-Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
-+216 71 755 755`
+        type: "HQ",
+        address: "Rue du Lac Turkana, Les Berges du Lac 1, Tunis 1053, Tunisia",
+        phone: "+216 71 860 000",
+        email: "contact@keystone-corporation.com",
+        mapLink: "https://maps.google.com/?q=Rue+du+Lac+Turkana,+Tunis",
       },
       {
         country: "Algeria",
         code: "dz",
-        description: `Algeria Office:
-Mohammadia Mall Business Center No. 1272, Algiers
-+213 (0) 23 80 47 57`
+        type: "Office",
+        address: "12 Rue Djenane Malik, Hydra, Algiers, Algeria",
+        phone: "+213 21 600 000",
+        email: "algeria@keystone-corporation.com",
+        mapLink: "https://maps.google.com/?q=Hydra,+Algiers,+Algeria",
       },
       {
         country: "Mauritania",
         code: "mr",
-        description: `Mauritania Office:
-No. 225 ext not module L TVZ Nouakchott
-Tel: +222 26976239`
+        type: "Office",
+        address: "Avenue Charles de Gaulle, Ilot C, Nouakchott, Mauritania",
+        phone: "+222 45 250 000",
+        email: "mauritania@keystone-corporation.com",
+        mapLink: "https://maps.google.com/?q=Avenue+Charles+de+Gaulle,+Nouakchott,+Mauritania",
       }
     ],
     impactVision: {
@@ -126,12 +132,12 @@ Tel: +222 26976239`
       { title: "Managed Services", description: "Our managed services offer peace of mind by relieving you of the daily management of security. From continuous monitoring to incident response, we handle the entire process, ensuring proactive protection against threats and immediate problem resolution." },
       { title: "Offensive Security", description: "Our team of offensive security experts possesses an in-depth knowledge of attack tactics. We simulate real attacks to identify hidden vulnerabilities in your systems, allowing for proactive remediation before they are exploited by actual attackers." },
       { title: "Governance, Risk, and Compliance", description: "Our approach to GRC is based on holistic risk and compliance management. We help companies establish policies and processes to meet regulatory requirements, minimize risks, and maximize compliance, while integrating a security culture at the heart of their operations." },
-      { title: "Training & Awareness", description: "Our training and awareness programs are designed to change safety behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security." },
+      { title: "Training & Awareness", description: "Our training and awareness programs are designed to change security behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security." },
       { title: "Strategic Advisory", description: "Our expertise in Strategic Advisory goes beyond technical aspects. We establish cybersecurity strategies aligned with your business objectives, identifying potential risks and offering pragmatic solutions to strengthen your position against digital threats, while maximizing your return on investment." },
       { title: "Technical Assessment and Support", description: "Our Security assessment services provide a comprehensive evaluation of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security." }
     ],
     commitment: [
-      { title: "Valuation of Invested Return", description: "We do not consider security as an expense, but as a strategic investment. Our results-oriented approach ensures maximum security while optimizing your return on investment." },
+      { title: "Return on Security Investment (ROI)", description: "We do not consider security as an expense, but as a strategic investment. Our results-oriented approach ensures maximum security while optimizing your return on investment." },
       { title: "Responsiveness and Flexibility", description: "We understand that every moment counts in the fight against threats. Our responsiveness and agility offer you peace of mind and the ability to focus on your growth." },
       { title: "Confidentiality and Reliability", description: "Your information is valuable. We respect the confidentiality of your data while offering you unwavering reliability in our services." }
     ],
@@ -140,7 +146,7 @@ Tel: +222 26976239`
       { title: "Governments and Public Organizations", description: "We collaborate with governments and public entities to strengthen the resilience of their critical infrastructures, ensuring the security of sensitive data and essential services." },
       { title: "Health", description: "In the healthcare sector, we preserve the integrity of medical data, ensuring compliance with strict security standards and protecting patient confidentiality." },
       { title: "Financial Services", description: "For financial institutions, we provide robust security solutions to protect transactions, secure customer data, and ensure regulatory compliance." },
-      { title: "Telecommunications and Information Technology", description: "We secure the networks and IT infrastructures of telecommunications companies, ensuring reliable and secure connectivity for their clients." },
+      { title: "Telecommunications & IT", description: "We secure the networks and IT infrastructures of telecommunications companies, ensuring reliable and secure connectivity for their clients." },
       { title: "Fintech and Start-ups", description: "For Fintech companies and start-ups, we offer agile and scalable solutions to secure their digital innovations while respecting budget constraints." },
       { title: "Media", description: "We protect the intellectual assets and sensitive data of media companies, ensuring the continuity of operations and the confidentiality of information." },
       { title: "Transport", description: "In the transport sector, we ensure the security of critical infrastructures and logistics management systems, thereby protecting the data flows and mobility your company needs." }

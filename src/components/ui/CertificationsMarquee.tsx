@@ -20,7 +20,7 @@ const certImages = [
   { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity" }
 ];
 
-const repeatedImages = [...certImages, ...certImages, ...certImages, ...certImages, ...certImages];
+const repeatedImages = [...certImages, ...certImages];
 
 export function CertificationsMarquee({ className = "", isAbsolute = false }: CertificationsMarqueeProps) {
   return (
@@ -49,7 +49,7 @@ export function CertificationsMarquee({ className = "", isAbsolute = false }: Ce
             <img
               src={img.src}
               alt={img.alt}
-              className="h-20 w-20 object-contain sm:h-24 sm:w-24 lg:h-32 lg:w-32"
+              className="h-12 w-12 object-contain sm:h-16 sm:w-16 lg:h-20 lg:w-20"
             />
           </div>
         ))}

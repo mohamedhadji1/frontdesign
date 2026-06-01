@@ -72,7 +72,7 @@ export default function TrainingPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -95,12 +95,6 @@ export default function TrainingPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <Link href="/services" className="hover:text-red-300 transition-colors">Services</Link>
-              <ChevronRight size={8} />
-              <span className="text-white/60">Training</span>
-            </div>
-
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -122,7 +116,7 @@ export default function TrainingPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Information security training is a fundamental element to ensure the robustness of your organization against growing digital threats. At KEYSTONE, our training program is designed to educate and equip your team with the knowledge and skills necessary to face the current cybersecurity challenges.
+              Keystone's training programs are designed to educate and equip your team with the practical skills and security reflexes necessary to defend against growing digital threats.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">

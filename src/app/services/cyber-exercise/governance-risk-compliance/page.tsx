@@ -89,7 +89,7 @@ export default function GrcTrainingPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -112,12 +112,6 @@ export default function GrcTrainingPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Training & Awareness</span>
-              <ChevronRight size={8} />
-              <span className="text-white/60">GRC Training</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               GRC Training
             </h1>

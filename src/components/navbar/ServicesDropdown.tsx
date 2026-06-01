@@ -27,6 +27,7 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "Offensive Assessments",
+        slug: "offensive-security/offensive-assessments",
         subCategory: "Advanced Penetration Testing",
         subItems: [
           {
@@ -54,21 +55,22 @@ export const servicesDetails: ServiceCategory[] = [
         subCategory: "Offensive Security Testing",
         description: "Test the limits of your perimeter. Identify zero-day vulnerabilities, physical weaknesses, and social engineering risks through full-scale adversarial emulation."
       },
-          {
-            name: "Web & Mobile Application Assessment",
-            slug: "web-mobile-application-assessment",
-            subCategory: "Web & Mobile Application Assessment",
-            description: "Keystone offers a specialized assessment service to assess the security of your company's web and mobile applications, thereby ensuring enhanced protection against cyber threats."
-          },
+      {
+        name: "Web & Mobile Application Assessment",
+        slug: "web-mobile-application-assessment",
+        subCategory: "Web & Mobile Application Assessment",
+        description: "Keystone offers a specialized assessment service to assess the security of your company's web and mobile applications, thereby ensuring enhanced protection against cyber threats."
+      },
     ],
   },
   {
-    category: "Security assessment",
+    category: "Security Assessment",
     href: "/services/security-assessment",
-    title: "Security assessment",
+    title: "Security Assessment",
     items: [
       {
         name: "Technical Assessment",
+        slug: "security-assessment/technical-assessment",
         subCategory: "Technical Assessment: In-Depth Systems Evaluation",
         subItems: [
           { name: "Infrastructure Assessment", slug: "security-assessment/infrastructure-assessment" },
@@ -81,6 +83,7 @@ export const servicesDetails: ServiceCategory[] = [
       },
       {
         name: "Technical Assistance",
+        slug: "security-assessment/technical-assistance",
         subCategory: "Technical Assistance: Professional and Responsive Support",
         subItems: [
           { name: "System Hardening", slug: "security-assessment/system-hardening" },
@@ -127,9 +130,9 @@ export const servicesDetails: ServiceCategory[] = [
     ],
   },
   {
-    category: "Governance Risk Compliance",
+    category: "Governance, Risk & Compliance",
     href: "/services/governance-risk-compliance",
-    title: "Governance, Risk and Compliance",
+    title: "Governance, Risk & Compliance",
     items: [
       {
         name: "Cybersecurity & Compliance Assessment",
@@ -242,7 +245,7 @@ export const servicesDetails: ServiceCategory[] = [
         ],
       },
       {
-        name: "Cyber Exercice",
+        name: "Cyber Exercise Design & Management",
         slug: "cyber-exercise",
         description: "Prepare your operational and leadership teams for real-world cyber incidents through customizable crisis management exercises, simulation drills, and technical stress-testing."
       },

@@ -5,6 +5,7 @@ import { aboutContent } from "@/lib/about-data";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { useRef } from "react";
+import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -163,17 +164,25 @@ export function CompanyOverview() {
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -15,
+                  y: -12,
                   transition: { duration: 0.4, ease: "easeOut" }
                 }}
-                className="group relative bg-white p-10 rounded-[2.5rem] border border-zinc-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(239,68,68,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden"
+                className="group relative bg-white p-8 rounded-3xl border border-zinc-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(239,68,68,0.08)] transition-all duration-500 flex flex-col items-center overflow-hidden"
               >
-                {/* Enhanced 3D Flag Animation */}
+                {/* Office Type Badge */}
+                <span className={`absolute top-5 left-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                  country.type === "HQ" 
+                    ? "bg-red-50 text-red-600 border border-red-100" 
+                    : "bg-zinc-50 text-zinc-600 border border-zinc-100"
+                }`}>
+                  {country.type}
+                </span>
+
+                {/* Flag */}
                 <motion.div 
-                  className="relative w-28 h-20 mb-8 shadow-2xl rounded-xl overflow-hidden border border-zinc-100"
+                  className="relative w-24 h-16 mt-4 mb-6 shadow-md rounded-lg overflow-hidden border border-zinc-100 shrink-0"
                   animate={{ 
-                    rotateY: [0, 15, -15, 0],
-                    rotateX: [0, 5, -5, 0],
+                    rotateY: [0, 10, -10, 0],
                   }}
                   transition={{ 
                     duration: 6, 
@@ -186,25 +195,37 @@ export function CompanyOverview() {
                     alt={country.country}
                     className="w-full h-full object-cover scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-white/10" />
                 </motion.div>
 
-                <h4 className="text-2xl font-bold text-zinc-900 mb-4 group-hover:text-red-600 transition-colors duration-300">
+                <h4 className="text-xl font-bold text-zinc-950 mb-5 group-hover:text-red-600 transition-colors duration-300">
                   {country.country}
                 </h4>
-                <p className="text-zinc-500 text-sm leading-relaxed font-medium whitespace-pre-line">
-                  {country.description}
-                </p>
 
-                <motion.div 
-                  className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={{ scale: 0 }}
-                  whileHover={{ scale: 1.2 }}
-                >
-                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <div className="w-full flex flex-col gap-3 text-left text-zinc-600 mb-6 flex-grow">
+                  <div className="flex gap-2.5 items-start">
+                    <MapPin className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                    <span className="text-xs leading-relaxed font-medium">{country.address}</span>
                   </div>
-                </motion.div>
+                  <div className="flex gap-2.5 items-center">
+                    <Phone className="w-4 h-4 text-zinc-400 shrink-0" />
+                    <span className="text-xs font-semibold">{country.phone}</span>
+                  </div>
+                  <div className="flex gap-2.5 items-center">
+                    <Mail className="w-4 h-4 text-zinc-400 shrink-0" />
+                    <a href={`mailto:${country.email}`} className="text-xs font-semibold hover:text-red-600 transition-colors">{country.email}</a>
+                  </div>
+                </div>
+
+                <a 
+                  href={country.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 transition-colors uppercase tracking-wider group/link mt-auto pt-3 border-t border-zinc-100 w-full justify-center"
+                >
+                  View on Google Maps
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                </a>
               </motion.div>
             ))}
           </motion.div>

@@ -76,7 +76,7 @@ export default function SystemHardeningPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -98,14 +98,6 @@ export default function SystemHardeningPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Services</span>
-              <ChevronRight size={8} />
-              <Link href="/services/security-assessment" className="hover:text-red-400">Security Assessment</Link>
-              <ChevronRight size={8} />
-              <span className="text-white/60">System Hardening</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               System Hardening
             </h1>

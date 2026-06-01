@@ -12,7 +12,7 @@ export function HeroSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8 }}
-      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
+      className="relative flex h-[100vh] min-h-[100vh] w-full items-center justify-center overflow-hidden bg-black/20 text-white"
     >
       <div className="absolute inset-0 z-0 bg-black/10">
         <video

@@ -219,7 +219,7 @@ export function SectorDetailPage({ page }: { page: SectorPageContent }) {
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="relative flex min-h-[100dvh] scroll-mt-28 items-center overflow-hidden bg-zinc-950 px-6 pb-16 pt-32 text-white md:px-12"
+        className="relative flex h-[100vh] min-h-[100vh] scroll-mt-28 items-center overflow-hidden bg-zinc-950 px-6 pb-16 pt-32 text-white md:px-12"
       >
         <motion.div
           animate={{ scale: [1, 1.04, 1] }}
@@ -445,6 +445,113 @@ export function SectorDetailPage({ page }: { page: SectorPageContent }) {
             </motion.p>
           </motion.div>
           <InteractiveHubSection items={page.framework} />
+        </div>
+      </motion.section>
+
+      <CyberSectionDivider />
+      <motion.div >
+        <SectionDivider title="GOVERNANCE & ALIGNMENT" />
+      </motion.div>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+        className="bg-white px-6 py-16 md:px-12"
+      >
+        <div className="mx-auto max-w-7xl">
+          <motion.div variants={stagger} className="mb-12 text-center">
+            <motion.h2 className="mb-5 text-3xl font-black tracking-tight text-zinc-950 md:text-5xl">
+              Governance & Security Alignment
+            </motion.h2>
+            <motion.p className="mx-auto max-w-4xl text-center text-base leading-8 text-zinc-600 md:text-lg">
+              Aligning operational security with international regulatory frameworks and strategic goals.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Regulations Column */}
+            <motion.div
+              variants={fadeUp}
+              className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-8 shadow-sm flex flex-col justify-between"
+            >
+              <div>
+                <h3 className="text-xl font-bold text-zinc-950 mb-4 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-600 animate-pulse" />
+                  Regulatory Compliance
+                </h3>
+                <p className="text-sm text-zinc-600 mb-6 leading-relaxed">
+                  We design security controls that satisfy the strict requirements of local and international compliance standards.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {page.regulations.map((reg) => (
+                    <span
+                      key={reg}
+                      className="inline-flex items-center rounded-full bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white tracking-wide"
+                    >
+                      {reg}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Recommended Services Column */}
+            <motion.div
+              variants={fadeUp}
+              className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-8 shadow-sm"
+            >
+              <h3 className="text-xl font-bold text-zinc-950 mb-4 flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-600 animate-pulse" />
+                Recommended Services
+              </h3>
+              <p className="text-sm text-zinc-600 mb-6 leading-relaxed">
+                Strategic capabilities operated by Keystone key experts to protect this specific vertical:
+              </p>
+              <div className="flex flex-col gap-3">
+                {page.recommendedServices.map((svc) => (
+                  <Link
+                    key={svc.name}
+                    href={svc.href}
+                    className="group flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 transition-all duration-200 hover:border-red-200 hover:bg-red-50/30"
+                  >
+                    <span className="text-sm font-semibold text-zinc-800 group-hover:text-red-600 transition-colors">
+                      {svc.name}
+                    </span>
+                    <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-red-500 group-hover:translate-x-1 transition-all" />
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Expected Outcomes Column */}
+            <motion.div
+              variants={fadeUp}
+              className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-8 shadow-sm"
+            >
+              <h3 className="text-xl font-bold text-zinc-950 mb-4 flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-600 animate-pulse" />
+                Strategic Outcomes
+              </h3>
+              <p className="text-sm text-zinc-600 mb-6 leading-relaxed">
+                Tangible business and security goals achieved through our targeted security program:
+              </p>
+              <ul className="flex flex-col gap-4">
+                {page.expectedOutcomes.map((outcome) => (
+                  <li key={outcome} className="flex items-start gap-3">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span className="text-sm font-medium leading-relaxed text-zinc-700">
+                      {outcome}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 

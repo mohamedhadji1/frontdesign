@@ -77,7 +77,7 @@ export default function OffensiveSecurityPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
       >
         <div className="absolute inset-0 z-0">
           <video
@@ -99,12 +99,6 @@ export default function OffensiveSecurityPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Services</span>
-              <ChevronRight size={8} />
-              <span className="text-white/60">Offensive Security</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Offensive Security
             </h1>
@@ -118,7 +112,7 @@ export default function OffensiveSecurityPage() {
             />
 
             <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective cyber defense requires seeing your organization through the eyes of an attacker. At Keystone, we deliver elite offensive security, advanced red teaming, and specialized penetration testing services to expose and remediate vulnerabilities before they can be exploited.
+              At Keystone, we deliver elite offensive security, advanced red teaming, and specialized penetration testing to expose and remediate vulnerabilities before they can be exploited.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">

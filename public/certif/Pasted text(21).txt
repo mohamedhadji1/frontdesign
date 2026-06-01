@@ -1,0 +1,541 @@
+
+Priorité
+Page / Zone
+Problème constaté
+Impact
+Amélioration / Correction recommandée
+P0
+Home – Hero
+Le titre principal est affiché lettre par lettre : “B u i l d i n g…”
+Très mauvais pour la lisibilité, l’image de marque et le SEO.
+Afficher normalement : Building the Digital Keystone. Garder l’animation uniquement en CSS sans casser le texte.
+P0
+Home – Hero slogan
+Le slogan est aussi affiché lettre par lettre.
+Le message de positionnement n’est pas immédiatement compréhensible.
+Utiliser : Intelligent cyber defense built to close the gap with advanced attacks.
+P0
+Home – CTA principal
+“Get information about the programs” n’est pas adapté à une société cyber B2B.
+Faible conversion, message peu clair.
+Remplacer par Talk to a Cybersecurity Expert, Request a Consultation ou Explore Our Services.
+P0
+Home – News
+Texte placeholder : “Cake pudding lollipop…”
+Donne une impression de site non finalisé.
+Supprimer la section ou publier de vraies actualités : certification, événement, partenariat, article cyber.
+P0
+Home – Who we are
+Faute : Keysteone au lieu de Keystone.
+Erreur très visible sur une section stratégique.
+Corriger partout : Keystone.
+P0
+Home – Who we are
+Texte grammaticalement confus : “which has been established…”, “supported to knowledge…”.
+Le message de crédibilité devient faible.
+Réécrire : Keystone is an international cybersecurity group with over 20 years of experience in red teaming, blue teaming, managed security, GRC, and strategic advisory.
+P0
+Contact
+Formulaire visible trop incomplet : seulement “Select a Service…” et “Submit”.
+Le prospect ne peut pas envoyer une demande complète.
+Ajouter : Full Name, Business Email, Company, Phone, Country, Service Needed, Message, Consent checkbox.
+P0
+Careers – Application
+Page de candidature très incomplète : titre, courte phrase et bouton Submit.
+Les candidats ne peuvent pas postuler correctement.
+Ajouter : Full Name, Email, Phone, CV upload, LinkedIn, Portfolio/GitHub, Motivation message.
+P0
+About / Company Overview
+Titres vides visibles : “##”.
+Mauvaise impression, mauvaise structure SEO/accessibilité.
+Supprimer les headings vides ou les remplacer par de vrais titres.
+P0
+About / Company Overview
+Formulation incorrecte : “manifested thru security solutions”.
+Ton peu professionnel.
+Remplacer par : reflected through security solutions tailored to local realities.
+P0
+Awards & Recognition
+Le bloc mélange certifications, standards, frameworks et conformité.
+Risque de confusion ou de surpromesse.
+Séparer : Certified Management Systems, Standards Supported, Compliance Frameworks, Memberships & Alliances.
+P0
+Awards & Recognition
+Claims de certification trop vagues : ISO, GDPR, SWIFT, HIPAA, SOC 2 listés ensemble.
+Peut laisser croire que Keystone est certifiée sur tout.
+Ajouter pour chaque élément : statut, scope, certificat, date, organisme certificateur ou préciser “framework supported”.
+P0
+Awards & Recognition
+Formulation “prestigious global coalitions” trop marketing.
+Peut sembler exagéré sans preuve.
+Remplacer par : recognized cybersecurity communities and standards-based operations.
+P0
+Solutions – Keystone ARENA
+Texte affiché lettre par lettre sur la page solution.
+Mauvaise lisibilité, faible crédibilité.
+Afficher normalement : Cyber intelligence and exposure management platform.
+P0
+Sectors – Public Sector
+Titre redondant : Assessment and Assessment.
+Erreur visible sur une page sectorielle importante.
+Remplacer par : Security Assessment & Risk Management.
+P0
+Report Incident
+Promesse forte : “We phone you back within 15 minutes”.
+Risque si ce SLA n’est pas réellement garanti 24/7.
+Garder seulement si contractuel. Sinon : We contact you rapidly based on severity.
+P0
+Report Incident
+Titre “Structured Incident disclosure” peu adapté.
+“Disclosure” convient plutôt à une vulnérabilité qu’à un incident.
+Remplacer par : Structured Incident Report ou Security Incident Intake.
+P0
+Navigation
+Méga-menu très dense avec trop d’entrées et sous-entrées.
+L’utilisateur peut se perdre rapidement.
+Simplifier en 5 entrées : Services, Solutions, Sectors, Resources, Company.
+P0
+Navigation / Services
+Lien “Offensive Assessments” à vérifier, comportement non fiable pendant l’audit.
+Risque de lien cassé ou route manquante.
+Faire un crawl complet de toutes les routes et corriger les 404/redirections.
+P0
+Services / Solutions / Home
+Répétition massive des logos certifications/frameworks dans le HTML.
+Alourdit le site, nuit à la performance et brouille le message.
+Remplacer par un composant carousel propre sans duplication excessive dans le DOM.
+P0
+Security Assessment
+Heading vide visible : “###”.
+Donne une impression de contenu non finalisé.
+Supprimer le heading vide ou ajouter un vrai titre.
+P0
+Red Team
+Problème d’encodage : “Schedule an Assessment â‡’”.
+Bug visuel visible.
+Corriger l’encodage UTF-8 ou remplacer le caractère flèche par →.
+P1
+Home – Services intro
+Phrase incorrecte : “designed to protect your organization anticipate threats…”.
+Problème de grammaire.
+Corriger : Comprehensive cybersecurity solutions designed to protect your organization, anticipate threats, and strengthen your digital resilience.
+P1
+Home – Services cards
+“Managed Services” apparaît deux fois avec le même texte.
+Impression de doublon ou de bug.
+Supprimer le doublon et vérifier le mapping des cards.
+P1
+Home – Training
+Faute : employe au lieu de employee.
+Perte de professionnalisme.
+Corriger : employee.
+P1
+Home – KPIs
+“+40 security expert” et “+200 satisfied client” au singulier.
+Erreur grammaticale visible.
+Corriger : 40+ security experts et 200+ satisfied clients.
+P1
+Home – KPIs
+Chiffres comme “8 billion threat signals” et “850 million people” mal reliés à Keystone.
+Peut sembler artificiel ou non crédible.
+Ajouter source, contexte, périmètre et date ; sinon supprimer.
+P1
+Home / About / Awards
+Incohérence des chiffres : +24 countries, 30+ countries, 33 client countries.
+Réduit la crédibilité.
+Harmoniser tous les chiffres ou distinguer clairement : project countries, client countries, regional coverage.
+P1
+Home – Trusted by
+Logos clients répétés, par exemple BNA plusieurs fois.
+Impression de contenu dupliqué.
+Dédupliquer les logos et afficher uniquement les références validées.
+P1
+Home – Certifications carousel
+Logos ISO/GDPR/NIST/PCI/SOC2/SWIFT/HIPAA répétés.
+Confusion entre certification réelle et framework supporté.
+Ajouter un titre clair : Standards and frameworks we support.
+P1
+Home – CTA assistance
+“Need Immediate Security Assistance?” est utile mais générique.
+Peut mieux convertir.
+Ajouter deux boutons : Report an Incident et Request a Security Consultation.
+P1
+Navigation
+“Cyber Exercice Management & Technique” contient une faute.
+Faute visible dans le menu.
+Corriger : Cyber Exercise Management & Technical Support ou Cyber Exercise Design & Management.
+P1
+Navigation
+“Security assessment” parfois en minuscule.
+Incohérence éditoriale.
+Utiliser partout : Security Assessment.
+P1
+Navigation
+GRC écrit de plusieurs façons.
+Manque de cohérence.
+Utiliser une forme unique : Governance, Risk & Compliance.
+P1
+Navigation / Breadcrumbs
+Certains textes sont collés : “Learn More→Emergency Response”.
+Mauvaise lisibilité.
+Ajouter espaces et séparation visuelle : Learn More → / Emergency Response.
+P1
+Services – Landing page
+Les offres sont descriptives mais peu orientées besoin client.
+Le prospect ne sait pas quel service choisir.
+Ajouter une entrée par besoin : Assess, Monitor, Comply, Train, Respond, Transform.
+P1
+Services – Landing page
+Manque de livrables concrets pour chaque service.
+Difficile de comprendre ce qui est acheté.
+Ajouter : livrables, durée typique, audience, prérequis, résultats attendus.
+P1
+Services – CTA
+“Get in Touch” est trop générique.
+Conversion moyenne.
+Remplacer par : Book a Cybersecurity Consultation ou Discuss Your Security Needs.
+P1
+Services – AI section
+CTA “Explore AI Solutions” placé dans Services.
+Confusion entre services et solutions.
+Renommer ou déplacer vers Solutions.
+P1
+Red Team
+Section “Infrastructure Assessment” avant “What is Red Teaming?”.
+Confusion entre Red Team et assessment classique.
+Remplacer par : Red Team Assessment ou Adversary Simulation.
+P1
+Red Team
+Le contenu parle d’attaques physiques/social engineering sans assez de cadre.
+Peut paraître agressif ou risqué.
+Ajouter : authorized, scoped, controlled simulations.
+P1
+Red Team
+Le texte explique l’attaque mais pas assez la valeur business.
+Le décideur non technique peut décrocher.
+Ajouter : validation SOC, test détection, amélioration réponse incident, priorisation des risques.
+P1
+Red Team – CTA
+“Initiate Attack Simulation” peut paraître brutal.
+Moins adapté à un décideur B2B.
+Remplacer par : Request a Red Team Assessment.
+P1
+Red Team – Méthodologie
+Les étapes doivent être plus lisibles.
+Améliore la confiance.
+Structurer : Scope → Recon → Execution → Detection Review → Report → Remediation Workshop.
+P1
+Managed Services / SOC
+“Managed SOC CERT (CSIRT.tn)” est ambigu.
+On ne sait pas si c’est une offre, une entité ou un partenariat.
+Clarifier : Managed SOC, CERT/CSIRT Support, Incident Response Retainer.
+P1
+Managed Services / SOC
+Niveaux de service non précisés.
+Le client B2B a besoin de comprendre la couverture.
+Ajouter : 8/5, 24/7, SLA, escalade, reporting, onboarding, intégrations SIEM/EDR/SOAR.
+P1
+Managed Services / SOC
+Livrables peu visibles.
+Difficile de comparer l’offre.
+Ajouter : alert triage, monthly report, threat hunting report, incident timeline, executive dashboard.
+P1
+Managed Services / SOC
+Différenciation faible autour de “continuous monitoring”.
+Le message reste commun.
+Mettre en avant : expertise régionale, threat intelligence locale, équipe certifiée, processus d’escalade.
+P1
+Security Assessment
+Formulation lourde : “We analyze structures, structural designs…”.
+Anglais peu naturel.
+Reformuler : We assess infrastructure, architecture, configurations and operational controls to identify exploitable weaknesses.
+P1
+Security Assessment
+“leaving absolutely nothing to chance” est trop absolu.
+Surpromesse.
+Remplacer par : reducing uncertainty and improving security assurance.
+P1
+GRC
+La page ne distingue pas assez audit, certification support, risk assessment et advisory.
+Le client ne comprend pas clairement l’offre.
+Créer quatre blocs : Assess, Comply, Govern, Improve.
+P1
+GRC
+Manque de livrables concrets.
+Frein à la conversion.
+Ajouter : gap analysis, risk register, policy pack, roadmap, audit readiness report.
+P1
+Awareness
+“safety behaviors” devrait être “security behaviors”.
+Terme moins adapté à la cybersécurité.
+Remplacer par : security behaviors.
+P1
+Awareness
+Possible mélange anglais US/UK.
+Incohérence de marque.
+Choisir un style, idéalement US English, et l’appliquer partout.
+P1
+AI & Cybersecurity
+L’offre AI manque de livrables précis.
+Sujet sensible, besoin de rassurer.
+Ajouter : AI governance, LLM risk assessment, prompt injection testing, data leakage controls, model monitoring.
+P1
+Solutions – Positionnement
+Confusion possible entre Services et Solutions.
+Le visiteur ne comprend pas ce qui est produit vs expertise.
+Clarifier : Solutions = platforms/products, Services = expertise operated by Keystone.
+P1
+Keystone ARENA
+Formulation “secure your vendor logistics” peu naturelle.
+Message confus.
+Remplacer par : secure your vendor ecosystem ou manage third-party cyber risk.
+P1
+Keystone ARENA
+Manque de captures d’écran ou visuels produit.
+Difficile de comprendre la plateforme.
+Ajouter screenshots, dashboards, workflow, schéma d’architecture.
+P1
+Keystone ARENA
+Fonctionnalités listées sans assez de bénéfices métier.
+Le décideur comprend moins la valeur.
+Relier chaque fonctionnalité à un résultat : reduce exposure, prioritize remediation, monitor third-party risk.
+P1
+Solutions – CTA
+“Request a demo” répété plusieurs fois.
+Répétitif.
+Garder un CTA principal et ajouter un secondaire : Download Datasheet.
+P1
+DNS Filtering
+Promesses potentiellement trop fortes autour des zero-day domains.
+Risque de surpromesse.
+Utiliser : emerging and newly observed malicious domains.
+P1
+DLP
+Canaux couverts non précisés.
+Le client ne sait pas si endpoint/email/cloud sont inclus.
+Ajouter : endpoint, email, web, cloud apps, removable media, policy templates.
+P1
+CIP Platform
+Utilisateurs cibles non précisés.
+L’offre “critical infrastructure” reste large.
+Ajouter personas : regulator, operator, national CERT, ministry, critical operator.
+P1
+Sectors – Landing page
+Descriptions sectorielles trop génériques.
+Faible différenciation par vertical.
+Pour chaque secteur, ajouter : risques clés, réglementations, services recommandés, résultats attendus.
+P1
+Public Sector
+Contenu pertinent mais manque d’exemples concrets.
+Peut être plus convaincant.
+Ajouter : e-government, national CERT, identity systems, tax platforms, public healthcare.
+P1
+Sectors – Terminologie
+Labels variables : Finance, Financial Services, Telecom & IT, Telecommunications and IT.
+Incohérence de navigation.
+Choisir une nomenclature unique pour tous les secteurs.
+P1
+Sectors – Internal linking
+Les pages secteurs ne renvoient pas assez vers les services/solutions.
+Perte d’opportunités SEO et conversion.
+Ajouter : Recommended services for this sector avec liens vers SOC, GRC, ARENA, DLP, etc.
+P1
+Careers – Main
+“We are hiring, Come join us.” mal ponctué.
+Anglais maladroit.
+Corriger : We’re hiring. Join us.
+P1
+Careers – Main
+“View Opportunities->” manque d’espace/style.
+Rendu non finalisé.
+Corriger : View Opportunities →.
+P1
+Careers – Job pages
+Manque responsabilités, compétences, localisation, type de contrat, processus.
+Les candidats qualifiés ne savent pas si le poste correspond.
+Ajouter : responsibilities, requirements, nice-to-have, location, employment type, application process.
+P1
+Careers – Employer branding
+“world-class team”, “elite experts” sans preuves concrètes.
+Peut sembler générique.
+Ajouter culture, formation, certifications, projets, environnement de travail.
+P1
+Contact
+Pas de délai de réponse indiqué.
+Le prospect ne sait pas à quoi s’attendre.
+Ajouter : We usually respond within one business day.
+P1
+Contact
+Pas de consentement privacy visible.
+Point important pour les données personnelles.
+Ajouter checkbox consentement + lien Privacy Policy.
+P1
+Contact
+Contacts par pays/région peu mis en avant.
+Frein pour grands comptes ou prospects internationaux.
+Ajouter contacts par bureau : Tunisia, Algeria, Mauritania, etc.
+P1
+Contact
+Lien incident utile mais pas assez visible.
+Opportunité pour les urgences cyber.
+Créer un bloc dédié : Emergency? Report an incident now.
+P1
+Report Incident
+Grammaire incorrecte : “as much operational details as possible”.
+Anglais non professionnel.
+Corriger : Please provide as many operational details as possible so we can triage efficiently.
+P1
+Report Incident
+“LOW (Compliance Check)” n’est pas vraiment un incident.
+Mélange incident response et demande GRC.
+Remplacer par : LOW (Suspicious activity / information request) ou déplacer Compliance vers Contact.
+P1
+Report Incident
+Pas de consigne claire sur les secrets.
+Les clients peuvent partager mots de passe, clés privées ou données sensibles.
+Ajouter : Do not include passwords, private keys or regulated personal data.
+P1
+Report Incident
+“Establish secure channels” sans précision.
+Opportunité de rassurer.
+Préciser : PGP, secure upload, encrypted call bridge, case ID.
+P1
+Testimonials
+Témoignages anonymes : “Client Partner”, “IT Director”, etc.
+Moins crédible.
+Ajouter nom, poste, entreprise ou au minimum secteur + pays + contexte.
+P1
+Testimonials
+Citations génériques sans résultats mesurables.
+Faible impact commercial.
+Ajouter résultats : temps de détection réduit, conformité obtenue, vulnérabilités critiques remédiées.
+P1
+Testimonials
+La page ne contient pas de vrais cas clients structurés.
+Opportunité commerciale manquée.
+Transformer en Case Studies : Challenge, Approach, Outcome, Services Used.
+P1
+SEO – Headings
+Headings vides et textes animés cassés.
+Mauvais pour SEO et accessibilité.
+Vérifier tous les H1/H2/H3 et garder le texte normal dans le DOM.
+P1
+SEO – Meta
+Les pages doivent avoir des meta titles/descriptions uniques.
+Meilleure indexation et meilleur CTR.
+Exemple : Managed SOC Services in EMEA | Keystone.
+P1
+SEO – Internal linking
+Liens internes insuffisants entre secteurs, services et solutions.
+Faible profondeur SEO/conversion.
+Ajouter des liens contextuels sur chaque page.
+P1
+SEO – Schema
+Pas de données structurées visibles.
+Opportunité SEO manquée.
+Ajouter : Organization, LocalBusiness, BreadcrumbList, JobPosting, Product/SoftwareApplication.
+P1
+Accessibilité
+Alt texts génériques : “Image”, “BNA 2 Logo”, “Keystone Icon black”.
+Accessibilité faible.
+Utiliser des alt descriptifs ou alt="" pour images décoratives.
+P1
+Performance
+Trop d’images/logos potentiellement chargés.
+Site plus lent, surtout mobile.
+Optimiser images : WebP/AVIF, lazy loading, dimensions fixes.
+P1
+Formulaires
+Validation, backend et confirmation non vérifiés.
+Risque de formulaires non fonctionnels.
+Tester soumission, erreurs, emails, CRM, message de confirmation.
+P2
+About – Offices
+Adresses affichées en bloc texte.
+Lecture peu claire.
+Créer des cards par bureau : Address, Phone, Email, Map link, HQ/Office.
+P2
+About – Mauritania office
+Adresse peu claire.
+Peut sembler non vérifiée.
+Reformater et valider officiellement l’adresse.
+P2
+About – Mission
+“Cybersecurity as a growth catalyst” reste générique.
+Manque de preuve concrète.
+Ajouter : reduce exposure, improve detection, comply with regulations, respond faster to incidents.
+P2
+About – Future Vision
+Blocs “Support for Digital Growth” et “Local Partnerships” mélangés.
+Lecture lourde.
+Séparer en deux blocs avec bénéfices clairs.
+P2
+About – Commitment
+“Valuation of Invested Return” est étrange.
+Anglais peu naturel.
+Remplacer par : Return on Security Investment ou Maximizing Security ROI.
+P2
+About – Services
+La page About répète beaucoup la section Services.
+Page trop longue et moins corporate.
+Garder une version courte et renvoyer vers la page Services.
+P2
+Testimonials – Confidentialité
+Si les clients restent anonymes, ce n’est pas expliqué.
+Témoignages moins crédibles.
+Ajouter : Anonymous financial-sector client, North Africa.
+P2
+AI copy
+“Securing AI systems and using AI…” est clair mais générique.
+Peut manquer d’autorité.
+Ajouter cas d’usage : SOC augmentation, phishing detection, exposure prioritization, LLM posture management.
+P2
+Sector pages
+Les pages semblent suivre le même template.
+Risque de contenu répétitif.
+Ajouter un paragraphe réellement spécifique à chaque industrie.
+P2
+Careers – SEO
+Pages job non optimisées pour Google Jobs.
+Moins de visibilité recrutement.
+Ajouter données structurées JobPosting.
+P2
+Report Incident – Ton
+“elite incident response squad” est trop marketing.
+Pour une urgence, le ton doit être sobre.
+Remplacer par : our incident response team.
+P2
+Footer
+Email avec majuscule : contact@Keystone-corporation.com.
+Moins standard.
+Utiliser partout : contact@keystone-corporation.com.
+P2
+Footer
+Baseline “Elite cybersecurity experts…” trop marketing.
+Ton répétitif.
+Remplacer par : Cybersecurity experts helping organizations anticipate, withstand, and respond to evolving threats.
+P2
+Copy globale
+Répétition de “digital resilience”, “evolving threats”, “protect your organization”.
+Contenu parfois générique.
+Créer une matrice de messages par page : Home, Services, Solutions, Sectors, Contact.
+P2
+Capitalisation
+Incohérences : “Contact US”, “Security assessment”, etc.
+Détail visible.
+Appliquer une règle : Title Case pour titres courts, Sentence case pour paragraphes.
+P2
+Sitemap / robots
+À vérifier avant mise en production.
+Important pour indexation publique.
+Générer et tester sitemap.xml, robots.txt, canonical URLs.
+P2
+Security headers
+Headers non vérifiés.
+Important pour un site cyber.
+Ajouter/valider : CSP, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy.
+P2
+Analytics
+Tracking conversion non vérifié.
+Impossible de mesurer les leads et CTA.
+Tracker : clic CTA, soumission formulaire, demande demo, report incident, pages vues.

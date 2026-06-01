@@ -56,7 +56,7 @@ export default function SecurityManagementPage() {
         initial={{ opacity: 0, y: 40 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.8 }} 
-        className="relative w-full h-[60dvh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
+        className="relative w-full h-[100vh] min-h-[100vh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
       >
         <div className="absolute inset-0 z-0">
           <Image
@@ -76,12 +76,6 @@ export default function SecurityManagementPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-               <span>Information</span>
-               <ChevronRight size={8} />
-               <span className="text-white/60">Security Management</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Security Management
             </h1>

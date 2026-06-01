@@ -20,7 +20,7 @@ export function AboutHeroSection({
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       transition={{ duration: 0.8 }} 
-      className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12 text-white"
+      className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12 text-white"
     >
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
