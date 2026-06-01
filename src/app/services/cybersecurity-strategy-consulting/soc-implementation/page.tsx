@@ -291,7 +291,7 @@ Keystone proposes its expertise in building SOCs (Security Operations Centers), 
                   Contact Us
                 </motion.h2>
                 <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
-                  "Ready to build elite threat detection and strategic 24/7 operations? Contact our strategy consultants today to establish your state-of-the-art SOC."
+                  "Ready to build elite threat detection and strategic 24/7 operations center? Contact our strategy consultants today to establish your state-of-the-art SOC."
                 </p>
                 <div className="pt-10 border-t border-white/10">
                   <Link
