@@ -40,7 +40,7 @@ export default async function AboutSubRoute({ params }: { params: Promise<{ slug
       <main className="bg-white">
         <AboutHeroSection 
           title="Vision, Mission & Values" 
-          description="Protéger l'Innovation Numérique, Garantir la Confiance Mondiale. Découvrez les piliers stratégiques qui guident chacune de nos actions."
+          description="Protect Digital Innovation, Ensure Global Trust. Discover the strategic pillars that guide each of our actions."
         />
         <CyberSectionDivider />
         <VisionMissionValues />
@@ -53,7 +53,7 @@ export default async function AboutSubRoute({ params }: { params: Promise<{ slug
       <main className="bg-white">
         <AboutHeroSection 
           title="Our Team" 
-          description="Une équipe internationale de spécialistes certifiés, dédiée à l'excellence et à la protection de vos actifs les plus précieux."
+          description="An international team of certified specialists, dedicated to excellence and the protection of your most valuable assets."
         />
         <CyberSectionDivider />
         <TeamSection />
