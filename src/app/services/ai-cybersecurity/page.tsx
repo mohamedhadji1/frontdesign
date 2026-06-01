@@ -196,27 +196,19 @@ export default function AICybersecurityPage() {
 
         <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
           <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-2 inline-flex rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-red-300"
-            >
-              Keystone Services
-            </motion.p>
             <motion.h1 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              <TypingText text="AI & Cybersecurity" delay={0.5} />
+              <TypingText text="AI & Cybersecurity" delay={0.2} />
             </motion.h1>
             <p className="mt-4 max-w-2xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
               <TypingText
                 text="Keystone helps organizations adopt Artificial Intelligence securely, responsibly and efficiently — covering the full AI lifecycle from strategy to operations."
-                delay={2}
+                delay={1.2}
               />
             </p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.2, duration: 0.8 }}
+              transition={{ delay: 2.2, duration: 0.8 }}
               className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-white sm:mt-10"
             >
               <MotionLink
