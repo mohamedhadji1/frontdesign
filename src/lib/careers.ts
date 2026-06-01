@@ -27,8 +27,8 @@ export const careersDetails = [
     cta: "Lead Our Team",
     items: [
       "Senior Cybersecurity Consultant",
-      "Senior SOC & Incident Response Lead",
-      "Senior Penetration Testing Lead",
+      "Senior SOC & Incident Response",
+      "Senior Penetration Testing",
       "Senior GRC & Compliance Consultant",
     ],
   },

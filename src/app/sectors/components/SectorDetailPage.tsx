@@ -326,54 +326,6 @@ export function SectorDetailPage({ page }: { page: SectorPageContent }) {
         <SectionDivider title={page.exposureTitle} className="bg-[#f7f7f8]" />
       </motion.div>
 
-      {page.posts && (
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={stagger}
-          className="bg-[#f7f7f8] px-6 py-16 md:px-12"
-        >
-          <div className="mx-auto max-w-7xl">
-            <motion.div className="mb-12 text-center">
-              <motion.h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-                Cybersecurity News
-              </motion.h2>
-            </motion.div>
-            <motion.div variants={stagger} className="grid gap-6 md:grid-cols-2">
-              {page.posts.map((post) => (
-                <motion.article
-                  key={post.title}
-
-                  whileHover={{ y: -6, scale: 1.01 }}
-                  className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm"
-                >
-                  <Link href={post.href} target="_blank" rel="noreferrer">
-                    <div className="relative aspect-[16/10] bg-zinc-100">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-105"
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <p className="mb-3 text-sm font-bold uppercase tracking-wide text-red-600">
-                        Media | {post.date}
-                      </p>
-                      <motion.h2 className="text-xl font-bold leading-snug text-zinc-950">
-                        {post.title}
-                      </motion.h2>
-                    </div>
-                  </Link>
-                </motion.article>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-      )}
-
       <motion.section
         id="emerging-risks"
         initial="hidden"
