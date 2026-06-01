@@ -81,18 +81,6 @@ export function Footer() {
                   contact@Keystone-corporation.com
                 </a>
               </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Keystone Tunisia</p>
-                <p className="mt-1 text-zinc-400">Tunis, Tunisia</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Keystone Algeria</p>
-                <p className="mt-1 text-zinc-400">Algiers, Algeria</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Keystone Mauritania</p>
-                <p className="mt-1 text-zinc-400">Nouakchott, Mauritania</p>
-              </div>
             </div>
             <div className="flex items-center justify-center gap-3 lg:justify-start">
               <a href="https://www.facebook.com/keystonecyber/" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#200000] text-red-600 transition-colors hover:bg-red-900 hover:text-white group">
