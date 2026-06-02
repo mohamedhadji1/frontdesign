@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
@@ -13,6 +14,7 @@ import {Search,
 import { DEFCTASection } from "../soc-management/DEFCTASection";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { HeroSection } from "./sections/HeroSection";
 
 export default function Page() {
   const steps = [
@@ -40,72 +42,7 @@ export default function Page() {
 
   return (
     <main className="min-h-screen bg-white flex flex-col">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
-          >
-            <source src="/vids/SOC.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Managed Services</span>
-              <ChevronRight size={8} />
-              <span className="text-white/60">Digital Forensics</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Forensics</span>
-            </h1>
-
-            <HeroTypeLine
-              items={[
-                  "Advanced Forensic Analysis",
-                  "Timeline Reconstruction",
-                  "Evidence Collection & Preservation",
-                  "Forensic Expert Reports"
-                ]}
-              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Keystone&apos;s digital forensics service is specialized in the in-depth analysis and search of digital evidence during security incidents.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Request an Investigation <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider theme="blue" />
 
       {/* Content Section */}

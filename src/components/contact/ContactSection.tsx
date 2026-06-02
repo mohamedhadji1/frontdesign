@@ -7,7 +7,9 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { servicesDetails } from "@/components/navbar/ServicesDropdown";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, X, Building2, Phone, Mail, AlertTriangle, Clock, ArrowRight } from "lucide-react";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { PrivacyNotice } from "@/components/ui/PrivacyNotice";
+import { CheckCircle2, X, Building2, Phone, Mail, AlertTriangle, Clock } from "lucide-react";
 
 interface ToastProps {
   message: string;
@@ -134,25 +136,37 @@ export function ContactSection() {
   };
 
   return (
-    <section className="w-full h-[100vh] min-h-[100vh] py-24 flex items-center justify-center bg-[#f4f4f5]">
+    <section className="w-full min-h-screen py-28 flex items-center justify-center bg-[#f4f4f5]">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Left Column: Office Contacts and SLA Details */}
         <div className="lg:col-span-5 flex flex-col gap-8">
           <div>
-            <h1 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">Contact Us</h1>
-            <p className="text-base leading-relaxed text-gray-600">
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl font-black text-gray-900 mb-4 tracking-tight"
+            >
+              Contact Us
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-base leading-relaxed text-gray-600"
+            >
               Get in touch with our cybersecurity experts to discuss your organization's security posture, compliance programs, or training requirements.
-            </p>
+            </motion.p>
           </div>
 
           {/* Response Commitment Box */}
           <div className="bg-red-50/50 border border-red-100 rounded-xl p-5 flex gap-4 items-start">
             <Clock className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-bold text-gray-950 text-sm">Our Commitment</h3>
+              <h2 className="font-bold text-gray-950 text-sm">Our Commitment</h2>
               <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                We value your security response timelines. A representative will contact you within **one business day**.
+                We value your security response timelines. A representative will contact you within <span className="font-bold">one business day</span>.
               </p>
             </div>
           </div>
@@ -161,23 +175,19 @@ export function ContactSection() {
           <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-5 flex gap-4 items-start shadow-md text-white">
             <AlertTriangle className="w-6 h-6 text-red-500 shrink-0 mt-0.5 animate-pulse" />
             <div className="flex-1">
-              <h3 className="font-bold text-sm text-red-400">Emergency Security Assistance?</h3>
+              <h2 className="font-bold text-sm text-red-400">Emergency Security Assistance?</h2>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                 If you are currently experiencing a cyber attack or suspected breach, bypass the standard intake form for immediate containment support.
               </p>
-              <Link
-                href="/report-incident"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-red-500 hover:text-red-400 transition-colors mt-3 uppercase tracking-wider group"
-              >
-                Report an Incident Now
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <ButtonLink href="/report-incident" variant="danger" className="mt-4 min-h-9 px-4 py-2 text-xs">
+                Report an Incident
+              </ButtonLink>
             </div>
           </div>
 
           {/* Regional Offices */}
           <div className="flex flex-col gap-4">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 border-b pb-2">Regional Offices</h2>
+            <p className="text-xs font-bold uppercase tracking-wider text-gray-400 border-b pb-2">Regional Offices</p>
             {offices.map((office) => (
               <div key={office.name} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
                 <h3 className="font-bold text-sm text-gray-950 flex items-center gap-2">
@@ -204,84 +214,97 @@ export function ContactSection() {
 
         {/* Right Column: Full B2B Intake Form */}
         <div className="lg:col-span-7 bg-white p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 border-b pb-3 uppercase tracking-wider text-sm">Security Inquiry Intake</h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-6 border-b pb-3 text-sm font-bold uppercase tracking-wider text-gray-900"
+          >
+            Security Inquiry Intake
+          </motion.h2>
           
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Full Name *</label>
+                <label htmlFor="contact-name" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Full Name *</label>
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
                   required
                   placeholder="e.g. John Doe"
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Business Email *</label>
+                <label htmlFor="contact-email" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Business Email *</label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
                   required
                   placeholder="e.g. john.doe@company.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Phone Number *</label>
+                <label htmlFor="contact-phone" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Phone Number *</label>
                 <input
+                  id="contact-phone"
                   type="tel"
                   name="phone"
                   required
                   placeholder="e.g. +1 555-0199"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Company Name *</label>
+                <label htmlFor="contact-company" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Company Name *</label>
                 <input
+                  id="contact-company"
                   type="text"
                   name="company"
                   required
                   placeholder="e.g. Acme Corp"
                   value={formData.company}
                   onChange={handleChange}
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Country *</label>
+                <label htmlFor="contact-country" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Country *</label>
                 <input
+                  id="contact-country"
                   type="text"
                   name="country"
                   required
                   placeholder="e.g. Tunisia"
                   value={formData.country}
                   onChange={handleChange}
-                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
+                  className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all font-medium"
                 />
               </div>
               
               <div className="relative w-full">
-                <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Service Needed *</label>
+                <label htmlFor="contact-service" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Service Needed *</label>
                 <div className="relative">
                   <select
+                    id="contact-service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer font-medium"
+                    className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md appearance-none transition-all cursor-pointer font-medium"
                   >
                     <option value="" disabled className="text-zinc-500 bg-white">Select a Service...</option>
                     {servicesDetails.map(category => (
@@ -299,17 +322,20 @@ export function ContactSection() {
             </div>
             
             <div className="mt-2">
-              <label className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Detailed Message *</label>
+              <label htmlFor="contact-message" className="block text-xs font-bold uppercase text-gray-500 mb-1.5">Detailed Message *</label>
               <textarea
+                id="contact-message"
                 name="message"
                 placeholder="How can we help your organization?"
                 rows={5}
                 required
                 value={formData.message}
                 onChange={handleChange}
-                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-1 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none font-medium"
+                className="bg-gray-50 text-zinc-900 px-4 py-3 w-full text-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-red-500 border border-gray-200 rounded-md transition-all resize-none font-medium"
               />
             </div>
+
+            <PrivacyNotice />
 
             {/* Privacy Consent Checkbox */}
             <div className="flex items-start gap-3 mt-2 bg-gray-50 border border-gray-200/50 rounded-lg p-3.5">
@@ -323,7 +349,7 @@ export function ContactSection() {
                 className="mt-1 accent-red-600 focus:ring-red-500 border-gray-300 rounded cursor-pointer"
               />
               <label htmlFor="consent-checkbox" className="text-xs text-gray-600 leading-relaxed cursor-pointer select-none">
-                I consent to Keystone collecting and storing my contact details in accordance with their <Link href="/privacy" className="text-red-600 hover:text-red-700 underline font-semibold">Privacy Policy</Link> for processing this security inquiry.
+                I consent to Keystone collecting and storing my contact details in accordance with the <Link href="/privacy" className="text-red-600 hover:text-red-700 underline font-semibold">Privacy Policy</Link> for processing this security inquiry.
               </label>
             </div>
 
@@ -338,7 +364,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={status === "loading" || !captchaToken || !formData.consent}
-                className="w-full sm:w-auto bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-md hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20"
+                className="w-full sm:w-auto bg-red-600 text-white text-sm font-semibold py-3 px-8 rounded-full hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-sm shadow-red-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
               >
                 {status === "loading" ? "Sending..." : "Submit Inquiry"}
               </button>

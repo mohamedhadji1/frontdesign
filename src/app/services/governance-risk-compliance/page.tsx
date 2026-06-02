@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -30,6 +30,8 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const offerings = [
   // Cybersecurity & Compliance Assessment
@@ -184,70 +186,7 @@ export default function GrcPage() {
       ref={targetRef}
       className="min-h-screen bg-white text-zinc-950 overflow-hidden"
     >
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <motion.h2 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Governance, Risk & Compliance
-            </motion.h2>
-
-            <HeroTypeLine
-              items={[
-                "Master Your Risks",
-                "Meet the Standards",
-                "Protect Your Business",
-              ]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Effective governance, risk, and compliance management is essential
-              for any business navigating an ever-evolving national and
-              international regulatory landscape. At Keystone, we deliver
-              cutting-edge GRC services to help you protect your business,
-              reduce risks, and meet information security standards.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Request GRC Assessment <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
-
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* GRC Services Section */}
@@ -353,7 +292,7 @@ export default function GrcPage() {
                     <item.icon size={20} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic">
+                    <h4 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-tighter group-hover:text-red-600 transition-colors">
                       {item.title}
                     </h4>
                     <p className="text-zinc-500 text-base font-medium leading-relaxed">
@@ -433,11 +372,11 @@ export default function GrcPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
+                  className="text-3xl font-bold mb-8 uppercase tracking-tighter"
                 >
                   Why Keystone?
                 </motion.h2>
-                <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
+                <p className="text-zinc-300 text-xl font-light leading-relaxed mb-12">
                   "Contact us to discuss how our GRC services can support your
                   business and build lasting resilience."
                 </p>

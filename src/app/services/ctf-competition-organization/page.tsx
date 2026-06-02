@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -21,6 +21,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const eventFormats = [
   {
@@ -131,9 +132,15 @@ export default function CtfCompetitionOrganizationPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+          <Breadcrumbs
+            items={[
+              { label: "Services", href: "/services" },
+              { label: "CTF" },
+            ]}
+          />
+            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               CTF Competition <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Organization</span>
-            </h1>
+            </motion.h1>
 
             <HeroTypeLine
               items={["Game-based cyber training", "Capture the flag design", "Team learning through challenge"]}
@@ -259,7 +266,7 @@ export default function CtfCompetitionOrganizationPage() {
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-zinc-900 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic">
+                  <h3 className="mb-3 text-xl font-bold text-zinc-900 uppercase tracking-tighter group-hover:text-red-600 transition-colors">
                     {item.title}
                   </h3>
                   <p className="leading-relaxed text-zinc-600 font-medium">
@@ -280,7 +287,7 @@ export default function CtfCompetitionOrganizationPage() {
         
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <div className="mb-6 inline-flex items-center gap-3 text-red-600 font-bold uppercase tracking-[0.2em] text-[10px]">
+            <div className="mb-6 inline-flex items-center gap-3 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]">
               <span>OUR STRATEGY</span>
             </div>
             <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 tracking-tighter uppercase leading-[0.95] text-zinc-900">
@@ -305,7 +312,7 @@ export default function CtfCompetitionOrganizationPage() {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-lg shadow-red-600/20">
                   <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors flex items-center gap-3">
                   <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
                   {item.title}
                 </h3>
@@ -361,7 +368,7 @@ export default function CtfCompetitionOrganizationPage() {
                 >
                   <Icon className="mb-5 h-8 w-8 text-red-500" />
 
-                  <h3 className="mb-3 text-xl font-bold text-zinc-900 uppercase tracking-tighter italic">
+                  <h3 className="mb-3 text-xl font-bold text-zinc-900 uppercase tracking-tighter">
                     {item.title}
                   </h3>
 

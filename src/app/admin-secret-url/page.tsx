@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export default function AdminSecretUrl() {
   // AUTH STATE
@@ -216,6 +217,11 @@ export default function AdminSecretUrl() {
     return (
       <div className="min-h-screen py-20 flex justify-center items-center px-6">
         <div className="w-full max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
+          <Breadcrumbs
+            items={[
+              { label: "Admin Secret Url" },
+            ]}
+          />
           <h1 className="text-3xl font-bold mb-8 text-white tracking-wider text-center">
             ADMIN <span className="text-red-600">LOGIN</span>
           </h1>

@@ -35,7 +35,7 @@ const services = [
   },
   {
     title: "Training & Awareness",
-    description: "Our training and awareness programs are designed to change safety behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employe into a strong link in your overall security.",
+    description: "Our training and awareness programs are designed to change safety behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />

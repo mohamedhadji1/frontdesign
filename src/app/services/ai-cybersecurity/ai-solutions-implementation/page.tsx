@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const MotionLink = motion.create(Link);
 
@@ -227,6 +228,12 @@ export default function AISolutionsImplementationPage() {
         <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
           {/* Hero Text */}
           <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
+          <Breadcrumbs
+            items={[
+              { label: "AI Cybersecurity", href: "/services/ai-cybersecurity" },
+              { label: "Ai Solutions Implementation" },
+            ]}
+          />
             <motion.h2 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase">
               <TypingText text="AI Solutions Implementation" delay={0.2} />
             </motion.h2>

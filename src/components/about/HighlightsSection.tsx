@@ -32,7 +32,7 @@ export function HighlightsSection() {
             </p>
             <div>
               <Link
-                href="#"
+                href="/certifications"
                 className="inline-block text-black font-semibold underline underline-offset-8 decoration-gray-400 hover:decoration-black transition-colors"
               >
                 Quality Certificates
@@ -62,8 +62,7 @@ export function HighlightsSection() {
                 Our Mission
               </motion.h2>
               <p className="text-gray-600 flex-grow mb-6">
-                Center we have developped many patents in filling and packaging
-                technology.
+                To deliver state-of-the-art offensive and defensive security programs that protect organizations against advanced cyber threat actors and safeguard vital digital infrastructures.
               </p>
               <Link
                 href="/contact"
@@ -96,8 +95,7 @@ export function HighlightsSection() {
                 Our Vision
               </motion.h2>
               <p className="text-gray-600 flex-grow mb-6">
-                Marshmallow pastry jelly beans chocolate bar cake pastry powder
-                gummi bears.
+                To pioneer innovative, intelligence-driven cyber defense platforms that enable a safe, resilient digital future for businesses and governments globally.
               </p>
               <Link
                 href="/contact"

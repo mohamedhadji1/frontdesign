@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const MotionLink = motion.create(Link);
 
@@ -234,6 +235,12 @@ export default function KeystoneArenaPage() {
             >
               Keystone ARENA
             </motion.p>
+          <Breadcrumbs
+            items={[
+              { label: "Solutions", href: "/solutions" },
+              { label: "Keystone Arena" },
+            ]}
+          />
             <motion.h2 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               <TypingText text="Cyber intelligence and exposure management platform." delay={0.5} />
             </motion.h2>

@@ -53,9 +53,9 @@ export function ServicesIndexPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12 bg-zinc-950 text-white"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12 bg-zinc-950 text-white"
       >
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <video
             autoPlay
             loop
@@ -75,19 +75,34 @@ export function ServicesIndexPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
             className="w-full max-w-5xl"
           >
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-red-300 sm:text-sm">
-              <span className="h-2 w-2 rounded-full bg-red-500" />
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
+            >
+              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
               Services
-            </div>
+            </motion.p>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tight text-white leading-[1.05] uppercase"
+            >
               Cybersecurity Services
-            </h1>
+            </motion.h1>
 
-            <motion.p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 font-medium tracking-wide leading-relaxed max-w-3xl animate-none"
+            >
               Comprehensive cybersecurity solutions designed to protect your organization,
               anticipate threats, and strengthen your digital resilience.
             </motion.p>

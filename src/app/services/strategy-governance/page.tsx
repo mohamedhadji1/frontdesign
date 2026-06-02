@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -22,6 +22,8 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const importanceItems = [
   { title: "Develop Management Skills", d: "Train managers to develop policies, manage risks, and lead security strategies with precision.", icon: Layout },
@@ -50,54 +52,7 @@ export default function SecurityManagementPage() {
 
   return (
     <main ref={targetRef} className="min-h-screen bg-white text-zinc-950 overflow-hidden">
-      
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 40 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 0.8 }} 
-        className="relative w-full h-[100vh] min-h-[100vh] min-h-[600px] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32"
-      >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/background/bg10.png"
-            alt="Strategic Security Management"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60 sm:bg-black/50" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Security Management
-            </h1>
-
-            <HeroTypeLine
-              items={["Strategic Oversight", "Executive Leadership", "Global Governance"]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Manage robust security and anticipate global threats. Equip professionals with the skills necessary to lead cybersecurity proactively.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-               <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
-                  Enhance Leadership <ArrowRight size={18} />
-               </Link>
-            </div>
-          </motion.div>
-        </div>
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* Strategic Capability Section - Compact Grid */}
@@ -177,7 +132,7 @@ export default function SecurityManagementPage() {
                            <item.icon size={18} />
                         </div>
                         <div>
-                           <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2 italic">{item.title}</h4>
+                           <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2">{item.title}</h4>
                            <p className="text-zinc-500 text-base font-medium leading-relaxed">{item.d}</p>
                         </div>
                      </div>
@@ -192,8 +147,8 @@ export default function SecurityManagementPage() {
                className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
              >
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px] animate-pulse" />
-                <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter italic">Strategic Action</h3>
-                <p className="text-xl md:text-2xl font-light italic leading-relaxed text-zinc-300 relative z-10 mb-12">
+                <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter">Strategic Action</h3>
+                <p className="text-xl md:text-2xl font-light leading-relaxed text-zinc-300 relative z-10 mb-12">
                   "Invest in strategic security management to protect your digital future."
                 </p>
                 <div className="pt-10 border-t border-white/10 text-center">

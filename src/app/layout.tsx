@@ -39,8 +39,8 @@ const gotham = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Keystone",
-  description: "Keystone - Digital Transformation and Cybersecurity",
+  title: "Keystone | B2B Cyber Defense & Enterprise Cyber Resilience",
+  description: "Keystone is a leading international B2B cybersecurity advisory group. We deliver enterprise-grade threat intelligence, red teaming, managed security, and strategic GRC solutions.",
   icons: {
     icon: [
       {

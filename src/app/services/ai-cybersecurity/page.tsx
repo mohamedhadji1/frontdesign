@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -14,6 +14,8 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const MotionLink = motion.create(Link);
 
@@ -160,62 +162,7 @@ export default function AICybersecurityPage() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative flex h-[100vh] min-h-[100vh] w-full flex-col overflow-hidden bg-zinc-950"
-      >
-        <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
-          <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
-            <motion.h1 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              <TypingText text="AI & Cybersecurity" delay={0.2} />
-            </motion.h1>
-            <p className="mt-4 max-w-2xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
-              <TypingText
-                text="Keystone helps organizations adopt Artificial Intelligence securely, responsibly and efficiently — covering the full AI lifecycle from strategy to operations."
-                delay={1.2}
-              />
-            </p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 0.8 }}
-              className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-white sm:mt-10"
-            >
-              <MotionLink
-                href="/contact"
-                whileHover={{ x: 10 }}
-                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
-              >
-                Start your AI roadmap
-                <ArrowRight className="h-4 w-4" />
-              </MotionLink>
-              <Link href="/services" className="w-full sm:w-auto">
-                <motion.button
-                  whileHover={{ x: 10 }}
-                  className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white sm:text-base"
-                >
-                  Back to services <span>→</span>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-
-        <CertificationsMarquee isAbsolute={true} />
-        <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
-      </motion.section>
-
+      <HeroSection />
       {/* ── Highlights ── */}
       <motion.section
         initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}

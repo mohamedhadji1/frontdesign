@@ -84,9 +84,9 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-12 text-white bg-zinc-950"
       >
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <video
             autoPlay
             loop
@@ -96,36 +96,61 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
-          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
+          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen pointer-events-none" />
         </div>
 
         <div 
-          className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36"
+          className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
             className="w-full max-w-5xl"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
+            >
+              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+              {page.eyebrow}
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tight text-white leading-[1.05] uppercase"
+            >
               {page.title}
-            </h1>
+            </motion.h1>
 
             <HeroTypeLine
               items={[page.eyebrow, "Strategic Training", "Behavioral Transformation"]}
             />
 
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 font-medium tracking-wide leading-relaxed max-w-3xl"
+            >
               {page.subtitle}
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-8 flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start"
+            >
                <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
                   Book Session <ArrowRight size={18} />
                </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
         <ScrollIndicator />
@@ -281,11 +306,11 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="flex flex-col items-start"
                 >
-                  <h2 className="text-[28px] font-bold text-gray-900 mb-6 leading-tight uppercase italic flex items-center gap-3">
+                  <h2 className="text-[28px] font-bold text-gray-900 mb-6 leading-tight uppercase flex items-center gap-3">
                     <span className="w-2.5 h-8 bg-red-600 rounded-full shrink-0" />
                     {page.features[activeIndex].title}
                   </h2>
-                  <p className="text-gray-650 text-[17px] leading-relaxed font-medium border-l-2 border-slate-100 pl-6 italic">
+                  <p className="text-gray-650 text-[17px] leading-relaxed font-medium border-l-2 border-slate-100 pl-6">
                     {page.features[activeIndex].description}
                   </p>
                 </motion.div>
@@ -341,7 +366,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
                  className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
                >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px] animate-pulse" />
-                  <p className="text-2xl md:text-3xl font-light italic leading-relaxed text-zinc-300 relative z-10 text-center">
+                  <p className="text-2xl md:text-3xl font-light leading-relaxed text-zinc-300 relative z-10 text-center">
                     "{page.closing}"
                   </p>
                   <div className="mt-12 text-center relative z-10 border-t border-white/10 pt-10">

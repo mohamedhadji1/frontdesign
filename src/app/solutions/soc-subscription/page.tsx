@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { ArrowRight, Clock3, Mail, ShieldAlert, type LucideIcon } from "lucide-r
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 type SubscriptionCard = {
   title: string;
@@ -48,7 +49,7 @@ export default function SocSubscriptionPage() {
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="relative flex h-[100vh] min-h-[100vh] items-center overflow-hidden bg-zinc-950 px-4 pb-16 pt-28 text-white sm:px-6 sm:pb-20 sm:pt-32 md:px-12"
+        className="relative flex h-[100vh] min-h-[100vh] items-center overflow-hidden bg-zinc-950 px-4 pb-16 pt-24 text-white sm:px-6 sm:pb-20 sm:pt-32 md:px-12"
       >
         <motion.div
           animate={{ scale: [1, 1.06, 1], x: ["0%", "-3%", "0%"] }}
@@ -73,6 +74,12 @@ export default function SocSubscriptionPage() {
             Coming soon
           </motion.div>
  
+          <Breadcrumbs
+            items={[
+              { label: "Solutions", href: "/solutions" },
+              { label: "SOC Subscription" },
+            ]}
+          />
           <motion.h2 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
             SOC Subscription
           </motion.h2>

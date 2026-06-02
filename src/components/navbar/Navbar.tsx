@@ -144,9 +144,7 @@ export function Navbar() {
 
           {/* Right: Action Button */}
           <div className="hidden lg:block">
-            <ActionButton label="Report an incident" onClick={() => {
-              window.location.href = "/report-incident";
-            }} />
+            <ActionButton label="Report an Incident" href="/report-incident" />
           </div>
 
           {/* Mobile Menu Toggle */}

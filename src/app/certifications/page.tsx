@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -25,6 +25,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 interface Certification {
   slug: string;
@@ -337,9 +338,9 @@ export default function CertificationsPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full h-[70svh] min-h-[500px] flex flex-col justify-center overflow-hidden"
+        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-24 pb-12 text-white bg-zinc-950"
       >
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <video
             autoPlay
             loop
@@ -349,23 +350,48 @@ export default function CertificationsPage() {
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/35 sm:bg-linear-to-r sm:from-black/75 sm:via-black/40 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/35 sm:bg-linear-to-r sm:from-black/75 sm:via-black/40 sm:to-transparent pointer-events-none" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col justify-center h-full">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left pb-12 pt-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-4xl pt-12"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="w-full max-w-4xl"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Certifications & Standards
-            </h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
+            >
+              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+              Certifications
+            </motion.p>
 
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide max-w-3xl leading-relaxed">
+          <Breadcrumbs
+            items={[
+              { label: "Certifications" },
+            ]}
+          />
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tight text-white leading-[1.05] uppercase"
+            >
+              Certifications & Standards
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 font-medium tracking-wide leading-relaxed max-w-3xl"
+            >
               We guide your enterprise through the world's most rigorous information security frameworks. Build absolute compliance, satisfy key stakeholders, and guarantee elite-level operational resilience.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
@@ -485,7 +511,7 @@ export default function CertificationsPage() {
                     </div>
 
                     {/* Overview & Short detail */}
-                    <p className="text-zinc-950 text-xs font-bold italic mb-2.5 leading-snug">
+                    <p className="text-zinc-950 text-xs font-bold mb-2.5 leading-snug">
                       "{cert.overview}"
                     </p>
                     <p className="text-zinc-500 text-[11px] font-medium leading-relaxed mb-4">

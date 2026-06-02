@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -18,6 +18,8 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const methodologies = [
   {
@@ -67,111 +69,7 @@ export default function NationalSectoralStrategyPage() {
       ref={targetRef}
       className="min-h-screen bg-white text-zinc-950 overflow-hidden"
     >
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12 bg-zinc-950"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Cybersecurity Strategy
-            </h1>
-
-            <HeroTypeLine
-              items={[
-                "National cyber policy",
-                "Sectoral strategy design",
-                "Long-term security direction",
-              ]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Keystone offers a specialized service in the development of national and sectoral cybersecurity strategies, aiming to strengthen security on a national and sectoral scale. We work together with governments and sectoral entities to design robust strategies that meet the specific challenges of each domain.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Design Your Strategy <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="relative w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default mt-auto">
-          <style>{`
-            @keyframes marquee-grc {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .marquee-track-grc {
-              display: flex;
-              width: max-content;
-              animation: marquee-grc 60s linear infinite;
-            }
-            .marquee-track-grc:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-          <div className="marquee-track-grc items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
-            {Array(5)
-              .fill([
-                { src: "/certif/SWIFT.png", alt: "SWIFT" },
-                { src: "/certif/27001.png", alt: "ISO 27001" },
-                { src: "/certif/27002.svg", alt: "ISO 27002" },
-                { src: "/certif/PCIDSS.png", alt: "PCI DSS" },
-                { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity Framework" },
-                { src: "/certif/GDPR.webp", alt: "GDPR" },
-                { src: "/certif/22301.png", alt: "ISO 22301" },
-                { src: "/certif/27701.png", alt: "ISO 27701" },
-                { src: "/certif/hipaa.png", alt: "HIPAA" },
-                { src: "/certif/SOC2.webp", alt: "SOC 2" },
-              ])
-              .flat()
-              .map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="relative h-[80px] w-[80px] shrink-0 sm:h-[100px] sm:w-[100px] lg:h-[120px] lg:w-[120px]"
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    sizes="112px"
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
-
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* Methodology Section */}
@@ -281,11 +179,11 @@ export default function NationalSectoralStrategyPage() {
               <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
                 <motion.h2
-                  className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
+                  className="text-3xl font-bold mb-8 uppercase tracking-tighter"
                 >
                   Contact Us
                 </motion.h2>
-                <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
+                <p className="text-zinc-300 text-xl font-light leading-relaxed mb-12">
                   "Sovereign data demands sovereign strategic protection framework support. Reach out to our top national security advisors today to draft your cybersecurity roadmap."
                 </p>
                 <div className="pt-10 border-t border-white/10">

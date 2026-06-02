@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
 import React, { useState } from "react";
@@ -31,6 +32,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { HeroSection } from "./sections/HeroSection";
 
 // Managed Services Benefits (First Column Content)
 const benefits = [
@@ -422,71 +424,7 @@ export default function ManagedServicesPage() {
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white font-sans overflow-x-hidden selection:bg-blue-500 selection:text-white">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
-          >
-            <source src="/vids/SOC.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Services</span>
-              <ChevronRight size={8} />
-              <span className="text-white/60">Managed Services</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Managed Services
-            </h1>
-
-            <HeroTypeLine
-              items={[
-                "Active 24/7/365 Security Monitoring",
-                "Expert CERT & Incident Response Capabilities",
-                "Advanced EDR/XDR & SIEM Orchestration",
-                "Continuous Regulatory Compliance Alignment"
-              ]}
-              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Benefit from continuous monitoring, proactive detection, and ultra-fast technical response driven by our world-class cybersecurity experts.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="#explore-catalog"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Explore Catalogue <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider theme="blue" />
 
       {/* 2. Main Section: 3-Column Premium Layout */}
@@ -546,7 +484,7 @@ export default function ManagedServicesPage() {
                 </div>
 
                 <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100/50">
-                  <p className="text-zinc-700 text-xs italic leading-relaxed font-medium">
+                  <p className="text-zinc-700 text-xs leading-relaxed font-medium">
                     Outsourcing security to Keystone&apos;s managed service allows businesses to benefit from specialized expertise, focus on their growth, reduce risks, and maintain a reliable level of security while remaining agile in the face of technological developments and emerging threats.
                   </p>
                 </div>
@@ -622,7 +560,7 @@ export default function ManagedServicesPage() {
                     ))}
                   </div>
 
-                  <p className="text-zinc-500 text-[11px] italic mt-6 leading-relaxed border-t border-zinc-200/40 pt-4">
+                  <p className="text-zinc-500 text-[11px] mt-6 leading-relaxed border-t border-zinc-200/40 pt-4">
                     {currentPillarData.closing}
                   </p>
                 </div>
@@ -696,7 +634,7 @@ export default function ManagedServicesPage() {
                                   </div>
 
                                   {item.conclusion && (
-                                    <p className="text-zinc-500 text-[10px] italic leading-relaxed pt-4 border-t border-zinc-100">
+                                    <p className="text-zinc-500 text-[10px] leading-relaxed pt-4 border-t border-zinc-100">
                                       {item.conclusion}
                                     </p>
                                   )}

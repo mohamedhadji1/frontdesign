@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -9,6 +9,8 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const MotionLink = motion.create(Link);
 
@@ -208,62 +210,7 @@ export default function AIStrategyGovernancePage() {
 
   return (
     <main className="min-h-screen bg-white text-zinc-950">
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex h-[100vh] min-h-[100vh] w-full flex-col overflow-hidden bg-zinc-950">
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
-          {/* Hero Text */}
-          <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
-            <motion.h2 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase">
-              <TypingText text="AI Strategy & Governance" delay={0.2} />
-            </motion.h2>
-
-            <p className="mt-4 max-w-2xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
-              <TypingText text="Structure a clear, secure, and compliant AI road map aligned with corporate priorities and GRC requirements." delay={1.2} />
-            </p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 0.8 }}
-              className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-white sm:mt-10"
-            >
-              <MotionLink
-                href="/contact"
-                whileHover={{ x: 10 }}
-                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
-              >
-                Request a demo
-                <ArrowRight className="h-4 w-4" />
-              </MotionLink>
-              <Link href="/services/ai-cybersecurity" className="w-full sm:w-auto">
-                <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:text-base">
-                  Back to AI Services
-                  <span>→</span>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Infinite Certifications Marquee */}
-        <CertificationsMarquee isAbsolute={true} />
-
-        <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
-      </motion.section>
-
+      <HeroSection />
       {/* Highlights Section */}
       <motion.section
         initial="hidden"

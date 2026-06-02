@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
@@ -20,6 +20,8 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const importanceItems = [
   {
@@ -84,108 +86,7 @@ export default function GrcTrainingPage() {
 
   return (
     <main ref={targetRef} className="min-h-screen bg-white text-zinc-950 overflow-hidden">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
-          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              GRC Training
-            </h1>
-
-            <HeroTypeLine
-              items={["Guide Your Decisions", "Minimize Risks", "Continuous Compliance"]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Governance, Risk, and Compliance (GRC) training is essential for any professional wishing to ensure compliance with standards and regulations while minimizing risks for the enterprise. At Keystone, our specialized GRC training offering aims to equip participants with the strategic knowledge necessary to effectively manage compliance and risk.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Book GRC Training <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <div className="relative w-full overflow-hidden pb-2 sm:pb-8 pointer-events-auto cursor-default mt-auto">
-          <style>{`
-            @keyframes marquee-grc {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .marquee-track-grc {
-              display: flex;
-              width: max-content;
-              animation: marquee-grc 60s linear infinite;
-            }
-            .marquee-track-grc:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-          <div className="marquee-track-grc items-center gap-8 whitespace-nowrap px-4 sm:gap-16 sm:px-8 lg:gap-24">
-            {Array(5)
-              .fill([
-                { src: "/certif/SWIFT.png", alt: "SWIFT" },
-                { src: "/certif/27001.png", alt: "ISO 27001" },
-                { src: "/certif/27002.svg", alt: "ISO 27002" },
-                { src: "/certif/PCIDSS.png", alt: "PCI DSS" },
-                { src: "/certif/nistcyber.svg", alt: "NIST Cybersecurity Framework" },
-                { src: "/certif/GDPR.webp", alt: "GDPR" },
-                { src: "/certif/22301.png", alt: "ISO 22301" },
-                { src: "/certif/27701.png", alt: "ISO 27701" },
-                { src: "/certif/hipaa.png", alt: "HIPAA" },
-                { src: "/certif/SOC2.webp", alt: "SOC 2" },
-              ])
-              .flat()
-              .map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="relative h-[80px] w-[80px] shrink-0 sm:h-[100px] sm:w-[100px] lg:h-[120px] lg:w-[120px]"
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    sizes="112px"
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-          </div>
-        </div>
-
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* Importance Section */}
@@ -270,7 +171,7 @@ export default function GrcTrainingPage() {
                       <item.icon size={18} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2 italic">
+                      <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2">
                         {item.title}
                       </h4>
                       <p className="text-zinc-500 text-base font-medium leading-relaxed">
@@ -289,10 +190,10 @@ export default function GrcTrainingPage() {
               className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px] animate-pulse" />
-              <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter italic">
+              <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter">
                 Protect Your Business
               </h3>
-              <p className="text-xl md:text-2xl font-light italic leading-relaxed text-zinc-300 relative z-10 mb-12 text-center">
+              <p className="text-xl md:text-2xl font-light leading-relaxed text-zinc-300 relative z-10 mb-12 text-center">
                 "Strengthen corporate governance, minimize operational risks, and secure a compliant, resilient future for your business."
               </p>
               <div className="pt-10 border-t border-white/10 text-center">

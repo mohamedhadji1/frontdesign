@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -22,6 +22,8 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const approachItems = [
   {
@@ -62,57 +64,7 @@ export default function BcmPage() {
 
   return (
     <main ref={targetRef} className="min-h-screen bg-white text-zinc-950 overflow-hidden">
-      
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        transition={{ duration: 0.8 }} 
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-center overflow-hidden"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
-          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Operational Resilience
-            </h1>
-
-            <HeroTypeLine
-              items={["Continuity Planning", "Disaster Recovery", "Business Resilience"]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-             Training is crucial to ensuring your business can cope with disruptions and resume operations quickly. Our specialized training program in this area aims to equip professionals with the skills needed to ensure business continuity, even in critical situations.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-               <Link href="/contact" className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl">
-                  Request your training <ArrowRight size={18} />
-               </Link>
-            </div>
-          </motion.div>
-        </div>
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* Operational Continuity - Compact grid */}
@@ -162,7 +114,7 @@ export default function BcmPage() {
                            <item.icon size={18} />
                         </div>
                         <div>
-                           <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2 italic">{item.title}</h4>
+                           <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2">{item.title}</h4>
                            <p className="text-zinc-500 text-base font-medium leading-relaxed">{item.d}</p>
                         </div>
                      </div>
@@ -177,8 +129,8 @@ export default function BcmPage() {
                className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
              >
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-[100px] animate-pulse" />
-                <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter italic">Resilience Vision</h3>
-                <p className="text-xl md:text-2xl font-light italic leading-relaxed text-zinc-300 relative z-10 mb-12 text-center">
+                <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter">Resilience Vision</h3>
+                <p className="text-xl md:text-2xl font-light leading-relaxed text-zinc-300 relative z-10 mb-12 text-center">
                   "Resilience is the ability to rebound and thrive despite adversity."
                 </p>
                 <div className="pt-10 border-t border-white/10 text-center">
@@ -222,7 +174,7 @@ export default function BcmPage() {
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
                   <item.icon size={22} />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors flex items-center gap-3">
                   <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
                   {item.title}
                 </h3>

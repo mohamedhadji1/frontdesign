@@ -31,8 +31,31 @@ interface KeystoneEvent {
   [key: string]: unknown;
 }
 
+const getFutureDate = (daysAhead: number) => {
+  const d = new Date();
+  d.setDate(d.getDate() + daysAhead);
+  d.setHours(10, 0, 0, 0);
+  return d.toISOString();
+};
+
 export function HeroSection() {
-  const [events, setEvents] = useState<KeystoneEvent[]>([]);
+  const [events, setEvents] = useState<KeystoneEvent[]>([
+    {
+      id: "default-event-1",
+      title: "Keystone Enterprise Cyber Summit 2026",
+      date: getFutureDate(12),
+    },
+    {
+      id: "default-event-2",
+      title: "Webinar: Threat Hunting & EASM Best Practices",
+      date: getFutureDate(28),
+    },
+    {
+      id: "default-event-3",
+      title: "Workshop: Classifying & Securing Critical Infrastructure",
+      date: getFutureDate(45),
+    }
+  ]);
   const [timeRemaining, setTimeRemaining] = useState<{
     d?: string;
     h?: string;
@@ -55,7 +78,9 @@ export function HeroSection() {
         date: doc.data().date || new Date().toISOString(),
         ...doc.data(),
       })) as KeystoneEvent[];
-      setEvents(fetchedEvents);
+      if (fetchedEvents.length > 0) {
+        setEvents(fetchedEvents);
+      }
     });
 
     return () => unsubscribe();
@@ -124,13 +149,23 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
         {/* Left Side: Hero Text */}
         <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            <TypingText text="Building the Digital Keystone" delay={0} />
-          </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl uppercase"
+          >
+            Building the Digital Keystone
+          </motion.h1>
 
-          <p className="text-base font-medium tracking-wide text-zinc-300 sm:text-lg md:text-2xl">
-            <TypingText text="Intelligent cyber defense built to close the gap with advanced attacks." delay={0.6} />
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base font-medium tracking-wide text-zinc-300 sm:text-lg md:text-2xl leading-relaxed"
+          >
+            Intelligent cyber defense built to close the gap with advanced attacks.
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { BlueSectionDivider } from "@/components/ui/BlueSectionDivider";
 
 import Link from "next/link";
@@ -27,6 +28,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { HeroSection } from "./sections/HeroSection";
 
 const capabilityItems = [
   {
@@ -98,71 +100,7 @@ export default function BlueTeamPage() {
       className="min-h-screen bg-white text-zinc-950 overflow-hidden"
     >
       <Navbar />
-
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center blur-[2px]"
-          >
-            <source src="/vids/SOC.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/35 sm:to-transparent pointer-events-none" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <div className="mb-6 inline-flex items-center gap-3 text-blue-500 font-bold uppercase tracking-[0.2em] text-[10px]">
-              <span>Managed Services</span>
-              <ChevronRight size={8} />
-              <span className="text-white/60">Blue Team Operations</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              Blue Team
-            </h1>
-
-            <HeroTypeLine
-              items={[
-                "Active 24/7 Infrastructure Monitoring",
-                "Advanced SIEM Optimization",
-                "Managed EDR/XDR Deployment",
-              ]}
-              className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-blue-400"
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Strengthen your perimeter and eliminate blind spots. Keystone's expert Blue Team delivers continuous auditing, customized threat modeling, and rapid active response to secure your digital future.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Secure Your Systems <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider theme="blue" />
 
       {/* Strategic Capability Section */}
@@ -256,7 +194,7 @@ export default function BlueTeamPage() {
                       <item.icon size={18} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2 italic">
+                      <h4 className="text-xl font-bold text-zinc-900 uppercase tracking-tighter mb-2">
                         {item.title}
                       </h4>
                       <p className="text-zinc-500 text-base font-medium leading-relaxed">
@@ -275,10 +213,10 @@ export default function BlueTeamPage() {
               className="relative group bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px] animate-pulse" />
-              <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter italic">
+              <h3 className="text-2xl font-bold mb-8 uppercase tracking-tighter">
                 Strategic Action
               </h3>
-              <p className="text-xl md:text-2xl font-light italic leading-relaxed text-zinc-300 relative z-10 mb-12">
+              <p className="text-xl md:text-2xl font-light leading-relaxed text-zinc-300 relative z-10 mb-12">
                 "Keystone offers a comprehensive range of Blue Team services for proactive monitoring, optimal security solution management, and effective response to threats. We work in close collaboration with your company to ensure enhanced protection against cyber threats."
               </p>
               <div className="pt-10 border-t border-white/10 text-center">

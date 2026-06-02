@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -20,6 +20,8 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const features = [
   {
@@ -90,62 +92,7 @@ export default function ISO27001SupportPage() {
       ref={targetRef}
       className="min-h-screen bg-white text-zinc-950 overflow-hidden"
     >
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-between overflow-hidden pt-52 sm:pt-60 lg:pt-64 pb-12"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
-              ISO 27001 Support
-            </h1>
-
-            <HeroTypeLine
-              items={["Recognition", "Security", "Compliance"]}
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              At Keystone, we understand that ISO 27001 certification is much more than a seal of compliance. It is the tangible proof of your absolute commitment to information security. Our support service is the fruit of years of experience, backed by numerous references and success stories.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Request support for Secure ISO 27001 certification<ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <CertificationsMarquee className="mt-auto pointer-events-auto cursor-default pb-2 sm:pb-8" />
-
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider />
 
       {/* Services Section */}
@@ -237,7 +184,7 @@ export default function ISO27001SupportPage() {
                     <item.icon size={20} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic">
+                    <h4 className="text-xl font-bold text-zinc-900 mb-3 uppercase tracking-tighter group-hover:text-red-600 transition-colors">
                       {item.title}
                     </h4>
                     <p className="text-zinc-500 text-base font-medium leading-relaxed">
@@ -282,7 +229,7 @@ export default function ISO27001SupportPage() {
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-red-600 shadow-md group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
                   <item.icon size={22} />
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors italic flex items-center gap-3">
+                <h3 className="text-xl font-bold text-zinc-900 mb-4 uppercase tracking-tighter group-hover:text-red-600 transition-colors flex items-center gap-3">
                   <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
                   {item.title}
                 </h3>
@@ -349,11 +296,11 @@ export default function ISO27001SupportPage() {
               <div className="relative bg-zinc-900 p-12 rounded-[3rem] text-white shadow-2xl overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-[80px]" />
                 <motion.h2
-                  className="text-3xl font-bold mb-8 uppercase tracking-tighter italic"
+                  className="text-3xl font-bold mb-8 uppercase tracking-tighter"
                 >
                   Contact Us
                 </motion.h2>
-                <p className="text-zinc-300 text-xl font-light italic leading-relaxed mb-12">
+                <p className="text-zinc-300 text-xl font-light leading-relaxed mb-12">
                   "Ready to achieve ISO 27001 certification? Contact us today to learn how our seasoned consultants can easily guide your organization to security excellence."
                 </p>
                 <div className="pt-10 border-t border-white/10">

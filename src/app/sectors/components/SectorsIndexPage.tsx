@@ -54,12 +54,12 @@ export function SectorsIndexPage() {
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="relative flex h-[100vh] min-h-[100vh] items-center overflow-hidden bg-zinc-950 px-4 pb-16 pt-28 text-white sm:px-6 sm:pb-20 sm:pt-32 md:px-12"
+        className="relative flex h-[100vh] min-h-[100vh] flex-col justify-between overflow-hidden bg-zinc-950 pt-36 sm:pt-44 lg:pt-48 pb-12 text-white"
       >
         <motion.div
           animate={{ scale: [1, 1.06, 1], x: ["0%", "-3%", "0%"] }}
           transition={{ duration: 18, repeat: Infinity, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute inset-0"
+          className="absolute inset-0 z-0 select-none pointer-events-none"
         >
           <video
             src="/vids/videoplayback.mp4"
@@ -71,27 +71,48 @@ export function SectorsIndexPage() {
             className="h-full w-full object-cover opacity-45"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-zinc-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25" />
-        <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
-        <motion.div variants={stagger} className="relative z-10 mx-auto max-w-7xl">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-zinc-950/45 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen pointer-events-none" />
+
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex-grow flex flex-col justify-center items-center text-center lg:items-start lg:text-left py-12 lg:py-16">
           <motion.div
-
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-red-300 sm:text-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="w-full max-w-4xl"
           >
-            <span className="h-2 w-2 rounded-full bg-red-500" />
-            Sectors
-          </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
+            >
+              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+              Sectors
+            </motion.p>
 
-          <motion.h1 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
-            Cybersecurity by Sector
-          </motion.h1>
-          <motion.p className="mt-6 max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl md:leading-8">
-            Choose a sector to explore the risks, priorities, and security
-            programs Keystone builds for that operating environment.
-          </motion.p>
-        </motion.div>
-        <ScrollIndicator className="hidden md:flex" />
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tight text-white leading-[1.05] uppercase"
+            >
+              Cybersecurity by Sector
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 font-medium tracking-wide leading-relaxed max-w-3xl"
+            >
+              Choose a sector to explore the risks, priorities, and security
+              programs Keystone builds for that operating environment.
+            </motion.p>
+          </motion.div>
+        </div>
+        <ScrollIndicator />
       </motion.section>
       <CyberSectionDivider />
 

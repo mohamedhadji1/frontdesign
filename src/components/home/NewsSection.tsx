@@ -42,17 +42,25 @@ export function NewsSection() {
           {
             id: "1",
             image: "/background/bg1.jpg",
-            title: "Keystone Holding’s 58th ordinary general assembly convened",
-            excerpt: "Toffee sweet roll caramels oat cake lemon drops cupcake sweet roll halvah ice cream.",
-            link: "#",
+            title: "Keystone achieves ISO 27001 and SOC 2 Type II compliance certifications",
+            excerpt: "Demonstrating our commitment to the highest international security standards, Keystone has successfully completed its SOC 2 Type II audit and ISO 27001 certification.",
+            link: "/certifications",
             date: new Date().toISOString()
           },
           {
             id: "2",
             image: "/background/bg2.jpg",
-            title: "Keystone Holding’s new Board of Directors has been determined.",
-            excerpt: "Toffee sweet roll caramels oat cake lemon drops cupcake sweet roll halvah ice cream.",
-            link: "#",
+            title: "Keystone announces strategic cyber defense partnership with Global Tech Alliance",
+            excerpt: "This collaboration integrates Keystone's AI-driven DNS filtering and Threat Intelligence platforms with global cloud infrastructures to secure enterprises against advanced persistent threat actors.",
+            link: "/contact",
+            date: new Date().toISOString()
+          },
+          {
+            id: "3",
+            image: "/background/bg3.jpg",
+            title: "Keystone releases its annual Global Threat Intelligence & Cyber Resilience Report",
+            excerpt: "A deep-dive analysis of threat vectors observed across critical infrastructures, providing executive insight on emerging ransomware tactics and attack surface mitigation strategies.",
+            link: "/services",
             date: new Date().toISOString()
           }
         ]);
@@ -112,15 +120,6 @@ export function NewsSection() {
           >
             News from Keystone
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="max-w-2xl text-base font-normal leading-relaxed text-gray-800 sm:text-lg"
-          >
-            Cake pudding lollipop pastry cupcake chocolate. Gummi bears halvah sesame snaps chocolate cake gummies sugar plum cotton candy cupcake sweet
-          </motion.p>
         </div>
 
         {/* News Cards Carousel Area */}

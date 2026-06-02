@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { InteractiveProcessSection } from "@/components/ui/InteractiveProcessSection";
 import { DEFCTASection } from "@/app/services/defensive-security/soc-management/DEFCTASection";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const steps = [
   {
@@ -50,7 +51,7 @@ export default function AdversarialMLDefensePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 h-[100vh] min-h-[100vh] flex flex-col justify-center pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 h-[100vh] min-h-[100vh] flex flex-col justify-center pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
           <video
             autoPlay
@@ -83,9 +84,15 @@ export default function AdversarialMLDefensePage() {
                 </div>
               </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          <Breadcrumbs
+            items={[
+              { label: "AI Cybersecurity", href: "/services/ai-cybersecurity" },
+              { label: "Adversarial Ml Defense" },
+            ]}
+          />
+              <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Adversarial <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">ML Defense</span>
-              </h1>
+              </motion.h1>
 
               <HeroTypeLine
                 items={["Data poisoning prevention", "Evasion attack resilience", "Pipeline robustness validation"]}

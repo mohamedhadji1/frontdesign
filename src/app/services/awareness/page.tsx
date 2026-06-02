@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -20,6 +20,7 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const whyCrucialItems = [
   {
@@ -94,10 +95,16 @@ export default function AwarenessPage() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-5xl"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+          <Breadcrumbs
+            items={[
+              { label: "Services", href: "/services" },
+              { label: "Awareness" },
+            ]}
+          />
+            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
               Cybersecurity{" "}
               Awareness
-            </h1>
+            </motion.h1>
 
             <HeroTypeLine
               items={[

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { servicesDetails } from "./ServicesDropdown";
 import { solutionsDetails } from "./SolutionsDropdown";
@@ -33,11 +33,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [openSubSections, setOpenSubSections] = useState<string[]>([]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpenSection(null);
     setOpenSubSections([]);
     onClose();
-  };
+  }, [onClose]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -46,10 +46,19 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       document.body.style.overflow = "hidden";
     }
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [handleClose, isOpen]);
 
   const toggleSection = (section: string) => {
     setOpenSection((prev) => (prev === section ? null : section));
@@ -92,7 +101,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </span>
             <button
               onClick={handleClose}
-              className="text-gray-500 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 p-2 rounded-full transition-colors"
+              aria-label="Close mobile menu"
+              className="rounded-full bg-gray-100 p-2 text-gray-500 transition-colors hover:bg-gray-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
             >
               <svg
                 width="24"
@@ -144,7 +154,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <div className="flex flex-col space-y-6 pl-4 border-l-2 border-gray-100 ml-2 py-2">
                       {section.data.map((group, idx) => (
                         <div key={idx}>
-                          <h4 className="text-red-600 text-xs font-bold uppercase tracking-wider mb-3">{group.category}</h4>
+                          <p className="text-red-600 text-xs font-bold uppercase tracking-wider mb-3">{group.category}</p>
                           <ul className="flex flex-col space-y-3">
                             {group.items.map((item: MenuLinkItem, itemIdx: number) => {
                               const itemName =
@@ -176,7 +186,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     {typeof item !== "string" && item.subItems && (
                                       <button
                                         onClick={(e) => toggleSubSection(itemName, e)}
-                                        className="p-1 ml-2 text-gray-400 hover:text-red-600 focus:outline-none"
+                                        aria-label={`Toggle ${itemName} sub-menu`}
+                                        className="p-1 ml-2 text-gray-400 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded"
                                       >
                                         <svg
                                           className={`w-4 h-4 transition-transform ${openSubSections.includes(itemName) ? "rotate-180 text-red-600" : ""}`}
@@ -238,9 +249,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               href="/report-incident"
               onClick={handleClose}
-              className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded text-center transition-colors shadow-lg shadow-red-600/20"
+              className="block w-full rounded-full bg-red-600 px-6 py-3 text-center font-semibold text-white shadow-lg shadow-red-600/20 transition-all hover:-translate-y-0.5 hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
             >
-              Report an incident
+              Report an Incident
             </Link>
           </div>
         </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -21,6 +21,8 @@ import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { HeroSection } from "./sections/HeroSection";
 
 const whyEssentialItems = [
   {
@@ -67,71 +69,7 @@ const pedagogicalApproachItems = [
 export default function TrainingPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white overflow-hidden">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full h-[100vh] min-h-[100vh] flex flex-col justify-center overflow-hidden"
-      >
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            <source src="/vids/videoplayback.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
-          <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-center text-center lg:items-start lg:text-left h-full justify-center pt-28 sm:pt-36">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-5xl"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase"
-            >
-              Information Security{" "}
-                Training
-            </motion.h1>
-
-            <HeroTypeLine
-              items={[
-                "Strengthen Key Skills",
-                "Protect Your Assets",
-                "Build Cyber Resilience",
-              ]}
-              className="mb-6 text-red-400"
-
-            />
-
-            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide mb-10 max-w-3xl mt-6 leading-relaxed">
-              Keystone's training programs are designed to educate and equip your team with the practical skills and security reflexes necessary to defend against growing digital threats.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center lg:items-start">
-              <Link
-                href="/contact"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
-              >
-                Explore Training Programs <ArrowRight size={18} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-        <ScrollIndicator />
-      </motion.section>
-
+      <HeroSection />
       <CyberSectionDivider theme="red" />
       <SectionDivider title="Training" />
       <section className="mb-20 bg-white relative overflow-hidden">
@@ -373,7 +311,7 @@ export default function TrainingPage() {
       <CyberSectionDivider />
 
       {/* Get Ready + Our Partners Section */}
-      <section className="py-28 bg-zinc-900 relative overflow-hidden pt-10 pb-10">
+      <section className="py-28 bg-zinc-900 relative overflow-hidden pt-24 pb-10">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-red-600/10 rounded-full blur-[120px]" />
           <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-red-600/8 rounded-full blur-[120px]" />
