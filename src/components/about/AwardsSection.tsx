@@ -28,7 +28,7 @@ export function AwardsSection() {
     {
       value: "4",
       label: "Strategic Offices",
-      desc: "Tunis (HQ), Algiers, Tripoli, Nouakchott.",
+      desc: "Algiers, Tripoli, Nouakchott, Tunis.",
       Icon: Building2,
     },
     {
@@ -46,7 +46,7 @@ export function AwardsSection() {
     {
       value: "80+",
       label: "Certified Specialists",
-      desc: "Holding CISSP, CISM, OSCP, CEH, and ISO LA.",
+      desc: "Holding CISSP, CISM, OSCP, CEH, and ISO.",
       Icon: ShieldCheck,
     },
   ];
