@@ -216,16 +216,6 @@ export function CompanyOverview() {
                     <a href={`mailto:${country.email}`} className="text-xs font-semibold hover:text-red-600 transition-colors">{country.email}</a>
                   </div>
                 </div>
-
-                <a 
-                  href={country.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 hover:text-red-700 transition-colors uppercase tracking-wider group/link mt-auto pt-3 border-t border-zinc-100 w-full justify-center"
-                >
-                  View on Google Maps
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                </a>
               </motion.div>
             ))}
           </motion.div>
