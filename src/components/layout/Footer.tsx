@@ -77,8 +77,8 @@ export function Footer() {
             <div className="mb-6 flex flex-col gap-4 text-sm text-zinc-300">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">General inquiries</p>
-                <a href="mailto:contact@Keystone-corporation.com" className="mt-1 block transition-colors hover:text-white">
-                  contact@Keystone-corporation.com
+                <a href="mailto:contact@keystone-corporation.com" className="mt-1 block transition-colors hover:text-white">
+                  contact@keystone-corporation.com
                 </a>
               </div>
             </div>

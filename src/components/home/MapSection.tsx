@@ -68,9 +68,7 @@ Tel: +222 26976239`
   // Asia clients
   { id: "sa", name: "Saudi Arabia", coordinates: [45.0792, 23.8859], type: "client", address: "Strategic client operations in Saudi Arabia." },
   { id: "qa", name: "Qatar", coordinates: [51.1839, 25.3548], type: "client", address: "Client presence in Doha, Qatar." },
-
   // African clients
-  { id: "eh", name: "Western Sahara", coordinates: [-13.0, 24.5], type: "client", address: "Client presence in Western Sahara." },
   { id: "ml", name: "Mali", coordinates: [-1.9810, 17.5707], type: "client", address: "Client presence in Bamako, Mali." },
   { id: "ne", name: "Niger", coordinates: [8.0817, 17.6078], type: "client", address: "Client presence in Niamey, Niger." },
   { id: "eg", name: "Egypt", coordinates: [30.8025, 26.8206], type: "client", address: "Client operations in Cairo, Egypt." },

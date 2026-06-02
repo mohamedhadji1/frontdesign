@@ -506,7 +506,7 @@ Pour une urgence, le ton doit être sobre.
 Remplacer par : our incident response team.
 P2
 Footer
-Email avec majuscule : contact@Keystone-corporation.com.
+Email avec majuscule : contact@keystone-corporation.com.
 Moins standard.
 Utiliser partout : contact@keystone-corporation.com.
 P2

@@ -138,7 +138,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">40+ security experts</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">80+ security experts</motion.h2>
               </div>
             </div>
 
