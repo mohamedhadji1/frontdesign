@@ -12,15 +12,6 @@ export const aboutContent = {
     },
     localPresence: [
       {
-        country: "Tunisia",
-        code: "tn",
-        type: "HQ",
-        address: "Rue du Lac Turkana, Les Berges du Lac 1, Tunis 1053, Tunisia",
-        phone: "+216 71 860 000",
-        email: "contact@keystone-corporation.com",
-        mapLink: "https://maps.google.com/?q=Rue+du+Lac+Turkana,+Tunis",
-      },
-      {
         country: "Algeria",
         code: "dz",
         type: "Office",
@@ -37,6 +28,15 @@ export const aboutContent = {
         phone: "+222 45 250 000",
         email: "mauritania@keystone-corporation.com",
         mapLink: "https://maps.google.com/?q=Avenue+Charles+de+Gaulle,+Nouakchott,+Mauritania",
+      },
+      {
+        country: "Tunisia",
+        code: "tn",
+        type: "Office",
+        address: "Rue du Lac Turkana, Les Berges du Lac 1, Tunis 1053, Tunisia",
+        phone: "+216 71 860 000",
+        email: "contact@keystone-corporation.com",
+        mapLink: "https://maps.google.com/?q=Rue+du+Lac+Turkana,+Tunis",
       }
     ],
     impactVision: {
