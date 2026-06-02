@@ -206,7 +206,7 @@ export function MapSection() {
           <X size={14} />
         </button>
 
-        <h4 className={`pr-6 text-base font-bold ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"} flex items-center gap-2`}>
+        <h4 className={`pr-6 text-base font-bold ${activeLocation.type === "office" ? "text-red-600" : "text-green-600"} flex items-center gap-2`}>
           <span>{activeLocation.name}</span>
           <img 
             src={`https://flagcdn.com/${activeLocation.id.toLowerCase()}.svg`} 
@@ -225,7 +225,7 @@ export function MapSection() {
         </p>
 
         <div className="mt-4 flex items-center gap-1.5 border-t border-zinc-100 pt-3 text-xs font-medium text-zinc-400">
-          <MapPin size={12} className={activeLocation.type === "office" ? "text-red-500" : "text-slate-400"} />
+          <MapPin size={12} className={activeLocation.type === "office" ? "text-red-500" : "text-green-500"} />
           {activeLocation.type === "office" ? "Keystone Strategic Operation" : "Valued Client Base"}
         </div>
       </motion.div>
@@ -310,8 +310,8 @@ export function MapSection() {
               >
                 <g className="transition-all duration-300 group-hover:opacity-80">
                   <circle r={markerHitRadius} fill="transparent" />
-                  <circle r={markerHaloRadius} fill="#1E293B" opacity={0.2} />
-                  <circle r={markerCoreRadius} fill="#1E293B" stroke="#FFFFFF" strokeWidth={0.5} />
+                  <circle r={markerHaloRadius} fill="#16A34A" opacity={0.22} />
+                  <circle r={markerCoreRadius} fill="#16A34A" stroke="#FFFFFF" strokeWidth={0.75} />
                 </g>
               </Marker>
             ))}
@@ -342,7 +342,7 @@ export function MapSection() {
               <span className="text-zinc-700">Keystone Offices</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-3 w-3 rounded-full bg-slate-800 shadow-[0_0_0_4px_rgba(30,41,59,0.15)]"></span>
+              <span className="h-3 w-3 rounded-full bg-green-600 shadow-[0_0_0_4px_rgba(22,163,74,0.2)]"></span>
               <span className="text-zinc-700">Client Locations</span>
             </div>
           </div>
@@ -375,7 +375,7 @@ export function MapSection() {
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Offices / HQ</span>
                   </div>
                   <div className="flex flex-col items-center gap-0.5 px-4">
-                    <span className="text-2xl font-black text-slate-800">{total}</span>
+                    <span className="text-2xl font-black text-green-600">{total}</span>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Client Countries</span>
                   </div>
                   <div className="flex flex-col items-center gap-0.5 px-4">
@@ -475,7 +475,7 @@ export function MapSection() {
                   <X size={14} />
                 </button>
 
-                <h4 className={`mb-2 pr-6 text-base font-bold md:text-lg ${activeLocation.type === "office" ? "text-red-600" : "text-slate-800"} flex items-center gap-2`}>
+                <h4 className={`mb-2 pr-6 text-base font-bold md:text-lg ${activeLocation.type === "office" ? "text-red-600" : "text-green-600"} flex items-center gap-2`}>
                   <span>{activeLocation.name}</span>
                   <img 
                     src={`https://flagcdn.com/${activeLocation.id.toLowerCase()}.svg`} 
@@ -498,7 +498,7 @@ export function MapSection() {
                 )}
 
                 <div className="mt-4 flex items-center gap-1.5 border-t border-zinc-100 pt-3 text-xs font-medium text-zinc-400">
-                  <MapPin size={12} className={activeLocation.type === "office" ? "text-red-500" : "text-slate-400"} />
+                  <MapPin size={12} className={activeLocation.type === "office" ? "text-red-500" : "text-green-500"} />
                   {activeLocation.type === "office" ? "Keystone Strategic Operation" : "Valued Client Base"}
                 </div>
               </motion.div>

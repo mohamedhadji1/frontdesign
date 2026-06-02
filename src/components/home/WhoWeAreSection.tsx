@@ -119,10 +119,9 @@ export function WhoWeAreSection() {
               </div>
               <div>
                 <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 30+ Countries</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">168 companies across 30+ countries use our services.</p>
-                <a href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
+                <Link href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
                   See Our Global Impact
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -140,7 +139,6 @@ export function WhoWeAreSection() {
               </div>
               <div>
                 <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">40+ security experts</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">8 billion threat signals processed daily across our global intelligence network in 2025.</p>
               </div>
             </div>
 
@@ -159,7 +157,6 @@ export function WhoWeAreSection() {
               </div>
               <div>
                 <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">200+ satisfied clients</motion.h2>
-                <p className="text-gray-500 font-medium leading-relaxed">850 million users worldwide protected by platforms secured by Keystone systems in 2025.</p>
               </div>
             </div>
 
