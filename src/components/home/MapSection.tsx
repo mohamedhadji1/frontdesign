@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 const Tooltip = dynamic(() => import("react-tooltip").then((mod) => mod.Tooltip), { ssr: false });
 
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
-const officeCountries = ["Tunisia", "Algeria", "Libya", "Mauritania"];
+const officeCountries = ["Tunisia", "Algeria", "Mauritania"];
 
 type Location = {
   id: string;
@@ -39,13 +39,6 @@ Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
     address: `Algeria Office:
 Mohammadia Mall Business Center No. 1272, Algiers
 +213 (0) 23 80 47 57`
-  },
-  {
-    id: "ly",
-    name: "Libya",
-    coordinates: [17.2283, 26.3351],
-    type: "office",
-    address: "Regional Branch\nTripoli, Libya"
   },
   {
     id: "mr",

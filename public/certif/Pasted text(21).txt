@@ -133,7 +133,7 @@ P1
 Home – KPIs
 “+40 security expert” et “+200 satisfied client” au singulier.
 Erreur grammaticale visible.
-Corriger : 40+ security experts et 200+ satisfied clients.
+Corriger : 40+ security experts et 250+ satisfied clients.
 P1
 Home – KPIs
 Chiffres comme “8 billion threat signals” et “850 million people” mal reliés à Keystone.

@@ -42,19 +42,19 @@ function Toast({ message, type, onClose }: ToastProps) {
 const offices = [
   {
     name: "Algeria Office",
-    address: "12 Rue Djenane Malik, Hydra, Algiers, Algeria",
+    address: "Centre des Affaires Mohammadia Mall N°1272, ALGER",
     phone: "+213 21 600 000",
-    email: "algeria@keystone-corporation.com",
+    email: "contact@keystone-corporation.com",
   },
     {
     name: "Mauritania Office",
-    address: "Avenue Charles de Gaulle, Ilot C, Nouakchott, Mauritania",
+    address: "N° 225 Ext Not module, L TVZ , Nouakchott",
     phone: "+222 45 250 000",
-    email: "mauritania@keystone-corporation.com",
+    email: "contact@keystone-corporation.com",
   },
   {
     name: "Tunisia Office",
-    address: "Rue du Lac Turkana, Les Berges du Lac 1, Tunis 1053, Tunisia",
+    address: "Angle Rue El Waquidi, El Menzah 4 et du boulevard Charles Nicolle – Tunis",
     phone: "+216 71 860 000",
     email: "contact@keystone-corporation.com",
   },

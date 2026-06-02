@@ -26,7 +26,7 @@ export function AwardsSection() {
   // Key metrics
   const stats = [
     {
-      value: "4",
+      value: "3",
       label: "Strategic Offices",
       desc: "Algiers, Tripoli, Nouakchott, Tunis.",
       Icon: Building2,
@@ -38,7 +38,7 @@ export function AwardsSection() {
       Icon: Globe,
     },
     {
-      value: "200+",
+      value: "250+",
       label: "Enterprise Clients",
       desc: "Securing finance, government, telecom & energy.",
       Icon: Users2,
@@ -75,31 +75,14 @@ export function AwardsSection() {
   const certifiedSystems = [
     {
       logo: "/certif/27001.png",
-      title: "ISO/IEC 27001:2022",
+      title: "ISO27001",
       desc: "Information Security Management Systems (ISMS)",
       status: "Active / Certified",
-      certifier: "PECB MS / Bureau Veritas",
-      ref: "ISMS-99824",
-      validity: "2024 - 2027",
+      certifier: "TÜV",
+      ref: "01 153 2515644",
+      validity: "From 2026-04-06 until 2029-04-05",
     },
-    {
-      logo: "/certif/22301.png",
-      title: "ISO/IEC 22301:2019",
-      desc: "Business Continuity Management Systems (BCMS)",
-      status: "Active / Certified",
-      certifier: "Bureau Veritas",
-      ref: "BCMS-10825",
-      validity: "2025 - 2028",
-    },
-    {
-      logo: "/certif/27701.png",
-      title: "ISO/IEC 27701:2019",
-      desc: "Privacy Information Management Systems (PIMS)",
-      status: "Active / Certified",
-      certifier: "PECB MS",
-      ref: "PIMS-88243",
-      validity: "2024 - 2027",
-    },
+    
   ];
 
   // Supported Compliance Frameworks
@@ -144,6 +127,18 @@ export function AwardsSection() {
       logo: "/certif/27005.png",
       title: "ISO/IEC 27005",
       desc: "Information Security Risk Management Standard",
+      scope: "Supported Framework Alignment",
+    },
+    {
+      logo: "/certif/22301.png",
+      title: "ISO/IEC 22301:2019",
+      desc: "Business Continuity Management Systems (BCMS)",
+      scope: "Supported Framework Alignment",
+    },
+    {
+      logo: "/certif/27701.png",
+      title: "ISO/IEC 27701:2019",
+      desc: "Privacy Information Management Systems (PIMS)",
       scope: "Supported Framework Alignment",
     },
   ];
@@ -420,69 +415,6 @@ export function AwardsSection() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* 4. Industry Awards (Original items) */}
-        <div>
-          <div className="mb-16 text-center">
-            <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-red-600 mb-3">HONORS</h3>
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl lg:text-4xl font-black text-zinc-900 uppercase"
-            >
-              Industry Recognition & Accolades
-            </motion.h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {awards.prizes.map((category, idx) => {
-              const Icon = categoryIcons[idx % categoryIcons.length];
-              return (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: idx * 0.1 }}
-                  className="flex flex-col h-full"
-                >
-                  <div className="bg-zinc-50 p-10 rounded-[2.5rem] border border-zinc-100 flex-1 flex flex-col hover:border-red-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
-                    <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-red-600/20 group-hover:scale-105 transition-transform duration-300">
-                      <Icon size={32} />
-                    </div>
-                    <motion.h2 
-                      initial={{ opacity: 0, y: 5 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="text-2xl font-bold text-zinc-900 mb-8 uppercase tracking-tight animate-none"
-                    >
-                      {category.category}
-                    </motion.h2>
-                    <div className="space-y-8 flex-1">
-                      {category.items.map((item, itemIdx) => (
-                        <div key={itemIdx} className="space-y-2 group cursor-default">
-                          <motion.h2
-                            initial={{ opacity: 0, y: 5 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-lg font-bold text-zinc-800 group-hover:text-red-600 transition-colors flex items-center gap-2"
-                          >
-                            <span className="w-1.5 h-1.5 bg-red-600 rounded-full" />
-                            {item.title}
-                          </motion.h2>
-                          <p className="text-zinc-500 font-medium leading-relaxed pl-3.5">
-                            {item.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
 

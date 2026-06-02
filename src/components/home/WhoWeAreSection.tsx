@@ -75,7 +75,7 @@ export function WhoWeAreSection() {
             </motion.h2>
 
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 lg:mb-10 font-medium">
-              Keystone is an international cybersecurity group with over 20 years of experience in red teaming, blue teaming, managed security, GRC, and strategic advisory.
+              Keystone is an international cybersecurity group with over 15 years of experience in red teaming, blue teaming, managed security, GRC, and strategic advisory.
             </p>
 
             <div className="flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-8 lg:justify-start">
@@ -156,7 +156,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">200+ satisfied clients</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">250+ satisfied clients</motion.h2>
               </div>
             </div>
 
