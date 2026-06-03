@@ -93,55 +93,55 @@ export function AwardsSection() {
       logo: "/certif/SOC2.webp",
       title: "SOC 2 Type II",
       desc: "Systems & Organization Controls - Security & Availability",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/PCIDSS.png",
       title: "PCI DSS Compliance",
       desc: "Payment Card Industry Data Security Standard",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/SWIFT.png",
       title: "SWIFT CSP",
       desc: "Financial Messaging System Customer Security Programme",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/GDPR.webp",
       title: "GDPR Standards",
       desc: "General Data Protection Regulation Compliance",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/hipaa.png",
       title: "HIPAA Compliance",
       desc: "Health Insurance Portability and Accountability Act",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/nistcyber.svg",
       title: "NIST CSF Framework",
       desc: "National Institute of Standards & Technology",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/27005.png",
       title: "ISO/IEC 27005",
       desc: "Information Security Risk Management Standard",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/22301.png",
       title: "ISO/IEC 22301:2019",
       desc: "Business Continuity Management Systems (BCMS)",
-      scope: "Supported Framework Alignment",
+      
     },
     {
       logo: "/certif/27701.png",
       title: "ISO/IEC 27701:2019",
       desc: "Privacy Information Management Systems (PIMS)",
-      scope: "Supported Framework Alignment",
+      
     },
   ];
 
@@ -385,7 +385,7 @@ export function AwardsSection() {
           {/* Subsection B: Compliance Frameworks Supported */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-8 border-b pb-3 border-zinc-100">
-              Compliance Frameworks Supported
+              Compliance Management & Framework Support
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {supportedFrameworks.map((cert, idx) => (
@@ -412,9 +412,6 @@ export function AwardsSection() {
                   <p className="text-[11px] font-semibold text-zinc-400 leading-snug px-1 mb-3">
                     {cert.desc}
                   </p>
-                  <span className="mt-auto px-3 py-1 bg-red-50 text-red-600 rounded-full text-[10px] font-bold uppercase tracking-wider border border-red-100">
-                    {cert.scope}
-                  </span>
                 </motion.div>
               ))}
             </div>
