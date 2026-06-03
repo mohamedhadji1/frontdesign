@@ -17,6 +17,8 @@ import {
   Layers,
   ArrowUpRight
 } from "lucide-react";
+import { CyberSectionDivider } from "../ui/CyberSectionDivider";
+import { CVE } from "../home/CVE";
 
 const categoryIcons = [Trophy, Star, ShieldCheck];
 
@@ -310,7 +312,8 @@ export function AwardsSection() {
         {/* 3. Compliance & Audited Standards Section */}
         <div className="mb-32">
           <div className="mb-16 text-center">
-            <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-red-600 mb-3">COMPLIANCE & AUDITS</h3>
+            <CyberSectionDivider theme="red" />
+            <SectionDivider title="COMPLIANCE & AUDITS" className="mb-8" />
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -417,7 +420,9 @@ export function AwardsSection() {
             </div>
           </div>
         </div>
-
+        <CyberSectionDivider theme="red" />
+        <SectionDivider title="CVE" className="mb-8" />
+        <CVE />
       </div>
     </section>
   );

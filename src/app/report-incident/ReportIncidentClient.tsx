@@ -15,8 +15,45 @@ import {
   Clock,
   Sparkles,
   CheckCircle2,
-  X
+  X,
+  Copy
 } from "lucide-react";
+
+const PGP_PUBLIC_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: ID utilisateur: <incident@csirt.tn>
+Comment: Créé: 10/10/2018 09:55
+Comment: Type: 2048-bit RSA (certificat secret disponible)
+Comment: Utilisation: Signature, Chiffrement, Certification des identifiants utilisateur
+Comment: Empreinte: A43527341381EBE956F96F5C617D591125DC4A3E
+
+mQENBFu9vogBCAC+H9FPZETl//Z3V0JWd4bmbbP9XkHTV5BWxCA00OiAjKHY6qso
+B6XuDZTjrGHI/LhdjK4jFTRyUXC61ARdnW+LjgNXLh5x6Yfvoch/VlcMja76rnks
+XXkU6zd3n+yE3i43Qm+1wZ04S3GeW2lSEcQvFTxRPdETxBC6kxL8dpHgGBuSGAe5
+lOWCJYekZaExBuXx1VufH4JVY8TeThxk4aX6lgJckVg5LeMOb7T514nwp+PGGME/
+8mJjXsEKg+fZ2xyOeMHknlCDUH3J6sb9FinzSjwbpRqX5qzp5L7h9cyFLpDeYyjZ
+3FnpLX7gFt3iAlZD0EK+HwEOmvOl9br3lyjdABEBAAG0EWluY2lkZW50QGNzaXJ0
+LnRuiQFOBBMBCAA4FiEEpDUnNBOB6+lW+W9cYX1ZESXcSj4FAlu9vogCGwMFCwkI
+BwIGFQoJCAsCBBYCAwECHgECF4AACgkQYX1ZESXcSj7bKgf+KwLhcn0SkH9WEg5W
+mu0zky0lYWy4LZ+qjIZrgMB1cgkf6mfp9+oaLw/gd3rY4Kci3UhvKQCmnc3LkaZO
+YSIW7n596okQx9Q5sc+zkaatJWQumNaigBd5kW2OAu++P/ka8v3ZwwRjcU37H9t4
+yYKcAd/pB2hfv3kKQIii9btXmY1FNl2IHWD4kgIZTTq3/5ZFY1OoW+l7EjN7dvEf
+bcdzGNo5dMzhEQcpR/t77KgYlPmr8eAas1cZXggikCJK04t7Z0n9o6L8tY7ift3v
+6HiC7xwhawSAv0Pbhij1GFJeBL7PqfE5vdgbgKhwmT+SnHb7xzjbJNgx7CDJUfQq
+E+h4xbkBDQRbvb6IAQgA7WI0eSTWGMjD20xmAHoOXmeYKt+vJVYT7DzMnAt6WGkN
+dnrQc6P7CeaFBavLVtyKD6SteZrhaZzZhjNkWD115IUgXvBr1BQ/URroqk8g7kf1
+vJJpprBpbjEe/itQAtPlw+Ic/+FxpCBL1QVA+X8/1/ow02954OsGgeZA7yUubV9u
+//B0fIqZPNr8R02ukBiZJwVrTILcYUcyycBBCTF2NWIY/E5JdnuZqUab8x5ZZiEC
+rCqgMZ3TCYKQ3e2+7sHJHujJg6oZEvyBqt88vV9J5OjjW8v8rfv2i/i6lFsPPp8U
+rwf8O8ToxWopevuaUYefcFf+ZdqkHjVcJPO5FcrrwwARAQABiQE2BBgBCAAgFiEE
+pDUnNBOB6+lW+W9cYX1ZESXcSj4FAlu9vogCGwwACgkQYX1ZESXcSj4CSggAsGIv
+uL53tMOAyESbExGojmkVjcCjsqwvS3ES4qgVftwknxi7tFXOgm8M5XugSrYh8ijb
+29XSk0SGOJkQ1Qo89WQcHjn4RiZSO6Sj+mBIikD/VX7xZiXHKNs0aRCRlF2KbGOQ
+zeZVZxyreBGT3aYaXXNV5fpSXAVJMcklLE+VUTY8hgNDGdu3cRzjmoY0nQmzu7nf
+wktty6QBOQV7M/XEL1lAnHsP1M7OQACjPAVUaBH7O4196Kad/4LqqlR9T3x+AKd6
+qyFYWOT/aXOZb3Him8W32nhGUXkbdrKJHOxLquelAxhd2lyZLSLqgSP/Hszws2WI
+iTSjsWopXdX/UOHmlA==
+=GHNU
+-----END PGP PUBLIC KEY BLOCK-----`;
 
 interface ToastProps {
   message: string;
@@ -63,6 +100,8 @@ export function ReportIncidentClient() {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [showPgpModal, setShowPgpModal] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -192,7 +231,7 @@ ${formData.message}
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">2</span>
-                    <p>We contact you rapidly based on severity to establish secure communication channels (such as PGP key exchange, secure upload, or encrypted call bridge) and assign a Case ID.</p>
+                    <p>We contact you rapidly based on severity to establish secure communication channels using PGP key and assign a Case ID.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">3</span>
@@ -225,7 +264,14 @@ ${formData.message}
                 Structured Incident Report
               </motion.h2>
               <p className="text-xs text-zinc-500 font-semibold mt-0.5">Please provide as many operational details as possible so we can triage efficiently.</p>
-              <PrivacyNotice variant="security" className="mt-3" />
+              <PrivacyNotice 
+                variant="security" 
+                className="mt-3" 
+                onPrivacyClick={(e) => {
+                  e.preventDefault();
+                  setShowPgpModal(true);
+                }}
+              />
               <div className="mt-2 text-[10px] text-zinc-700 bg-zinc-50 border border-zinc-200 rounded-lg p-2.5 leading-relaxed font-semibold">
                 For active emergencies, submit the minimum safe details here. Our team will establish a secure communication channel for logs, forensic artifacts, or evidence transfer.
               </div>
@@ -448,6 +494,65 @@ ${formData.message}
             type="success"
             onClose={() => setShowToast(false)}
           />
+        )}
+      </AnimatePresence>
+
+      {/* PGP Key Modal Popup */}
+      <AnimatePresence>
+        {showPgpModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-xs">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="bg-white border border-zinc-200 shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[80vh] sm:max-h-[85vh] min-w-0"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b border-zinc-100 bg-zinc-50">
+                <div className="min-w-0">
+                  <h3 className="text-xs font-extrabold text-zinc-950 uppercase tracking-wider truncate">
+                    CSIRT.TN PGP Public Key
+                  </h3>
+                  <p className="text-[9px] sm:text-[10px] text-zinc-500 font-semibold mt-0.5 truncate">
+                    Use this key to encrypt sensitive report communications.
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setShowPgpModal(false);
+                    setCopied(false);
+                  }}
+                  className="text-zinc-400 hover:text-zinc-800 transition-colors p-1.5 rounded-lg hover:bg-zinc-100 cursor-pointer shrink-0"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 min-w-0">
+                <div className="flex flex-col sm:flex-row gap-3 justify-between sm:items-center bg-zinc-50 border border-zinc-150 rounded-xl px-4 py-3 min-w-0">
+                  <div className="text-[9px] font-extrabold text-zinc-600 uppercase tracking-wide break-all sm:break-normal text-left">
+                    Fingerprint: A435 2734 1381 EBE9 56F9 6F5C 617D 5911 25DC 4A3E
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(PGP_PUBLIC_KEY);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-extrabold uppercase tracking-widest text-[9px] transition-colors cursor-pointer shrink-0 self-start sm:self-auto"
+                  >
+                    <Copy size={10} />
+                    <span>{copied ? "Copied!" : "Copy Key"}</span>
+                  </button>
+                </div>
+
+                <div className="bg-zinc-950 border border-zinc-850 rounded-xl p-4 overflow-x-auto text-[9px] sm:text-[10px] font-mono text-zinc-300 leading-relaxed max-h-[45vh] min-w-0 text-left">
+                  <pre className="select-all whitespace-pre-wrap break-all font-mono text-left">{PGP_PUBLIC_KEY}</pre>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </main>

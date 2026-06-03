@@ -74,6 +74,7 @@ export function SolutionsClient() {
         title="Keystone Cybersecurity Solutions"
         description="Cybersecurity platforms built to protect, monitor and strengthen digital resilience."
         backgroundVideoUrl="/vids/videoplayback.mp4"
+        theme="red"
         actions={
           <Link
             href="#solutions"

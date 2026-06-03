@@ -38,5 +38,5 @@ export default async function SectorPage({
     notFound();
   }
 
-  return <SectorDetailPage page={page} />;
+  return <SectorDetailPage page={page} theme="red" />;
 }

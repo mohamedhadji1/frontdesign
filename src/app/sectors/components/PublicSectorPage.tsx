@@ -348,13 +348,13 @@ export function PublicSectorPage() {
           <motion.div variants={stagger} className="max-w-4xl">
             <motion.div
 
-              className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300 backdrop-blur-md"
+              className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-blue-300 backdrop-blur-md"
             >
-              <span className="h-2 w-2 rounded-full bg-red-500" />
+              <span className="h-2 w-2 rounded-full bg-blue-500" />
               <Link href="/sectors" className="transition-colors hover:text-white">
                 Sectors
               </Link>
-              <span className="text-red-500/60">/</span>
+              <span className="text-blue-500/60">/</span>
               <span>Public</span>
             </motion.div>
 
@@ -378,7 +378,7 @@ export function PublicSectorPage() {
             <motion.div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/contact?sector=public"
-                className="inline-flex items-center gap-3 rounded-full bg-red-600 px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
+                className="inline-flex items-center gap-3 rounded-full bg-blue-600 px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-blue-700"
               >
                 Consult an Expert
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -396,14 +396,14 @@ export function PublicSectorPage() {
             variants={stagger}
             className="relative hidden min-h-[440px] lg:block"
           >
-            <div className="absolute inset-x-10 top-6 h-px bg-red-600/50" />
+            <div className="absolute inset-x-10 top-6 h-px bg-blue-600/50" />
             <div className="absolute bottom-8 left-2 right-2 h-px bg-white/20" />
             <div className="grid h-full grid-cols-2 gap-4">
               {["Protect", "Detect", "Respond", "Recover"].map((label, index) => (
                 <motion.div
                   key={label}
 
-                  whileHover={{ y: -8, borderColor: "rgba(220,38,38,0.65)" }}
+                  whileHover={{ y: -8, borderColor: "rgba(59,130,246,0.65)" }}
                   animate={{ y: [0, index % 2 === 0 ? -8 : 8, 0] }}
                   transition={{
                     duration: 4 + index * 0.35,
@@ -597,7 +597,7 @@ export function PublicSectorPage() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { name: "Managed SOC & CERT Support", href: "/services/defensive-security/managed-soc" },
+                  { name: "Managed SOC & CERT Support", href: "/services/defensive-security/soc-management" },
                   { name: "Cyber Exercise Design", href: "/services/cyber-exercise" },
                   { name: "Governance & Risk Advisory", href: "/services/governance-risk-compliance" },
                   { name: "Critical Infrastructure Protection", href: "/solutions/cip-platform" }

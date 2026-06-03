@@ -24,7 +24,7 @@ export const solutionsDetails: SolutionCategory[] = [
     title: "Operational Platforms",
     items: [
       {
-        name: "Keystone ARENA (CTI Platform)",
+        name: "Keystone ARENA",
         slug: "keystone-arena",
         description: "Centralize threat intelligence, external attack surface monitoring, and third-party risk assessment in one secure platform. Built to move from raw data to actionable intelligence."
       },
@@ -58,7 +58,7 @@ function normalizeSolutionHref(slug: string | undefined, fallbackName: string) {
 
 export function SolutionsDropdown() {
   const currentCategoryObj = solutionsDetails[0];
-  const [activeItem, setActiveItem] = useState("Keystone ARENA (CTI Platform)");
+  const [activeItem, setActiveItem] = useState("Keystone ARENA");
 
   return (
     <div className="absolute top-full left-0 w-full pt-2 pointer-events-auto">

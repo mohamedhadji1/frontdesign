@@ -30,7 +30,7 @@ const offensiveServices = [
     icon: Target,
   },
   {
-    title: "Offensive Assessments",
+    title: "Offensive Assessment",
     description:
       "Advanced penetration testing across web, mobile, external networks, internal segments, and physical infrastructures to expose hidden vulnerabilities.",
     href: "/services/offensive-security/offensive-assessments",

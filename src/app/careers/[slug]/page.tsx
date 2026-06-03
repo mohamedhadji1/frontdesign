@@ -27,6 +27,7 @@ export default async function CareerCategoryPage({ params }: PageProps) {
         items={categoryData.items}
         title={categoryData.category}
         description={categoryData.description}
+        theme="red"
       />
     </main>
   );

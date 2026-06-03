@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function IndustryInfrastructurePage() {
   return (
     <SectorCategoryPage
+      theme="red"
       eyebrow="Industry & Infrastructure"
       title="Cybersecurity for Industry and Critical Infrastructure"
       description="Protect the systems that move people, power operations, and keep production running across connected industrial environments."

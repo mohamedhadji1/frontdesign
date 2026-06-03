@@ -8,6 +8,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { careerSlug, careersDetails, jobSpecifications } from "@/lib/careers";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 import { SectionDivider } from "../ui/SectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
@@ -327,6 +328,7 @@ interface CareersSectionProps {
   title?: string;
   description?: string;
   selectedOffer?: string;
+  theme?: "red" | "blue";
 }
 
 export function CareersSection({
@@ -335,6 +337,7 @@ export function CareersSection({
   title = "Join Our Team",
   description = "Ready to make an impact in the world of cybersecurity? Explore our opportunities and apply today.",
   selectedOffer,
+  theme = "red",
 }: CareersSectionProps) {
   const isGeneral = category === "General";
   const categoryPath = isGeneral ? "/careers" : `/careers/${careerSlug(category)}`;
@@ -344,6 +347,12 @@ export function CareersSection({
     : selectedOffer
       ? "Apply for this role"
       : "Choose a position";
+
+  const breadcrumbItems = [
+    { label: "Careers", href: isGeneral ? undefined : "/careers" },
+    ...(!isGeneral ? [{ label: category, href: selectedOffer ? categoryPath : undefined }] : []),
+    ...(selectedOffer ? [{ label: selectedOffer }] : []),
+  ];
 
   return (
     <div className="w-full">
@@ -374,37 +383,7 @@ export function CareersSection({
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-6 inline-flex items-center flex-wrap gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-red-400"
-            >
-              <span className="h-2 w-2 shrink-0 rounded-full bg-red-500 animate-pulse" />
-              <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
-                <Link href="/" className="transition-colors hover:text-white">
-                  HOME
-                </Link>
-                <span className="shrink-0 text-red-500/50">/</span>
-                <Link href="/careers" className="transition-colors hover:text-white">
-                  CAREERS
-                </Link>
-                {!isGeneral && (
-                  <>
-                    <span className="shrink-0 text-red-500/50">/</span>
-                    <Link href={categoryPath} className="transition-colors hover:text-white">
-                      {category}
-                    </Link>
-                  </>
-                )}
-                {selectedOffer && (
-                  <>
-                    <span className="shrink-0 text-red-500/50">/</span>
-                    <span className="text-white">{selectedOffer}</span>
-                  </>
-                )}
-              </div>
-            </motion.div>
+            <Breadcrumbs items={breadcrumbItems} theme={theme} className="mb-6" />
 
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl">
               {title}
@@ -417,9 +396,12 @@ export function CareersSection({
                 "Innovation in Security",
                 "Mission-Critical Careers",
               ]}
+              theme={theme}
             />
 
-            <p className="mb-10 text-lg font-medium leading-relaxed text-gray-300 md:text-xl lg:text-2xl border-l-2 border-red-600/30 pl-8">
+            <p className={`mb-10 text-lg font-medium leading-relaxed text-gray-300 md:text-xl lg:text-2xl border-l-2 pl-8 ${
+              theme === "red" ? "border-red-600/30" : "border-red-600/30"
+            }`}>
               {description}
             </p>
 
@@ -428,7 +410,11 @@ export function CareersSection({
                 onClick={() =>
                   document.getElementById(heroTargetId)?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group flex items-center gap-2 rounded-full bg-red-600 px-8 py-3 font-bold text-white shadow-xl shadow-red-600/20 transition-colors hover:bg-red-700"
+                className={`group flex items-center gap-2 rounded-full px-8 py-3 font-bold text-white shadow-xl transition-colors ${
+                  theme === "red"
+                    ? "bg-red-600 hover:bg-red-700 shadow-red-600/20"
+                    : "bg-red-600 hover:bg-red-700 shadow-red-600/20"
+                }`}
               >
                 {heroButtonLabel}
                 <span className="transition-transform group-hover:translate-x-1">→</span>

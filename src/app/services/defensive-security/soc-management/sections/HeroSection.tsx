@@ -12,6 +12,7 @@ export function HeroSection() {
       videoSrc="/vids/SOC.mp4"
       ctaLabel="Build Your SOC"
       ctaHref="/contact"
+      theme="blue"
     />
   );
 }

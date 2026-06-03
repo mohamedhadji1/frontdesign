@@ -16,6 +16,7 @@ type PageHeroProps = {
   className?: string;
   heightClassName?: string;
   showScrollIndicator?: boolean;
+  theme?: "red" | "blue";
 };
 
 export function PageHero({
@@ -29,6 +30,7 @@ export function PageHero({
   className,
   heightClassName = "h-[100vh] min-h-[100vh]",
   showScrollIndicator = true,
+  theme = "red",
 }: PageHeroProps) {
   return (
     <motion.section
@@ -74,7 +76,7 @@ export function PageHero({
           className="w-full max-w-4xl"
         >
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <Breadcrumbs items={breadcrumbs} className="mb-6" />
+            <Breadcrumbs items={breadcrumbs} theme={theme} className="mb-6" />
           )}
 
           {eyebrow && !breadcrumbs && (
@@ -82,9 +84,19 @@ export function PageHero({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
+              className={cn(
+                "mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold uppercase tracking-widest sm:text-sm",
+                theme === "blue"
+                  ? "border-blue-500/20 bg-blue-500/10 text-blue-400"
+                  : "border-red-500/20 bg-red-500/10 text-red-400"
+              )}
             >
-              <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
+              <span
+                className={cn(
+                  "h-2 w-2 rounded-full animate-pulse",
+                  theme === "blue" ? "bg-blue-500" : "bg-red-600"
+                )}
+              />
               {eyebrow}
             </motion.p>
           )}

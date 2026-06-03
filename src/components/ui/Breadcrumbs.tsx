@@ -12,14 +12,21 @@ export type BreadcrumbItem = {
 type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   className?: string;
+  theme?: "red" | "blue";
 };
 
-export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, className, theme = "red" }: BreadcrumbsProps) {
+  const textColorClass = theme === "blue" ? "text-blue-500" : "text-red-500";
+  const slashColorClass = theme === "blue" ? "text-blue-500/60" : "text-red-500/60";
+  const hoverColorClass = theme === "blue" ? "hover:text-blue-400" : "hover:text-red-400";
+  const activeColorClass = theme === "blue" ? "text-blue-400" : "text-red-400";
+
   return (
     <nav
       aria-label="Breadcrumb"
       className={cn(
-        "mb-6 inline-flex items-center gap-2.5 text-red-500 font-bold uppercase tracking-[0.2em] text-[10px]",
+        "mb-6 inline-flex items-center gap-2.5 font-bold uppercase tracking-[0.2em] text-[10px]",
+        textColorClass,
         className
       )}
     >
@@ -28,19 +35,19 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
         return (
           <Fragment key={idx}>
             {idx > 0 && (
-              <span className="text-red-500/60 font-bold select-none" aria-hidden="true">
+              <span className={cn("font-bold select-none", slashColorClass)} aria-hidden="true">
                 &gt;
               </span>
             )}
             {item.href && !isLast ? (
               <Link
                 href={item.href}
-                className="transition-colors hover:text-red-400"
+                className={cn("transition-colors", hoverColorClass)}
               >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-red-400">{item.label}</span>
+              <span className={activeColorClass}>{item.label}</span>
             )}
           </Fragment>
         );

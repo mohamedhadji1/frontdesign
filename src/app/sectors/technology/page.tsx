@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function TechnologyPage() {
   return (
     <SectorCategoryPage
+      theme="red"
       eyebrow="Technology"
       title="Cybersecurity for Technology Organizations"
       description="Secure digital infrastructures, cloud platforms, APIs, telecom networks, and fast-moving technology products without slowing delivery."

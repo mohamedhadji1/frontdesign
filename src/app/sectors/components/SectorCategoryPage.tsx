@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, Cpu, Factory, HeartPulse } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -40,6 +41,7 @@ type SectorCategoryPageProps = {
   icon: keyof typeof categoryIcons;
   backgroundVideoSrc?: string;
   posterSrc?: string;
+  theme?: "red" | "blue";
 };
 
 const categoryIcons = {
@@ -56,6 +58,7 @@ export function SectorCategoryPage({
   icon,
   backgroundVideoSrc = "/vids/herosection.mp4",
   posterSrc = "/background/Rectangle 59.png",
+  theme = "red",
 }: SectorCategoryPageProps) {
   const Icon = categoryIcons[icon];
 
@@ -87,21 +90,16 @@ export function SectorCategoryPage({
         <div className="absolute inset-0 bg-[url('/background/vector/network-nodes.svg')] bg-cover bg-center opacity-20 mix-blend-screen" />
 
         <motion.div variants={stagger} className="relative z-10 mx-auto w-full max-w-7xl">
-          <motion.div
+          <Breadcrumbs
+            items={[
+              { label: "Sectors", href: "/sectors" },
+              { label: eyebrow }
+            ]}
+            theme={theme}
+            className="mb-6"
+          />
 
-            className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300 backdrop-blur-md"
-          >
-            <span className="h-2 w-2 rounded-full bg-red-500" />
-            <Link href="/sectors" className="transition-colors hover:text-white">
-              Sectors
-            </Link>
-            <span className="text-red-500/60">/</span>
-            <span>{eyebrow}</span>
-          </motion.div>
 
-          <motion.div >
-            <Icon className="mb-6 h-12 w-12 text-red-500" aria-hidden="true" />
-          </motion.div>
           <motion.h1 className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
             {title}
           </motion.h1>

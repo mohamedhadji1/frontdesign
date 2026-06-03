@@ -29,6 +29,7 @@ export default async function CareerOfferPage({ params }: PageProps) {
         title={selectedOffer}
         description={`Apply for the ${selectedOffer} role at Keystone. Share your background, motivation, and the security work you want to grow into.`}
         selectedOffer={selectedOffer}
+        theme="red"
       />
     </main>
   );

@@ -225,19 +225,12 @@ export default function CipPlatformPage() {
         <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
           {/* Hero Text */}
           <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
-            <motion.p 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-2 inline-flex rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-red-300"
-            >
-              CIP Platform
-            </motion.p>
           <Breadcrumbs
             items={[
               { label: "Solutions", href: "/solutions" },
               { label: "CIP Platform" },
             ]}
+            theme="red"
           />
             <motion.h2 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               <TypingText text="Governance and risk control for Critical Infrastructures." delay={0.5} />
@@ -255,7 +248,7 @@ export default function CipPlatformPage() {
               <MotionLink
                 href="/contact"
                 whileHover={{ x: 10 }}
-                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-red-600/20 transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
               >
                 Request a demo
                 <ArrowRight className="h-4 w-4" />

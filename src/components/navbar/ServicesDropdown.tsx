@@ -26,7 +26,7 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Offensive Security",
     items: [
       {
-        name: "Offensive Assessments",
+        name: "Offensive Assessment",
         slug: "offensive-security/offensive-assessments",
         subCategory: "Advanced Penetration Testing",
         subItems: [
@@ -106,6 +106,7 @@ export const servicesDetails: ServiceCategory[] = [
     items: [
       {
         name: "Managed SOC",
+        slug: "defensive-security/soc-management",
         subCategory: "Managed SOC: Proactive Monitoring & Response",
         subItems: [
           { name: "Blue Team", slug: "defensive-security/blue-team" },
@@ -119,6 +120,7 @@ export const servicesDetails: ServiceCategory[] = [
       },
       {
         name: "CERT",
+        slug: "defensive-security/Implementation-cert",
         subCategory: "CERT (CSIRT.tn): Critical Threat Response",
         subItems: [
           { name: "Incident Response", slug: "defensive-security/incident-response" },

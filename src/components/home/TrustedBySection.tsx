@@ -1,155 +1,282 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { gsap } from "gsap";
+import Image from "next/image";
+import { SectionDivider } from "../ui/SectionDivider";
+import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 
-const partners = [
-  {
-    name: "BNA Bank",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 120 32" fill="currentColor">
-        <path d="M10 2 L22 8 L22 24 L10 30 L2 24 L2 8 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M10 8 L18 12 L18 20 L10 24 L6 20 L6 12 Z" fill="currentColor" opacity="0.3" />
-        <text x="32" y="22" className="text-lg font-black tracking-widest fill-current">BNA</text>
-      </svg>
-    )
-  },
-  {
-    name: "Apex Telecom",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 140 32" fill="currentColor">
-        <circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="16" cy="16" r="4" fill="currentColor" />
-        <path d="M16 2 L16 10 M16 22 L16 30 M2 16 L10 16 M22 16 L30 16" stroke="currentColor" strokeWidth="1.5" />
-        <text x="36" y="22" className="text-lg font-bold tracking-wider fill-current">APEX</text>
-      </svg>
-    )
-  },
-  {
-    name: "Vortex Energy",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 150 32" fill="currentColor">
-        <path d="M16 2 L28 14 L20 18 L26 30 L8 16 L14 12 Z" fill="currentColor" />
-        <text x="36" y="22" className="text-lg font-black tracking-normal fill-current">VORTEX</text>
-      </svg>
-    )
-  },
-  {
-    name: "Vertex Financial",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 150 32" fill="currentColor">
-        <path d="M2 14 L16 4 L30 14 H28 V28 H4 V14 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-        <rect x="10" y="16" width="4" height="12" fill="currentColor" />
-        <rect x="18" y="16" width="4" height="12" fill="currentColor" />
-        <text x="38" y="22" className="text-lg font-bold tracking-wide fill-current">VERTEX</text>
-      </svg>
-    )
-  },
-  {
-    name: "SecureCloud",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 160 32" fill="currentColor">
-        <path d="M16 4 C10 4 6 8 6 13 C6 14 6.2 15 6.5 15.8 C4 16.5 2 18.5 2 21 C2 24.5 5 27 8.5 27 H24 C27.5 27 30 24.5 30 21 C30 18 27.5 15.5 24.5 15.2 C24.2 9 20 4 16 4 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M13 18 L16 15 L19 18 M16 15 V23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <text x="36" y="22" className="text-lg font-bold tracking-tight fill-current">SCLOUD</text>
-      </svg>
-    )
-  },
-  {
-    name: "Novatech",
-    logo: (
-      <svg className="h-10 w-auto text-zinc-400 group-hover:text-zinc-800 transition-colors duration-300" viewBox="0 0 140 32" fill="currentColor">
-        <rect x="4" y="4" width="24" height="24" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="16" cy="16" r="4" fill="currentColor" />
-        <path d="M16 4 V10 M16 22 V28 M4 16 H10 M22 28 H22 M22 16 H28" stroke="currentColor" strokeWidth="1.5" />
-        <text x="36" y="22" className="text-lg font-extrabold tracking-widest fill-current">NOVA</text>
-      </svg>
-    )
-  }
+const trainingPartners = [
+  { name: "EC-Council", logo: "/trustedBy/training/EC-council.png", specialty: "Ethical Hacking & Security Certifications" },
+  { name: "KnowBe4", logo: "/trustedBy/training/KnowBe4.png", specialty: "Security Awareness & Phishing Simulation" },
+  { name: "PECB", logo: "/trustedBy/training/PECB.png", specialty: "ISO Standards Audit & Certifications" },
+  { name: "OffSec", logo: "/trustedBy/training/offsec.png", specialty: "Offensive Security & Pen Testing Training" },
 ];
 
-// Triple the items to ensure seamless infinite looping
-const tripledPartners = [...partners, ...partners, ...partners];
+const internationalPartners = [
+  { name: "Attijari Bank", logo: "/trustedBy/Attijari Bank.png" },
+  { name: "VERMEG SOLUTIONS", logo: "/trustedBy/VERMEG SOLUTIONS.png" },
+  { name: "BCEAO", logo: "/trustedBy/BCEAO.png" },
+  { name: "BEAC", logo: "/trustedBy/BEAC.png" },
+  { name: "Ooredoo", logo: "/trustedBy/Ooredoo.svg" },
+  { name: "ARAB TUNISIAN BANK", logo: "/trustedBy/ARAB TUNISIAN BANK.png" },
+  { name: "ODDO BHF SCA", logo: "/trustedBy/ODDO BHF SCA.png" },
+  { name: "alBaraka Bank", logo: "/trustedBy/alBaraka Bank.png" },
+  { name: "BGFI", logo: "/trustedBy/BGFI.png" },
+  { name: "QATAR NATIONAL BANK", logo: "/trustedBy/QATAR NATIONAL BANK.png" },
+  { name: "CITI BANK", logo: "/trustedBy/Citi_Bank_Logo_1.png" },
+  { name: "ABC BANK", logo: "/trustedBy/Bank_ABC_idZ7Uyn2XL_8.png" },
+];
+
+const grosComptesPartners = [
+  { name: "Poulina Group Holding", logo: "/trustedBy/poulina.png" },
+  { name: "Tunisie Telecom", logo: "/trustedBy/Tunisie telecom.png" },
+  { name: "SOFRECOM", logo: "/trustedBy/sofrecom.png" },
+  { name: "STEG", logo: "/trustedBy/STEG.png" },
+  { name: "GIMTEL", logo: "/trustedBy/GIMTEL.png" },
+  { name: "MONETIQUE TUNISIE", logo: "/trustedBy/monetique.png" },
+  { name: "Banque Zitouna", logo: "/trustedBy/Banque_Zitouna.png" },
+  { name: "BTE", logo: "/trustedBy/BTE.png" },
+  { name: "Banque de Tunisie", logo: "/trustedBy/BT.png" },
+  { name: "UBCI", logo: "/trustedBy/UBCI.png" },
+  { name: "Société Tunisienne de Banque", logo: "/trustedBy/stb.png" },
+  { name: "ASSURANCE ASTREE", logo: "/trustedBy/Astree Assurances.png" },
+  { name: "BNA ASSURANCES (AMI)", logo: "/trustedBy/BNA-ASSURANCES.png" },
+  { name: "Zitouna Takaful", logo: "/trustedBy/ZTF.png" },
+  { name: "DATAXION", logo: "/trustedBy/dataxion.png" },
+  { name: "ANTIC", logo: "/trustedBy/Antic.png" },
+  { name: "GAT ASSURANCES", logo: "/trustedBy/gat.png" },
+  { name: "Banque Tuniso-Koweitienne", logo: "/trustedBy/BTK.png" },
+  { name: "BANK OF KIGALI", logo: "/trustedBy/bank of kigali.jpg" },
+  { name: "SIBTEL", logo: "/trustedBy/SIBTEL.png" },
+  { name: "TUNISAIR", logo: "/trustedBy/Tunisair_iddm_VATV-_1.png" },
+  { name: "Jumhoria Bank", logo: "/trustedBy/jumhouria bank.png" },
+  { name: "Banque Centrale Benghazi", logo: "/trustedBy/CBL.png" },
+  { name: "CNI", logo: "/trustedBy/cni.png" },
+  { name: "BIAT", logo: "/trustedBy/biat.jpg" },
+];
+
+const autresPartners = [
+  { name: "North Africa International Bank", logo: "/trustedBy/NAIB.png" },
+  { name: "Banque Nationale Agricole", logo: "/trustedBy/BNA bank.png" },
+  { name: "ESPRIT", logo: "/trustedBy/esprit.png" },
+  { name: "WIFAK BANK", logo: "/trustedBy/wifak.png" },
+  { name: "Assurance STAR", logo: "/trustedBy/star.png" },
+  { name: "THG", logo: "/trustedBy/thg.png" },
+  { name: "Topnet", logo: "/trustedBy/Topnet.png" },
+  { name: "BIAT ASSURANCES", logo: "/trustedBy/assurances biat.png" },
+  { name: "ENDA TAMWEEL SA", logo: "/trustedBy/enda.png" },
+  { name: "BH ASSURANCE", logo: "/trustedBy/bh-assurance-logo.png" },
+  { name: "LLOYD TUNISIEN", logo: "/trustedBy/lloyd.png" },
+  { name: "FTUSA", logo: "/trustedBy/ftusa.png" },
+  { name: "UNIVERSITE CENTRALE", logo: "/trustedBy/universite central.svg" },
+  { name: "ADVANS TUNISIE", logo: "/trustedBy/advans.png" },
+  { name: "BMCE CAPITAL", logo: "/trustedBy/bmce capital.png" },
+  { name: "Carte Assurance", logo: "/trustedBy/carte assurance.png" },
+  { name: "Banque Tunisienne de Solidarité", logo: "/trustedBy/BTS.png" },
+  { name: "VECTORYS", logo: "/trustedBy/VECTORYS.png" },
+  { name: "Assurances M.A.E", logo: "/trustedBy/Assurances M.A.E.png" },
+];
+
+const largeLogos = [
+  "ARAB TUNISIAN BANK",
+  "ODDO BHF SCA",
+  "alBaraka Bank",
+  "SOFRECOM",
+  "Poulina Group Holding",
+  "Banque Zitouna",
+  "BTE",
+  "Jumhoria Bank",
+  "SIBTEL",
+  "BNA ASSURANCES (AMI)",
+  "ASSURANCE ASTREE",
+  "THG",
+  "BIAT ASSURANCES",
+  "BH ASSURANCE",
+  "ADVANS TUNISIE",
+  "BMCE CAPITAL",
+  "Banque Tunisienne de Solidarité"
+];
+
+const smallLogos = [
+  "BANK OF KIGALI",
+  "Assurances M.A.E",
+  "ANTIC",
+  "FTUSA",
+  "Ooredoo",
+  "BEAC",
+  "STEG",
+  "BIAT",
+  "Carte Assurance"
+];
 
 export function TrustedBySection() {
-  const tickerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ticker = tickerRef.current;
-    if (!ticker) return;
-
-    let tween: gsap.core.Tween;
-
-    const setupAnimation = () => {
-      if (tween) tween.kill();
-      
-      const itemWidth = ticker.scrollWidth / 3;
-      
-      // Reset position
-      gsap.set(ticker, { x: 0 });
-
-      tween = gsap.to(ticker, {
-        x: -itemWidth,
-        ease: "none",
-        duration: 16, // smooth scrolling speed
-        repeat: -1,
-      });
-    };
-
-    // Slight delay to ensure DOM is fully rendered
-    const timer = setTimeout(setupAnimation, 100);
-
-    const handleResize = () => {
-      setupAnimation();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    const onMouseEnter = () => tween && tween.pause();
-    const onMouseLeave = () => tween && tween.play();
-
-    ticker.addEventListener("mouseenter", onMouseEnter);
-    ticker.addEventListener("mouseleave", onMouseLeave);
-
-    return () => {
-      clearTimeout(timer);
-      if (tween) tween.kill();
-      window.removeEventListener("resize", handleResize);
-      ticker.removeEventListener("mouseenter", onMouseEnter);
-      ticker.removeEventListener("mouseleave", onMouseLeave);
-    };
-  }, []);
-
   return (
-    <section className="bg-white pb-16 pt-10 relative overflow-hidden w-full">
-      {/* Premium Gradient Masks for seamless entry/exit fades */}
-      <div className="absolute top-0 bottom-0 left-0 w-20 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
-      <div className="absolute top-0 bottom-0 right-0 w-20 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none" />
+    <section className="bg-white py-16 relative overflow-hidden w-full border-t border-zinc-100">
+      {/* CSS Styles for seamless hardware-accelerated marquee */}
+      <style jsx global>{`
+        @keyframes marquee-rtl {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-ltr {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee-rtl {
+          display: flex;
+          width: max-content;
+          animation: marquee-rtl 45s linear infinite;
+        }
+        .animate-marquee-ltr-fast {
+          display: flex;
+          width: max-content;
+          animation: marquee-ltr 45s linear infinite;
+        }
+        .animate-marquee-rtl:hover,
+        .animate-marquee-ltr-fast:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
-      {/* Centered Description Text */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
-        <p className="text-zinc-400 max-w-2xl mx-auto mb-10 text-center font-medium text-sm md:text-base tracking-wide">
-          We are proud to collaborate with industry leaders and trusted organizations.
+      {/* Premium Gradient Masks for seamless entry/exit fades */}
+      <div className="absolute top-0 bottom-0 left-0 w-20 md:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
+      <div className="absolute top-0 bottom-0 right-0 w-20 md:w-48 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center mb-12">
+        <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl text-center mb-4">
+          Our Trusted Partners
+        </h2>
+        <p className="text-zinc-500 max-w-2xl mx-auto text-center font-medium text-sm md:text-base tracking-wide">
+          Financial institutions, major corporations, and industry leaders rely on our expertise.
         </p>
       </div>
 
-      {/* Full-Width Carousel Outer Container */}
-      <div className="w-full overflow-hidden relative py-4 z-10">
-        {/* Ticker Flex Row Container */}
-        <div 
-          ref={tickerRef}
-          className="flex items-center gap-16 sm:gap-20 md:gap-28 w-max cursor-pointer"
-        >
-          {tripledPartners.map((partner, index) => (
-            <div 
-              key={index} 
-              className="group flex items-center justify-center shrink-0 h-16 w-32 sm:h-20 sm:w-40 md:h-24 md:w-52 transition-transform duration-300 hover:scale-105"
-            >
-              {partner.logo}
+      <div className="flex flex-col gap-10 relative z-10">
+        {/* Row 1: Client Internationaux (Right to Left) */}
+        <div className="space-y-3">
+          <div className="max-w-7xl mx-auto px-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              International Clients
+            </h3>
+          </div>
+          <div className="w-full overflow-hidden py-4 bg-zinc-50/50 border-y border-zinc-100/50">
+            <div className="animate-marquee-rtl gap-16 md:gap-24 px-4">
+              {/* Double arrays to ensure seamless loop */}
+              {[...internationalPartners, ...internationalPartners].map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className="group relative flex items-center justify-center shrink-0 h-20 w-40 md:h-24 md:w-48 transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-75">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-w-[90%] max-h-[80%] object-contain"
+                      style={{ transform: smallLogos.includes(partner.name) ? "scale(0.7)" : largeLogos.includes(partner.name) ? "scale(1.35)" : "scale(1)" }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-xs md:text-sm font-semibold text-zinc-800 text-center line-clamp-2 px-2">
+                      {partner.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* Row 2: Gros comptes Tunisie (Left to Right - Faster) */}
+        <div className="space-y-3">
+          <div className="max-w-7xl mx-auto px-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              Major Accounts Tunisia
+            </h3>
+          </div>
+          <div className="w-full overflow-hidden py-4 bg-zinc-50/50 border-y border-zinc-100/50">
+            <div className="animate-marquee-ltr-fast gap-16 md:gap-24 px-4">
+              {[...grosComptesPartners, ...grosComptesPartners].map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className="group relative flex items-center justify-center shrink-0 h-20 w-40 md:h-24 md:w-48 transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-75">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-w-[90%] max-h-[80%] object-contain"
+                      style={{ transform: smallLogos.includes(partner.name) ? "scale(0.7)" : largeLogos.includes(partner.name) ? "scale(1.35)" : "scale(1)" }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-xs md:text-sm font-semibold text-zinc-800 text-center line-clamp-2 px-2">
+                      {partner.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Row 3: Autres (Right to Left) */}
+        <div className="space-y-3">
+          <div className="max-w-7xl mx-auto px-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              Other Partners
+            </h3>
+          </div>
+          <div className="w-full overflow-hidden py-4 bg-zinc-50/50 border-y border-zinc-100/50">
+            <div className="animate-marquee-rtl gap-16 md:gap-24 px-4">
+              {[...autresPartners, ...autresPartners].map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className="group relative flex items-center justify-center shrink-0 h-20 w-40 md:h-24 md:w-48 transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:scale-75">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-w-[90%] max-h-[80%] object-contain"
+                      style={{ transform: smallLogos.includes(partner.name) ? "scale(0.7)" : largeLogos.includes(partner.name) ? "scale(1.35)" : "scale(1)" }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-xs md:text-sm font-semibold text-zinc-800 text-center line-clamp-2 px-2">
+                      {partner.name}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Divider and Training Partners Section */}
+      <div className="w-full flex flex-col items-center mt-16 mb-10">
+        <CyberSectionDivider className="w-full mb-8" theme="red" />
+        <SectionDivider title="Training Partners" theme="red" className="mb-8" />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4 py-8 relative z-10">
+        {trainingPartners.map((partner, index) => (
+          <div
+            key={`${partner.name}-${index}`}
+            className="group flex flex-col items-center justify-between text-center p-6 bg-zinc-50/40 hover:bg-white border border-zinc-100/80 hover:border-zinc-200/80 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 h-56"
+          >
+            <div className="flex-1 flex items-center justify-center w-full h-24">
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="max-h-16 max-w-full object-contain transition-all duration-300"
+              />
+            </div>
+            <div className="mt-4">
+              <h4 className="font-bold text-sm text-zinc-800 tracking-wide uppercase">{partner.name}</h4>
+              <p className="text-xs text-zinc-400 mt-1 max-w-[200px] mx-auto font-medium leading-relaxed">{partner.specialty}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

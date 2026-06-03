@@ -10,6 +10,7 @@ import { MapSection } from "@/components/home/MapSection";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
+import { CVE } from "@/components/home/CVE";
 
 
 export default function Home() {

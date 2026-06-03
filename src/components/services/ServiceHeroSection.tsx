@@ -17,6 +17,7 @@ interface ServiceHeroSectionProps {
   ctaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  theme?: "red" | "blue";
 }
 
 export function ServiceHeroSection({
@@ -30,6 +31,7 @@ export function ServiceHeroSection({
   ctaHref = "/contact",
   secondaryCtaLabel,
   secondaryCtaHref = "/services",
+  theme = "red",
 }: ServiceHeroSectionProps) {
   return (
     <motion.section
@@ -70,7 +72,7 @@ export function ServiceHeroSection({
           className="w-full max-w-4xl"
         >
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <Breadcrumbs items={breadcrumbs} className="mb-6" />
+            <Breadcrumbs items={breadcrumbs} theme={theme} className="mb-6" />
           )}
 
           <motion.h1
@@ -83,7 +85,7 @@ export function ServiceHeroSection({
           </motion.h1>
 
           {heroItems.length > 0 && (
-            <HeroTypeLine items={heroItems} />
+            <HeroTypeLine items={heroItems} theme={theme} />
           )}
 
           {description && (
@@ -105,7 +107,11 @@ export function ServiceHeroSection({
           >
             <Link
               href={ctaHref}
-              className="bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl"
+              className={`${
+                theme === "blue"
+                  ? "bg-blue-600 hover:bg-blue-700"
+                  : "bg-red-600 hover:bg-red-700"
+              } text-white font-bold uppercase tracking-widest text-sm py-4 px-10 rounded-full flex items-center justify-center gap-4 transition-all shadow-2xl`}
             >
               {ctaLabel}
               <span>→</span>
@@ -114,7 +120,11 @@ export function ServiceHeroSection({
             {secondaryCtaLabel && (
               <Link
                 href={secondaryCtaHref}
-                className="border-b border-white hover:border-red-500 text-white hover:text-red-500 font-medium py-3 px-6 flex items-center justify-center transition-all bg-transparent w-max"
+                className={`border-b border-white ${
+                  theme === "blue"
+                    ? "hover:border-blue-500 hover:text-blue-500"
+                    : "hover:border-red-500 hover:text-red-500"
+                } text-white font-medium py-3 px-6 flex items-center justify-center transition-all bg-transparent w-max`}
               >
                 {secondaryCtaLabel}
               </Link>

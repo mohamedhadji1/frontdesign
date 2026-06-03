@@ -117,9 +117,9 @@ export const aboutContent = {
     title: "Client Testimonials",
     description: "Discover what our clients say about their experience with Keystone and how our cybersecurity solutions have had a positive impact on their operations.",
     items: [
-      { name: "Client Partner", text: "The collaboration with Keystone has been essential in strengthening our IT security. Their highly qualified team identified and effectively resolved our vulnerabilities, ensuring optimal protection of our sensitive data." },
-      { name: "IT Director", text: "Keystone exceeded our expectations in digital security. Their professional approach, combined with their sharp expertise, helped transform our infrastructure and protect us against persistent threats." },
-      { name: "Chief Security Officer", text: "We are grateful for the solid partnership we have established with Keystone. Their responsive and proactive team anticipated and prevented security risks, which significantly strengthened our overall security posture." }
+      { name: "Partner", text: "The collaboration with Keystone has been essential in strengthening our IT security. Their highly qualified team identified and effectively resolved our vulnerabilities, ensuring optimal protection of our sensitive data." },
+      { name: "IT Director - Bank", text: "Keystone exceeded our expectations in digital security. Their professional approach, combined with their sharp expertise, helped transform our infrastructure and protect us against persistent threats." },
+      { name: "Chief Security Officer - Energy", text: "We are grateful for the solid partnership we have established with Keystone. Their responsive and proactive team anticipated and prevented security risks, which significantly strengthened our overall security posture." }
     ]
   },
   mainAbout: {

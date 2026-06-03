@@ -172,7 +172,7 @@ export const sectorPages = {
       "Work with Keystone to protect patient data, clinical systems, and healthcare service continuity.",
     regulations: ["GDPR", "HIPAA", "NIST CSF"],
     recommendedServices: [
-      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "Managed SOC", href: "/services/defensive-security/soc-management" },
       { name: "Governance, Risk & Compliance", href: "/services/governance-risk-compliance" },
       { name: "Security Assessment", href: "/services/security-assessment" }
     ],
@@ -292,8 +292,8 @@ export const sectorPages = {
       "Work with Keystone to secure networks, protect customer data, and keep digital services available.",
     regulations: ["NIS 2 Directive", "ISO 27001", "GDPR"],
     recommendedServices: [
-      { name: "Red Team Assessment", href: "/services/offensive-security/red-team" },
-      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "Red Team Assessment", href: "/services/red-team" },
+      { name: "Managed SOC", href: "/services/defensive-security/soc-management" },
       { name: "DNS Filtering Solutions", href: "/solutions/dns-filtering" }
     ],
     expectedOutcomes: [
@@ -412,7 +412,7 @@ export const sectorPages = {
       "Work with Keystone to protect passenger data, control systems, and transport service continuity.",
     regulations: ["NIS 2 Directive", "ISO 27001", "NIST CSF"],
     recommendedServices: [
-      { name: "Industrial System Security (OT/ICS)", href: "/services/offensive-security/industrial-systems" },
+      { name: "Industrial System Security (OT/ICS)", href: "/services/security-assessment/industrial-system-assessment" },
       { name: "Incident Response Retainer", href: "/services/defensive-security/incident-response" }
     ],
     expectedOutcomes: [
@@ -531,7 +531,7 @@ export const sectorPages = {
       "Work with Keystone to secure critical energy infrastructure and preserve operational resilience.",
     regulations: ["Critical Infrastructure Protection (CIP)", "NIS 2 Directive", "ISO 27001"],
     recommendedServices: [
-      { name: "Industrial System OT Security", href: "/services/offensive-security/industrial-systems" },
+      { name: "Industrial System OT Security", href: "/services/security-assessment/industrial-system-assessment" },
       { name: "Keystone CIP Platform", href: "/solutions/cip-platform" },
       { name: "Incident Response", href: "/services/defensive-security/incident-response" }
     ],
@@ -771,8 +771,8 @@ export const sectorPages = {
       "Work with Keystone to protect sensitive financial data, transactions, and regulated operations.",
     regulations: ["PCI DSS", "DORA", "SWIFT CSP", "SOC 2 Type II", "ISO 27001"],
     recommendedServices: [
-      { name: "Red Team Simulation", href: "/services/offensive-security/red-team" },
-      { name: "Managed SOC Services", href: "/services/defensive-security/managed-soc" },
+      { name: "Red Team Simulation", href: "/services/red-team" },
+      { name: "Managed SOC Services", href: "/services/defensive-security/soc-management" },
       { name: "Keystone ARENA Platform", href: "/solutions/keystone-arena" }
     ],
     expectedOutcomes: [
@@ -1021,8 +1021,8 @@ export const sectorPages = {
       "Work with Keystone to protect industrial systems, production continuity, and critical operations.",
     regulations: ["NIS 2 Directive", "ISO 27001", "IEC 62443"],
     recommendedServices: [
-      { name: "OT/ICS Assessment", href: "/services/offensive-security/industrial-systems" },
-      { name: "Managed SOC", href: "/services/defensive-security/managed-soc" },
+      { name: "OT/ICS Assessment", href: "/services/security-assessment/industrial-system-assessment" },
+      { name: "Managed SOC", href: "/services/defensive-security/soc-management" },
       { name: "Incident Response Retainer", href: "/services/defensive-security/incident-response" }
     ],
     expectedOutcomes: [

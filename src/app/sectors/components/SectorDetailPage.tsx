@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import {
   Activity,
   ArrowRight,
@@ -209,7 +210,13 @@ function InteractiveHubSection({ items }: { items: SectorCard[] }) {
   );
 }
 
-export function SectorDetailPage({ page }: { page: SectorPageContent }) {
+export function SectorDetailPage({
+  page,
+  theme = "red",
+}: {
+  page: SectorPageContent;
+  theme?: "red" | "blue";
+}) {
   const HeroIcon = icons[page.heroIcon];
 
   return (
@@ -242,81 +249,80 @@ export function SectorDetailPage({ page }: { page: SectorPageContent }) {
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div variants={stagger} className="max-w-4xl">
-            <motion.div
+          <Breadcrumbs
+            items={[
+              { label: "Sectors", href: "/sectors" },
+              { label: page.eyebrow }
+            ]}
+            theme={theme}
+            className="mb-6"
+          />
 
-              className="mb-8 inline-flex flex-wrap items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-sm font-semibold uppercase tracking-wide text-red-300 backdrop-blur-md"
-            >
-              <span className="h-2 w-2 rounded-full bg-red-500" />
-              <Link href="/sectors" className="transition-colors hover:text-white">
-                Sectors
-              </Link>
-              <span className="text-red-500/60">/</span>
-              <span>{page.eyebrow}</span>
-            </motion.div>
 
-            <motion.div >
-              <HeroIcon className="mb-6 h-12 w-12 text-red-500" aria-hidden="true" />
-            </motion.div>
-            <motion.h1
+          <motion.h1
 
-              className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
-            >
-              {page.title}
-            </motion.h1>
-
-            <motion.p
-
-              className="max-w-3xl text-lg font-medium leading-8 text-zinc-200 md:text-xl"
-            >
-              {page.description}
-            </motion.p>
-
-            <motion.div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href={`/contact?sector=${page.slug}`}
-                className="inline-flex items-center gap-3 rounded-full bg-red-600 px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-700"
-              >
-                Consult an Expert
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link
-                href="#emerging-risks"
-                className="inline-flex items-center gap-3 border-b border-white/40 px-1 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:border-red-400 hover:text-red-300"
-              >
-                View Risks
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            className="relative hidden min-h-[440px] lg:block"
+            className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
           >
-            <div className="absolute inset-x-10 top-6 h-px bg-red-600/50" />
-            <div className="absolute bottom-8 left-2 right-2 h-px bg-white/20" />
-            <div className="grid h-full grid-cols-2 gap-4">
-              {page.heroCards.map((label, index) => (
-                <motion.div
-                  key={label}
+            {page.title}
+          </motion.h1>
 
-                  whileHover={{ y: -8, borderColor: "rgba(220,38,38,0.65)" }}
-                  animate={{ y: [0, index % 2 === 0 ? -8 : 8, 0] }}
-                  transition={{
-                    duration: 4 + index * 0.35,
-                    repeat: Infinity,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                  className="flex min-h-[150px] flex-col justify-between rounded-lg border border-white/10 bg-white/5 p-5 text-white backdrop-blur-md"
-                >
-                  <span className="text-4xl font-black text-white">
-                    0{index + 1}
-                  </span>
-                  <span className="text-sm font-bold uppercase tracking-[0.25em] text-white">
-                    {label}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
+          <motion.p
+
+            className="max-w-3xl text-lg font-medium leading-8 text-zinc-200 md:text-xl"
+          >
+            {page.description}
+          </motion.p>
+
+          <motion.div className="mt-10 flex flex-wrap gap-4">
+            <Link
+              href={`/contact?sector=${page.slug}`}
+              className={`inline-flex items-center gap-3 rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors ${
+                theme === "blue"
+                  ? "bg-blue-600 hover:bg-blue-700"
+                  : "bg-red-600 hover:bg-red-700"
+              }`}
+            >
+              Consult an Expert
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link
+              href="#emerging-risks"
+              className="inline-flex items-center gap-3 border-b border-white/40 px-1 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:border-red-400 hover:text-red-300"
+            >
+              View Risks
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          className="relative hidden min-h-[440px] lg:block"
+        >
+          <div className={`absolute inset-x-10 top-6 h-px ${theme === "blue" ? "bg-blue-600/50" : "bg-red-600/50"}`} />
+          <div className="absolute bottom-8 left-2 right-2 h-px bg-white/20" />
+          <div className="grid h-full grid-cols-2 gap-4">
+            {page.heroCards.map((label, index) => (
+              <motion.div
+                key={label}
+
+                whileHover={{ y: -8, borderColor: theme === "blue" ? "rgba(59, 130, 246, 0.65)" : "rgba(220, 38, 38, 0.65)" }}
+                animate={{ y: [0, index % 2 === 0 ? -8 : 8, 0] }}
+                transition={{
+                  duration: 4 + index * 0.35,
+                  repeat: Infinity,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
+                className="flex min-h-[150px] flex-col justify-between rounded-lg border border-white/10 bg-white/5 p-5 text-white backdrop-blur-md"
+              >
+                <span className="text-4xl font-black text-white">
+                  0{index + 1}
+                </span>
+                <span className="text-sm font-bold uppercase tracking-[0.25em] text-white">
+                  {label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
           </motion.div>
         </div>
       </motion.section>

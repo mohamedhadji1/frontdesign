@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function ServicesSectorPage() {
   return (
     <SectorCategoryPage
+      theme="red"
       eyebrow="Services"
       title="Cybersecurity for Service Organizations"
       description="Protect customer trust, regulated data, business continuity, and high-availability digital services across people-facing industries."
