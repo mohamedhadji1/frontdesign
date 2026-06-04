@@ -80,9 +80,9 @@ export default function SocSubscriptionPage() {
               { label: "SOC Subscription" },
             ]}
           />
-          <motion.h2 className="max-w-4xl text-3xl font-black tracking-tight sm:text-4xl md:text-6xl">
+          <motion.h1 className="max-w-4xl text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase">
             SOC Subscription
-          </motion.h2>
+          </motion.h1>
           <motion.p className="mt-6 max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl md:leading-8">
             A subscription-based SOC offer is in preparation for teams that want managed detection and response with a simpler adoption path.
           </motion.p>

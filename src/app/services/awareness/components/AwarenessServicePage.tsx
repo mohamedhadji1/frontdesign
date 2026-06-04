@@ -96,7 +96,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen pointer-events-none" />
         </div>
 
@@ -123,7 +123,7 @@ export function AwarenessServicePage({ page }: { page: AwarenessPageData }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tight text-white leading-[1.05] uppercase"
+              className="text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase"
             >
               {page.title}
             </motion.h1>

@@ -339,8 +339,7 @@ export function PublicSectorPage() {
             playsInline
             className="h-full w-full object-cover opacity-45"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20" />
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent" />
           <div className="absolute inset-0 bg-[url('/background/vector/network-nodes.svg')] bg-cover bg-center opacity-20 mix-blend-screen" />
         </motion.div>
 
@@ -360,7 +359,7 @@ export function PublicSectorPage() {
 
             <motion.h1
 
-              className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
+              className="mb-6 text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase"
             >
               Cybersecurity for Governments and Public Organizations
             </motion.h1>

@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Radar, ShieldAlert, Settings, ShieldCheck, Zap } from "lucide-react";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
@@ -48,10 +47,8 @@ const steps = [
 export default function AIPoweredThreatDetectionPage() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <Navbar />
-
       {/* Hero Section */}
-      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 h-[100vh] min-h-[100vh] flex flex-col justify-center pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8 }} className="relative bg-zinc-950 h-[100vh] min-h-[100vh] flex flex-col justify-between pt-36 sm:pt-44 lg:pt-48 pb-12 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
           <video
             autoPlay
@@ -63,7 +60,7 @@ export default function AIPoweredThreatDetectionPage() {
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -90,7 +87,7 @@ export default function AIPoweredThreatDetectionPage() {
               { label: "Ai Powered Threat Detection" },
             ]}
           />
-              <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase mb-6">
                 AI-Powered <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Threat Detection</span>
               </motion.h1>
 

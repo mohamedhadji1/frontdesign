@@ -218,11 +218,11 @@ export default function CipPlatformPage() {
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent" />
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
+        <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-6 pt-36 pb-12 sm:pt-44 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-48 lg:overflow-visible">
           {/* Hero Text */}
           <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
           <Breadcrumbs
@@ -232,9 +232,9 @@ export default function CipPlatformPage() {
             ]}
             theme="red"
           />
-            <motion.h2 className="text-3xl font-bold leading-tight tracking-tight text-white max-w-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase max-w-3xl">
               <TypingText text="Governance and risk control for Critical Infrastructures." delay={0.5} />
-            </motion.h2>
+            </motion.h1>
 
             <p className="mt-4 max-w-2xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
               <TypingText text="The Keystone CIP Platform helps national authorities and large organizations oversee, classify, and secure essential operations in a unified view." delay={2} />

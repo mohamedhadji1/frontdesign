@@ -63,7 +63,7 @@ export default function AdversarialMLDefensePage() {
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">

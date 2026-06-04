@@ -19,10 +19,10 @@ export function CareersDropdown() {
             <button
               key={index}
               onMouseEnter={() => setActiveCategory(group.category)}
-              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-medium flex justify-between items-center ${
+              className={`text-left px-4 py-3 rounded-md transition-colors text-sm font-normal flex justify-between items-center ${
                 activeCategory === group.category
-                  ? "bg-gray-100 text-red-600"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-gray-100 text-red-600 font-medium"
+                  : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
               }`}
             >
               {group.category}

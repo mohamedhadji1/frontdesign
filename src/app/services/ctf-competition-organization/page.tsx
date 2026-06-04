@@ -121,7 +121,7 @@ export default function CtfCompetitionOrganizationPage() {
           >
             <source src="/vids/videoplayback.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/40 sm:bg-linear-to-r sm:from-black/85 sm:via-black/45 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent" />
           <div className="absolute inset-0 bg-[url('/background/vector/cyber-matrix.svg')] bg-cover bg-center opacity-15 mix-blend-screen" />
         </div>
 
@@ -138,7 +138,7 @@ export default function CtfCompetitionOrganizationPage() {
               { label: "CTF" },
             ]}
           />
-            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-extrabold tracking-tighter text-white leading-[1] mb-6 uppercase">
+            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] mb-6 uppercase">
               CTF Competition <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Organization</span>
             </motion.h1>
 

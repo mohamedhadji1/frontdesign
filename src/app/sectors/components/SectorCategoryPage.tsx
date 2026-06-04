@@ -85,8 +85,7 @@ export function SectorCategoryPage({
             className="h-full w-full object-cover opacity-42"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-zinc-950/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent" />
         <div className="absolute inset-0 bg-[url('/background/vector/network-nodes.svg')] bg-cover bg-center opacity-20 mix-blend-screen" />
 
         <motion.div variants={stagger} className="relative z-10 mx-auto w-full max-w-7xl">
@@ -100,7 +99,7 @@ export function SectorCategoryPage({
           />
 
 
-          <motion.h1 className="max-w-4xl text-4xl font-black tracking-tight md:text-6xl">
+          <motion.h1 className="max-w-4xl text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase">
             {title}
           </motion.h1>
           <motion.p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300 md:text-xl">

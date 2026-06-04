@@ -60,7 +60,7 @@ export function ServiceHeroSection({
             <source src={videoSrc} type="video/mp4" />
           </video>
         )}
-        <div className="absolute inset-0 bg-black/25 sm:bg-linear-to-r sm:from-black/65 sm:via-black/25 sm:to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-black/30 sm:bg-linear-to-r sm:from-black/75 sm:via-black/30 sm:to-transparent pointer-events-none" />
       </div>
 
       {/* Content */}
