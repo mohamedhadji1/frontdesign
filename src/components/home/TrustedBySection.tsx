@@ -8,7 +8,7 @@ const trainingPartners = [
   { name: "EC-Council", logo: "/trustedBy/training/EC-council.png", specialty: "Ethical Hacking & Security Certifications" },
   { name: "KnowBe4", logo: "/trustedBy/training/KnowBe4.png", specialty: "Security Awareness & Phishing Simulation" },
   { name: "PECB", logo: "/trustedBy/training/PECB.png", specialty: "ISO Standards Audit & Certifications" },
-  { name: "OffSec", logo: "/trustedBy/training/offsec.png", specialty: "Offensive Security & Pen Testing Training" },
+  { name: "OffSec", logo: "/trustedBy/training/offsec.png", specialty: "Offensive Security & Penetration Testing Training" },
 ];
 
 const internationalPartners = [

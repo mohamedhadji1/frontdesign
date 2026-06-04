@@ -4,7 +4,6 @@ import { ServicesCTASection } from "@/components/home/ServicesCTASection";
 import { WhoWeAreSection } from "@/components/home/WhoWeAreSection";
 import { SectorsSection } from "@/components/home/SectorsSection";
 import { CallToActionSection } from "@/components/home/CallToActionSection";
-import { NewsSection } from "@/components/home/NewsSection";
 import { TrustedBySection } from "@/components/home/TrustedBySection";
 import { MapSection } from "@/components/home/MapSection";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
@@ -30,8 +29,6 @@ export default function Home() {
       <SectorsSection />
       <CyberSectionDivider />
       <CallToActionSection />
-      <CyberSectionDivider />
-      <NewsSection />
       <CyberSectionDivider />
       <SectionDivider title="TRUSTED BY" className="bg-white pb-0" />
       <TrustedBySection />

@@ -62,13 +62,13 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const ext = file.name.split('.').pop()?.toLowerCase();
-      if (ext !== "pdf" && ext !== "docx") {
-        setCvError("Only PDF and DOCX files are allowed.");
+      if (ext !== "pdf") {
+        setCvError("Only PDF files are allowed.");
         setCvFile(null);
         return;
       }
-      if (file.size > 5 * 1024 * 1024) {
-        setCvError("File size must be under 5MB.");
+      if (file.size > 10 * 1024 * 1024) {
+        setCvError("File size must be under 10MB.");
         setCvFile(null);
         return;
       }
@@ -231,13 +231,13 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Upload CV (PDF or DOCX, Max 5MB) *</label>
+          <label className="block text-xs font-bold uppercase text-gray-500 mb-1">Upload CV (PDF or DOCX, Max 10MB) *</label>
           <div className="flex flex-col gap-2">
             <input
               type="file"
               name="cv"
               id="cv-upload-file"
-              accept=".pdf,.docx"
+              accept=".pdf"
               required
               onChange={handleFileChange}
               className="hidden"

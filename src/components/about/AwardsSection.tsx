@@ -30,14 +30,20 @@ export function AwardsSection() {
     {
       value: "3",
       label: "Strategic Offices",
-      desc: "Algiers, Tripoli, Nouakchott, Tunis.",
+      desc: "Algiers, Nouakchott, Tunis.",
       Icon: Building2,
     },
     {
-      value: "30+",
+      value: "35",
       label: "Countries Covered",
       desc: "Active operations across Africa & Europe (EMEA).",
       Icon: Globe,
+    },
+    {
+      value: "+600",
+      label: "Successful Projects",
+      desc: "Delivering cybersecurity solutions across the EMEA region.",
+      Icon: Award,
     },
     {
       value: "250+",
@@ -174,7 +180,7 @@ export function AwardsSection() {
 
         {/* 1. Key Statistics (Stats Grid) */}
         <div className="mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {stats.map((stat, idx) => {
               const Icon = stat.Icon;
               return (

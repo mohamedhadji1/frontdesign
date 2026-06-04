@@ -85,6 +85,7 @@ Tel: +222 26976239`
   { id: "td", name: "Chad", coordinates: [15.0557, 12.1348], type: "client", address: "Central Africa presence\nN'Djamena, Chad" },
   { id: "cm", name: "Cameroon", coordinates: [11.5021, 3.8480], type: "client", address: "Central Africa operations\nYaoundé, Cameroon" },
   { id: "ga", name: "Gabon", coordinates: [9.4544, 0.4162], type: "client", address: "Central Africa hub\nLibreville, Gabon" },
+  { id: "ly", name: "Libya", coordinates: [17.2283, 26.3351], type: "client", address: "North Africa operations\nTripoli, Libya" },
 ];
 
 
@@ -341,7 +342,7 @@ export function MapSection() {
           {(() => {
             const offices = locations.filter(l => l.type === "office");
             const clients = locations.filter(l => l.type === "client");
-            const africa  = clients.filter(l => ["ma","eh","ml","ne","eg","bj","bi","ci","cd","gn","ke","ng","cg","sn","tg","tz","et","dj","rw","mz","cv","km","td","cm","ga"].includes(l.id));
+            const africa  = clients.filter(l => ["ma","eh","ml","ne","eg","bj","bi","ci","cd","gn","ke","ng","cg","sn","tg","tz","et","dj","rw","mz","cv","km","td","cm","ga","ly"].includes(l.id));
             const europe  = clients.filter(l => ["fr","de","be","it","lu","cy"].includes(l.id));
             const asia    = clients.filter(l => ["sa","qa"].includes(l.id));
             const total   = clients.length;

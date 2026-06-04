@@ -5,7 +5,8 @@ import { aboutContent } from "@/lib/about-data";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { useRef } from "react";
-import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -268,14 +269,16 @@ export function CompanyOverview() {
                 <p className="text-red-100 text-lg mb-10 font-medium">
                   Discover how Keystone protects businesses and organizations in the EMEA region.
                 </p>
-                <motion.button 
-                  whileHover={{ scale: 1.05, x: 10 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-4 font-bold uppercase tracking-widest text-sm bg-white text-red-600 px-10 py-5 rounded-full shadow-2xl hover:bg-zinc-100 transition-colors"
-                >
-                  Get Started Now
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </motion.button>
+                <Link href="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05, x: 10 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-4 font-bold uppercase tracking-widest text-sm bg-white text-red-600 px-10 py-5 rounded-full shadow-2xl hover:bg-zinc-100 transition-colors"
+                  >
+                    Get Started
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </motion.button>
+                </Link>
               </div>
             </motion.div>
           </div>

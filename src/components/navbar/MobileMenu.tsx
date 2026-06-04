@@ -205,7 +205,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         {item.subItems.map((sub: string | { name: string; slug?: string }, subIdx: number) => {
                                           const subName = typeof sub === 'object' ? sub.name : sub;
                                           const subHref = typeof sub === 'object' && sub.slug
-                                            ? `/${sub.slug}`
+                                            ? (sub.slug.startsWith('services/') ? `/${sub.slug}` : `/services/${sub.slug}`)
                                             : `/services/${itemSlug || slugify(itemName)}#${slugify(subName)}`;
 
                                           return (

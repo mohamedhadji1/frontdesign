@@ -118,14 +118,29 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 30+ Countries</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 35 Countries</motion.h2>
                 <Link href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
                   See Our Global Impact
                 </Link>
               </div>
             </div>
 
-            {/* Stat 2 */}
+            {/* Stat 2 - Projects */}
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center lg:items-start">
+              <div className="shrink-0 flex items-center justify-center">
+                <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="12" width="48" height="40" rx="4" fill="white" stroke="#111" strokeWidth="3" />
+                  <rect x="12" y="16" width="40" height="8" rx="2" fill="#ef4444" />
+                  <path d="M16 32h32M16 40h20" stroke="#111" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M44 36l4 4 8-8" stroke="#ef4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">+600 Successful Projects</motion.h2>
+              </div>
+            </div>
+
+            {/* Stat 3 */}
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center lg:items-start">
               <div className="shrink-0 flex items-center justify-center">
                 <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +157,7 @@ export function WhoWeAreSection() {
               </div>
             </div>
 
-            {/* Stat 3 */}
+            {/* Stat 4 */}
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center lg:items-start">
               <div className="shrink-0 flex items-center justify-center">
                 <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,7 +274,7 @@ export function WhoWeAreSection() {
                 Our Team
               </motion.h2>
               <p className="mb-10 text-base leading-relaxed text-gray-600 sm:text-[17px]">
-                Our team of cybersecurity specialists embodies excellence, holding an impressive array of international certifications and extensive expertise in various fields of information security. Each member brings specialized skills and extensive experience, allowing us to offer tailored solutions, adapted to the specific challenges of our clients.
+                Our team of cybersecurity specialists embodies excellence, holding an impressive array of international certifications and extensive expertise in various fields of information security. Each member brings specialized skills and extensive experience, allowing us to offer tailored solutions adapted to the specific challenges of our clients.
               </p>
 
               <motion.ul

@@ -35,7 +35,7 @@ const services = [
   },
   {
     title: "Training & Awareness",
-    description: "Our training and awareness programs are designed to change safety behaviors. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security.",
+    description: "Our training and awareness programs are designed to strengthen security awareness. Using interactive and engaging methods, we train your staff to recognize, report, and respond effectively to threats, thereby transforming each employee into a strong link in your overall security.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -52,11 +52,20 @@ const services = [
     ),
   },
   {
-    title: "Security assessment",
-    description: "Our Security assessment services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
+    title: "Security Assessment",
+    description: "Our security assessment services provide a comprehensive assessment of your infrastructure, identifying potential gaps and offering specific recommendations to enhance security. We also assist you in implementing these recommendations to ensure enhanced security.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+    ),
+  },
+  {
+    title: "AI & Cybersecurity",
+    description: "Leveraging artificial intelligence to enhance cybersecurity operations, from AI-powered threat detection and adversarial ML defense to generative AI governance and LLM security assessments, ensuring your organization stays ahead of evolving threats.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 00-.659 1.591V21.5M5 14.5l2.47 2.47a2.25 2.25 0 01.659 1.591V21.5m0 0h8.25M7.13 21.5a1.125 1.125 0 01-1.125-1.125v-.5c0-.621.504-1.125 1.125-1.125h9.74c.621 0 1.125.504 1.125 1.125v.5c0 .621-.504 1.125-1.125 1.125" />
       </svg>
     ),
   }
@@ -81,7 +90,7 @@ export function ServicesSection() {
             transition={{ delay: 0.1 }}
             className="mt-4 text-base font-medium leading-relaxed text-gray-600 sm:text-lg"
           >
-            Comprehensive cybersecurity solutions designed to protect your organization anticipate threats, and strengthen your digital resilience.
+            Comprehensive cybersecurity solutions designed to protect your organization, anticipate threats, and strengthen your digital resilience.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
@@ -134,9 +143,8 @@ export function ServicesSection() {
         <svg className="absolute inset-0 w-full h-[600px] pointer-events-none z-0" viewBox="0 0 1152 600">
           {services.map((_, idx) => {
             const isActive = activeIndex === idx;
-            const yPos = (idx * 90) + 75; // Y positions: 75, 165, 255, 345, 435, 535
+            const yPos = (idx * 75) + 75;
 
-            // X coordinates: left list ends roughly around 380px. Center Hub is at 576px.
             const startX = 380;
             const targetX = 576;
             const targetY = 300;
@@ -160,7 +168,7 @@ export function ServicesSection() {
         <div className="absolute left-0 top-0 h-[600px] w-[380px] z-10 flex flex-col justify-center">
           {services.map((service, idx) => {
             const isActive = activeIndex === idx;
-            const yPos = (idx * 90) + 75;
+            const yPos = (idx * 75) + 75;
 
             return (
               <div

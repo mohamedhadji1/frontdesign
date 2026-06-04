@@ -22,12 +22,12 @@ const sectors = [
   },
   {
     title: "Telecom & IT",
-    description: "Digital infrastructures, cybersecurity, and telecommunication networks. Our expertise guarantees fluid communications and cutting-edge security for your vital systems.",
+    description: "Digital infrastructures, cybersecurity, and telecommunications networks. Our expertise guarantees fluid communications and cutting-edge security for your vital systems.",
     icon: Cpu,
   },
   {
     title: "Transportation",
-    description: "Logistics optimization, fleet management, and smart mobility. Face tomorrow's challenges with our connected transport regulation platforms.",
+    description: "Logistics optimization, fleet management, and smart mobility. Face tomorrow's challenges with our smart transportation management platforms.",
     icon: Truck,
   },
   {

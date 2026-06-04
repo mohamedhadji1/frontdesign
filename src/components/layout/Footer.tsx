@@ -29,7 +29,7 @@ export function Footer() {
               />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-zinc-400">
-              Elite cybersecurity experts protecting your business from evolving threats. We secure what matters most to you.
+              Our elite cybersecurity experts protect your business from evolving threats. We secure what matters most to you.
             </p>
           </div>
 

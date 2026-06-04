@@ -7,7 +7,7 @@ export type SectorLink = {
 
 export const careersDetails = [
   {
-    category: "Internships Offers",
+    category: "Internship Positions",
     description: "Kickstart your career with our specialized internship programs. Learn from experts and work on real-world cybersecurity projects.",
     cta: "Join as Intern",
     items: [
@@ -18,7 +18,7 @@ export const careersDetails = [
     ],
   },
   {
-    category: "Junior Offers",
+    category: "Junior Positions",
     description: "Launch your professional journey. We provide the tools, mentorship, and environment for junior talent to become industry leaders.",
     cta: "Start Your Career",
     items: [
@@ -29,7 +29,7 @@ export const careersDetails = [
     ],
   },
   {
-    category: "Senior Offers",
+    category: "Senior Positions",
     description: "Lead the defense. We're looking for experienced professionals to drive innovation and protect global infrastructures.",
     cta: "Lead Our Team",
     items: [

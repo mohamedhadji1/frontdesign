@@ -26,7 +26,7 @@ const mainAssessments = [
     title: "Web & Mobile Assessment",
     description:
       "In-depth dynamic and static assessments of your web and mobile applications to identify critical vulnerabilities before attackers can exploit them.",
-    href: "/services/offensive-security/web-mobile-application-assessment",
+    href: "/services/web-mobile-application-assessment",
     icon: Smartphone,
   },
   {
