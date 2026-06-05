@@ -199,7 +199,7 @@ export function HeroSection() {
           <div className="rounded-2xl border border-white/20 bg-black/40 p-4 shadow-2xl backdrop-blur-l sm:p-6">
             <div className="mb-6 flex items-center justify-between gap-3">
               <motion.h2 className="text-lg font-bold uppercase tracking-wider text-white sm:text-xl">Events</motion.h2>
-              <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Coming Soon</span>
+              <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Upcoming Events</span>
             </div>
 
             {events.length > 0 ? (

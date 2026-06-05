@@ -43,19 +43,19 @@ const offices = [
   {
     name: "Algeria Office",
     address: "Centre des Affaires Mohammadia Mall N°1272, ALGER",
-    phone: "+213 21 600 000",
+    phone: "+213 (0) 23 80 47 57",
     email: "contact@keystone-corporation.com",
   },
-    {
+  {
     name: "Mauritania Office",
-    address: "N° 225 Ext Not module, L TVZ , Nouakchott",
-    phone: "+222 45 250 000",
+    address: "Adresse mauritanie : 301, EXT SECTEUR 1 FNORD, NOUAKCHOTT. TEL + 222 43 64 76 75.",
+    phone: "+222 43 64 76 75",
     email: "contact@keystone-corporation.com",
   },
   {
     name: "Tunisia Office",
     address: "Angle Rue El Waquidi, El Menzah 4 et du boulevard Charles Nicolle – Tunis",
-    phone: "+216 71 860 000",
+    phone: "+216 71 755 755",
     email: "contact@keystone-corporation.com",
   },
 ];

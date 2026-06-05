@@ -172,7 +172,7 @@ export const sectorPages = {
       "Work with Keystone to protect patient data, clinical systems, and healthcare service continuity.",
     regulations: ["GDPR", "HIPAA", "NIST CSF"],
     recommendedServices: [
-      { name: "Managed SOC", href: "/services/defensive-security/soc-management" },
+      { name: "SOC Management", href: "/services/defensive-security/soc-management" },
       { name: "Governance, Risk & Compliance", href: "/services/governance-risk-compliance" },
       { name: "Security Assessment", href: "/services/security-assessment" }
     ],
@@ -293,7 +293,7 @@ export const sectorPages = {
     regulations: ["NIS 2 Directive", "ISO 27001", "GDPR"],
     recommendedServices: [
       { name: "Red Team Assessment", href: "/services/red-team" },
-      { name: "Managed SOC", href: "/services/defensive-security/soc-management" },
+      { name: "SOC Management", href: "/services/defensive-security/soc-management" },
       { name: "DNS Filtering Solutions", href: "/solutions/dns-filtering" }
     ],
     expectedOutcomes: [
@@ -772,7 +772,7 @@ export const sectorPages = {
     regulations: ["PCI DSS", "DORA", "SWIFT CSP", "SOC 2 Type II", "ISO 27001"],
     recommendedServices: [
       { name: "Red Team Simulation", href: "/services/red-team" },
-      { name: "Managed SOC Services", href: "/services/defensive-security/soc-management" },
+      { name: "SOC Management", href: "/services/defensive-security/soc-management" },
       { name: "Keystone ARENA Platform", href: "/solutions/keystone-arena" }
     ],
     expectedOutcomes: [

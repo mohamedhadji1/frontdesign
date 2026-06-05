@@ -105,9 +105,9 @@ export const servicesDetails: ServiceCategory[] = [
     title: "Managed Services",
     items: [
       {
-        name: "Managed SOC",
+        name: "SOC Management",
         slug: "defensive-security/soc-management",
-        subCategory: "Managed SOC: Proactive Monitoring & Response",
+        subCategory: "SOC Management: Proactive Monitoring & Response",
         subItems: [
           { name: "Blue Team", slug: "defensive-security/blue-team" },
           { name: "Vulnerability Scanning", slug: "defensive-security/vulnerability-scanning" },

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Managed SOC | Keystone",
+  title: "SOC Management | Keystone",
   description: "Comprehensive 24/7 monitoring, vulnerability scanning, incident management, threat intelligence, and anti-phishing solutions to protect your organization.",
 };
 

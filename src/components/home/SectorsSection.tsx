@@ -16,19 +16,14 @@ import {
 
 const sectors = [
   {
-    title: "Healthcare",
-    description: "Innovative technological solutions for the medical sector and public health. We design robust systems to improve care efficiency and patient data management.",
-    icon: HeartPulse,
+    title: "Finance",
+    description: "Banking, insurance, and risk management through data analytics tools. Robust security solutions to protect transactions and ensure regulatory compliance.",
+    icon: Building2,
   },
   {
     title: "Telecom & IT",
-    description: "Digital infrastructures, cybersecurity, and telecommunications networks. Our expertise guarantees fluid communications and cutting-edge security for your vital systems.",
+    description: "Digital infrastructures, cybersecurity, and telecommunication networks. Our expertise guarantees fluid communications and cutting-edge security for your vital systems.",
     icon: Cpu,
-  },
-  {
-    title: "Transportation",
-    description: "Logistics optimization, fleet management, and smart mobility. Face tomorrow's challenges with our smart transportation management platforms.",
-    icon: Truck,
   },
   {
     title: "Energy",
@@ -36,19 +31,9 @@ const sectors = [
     icon: Zap,
   },
   {
-    title: "Fintech & Start-ups",
-    description: "Technological support, digital payments, and financial innovations. Accelerate your growth with reliable and scalable transactional ecosystems.",
-    icon: Rocket,
-  },
-  {
-    title: "Finance",
-    description: "Banking, insurance, and risk management through data analytics tools. Robust security solutions to protect transactions and ensure regulatory compliance.",
-    icon: Building2,
-  },
-  {
-    title: "Media",
-    description: "Broadcasting strategies, content management, and digital platforms. Modernize your information distribution with our highly available infrastructures.",
-    icon: Tv,
+    title: "Government & Public Sector",
+    description: "Smart city, e-administration, and modernization of public services. Protect critical state data and make citizen access to services smoother and more secure.",
+    icon: Landmark,
   },
   {
     title: "Industrial",
@@ -56,9 +41,24 @@ const sectors = [
     icon: Factory,
   },
   {
-    title: "Government & Public Sector",
-    description: "Smart city, e-administration, and modernization of public services. Protect critical state data and make citizen access to services smoother and more secure.",
-    icon: Landmark,
+    title: "Healthcare",
+    description: "Innovative technological solutions for the medical sector and public health. We design robust systems to improve care efficiency and patient data management.",
+    icon: HeartPulse,
+  },
+  {
+    title: "Transportation",
+    description: "Logistics optimization, fleet management, and smart mobility. Face tomorrow's challenges with our connected transport regulation platforms.",
+    icon: Truck,
+  },
+  {
+    title: "Fintech & Start-ups",
+    description: "Technological support, digital payments, and financial innovations. Accelerate your growth with reliable and scalable transactional ecosystems.",
+    icon: Rocket,
+  },
+  {
+    title: "Media",
+    description: "Broadcasting strategies, content management, and digital platforms. Modernize your information distribution with our highly available infrastructures.",
+    icon: Tv,
   },
 ];
 

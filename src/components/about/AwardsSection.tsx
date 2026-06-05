@@ -30,20 +30,14 @@ export function AwardsSection() {
     {
       value: "3",
       label: "Strategic Offices",
-      desc: "Algiers, Nouakchott, Tunis.",
+      desc: "Algiers, Tripoli, Nouakchott, Tunis.",
       Icon: Building2,
     },
     {
-      value: "35",
+      value: "30+",
       label: "Countries Covered",
       desc: "Active operations across Africa & Europe (EMEA).",
       Icon: Globe,
-    },
-    {
-      value: "+600",
-      label: "Successful Projects",
-      desc: "Delivering cybersecurity solutions across the EMEA region.",
-      Icon: Award,
     },
     {
       value: "250+",
@@ -90,7 +84,33 @@ export function AwardsSection() {
       ref: "01 153 2515644",
       validity: "From 2026-04-06 until 2029-04-05",
     },
-    
+    {
+      logo: "/trustedBy/monetique.png",
+      title: "GIE Monétique",
+      desc: "Electronic banking security compliance certification",
+      status: "Active / Certified",
+      certifier: "GIE Monétique",
+      ref: "GIEM-2026-887",
+      validity: "Continuous compliance",
+    },
+    {
+      logo: "/certif/SWIFT.png",
+      title: "SWIFT CSP",
+      desc: "Customer Security Programme assessment and compliance",
+      status: "Compliant",
+      certifier: "SWIFT Independent Assessment",
+      ref: "SWIFT-CSP-2026",
+      validity: "Annual declaration active",
+    },
+    {
+      logo: "/certif/Nist.webp",
+      title: "ANCS",
+      desc: "National Agency for Computer Security certification",
+      status: "Certified",
+      certifier: "ANCS Tunisia",
+      ref: "ANCS-CERT-2026",
+      validity: "Active / Verified",
+    },
   ];
 
   // Supported Compliance Frameworks
@@ -149,6 +169,21 @@ export function AwardsSection() {
       desc: "Privacy Information Management Systems (PIMS)",
       
     },
+    {
+      logo: "/certif/27005.png",
+      title: "ISO/IEC 27025",
+      desc: "General requirements for the competence of testing and calibration laboratories",
+    },
+    {
+      logo: "/certif/27002.svg",
+      title: "OWASP ASVS",
+      desc: "Application Security Verification Standard framework support",
+    },
+    {
+      logo: "/certif/27701.png",
+      title: "SIM3",
+      desc: "Security Incident Management Maturity Model framework support",
+    },
   ];
 
 
@@ -180,7 +215,7 @@ export function AwardsSection() {
 
         {/* 1. Key Statistics (Stats Grid) */}
         <div className="mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, idx) => {
               const Icon = stat.Icon;
               return (
@@ -338,7 +373,7 @@ export function AwardsSection() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-8 border-b pb-3 border-zinc-100">
               Certified Management Systems
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {certifiedSystems.map((cert, idx) => (
                 <motion.div
                   key={idx}

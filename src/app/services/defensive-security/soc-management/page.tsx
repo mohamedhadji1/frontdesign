@@ -160,7 +160,7 @@ export default function Page() {
               SOC Capabilities
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-zinc-900 tracking-tight leading-tight mt-2 uppercase">
-              Managed SOC: Proactive Monitoring & Response
+              SOC Management: Proactive Monitoring & Response
             </h2>
             <p className="text-zinc-600 text-lg mt-6 leading-relaxed font-medium">
               Keystone delivers a state-of-the-art managed Security Operations Center (SOC) to provide continuous defense and intelligence-led counter-measures.

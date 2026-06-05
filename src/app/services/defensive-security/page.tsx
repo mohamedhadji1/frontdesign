@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 
@@ -65,9 +65,9 @@ const benefits = [
 // Interactive Sub-Services Data (Second Column & Nested Content)
 const pillars = {
   soc: {
-    title: "Managed SOC",
+    title: "SOC Management",
     subtitle: "Surveillance and Proactive Response",
-    intro: "Keystone offers a managed SOC to ensure continuous monitoring and a proactive response to security threats.",
+    intro: "Keystone offers SOC Management to ensure continuous monitoring and a proactive response to security threats.",
     features: [
       { name: "24/7 Monitoring", desc: "Constant monitoring of security-related activities and events to detect anomalies and potential threats." },
       { name: "Threat Detection", desc: "Early identification of emerging threats through advanced detection tools and technologies." },
@@ -75,7 +75,7 @@ const pillars = {
       { name: "Vulnerability Management", desc: "Continuous assessment of vulnerabilities and potential risks for proactive protection." },
       { name: "Reports and Analysis", desc: "Provision of detailed reports on SOC activities, detected threats, and actions taken." }
     ],
-    closing: "Keystone ensures constant monitoring and proactive threat response through its managed SOC. Contact us to strengthen the security of your systems.",
+    closing: "Keystone ensures constant monitoring and proactive threat response through its SOC Management. Contact us to strengthen the security of your systems.",
     items: [
       {
         id: "blue-team",

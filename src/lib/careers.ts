@@ -63,7 +63,7 @@ export const jobSpecifications: Record<string, JobSpecification> = {
     location: "Tunis, Tunisia (Hybrid)",
     employmentType: "Internship (4-6 Months)",
     responsibilities: [
-      "Assist in monitoring security alerts within our Managed SOC.",
+      "Assist in monitoring security alerts within our SOC Management.",
       "Analyze suspicious emails and potential phishing indicators.",
       "Document incident details and draft weekly threat summaries.",
       "Perform basic log analysis using SIEM tools."

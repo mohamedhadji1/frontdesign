@@ -596,7 +596,7 @@ export function PublicSectorPage() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { name: "Managed SOC & CERT Support", href: "/services/defensive-security/soc-management" },
+                  { name: "SOC Management & CERT Support", href: "/services/defensive-security/soc-management" },
                   { name: "Cyber Exercise Design", href: "/services/cyber-exercise" },
                   { name: "Governance & Risk Advisory", href: "/services/governance-risk-compliance" },
                   { name: "Critical Infrastructure Protection", href: "/solutions/cip-platform" }

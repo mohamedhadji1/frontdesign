@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -26,7 +26,7 @@ const stagger: Variants = {
 
 const updates: SubscriptionCard[] = [
   {
-    title: "Managed SOC support",
+    title: "SOC Management support",
     description: "A subscription model for teams that want ongoing support without building a full internal SOC first.",
     icon: Clock3,
   },
@@ -150,7 +150,7 @@ export default function SocSubscriptionPage() {
               We will share the SOC subscription launch details here first.
             </motion.h2>
             <motion.p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
-              If you want to discuss managed SOC support before launch, the contact team can route your request now.
+              If you want to discuss SOC Management support before launch, the contact team can route your request now.
             </motion.p>
           </motion.div>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>

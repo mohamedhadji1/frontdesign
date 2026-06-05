@@ -28,7 +28,7 @@ const locations: Location[] = [
     coordinates: [9.5375, 33.8869],
     type: "office",
     address: `Tunisia Office:
-Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
+Angle Rue El Waquidi, El Menzah 4 et du boulevard Charles Nicolle – Tunis
 +216 71 755 755`
   },
   {
@@ -37,7 +37,7 @@ Corner of Rue El Waquidi, El Menzah 4 and Boulevard Charles Nicolle – Tunis
     coordinates: [1.6596, 28.0339],
     type: "office",
     address: `Algeria Office:
-Mohammadia Mall Business Center No. 1272, Algiers
+Centre des Affaires Mohammadia Mall N°1272, ALGER
 +213 (0) 23 80 47 57`
   },
   {
@@ -45,12 +45,13 @@ Mohammadia Mall Business Center No. 1272, Algiers
     name: "Mauritania",
     coordinates: [-10.9408, 21.0079],
     type: "office",
-    address: `Mauritania Office:
-No. 225 EXT NOT MODULE L TVZ Nouakchott
-Tel: +222 26976239`
+    address: `Adresse mauritanie : 301, EXT SECTEUR 1 FNORD, NOUAKCHOTT. TEL + 222 43 64 76 75.`
   },
 
   // Europe clients
+  { id: "tn", name: "Tunisia", coordinates: [9.5375, 34.3], type: "client", address: "Client presence in Tunis, Sfax and Sousse." },
+  { id: "dz", name: "Algeria", coordinates: [1.6596, 29.5], type: "client", address: "Client presence in Algiers, Oran and Constantine." },
+  { id: "mr", name: "Mauritania", coordinates: [-10.9408, 19.5], type: "client", address: "Client presence in Nouakchott." },
   { id: "fr", name: "France", coordinates: [2.2137, 46.2276], type: "client", address: "Major operations across multiple client facilities in France." },
   { id: "de", name: "Germany", coordinates: [10.4515, 51.1657], type: "client", address: "Client facilities across Germany." },
   { id: "be", name: "Belgium", coordinates: [4.4699, 50.5039], type: "client", address: "Client presence in Brussels, Belgium." },
@@ -85,7 +86,6 @@ Tel: +222 26976239`
   { id: "td", name: "Chad", coordinates: [15.0557, 12.1348], type: "client", address: "Central Africa presence\nN'Djamena, Chad" },
   { id: "cm", name: "Cameroon", coordinates: [11.5021, 3.8480], type: "client", address: "Central Africa operations\nYaoundé, Cameroon" },
   { id: "ga", name: "Gabon", coordinates: [9.4544, 0.4162], type: "client", address: "Central Africa hub\nLibreville, Gabon" },
-  { id: "ly", name: "Libya", coordinates: [17.2283, 26.3351], type: "client", address: "North Africa operations\nTripoli, Libya" },
 ];
 
 
@@ -342,7 +342,7 @@ export function MapSection() {
           {(() => {
             const offices = locations.filter(l => l.type === "office");
             const clients = locations.filter(l => l.type === "client");
-            const africa  = clients.filter(l => ["ma","eh","ml","ne","eg","bj","bi","ci","cd","gn","ke","ng","cg","sn","tg","tz","et","dj","rw","mz","cv","km","td","cm","ga","ly"].includes(l.id));
+            const africa  = clients.filter(l => ["tn","dz","mr","ma","eh","ml","ne","eg","bj","bi","ci","cd","gn","ke","ng","cg","sn","tg","tz","et","dj","rw","mz","cv","km","td","cm","ga"].includes(l.id));
             const europe  = clients.filter(l => ["fr","de","be","it","lu","cy"].includes(l.id));
             const asia    = clients.filter(l => ["sa","qa"].includes(l.id));
             const total   = clients.length;
