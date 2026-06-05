@@ -232,7 +232,7 @@ export default function CipPlatformPage() {
             ]}
             theme="red"
           />
-            <motion.h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-light tracking-tight text-white leading-[1.05] uppercase max-w-3xl">
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-light tracking-tight text-white leading-[1.05] uppercase max-w-2xl">
               <TypingText text="Governance and risk control for Critical Infrastructures." delay={0.5} />
             </motion.h1>
 

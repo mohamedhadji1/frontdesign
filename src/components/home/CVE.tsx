@@ -142,7 +142,7 @@ export function CVE() {
 
           <p className="font-sans text-sm text-zinc-500 max-w-lg leading-relaxed">
             Responsibly disclosed zero-days across critical enterprise
-            ecosystems by our offensive security research team.
+            ecosystems by our vulnerability security research team.
           </p>
         </div>
 
