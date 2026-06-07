@@ -1,9 +1,15 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { SectionDivider } from "@/components/ui/SectionDivider";
+import { CyberSectionDivider } from "../ui/CyberSectionDivider";
+import { CertificationsList } from "./CertificationsList";
+
 const trainingPartners = [
-  { name: "EC-Council", logo: "/trustedBy/training/EC-council.png", specialty: "Ethical Hacking & Security Certifications" },
+  { name: "EC-Council", logo: "/certif/EC-council.png", specialty: "Ethical Hacking & Security Certifications" },
   { name: "KnowBe4", logo: "/trustedBy/training/KnowBe4.png", specialty: "Security Awareness & Phishing Simulation" },
-  { name: "PECB", logo: "/trustedBy/training/PECB.png", specialty: "ISO Standards Audit & Certifications" },
+  { name: "PECB", logo: "/certif/PECB.png", specialty: "ISO Standards Audit & Certifications" },
   { name: "OffSec", logo: "/trustedBy/training/offsec.png", specialty: "Offensive Security & Pen Testing Training" },
 ];
 
@@ -103,13 +109,14 @@ function MarqueeRow({
   direction: "rtl" | "ltr";
   duration: number;
 }) {
-  // Double the list for seamless infinite loop
+  const [paused, setPaused] = useState(false);
   const items = [...partners, ...partners];
-
   const animationName = direction === "rtl" ? "marquee-rtl" : "marquee-ltr";
 
   return (
     <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       style={{
         overflow: "hidden",
         maskImage: MASK,
@@ -128,6 +135,7 @@ function MarqueeRow({
           width: "max-content",
           willChange: "transform",
           animation: `${animationName} ${duration}s linear infinite`,
+          animationPlayState: paused ? "paused" : "running",
         }}
         className="marquee-track"
       >
@@ -151,6 +159,7 @@ function MarqueeRow({
                   justifyContent: "center",
                   padding: "4px",
                   transition: "transform 0.3s ease",
+                  position: "relative",
                 }}
                 className="logo-card"
               >
@@ -163,10 +172,11 @@ function MarqueeRow({
                     maxHeight: "100%",
                     objectFit: "contain",
                     transform: `scale(${scale})`,
-                    transition: "transform 0.3s ease",
+                    transition: "transform 0.3s ease, filter 0.3s ease",
                   }}
                   className="logo-img"
                 />
+                <span className="logo-tooltip">{partner.name}</span>
               </div>
             </li>
           );
@@ -176,17 +186,113 @@ function MarqueeRow({
   );
 }
 
+function TrainingPartnerCard({ partner, index }: { partner: typeof trainingPartners[0]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="partner-card"
+    >
+      <div className="card-inner">
+        <div className="logo-container">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={partner.logo} alt={partner.name} />
+        </div>
+        <div className="partner-info">
+          <h3>{partner.name}</h3>
+          <p>{partner.specialty}</p>
+        </div>
+      </div>
+      <style jsx>{`
+        .partner-card {
+          height: 100%;
+          perspective: 1000px;
+        }
+        .card-inner {
+          background: #ffffff;
+          border: 1px solid #f1f5f9;
+          border-radius: 20px;
+          padding: 32px 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+          cursor: pointer;
+          height: 100%;
+          position: relative;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .card-inner:hover {
+          transform: translateY(-8px);
+          border-color: rgba(37, 99, 235, 0.2);
+          box-shadow: 0 12px 24px -10px rgba(37, 99, 235, 0.1);
+        }
+        .card-inner::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          background: radial-gradient(circle at center, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+        }
+        .card-inner:hover::after {
+          opacity: 1;
+        }
+        .logo-container {
+          height: 60px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 24px;
+        }
+        .logo-container img {
+          max-height: 100%;
+          max-width: 100%;
+          object-fit: contain;
+          filter: grayscale(0.2);
+          transition: filter 0.4s ease;
+        }
+        .card-inner:hover .logo-container img {
+          filter: grayscale(0);
+        }
+        h3 {
+          font-family: var(--font-gotham, sans-serif);
+          font-size: 1.125rem;
+          font-weight: 500;
+          color: #1e293b;
+          margin: 0 0 8px 0;
+          letter-spacing: -0.01em;
+        }
+        p {
+          font-family: var(--font-gotham, sans-serif);
+          font-size: 0.8125rem;
+          font-weight: 400;
+          color: #64748b;
+          line-height: 1.5;
+          margin: 0;
+        }
+      `}</style>
+    </motion.div>
+  );
+}
+
 export function TrustedBySection() {
   return (
     <section
       style={{
-        background: "#fff",
-        paddingTop: "48px",
-        paddingBottom: "48px",
+        background: "#ffffff",
+        paddingTop: "60px",
+        paddingBottom: "100px",
         position: "relative",
         overflow: "hidden",
         width: "100%",
-        borderTop: "1px solid #f4f4f5",
+        borderTop: "1px solid #f1f5f9",
       }}
     >
       <style jsx global>{`
@@ -199,41 +305,146 @@ export function TrustedBySection() {
           100% { transform: translateX(0); }
         }
 
-        /* Pause entire track on row hover */
-        .marquee-row-wrapper:hover .marquee-track {
-          animation-play-state: paused;
-        }
-
-        /* Card lift on hover */
         .logo-card:hover {
           transform: scale(1.04);
+        }
+
+        .logo-tooltip {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.9);
+          background: rgba(15, 23, 42, 0.92);
+          color: #ffffff;
+          font-family: var(--font-gotham, sans-serif);
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          padding: 8px 18px;
+          border-radius: 10px;
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+          z-index: 20;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+          backdrop-filter: blur(4px);
+        }
+
+        .logo-card:hover .logo-tooltip {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+
+        .logo-card:hover .logo-img {
+          filter: brightness(0.5) drop-shadow(0 2px 8px rgba(0,0,0,0.1));
         }
       `}</style>
 
       <div
         style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 24px",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          style={{ textAlign: "center", marginBottom: "40px" }}
+        >
+          <h3 style={{
+            fontFamily: "var(--font-gotham, sans-serif)",
+            fontSize: "0.875rem",
+            fontWeight: 500,
+            color: "#64748b",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase"
+          }}>
+            Global Enterprise Trust
+          </h3>
+        </motion.div>
+      </div>
+
+      <div
+        style={{
           display: "flex",
           flexDirection: "column",
-          gap: "8px",
+          gap: "12px",
           position: "relative",
           zIndex: 10,
           width: "100%",
+          marginBottom: "80px"
         }}
       >
-        {/* Row 1 — International partners — RTL — 35s */}
         <div className="marquee-row-wrapper" style={{ paddingTop: "8px", paddingBottom: "8px" }}>
-          <MarqueeRow partners={internationalPartners} direction="rtl" duration={35} />
+          <MarqueeRow partners={internationalPartners} direction="rtl" duration={40} />
         </div>
 
-        {/* Row 2 — Gros comptes Tunisia — LTR — 38s */}
         <div className="marquee-row-wrapper" style={{ paddingTop: "8px", paddingBottom: "8px" }}>
-          <MarqueeRow partners={grosComptesPartners} direction="ltr" duration={38} />
+          <MarqueeRow partners={grosComptesPartners} direction="ltr" duration={70} />
         </div>
 
-        {/* Row 3 — Autres partners — RTL — 42s */}
         <div className="marquee-row-wrapper" style={{ paddingTop: "8px", paddingBottom: "8px" }}>
-          <MarqueeRow partners={autresPartners} direction="rtl" duration={42} />
+          <MarqueeRow partners={autresPartners} direction="rtl" duration={50} />
         </div>
+      </div>
+
+      <div
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 24px",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <CyberSectionDivider />
+        <SectionDivider title="Partnerships" theme="red" className="mb-16" />
+
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{
+              fontFamily: "var(--font-gotham, sans-serif)",
+              fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+              fontWeight: 400,
+              color: "#0f172a",
+              letterSpacing: "-0.02em",
+              margin: 0
+            }}
+          >
+            Training Partners
+          </motion.h1>
+          <p style={{
+            fontFamily: "var(--font-gotham, sans-serif)",
+            fontSize: "1rem",
+            color: "#64748b",
+            marginTop: "16px",
+            fontWeight: 400
+          }}>
+            Expert institutions delivering specialized cybersecurity certifications.
+          </p>
+        </div>
+
+        <div 
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "24px",
+          }}
+        >
+          {trainingPartners.map((partner, index) => (
+            <TrainingPartnerCard key={partner.name} partner={partner} index={index} />
+          ))}
+        </div>
+
+        <CertificationsList />
       </div>
     </section>
   );

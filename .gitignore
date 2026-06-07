@@ -43,3 +43,19 @@ next-env.d.ts
 # vs code settings
 /.vscode/
 /.claude/
+
+# Gemini & Codex
+/.codex/
+/.gemini_security/
+/GEMINI.md
+
+# Migration & Test JS scripts
+/build_components.js
+/check-original-dividers.js
+/check_conflicts.js
+/fix_breadcrumbs.js
+/fix_conflicts.js
+/gen_hero_sections.js
+/patch_pages.js
+/recolor.js
+/test_resend_10mb.js

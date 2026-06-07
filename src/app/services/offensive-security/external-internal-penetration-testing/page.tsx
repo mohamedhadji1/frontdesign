@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -116,7 +116,7 @@ export default function ExternalInternalPenetrationTestingPage() {
                   <div className="w-2 h-8 bg-red-600 rounded-full group-hover:scale-y-125 transition-transform" />
                   {service.title}
                 </h3>
-                <p className="text-zinc-600 leading-relaxed text-base font-medium mb-8 flex-grow">
+                <p className="text-zinc-650 leading-relaxed text-base font-medium mb-8 flex-grow">
                   {service.description}
                 </p>
                 <Link
@@ -201,7 +201,7 @@ export default function ExternalInternalPenetrationTestingPage() {
                   "External Perimeter & Firewalls Vulnerability Scan",
                   "Internal Pivot & Privilege Escalation Audits",
                   "Actionable Technical Guidance to Secure Infrastructure",
-                ].map((item) => (
+                ].map((item, index) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, x: -20 }}
@@ -209,8 +209,8 @@ export default function ExternalInternalPenetrationTestingPage() {
                     viewport={{ once: true }}
                     className="flex gap-4 items-center group"
                   >
-                    <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">
-                      âœ“
+                    <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all text-xs">
+                      {index + 1}
                     </div>
                     <p className="text-zinc-700 text-lg font-bold uppercase tracking-tight">
                       {item}

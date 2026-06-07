@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 export default function AdminSecretUrl() {
   // AUTH STATE
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
@@ -29,12 +30,25 @@ export default function AdminSecretUrl() {
   const [newsLoading, setNewsLoading] = useState(false);
   const [newsMessage, setNewsMessage] = useState("");
 
-  // Check if user is logged in on mount
+  // Check if user is logged in on mount securely via HttpOnly session checking
   useEffect(() => {
-    const storedAuth = localStorage.getItem("admin_auth");
-    if (storedAuth) {
-      setIsLoggedIn(true);
-    }
+    const checkSession = async () => {
+      try {
+        const response = await fetch("/api/admin-auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "check-session" }),
+        });
+        if (response.ok) {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        console.error("Session check failed", error);
+      } finally {
+        setCheckingAuth(false);
+      }
+    };
+    checkSession();
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -45,9 +59,7 @@ export default function AdminSecretUrl() {
     try {
       const response = await fetch("/api/admin-auth", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "login", email, password, captchaToken }),
       });
 
@@ -57,8 +69,6 @@ export default function AdminSecretUrl() {
         throw new Error(result.error || "Login failed");
       }
 
-      // Store auth token in localStorage
-      localStorage.setItem("admin_auth", result.token);
       setIsLoggedIn(true);
       setEmail("");
       setPassword("");
@@ -72,8 +82,17 @@ export default function AdminSecretUrl() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("admin_auth");
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin-auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "logout" }),
+      });
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+    
     setIsLoggedIn(false);
     setTitle("");
     setDate("");
@@ -92,26 +111,18 @@ export default function AdminSecretUrl() {
     setMessage("");
 
     try {
-      const authToken = localStorage.getItem("admin_auth");
-      if (!authToken) {
-        setMessage("You are not logged in");
-        setLoading(false);
-        return;
-      }
-
       const response = await fetch("/api/admin", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${authToken}`,
-        },
-        body: JSON.stringify({
-          action: "addEvent",
-          data: { title, date },
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "addEvent", data: { title, date } }),
       });
 
       const result = await response.json();
+
+      if (response.status === 401) {
+        setIsLoggedIn(false);
+        throw new Error("Session expired. Please log in again.");
+      }
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to post event");
@@ -139,53 +150,24 @@ export default function AdminSecretUrl() {
     setNewsMessage("");
 
     try {
-      const authToken = localStorage.getItem("admin_auth");
-      if (!authToken) {
-        setNewsMessage("You are not logged in");
-        setNewsLoading(false);
-        return;
-      }
-
-      let imageDownloadUrl = "";
-
-      // 1. Upload image to Cloudinary
-      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-      const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-
-      if (!cloudName || !uploadPreset) {
-        throw new Error("Cloudinary environment variables are missing.");
-      }
-
-      const formData = new FormData();
-      formData.append("file", newsImageFile);
-      formData.append("upload_preset", uploadPreset);
-
-      const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: "POST",
-        body: formData,
+      // 1. Convert image to base64
+      const imageBase64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(newsImageFile);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = error => reject(error);
       });
 
-      const uploadData = await uploadRes.json();
-      
-      if (!uploadRes.ok) {
-        throw new Error(uploadData.error?.message || "Failed to upload image to Cloudinary");
-      }
-
-      imageDownloadUrl = uploadData.secure_url;
-
-      // 2. Save document via secure API
+      // 2. Save document via secure API (backend handles Cloudinary upload securely)
       const response = await fetch("/api/admin", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${authToken}`,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "addNews",
           data: {
             title: newsTitle,
             date: newsDate,
-            image: imageDownloadUrl,
+            imageBase64,
             excerpt: newsExcerpt,
             link: newsLink,
           },
@@ -193,6 +175,11 @@ export default function AdminSecretUrl() {
       });
 
       const result = await response.json();
+
+      if (response.status === 401) {
+        setIsLoggedIn(false);
+        throw new Error("Session expired. Please log in again.");
+      }
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to post news");
@@ -211,6 +198,14 @@ export default function AdminSecretUrl() {
       setNewsLoading(false);
     }
   };
+
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen py-20 flex justify-center items-center bg-black">
+        <div className="text-white text-xl animate-pulse">Checking Session...</div>
+      </div>
+    );
+  }
 
   // LOGIN PAGE
   if (!isLoggedIn) {
@@ -292,7 +287,7 @@ export default function AdminSecretUrl() {
       <div className="fixed top-6 right-6">
         <button
           onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors"
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors shadow-lg"
         >
           Logout
         </button>

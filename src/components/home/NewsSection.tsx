@@ -3,8 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { useState, useEffect } from "react";
-import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 
 interface KeystoneNews {
   id: string;
@@ -16,60 +14,65 @@ interface KeystoneNews {
   [key: string]: unknown;
 }
 
+// Simple helper to validate link protocols
+function getSafeLink(link: string) {
+  if (!link) return "#";
+  const lower = link.toLowerCase().trim();
+  if (lower.startsWith("javascript:") || lower.startsWith("data:") || lower.startsWith("vbscript:")) {
+    return "#";
+  }
+  return link;
+}
+
 export function NewsSection() {
   const [newsItems, setNewsItems] = useState<KeystoneNews[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fetch news from Firebase
+  // Fetch news from secure internal API
   useEffect(() => {
-    if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) return;
+    const fetchNews = async () => {
+      try {
+        const response = await fetch("/api/public-data?type=news&limit=10");
+        if (!response.ok) throw new Error("Failed to fetch news");
+        const fetchedNews = await response.json();
 
-    const q = query(collection(db, "news"), orderBy("date", "desc"), limit(10));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const fetchedNews = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        title: doc.data().title || "Untitled",
-        date: doc.data().date || new Date().toISOString(),
-        image: doc.data().image || "/background/bg1.jpg", // fallback image
-        excerpt: doc.data().excerpt || "No details available.",
-        link: doc.data().link || "#",
-        ...doc.data(),
-      })) as KeystoneNews[];
-
-      // Ensure we have at least some items to display or use fallbacks if DB is completely empty (for dev placeholder)
-      if (fetchedNews.length === 0) {
-        setNewsItems([
-          {
-            id: "1",
-            image: "/background/bg1.jpg",
-            title: "Keystone achieves ISO 27001 and SOC 2 Type II compliance certifications",
-            excerpt: "Demonstrating our commitment to the highest international security standards, Keystone has successfully completed its SOC 2 Type II audit and ISO 27001 certification.",
-            link: "/certifications",
-            date: new Date().toISOString()
-          },
-          {
-            id: "2",
-            image: "/background/bg2.jpg",
-            title: "Keystone announces strategic cyber defense partnership with Global Tech Alliance",
-            excerpt: "This collaboration integrates Keystone's AI-driven DNS filtering and Threat Intelligence platforms with global cloud infrastructures to secure enterprises against advanced persistent threat actors.",
-            link: "/contact",
-            date: new Date().toISOString()
-          },
-          {
-            id: "3",
-            image: "/background/bg3.jpg",
-            title: "Keystone releases its annual Global Threat Intelligence & Cyber Resilience Report",
-            excerpt: "A deep-dive analysis of threat vectors observed across critical infrastructures, providing executive insight on emerging ransomware tactics and attack surface mitigation strategies.",
-            link: "/services",
-            date: new Date().toISOString()
-          }
-        ]);
-      } else {
-        setNewsItems(fetchedNews);
+        // Ensure we have at least some items to display or use fallbacks if DB is completely empty
+        if (!fetchedNews || fetchedNews.length === 0) {
+          setNewsItems([
+            {
+              id: "1",
+              image: "/background/bg1.jpg",
+              title: "Keystone achieves ISO 27001 and SOC 2 Type II compliance certifications",
+              excerpt: "Demonstrating our commitment to the highest international security standards, Keystone has successfully completed its SOC 2 Type II audit and ISO 27001 certification.",
+              link: "/certifications",
+              date: new Date().toISOString()
+            },
+            {
+              id: "2",
+              image: "/background/bg2.jpg",
+              title: "Keystone announces strategic cyber defense partnership with Global Tech Alliance",
+              excerpt: "This collaboration integrates Keystone's AI-driven DNS filtering and Threat Intelligence platforms with global cloud infrastructures to secure enterprises against advanced persistent threat actors.",
+              link: "/contact",
+              date: new Date().toISOString()
+            },
+            {
+              id: "3",
+              image: "/background/bg3.jpg",
+              title: "Keystone releases its annual Global Threat Intelligence & Cyber Resilience Report",
+              excerpt: "A deep-dive analysis of threat vectors observed across critical infrastructures, providing executive insight on emerging ransomware tactics and attack surface mitigation strategies.",
+              link: "/services",
+              date: new Date().toISOString()
+            }
+          ]);
+        } else {
+          setNewsItems(fetchedNews);
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
       }
-    });
+    };
 
-    return () => unsubscribe();
+    fetchNews();
   }, []);
   // Auto slide functionality
   useEffect(() => {
@@ -141,7 +144,7 @@ export function NewsSection() {
                       {/* Left Image */}
                       <div
                         className="h-[220px] w-full shrink-0 bg-gray-200 bg-cover bg-center sm:h-full sm:w-[45%]"
-                        style={{ backgroundImage: `url('${item.image}')` }}
+                        style={{ backgroundImage: `url('${encodeURI(item.image)}')` }}
                       />
 
                       {/* Right Content */}
@@ -154,7 +157,7 @@ export function NewsSection() {
                         </p>
                         <div className="mt-auto flex w-full sm:mt-0 sm:w-auto">
                           <a
-                            href={item.link}
+                            href={getSafeLink(item.link)}
                             className="group inline-flex w-full items-center justify-center rounded-sm bg-[#ff0000] px-8 py-3 text-[15px] font-medium text-white transition-colors hover:bg-red-600 sm:w-auto sm:px-10"
                           >
                             Read More

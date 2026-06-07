@@ -7,11 +7,25 @@ import { motion } from "framer-motion";
 
 export function Footer() {
   const footerSectorLinks = [
-    { label: "Healthcare", href: "/sectors/healthcare" },
-    { label: "Telecom & IT", href: "/sectors/telecom-it" },
-    { label: "Transportation", href: "/sectors/transportation" },
-    { label: "Energy", href: "/sectors/energy" },
     { label: "Finance", href: "/sectors/finance" },
+    { label: "Telecom & IT", href: "/sectors/telecom-it" },
+    { label: "Energy", href: "/sectors/energy" },
+    { label: "Government & Public Sector", href: "/sectors/public" },
+    { label: "Industrial", href: "/sectors/industrial" },
+    { label: "Healthcare", href: "/sectors/healthcare" },
+    { label: "Transportation", href: "/sectors/transportation" },
+    { label: "Fintech & Start-ups", href: "/sectors/fintech-start-up" },
+    { label: "Media", href: "/sectors/media" },
+  ];
+
+  const footerServiceLinks = [
+    { label: "Offensive Security", href: "/services/offensive-security" },
+    { label: "Security Assessment", href: "/services/security-assessment" },
+    { label: "Managed Services", href: "/services/defensive-security" },
+    { label: "Governance, Risk & Compliance", href: "/services/governance-risk-compliance" },
+    { label: "Strategic Advisory", href: "/services/cybersecurity-strategy-consulting" },
+    { label: "Training & Awareness", href: "/services/awareness" },
+    { label: "AI & Cybersecurity", href: "/services/ai-cybersecurity" },
   ];
 
   return (
@@ -36,12 +50,13 @@ export function Footer() {
           <div className="flex flex-col items-center text-center lg:col-span-3 lg:items-start lg:text-left">
             <motion.h2 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">SERVICES</motion.h2>
             <ul className="flex flex-col space-y-4">
-              <li><Link href="/services/red-team" className="text-sm text-zinc-400 transition-colors hover:text-white">Offensive Security / Red Teaming</Link></li>
-              <li><Link href="/services/security-assessment" className="text-sm text-zinc-400 transition-colors hover:text-white">Assessment & Technical Assistance</Link></li>
-              <li><Link href="/services/defensive-security/soc-management" className="text-sm text-zinc-400 transition-colors hover:text-white">Defensive Security / Blue Teaming</Link></li>
-              <li><Link href="/services/governance-risk-compliance" className="text-sm text-zinc-400 transition-colors hover:text-white">Governance, Risk & Compliance</Link></li>
-              <li><Link href="/services/cybersecurity-strategy-consulting" className="text-sm text-zinc-400 transition-colors hover:text-white">Cybersecurity Consulting</Link></li>
-              <li><Link href="/services/awareness" className="text-sm text-zinc-400 transition-colors hover:text-white">Training & Awareness</Link></li>
+              {footerServiceLinks.map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href} className="text-sm text-zinc-400 transition-colors hover:text-white">
+                    {service.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

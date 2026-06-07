@@ -73,7 +73,7 @@ export function SectorsSection() {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-10">
           <p className="text-zinc-500 max-w-2xl mx-auto mb-8 font-medium text-sm md:text-base">
-            Select a sector to discover how we support digital transformation.
+            Select a sector to discover how we secure digital transformation.
           </p>
         </div>
 

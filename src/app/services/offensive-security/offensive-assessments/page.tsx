@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -235,7 +235,7 @@ export default function OffensiveAssessmentsPage() {
                   "OWASP-Aligned Application Vulnerability Audits",
                   "Insider Pivot, Phishing & Employee Resilience Tests",
                   "Biometrics, Access Locks & Hardware Level Reverses",
-                ].map((item) => (
+                ].map((item, index) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, x: -20 }}
@@ -243,8 +243,8 @@ export default function OffensiveAssessmentsPage() {
                     viewport={{ once: true }}
                     className="flex gap-4 items-center group"
                   >
-                    <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">
-                      âœ“
+                    <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all text-xs">
+                      {index + 1}
                     </div>
                     <p className="text-zinc-700 text-lg font-bold uppercase tracking-tight">
                       {item}

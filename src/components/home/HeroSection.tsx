@@ -1,28 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import "@blossom-carousel/core/style.css";
+
+const BlossomCarousel = dynamic(
+  () => import("@blossom-carousel/react").then((mod) => mod.BlossomCarousel),
+  { ssr: false }
+) as any;
 
 const MotionLink = motion.create(Link);
-
-function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
-  return (
-    <motion.span
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-      className="inline-block animate-none"
-    >
-      {text}
-    </motion.span>
-  );
-}
 
 interface KeystoneEvent {
   id: string;
@@ -38,237 +29,345 @@ const getFutureDate = (daysAhead: number) => {
   return d.toISOString();
 };
 
-export function HeroSection() {
-  const [events, setEvents] = useState<KeystoneEvent[]>([
-    {
-      id: "default-event-1",
-      title: "Keystone Enterprise Cyber Summit 2026",
-      date: getFutureDate(12),
-    },
-    {
-      id: "default-event-2",
-      title: "Webinar: Threat Hunting & EASM Best Practices",
-      date: getFutureDate(28),
-    },
-    {
-      id: "default-event-3",
-      title: "Workshop: Classifying & Securing Critical Infrastructure",
-      date: getFutureDate(45),
-    }
-  ]);
+function EventSlide({ event, index }: { event: KeystoneEvent; index: number }) {
+  const [isMounted, setIsMounted] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState<{
-    d?: string;
-    h?: string;
-    m?: string;
-    s?: string;
-    started: boolean;
+    d?: string; h?: string; m?: string; s?: string; started: boolean;
   } | null>(null);
 
-  // Fetch events from Firebase
+  useEffect(() => { setIsMounted(true); }, []);
+
   useEffect(() => {
-    // Only subscribe if firestore is initialized with real config 
-    // to avoid early crashes if env vars are missing
-    if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) return;
-
-    const q = query(collection(db, "events"), orderBy("date", "asc"), limit(3));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const fetchedEvents = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        title: doc.data().title || "Untitled",
-        date: doc.data().date || new Date().toISOString(),
-        ...doc.data(),
-      })) as KeystoneEvent[];
-      if (fetchedEvents.length > 0) {
-        setEvents(fetchedEvents);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  // Countdown timer logic for the first event
-  useEffect(() => {
-    if (events.length === 0 || !events[0].date) {
-      const timeout = setTimeout(() => setTimeRemaining(null), 0);
-      return () => clearTimeout(timeout);
-    }
-
-    const targetDate = new Date(events[0].date).getTime();
-
+    if (!isMounted || !event?.date) return;
+    const targetDate = new Date(event.date).getTime();
     const updateTimer = () => {
-      const now = new Date().getTime();
+      const now = Date.now();
       const distance = targetDate - now;
-
-      if (distance < 0) {
-        setTimeRemaining({ started: true });
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+      if (distance < 0) { setTimeRemaining({ started: true }); return; }
       setTimeRemaining({
-        d: days.toString().padStart(2, "0"),
-        h: hours.toString().padStart(2, "0"),
-        m: minutes.toString().padStart(2, "0"),
-        s: seconds.toString().padStart(2, "0"),
-        started: false
+        d: Math.floor(distance / 86400000).toString().padStart(2, "0"),
+        h: Math.floor((distance % 86400000) / 3600000).toString().padStart(2, "0"),
+        m: Math.floor((distance % 3600000) / 60000).toString().padStart(2, "0"),
+        s: Math.floor((distance % 60000) / 1000).toString().padStart(2, "0"),
+        started: false,
       });
     };
-
-    // Run it immediately but asynchronously to avoid synchronous effect updates
-    const initialTimeout = setTimeout(updateTimer, 0);
-    const interval = setInterval(updateTimer, 1000);
-
-    return () => {
-      clearTimeout(initialTimeout);
-      clearInterval(interval);
-    };
-  }, [events]);
+    const t = setTimeout(updateTimer, 0);
+    const iv = setInterval(updateTimer, 1000);
+    return () => { clearTimeout(t); clearInterval(iv); };
+  }, [event.date, isMounted]);
 
   return (
-    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="relative flex min-h-[100svh] w-full flex-col overflow-hidden">
-      {/* Background Video */}
+    <div
+      className="ec-slide snap-center snap-always select-none shrink-0 h-full w-full"
+      style={{ "--sibling-index": index + 1 } as React.CSSProperties}
+    >
+      <div className="ec-card w-full h-full pb-2">
+        <div className="h-full rounded-2xl border border-white/[0.12] bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col justify-between backdrop-blur-2xl ring-1 ring-white/[0.06] ring-inset">
+          <div className="w-full flex flex-col justify-between h-full">
+            <div className="mb-5 flex items-center justify-between gap-3 border-b border-white/10 pb-3.5">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-white">Events</h2>
+              <span className="text-[9px] text-red-200 border border-red-500/30 font-bold px-2 py-0.5 rounded uppercase">Upcoming</span>
+            </div>
+            <h3 className="text-white font-bold text-base sm:text-lg leading-snug min-h-[56px] line-clamp-2">{event.title}</h3>
+            {isMounted ? (
+              <>
+                <p className="flex items-center gap-1.5 text-gray-300 text-sm mt-3 font-medium">
+                  <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  {new Date(event.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                </p>
+                {timeRemaining && !timeRemaining.started && (
+                  <div className="mt-4">
+                    <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-2">Starts In</p>
+                    <div className="flex items-center justify-between rounded-lg border border-white/[0.12] bg-white/[0.04] p-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                      {[
+                        { val: timeRemaining.d, label: "Days" },
+                        { val: timeRemaining.h, label: "Hrs" },
+                        { val: timeRemaining.m, label: "Min" },
+                        { val: timeRemaining.s, label: "Sec", red: true },
+                      ].map((unit, i, arr) => (
+                        <div key={unit.label} className="flex items-center">
+                          <div className="flex flex-col w-11 hover:scale-105 transition-transform">
+                            <span className={`text-sm sm:text-base font-bold font-mono ${unit.red ? "text-red-400" : "text-white"}`}>{unit.val}</span>
+                            <span className="text-[8px] text-gray-400 font-bold uppercase mt-0.5">{unit.label}</span>
+                          </div>
+                          {i < arr.length - 1 && <span className="text-gray-500 font-bold pb-3">:</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {timeRemaining?.started && (
+                  <div className="mt-4 inline-block bg-red-500/20 border border-red-500/30 text-red-200 px-3 py-1 rounded-md text-[10px] font-bold animate-pulse">
+                    Event is live
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="h-[106px]" />
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function HeroSection() {
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+  const [events, setEvents] = useState<KeystoneEvent[]>([
+    { id: "default-event-1", title: "Keystone Enterprise Cyber Summit 2026", date: getFutureDate(12) },
+    { id: "default-event-2", title: "Webinar: Threat Hunting & EASM Best Practices", date: getFutureDate(28) },
+    { id: "default-event-3", title: "Workshop: Classifying & Securing Critical Infrastructure", date: getFutureDate(45) },
+  ]);
+
+  const carouselRef = useRef<any>(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch("/api/public-data?type=events&limit=3");
+        if (!res.ok) throw new Error("Failed");
+        const data = await res.json();
+        if (data?.length > 0) setEvents(data);
+      } catch (e) {
+        console.error("Error fetching events:", e);
+      }
+    };
+    fetchEvents();
+  }, []);
+
+  // Desktop-only overscroll fan-out
+  function handleOverscroll(e: any) {
+    if (window.innerWidth < 1024) return;
+    e.preventDefault();
+    const overscroll = e.detail.left * 0.2;
+    const el = carouselRef.current as HTMLElement | null;
+    if (!el) return;
+    const cw = el.clientWidth;
+    Array.from(el.children).forEach((child) => {
+      (child as HTMLElement).style.transform =
+        `translateX(${overscroll}px) rotate(${(overscroll / cw) * 70}deg) scale(${1 - Math.abs(overscroll) / cw})`;
+    });
+  }
+
+  const handleScroll = (e: any) => {
+    const el = e.target as HTMLElement;
+    setCurrentEventIndex(Math.round(el.scrollLeft / el.clientWidth));
+  };
+
+  const scrollToIndex = (index: number) => {
+    setCurrentEventIndex(index);
+    const el = carouselRef.current as HTMLElement | null;
+    if (el?.children?.[index]) {
+      el.children[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    }
+  };
+
+  useEffect(() => {
+    if (events.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentEventIndex((prev) => {
+        const next = (prev + 1) % events.length;
+        const el = carouselRef.current as HTMLElement | null;
+        if (el?.children?.[next]) {
+          el.children[next].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+        }
+        return next;
+      });
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [events.length]);
+
+  return (
+    <motion.section
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden"
+    >
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        >
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover object-center">
           <source src="/vids/videoplayback.mp4" type="video/mp4" />
         </video>
-        {/* Subtle Gradient Overlay so content remains quite visible */}
         <div className="absolute inset-0 bg-black/20 sm:bg-linear-to-r sm:from-black/60 sm:via-black/20 sm:to-transparent" />
       </div>
 
-      {/* Content Container */}
       <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-28 pb-40 sm:px-6 sm:pt-32 sm:pb-48 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-24 lg:pb-28 lg:overflow-visible">
-        {/* Left Side: Hero Text */}
+
+        {/* Left: Hero Text */}
         <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
             className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl uppercase"
           >
             Building the Digital Keystone
           </motion.h1>
-
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="text-base font-medium tracking-wide text-zinc-300 sm:text-lg md:text-2xl leading-relaxed"
           >
             Intelligent cyber defense built to close the gap with advanced attacks.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }}
             className="mt-2 flex w-full flex-col gap-3 text-white sm:mt-4 sm:w-auto sm:flex-row sm:gap-6"
           >
             <MotionLink
-              href="/contact"
-              whileHover={{ x: 10 }}
+              href="/contact" whileHover={{ x: 10 }}
               className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
-              Talk to a Cybersecurity Expert
-              <span>→</span>
+              Talk to a Cybersecurity Expert <span>→</span>
             </MotionLink>
             <Link href="/about" className="w-full sm:w-auto">
-              <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white hover:bg-transparent sm:text-base">
-                About Us
-                <span>→</span>
+              <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white sm:text-base">
+                About Us <span>→</span>
               </motion.button>
             </Link>
           </motion.div>
         </div>
 
-        {/* Right Side: Sidebar Events */}
+        {/* Right: Events */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="relative z-20 mt-4 w-full max-w-md lg:mt-0 lg:ml-auto lg:w-1/3 lg:max-w-sm"
+          initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1, duration: 1 }}
+          className="relative z-20 mt-4 w-full lg:mt-0 lg:ml-auto lg:w-auto overflow-visible"
         >
-          <div className="rounded-2xl border border-white/20 bg-black/40 p-4 shadow-2xl backdrop-blur-l sm:p-6">
-            <div className="mb-6 flex items-center justify-between gap-3">
-              <motion.h2 className="text-lg font-bold uppercase tracking-wider text-white sm:text-xl">Events</motion.h2>
-              <span className="text-xs text-red-200 border border-red-500/30 font-bold px-2 py-1 rounded">Upcoming Events</span>
-            </div>
+          {events.length > 0 ? (
+            <>
+              <style dangerouslySetInnerHTML={{ __html: `
+                /* ── shared token ── */
+                .ec-wrap { --cw: 22rem; }
 
-            {events.length > 0 ? (
-              <div className="flex flex-col gap-6">
-                {events.map((event, idx) => (
-                  <div key={event.id} className={`border-b border-white/10 pb-6 last:border-0 last:pb-0 ${idx > 0 ? "hidden sm:block" : ""}`}>
-                    <motion.h2 className="text-white font-bold text-lg leading-snug">{event.title}</motion.h2>
-                    <p className="flex items-center gap-1.5 text-gray-300 text-sm mt-2 font-medium">
-                      <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                      </svg>
-                      {new Date(event.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                    </p>
+                /* ════════════════════════════
+                   MOBILE — plain snap scroll,
+                   NO animation on .ec-card
+                   (parallax breaks UI cards)
+                ════════════════════════════ */
+                .ec-wrap .ec-carousel {
+                  display: grid;
+                  grid-auto-flow: column;
+                  grid-auto-columns: 100%;
+                  scroll-snap-type: x mandatory;
+                  width: 100%;
+                  height: 330px;
+                  overflow-x: auto;
+                  scroll-behavior: smooth;
+                  scrollbar-width: none;
+                  -webkit-overflow-scrolling: touch;
+                }
+                .ec-wrap .ec-carousel::-webkit-scrollbar { display: none; }
 
-                    {idx === 0 && timeRemaining && !timeRemaining.started && (
-                      <div className="mt-5">
-                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-3">Starts In</p>
-                        <div className="flex items-center justify-between rounded-lg border border-white/10 bg-black/40 p-3 text-center shadow-inner">
-                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
-                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.d}</span>
-                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Days</span>
-                          </div>
-                          <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
-                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.h}</span>
-                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Hrs</span>
-                          </div>
-                          <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
-                            <span className="text-lg sm:text-xl text-white font-bold font-mono">{timeRemaining.m}</span>
-                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Min</span>
-                          </div>
-                          <span className="text-gray-500 font-bold">:</span>
-                          <div className="flex flex-col w-10 sm:w-12 hover:scale-105 transition-transform">
-                            <span className="text-lg sm:text-xl text-red-400 font-bold font-mono">{timeRemaining.s}</span>
-                            <span className="text-[8px] sm:text-[9px] text-gray-400 font-bold uppercase mt-0.5">Sec</span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {idx === 0 && timeRemaining?.started && (
-                      <div className="mt-4 inline-block bg-red-500/20 border border-red-500/30 text-red-200 px-4 py-1.5 rounded-md text-xs font-bold animate-pulse">
-                        Event is live
-                      </div>
-                    )}
-                  </div>
-                ))}
+                .ec-wrap .ec-slide {
+                  width: 100%;
+                  height: 100%;
+                  /* clip so card stays within bounds */
+                  overflow: hidden;
+                  scroll-snap-align: center;
+                  scroll-snap-stop: always;
+                }
+
+                /* On mobile .ec-card is static — no animation */
+                .ec-wrap .ec-slide .ec-card {
+                  width: 100%;
+                  height: 100%;
+                }
+
+                /* ════════════════════════════
+                   DESKTOP — iMessage card stack
+                ════════════════════════════ */
+                @media (min-width: 1024px) {
+                  .ec-wrap .ec-carousel {
+                    width: calc(var(--cw) * 3);
+                    padding-inline: var(--cw);
+                    margin-left: calc(-1 * var(--cw));
+                    height: 370px;
+                    overflow-x: scroll;
+                    overflow-y: visible;
+                    scrollbar-width: none;
+                  }
+
+                  .ec-wrap .ec-slide {
+                    width: var(--cw);
+                    overflow: visible;
+                    position: sticky;
+                    left:  calc(var(--cw) * -1);
+                    right: calc(var(--cw) * -1);
+                    transform-origin: center 70%;
+                    will-change: transform;
+                    view-timeline: --ec-cards inline;
+                    animation: ec-stack linear both;
+                    animation-timeline: --ec-cards;
+                    animation-range: contain;
+                  }
+
+                  .ec-wrap .ec-slide .ec-card {
+                    animation: ec-rotate linear both;
+                    animation-timeline: --ec-cards;
+                    animation-range: contain -50% contain 150%;
+                  }
+
+                  @keyframes ec-stack {
+                    0%  { z-index: calc(100 - var(--sibling-index, 1)); }
+                    40% { z-index: 1000; }
+                    100%{ z-index: var(--sibling-index, 1); }
+                  }
+
+                  @keyframes ec-rotate {
+                    0%   { transform: translateX(-80%) rotate(10deg)  scale(0.8); }
+                    25%  { transform: translateX(-90%) rotate(5deg)   scale(0.9); }
+                    50%  { transform: translateX(0%)   rotate(0deg)   scale(1);   }
+                    60%  { transform: translateX(-20%) rotate(-15deg) scale(0.6); }
+                    75%  { transform: translateX(90%)  rotate(-5deg)  scale(0.9); }
+                    100% { transform: translateX(80%)  rotate(-10deg) scale(0.8); }
+                  }
+                }
+              `}} />
+
+              <div className="ec-wrap relative w-full lg:w-[var(--cw,22rem)] overflow-hidden lg:overflow-visible">
+                <BlossomCarousel
+                  ref={carouselRef}
+                  onScroll={handleScroll}
+                  onOverscroll={(e: any) => handleOverscroll(e)}
+                  className="ec-carousel cursor-grab active:cursor-grabbing"
+                >
+                  {events.map((event, index) => (
+                    <EventSlide key={event.id} event={event} index={index} />
+                  ))}
+                </BlossomCarousel>
               </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center py-8 opacity-70">
-                <div className="text-gray-400 mb-2">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                  </svg>
+
+              {/* Dots — mobile only */}
+              {events.length > 1 && (
+                <div className="flex lg:hidden justify-center gap-1.5 mt-4 relative z-30">
+                  {events.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => scrollToIndex(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        currentEventIndex === idx ? "w-6 bg-red-500" : "w-1.5 bg-white/30 hover:bg-white/50"
+                      }`}
+                      aria-label={`Go to event ${idx + 1}`}
+                    />
+                  ))}
                 </div>
-                <p className="text-gray-300 text-center font-medium">No upcoming events.</p>
-                <p className="text-gray-500 text-xs text-center mt-1">Check back later for updates</p>
+              )}
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent rounded-2xl border border-white/[0.12] p-6 w-full shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-2xl ring-1 ring-white/[0.06] ring-inset">
+              <div className="text-gray-400 mb-2">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                </svg>
               </div>
-            )}
-          </div>
+              <p className="text-gray-300 text-center font-medium">No upcoming events.</p>
+              <p className="text-gray-500 text-xs text-center mt-1">Check back later for updates</p>
+            </div>
+          )}
         </motion.div>
       </div>
 
       <CertificationsMarquee isAbsolute />
-
-      {/* Scroll Down Indicator */}
       <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
-
     </motion.section>
   );
 }

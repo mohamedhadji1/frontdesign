@@ -14,6 +14,7 @@ type PageHeroProps = {
   backgroundImageUrl?: string;
   backgroundVideoUrl?: string;
   className?: string;
+  contentClassName?: string;
   heightClassName?: string;
   showScrollIndicator?: boolean;
   theme?: "red" | "blue";
@@ -28,6 +29,7 @@ export function PageHero({
   backgroundImageUrl,
   backgroundVideoUrl,
   className,
+  contentClassName = "max-w-4xl",
   heightClassName = "h-[100vh] min-h-[100vh]",
   showScrollIndicator = true,
   theme = "red",
@@ -73,7 +75,7 @@ export function PageHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="w-full max-w-4xl"
+          className={cn("w-full", contentClassName)}
         >
           {breadcrumbs && breadcrumbs.length > 0 && (
             <Breadcrumbs items={breadcrumbs} theme={theme} className="mb-6" />

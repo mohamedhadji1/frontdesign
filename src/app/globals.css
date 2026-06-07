@@ -48,3 +48,16 @@ video,
 canvas {
   max-width: 100%;
 }
+
+/* Make the reCAPTCHA badge logo opacity low, showing fully only on hover */
+.grecaptcha-badge {
+  opacity: 0.15 !important;
+  transition: opacity 0.3s ease-in-out !important;
+}
+
+.grecaptcha-badge:hover,
+.grecaptcha-badge:active,
+.grecaptcha-badge:focus-within {
+  opacity: 1 !important;
+}
+

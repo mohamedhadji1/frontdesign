@@ -20,6 +20,7 @@ import Image from "next/image";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const stagger: Variants = {
   hidden: {},
@@ -75,17 +76,16 @@ export function ServicesIndexPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="w-full max-w-5xl"
+            className="w-full max-w-5xl lg:-translate-y-12"
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-red-400 sm:text-sm"
-            >
-              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-              Services
-            </motion.p>
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services" },
+              ]}
+              theme="red"
+              className="mb-8"
+            />
 
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
@@ -105,6 +105,21 @@ export function ServicesIndexPage() {
               Comprehensive cybersecurity solutions designed to protect your organization,
               anticipate threats, and strengthen your digital resilience.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-10"
+            >
+              <button
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-3 rounded-full bg-red-600 px-8 py-4 text-sm font-bold uppercase tracking-wide text-white transition-all hover:bg-red-700 hover:scale-105 active:scale-95 shadow-lg shadow-red-600/20"
+              >
+                Explore Services
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -114,11 +129,12 @@ export function ServicesIndexPage() {
       <CyberSectionDivider />
 
       <motion.section
+        id="services"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
         variants={stagger}
-        className="py-12 md:py-16 px-4 sm:px-6 md:px-12"
+        className="py-12 md:py-16 px-4 sm:px-6 md:px-12 scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl">
           <motion.div>

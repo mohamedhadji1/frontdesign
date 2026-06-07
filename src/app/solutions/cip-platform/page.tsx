@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -8,7 +8,6 @@ import { ArrowRight, Server, Landmark, ShieldCheck, Network, Database, Eye, Layo
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
-import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 const MotionLink = motion.create(Link);
@@ -224,7 +223,7 @@ export default function CipPlatformPage() {
         {/* Content Container */}
         <div className="relative z-10 container mx-auto flex flex-1 flex-col items-center justify-center gap-8 px-6 pt-36 pb-12 sm:pt-44 lg:flex-row lg:justify-between lg:gap-0 lg:px-12 lg:pt-48 lg:overflow-visible">
           {/* Hero Text */}
-          <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-2/3 lg:items-start lg:gap-10 lg:text-left">
+          <div className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:w-5/6 lg:items-start lg:gap-2 lg:text-left">
           <Breadcrumbs
             items={[
               { label: "Solutions", href: "/solutions" },
@@ -232,11 +231,11 @@ export default function CipPlatformPage() {
             ]}
             theme="red"
           />
-            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-light tracking-tight text-white leading-[1.05] uppercase max-w-2xl">
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-light tracking-tight text-white leading-[1.05] uppercase max-w-5xl">
               <TypingText text="Governance and risk control for Critical Infrastructures." delay={0.5} />
             </motion.h1>
 
-            <p className="mt-4 max-w-2xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
+            <p className="mt-4 max-w-4xl text-base font-medium tracking-wide text-gray-300 sm:text-lg md:text-xl">
               <TypingText text="The Keystone CIP Platform helps national authorities and large organizations oversee, classify, and secure essential operations in a unified view." delay={2} />
             </p>
             <motion.div
@@ -262,9 +261,6 @@ export default function CipPlatformPage() {
             </motion.div>
           </div>
         </div>
-
-        {/* Infinite Certifications Marquee (Bottom of Hero) */}
-        <CertificationsMarquee isAbsolute={true} />
 
         <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
       </motion.section>
@@ -380,10 +376,10 @@ export default function CipPlatformPage() {
                     </div>
                     <h3 className="text-xl font-bold mb-4 text-gray-900 leading-tight">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">{item.description}</p>
-                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Link href="/contact" className="mt-auto pt-6 border-t border-gray-100 flex items-center text-red-600 font-bold text-sm tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Request a demo
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
-                    </div>
+                    </Link>
                   </div>
                 </motion.div>
               );

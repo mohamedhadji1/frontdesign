@@ -75,6 +75,7 @@ export function SolutionsClient() {
         description="Cybersecurity platforms built to protect, monitor and strengthen digital resilience."
         backgroundVideoUrl="/vids/videoplayback.mp4"
         theme="red"
+        contentClassName="max-w-6xl"
         actions={
           <Link
             href="#solutions"
@@ -159,10 +160,10 @@ export function SolutionsClient() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={stagger}
-        className="relative z-10 py-16 px-4 sm:px-6 md:px-12 md:py-24"
+        className="relative z-10 mb-20"
       >
         <div className="mx-auto max-w-7xl">
-          <SectionDivider title="OUR PORTFOLIO" className="mb-12" />
+          <SectionDivider title="OUR Services" className="mb-12" />
           <motion.div variants={stagger} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {solutionCards.map((card) => {
               const Icon = card.icon;
@@ -204,7 +205,7 @@ export function SolutionsClient() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={stagger}
-        className="relative z-10 py-16 px-4 sm:px-6 md:px-12 md:py-24 bg-zinc-50/50 border-y border-zinc-100/50 backdrop-blur-xs"
+        className="relative z-10 mb-20 bg-zinc-50/50 border-y border-zinc-100/50 backdrop-blur-xs"
       >
         <div className="mx-auto max-w-7xl">
           <SectionDivider title="WHY KEYSTONE" className="mb-12" />

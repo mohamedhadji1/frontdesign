@@ -235,7 +235,7 @@ export default function OffensiveSecurityPage() {
                     className="flex gap-4 items-center group"
                   >
                     <div className="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center font-bold shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">
-                      âœ“
+                      
                     </div>
                     <p className="text-zinc-700 text-lg font-bold uppercase tracking-tight">
                       {item}

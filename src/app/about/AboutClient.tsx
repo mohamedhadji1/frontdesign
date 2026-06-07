@@ -98,9 +98,6 @@ export function AboutClient() {
       </section>
 
       <CyberSectionDivider />
-
-      {/* 2. COMPANY OVERVIEW - REGIONAL PRESENCE */}
-      <SectionDivider title="COMPANY OVERVIEW" className="bg-[#FCFCFC]" />
       <CompanyOverview />
 
       <CyberSectionDivider />

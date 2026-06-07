@@ -6,6 +6,7 @@ type PrivacyNoticeProps = {
   variant?: "default" | "security" | "career";
   className?: string;
   onPrivacyClick?: (e: React.MouseEvent) => void;
+  linkText?: string;
 };
 
 const copy = {
@@ -17,7 +18,7 @@ const copy = {
     "CVs and application data are used only for recruitment evaluation, interview coordination, and lawful retention related to Keystone opportunities.",
 };
 
-export function PrivacyNotice({ variant = "default", className, onPrivacyClick }: PrivacyNoticeProps) {
+export function PrivacyNotice({ variant = "default", className, onPrivacyClick, linkText }: PrivacyNoticeProps) {
   const isSecurity = variant === "security";
   const Icon = isSecurity ? AlertTriangle : ShieldCheck;
 
@@ -37,14 +38,20 @@ export function PrivacyNotice({ variant = "default", className, onPrivacyClick }
           aria-hidden="true"
         />
         <p>
-          {copy[variant]} Read the{" "}
+          {copy[variant]} Read {" "}
           {onPrivacyClick ? (
-            <button
-              onClick={onPrivacyClick}
-              className="font-bold text-red-600 underline underline-offset-2 hover:text-red-700 cursor-pointer focus:outline-none"
-            >
-              Privacy Policy
-            </button>
+            <>
+              
+              {linkText && (
+                <>
+                  {" "}
+                  Our{" "}
+                  <Link href="/privacy" className="font-bold text-red-600 underline underline-offset-2 hover:text-red-700">
+                    Privacy Policy
+                  </Link>
+                </>
+              )}
+            </>
           ) : (
             <Link href="/privacy" className="font-bold text-red-600 underline underline-offset-2 hover:text-red-700">
               Privacy Policy

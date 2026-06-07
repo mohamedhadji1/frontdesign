@@ -3,41 +3,12 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import { servicesDetails } from "@/components/navbar/ServicesDropdown";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { PrivacyNotice } from "@/components/ui/PrivacyNotice";
-import { CheckCircle2, X, Building2, Phone, Mail, AlertTriangle, Clock } from "lucide-react";
-
-interface ToastProps {
-  message: string;
-  type: "success" | "error";
-  onClose: () => void;
-}
-
-function Toast({ message, type, onClose }: ToastProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-950 text-white px-5 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-zinc-800/80 max-w-sm"
-    >
-      <div className="shrink-0 text-green-500 bg-green-500/10 p-2 rounded-xl">
-        <CheckCircle2 size={18} className="animate-pulse" />
-      </div>
-      <div className="flex-1 text-xs font-bold uppercase tracking-wider text-zinc-200">
-        {message}
-      </div>
-      <button onClick={onClose} type="button" className="text-zinc-500 hover:text-white transition-colors cursor-pointer p-1">
-        <X size={14} />
-      </button>
-    </motion.div>
-  );
-}
+import { Building2, Phone, Mail, AlertTriangle, Clock } from "lucide-react";
+import { toast } from "sonner";
 
 const offices = [
   {
@@ -73,9 +44,8 @@ export function ContactSection() {
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [showToast, setShowToast] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-
+ 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -87,34 +57,25 @@ export function ContactSection() {
       setFormData({ ...formData, [name]: value });
     }
   };
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.consent) return;
+    if (!formData.consent || !captchaToken) return;
     setStatus("loading");
-
+ 
     try {
-      // Start the email fetch immediately
-      const emailPromise = fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, captchaToken }),
       });
-
-      // Log to Firestore asynchronously in the background
-      addDoc(collection(db, "contacts"), {
-        ...formData,
-        createdAt: serverTimestamp(),
-      }).catch((err) => {
-        console.error("Non-blocking Firestore logging error:", err);
-      });
-
-      // Await email delivery result
-      const res = await emailPromise;
+ 
       if (!res.ok) throw new Error("Failed to send email");
-
+ 
       setStatus("success");
-      setShowToast(true);
+      toast.success("Message sent successfully!", {
+        description: "A representative will contact you within one business day.",
+      });
       setFormData({
         name: "",
         email: "",
@@ -131,6 +92,9 @@ export function ContactSection() {
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
+      toast.error("Failed to send message", {
+        description: "Please check your connection and try again.",
+      });
       setTimeout(() => setStatus("idle"), 5000);
     }
   };
@@ -357,7 +321,7 @@ export function ContactSection() {
               <div className="w-full sm:w-auto">
                 <ReCAPTCHA
                   ref={recaptchaRef}
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"} // fallback test key if missing
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
                   onChange={(token) => setCaptchaToken(token)}
                 />
               </div>
@@ -373,15 +337,6 @@ export function ContactSection() {
         </div>
 
       </div>
-      <AnimatePresence>
-        {showToast && (
-          <Toast
-            message="Message sent successfully!"
-            type="success"
-            onClose={() => setShowToast(false)}
-          />
-        )}
-      </AnimatePresence>
     </section>
   );
 }

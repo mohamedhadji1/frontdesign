@@ -1,20 +1,5 @@
 import type { NextConfig } from "next";
 
-const csp = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'",
-  "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
-  "style-src 'self' 'unsafe-inline' https:",
-  "img-src 'self' data: blob: https:",
-  "font-src 'self' data: https:",
-  "connect-src 'self' https:",
-//  "upgrade-insecure-requests",
-  "frame-src https://www.google.com https://maps.google.com",
-].join("; ");
-
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
@@ -52,17 +37,13 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: [
           {
-            key: "Content-Security-Policy",
-            value: csp,
-          },
-          {
             key: "X-DNS-Prefetch-Control",
             value: "on",
           },
-/*          {
+          {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
-          }, */
+          },
           {
             key: "X-Frame-Options",
             value: "DENY",

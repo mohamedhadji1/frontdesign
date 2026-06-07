@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import { PrivacyNotice } from "@/components/ui/PrivacyNotice";
 import { 
   AlertTriangle, 
@@ -14,10 +13,10 @@ import {
   MessageSquareWarning,
   Clock,
   Sparkles,
-  CheckCircle2,
   X,
   Copy
 } from "lucide-react";
+import { toast } from "sonner";
 
 const PGP_PUBLIC_KEY = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: ID utilisateur: <incident@csirt.tn>
@@ -55,34 +54,6 @@ iTSjsWopXdX/UOHmlA==
 =GHNU
 -----END PGP PUBLIC KEY BLOCK-----`;
 
-interface ToastProps {
-  message: string;
-  type: "success" | "error";
-  onClose: () => void;
-}
-
-function Toast({ message, type, onClose }: ToastProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-zinc-950 text-white px-5 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-zinc-800/80 max-w-sm"
-    >
-      <div className="shrink-0 text-green-500 bg-green-500/10 p-2 rounded-xl">
-        <CheckCircle2 size={18} className="animate-pulse" />
-      </div>
-      <div className="flex-1 text-xs font-bold uppercase tracking-wider text-zinc-200">
-        {message}
-      </div>
-      <button onClick={onClose} type="button" className="text-zinc-500 hover:text-white transition-colors cursor-pointer p-1">
-        <X size={14} />
-      </button>
-    </motion.div>
-  );
-}
-
 export function ReportIncidentClient() {
   const [formData, setFormData] = useState({
     name: "",
@@ -98,39 +69,38 @@ export function ReportIncidentClient() {
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [showToast, setShowToast] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [showPgpModal, setShowPgpModal] = useState(false);
   const [copied, setCopied] = useState(false);
-
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const nextValue = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
     setFormData({ ...formData, [name]: nextValue });
   };
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.consent) return;
+    if (!formData.consent || !captchaToken) return;
     setStatus("loading");
-
+ 
     try {
       const structuredMessage = `
 --- URGENT INCIDENT DISCLOSURE ---
-
+ 
 Severity: ${formData.severity}
 Incident Type: ${formData.incidentType}
 Affected Systems: ${formData.affectedSystems}
 Actions Taken So Far: ${formData.actionTaken || "None reported"}
-
+ 
 Incident Details:
 ${formData.message}
       `;
-
+ 
       const incidentSubject = `[${formData.severity}] Incident Report - ${formData.company}`;
-
+ 
       // Start the email fetch immediately
-      const emailPromise = fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -140,24 +110,16 @@ ${formData.message}
           company: formData.company,
           message: structuredMessage,
           subject: incidentSubject,
-          captchaToken,
+          captchaToken: captchaToken,
         }),
       });
-
-      // Log to Firestore asynchronously in the background (does not block email sending)
-      addDoc(collection(db, "incidents"), {
-        ...formData,
-        createdAt: serverTimestamp(),
-      }).catch(err => {
-        console.error("Non-blocking Firestore logging error:", err);
-      });
-
-      // Await email delivery result
-      const res = await emailPromise;
+ 
       if (!res.ok) throw new Error("Failed to send incident email alert");
-
+ 
       setStatus("success");
-      setShowToast(true);
+      toast.success("Incident reported securely!", {
+        description: "An incident response coordinator will phone your callback line shortly.",
+      });
       setFormData({
         name: "",
         email: "",
@@ -176,6 +138,9 @@ ${formData.message}
     } catch (error) {
       console.error("Incident report submission failure:", error);
       setStatus("error");
+      toast.error("Submission failed", {
+        description: "A network error occurred. Please retry, or call our direct emergency callback hotlines on the left.",
+      });
       setTimeout(() => setStatus("idle"), 6000);
     }
   };
@@ -231,7 +196,7 @@ ${formData.message}
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">2</span>
-                    <p>We contact you rapidly based on severity to establish secure communication channels using PGP key and assign a Case ID.</p>
+                    <p>We contact you rapidly based on severity to establish secure communication channels using <button type="button" onClick={() => setShowPgpModal(true)} className="text-red-600 font-bold hover:underline cursor-pointer">PGP</button> and assign a Case ID.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="h-4.5 w-4.5 rounded-full bg-zinc-50 border border-zinc-200/60 text-zinc-600 font-bold flex items-center justify-center text-[9px] shrink-0">3</span>
@@ -267,6 +232,7 @@ ${formData.message}
               <PrivacyNotice 
                 variant="security" 
                 className="mt-3" 
+                linkText="PGP"
                 onPrivacyClick={(e) => {
                   e.preventDefault();
                   setShowPgpModal(true);
@@ -422,21 +388,34 @@ ${formData.message}
                 />
               </div>
 
-              {/* Recaptcha row */}
+              {/* Privacy Consent Checkbox */}
+              <div className="flex items-start gap-3 mt-2 bg-zinc-50 border border-zinc-200 rounded-lg p-3">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  id="consent-checkbox"
+                  required
+                  checked={formData.consent}
+                  onChange={handleChange}
+                  className="mt-1 accent-red-600 focus:ring-red-500 border-zinc-300 rounded cursor-pointer shrink-0"
+                />
+                <label htmlFor="consent-checkbox" className="text-[10px] text-zinc-600 leading-relaxed cursor-pointer select-none font-semibold">
+                  I consent to Keystone collecting and storing my contact details in accordance with the <Link href="/privacy" className="text-red-600 hover:underline">Privacy Policy</Link> for processing this incident report.
+                </label>
+              </div>
+
+              {/* Submit row */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-1.5 pt-3.5 border-t border-zinc-200">
                 <div className="w-full sm:w-auto">
-                  <div className="scale-80 origin-left md:scale-85">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                      onChange={(token) => setCaptchaToken(token)}
-                    />
-                  </div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+                    onChange={(token) => setCaptchaToken(token)}
+                  />
                 </div>
-
                 <button
                   type="submit"
-                  disabled={status === "loading" || !captchaToken}
+                  disabled={status === "loading" || !captchaToken || !formData.consent}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 cursor-pointer rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold uppercase tracking-widest text-[9px] py-3.5 px-6 shadow-xs transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "loading" ? "Dispatching..." : "Submit Incident Alert"}
@@ -487,16 +466,7 @@ ${formData.message}
 
         </div>
       </div>
-      <AnimatePresence>
-        {showToast && (
-          <Toast
-            message="Incident reported securely!"
-            type="success"
-            onClose={() => setShowToast(false)}
-          />
-        )}
-      </AnimatePresence>
-
+      
       {/* PGP Key Modal Popup */}
       <AnimatePresence>
         {showPgpModal && (

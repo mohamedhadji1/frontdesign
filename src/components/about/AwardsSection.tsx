@@ -73,7 +73,7 @@ export function AwardsSection() {
     },
   ];
 
-  // Certified Management Systems
+  // Certifications and accreditations
   const certifiedSystems = [
     {
       logo: "/certif/27001.png",
@@ -85,7 +85,7 @@ export function AwardsSection() {
       validity: "From 2026-04-06 until 2029-04-05",
     },
     {
-      logo: "/trustedBy/monetique.png",
+      logo: "/certif/GIEDZ.png",
       title: "GIE Monétique",
       desc: "Electronic banking security compliance certification",
       status: "Active / Certified",
@@ -103,7 +103,7 @@ export function AwardsSection() {
       validity: "Annual declaration active",
     },
     {
-      logo: "/certif/Nist.webp",
+      logo: "/certif/ANCS.webp",
       title: "ANCS",
       desc: "National Agency for Computer Security certification",
       status: "Certified",
@@ -368,10 +368,10 @@ export function AwardsSection() {
             </p>
           </div>
 
-          {/* Subsection A: Certified Management Systems */}
+          {/* Subsection A: Certifications and accreditations */}
           <div className="mb-20">
             <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-8 border-b pb-3 border-zinc-100">
-              Certified Management Systems
+              Certifications and accreditations
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {certifiedSystems.map((cert, idx) => (

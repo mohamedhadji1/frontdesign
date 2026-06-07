@@ -51,6 +51,7 @@ export function CompanyOverview() {
 
   return (
     <section ref={targetRef} id="company-overview" className="relative overflow-hidden bg-white">
+      <CyberSectionDivider className="mb-[-85px]" />
       {/* Dynamic Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
         <motion.div 

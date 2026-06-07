@@ -1,85 +1,97 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { initializeApp, cert, getApps } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getAdminDb } from '@/lib/firebase-admin';
+import { cookies } from 'next/headers';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 
-// Initialize Firebase Admin SDK server-side
-const initializeAdminApp = () => {
-  if (getApps().length > 0) {
-    return getApps()[0];
+// Initialize Upstash Redis client gracefully
+let ratelimit: Ratelimit | null = null;
+try {
+  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    const redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    });
+    ratelimit = new Ratelimit({
+      redis: redis,
+      limiter: Ratelimit.slidingWindow(20, '10 s'),
+    });
+  } else {
+    console.warn("UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN is missing. Admin API rate limiting is disabled.");
   }
-
-  const serviceAccount = JSON.parse(
-    process.env.FIREBASE_ADMIN_SDK_JSON || '{}'
-  );
-
-  return initializeApp({
-    credential: cert(serviceAccount),
-  });
-};
-
-// Middleware to verify Bearer token
-function verifyAdminToken(request: NextRequest): boolean {
-  const authHeader = request.headers.get('Authorization');
-
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return false;
-  }
-
-  const token = authHeader.slice(7); // Remove 'Bearer ' prefix
-
-  // Token is valid if it's not empty (simple validation)
-  // In production, you'd validate JWT or check against a session store
-  return token.length > 0;
-}
-
-// Rate limiting (simple in-memory, use Redis in production)
-const requestCounts = new Map<string, number[]>();
-
-function checkRateLimit(ip: string, maxRequests: number = 5, windowMs: number = 60000): boolean {
-  const now = Date.now();
-  const requests = requestCounts.get(ip) || [];
-
-  // Filter out requests outside the window
-  const recentRequests = requests.filter(time => now - time < windowMs);
-
-  if (recentRequests.length >= maxRequests) {
-    return false;
-  }
-
-  recentRequests.push(now);
-  requestCounts.set(ip, recentRequests);
-  return true;
+} catch (e) {
+  console.warn("Failed to initialize Upstash Redis rate limiter:", e);
 }
 
 export async function POST(request: NextRequest) {
-  // Verify admin token
-  if (!verifyAdminToken(request)) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
+  // Strict Content-Type validation
+  if (!request.headers.get('content-type')?.includes('application/json')) {
+    return NextResponse.json({ error: 'Unsupported Media Type' }, { status: 415 });
   }
 
-  // Check rate limiting
-  const ip = request.headers.get('x-forwarded-for') || 'unknown';
-  if (!checkRateLimit(ip)) {
-    return NextResponse.json(
-      { error: 'Too many requests' },
-      { status: 429 }
-    );
+  // Read session cookie
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get('admin_session');
+  
+  if (!sessionCookie?.value) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
+    const db = getAdminDb();
+    const sessionDoc = await db.collection('admin_sessions').doc(sessionCookie.value).get();
+
+    if (!sessionDoc.exists) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const sessionData = sessionDoc.data();
+    if (!sessionData || sessionData.expiresAt < Date.now()) {
+      return NextResponse.json({ error: 'Session expired' }, { status: 401 });
+    }
+
+    // Replace IP-based rate limiter with session-based Redis rate limiter
+    const email = sessionData.email;
+    const maskedEmail = email ? email.replace(/(.{1,3})(.*)(@.*)/, "$1***$3") : "unknown";
+
+    if (ratelimit) {
+      const { success, reset } = await ratelimit.limit(email);
+      
+      if (!success) {
+        const retryAfter = Math.ceil((reset - Date.now()) / 1000);
+        return NextResponse.json(
+          { error: 'Too many requests' },
+          { 
+            status: 429,
+            headers: {
+              'Retry-After': retryAfter.toString()
+            }
+          }
+        );
+      }
+    }
+
     const body = await request.json();
     const { action, data } = body;
 
-    // Initialize admin app
-    const admin = initializeAdminApp();
-    const db = getFirestore(admin);
+    if (!action || typeof action !== 'string') {
+      return NextResponse.json({ error: 'Invalid action format' }, { status: 400 });
+    }
+
+    if (!data || typeof data !== 'object') {
+      return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
+    }
 
     if (action === 'addEvent') {
-      // Log the action for Assessment trail
-      console.log(`[ADMIN] Event added by ${ip} at ${new Date().toISOString()}`);
+      // Validate inputs
+      if (!data.title || typeof data.title !== 'string' || data.title.length > 200) {
+         return NextResponse.json({ error: 'Invalid or missing title' }, { status: 400 });
+      }
+      if (!data.date || typeof data.date !== 'string' || data.date.length > 50) {
+         return NextResponse.json({ error: 'Invalid or missing date' }, { status: 400 });
+      }
+
+      console.log(`[ADMIN] Event added by ${maskedEmail} at ${new Date().toISOString()}`);
 
       await db.collection('events').add({
         title: data.title,
@@ -87,39 +99,70 @@ export async function POST(request: NextRequest) {
         createdAt: new Date().toISOString(),
       });
 
-      return NextResponse.json(
-        { message: 'Event successfully posted!' },
-        { status: 200 }
-      );
+      return NextResponse.json({ message: 'Event successfully posted!' }, { status: 200 });
     }
 
     if (action === 'addNews') {
-      console.log(`[ADMIN] News added by ${ip} at ${new Date().toISOString()}`);
+      // Validate inputs
+      if (!data.title || typeof data.title !== 'string' || data.title.length > 200) {
+         return NextResponse.json({ error: 'Invalid or missing title' }, { status: 400 });
+      }
+      if (!data.date || typeof data.date !== 'string' || data.date.length > 50) {
+         return NextResponse.json({ error: 'Invalid or missing date' }, { status: 400 });
+      }
+      if (!data.excerpt || typeof data.excerpt !== 'string' || data.excerpt.length > 1000) {
+         return NextResponse.json({ error: 'Invalid or missing excerpt' }, { status: 400 });
+      }
+      if (!data.link || typeof data.link !== 'string' || data.link.length > 500) {
+         return NextResponse.json({ error: 'Invalid or missing link' }, { status: 400 });
+      }
+
+      console.log(`[ADMIN] News added by ${maskedEmail} at ${new Date().toISOString()}`);
+
+      let imageDownloadUrl = '';
+      
+      if (data.imageBase64 && typeof data.imageBase64 === 'string' && data.imageBase64.startsWith('data:image/')) {
+        // Enforce strictly private server-side credentials. Never fallback to NEXT_PUBLIC.
+        const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+        const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
+
+        if (!cloudName || !uploadPreset) {
+          return NextResponse.json({ error: 'Cloudinary configuration missing on server' }, { status: 500 });
+        }
+
+        const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            file: data.imageBase64,
+            upload_preset: uploadPreset
+          }),
+        });
+
+        const uploadData = await uploadRes.json();
+        if (!uploadRes.ok) {
+          throw new Error(uploadData.error?.message || 'Failed to upload image to Cloudinary');
+        }
+        imageDownloadUrl = uploadData.secure_url;
+      } else {
+        return NextResponse.json({ error: 'Valid base64 image string is required' }, { status: 400 });
+      }
 
       await db.collection('news').add({
         title: data.title,
         date: data.date,
-        image: data.image,
+        image: imageDownloadUrl,
         excerpt: data.excerpt,
         link: data.link,
         createdAt: new Date().toISOString(),
       });
 
-      return NextResponse.json(
-        { message: 'News successfully posted!' },
-        { status: 200 }
-      );
+      return NextResponse.json({ message: 'News successfully posted!' }, { status: 200 });
     }
 
-    return NextResponse.json(
-      { error: 'Unknown action' },
-      { status: 400 }
-    );
-  } catch (error) {
-    console.error('Admin API error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
+  } catch {
+    console.error('Admin API error occurred [Redacted]');
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

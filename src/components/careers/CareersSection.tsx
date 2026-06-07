@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 import { careerSlug, careersDetails, jobSpecifications } from "@/lib/careers";
 import { HeroTypeLine } from "@/components/ui/HeroTypeLine";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -13,6 +11,7 @@ import { CyberSectionDivider } from "../ui/CyberSectionDivider";
 import { SectionDivider } from "../ui/SectionDivider";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { Briefcase, MapPin, CheckCircle2, Award, ListTodo, Upload, AlertCircle, Check, ArrowRight, Star } from "lucide-react";
+import { toast } from "sonner";
 
 interface CareersFormProps {
   category: string;
@@ -87,13 +86,21 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
     setStatus("loading");
 
     try {
-      await addDoc(collection(db, "career_applications"), {
-        ...formData,
-        cvFileName: cvFile.name,
-        cvFileSize: cvFile.size,
-        category,
-        createdAt: serverTimestamp(),
-      });
+      const toBase64 = (file: File): Promise<string> =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            let encoded = reader.result?.toString().replace(/^data:(.*,)?/, '') || '';
+            if (encoded.length % 4 > 0) {
+              encoded += '='.repeat(4 - (encoded.length % 4));
+            }
+            resolve(encoded);
+          };
+          reader.onerror = error => reject(error);
+        });
+
+      const cvFileData = await toBase64(cvFile);
 
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -101,13 +108,22 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         body: JSON.stringify({
           ...formData,
           subject: `Career Application: ${formData.offer} (${category})`,
+          cvFileName: cvFile.name,
+          cvFileData,
+          category,
           captchaToken,
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to send email");
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to send email");
+      }
 
       setStatus("success");
+      toast.success("Application submitted successfully!", {
+        description: `Your application for ${formData.offer || "this position"} has been received.`,
+      });
       setFormData({
         name: "",
         email: "",
@@ -125,6 +141,9 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
     } catch (error) {
       console.error("Submission error:", error);
       setStatus("error");
+      toast.error("Submission failed", {
+        description: "An error occurred during submission. Please try again.",
+      });
       setTimeout(() => setStatus("idle"), 5000);
     }
   };
@@ -293,8 +312,8 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
         </label>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4">
-        <div className="w-full sm:w-auto">
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="w-full sm:w-auto flex justify-start">
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
@@ -302,13 +321,7 @@ function CareersForm({ category, items, selectedOffer, variant = "default" }: Ca
           />
         </div>
 
-        <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-          {status === "success" && (
-            <span className="text-green-600 font-bold text-xs flex items-center gap-1">
-              <Check className="w-4 h-4" /> SENT
-            </span>
-          )}
-          {status === "error" && <span className="text-red-600 font-bold text-xs">ERROR</span>}
+        <div className="w-full sm:w-auto flex justify-start">
           <button
             type="submit"
             disabled={status === "loading" || !captchaToken || !formData.consent || !cvFile}
