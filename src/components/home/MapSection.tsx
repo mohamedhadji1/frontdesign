@@ -346,6 +346,7 @@ export function MapSection() {
             const europe  = clients.filter(l => ["fr","de","be","it","lu","cy"].includes(l.id));
             const asia    = clients.filter(l => ["sa","qa"].includes(l.id));
             const total   = clients.length;
+            const totalCountries = new Set(locations.map(l => l.id)).size;
             const regions = [
               { label: "Africa",  count: africa.length,  color: "#DC2626", pct: Math.round((africa.length  / total) * 100) },
               { label: "Europe",  count: europe.length,  color: "#1E293B", pct: Math.round((europe.length  / total) * 100) },
@@ -357,21 +358,25 @@ export function MapSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="mx-auto mt-6 w-full max-w-2xl rounded-2xl border border-zinc-100 bg-white px-5 py-4 shadow-sm"
+                className="mx-auto mt-6 w-full max-w-3xl rounded-2xl border border-zinc-100 bg-white px-5 py-4 shadow-sm"
               >
                 {/* Stat counters */}
                 <div className="mb-4 flex items-center justify-around divide-x divide-zinc-100">
-                  <div className="flex flex-col items-center gap-0.5 px-4">
+                  <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
                     <span className="text-2xl font-black text-red-600">{offices.length}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Offices / HQ</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Offices / HQ</span>
                   </div>
-                  <div className="flex flex-col items-center gap-0.5 px-4">
+                  <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
                     <span className="text-2xl font-black text-green-600">{total}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Client Countries</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Client presences</span>
                   </div>
-                  <div className="flex flex-col items-center gap-0.5 px-4">
+                  <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
+                    <span className="text-2xl font-black text-blue-600">{totalCountries}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Total Countries</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
                     <span className="text-2xl font-black text-zinc-700">{regions.length}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">Regions</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Regions</span>
                   </div>
                 </div>
 

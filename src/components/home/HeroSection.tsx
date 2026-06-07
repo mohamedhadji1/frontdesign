@@ -63,11 +63,13 @@ function EventSlide({ event, index }: { event: KeystoneEvent; index: number }) {
       style={{ "--sibling-index": index + 1 } as React.CSSProperties}
     >
       <div className="ec-card w-full h-full pb-2">
-        <div className="h-full rounded-2xl border border-white/[0.12] bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col justify-between backdrop-blur-2xl ring-1 ring-white/[0.06] ring-inset">
-          <div className="w-full flex flex-col justify-between h-full">
+        <div className="relative overflow-hidden h-full rounded-2xl border border-white/20 bg-neutral-950/75 p-5 sm:p-6 shadow-[0_24px_50px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(255,255,255,0.05)] flex flex-col justify-between backdrop-blur-md ring-1 ring-white/10 ring-inset transition-all duration-300 hover:border-white/35 hover:shadow-[0_30px_60px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-1px_0_rgba(255,255,255,0.1)]">
+          {/* Glass reflection sheen */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.10] pointer-events-none" />
+          <div className="w-full flex flex-col justify-between h-full relative z-10">
             <div className="mb-5 flex items-center justify-between gap-3 border-b border-white/10 pb-3.5">
               <h2 className="text-sm font-bold uppercase tracking-wider text-white">Events</h2>
-              <span className="text-[9px] text-red-200 border border-red-500/30 font-bold px-2 py-0.5 rounded uppercase">Upcoming</span>
+              <span className="text-[9px] text-red-200 border border-red-500/30 bg-red-500/10 font-bold px-2 py-0.5 rounded uppercase tracking-wider">Upcoming</span>
             </div>
             <h3 className="text-white font-bold text-base sm:text-lg leading-snug min-h-[56px] line-clamp-2">{event.title}</h3>
             {isMounted ? (
@@ -81,7 +83,7 @@ function EventSlide({ event, index }: { event: KeystoneEvent; index: number }) {
                 {timeRemaining && !timeRemaining.started && (
                   <div className="mt-4">
                     <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-2">Starts In</p>
-                    <div className="flex items-center justify-between rounded-lg border border-white/[0.12] bg-white/[0.04] p-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                    <div className="flex items-center justify-between rounded-xl border border-white/15 bg-black/25 p-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.25)]">
                       {[
                         { val: timeRemaining.d, label: "Days" },
                         { val: timeRemaining.h, label: "Hrs" },
@@ -313,12 +315,12 @@ export function HeroSection() {
                   }
 
                   @keyframes ec-rotate {
-                    0%   { transform: translateX(-80%) rotate(10deg)  scale(0.8); }
-                    25%  { transform: translateX(-90%) rotate(5deg)   scale(0.9); }
-                    50%  { transform: translateX(0%)   rotate(0deg)   scale(1);   }
-                    60%  { transform: translateX(-20%) rotate(-15deg) scale(0.6); }
-                    75%  { transform: translateX(90%)  rotate(-5deg)  scale(0.9); }
-                    100% { transform: translateX(80%)  rotate(-10deg) scale(0.8); }
+                    0%   { transform: translateX(-80%) rotate(10deg)  scale(0.8); opacity: 0; }
+                    25%  { transform: translateX(-90%) rotate(5deg)   scale(0.9); opacity: 0.35; }
+                    50%  { transform: translateX(0%)   rotate(0deg)   scale(1);   opacity: 1; }
+                    60%  { transform: translateX(-20%) rotate(-15deg) scale(0.6); opacity: 0.15; }
+                    75%  { transform: translateX(90%)  rotate(-5deg)  scale(0.9); opacity: 0.35; }
+                    100% { transform: translateX(80%)  rotate(-10deg) scale(0.8); opacity: 0; }
                   }
                 }
               `}} />
@@ -353,14 +355,18 @@ export function HeroSection() {
               )}
             </>
           ) : (
-            <div className="flex flex-col items-center justify-center py-8 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent rounded-2xl border border-white/[0.12] p-6 w-full shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-2xl ring-1 ring-white/[0.06] ring-inset">
-              <div className="text-gray-400 mb-2">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-                </svg>
+            <div className="relative overflow-hidden flex flex-col items-center justify-center py-8 bg-neutral-950/75 rounded-2xl border border-white/20 p-6 w-full shadow-[0_24px_50px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-md ring-1 ring-white/10 ring-inset">
+              {/* Glass reflection sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.12] pointer-events-none" />
+              <div className="relative z-10 flex flex-col items-center justify-center">
+                <div className="text-gray-400 mb-2">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <p className="text-gray-300 text-center font-medium">No upcoming events.</p>
+                <p className="text-gray-500 text-xs text-center mt-1">Check back later for updates</p>
               </div>
-              <p className="text-gray-300 text-center font-medium">No upcoming events.</p>
-              <p className="text-gray-500 text-xs text-center mt-1">Check back later for updates</p>
             </div>
           )}
         </motion.div>
