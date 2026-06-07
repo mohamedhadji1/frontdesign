@@ -17,16 +17,14 @@ export const aboutContent = {
         type: "Office",
         address: "Centre des Affaires Mohammadia Mall N°1272, ALGER",
         phone: "+213 (0) 23 80 47 57",
-        email: "algeria@keystone-corporation.com",
         mapLink: "https://maps.google.com/?q=Centre+des+Affaires+Mohammadia+Mall,+Algeria",
       },
       {
         country: "Mauritania",
         code: "mr",
         type: "Office",
-        address: "Adresse mauritanie : 301, EXT SECTEUR 1 FNORD, NOUAKCHOTT. TEL + 222 43 64 76 75.",
+        address: "Adresse Mauritanie : 301, EXT Secteur 1 Fnord, Nouakchott",
         phone: "+222 43 64 76 75",
-        email: "mauritania@keystone-corporation.com",
         mapLink: "https://maps.google.com/?q=301+EXT+SECTEUR+1+FNORD,+Nouakchott,+Mauritania",
       },
       {
@@ -35,7 +33,6 @@ export const aboutContent = {
         type: "Office",
         address: "Angle Rue El Waquidi, El Menzah 4 et du boulevard Charles Nicolle – Tunis",
         phone: "+216 71 755 755",
-        email: "contact@keystone-corporation.com",
         mapLink: "https://maps.google.com/?q=Angle+Rue+El+Waquidi+El+Menzah+4+Tunis",
       }
     ],
