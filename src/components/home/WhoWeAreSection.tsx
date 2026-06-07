@@ -118,7 +118,7 @@ export function WhoWeAreSection() {
                 </svg>
               </div>
               <div>
-                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in 35 Countries</motion.h2>
+                <motion.h2 className="mb-2 text-xl font-normal text-gray-900 sm:text-2xl">Projects in +30 Countries</motion.h2>
                 <Link href="#map-section" className="inline-block mt-4 text-sm font-medium text-gray-900 border-b border-gray-900 hover:text-red-600 hover:border-red-600 transition-colors">
                   See Our Global Impact
                 </Link>
