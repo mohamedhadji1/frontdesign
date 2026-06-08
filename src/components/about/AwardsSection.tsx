@@ -105,7 +105,7 @@ export function AwardsSection() {
     {
       logo: "/certif/ANCS.webp",
       title: "ANCS",
-      desc: "National Agency for Computer Security certification",
+      desc: "National Cybersecurity Agency certification",
       status: "Certified",
       certifier: "ANCS Tunisia",
       ref: "ANCS-CERT-2026",

@@ -116,7 +116,7 @@ const smallLogos = [
 ];
 
 const extraLargeLogos = [
-  "Jumhoria Bank", "DATAXION", "BTE", "CITI BANK", "Zitouna Takaful"
+  "Jumhoria Bank", "DATAXION", "BTE", "CITI BANK", "Zitouna Takaful", "El Kindi"
 ];
 
 const MASK = "linear-gradient(to right, rgba(0,0,0,0) 0%, rgb(0,0,0) 12.5%, rgb(0,0,0) 87.5%, rgba(0,0,0,0) 100%)";

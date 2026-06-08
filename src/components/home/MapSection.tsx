@@ -371,10 +371,6 @@ export function MapSection() {
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Client presences</span>
                   </div>
                   <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
-                    <span className="text-2xl font-black text-blue-600">{totalCountries}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Total Countries</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-0.5 px-2 sm:px-4">
                     <span className="text-2xl font-black text-zinc-700">{regions.length}</span>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 text-center">Regions</span>
                   </div>

@@ -121,7 +121,7 @@ export default async function RootLayout({
         <Footer />
         <BackToTop />
         <CookiesBanner />
-        <DisableDevTools />
+        {/* <DisableDevTools /> */}
         <Toaster />
       </body>
     </html>
