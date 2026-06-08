@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && node -e \"const fs=require('fs');const path=require('path');function rm(d){fs.readdirSync(d).forEach(f=>{const p=path.join(d,f);if(fs.statSync(p).isDirectory())rm(p);else if(f.endsWith('.map'))fs.unlinkSync(p)})};rm('.next')\"",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node -e \"const fs=require('fs');const f='node_modules/@thesvg/icons/dist/index.js';if(fs.existsSync(f)){const c=fs.readFileSync(f,'utf8');const p=c.replace(/^export type \\{[^}]*\\} from [^;]+;\\s*$/gm,'');if(c!==p){fs.writeFileSync(f,p);console.log('Patched @thesvg/icons/dist/index.js')}}\""
   },
   "dependencies": {
     "@blossom-carousel/core": "^1.1.7",
