@@ -26,6 +26,14 @@ const internationalPartners = [
   { name: "QATAR NATIONAL BANK", logo: "/trustedBy/QATAR NATIONAL BANK.png" },
   { name: "CITI BANK", logo: "/trustedBy/Citi_Bank_Logo_1.png" },
   { name: "ABC BANK", logo: "/trustedBy/Bank_ABC_idZ7Uyn2XL_8.png" },
+  { name: "AGB", logo: "/trustedBy/DZ/AGB.png" },
+  { name: "Al Salam Bank", logo: "/trustedBy/DZ/AL-SALAM.jpg" },
+  { name: "BDL", logo: "/trustedBy/DZ/BDL-banque.jpg" },
+  { name: "Fransabank", logo: "/trustedBy/DZ/fransabank.png" },
+  { name: "Housing Bank", logo: "/trustedBy/DZ/HOUSINGBANK.jpg" },
+  { name: "Baker Hughes", logo: "/trustedBy/DZ/bakerhughes.png" },
+  { name: "CPA", logo: "/trustedBy/DZ/logo_cpa.png" },
+  { name: "Mobilis", logo: "/trustedBy/DZ/logo_mobilis_arabe.png" },
 ];
 
 const grosComptesPartners = [
@@ -54,6 +62,13 @@ const grosComptesPartners = [
   { name: "Banque Centrale Benghazi", logo: "/trustedBy/CBL.png" },
   { name: "CNI", logo: "/trustedBy/cni.png" },
   { name: "BIAT", logo: "/trustedBy/biat.jpg" },
+  { name: "BNA Bank DZ", logo: "/trustedBy/DZ/BNA.jpg" },
+  { name: "SAA", logo: "/trustedBy/DZ/SAA.jpg" },
+  { name: "Setram", logo: "/trustedBy/DZ/SETRAM.png" },
+  { name: "Tassili Airlines", logo: "/trustedBy/DZ/Tassili-airlines.png" },
+  { name: "EPAL", logo: "/trustedBy/DZ/epal.png" },
+  { name: "Ministère du Tourisme", logo: "/trustedBy/DZ/ministere-du-tourisme.png" },
+  { name: "Swissport", logo: "/trustedBy/DZ/swissport.png" },
 ];
 
 const autresPartners = [
@@ -76,6 +91,14 @@ const autresPartners = [
   { name: "Banque Tunisienne de Solidarité", logo: "/trustedBy/BTS.png" },
   { name: "VECTORYS", logo: "/trustedBy/VECTORYS.png" },
   { name: "Assurances M.A.E", logo: "/trustedBy/Assurances M.A.E.png" },
+  { name: "Bellat", logo: "/trustedBy/DZ/BELLAT.png" },
+  { name: "Biopharm", logo: "/trustedBy/DZ/BIOPHARM.png" },
+  { name: "ENGTP", logo: "/trustedBy/DZ/ENGTP.jpg" },
+  { name: "ENSP", logo: "/trustedBy/DZ/ENSP.jpg" },
+  { name: "ONM", logo: "/trustedBy/DZ/ONM.png" },
+  { name: "Vital", logo: "/trustedBy/DZ/VITAL.PNG" },
+  { name: "El Kindi", logo: "/trustedBy/DZ/elkindi.jpg" },
+  { name: "SRH", logo: "/trustedBy/DZ/srh.png" },
 ];
 
 const largeLogos = [

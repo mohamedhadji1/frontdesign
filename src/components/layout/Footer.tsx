@@ -4,8 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/admin-secret-url") return null;
   const footerSectorLinks = [
     { label: "Finance", href: "/sectors/finance" },
     { label: "Telecom & IT", href: "/sectors/telecom-it" },

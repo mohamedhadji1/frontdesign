@@ -60,14 +60,20 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'logout') {
-      const sessionCookie = cookieStore.get('admin_session');
-      if (sessionCookie?.value) {
-        const db = getAdminDb();
-        await db.collection('admin_sessions').doc(sessionCookie.value).delete();
+      try {
+        const sessionCookie = cookieStore.get('admin_session');
+        if (sessionCookie?.value) {
+          const db = getAdminDb();
+          await db.collection('admin_sessions').doc(sessionCookie.value).delete();
+        }
+      } catch (dbError) {
+        console.error("Failed to delete session from database during logout:", dbError);
       }
       
       cookieStore.delete('admin_session');
-      return NextResponse.json({ message: 'Logged out successfully' }, { status: 200 });
+      const response = NextResponse.json({ message: 'Logged out successfully' }, { status: 200 });
+      response.cookies.delete('admin_session');
+      return response;
     }
 
     if (action === 'login') {

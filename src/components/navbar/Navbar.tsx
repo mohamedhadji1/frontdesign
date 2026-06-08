@@ -14,6 +14,7 @@ import { AboutDropdown } from "./AboutDropdown";
 
 export function Navbar() {
   const pathname = usePathname();
+  if (pathname === "/admin-secret-url") return null;
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

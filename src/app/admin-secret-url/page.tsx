@@ -201,8 +201,12 @@ export default function AdminSecretUrl() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen py-20 flex justify-center items-center bg-black">
-        <div className="text-white text-xl animate-pulse">Checking Session...</div>
+      <div className="min-h-screen bg-zinc-950 flex justify-center items-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-600/10 rounded-full blur-[80px]" />
+        <div className="flex flex-col items-center gap-4 relative z-10">
+          <div className="w-10 h-10 border-4 border-red-600/20 border-t-red-600 rounded-full animate-spin" />
+          <div className="text-zinc-400 text-sm font-bold uppercase tracking-widest animate-pulse">Verifying Access...</div>
+        </div>
       </div>
     );
   }
@@ -210,41 +214,46 @@ export default function AdminSecretUrl() {
   // LOGIN PAGE
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen py-20 flex justify-center items-center px-6">
-        <div className="w-full max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
-          <Breadcrumbs
-            items={[
-              { label: "Admin Secret Url" },
-            ]}
-          />
-          <h1 className="text-3xl font-bold mb-8 text-white tracking-wider text-center">
-            ADMIN <span className="text-red-600">LOGIN</span>
+      <div className="min-h-screen bg-zinc-950 flex justify-center items-center px-6 relative overflow-hidden">
+        {/* Background blurs */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="w-full max-w-md bg-zinc-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-zinc-800/80 relative z-10">
+          <div className="mb-6 flex justify-center">
+            <Breadcrumbs
+              items={[
+                { label: "Admin Portal" },
+              ]}
+            />
+          </div>
+          <h1 className="text-3xl font-black mb-8 text-white tracking-wider text-center uppercase">
+            Admin <span className="text-red-500">Login</span>
           </h1>
 
           {loginError && (
-            <div className="p-4 rounded mb-6 text-sm bg-red-600/20 text-red-500">
+            <div className="p-4 rounded-xl mb-6 text-sm bg-red-950/50 border border-red-900/50 text-red-400">
               {loginError}
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-5">
+          <form onSubmit={handleLogin} className="flex flex-col gap-6">
             <div>
-              <label className="block text-gray-400 text-sm mb-2" htmlFor="email">
-                Email
+              <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="email">
+                Email Address
               </label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@example.com"
-                className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
+                placeholder="admin@keystone.com"
+                className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-gray-400 text-sm mb-2" htmlFor="password">
+              <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="password">
                 Password
               </label>
               <input
@@ -252,16 +261,16 @@ export default function AdminSecretUrl() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
+                placeholder="Enter password"
+                className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium"
                 required
               />
             </div>
 
-            <div className="mt-2">
+            <div className="mt-2 flex justify-center">
               <ReCAPTCHA
                 ref={recaptchaRef}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
                 onChange={(token) => setCaptchaToken(token)}
                 theme="dark"
               />
@@ -270,9 +279,9 @@ export default function AdminSecretUrl() {
             <button
               type="submit"
               disabled={loginLoading || !captchaToken}
-              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors disabled:cursor-not-allowed"
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-bold text-sm uppercase tracking-widest py-4 px-6 rounded-xl mt-4 transition-all duration-300 disabled:cursor-not-allowed shadow-lg shadow-red-600/20 active:scale-[0.98]"
             >
-              {loginLoading ? "Logging in..." : "Login"}
+              {loginLoading ? "Verifying..." : "Sign In"}
             </button>
           </form>
         </div>
@@ -280,170 +289,261 @@ export default function AdminSecretUrl() {
     );
   }
 
-  // ADMIN DASHBOARD
   return (
-    <div className="min-h-screen py-20 flex flex-col lg:flex-row justify-center items-start px-6 gap-10">
-      {/* LOGOUT BUTTON */}
-      <div className="fixed top-6 right-6">
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors shadow-lg"
-        >
-          Logout
-        </button>
+    <div className="min-h-screen bg-zinc-950 text-white font-sans relative overflow-hidden flex flex-col pt-24">
+      {/* Background blurs */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-red-900/5 rounded-full blur-[130px]" />
       </div>
 
-      {/* EVENTS FORM */}
-      <div className="w-full lg:w-1/2 max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
-        <h1 className="text-2xl font-bold mb-6 text-white tracking-wider">
-          EVENTS <span className="text-red-600">ADMIN</span>
-        </h1>
-
-        {message && (
-          <div className={`p-4 rounded mb-6 text-sm ${message.includes("Error") ? "bg-red-600/20 text-red-500" : "bg-green-600/20 text-green-500"}`}>
-            {message}
+      {/* Main Content Area */}
+      <main className="flex-grow w-full max-w-6xl mx-auto px-6 pb-24 relative z-10 flex flex-col gap-10">
+        
+        {/* Title and Logout Section */}
+        <div className="flex justify-between items-center border-b border-zinc-800/80 pb-6 w-full">
+          <div className="flex items-center gap-3">
+            <div className="w-1.5 h-6 bg-red-600 rounded-full" />
+            <h1 className="text-xl font-black tracking-widest text-white uppercase flex items-center gap-2">
+              Keystone <span className="text-red-500 font-semibold text-xs tracking-normal px-2 py-0.5 bg-red-500/10 border border-red-500/20 rounded-md">Admin</span>
+            </h1>
           </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="title">
-              Event Title
-            </label>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Next Webinar: Red Teaming"
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="date">
-              Event Date & Time
-            </label>
-            <input
-              id="date"
-              type="datetime-local"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
-              required
-            />
-          </div>
-
+          {/* Logout button as SVG icon */}
           <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors"
+            onClick={handleLogout}
+            title="Logout"
+            aria-label="Logout"
+            className="p-2.5 rounded-xl bg-zinc-900 hover:bg-red-950/40 border border-zinc-800 hover:border-red-900 text-zinc-400 hover:text-red-500 transition-all duration-300 shadow-md group relative active:scale-95 flex items-center gap-2"
           >
-            {loading ? "Posting..." : "Post Event"}
+            <span className="text-xs font-bold uppercase tracking-wider hidden sm:inline-block pl-1">Logout</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="group-hover:translate-x-0.5 transition-transform"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
           </button>
-        </form>
-      </div>
+        </div>
 
-      {/* NEWS FORM */}
-      <div className="w-full lg:w-1/2 max-w-md bg-neutral-950 p-8 rounded-xl shadow-2xl border border-white/10">
-        <h1 className="text-2xl font-bold mb-6 text-white tracking-wider">
-          NEWS <span className="text-red-600">ADMIN</span>
-        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full items-start">
+          
+          {/* EVENTS FORM */}
+          <div className="bg-zinc-900/40 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 flex flex-col gap-6">
+            <h2 className="text-xl font-black text-white tracking-wider flex items-center gap-3">
+              <div className="w-1.5 h-6 bg-red-600 rounded-full" />
+              EVENTS <span className="text-red-500">ADMIN</span>
+            </h2>
 
-        {newsMessage && (
-          <div className={`p-4 rounded mb-6 text-sm ${newsMessage.includes("Error") ? "bg-red-600/20 text-red-500" : "bg-green-600/20 text-green-500"}`}>
-            {newsMessage}
-          </div>
-        )}
+            {message && (
+              <div className={`p-4 rounded-xl text-sm border font-medium ${message.includes("Error") ? "bg-red-950/50 border-red-900/50 text-red-400" : "bg-green-950/50 border-green-900/50 text-green-400"}`}>
+                {message}
+              </div>
+            )}
 
-        <form onSubmit={handleNewsSubmit} className="flex flex-col gap-5">
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsTitle">
-              News Title
-            </label>
-            <input
-              id="newsTitle"
-              type="text"
-              value={newsTitle}
-              onChange={(e) => setNewsTitle(e.target.value)}
-              placeholder="e.g. New Board of Directors"
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
-              required
-            />
-          </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="title">
+                  Event Title
+                </label>
+                <input
+                  id="title"
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="e.g. Next Webinar: Red Teaming"
+                  className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium"
+                  required
+                />
+              </div>
 
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsExcerpt">
-              Excerpt / Short Description
-            </label>
-            <textarea
-              id="newsExcerpt"
-              value={newsExcerpt}
-              onChange={(e) => setNewsExcerpt(e.target.value)}
-              placeholder="A short summary of the news"
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors resize-none"
-              rows={3}
-              required
-            />
-          </div>
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="date">
+                  Event Date
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-4 text-zinc-500 pointer-events-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </span>
+                  <input
+                    id="date"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl py-3.5 pl-12 pr-4 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all font-medium [color-scheme:dark]"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsDate">
-              News Date
-            </label>
-            <input
-              id="newsDate"
-              type="date"
-              value={newsDate}
-              onChange={(e) => setNewsDate(e.target.value)}
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsImage">
-              Image Upload
-            </label>
-            <input
-              id="newsImage"
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setNewsImageFile(e.target.files[0]);
-                }
-              }}
-              className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-600 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-red-600 file:text-white hover:file:bg-red-700"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400 text-sm mb-2" htmlFor="newsLink">
-              Article Link
-            </label>
-            <input
-              id="newsLink"
-              type="text"
-              value={newsLink}
-              onChange={(e) => setNewsLink(e.target.value)}
-              placeholder="e.g. /news/123 or https://..."
-              className="w-full bg-black/50 border border-white/20 rounded p-3 text-white focus:outline-none focus:border-red-600 transition-colors"
-              required
-            />
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-bold text-sm uppercase tracking-widest py-3.5 px-6 rounded-xl mt-4 transition-all duration-300 disabled:cursor-not-allowed shadow-lg shadow-red-600/20 active:scale-[0.98]"
+              >
+                {loading ? "Posting..." : "Post Event"}
+              </button>
+            </form>
           </div>
 
-          <button
-            type="submit"
-            disabled={newsLoading}
-            className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-semibold py-3 px-6 rounded mt-4 transition-colors"
-          >
-            {newsLoading ? "Posting..." : "Post News"}
-          </button>
-        </form>
-      </div>
+          {/* NEWS FORM */}
+          <div className="bg-zinc-900/40 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-300 flex flex-col gap-6">
+            <h2 className="text-xl font-black text-white tracking-wider flex items-center gap-3">
+              <div className="w-1.5 h-6 bg-red-600 rounded-full" />
+              NEWS <span className="text-red-500">ADMIN</span>
+            </h2>
+
+            {newsMessage && (
+              <div className={`p-4 rounded-xl text-sm border font-medium ${newsMessage.includes("Error") ? "bg-red-950/50 border-red-900/50 text-red-400" : "bg-green-950/50 border-green-900/50 text-green-400"}`}>
+                {newsMessage}
+              </div>
+            )}
+
+            <form onSubmit={handleNewsSubmit} className="flex flex-col gap-5">
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="newsTitle">
+                  News Title
+                </label>
+                <input
+                  id="newsTitle"
+                  type="text"
+                  value={newsTitle}
+                  onChange={(e) => setNewsTitle(e.target.value)}
+                  placeholder="e.g. New Board of Directors"
+                  className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="newsExcerpt">
+                  Excerpt / Short Description
+                </label>
+                <textarea
+                  id="newsExcerpt"
+                  value={newsExcerpt}
+                  onChange={(e) => setNewsExcerpt(e.target.value)}
+                  placeholder="A short summary of the news"
+                  className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium resize-none"
+                  rows={3}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="newsDate">
+                  News Date
+                </label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-4 text-zinc-500 pointer-events-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </span>
+                  <input
+                    id="newsDate"
+                    type="date"
+                    value={newsDate}
+                    onChange={(e) => setNewsDate(e.target.value)}
+                    className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl py-3.5 pl-12 pr-4 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all font-medium [color-scheme:dark]"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="newsImage">
+                  Image Upload
+                </label>
+                <div className="flex items-center gap-4 w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-2 focus-within:ring-2 focus-within:ring-red-600 focus-within:border-transparent transition-all">
+                  <label
+                    htmlFor="newsImage"
+                    className="py-2 px-4 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors shadow-md active:scale-[0.97] shrink-0"
+                  >
+                    Choose File
+                  </label>
+                  <span className="text-xs text-zinc-400 truncate pr-2 font-medium">
+                    {newsImageFile ? newsImageFile.name : "No file chosen"}
+                  </span>
+                  <input
+                    id="newsImage"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files.length > 0) {
+                        setNewsImageFile(e.target.files[0]);
+                      }
+                    }}
+                    className="hidden"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-zinc-400 text-xs font-bold uppercase tracking-wider mb-2" htmlFor="newsLink">
+                  Article Link
+                </label>
+                <input
+                  id="newsLink"
+                  type="text"
+                  value={newsLink}
+                  onChange={(e) => setNewsLink(e.target.value)}
+                  placeholder="e.g. /news/123 or https://..."
+                  className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all placeholder:text-zinc-600 font-medium"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={newsLoading}
+                className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-600/50 text-white font-bold text-sm uppercase tracking-widest py-3.5 px-6 rounded-xl mt-4 transition-all duration-300 disabled:cursor-not-allowed shadow-lg shadow-red-600/20 active:scale-[0.98]"
+              >
+                {newsLoading ? "Posting..." : "Post News"}
+              </button>
+            </form>
+          </div>
+          
+        </div>
+      </main>
     </div>
   );
 }

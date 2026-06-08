@@ -5,7 +5,7 @@ import { aboutContent } from "@/lib/about-data";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { useRef } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 
 const containerVariants = {
@@ -213,10 +213,7 @@ export function CompanyOverview() {
                     <Phone className="w-4 h-4 text-zinc-400 shrink-0" />
                     <span className="text-xs font-semibold">{country.phone}</span>
                   </div>
-                  <div className="flex gap-2.5 items-center">
-                    <Mail className="w-4 h-4 text-zinc-400 shrink-0" />
-                    <a href={`mailto:${country.email}`} className="text-xs font-semibold hover:text-red-600 transition-colors">{country.email}</a>
-                  </div>
+
                 </div>
               </motion.div>
             ))}
