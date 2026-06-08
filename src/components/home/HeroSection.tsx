@@ -7,6 +7,8 @@ import dynamic from "next/dynamic";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { CertificationsMarquee } from "@/components/ui/CertificationsMarquee";
 import "@blossom-carousel/core/style.css";
+import { Search } from "lucide-react";
+import { SearchWizard } from "./SearchWizard";
 
 const BlossomCarousel = dynamic(
   () => import("@blossom-carousel/react").then((mod) => mod.BlossomCarousel),
@@ -119,6 +121,7 @@ function EventSlide({ event, index }: { event: KeystoneEvent; index: number }) {
 
 export function HeroSection() {
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [events, setEvents] = useState<KeystoneEvent[]>([
     { id: "default-event-1", title: "Keystone Enterprise Cyber Summit 2026", date: getFutureDate(12) },
     { id: "default-event-2", title: "Webinar: Threat Hunting & EASM Best Practices", date: getFutureDate(28) },
@@ -215,12 +218,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }}
             className="mt-2 flex w-full flex-col gap-3 text-white sm:mt-4 sm:w-auto sm:flex-row sm:gap-6"
           >
-            <MotionLink
-              href="/contact" whileHover={{ x: 10 }}
-              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+            <motion.button
+              onClick={() => setIsSearchOpen(true)}
+              whileHover={{ scale: 1.02, x: 5 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-red-700 sm:w-auto sm:px-8 sm:py-4 sm:text-base cursor-pointer"
             >
-              Talk to a Cybersecurity Expert <span>→</span>
-            </MotionLink>
+              Search Services & Capabilities <Search className="w-4 h-4" />
+            </motion.button>
             <Link href="/about" className="w-full sm:w-auto">
               <motion.button whileHover={{ x: 10 }} className="flex w-full items-center justify-center gap-3 border-b border-white/50 bg-transparent px-6 py-3 text-sm font-medium text-white transition-all hover:border-white sm:text-base">
                 About Us <span>→</span>
@@ -374,6 +379,7 @@ export function HeroSection() {
 
       <CertificationsMarquee isAbsolute />
       <ScrollIndicator className="pointer-events-none hidden bottom-28 lg:flex xl:bottom-36" />
+      <SearchWizard isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </motion.section>
   );
 }

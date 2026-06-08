@@ -41,7 +41,7 @@ const isoCertifications = [
   { name: "ISO 27001", subtitle: "Senior Lead Implementer", logo: "/certif/ISO 27001 Lead Implementer.png" },
   { name: "ISO 27001:2013", subtitle: "Internal Auditor", logo: "/certif/ISO 27001 2013 Internal Auditor.png" },
   { name: "ISO 27005", subtitle: "Senior Lead Risk Manager", logo: "/certif/ISO 27005 Senior Lead Risk Manager.png" },
-  { name: "ISO/IEC 27701", subtitle: "Senior Lead Implementer", logo: "/certif/27701.png" },
+  { name: "ISO/IEC 27701", subtitle: "Senior Lead Implementer", logo: "/certif/ISO 27001 Lead Implementer.png" },
   { name: "ISO 31000", subtitle: "Risk Manager", logo: "/certif/ISO 31000 Risk Manager.png" },
   { name: "MEHARI Avancé", subtitle: "Risk Manager", logo: "/certif/MEHARI Risk Manager.png" },
   { name: "EBIOS Risk Manager", logo: "/certif/EBIOS Risk Manager.webp" },
@@ -53,7 +53,7 @@ const isoCertifications = [
 
 const certifications = [...nonIsoCertifications, ...isoCertifications];
 
-export function CertificationsList() {
+export function CertificationsList({ className }: { className?: string }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -98,9 +98,10 @@ export function CertificationsList() {
 
   return (
     <div
+      className={className}
       style={{
         maxWidth: "1400px",
-        margin: "0 auto",
+        marginInline: "auto",
         padding: "0 24px",
         position: "relative",
         zIndex: 10,

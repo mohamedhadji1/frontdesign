@@ -6,6 +6,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { CyberSectionDivider } from "@/components/ui/CyberSectionDivider";
 import { CheckCircle2, ShieldCheck, Globe, Cpu } from "lucide-react";
 import { ContactCTASection } from "../home/ContactCTASection";
+import { CertificationsList } from "../home/CertificationsList";
 
 const expertiseIcons = [ShieldCheck, Globe, Cpu, CheckCircle2];
 
@@ -18,7 +19,7 @@ export function TeamSection() {
         {/* Header Section */}
         <div className="max-w-4xl mx-auto mb-20 text-center">
           <SectionDivider title="OUR EXPERTS" className="mb-8" />
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -26,7 +27,7 @@ export function TeamSection() {
           >
             International Expertise & Specialization
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -42,7 +43,7 @@ export function TeamSection() {
           {team.expertise.map((item, idx) => {
             const Icon = expertiseIcons[idx % expertiseIcons.length];
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -55,7 +56,7 @@ export function TeamSection() {
                   <div className="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-red-600/20">
                     <Icon size={28} />
                   </div>
-                  <motion.h2 
+                  <motion.h2
                     initial={{ opacity: 0, y: 5 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -71,9 +72,10 @@ export function TeamSection() {
             );
           })}
         </div>
-        </div>
-        <CyberSectionDivider />
-      <ContactCTASection/>
+      </div>
+      <CertificationsList className="mb-20" />
+      <CyberSectionDivider />
+      <ContactCTASection />
     </section>
   );
 }
