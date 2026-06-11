@@ -101,6 +101,12 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'reCAPTCHA token is required' }, { status: 400 });
       }
 
+      const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+      if (!secretKey) {
+        console.error('CRITICAL: RECAPTCHA_SECRET_KEY is missing or unconfigured.');
+        return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+      }
+
       // Verify the reCAPTCHA token
       const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
         method: 'POST',
@@ -108,7 +114,7 @@ export async function POST(request: NextRequest) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-          secret: process.env.RECAPTCHA_SECRET_KEY || '',
+          secret: secretKey,
           response: captchaToken,
         }).toString(),
       });

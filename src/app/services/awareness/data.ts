@@ -23,7 +23,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Our awareness workshops go far beyond simple information sessions. They are carefully designed to immerse participants in realistic, interactive scenarios that highlight today's most relevant security threats. Led by experienced experts, these workshops cover data protection, cybersecurity best practices, and risk management in an engaging and memorable way.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2024/10/photo047_vertical.jpg",
+      "/background/bg8.jpeg",
     features: [
       {
         title: "Immersive approach",
@@ -53,11 +53,11 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Step into a captivating environment where participants use problem-solving skills, teamwork, and cyber awareness to overcome realistic attack scenarios. Our Cyber Escape Room transforms learning into a memorable hands-on experience.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-05T113955.534.png",
+      "/background/bg8.jpeg",
     showcaseImages: [
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-10T130544.532-150x150.png",
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-10T131407.412-150x150.png",
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-10T141437.584-150x150.png",
+      "/background/bg8.jpeg",
+      "/background/bg8.jpeg",
+      "/background/bg8.jpeg",
     ],
     features: [
       {
@@ -86,12 +86,12 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Each card is packed with useful information, including attack scenarios, defensive techniques, quizzes, and engaging challenges focused on cybersecurity. The format encourages teams to talk, identify threats, react to attacks in real time, and avoid costly consequences.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/plateau-jeu-de-cartes.png",
+      "/background/bg8.jpeg",
     showcaseImages: [
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/carte-quiz.png",
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/carte-chance.png",
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/carte-def.png",
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/carte-attaque.png",
+      "/background/bg8.jpeg",
+      "/background/bg8.jpeg",
+      "/background/bg8.jpeg",
+      "/background/bg8.jpeg",
     ],
     features: [
       {
@@ -122,7 +122,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Our cybersecurity quizzes encourage stronger knowledge retention while providing a clear way to measure the impact of awareness efforts. They also stimulate active thinking and help participants apply concepts immediately.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-11T120328.986.png",
+      "/background/bg8.jpeg",
     features: [
       {
         title: "Immediate knowledge checks",
@@ -149,7 +149,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Our attack simulation service provides a comprehensive assessment of how your infrastructure responds to real-world threats. Using authentic scenarios, we identify potential weaknesses and help you take preventive action before adversaries exploit them.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-05T115546.700.png",
+      "/background/bg8.jpeg",
     features: [
       {
         title: "In-depth assessment",
@@ -176,7 +176,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Our phishing simulation campaigns train your team to recognize and respond to phishing attempts. Through realistic exercises, we help employees spot warning signs and apply the right behaviors to avoid falling into attackers' traps.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-05T130824.961.png",
+      "/background/bg8.jpeg",
     featureTitle: "What you can expect",
     features: [
       {
@@ -206,7 +206,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "Agent 619 puts employees in the role of a hacker tasked with infiltrating a company to expose weaknesses. Inspired by real cyber threats, the game combines physical exploration such as secure rooms, access badges, and cameras with digital intrusion into servers and databases. The objective is to steal sensitive information while avoiding detection systems.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2025/03/Design-sans-titre-2025-03-12T151138.498.png",
+      "/background/bg8.jpeg",
     features: [
       {
         title: "Realistic threat immersion",
@@ -233,7 +233,7 @@ export const awarenessPages: AwarenessPageData[] = [
     description:
       "We understand that every organization has unique awareness needs. That is why we design bespoke awareness programs to strengthen the security culture within your company. Our professional service provides a comprehensive approach to planning, structuring, and delivering security training tailored to your organizational structure.",
     heroImage:
-      "https://ziedhamdi.com/wp-content/uploads/2024/10/photo047_vertical.jpg",
+      "/background/bg8.jpeg",
     features: [
       {
         title: "1. Adaptability",

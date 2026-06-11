@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -212,7 +212,7 @@ export default function CtfCompetitionOrganizationPage() {
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-red-100 via-transparent to-zinc-100 blur-2xl" />
             <div className="relative rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-xl">
               <Image
-                src="https://ziedhamdi.com/wp-content/uploads/2025/01/ctf.jpg"
+                src="/background/ctf.jpg"
                 alt="Cybersecurity training event for CTF competition organization"
                 width={1200}
                 height={800}

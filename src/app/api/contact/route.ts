@@ -358,26 +358,27 @@ export async function POST(request: NextRequest) {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
     if (!secretKey) {
-      console.warn('WARNING: RECAPTCHA_SECRET_KEY is missing or unconfigured. Bypassing reCAPTCHA check.');
-    } else {
-      // Verify the reCAPTCHA token using standard v2 siteverify API
-      const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          secret: secretKey,
-          response: captchaToken,
-        }).toString(),
-        signal: AbortSignal.timeout(8000),
-      });
+      console.error('CRITICAL: RECAPTCHA_SECRET_KEY is missing or unconfigured.');
+      return NextResponse.json({ success: false, error: 'Server configuration error' }, { status: 500 });
+    }
 
-      const verifyData = await verifyRes.json();
+    // Verify the reCAPTCHA token using standard v2 siteverify API
+    const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: secretKey,
+        response: captchaToken,
+      }).toString(),
+      signal: AbortSignal.timeout(8000),
+    });
 
-      if (!verifyData.success) {
-        return NextResponse.json({ success: false, error: 'Invalid reCAPTCHA token' }, { status: 400 });
-      }
+    const verifyData = await verifyRes.json();
+
+    if (!verifyData.success) {
+      return NextResponse.json({ success: false, error: 'Invalid reCAPTCHA token' }, { status: 400 });
     }
 
     // Securely log to Firestore backend (preventing client-side unauthorized writes)

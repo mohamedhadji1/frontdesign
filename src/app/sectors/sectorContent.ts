@@ -794,22 +794,6 @@ export const sectorPages = {
     backgroundVideoSrc: "/vids/herosection.mp4",
     heroCards: ["Monitor", "Verify", "Warn", "Respond"],
     exposureTitle: "Media Threat Signals",
-    posts: [
-      {
-        title:
-          "Proliferation of Scam Groups Linked to Funeral Livestreams on Facebook",
-        date: "2024-12-21",
-        image: "https://ziedhamdi.com/wp-content/uploads/2024/10/5.jpg",
-        href: "https://ziedhamdi.com/en_gb/proliferation-de-groupes-descroquerie-lies-a-la-diffusion-de-funerailles-sur-facebook/",
-      },
-      {
-        title: "Phishing Campaign Exploiting Windows PowerShell",
-        date: "2024-12-21",
-        image:
-          "https://ziedhamdi.com/wp-content/uploads/2024/11/banner_interne_keyston-550x500.jpg",
-        href: "https://ziedhamdi.com/en_gb/campagne-de-phishing-exploitant-windows-powershell/",
-      },
-    ],
     risks: [
       {
         title: "Scam Campaigns on Social Platforms",
